@@ -50,6 +50,12 @@
 #define INCBIN_S16  INCBIN
 #define INCBIN_S32  INCBIN
 #define INCBIN_COMP INCBIN
+#define INCGFX_U8   INCBIN
+#define INCGFX_U16  INCBIN
+#define INCGFX_U32  INCBIN
+#define INCGFX_S8   INCBIN
+#define INCGFX_S16  INCBIN
+#define INCGFX_S32  INCBIN
 #endif // IDE support
 
 #define ARRAY_COUNT(array) (size_t)(sizeof(array) / sizeof((array)[0]))
