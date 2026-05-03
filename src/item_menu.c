@@ -149,7 +149,7 @@ static void Task_CloseBagMenu(u8);
 static u8 AddItemMessageWindow(u8);
 static void RemoveItemMessageWindow(u8);
 static void ReturnToItemList(u8);
-static void PrintItemQuantity(u8, s16);
+static void PrintItemQuantity(u8 windowId, s16 quantity, u32 speed);
 static u8 BagMenu_AddWindow(u8);
 static u8 GetSwitchBagPocketDirection(void);
 static void SwitchBagPocket(u8, s16, bool16);
@@ -290,24 +290,24 @@ static const struct ListMenuTemplate sItemListMenu =
 
 static const u8 sText_NothingToSort[] = _("There's nothing to sort!");
 static const struct MenuAction sItemMenuActions[] = {
-    [ACTION_USE]               = {gMenuText_Use,                {ItemMenu_UseOutOfBattle}},
-    [ACTION_TOSS]              = {gMenuText_Toss,               {ItemMenu_Toss}},
-    [ACTION_REGISTER]          = {gMenuText_Register,           {ItemMenu_Register}},
-    [ACTION_GIVE]              = {gMenuText_Give,               {ItemMenu_Give}},
-    [ACTION_CANCEL]            = {gText_Cancel2,                {ItemMenu_Cancel}},
-    [ACTION_BATTLE_USE]        = {gMenuText_Use,                {ItemMenu_UseInBattle}},
-    [ACTION_CHECK]             = {COMPOUND_STRING("CHECK"),     {ItemMenu_UseOutOfBattle}},
-    [ACTION_WALK]              = {COMPOUND_STRING("WALK"),      {ItemMenu_UseOutOfBattle}},
-    [ACTION_DESELECT]          = {COMPOUND_STRING("DESELECT"),  {ItemMenu_Register}},
-    [ACTION_CHECK_TAG]         = {COMPOUND_STRING("CHECK TAG"), {ItemMenu_CheckTag}},
-    [ACTION_CONFIRM]           = {gMenuText_Confirm,            {Task_FadeAndCloseBagMenu}},
-    [ACTION_SHOW]              = {COMPOUND_STRING("SHOW"),      {ItemMenu_Show}},
-    [ACTION_GIVE_FAVOR_LADY]   = {gMenuText_Give2,              {ItemMenu_GiveFavorLady}},
-    [ACTION_CONFIRM_QUIZ_LADY] = {gMenuText_Confirm,            {ItemMenu_ConfirmQuizLady}},
-    [ACTION_BY_NAME]           = {COMPOUND_STRING("Name"),      {ItemMenu_SortByName}},
-    [ACTION_BY_TYPE]           = {COMPOUND_STRING("Type"),      {ItemMenu_SortByType}},
-    [ACTION_BY_AMOUNT]         = {COMPOUND_STRING("Amount"),    {ItemMenu_SortByAmount}},
-    [ACTION_BY_INDEX]          = {COMPOUND_STRING("Index"),     {ItemMenu_SortByIndex}},
+    [ACTION_USE]               = {gMenuText_Use,                     {ItemMenu_UseOutOfBattle}},
+    [ACTION_TOSS]              = {gMenuText_Toss,                    {ItemMenu_Toss}},
+    [ACTION_REGISTER]          = {gMenuText_Register,                {ItemMenu_Register}},
+    [ACTION_GIVE]              = {gMenuText_Give,                    {ItemMenu_Give}},
+    [ACTION_CANCEL]            = {gText_Cancel2,                     {ItemMenu_Cancel}},
+    [ACTION_BATTLE_USE]        = {gMenuText_Use,                     {ItemMenu_UseInBattle}},
+    [ACTION_CHECK]             = {COMPOUND_STRING("VOIR"),           {ItemMenu_UseOutOfBattle}},
+    [ACTION_WALK]              = {COMPOUND_STRING("MARCHER"),        {ItemMenu_UseOutOfBattle}},
+    [ACTION_DESELECT]          = {COMPOUND_STRING("ANNUL."),         {ItemMenu_Register}},
+    [ACTION_CHECK_TAG]         = {COMPOUND_STRING("LIRE ETIQUETTE"), {ItemMenu_CheckTag}},
+    [ACTION_CONFIRM]           = {COMPOUND_STRING("CONFIRMER"),      {Task_FadeAndCloseBagMenu}},
+    [ACTION_SHOW]              = {COMPOUND_STRING("MONTRER"),        {ItemMenu_Show}},
+    [ACTION_GIVE_FAVOR_LADY]   = {gMenuText_Give2,                   {ItemMenu_GiveFavorLady}},
+    [ACTION_CONFIRM_QUIZ_LADY] = {gMenuText_Confirm,                 {ItemMenu_ConfirmQuizLady}},
+    [ACTION_BY_NAME]           = {COMPOUND_STRING("Nom"),            {ItemMenu_SortByName}},
+    [ACTION_BY_TYPE]           = {COMPOUND_STRING("Type"),           {ItemMenu_SortByType}},
+    [ACTION_BY_AMOUNT]         = {COMPOUND_STRING("Quantité"),       {ItemMenu_SortByAmount}},
+    [ACTION_BY_INDEX]          = {COMPOUND_STRING("Index"),          {ItemMenu_SortByIndex}},
     [ACTION_DUMMY]             = {gText_EmptyString2, {NULL}}
 };
 
@@ -351,9 +351,11 @@ static const u8 sContextMenuItems_Cancel[] = {
     ACTION_CANCEL
 };
 
+// !< French Difference
 static const u8 sContextMenuItems_BerryBlenderCrush[] = {
-    ACTION_CONFIRM,     ACTION_CHECK_TAG,
-    ACTION_DUMMY,       ACTION_CANCEL
+    ACTION_CONFIRM,     ACTION_DUMMY,
+    ACTION_CHECK_TAG,   ACTION_DUMMY,
+    ACTION_CANCEL,      ACTION_DUMMY
 };
 
 static const u8 sContextMenuItems_Apprentice[] = {
@@ -1233,16 +1235,24 @@ void CloseItemMessage(u8 taskId)
     ReturnToItemList(taskId);
 }
 
+/**
+ * French Difference
+*/
 static void AddItemQuantityWindow(u8 windowType)
 {
-    PrintItemQuantity(BagMenu_AddWindow(windowType), 1);
+    u32 windowId = BagMenu_AddWindow(windowType);
+    PrintItemQuantity(windowId, 1, TEXT_SKIP_DRAW);
+    CopyWindowToVram(windowId, 3);
 }
 
-static void PrintItemQuantity(u8 windowId, s16 quantity)
+/**
+ * French Difference
+*/
+static void PrintItemQuantity(u8 windowId, s16 quantity, u32 speed)
 {
     ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEADING_ZEROS, MAX_ITEM_DIGITS);
     StringExpandPlaceholders(gStringVar4, gText_xVar1);
-    AddTextPrinterParameterized(windowId, FONT_NORMAL, gStringVar4, GetStringCenterAlignXOffset(FONT_NORMAL, gStringVar4, 0x28), 2, 0, 0);
+    AddTextPrinterParameterized(windowId, FONT_NORMAL, gStringVar4, GetStringCenterAlignXOffset(FONT_NORMAL, gStringVar4, 0x28), 2, speed, NULL);
 }
 
 // Prints the quantity of items to be sold and the amount that would be earned
@@ -1933,7 +1943,8 @@ static void Task_ChooseHowManyToToss(u8 taskId)
 
     if (AdjustQuantityAccordingToDPadInput(&tItemCount, tQuantity) == TRUE)
     {
-        PrintItemQuantity(gBagMenu->windowIds[ITEMWIN_QUANTITY], tItemCount);
+        // !< French Difference
+        PrintItemQuantity(gBagMenu->windowIds[ITEMWIN_QUANTITY], tItemCount, 0);
     }
     else if (JOY_NEW(A_BUTTON))
     {
@@ -2333,7 +2344,8 @@ static void Task_ChooseHowManyToDeposit(u8 taskId)
 
     if (AdjustQuantityAccordingToDPadInput(&tItemCount, tQuantity) == TRUE)
     {
-        PrintItemQuantity(gBagMenu->windowIds[ITEMWIN_QUANTITY], tItemCount);
+        // !< French Difference
+        PrintItemQuantity(gBagMenu->windowIds[ITEMWIN_QUANTITY], tItemCount, 0);
     }
     else if (JOY_NEW(A_BUTTON))
     {
@@ -2654,7 +2666,7 @@ static void DisplayCurrentMoneyWindow(void)
 {
     u8 windowId = BagMenu_AddWindow(ITEMWIN_MONEY);
     PrintMoneyAmountInMoneyBoxWithBorder(windowId, 1, 14, GetMoney(&gSaveBlock1Ptr->money));
-    AddMoneyLabelObject(19, 11);
+    AddMoneyLabelObject(24, 11); //!< French Difference
 }
 
 static void RemoveMoneyWindow(void)
