@@ -293,8 +293,8 @@ PlayersHouse_2F_Text_Notebook:
 	.string "Les pages suivantes sont vierges…$"
 
 Common_Text_LookCloserAtMap:
-	.string "{PLAYER} took a closer look at the\n"
-	.string "{REGION} region map.$"
+	.string "{PLAYER} regarde attentivement la\n"
+	.string "carte de la région de {REGION}.$"
 
 PlayersHouse_2F_Text_ItsAGameCube:
 	.string "C'est une Nintendo GameCube.\p"
