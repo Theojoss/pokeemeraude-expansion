@@ -1605,8 +1605,7 @@ enum KantoDexOrder
 #define WEIGHT_HEIGHT_STR_LEN          16
 #define WEIGHT_HEIGHT_STR_MEM          (WEIGHT_HEIGHT_STR_LEN * sizeof(u8))
 
-// TODO(french): Check this ingame
-#define DEX_HEADER_X                   144
+#define DEX_HEADER_X                   96
 #define DEX_Y_TOP                      57
 #define DEX_Y_BOTTOM                   73
 #define DEX_MEASUREMENT_X              129
