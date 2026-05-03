@@ -189,7 +189,7 @@ static const u8 sText_TerrainReturnedToNormal[] = _("Le terrain revient à la no
 const u8 *const gBattleStringsTable[STRINGID_COUNT] =
 {
     [STRINGID_TRAINER1LOSETEXT]                     = COMPOUND_STRING("{B_TRAINER1_LOSE_TEXT}"),
-    [STRINGID_PKMNGAINEDEXP]                        = COMPOUND_STRING("{B_BUFF1} a gagné{B_BUFF2}\n{B_BUFF3} points EXP.!\p"),
+    [STRINGID_PKMNGAINEDEXP]                        = COMPOUND_STRING("{B_BUFF1} a gagné{B_BUFF2} {B_BUFF3} points EXP.!\p"),
     [STRINGID_PKMNGREWTOLV]                         = COMPOUND_STRING("{B_BUFF1} monte au\nN. {B_BUFF2}!{WAIT_SE}\p"),
     [STRINGID_PKMNLEARNEDMOVE]                      = COMPOUND_STRING("{B_BUFF1} apprend\n{B_BUFF2}!{WAIT_SE}\p"),
     [STRINGID_TRYTOLEARNMOVE1]                      = COMPOUND_STRING("{B_BUFF1} veut apprendre\n{B_BUFF2}.\p"),
@@ -2965,18 +2965,16 @@ static void GetBattlerNick(enum BattlerId battler, u8 *dst)
     StringGet_Nickname(dst);
 }
 
-#define HANDLE_NICKNAME_STRING_CASE(battler)            \
-    do {                                                \
-        GetBattlerNick(battler, text);                  \
-        StringAppend(dst, text);                        \
-                                                        \
-        if (IsOnPlayerSide(battler))                    \
-            break;                                      \
-                                                        \
-        if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)     \
-            StringAppend(dst, sText_FoePkmnPrefix);     \
-        else                                            \
-            StringAppend(dst, sText_WildPkmnPrefix);    \
+#define HANDLE_NICKNAME_STRING_CASE(battler)                \
+    do {                                                    \
+        GetBattlerNick(battler, text);                      \
+        if (!IsOnPlayerSide(battler)) {                     \
+            if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)     \
+                StringAppend(text, sText_FoePkmnPrefix);    \
+            else                                            \
+                StringAppend(text, sText_WildPkmnPrefix);   \
+        }                                                   \
+        toCpy = text;                                       \
     } while (0)
 
 #define HANDLE_NICKNAME_STRING_LOWERCASE(battler)                       \
@@ -3267,7 +3265,8 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                 GetBattlerNick(gLinkPlayers[multiplayerId].id ^ 3, text);
                 toCpy = text;
                 break;
-            case B_TXT_ATK_NAME_WITH_PREFIX_MON1: // Unused, to change into sth else.
+            case B_TXT_ATK_NAME_WITH_PREFIX_MON1: // Unused, to change into sth else
+                HANDLE_NICKNAME_STRING_CASE(gBattlerAttacker);
                 break;
             case B_TXT_ATK_PARTNER_NAME: // attacker partner name
                 GetBattlerNick(BATTLE_PARTNER(gBattlerAttacker), text);
@@ -3795,17 +3794,16 @@ void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst)
             srcID += 2;
             break;
         case B_BUFF_MON_NICK_WITH_PREFIX: // poke nick with prefix
+        case B_BUFF_MON_NICK_WITH_PREFIX_LOWER: // poke nick with lowercase prefix
             GetBattlerNick(src[srcID + 1], text);
             StringAppend(dst, text);
 
-            if (IsOnPlayerSide(src[srcID + 1]))
-                break;
-
-            if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
-                StringAppend(dst, sText_FoePkmnPrefix);
-            else
-                StringAppend(dst, sText_WildPkmnPrefix);
-
+            if (!IsOnPlayerSide(src[srcID + 1])) {
+                if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+                    StringAppend(dst, sText_FoePkmnPrefix);
+                else
+                    StringAppend(dst, sText_WildPkmnPrefix);
+            }
             srcID += 3;
             break;
         case B_BUFF_STAT: // stats
