@@ -8,6 +8,7 @@
 #include "string_util.h"
 #include "international_string_util.h"
 #include "constants/songs.h"
+#include "graphics.h"
 
 enum
 {
@@ -72,9 +73,6 @@ static const LoopedTask sMonRibbonListLoopTaskFuncs[] =
     BuildBoxMonRibbonList
 };
 
-static const u16 sMonRibbonListFramePal[] = INCBIN_U16("graphics/pokenav/ribbons/list_bg.gbapal");
-static const u32 sMonRibbonListFrameTiles[] = INCBIN_U32("graphics/pokenav/ribbons/list_bg.4bpp.smol");
-static const u32 sMonRibbonListFrameTilemap[] = INCBIN_U32("graphics/pokenav/ribbons/list_bg.bin.smolTM");
 static const u16 sMonRibbonListUi_Pal[] = INCBIN_U16("graphics/pokenav/ribbons/list_ui.gbapal");
 
 static const struct BgTemplate sMonRibbonListBgTemplates[] =
@@ -427,10 +425,11 @@ static u32 LoopedTask_OpenRibbonsMonList(s32 state)
     {
     case 0:
         InitBgTemplates(sMonRibbonListBgTemplates, ARRAY_COUNT(sMonRibbonListBgTemplates));
-        DecompressAndCopyTileDataToVram(1, sMonRibbonListFrameTiles, 0, 0, 0);
+        //!< Global variables in the French Version
+        DecompressAndCopyTileDataToVram(1, gMonRibbonListFrameTiles, 0, 0, 0);
         SetBgTilemapBuffer(1, menu->buff);
-        CopyToBgTilemapBuffer(1, sMonRibbonListFrameTilemap, 0, 0);
-        CopyPaletteIntoBufferUnfaded(sMonRibbonListFramePal, BG_PLTT_ID(1), sizeof(sMonRibbonListFramePal));
+        CopyToBgTilemapBuffer(1, gMonRibbonListFrameTilemap, 0, 0);
+        CopyPaletteIntoBufferUnfaded(gMonRibbonListFramePal, BG_PLTT_ID(1), PLTT_SIZE_4BPP);
         CopyBgTilemapBufferToVram(1);
         return LT_INC_AND_PAUSE;
     case 1:
@@ -683,8 +682,8 @@ static void CreateRibbonMonsList(void)
     template.count = GetRibbonsMonListCount();
     template.itemSize = sizeof(struct PokenavListItem);
     template.startIndex = GetRibbonListMenuCurrIndex();
-    template.item_X = 13;
-    template.windowWidth = 17;
+    template.item_X = 12;      //!< French Differences
+    template.windowWidth = 18; //!< ^
     template.listTop = 1;
     template.maxShowed = 8;
     template.fillValue = 2;
