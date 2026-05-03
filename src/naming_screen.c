@@ -1785,9 +1785,12 @@ static void DrawMonTextEntryBox(void)
 {
     u8 buffer[64];
 
-    u8 *end = StringCopy(buffer, GetSpeciesName(sNamingScreen->monSpecies));
-    WrapFontIdToFit(buffer, end, FONT_NORMAL, 128 - 64);
-    StringAppendN(end, sNamingScreen->template->title, 15);
+    StringCopy(gStringVar1, GetSpeciesName(sNamingScreen->monSpecies));
+    StringExpandPlaceholders(buffer, sNamingScreen->template->title);
+
+    // TODO(french): Check if this makes any difference for species
+    // with long names.
+    // WrapFontIdToFit(buffer, end, FONT_NORMAL, 128 - 64);
     FillWindowPixelBuffer(sNamingScreen->windows[WIN_TEXT_ENTRY_BOX], PIXEL_FILL(1));
     AddTextPrinterParameterized(sNamingScreen->windows[WIN_TEXT_ENTRY_BOX], FONT_NORMAL, buffer, 8, 1, 0, 0);
     PutWindowTilemap(sNamingScreen->windows[WIN_TEXT_ENTRY_BOX]);
