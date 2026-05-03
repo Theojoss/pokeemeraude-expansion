@@ -1508,6 +1508,10 @@ const u8 gText_RecordBattleToPass[] = _("Voulez-vous enregistrer votre\ncombat s
 const u8 gText_BattleRecordedOnPass[] = _("Le résultat de {B_PLAYER_NAME} est\nenregistré sur le PASSE ZONE.");
 static const u8 sText_LinkTrainerWantsToBattlePause[] = _("{B_LINK_OPPONENT1_NAME}\nveut se battre!{PAUSE 49}");
 static const u8 sText_TwoLinkTrainersWantToBattlePause[] = _("{B_LINK_OPPONENT1_NAME} et {B_LINK_OPPONENT2_NAME}\nveulent se battre!{PAUSE 49}");
+
+// TODO(french): Have this be a single buffer e.g. {B_*_TEAM}, then if it's the player:
+// append("Votre " or "votre ") and append("équipe"), otherwise
+// append("L'équipe " or "l'équipe ") and append("ennemie")
 static const u8 sText_Your1[] = _("Votre");
 static const u8 sText_Opposing1[] = _(" ennemi");
 static const u8 sText_Your2[] = _("votre");
