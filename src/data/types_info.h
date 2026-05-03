@@ -467,7 +467,7 @@ const struct TypeInfo gTypesInfo[NUMBER_OF_MON_TYPES] =
     },
     [TYPE_STELLAR] =
     {
-        .name = _("Stellaire"),
+        .name = _("Stellair"), // TODO(french): Find a better name, but since this is the limit of TYPE_NAME_LENGTH...
         .generic = _("a STELLAR move"),
         .palette = 15,
         .zMove = MOVE_BREAKNECK_BLITZ,
