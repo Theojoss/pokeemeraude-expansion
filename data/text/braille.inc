@@ -177,7 +177,7 @@ Braille_Text_WXYZ::
 
 Braille_Text_Period::
 	brailleformat 3, 0, 25, 19, 6, 3
-	.braille "*$"
+	.braille "'$"
 
 Braille_Text_Comma::
 	brailleformat 3, 0, 25, 19, 6, 3
@@ -213,7 +213,7 @@ Braille_Text_HaveDreams::
 
 Braille_Text_UsePower::
 	brailleformat 3, 0, 25, 19, 6, 3
-	.braille "BATS TOI*$"
+	.braille "BATS TOI'$"
 
 Braille_Text_LetTheTwo::
 	brailleformat 3, 0, 25, 19, 6, 3
@@ -241,7 +241,7 @@ Braille_Text_ConnectThe::
 
 Braille_Text_Past::
 	brailleformat 3, 0, 25, 19, 6, 3
-	.braille "PASSE*$"
+	.braille "PASSE'$"
 
 Braille_Text_TwoFriends::
 	brailleformat 3, 0, 25, 19, 6, 3
@@ -265,7 +265,7 @@ Braille_Text_ANewWorld::
 
 Braille_Text_ThatGlows::
 	brailleformat 3, 0, 25, 19, 6, 3
-	.braille "NOUVEAU*$"
+	.braille "NOUVEAU'$"
 
 Braille_Text_TheNext::
 	brailleformat 3, 0, 25, 19, 6, 3
@@ -277,5 +277,5 @@ Braille_Text_WorldWaits::
 
 Braille_Text_ForYou::
 	brailleformat 3, 0, 25, 19, 6, 3
-	.braille "T ATTEND*$"
+	.braille "T ATTEND'$"
 
