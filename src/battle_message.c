@@ -183,7 +183,7 @@ const u8 gText_EmptyString3[] = _("");
 static const u8 sText_TwoInGameTrainersDefeated[] = _("{B_TRAINER1_NAME_WITH_CLASS} et {B_TRAINER2_NAME_WITH_CLASS}\nont perdu!\p");
 // New battle strings.
 const u8 gText_drastically[] = _("énormément ");
-const u8 gText_severely[] = _("énormément  ");
+const u8 gText_severely[] = _("énormément ");
 static const u8 sText_TerrainReturnedToNormal[] = _("Le terrain revient à la normale!"); // Unused
 
 const u8 *const gBattleStringsTable[STRINGID_COUNT] =
@@ -383,7 +383,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_DEFENDERSSTATFELL]                    = COMPOUND_STRING("{B_BUFF1} de {B_DEF_NAME_WITH_PREFIX} {B_BUFF2}baisse!"),
     [STRINGID_CRITICALHIT]                          = COMPOUND_STRING("Coup critique!"),
     [STRINGID_ONEHITKO]                             = COMPOUND_STRING("K.O. en un coup!"),
-    [STRINGID_123POOF]                              = COMPOUND_STRING("1[WAIT 10], 2[WAIT 10], [WAIT 10]… [WAIT 20]… Tadaaa!\p"),
+    [STRINGID_123POOF]                              = COMPOUND_STRING("1{PAUSE 10}, 2{PAUSE 10}, {PAUSE 10}… {PAUSE 20}… Tadaaa!\p"),
     [STRINGID_ANDELLIPSIS]                          = COMPOUND_STRING("Et…\p"),
     [STRINGID_NOTVERYEFFECTIVE]                     = COMPOUND_STRING("Ce n'est pas très efficace…"),
     [STRINGID_SUPEREFFECTIVE]                       = COMPOUND_STRING("C'est super efficace!"),
@@ -1407,7 +1407,7 @@ const u8 gText_PkmnIsEvolving[] = _("Quoi?\n{STR_VAR_1} évolue!");
 const u8 gText_CongratsPkmnEvolved[] = _("Félicitations! Votre {STR_VAR_1}\névolue en {STR_VAR_2}!{WAIT_SE}\p");
 const u8 gText_PkmnStoppedEvolving[] = _("Hein? {STR_VAR_1}\nn'évolue plus!\p");
 const u8 gText_EllipsisQuestionMark[] = _("……?\p");
-const u8 gText_WhatWillPkmnDo[] = _("Que doit faire\n{B_BUFF_1}?");
+const u8 gText_WhatWillPkmnDo[] = _("Que doit faire\n{B_BUFF1}?");
 const u8 gText_WhatWillPkmnDo2[] = _("Que doit faire\n{B_PLAYER_NAME}?");
 const u8 gText_WhatWillWallyDo[] = _("Que doit faire\nTIMMY?");
 const u8 gText_LinkStandby[] = _("{PAUSE 16}Connexion en cours…");
@@ -3143,13 +3143,13 @@ static const u8 *BattleStringGetGenderNeutralOpponentClassByTrainerId(u16 traine
 static const u8 *BattleStringGetOpponentClassByTrainerId(u16 trainerId)
 {
     const u8 *toCpy;
-    struct Trainer *trainer;
+    const struct Trainer *trainer;
 
     toCpy = BattleStringGetGenderNeutralOpponentClassByTrainerId(trainerId);
     if (toCpy != NULL)
         return toCpy;
 
-    trainer = GetTrainerStructById(trainerId);
+    trainer = GetTrainerStructFromId(trainerId);
     toCpy = GetTrainerClassNameGenderSpecific(trainer->trainerClass, trainer->gender, trainer->trainerName);
 
     return toCpy;
