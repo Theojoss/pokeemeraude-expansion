@@ -5099,7 +5099,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .weight = 615,
         .description = COMPOUND_STRING(
             "Sa férocité lui a valu le surnom de\n"
-            "« démon du désert », mais face à un\n"
+            "“démon du désert”, mais face à un\n"
             "Hippodocus, il est parfaitement docile\n"
             "et évite de le provoquer."),
         .pokemonScale = 272,
@@ -7229,8 +7229,8 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .description = COMPOUND_STRING(
             "Dormir avec une de ses plumes à la main\n"
             "permet de faire de beaux rêves. On le\n"
-            "surnomme « avatar du croissant de\n"
-            "lune »."),
+            "surnomme “avatar du croissant de\n"
+            "lune”."),
         .pokemonScale = 268,
         .pokemonOffset = 2,
         .trainerScale = 271,

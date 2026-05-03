@@ -541,7 +541,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .weight = 905,
         .description = COMPOUND_STRING(
             "Ses ailes lui permettent de voler à plus\n"
-            "de 1 400 m d'altitude. Ce Pokémon crache\n"
+            "de 1 400 m d'altitude. Ce Pokémon crache\n"
             "du feu à des températures très élevées."),
         .pokemonScale = 256,
         .pokemonOffset = 1,
@@ -613,7 +613,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .weight = 1105,
         .description = COMPOUND_STRING(
             "Ses ailes lui permettent de voler à plus\n"
-            "de 1 400 m d'altitude. Ce Pokémon crache\n"
+            "de 1 400 m d'altitude. Ce Pokémon crache\n"
             "du feu à des températures très élevées."),
         .pokemonScale = 256,
         .pokemonOffset = 1,
@@ -684,7 +684,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .weight = 1005,
         .description = COMPOUND_STRING(
             "Ses ailes lui permettent de voler à plus\n"
-            "de 1 400 m d'altitude. Ce Pokémon crache\n"
+            "de 1 400 m d'altitude. Ce Pokémon crache\n"
             "du feu à des températures très élevées."),
         .pokemonScale = 256,
         .pokemonOffset = 1,
@@ -753,7 +753,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .weight = 0,
         .description = COMPOUND_STRING(
             "Ses ailes lui permettent de voler à plus\n"
-            "de 1 400 m d'altitude. Ce Pokémon crache\n"
+            "de 1 400 m d'altitude. Ce Pokémon crache\n"
             "du feu à des températures très élevées."),
         .pokemonScale = 256,
         .pokemonOffset = 1,
@@ -5280,7 +5280,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .description = COMPOUND_STRING(
             "Il est très intelligent et rancunier.\n"
             "Quiconque attrape une de ses queues se\n"
-            "fera maudire pour 1 000 ans."),
+            "fera maudire pour 1 000 ans."),
         .pokemonScale = 339,
         .pokemonOffset = 10,
         .trainerScale = 256,
@@ -5419,7 +5419,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .description = COMPOUND_STRING(
             "Il est très intelligent et rancunier.\n"
             "Quiconque attrape une de ses queues se\n"
-            "fera maudire pour 1 000 ans."),
+            "fera maudire pour 1 000 ans."),
         .pokemonScale = 339,
         .pokemonOffset = 10,
         .trainerScale = 256,
@@ -14445,7 +14445,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .description = COMPOUND_STRING(
             "Son épiderme est si épais qu'il lui\n"
             "permet même de survivre dans du magma\n"
-            "d'une température de 2 000 °C."),
+            "d'une température de 2 000 C."),
         .pokemonScale = 256,
         .pokemonOffset = 1,
         .trainerScale = 299,
@@ -18176,7 +18176,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .description = COMPOUND_STRING(
             "Il se charge d'ions négatifs contenus\n"
             "dans l'air pour envoyer des décharges\n"
-            "d'environ 10 000 volts."),
+            "d'environ 10 000 volts."),
         .pokemonScale = 283,
         .pokemonOffset = 8,
         .trainerScale = 256,
@@ -18241,7 +18241,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .description = COMPOUND_STRING(
             "Il emmagasine de l'air dans sa poche de\n"
             "flammes et le chauffe à une température\n"
-            "de 1 700 °C."),
+            "de 1 700 C."),
         .pokemonScale = 306,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -20161,7 +20161,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .height = 22,
         .weight = 2100,
         .description = COMPOUND_STRING(
-            "On l'appelle « l'avatar de la mer ».\n"
+            "On l'appelle “l'avatar de la mer”.\n"
             "Nombreux sont les navires arborant une\n"
             "figure de proue en forme de Dracolosse."),
         .pokemonScale = 256,
@@ -20236,7 +20236,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .height = 22,
         .weight = 2900,
         .description = COMPOUND_STRING(
-            "On l'appelle « l'avatar de la mer ».\n"
+            "On l'appelle “l'avatar de la mer”.\n"
             "Nombreux sont les navires arborant une\n"
             "figure de proue en forme de Dracolosse."),
         .frontPic = gMonFrontPic_DragoniteMega,

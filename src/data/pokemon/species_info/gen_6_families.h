@@ -444,7 +444,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .description = COMPOUND_STRING(
             "Ses pouvoirs psychiques lui permettent\n"
             "de créer des tourbillons de flammes à\n"
-            "3 000 °C qui enveloppent et consument\n"
+            "3 000 C qui enveloppent et consument\n"
             "ses ennemis."),
         .pokemonScale = 268,
         .pokemonOffset = 2,
@@ -522,7 +522,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .description = COMPOUND_STRING(
             "Ses pouvoirs psychiques lui permettent\n"
             "de créer des tourbillons de flammes à\n"
-            "3 000 °C qui enveloppent et consument\n"
+            "3 000 C qui enveloppent et consument\n"
             "ses ennemis."),
         .frontPic = gMonFrontPic_DelphoxMega,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
@@ -1802,8 +1802,8 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .height = 15,
         .weight = 815,
         .description = COMPOUND_STRING(
-            "Son souffle enflammé atteint les 6 000\n"
-            "°C, mais il ne l'utilise jamais contre\n"
+            "Son souffle enflammé atteint les 6 000\n"
+            "C, mais il ne l'utilise jamais contre\n"
             "ses proies. Il préfère en effet la\n"
             "viande crue."),
         .pokemonScale = 268,
@@ -1890,8 +1890,8 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .height = 15,
         .weight = 933,
         .description = COMPOUND_STRING(
-            "Son souffle enflammé atteint les 6 000\n"
-            "°C, mais il ne l'utilise jamais contre\n"
+            "Son souffle enflammé atteint les 6 000\n"
+            "C, mais il ne l'utilise jamais contre\n"
             "ses proies. Il préfère en effet la\n"
             "viande crue."),
         .frontPic = gMonFrontPic_PyroarMega,
@@ -2094,7 +2094,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
             "Il fait profiter ses fleurs de ses\n"
             "pouvoirs et met tout son cœur à leur\n"
             "entretien. Gare à ceux qui ravagent ses\n"
-            "plates-bandes !"),
+            "plates-bandes !"),
     },
 
     [SPECIES_FLOETTE_YELLOW] =
@@ -2104,7 +2104,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
             "Il fait profiter ses fleurs de ses\n"
             "pouvoirs et met tout son cœur à leur\n"
             "entretien. Gare à ceux qui ravagent ses\n"
-            "plates-bandes !"),
+            "plates-bandes !"),
     },
 
     [SPECIES_FLOETTE_ORANGE] =
@@ -2114,7 +2114,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
             "Il fait profiter ses fleurs de ses\n"
             "pouvoirs et met tout son cœur à leur\n"
             "entretien. Gare à ceux qui ravagent ses\n"
-            "plates-bandes !"),
+            "plates-bandes !"),
     },
 
     [SPECIES_FLOETTE_BLUE] =
@@ -2124,7 +2124,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
             "Il fait profiter ses fleurs de ses\n"
             "pouvoirs et met tout son cœur à leur\n"
             "entretien. Gare à ceux qui ravagent ses\n"
-            "plates-bandes !"),
+            "plates-bandes !"),
     },
 
     [SPECIES_FLOETTE_WHITE] =
@@ -2134,7 +2134,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
             "Il fait profiter ses fleurs de ses\n"
             "pouvoirs et met tout son cœur à leur\n"
             "entretien. Gare à ceux qui ravagent ses\n"
-            "plates-bandes !"),
+            "plates-bandes !"),
     },
 
     [SPECIES_FLOETTE_ETERNAL] =
@@ -2153,7 +2153,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
             "Il fait profiter ses fleurs de ses\n"
             "pouvoirs et met tout son cœur à leur\n"
             "entretien. Gare à ceux qui ravagent ses\n"
-            "plates-bandes !"),
+            "plates-bandes !"),
         .frontPic = gMonFrontPic_FloetteEternal,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
         .frontPicYOffset = 3,
@@ -2302,7 +2302,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
             "Il fait profiter ses fleurs de ses\n"
             "pouvoirs et met tout son cœur à leur\n"
             "entretien. Gare à ceux qui ravagent ses\n"
-            "plates-bandes !"),
+            "plates-bandes !"),
         .frontPic = gMonFrontPic_FloetteMega,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
         .frontPicYOffset = 0,

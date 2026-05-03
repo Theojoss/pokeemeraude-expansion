@@ -2239,7 +2239,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
             "Il peut faire tourner ses pattes très\n"
             "vite pour se déplacer à une vitesse de\n"
             "30 km/h. Il peut aussi souffler des\n"
-            "flammes à 1 000 °C."),
+            "flammes à 1 000 C."),
         .pokemonScale = 320,
         .pokemonOffset = 7,
         .trainerScale = 256,
@@ -4393,8 +4393,8 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .height = 21,
         .weight = 51,
         .description = COMPOUND_STRING(
-            "On l'appelle aussi la « sorcière de la\n"
-            "forêt ». Ce Pokémon lacère quiconque\n"
+            "On l'appelle aussi la “sorcière de la\n"
+            "forêt”. Ce Pokémon lacère quiconque\n"
             "fait trop de bruit avec les griffes de\n"
             "son tentacule."),
         .pokemonScale = 256,
@@ -4459,8 +4459,8 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .height = 260,
         .weight = 0,
         .description = COMPOUND_STRING(
-            "On l'appelle aussi la « sorcière de la\n"
-            "forêt ». Ce Pokémon lacère quiconque\n"
+            "On l'appelle aussi la “sorcière de la\n"
+            "forêt”. Ce Pokémon lacère quiconque\n"
             "fait trop de bruit avec les griffes de\n"
             "son tentacule."),
         .pokemonScale = 256,
@@ -7088,7 +7088,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .weight = 9500,
         .description = COMPOUND_STRING(
             "Il se trouvait dans une météorite qui\n"
-            "s'est écrasée il y a 20 000 ans. Il\n"
+            "s'est écrasée il y a 20 000 ans. Il\n"
             "semble y avoir un lien entre ce Pokémon\n"
             "et le phénomène Dynamax."),
         .pokemonScale = 230,
@@ -7156,7 +7156,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .weight = 0,
         .description = COMPOUND_STRING(
             "Il se trouvait dans une météorite qui\n"
-            "s'est écrasée il y a 20 000 ans. Il\n"
+            "s'est écrasée il y a 20 000 ans. Il\n"
             "semble y avoir un lien entre ce Pokémon\n"
             "et le phénomène Dynamax."),
         .pokemonScale = 230,

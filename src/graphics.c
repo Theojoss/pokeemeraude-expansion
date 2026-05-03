@@ -2136,8 +2136,8 @@ const u32 gGhostFrontPic[] = INCBIN_U32("graphics/pokemon/ghost/front.4bpp.smol"
 const u32 gCreditsCopyrightEnd_Gfx[] = INCBIN_U32("graphics/credits/the_end_copyright.4bpp.smol");
 const u32 gCreditsCopyrightEnd_Tilemap[] = INCBIN_U32("graphics/credits/the_end_copyright.bin.smolTM");
 
-const u16 g321Start_Pal[] = INBIN_U16("graphics/link/321start.gbapal");
-const u32 g321Start_Gfx[] = INBIN_U32("graphics/link/321start.4bpp.smol");
+const u16 g321Start_Pal[] = INCBIN_U16("graphics/link/321start.gbapal");
+const u32 g321Start_Gfx[] = INCBIN_U32("graphics/link/321start.4bpp.smol");
 
 // poke jump
 const u16 gPokeJumpBonuses_Pal[] = INCBIN_U16("graphics/pokemon_jump/bonuses.gbapal");
@@ -2213,7 +2213,7 @@ const u32 gTilesetTiles_BattleDome[] = INCBIN_U32("data/tilesets/secondary/battl
 
 // pokenav match call gfx
 const u16 gMatchCallUI_Pal[] = INCBIN_U16("graphics/pokenav/match_call/ui.gbapal");
-const u32 gMatchCallUI_Gfx[] = INCBIN_U32("graphics/pokenav/match_call/ui.4bpp.smol");
+const u8 gMatchCallUI_Gfx[] = INCBIN_U8("graphics/pokenav/match_call/ui.4bpp.smol");
 const u32 gMatchCallUI_Tilemap[] = INCBIN_U32("graphics/pokenav/match_call/ui.bin.smolTM");
 
 // pokenav conditions search results

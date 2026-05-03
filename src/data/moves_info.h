@@ -323,9 +323,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "Un coup de poing glacé vient frapper\n"
             "l'ennemi. Peut le geler."),
-        #else
-            "freeze the foe."),
-        #endif
         .effect = EFFECT_HIT,
         .power = 75,
         .type = TYPE_ICE,
@@ -1486,9 +1483,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Le lanceur attaque l'ennemi avec un jet\n"
             "d'acide corrosif. Peut aussi baisser sa\n"
             "Défense Spéciale."),
-        #else
-            "May lower Defense."),
-        #endif
         .effect = EFFECT_HIT,
         .power = 40,
         .type = TYPE_POISON,
@@ -1636,9 +1630,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Une énorme vague s'abat sur le champ de\n"
             "bataille et inflige des dégâts à tous\n"
             "les Pokémon autour du lanceur."),
-        #else
-            "crashes it down on the foes."),
-        #endif
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 90 : 95,
         .type = TYPE_WATER,
@@ -1663,9 +1654,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "Un rayon de glace frappe l'ennemi. Peut\n"
             "aussi le geler."),
-        #else
-            "beam that may freeze it."),
-        #endif
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 90 : 95,
         .type = TYPE_ICE,
@@ -1694,9 +1682,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "Une violente tempête de neige s'abat sur\n"
             "l'ennemi. Peut aussi le geler."),
-        #else
-            "storm that may freeze it."),
-        #endif
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 110 : 120,
         .type = TYPE_ICE,
@@ -2090,10 +2075,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Le corps du lanceur se développe.\n"
             "Augmente l'Attaque et l'Attaque\n"
             "Spéciale."),
-        #else
-            "Forces the body to grow\n"
-            "and heightens Sp. Atk."),
-        #endif
         .effect = B_GROWTH_STAT_RAISE >= GEN_5 ? EFFECT_GROWTH : EFFECT_SPECIAL_ATTACK_UP,
         .power = 0,
         .type = TYPE_NORMAL,
@@ -2989,9 +2970,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Le lanceur comprime son corps pour se\n"
             "faire tout petit et beaucoup augmenter\n"
             "son Esquive."),
-        #else
-            "raise evasiveness."),
-        #endif
         .effect = EFFECT_MINIMIZE,
         .power = 0,
         .type = TYPE_NORMAL,
@@ -4461,9 +4439,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Le lanceur change de type pour prendre\n"
             "celui de la première capacité de sa\n"
             "liste."),
-        #else
-            "into a known move's type."),
-        #endif
         .effect = EFFECT_CONVERSION,
         .power = 0,
         .type = TYPE_NORMAL,
@@ -4492,9 +4467,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Le lanceur envoie trois boules d'énergie\n"
             "simultanément. Peut aussi paralyser,\n"
             "brûler ou geler l'ennemi."),
-                #else
-                    "May burn/paralyze/freeze."),
-                #endif
         #else
             .description = COMPOUND_STRING(
             "Le lanceur envoie trois boules d'énergie\n"
@@ -5031,9 +5003,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Le lanceur exprime son ressentiment en\n"
             "retirant 4 PP de la dernière capacité de\n"
             "l'ennemi."),
-        #else
-            "of foe's last move by 2-5."),
-        #endif
         .effect = EFFECT_SPITE,
         .power = 0,
         .type = TYPE_GHOST,
@@ -5059,9 +5028,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "Le lanceur projette de la neige\n"
             "poudreuse. Peut aussi geler l'ennemi."),
-        #else
-            "gust. May cause freezing."),
-        #endif
         .effect = EFFECT_HIT,
         .power = 40,
         .type = TYPE_ICE,
@@ -6354,9 +6320,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "annuler, par exemple, Étreinte, Ligotage\n"
             "ou Vampigraine. Augmente également la\n"
             "Vitesse du lanceur."),
-        #else
-            "effects."),
-        #endif
         .effect = EFFECT_RAPID_SPIN,
         .power = B_UPDATED_MOVE_DATA >= GEN_8 ? 50 : 20,
         .type = TYPE_NORMAL,
@@ -6387,10 +6350,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "Un doux parfum qui réduit beaucoup\n"
             "l'Esquive de l'ennemi."),
-        #else
-            "Allures the foes to reduce\n"
-            "evasiveness."),
-        #endif
         .effect = B_UPDATED_MOVE_DATA >= GEN_6 ? EFFECT_EVASION_DOWN_2 : EFFECT_EVASION_DOWN,
         .power = 0,
         .type = TYPE_NORMAL,
@@ -6579,10 +6538,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "utilisée. Il est recommandé de\n"
             "l'oublier, même s'il sera impossible de\n"
             "se la remémorer une fois oubliée."),
-        #else
-            "The type and effectiveness\n"
-            "vary with the user."),
-        #endif
         .power = B_HIDDEN_POWER_DMG >= GEN_6 ? 60 : 1,
         .effect = EFFECT_HIDDEN_POWER,
         .type = TYPE_NORMAL,
@@ -6714,9 +6669,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "Le lanceur mord l'ennemi de ses crocs\n"
             "pointus. Peut aussi baisser sa Défense."),
-        #else
-            "May lower Sp. Def."),
-        #endif
         .effect = EFFECT_HIT,
         .power = 80,
         .type = TYPE_DARK,
@@ -7090,7 +7042,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Relâche"),
         .description = COMPOUND_STRING(
             "Libère dans une attaque la puissance\n"
-            "précédemment accumulée avec Stockage.")."),
+            "précédemment accumulée avec Stockage."),
         .effect = EFFECT_SPIT_UP,
         .power = 1,
         .type = TYPE_NORMAL,
@@ -10066,9 +10018,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Génère une rafale de vent qui augmente\n"
             "la Vitesse des Pokémon de l'équipe\n"
             "pendant quatre tours."),
-        #else
-            "ally Speed for 3 turns."),
-        #endif
         .effect = EFFECT_TAILWIND,
         .power = 0,
         .type = TYPE_FLYING,
@@ -11490,9 +11439,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "Le lanceur utilise une morsure glaciale.\n"
             "Peut aussi geler ou apeurer l'ennemi."),
-        #else
-            "leave the foe frozen."),
-        #endif
         .effect = EFFECT_HIT,
         .power = 65,
         .type = TYPE_ICE,
@@ -15297,9 +15243,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Refroidit violemment l'ennemi et peut le\n"
             "geler. Super efficace sur les Pokémon de\n"
             "type Eau."),
-        #else
-            "types. May cause freezing."),
-        #endif
         .effect = EFFECT_SUPER_EFFECTIVE_ON_ARG,
         .power = 70,
         .type = TYPE_ICE,
@@ -16999,7 +16942,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Boule Pollen"),
         .description = COMPOUND_STRING(
             "Utilisée sur l'ennemi, envoie une boule\n"
-            "explosive qui fait des dégâts ; sur un\n"
+            "explosive qui fait des dégâts sur un\n"
             "allié, donne du bon pollen nutritif qui\n"
             "fait récupérer des PV."),
         .effect = EFFECT_HIT_ENEMY_HEAL_ALLY,
@@ -18077,9 +18020,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "utilisée. Il est recommandé de\n"
             "l'oublier, même s'il sera impossible de\n"
             "se la remémorer une fois oubliée."),
-        #else
-            "half the damage inflicted."),
-        #endif
         .effect = EFFECT_ABSORB,
         .power = B_UPDATED_MOVE_DATA >= GEN_8 ? 60 : 90,
         .type = TYPE_WATER,
@@ -19877,9 +19817,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "Les yeux du lanceur tirent des rayons\n"
             "psychiques. Peut aussi geler l'ennemi."),
-        #else
-            "the eyes. May freeze the foe."),
-        #endif
         .power = 90,
         .effect = EFFECT_HIT,
         .type = TYPE_PSYCHIC,

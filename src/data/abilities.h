@@ -1709,7 +1709,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_AURA_BREAK] =
     {
         .name = _("Aura Inversée"),
-        .description = COMPOUND_STRING("Inverse l'effet des talents « Aura »\n"
+        .description = COMPOUND_STRING("Inverse l'effet des talents “Aura”\n"
             "afin que ceux-ci baissent la puissance\n"
             "des capacités affectées au lieu de\n"
             "l'augmenter."),

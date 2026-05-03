@@ -1429,8 +1429,8 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .height = 17,
         .weight = 1800,
         .description = COMPOUND_STRING(
-            "Agir ou réfléchir ? Crabominable choisit\n"
-            "de frapper ! On raconte qu'il serait\n"
+            "Agir ou réfléchir ? Crabominable choisit\n"
+            "de frapper ! On raconte qu'il serait\n"
             "déjà parvenu à repousser une avalanche à\n"
             "coups de pince."),
         .pokemonScale = 259,
@@ -1500,8 +1500,8 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .height = 26,
         .weight = 2528,
         .description = COMPOUND_STRING(
-            "Agir ou réfléchir ? Crabominable choisit\n"
-            "de frapper ! On raconte qu'il serait\n"
+            "Agir ou réfléchir ? Crabominable choisit\n"
+            "de frapper ! On raconte qu'il serait\n"
             "déjà parvenu à repousser une avalanche à\n"
             "coups de pince."),
         .frontPic = gMonFrontPic_CrabominableMega,
@@ -6182,8 +6182,8 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .height = 34,
         .weight = 2300,
         .description = COMPOUND_STRING(
-            "Jadis, on le surnommait « celui qui\n"
-            "dévore le soleil ». Une lumière\n"
+            "Jadis, on le surnommait “celui qui\n"
+            "dévore le soleil”. Une lumière\n"
             "inextinguible rayonne de son corps."),
         .pokemonScale = 256,
         .pokemonOffset = 0,
@@ -6721,8 +6721,8 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .height = 55,
         .weight = 8880,
         .description = COMPOUND_STRING(
-            "Cette créature inconnue appelée « Ultra-\n"
-            "Chimère » semble constamment affamée :\n"
+            "Cette créature inconnue appelée “Ultra-\n"
+            "Chimère” semble constamment affamée :\n"
             "elle mange en permanence."),
         .pokemonScale = 256,
         .pokemonOffset = 0,

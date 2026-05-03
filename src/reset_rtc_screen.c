@@ -417,12 +417,12 @@ static void CreateCursor(u8 taskId)
 
     LoadSpritePalette(&gSpritePalette_Arrow);
 
-    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_Arrow, 56, 68, 0); //!< French Difference
+    spriteId = CreateSpriteAtEnd(&gSpriteTemplate_Arrow, 56, 68, 0); //!< French Difference
     gSprites[spriteId].callback = SpriteCB_Cursor_UpOrRight;
     gSprites[spriteId].sTaskId = taskId;
     gSprites[spriteId].sState = -1;
 
-    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_Arrow, 56, 68, 0); //!< French Difference
+    spriteId = CreateSpriteAtEnd(&gSpriteTemplate_Arrow, 56, 68, 0); //!< French Difference
     gSprites[spriteId].callback = SpriteCB_Cursor_Down;
     gSprites[spriteId].sTaskId = taskId;
     gSprites[spriteId].sState = -1;

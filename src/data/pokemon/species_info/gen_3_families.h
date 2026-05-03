@@ -1417,7 +1417,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .description = COMPOUND_STRING(
             "Il a évolué après avoir enchaîné de\n"
             "nombreux combats. Le cri qu'il pousse\n"
-            "lorsqu'il fait un « X » avec ses bras\n"
+            "lorsqu'il fait un “X” avec ses bras\n"
             "ébranle n'importe quel ennemi."),
         .pokemonScale = 259,
         .pokemonOffset = 1,
@@ -4020,7 +4020,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .weight = 405,
         .description = COMPOUND_STRING(
             "Ses hurlements n'affectent pas seulement\n"
-            "l'ouïe ; ils provoquent aussi une onde\n"
+            "l'ouïe ; ils provoquent aussi une onde\n"
             "de choc qui balaie les ennemis et leur\n"
             "inflige des dégâts."),
         .pokemonScale = 356,
@@ -4098,7 +4098,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .weight = 840,
         .description = COMPOUND_STRING(
             "Pour communiquer avec ses semblables, il\n"
-            "n'utilise pas que son cri puissant ; il\n"
+            "n'utilise pas que son cri puissant ; il\n"
             "émet aussi des sons par les trous de son\n"
             "corps."),
         .pokemonScale = 284,
@@ -6519,7 +6519,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .height = 18,
         .weight = 888,
         .description = COMPOUND_STRING(
-            "Surnommé le « tyran des mers », ce\n"
+            "Surnommé le “tyran des mers”, ce\n"
             "Pokémon attaque sans exception tous les\n"
             "navires qui osent s'aventurer sur son\n"
             "territoire."),
@@ -6600,7 +6600,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .height = 25,
         .weight = 1303,
         .description = COMPOUND_STRING(
-            "Surnommé le « tyran des mers », ce\n"
+            "Surnommé le “tyran des mers”, ce\n"
             "Pokémon attaque sans exception tous les\n"
             "navires qui osent s'aventurer sur son\n"
             "territoire."),
@@ -6819,7 +6819,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .height = 7,
         .weight = 240,
         .description = COMPOUND_STRING(
-            "Chamallot stocke du magma à 1 200 °C\n"
+            "Chamallot stocke du magma à 1 200 C\n"
             "dans son corps. Lorsqu'il est mouillé,\n"
             "le magma se refroidit et durcit. Le\n"
             "corps du Pokémon devient alors très\n"
@@ -7539,7 +7539,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .height = 20,
         .weight = 820,
         .description = COMPOUND_STRING(
-            "On l'appelle « l'esprit du désert », car\n"
+            "On l'appelle “l'esprit du désert”, car\n"
             "ses battements d'ailes résonnent comme\n"
             "une mélodie entonnée par une voix douce."),
         .pokemonScale = 256,
@@ -9258,7 +9258,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .description = COMPOUND_STRING(
             "Il n'y a pas que son apparence qui\n"
             "change en fonction de la météo : son\n"
-            "tempérament aussi ! Plus il y a de vent,\n"
+            "tempérament aussi ! Plus il y a de vent,\n"
             "plus il se montre agressif."),
         .pokemonScale = 435,
         .pokemonOffset = -5,
@@ -9337,7 +9337,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .description = COMPOUND_STRING(
             "Il n'y a pas que son apparence qui\n"
             "change en fonction de la météo : son\n"
-            "tempérament aussi ! Plus il y a de vent,\n"
+            "tempérament aussi ! Plus il y a de vent,\n"
             "plus il se montre agressif."),
         .pokemonScale = 435,
         .pokemonOffset = -5,
@@ -9418,7 +9418,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .description = COMPOUND_STRING(
             "Il n'y a pas que son apparence qui\n"
             "change en fonction de la météo : son\n"
-            "tempérament aussi ! Plus il y a de vent,\n"
+            "tempérament aussi ! Plus il y a de vent,\n"
             "plus il se montre agressif."),
         .pokemonScale = 435,
         .pokemonOffset = -5,
@@ -9498,7 +9498,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .description = COMPOUND_STRING(
             "Il n'y a pas que son apparence qui\n"
             "change en fonction de la météo : son\n"
-            "tempérament aussi ! Plus il y a de vent,\n"
+            "tempérament aussi ! Plus il y a de vent,\n"
             "plus il se montre agressif."),
         .pokemonScale = 435,
         .pokemonOffset = -5,
@@ -9658,8 +9658,8 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .weight = 23,
         .description = COMPOUND_STRING(
             "Il existe un proverbe ancien qui dit :\n"
-            "« Fuis la demeure où les Polichombr se\n"
-            "rassemblent en nombre à la pénombre. »"),
+            "“Fuis la demeure où les Polichombr se\n"
+            "rassemblent en nombre à la pénombre.”"),
         .pokemonScale = 440,
         .pokemonOffset = 20,
         .trainerScale = 256,
@@ -10671,7 +10671,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             "Il ne peut vivre que dans les plus\n"
             "froides contrées. Il s'accommode\n"
             "parfaitement de températures atteignant\n"
-            "les - 100 °C."),
+            "les - 100 C."),
         .pokemonScale = 380,
         .pokemonOffset = 15,
         .trainerScale = 256,
@@ -10895,7 +10895,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .weight = 266,
         .description = COMPOUND_STRING(
             "Il gèle ses proies avec son souffle à -\n"
-            "50 °C, les amène dans son antre, puis\n"
+            "50 C, les amène dans son antre, puis\n"
             "les y aligne avec soin."),
         .pokemonScale = 272,
         .pokemonOffset = 3,
@@ -10969,7 +10969,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .weight = 296,
         .description = COMPOUND_STRING(
             "Il gèle ses proies avec son souffle à -\n"
-            "50 °C, les amène dans son antre, puis\n"
+            "50 C, les amène dans son antre, puis\n"
             "les y aligne avec soin."),
         .frontPic = gMonFrontPic_FroslassMega,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
@@ -11481,7 +11481,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             "Découvert lors d'une expédition dans les\n"
             "abysses, son apparence inchangée depuis\n"
             "100 millions d'années lui a valu le\n"
-            "surnom de « fossile vivant »."),
+            "surnom de “fossile vivant”."),
         .pokemonScale = 316,
         .pokemonOffset = 7,
         .trainerScale = 256,
@@ -12400,7 +12400,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .description = COMPOUND_STRING(
             "Il paraît qu'il est né dans le manteau\n"
             "terrestre et qu'il en a émergé il y a\n"
-            "environ 10 000 ans."),
+            "environ 10 000 ans."),
         .pokemonScale = 256,
         .pokemonOffset = 0,
         .trainerScale = 359,

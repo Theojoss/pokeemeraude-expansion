@@ -2040,7 +2040,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
             "Il a beau être mignon, sa laine génère\n"
             "de l'électricité quand on la frotte.\n"
             "Tentez de le caresser, et il vous mettra\n"
-            "vite au courant !"),
+            "vite au courant !"),
         .pokemonScale = 379,
         .pokemonOffset = 18,
         .trainerScale = 256,
@@ -2805,7 +2805,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .weight = 10,
         .description = COMPOUND_STRING(
             "La fleur de Floravol éclot lorsque la\n"
-            "température atteint 18 °C. L'ouverture\n"
+            "température atteint 18 C. L'ouverture\n"
             "de la fleur change en fonction de la\n"
             "température. Certaines personnes se\n"
             "servent de ce Pokémon comme d'un\n"
@@ -6271,7 +6271,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .weight = 550,
         .description = COMPOUND_STRING(
             "La température de Volcaropod est\n"
-            "d'environ 10 000 °C. L'eau s'évapore à\n"
+            "d'environ 10 000 C. L'eau s'évapore à\n"
             "son contact. Si ce Pokémon se retrouve\n"
             "sous la pluie, les gouttes d'eau forment\n"
             "de la vapeur et couvrent la zone de\n"
@@ -7384,8 +7384,8 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .weight = 350,
         .description = COMPOUND_STRING(
             "Ceux qui le craignaient jadis lui ont\n"
-            "donné le surnom de « messager de la\n"
-            "Faucheuse » à cause de son hurlement\n"
+            "donné le surnom de “messager de la\n"
+            "Faucheuse” à cause de son hurlement\n"
             "sinistre si particulier."),
         .pokemonScale = 256,
         .pokemonOffset = 4,
@@ -7470,8 +7470,8 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .weight = 495,
         .description = COMPOUND_STRING(
             "Ceux qui le craignaient jadis lui ont\n"
-            "donné le surnom de « messager de la\n"
-            "Faucheuse » à cause de son hurlement\n"
+            "donné le surnom de “messager de la\n"
+            "Faucheuse” à cause de son hurlement\n"
             "sinistre si particulier."),
         .pokemonScale = 256,
         .pokemonOffset = 4,

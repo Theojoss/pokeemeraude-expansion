@@ -1513,7 +1513,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .description = COMPOUND_STRING(
             "Il vit dans les cratères des volcans.\n"
             "L'intérieur de la mèche qu'il a sur la\n"
-            "tête peut atteindre 300 °C."),
+            "tête peut atteindre 300 C."),
         .pokemonScale = 422,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -2763,7 +2763,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 7,
         .weight = 404,
         .description = COMPOUND_STRING(
-            "On l'appelle le « roi de la vrille ». Il\n"
+            "On l'appelle le “roi de la vrille”. Il\n"
             "creuse la terre à une vitesse pouvant\n"
             "atteindre 150 km/h."),
         .pokemonScale = 365,
@@ -2838,7 +2838,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 9,
         .weight = 600,
         .description = COMPOUND_STRING(
-            "On l'appelle le « roi de la vrille ». Il\n"
+            "On l'appelle le “roi de la vrille”. Il\n"
             "creuse la terre à une vitesse pouvant\n"
             "atteindre 150 km/h."),
         .frontPic = gMonFrontPic_ExcadrillMega,
@@ -5100,7 +5100,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             "Sa puissance augmente à mesure que la\n"
             "flamme de son corps s'intensifie. La\n"
             "température de celle-ci peut parfois\n"
-            "dépasser les 1 400 °C."),
+            "dépasser les 1 400 C."),
         .pokemonScale = 272,
         .pokemonOffset = 3,
         .trainerScale = 256,
@@ -5170,7 +5170,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             "Sa puissance augmente à mesure que la\n"
             "flamme de son corps s'intensifie. La\n"
             "température de celle-ci peut parfois\n"
-            "dépasser les 1 400 °C."),
+            "dépasser les 1 400 C."),
         .pokemonScale = 272,
         .pokemonOffset = 3,
         .trainerScale = 256,
@@ -5297,7 +5297,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             "Sa puissance augmente à mesure que la\n"
             "flamme de son corps s'intensifie. La\n"
             "température de celle-ci peut parfois\n"
-            "dépasser les 1 400 °C."),
+            "dépasser les 1 400 C."),
         .pokemonScale = 272,
         .pokemonOffset = 3,
         .trainerScale = 256,
@@ -5364,7 +5364,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             "Sa puissance augmente à mesure que la\n"
             "flamme de son corps s'intensifie. La\n"
             "température de celle-ci peut parfois\n"
-            "dépasser les 1 400 °C."),
+            "dépasser les 1 400 C."),
         .pokemonScale = 272,
         .pokemonOffset = 3,
         .trainerScale = 256,
@@ -7688,7 +7688,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .description = COMPOUND_STRING(
             "On raconte qu'il est né de stalactites.\n"
             "Il gèle les alentours en soufflant de\n"
-            "l'air à - 50 °C pour améliorer son\n"
+            "l'air à - 50 C pour améliorer son\n"
             "confort."),
         .pokemonScale = 491,
         .pokemonOffset = 12,
@@ -7763,7 +7763,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .weight = 410,
         .description = COMPOUND_STRING(
             "Bien qu'il gèle ses ennemis en soufflant\n"
-            "de l'air à - 100 °C, sa gentillesse\n"
+            "de l'air à - 100 C, sa gentillesse\n"
             "l'empêche de leur ôter la vie."),
         .pokemonScale = 320,
         .pokemonOffset = 7,
@@ -7836,7 +7836,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .weight = 575,
         .description = COMPOUND_STRING(
             "La température de son corps est\n"
-            "d'environ - 6 °C. On raconte que ce\n"
+            "d'environ - 6 C. On raconte que ce\n"
             "Pokémon naît lorsque deux Sorboul se\n"
             "collent l'un à l'autre."),
         .pokemonScale = 272,
