@@ -2502,7 +2502,8 @@ static void PrintOnAbilityPopUp(const u8 *str, u8 *spriteTileData1, u8 *spriteTi
 
 static void PrintBattlerOnAbilityPopUp(enum BattlerId battler, u8 spriteId1, u8 spriteId2)
 {
-    u32 totalChar = 0, lastChar;
+    u32 totalChar = 0;
+    // s32 lastChar;
     struct Pokemon *illusionMon = GetIllusionMonPtr(battler);
 
     if (illusionMon != NULL)
@@ -2513,10 +2514,12 @@ static void PrintBattlerOnAbilityPopUp(enum BattlerId battler, u8 spriteId1, u8 
     while (gStringVar1[totalChar] != EOS)
         totalChar++;
 
-    lastChar = gStringVar1[totalChar - 1];
-    StringAppend(gStringVar1, COMPOUND_STRING("'"));
-    if (lastChar != CHAR_S && lastChar != CHAR_s)
-        StringAppend(gStringVar1, COMPOUND_STRING("s"));
+    // TODO(french): Find a better way for this, but for now
+    // this will do.
+    // lastChar = gStringVar1[totalChar - 1];
+    // StringAppend(gStringVar1, COMPOUND_STRING("'"));
+    // if (lastChar != CHAR_S && lastChar != CHAR_s)
+    //     StringAppend(gStringVar1, COMPOUND_STRING("s"));
 
     PrintOnAbilityPopUp(gStringVar1,
                         (void *)(OBJ_VRAM0) + TILE_OFFSET_4BPP(gSprites[spriteId1].oam.tileNum),
