@@ -660,7 +660,7 @@ static const u8 *const sActionStringTable[] =
     [PARTY_MSG_ALREADY_HOLDING_ONE]    = gText_AlreadyHoldingOne,
     [PARTY_MSG_WHICH_APPLIANCE]        = gText_WhichAppliance,
     [PARTY_MSG_CHOOSE_SECOND_FUSION]   = gText_NextFusionMon,
-    [PARTY_MSG_NO_POKEMON]             = COMPOUND_STRING("Vous n'avez pas de POKéMON."),
+    [PARTY_MSG_NO_POKEMON]             = COMPOUND_STRING("Aucun POKéMON utilisable!"),
     [PARTY_MSG_CHOOSE_MON_FOR_BOX]     = gText_SendWhichMonToPC,
     [PARTY_MSG_MOVE_ITEM_WHERE]        = gText_MoveItemWhere,
 };
@@ -730,7 +730,7 @@ struct
     [MENU_CATALOG_FAN]     = {COMPOUND_STRING("Ventilateur"),        CursorCb_CatalogFan},
     [MENU_CATALOG_MOWER]   = {COMPOUND_STRING("Tondeuse à gazon"),   CursorCb_CatalogMower},
     [MENU_CHANGE_FORM]     = {COMPOUND_STRING("Changer forme"),      CursorCb_ChangeForm},
-    [MENU_CHANGE_ABILITY]  = {COMPOUND_STRING("Changer cap. spé."),  CursorCb_ChangeAbility},
+    [MENU_CHANGE_ABILITY]  = {COMPOUND_STRING("Changer talent"),  CursorCb_ChangeAbility},
 };
 
 static const u8 sPartyMenuAction_SummarySwitchCancel[] = {MENU_SUMMARY, MENU_SWITCH, MENU_CANCEL1};
