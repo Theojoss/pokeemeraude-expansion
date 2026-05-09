@@ -69,6 +69,5 @@ EventScript_AccessPokemonBoxLink::
 	playse SE_PC_LOGIN
 	msgbox gText_StorageSystemOpened, MSGBOX_DEFAULT
 	special ShowPokemonStorageSystemPC
-	waitstate
 	goto EventScript_TurnOffPC
 	end

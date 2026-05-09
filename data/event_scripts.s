@@ -1537,7 +1537,6 @@ EventScript_GetInGameTradeSpeciesInfo::
 
 EventScript_ChooseMonForInGameTrade::
 	special ChoosePartyMon
-	waitstate
 	lock
 	faceplayer
 	return
@@ -1549,7 +1548,6 @@ EventScript_GetInGameTradeSpecies::
 EventScript_DoInGameTrade::
 	special CreateInGameTradePokemon
 	special DoInGameTradeScene
-	waitstate
 	lock
 	faceplayer
 	return
@@ -1682,7 +1680,6 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	playse SE_PC_ON
 	msgbox gText_PlayerHouseBootPC
 	special BedroomPC
-	waitstate
 	releaseall
 	end
 
