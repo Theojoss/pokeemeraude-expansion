@@ -1469,11 +1469,6 @@ CableClub_Text_UnionRoomAdapterNotConnected_Frlg::
 	.string "n'est pas connecté correctement.\p"
 	.string "Revenez plus tard.$"
 
-@ Unused, translated in Emerald
-CableClub_Text_OhExcuseMe_Frlg::
-	.string "あ‥‥\n"
-	.string "おきゃくさま！$"
-
 Text_PlayerIsPlayingRightNowGoForIt_Frlg::
 	.string "On dirait que {STR_VAR_1} est en\n"
 	.string "train de jouer.\l"
