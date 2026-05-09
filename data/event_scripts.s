@@ -1653,11 +1653,11 @@ EventScript_TryDarkenRuins::
 	return
 
 Text_MonFlewAway::
-	.string "The {STR_VAR_1} flew away!$"
+	.string "Le {STR_VAR_1} s'est enfui!$"
 
 @ Call for legendary bird trio
 Text_Gyaoo::
-	.string "Gyaoo!$"
+	.string "Yahou!$"
 
 EventScript_BrailleCursorWaitButton::
 	special BrailleCursorToggle
