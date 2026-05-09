@@ -182,7 +182,7 @@ const u8 gText_EmptyString3[] = _("");
 
 static const u8 sText_TwoInGameTrainersDefeated[] = _("{B_TRAINER1_NAME_WITH_CLASS} et {B_TRAINER2_NAME_WITH_CLASS}\nont perdu!\p");
 // New battle strings.
-const u8 gText_drastically[] = _( "énormément");
+const u8 gText_drastically[] = _(" énormément");
 const u8 gText_severely[] = _(" énormément");
 static const u8 sText_TerrainReturnedToNormal[] = _("Le terrain revient à la normale!"); // Unused
 
