@@ -3796,7 +3796,8 @@ void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst)
             break;
         case B_BUFF_MON_NICK_WITH_PREFIX: // poke nick with prefix
         case B_BUFF_MON_NICK_WITH_PREFIX_LOWER: // poke nick with lowercase prefix
-            GetBattlerNick(src[srcID + 1], text);
+            GetMonData(&GetBattlerParty(src[srcID + 1])[src[srcID + 2]], MON_DATA_NICKNAME, text);
+            StringGet_Nickname(text);
             StringAppend(dst, text);
 
             if (!IsOnPlayerSide(src[srcID + 1])) {
