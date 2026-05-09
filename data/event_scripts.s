@@ -1523,7 +1523,7 @@ gText_Sudowoodo_Attacked::
 gText_LegendaryFlewAway::
     .string "Le {STR_VAR_1} s'est enfui!$"
 
-Text_WantWhichFloor::
+gText_WantWhichFloor::
 	.string "Quel étage?$"
 
 	.include "data/text/pc_transfer.inc"
