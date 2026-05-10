@@ -87,7 +87,7 @@ static EWRAM_DATA u16 sSavedTaskId = 0;
 EWRAM_DATA bool8 gHasHallOfFameRecords = 0;
 static EWRAM_DATA struct CreditsData *sCreditsData = {0};
 
-static const u16 sCredits_Pal[] = INCBIN_U16("graphics/credits/credits.gbapal");
+static const u16 sCredits_Pal[] = INCGFX_U16("graphics/credits/credits.pal", ".gbapal");
 
 static void SpriteCB_CreditsMonBg(struct Sprite *);
 static void Task_WaitPaletteFade(u8);
