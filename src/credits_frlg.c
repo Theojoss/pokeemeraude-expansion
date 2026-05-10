@@ -433,7 +433,7 @@ ALIGNED(4) const u8 gCreditsString_The_Royal_New_Zealand_Foundation_of_the_Blind
 ALIGNED(4) const u8 gCreditsString_Graphic_Designer[] = _("\n\nGraphic Designer\n\n\n\n");
 ALIGNED(4) const u8 gCreditsString_Akira_Kinashi[] = _("\n\n\nAkira Kinashi\n\n\n");
 
-static const u16 sCreditsMonCircle_Pal[] = INCGFX_U16("graphics/credits_frlg/white_circle.png", ".gbapal");
+static const u16 sCreditsMonCircle_Pal[] = INCGFX_U16("graphics/credits_frlg/white_circle.pal", ".gbapal");
 static const u32 sCreditsMonCircle_Tiles[] = INCGFX_U32("graphics/credits_frlg/white_circle.png", ".8bpp.smol");
 static const u32 sCreditsMonCircle_Tilemap[] = INCBIN_U32("graphics/credits_frlg/white_circle.bin.smolTM");
 
@@ -972,7 +972,7 @@ static s32 RollCredits(void)
         {
             sCreditsMgr->timer--;
             return 0;
-            
+
         }
         sCreditsMgr->timer = 360;
         AddTextPrinterParameterized4(sCreditsMgr->windowId, FONT_NORMAL, 0x08, 0x29, 1, 2, sTextColor_Header, 0, TITLE_TEXT);

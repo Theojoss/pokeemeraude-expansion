@@ -188,7 +188,7 @@ static void SpriteCB_Confetti(struct Sprite *sprite);
 static void Task_ShowContestEntryMonPic(u8 taskId);
 static void Task_LinkContestWaitForConnection(u8 taskId);
 
-static const u16 sResultsTextWindow_Pal[] = INCGFX_U16("graphics/contest/results_screen/text_window.png", ".gbapal");
+static const u16 sResultsTextWindow_Pal[] = INCGFX_U16("graphics/contest/results_screen/text_window.pal", ".gbapal");
 static const u8 sResultsTextWindow_Gfx[] = INCGFX_U8("graphics/contest/results_screen/text_window.png", ".4bpp");
 static const u16 sMiscBlank_Pal[] = INCGFX_U16("graphics/interface/blank.pal", ".gbapal");
 
