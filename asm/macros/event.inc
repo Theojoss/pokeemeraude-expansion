@@ -2541,7 +2541,6 @@
 	.macro checkspecies speciesId:req, mode=NO_PARTY_SCREEN
 	.if \mode == OPEN_PARTY_SCREEN
 		special ChoosePartyMon
-		waitstate
 		callnative Scrcmd_checkspecies_choose, requests_effects=1
 		.2byte \speciesId
 	.else
@@ -2683,7 +2682,6 @@
 	goto_if_ne VAR_0x800B, VAR_0x8009, \wrongMonJump
 	special CreateInGameTradePokemon
 	special DoInGameTradeScene
-	waitstate
 	bufferspeciesname STR_VAR_1, VAR_0x8009
 	msgbox \tradeCompleteMsg, MSGBOX_DEFAULT
 	.endm
