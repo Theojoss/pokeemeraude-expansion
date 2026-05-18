@@ -170,10 +170,6 @@ TEST("Item names fit on Pokemon Storage System")
     switch (item)
     {
     case ITEM_ELECTRIC_TERA_SHARD:
-    case ITEM_FIGHTING_TERA_SHARD:
-    case ITEM_PSYCHIC_TERA_SHARD:
-    case ITEM_UNREMARKABLE_TEACUP:
-    case ITEM_MASTERPIECE_TEACUP:
     case ITEM_TWICE_SPICED_RADISH:
         EXPECT_GT(GetStringWidth(fontId, gItemsInfo[item].name, 0), widthPx);
         break;
@@ -196,9 +192,6 @@ TEST("Item names fit on Pokemon Summary Screen")
     // All items explicitly listed here are too big to fit.
     switch (item)
     {
-    case ITEM_UNREMARKABLE_TEACUP:
-        EXPECT_GT(GetStringWidth(fontId, gItemsInfo[item].name, 0), widthPx);
-        break;
     default:
         EXPECT_LE(GetStringWidth(fontId, gItemsInfo[item].name, 0), widthPx);
         break;
