@@ -1,16 +1,15 @@
-@ 'requests_effects' should be set to 1 if the special contains a call
-@ to 'Script_RequestEffects', which allows it to be analyzed with
-@ 'RunScriptImmediatelyUntilEffect'.
-.macro def_special ptr:req, waitstate=0, requests_effects=0
-.global SPECIAL_\ptr
-.set SPECIAL_\ptr, __special__
+.macro def_special, ptr:req, waitstate=0, requests_effects=0
+.if ALLOCATE_SPECIAL_TABLE
+  .global SPECIAL_\ptr
+  .set SPECIAL_\ptr, __special__
+  .if \requests_effects == 0
+    .4byte \ptr
+  .else
+    .4byte \ptr + ROM_SIZE
+  .endif
+.endif
 .set SPECIAL_WAITSTATE_\ptr, \waitstate
 .set __special__, __special__ + 1
-	.if \requests_effects == 0
-	.4byte \ptr
-	.else
-	.4byte \ptr + ROM_SIZE
-	.endif
 .endm
 
 .set __special__, 0
@@ -496,14 +495,14 @@ gSpecials::
 	def_special BufferBattleFrontierTutorMoveName
 	def_special CloseBattleFrontierTutorWindow
 	def_special ScrollableMultichoice_RedrawPersistentMenu
-	def_special ChooseMonForMoveTutor, waitstate=TRUE
+	def_special ChooseMonForMoveTutor, waitstate=1
 	def_special ScrollableMultichoice_ClosePersistentMenu
 	def_special DoDeoxysRockInteraction, waitstate=TRUE
 	def_special SetDeoxysRockPalette
 	def_special CreateEnemyEventMon
-	def_special StartMirageTowerDisintegration, waitstate=TRUE
-	def_special StartMirageTowerShake, waitstate=TRUE
-	def_special StartMirageTowerFossilFallAndSink, waitstate=TRUE
+	def_special StartMirageTowerDisintegration, waitstate=1
+	def_special StartMirageTowerShake, waitstate=1
+	def_special StartMirageTowerFossilFallAndSink, waitstate=1
 	def_special GetPCBoxToSendMon
 	def_special ShouldShowBoxWasFullMessage
 	def_special SetMatchCallRegisteredFlag
