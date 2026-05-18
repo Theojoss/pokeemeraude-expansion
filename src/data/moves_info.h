@@ -5565,7 +5565,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_SANDSTORM] =
     {
-        .name = COMPOUND_STRING("Tempête de Sable"),
+        .name = COMPOUND_STRING("Tempête Sable"),
         .description = COMPOUND_STRING(
             "Une tempête de sable blesse tous les\n"
             "Pokémon pendant cinq tours, sauf ceux de\n"
@@ -6532,7 +6532,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_HIDDEN_POWER] =
     {
-        .name = COMPOUND_STRING("Puissance Cachée"),
+        .name = COMPOUND_STRING("Puiss. Cachée"),
         .description = COMPOUND_STRING(
             "Cette capacité ne peut pas être\n"
             "utilisée. Il est recommandé de\n"
@@ -9681,7 +9681,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_DOOM_DESIRE] =
     {
-        .name = COMPOUND_STRING("Vœu Destructeur"),
+        .name = COMPOUND_STRING("Voeu Destruct."),
         .description = COMPOUND_STRING(
             "Le lanceur génère une sphère lumineuse\n"
             "qu'il projette sur l'ennemi deux tours\n"
@@ -16172,7 +16172,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_NUZZLE] =
     {
-        .name = COMPOUND_STRING("Frotte-Frimousse"),
+        .name = COMPOUND_STRING("Frotte-Frim."),
         .description = COMPOUND_STRING(
             "Le lanceur attaque en frottant ses\n"
             "bajoues chargées d'électricité. Paralyse\n"
@@ -16348,7 +16348,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_LANDS_WRATH] =
     {
-        .name = COMPOUND_STRING("Force Chtonienne"),
+        .name = COMPOUND_STRING("Force Chton."),
         .description = COMPOUND_STRING(
             "Utilise la puissance du sol et la\n"
             "concentre sur l'ennemi pour infliger des\n"
@@ -16371,7 +16371,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_LIGHT_OF_RUIN] =
     {
-        .name = COMPOUND_STRING("Lumière du Néant"),
+        .name = COMPOUND_STRING("Lumière Néant"),
         .description = COMPOUND_STRING(
             "Utilise la puissance de la fleur\n"
             "Éternelle pour lancer un formidable\n"
@@ -16657,7 +16657,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_ICE_HAMMER] =
     {
-        .name = COMPOUND_STRING("Marteau de Glace"),
+        .name = COMPOUND_STRING("Marteau Glace"),
         .description = COMPOUND_STRING(
             "Le lanceur donne un puissant coup de\n"
             "poing à l'ennemi. Réduit la Vitesse du\n"
@@ -17216,7 +17216,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_CORE_ENFORCER] =
     {
-        .name = COMPOUND_STRING("Sanction Suprême"),
+        .name = COMPOUND_STRING("Sanct. Suprême"),
         .description = COMPOUND_STRING(
             "La cible subit des dégâts et, si elle a\n"
             "déjà agi à ce tour, elle perd aussi son\n"
@@ -19734,7 +19734,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_SURGING_STRIKES] =
     {
-        .name = COMPOUND_STRING("Torrent de Coups"),
+        .name = COMPOUND_STRING("Torrent Coups"),
         .description = COMPOUND_STRING(
             "Le lanceur assène trois coups fluides à\n"
             "l'ennemi. Cette technique qui inflige\n"
@@ -19967,7 +19967,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_DIRE_CLAW] =
     {
-        .name = COMPOUND_STRING("Griffes Funestes"),
+        .name = COMPOUND_STRING("Griffes Funest."),
         .description = COMPOUND_STRING(
             "Le lanceur attaque avec des griffes\n"
             "destructrices en visant les points\n"
@@ -20061,7 +20061,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_SPRINGTIDE_STORM] =
     {
-        .name = COMPOUND_STRING("Typhon Passionné"),
+        .name = COMPOUND_STRING("Typhon Passion."),
         .description = COMPOUND_STRING(
             "Le lanceur déclenche un violent typhon\n"
             "de haine et d'amour qui s'abat sur la\n"
@@ -20301,7 +20301,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_BITTER_MALICE] =
     {
-        .name = COMPOUND_STRING("Cœur de Rancœur"),
+        .name = COMPOUND_STRING("Cœur Rancœur"),
         .description = COMPOUND_STRING(
             "Une rancœur glaciale frappe la cible et\n"
             "baisse son Attaque."),
@@ -20445,7 +20445,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_WILDBOLT_STORM] =
     {
-        .name = COMPOUND_STRING("Typhon Fulgurant"),
+        .name = COMPOUND_STRING("Typhon Fulgur."),
         .description = COMPOUND_STRING(
             "Le lanceur déclenche un violent typhon\n"
             "orageux dont les rafales et la foudre\n"
@@ -20470,7 +20470,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_SANDSEAR_STORM] =
     {
-        .name = COMPOUND_STRING("Typhon Pyrosable"),
+        .name = COMPOUND_STRING("Typhon Pyrosbl."),
         .description = COMPOUND_STRING(
             "Le lanceur déclenche un violent typhon\n"
             "mêlé à du sable ardent qui s'abat sur la\n"
@@ -20613,7 +20613,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_LAST_RESPECTS] =
     {
-        .name = COMPOUND_STRING("Hommage Posthume"),
+        .name = COMPOUND_STRING("Hommg. Posthume"),
         .description = COMPOUND_STRING(
             "Le lanceur attaque pour venger ses\n"
             "alliés. Plus le nombre de Pokémon alliés\n"
@@ -21002,7 +21002,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_TORCH_SONG] =
     {
-        .name = COMPOUND_STRING("Chant Flamboyant"),
+        .name = COMPOUND_STRING("Chant Flamboy."),
         .description = COMPOUND_STRING(
             "Le lanceur carbonise la cible en\n"
             "projetant sur elle de vives flammes\n"
@@ -21995,7 +21995,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_TACHYON_CUTTER] =
     {
-        .name = COMPOUND_STRING("Lame Tachyonique"),
+        .name = COMPOUND_STRING("Lame Tachyonik"),
         .description = COMPOUND_STRING(
             "Le lanceur concentre des particules\n"
             "élémentaires pour créer une lame qui\n"
@@ -22016,7 +22016,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_HARD_PRESS] =
     {
-        .name = COMPOUND_STRING("Pression Extrême"),
+        .name = COMPOUND_STRING("Pression Xtrême"),
         .description = sWringOutDescription,
         .effect = EFFECT_POWER_BASED_ON_TARGET_HP,
         .power = 100,
