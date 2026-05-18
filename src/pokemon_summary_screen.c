@@ -646,7 +646,7 @@ static const struct WindowTemplate sPageInfoTemplate[] =
         .width = 18,
         .height = 6,
         .paletteNum = 6,
-        .baseBlock = 561, //!< French Difference
+        .baseBlock = 579, //!< French Difference
     },
 };
 static const struct WindowTemplate sPageSkillsTemplate[] =
