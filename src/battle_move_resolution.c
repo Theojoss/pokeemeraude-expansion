@@ -970,6 +970,8 @@ static enum CancelerResult CancelerPPDeduction(struct BattleContext *ctx)
         gBattleMons[ctx->battlerAtk].pp[movePosition] -= ppToDeduct;
     else
         gBattleMons[ctx->battlerAtk].pp[movePosition] = 0;
+        
+    gLastMoves[ctx->battlerAtk] = gChosenMove;
 
     if (MOVE_IS_PERMANENT(ctx->battlerAtk, movePosition))
     {
@@ -2214,7 +2216,7 @@ static enum MoveEndResult MoveEndAbsorb(void)
     switch (moveEffect)
     {
     case EFFECT_STRENGTH_SAP:
-        if (gBattleStruct->passiveHpUpdate[gBattlerAttacker] > 0)
+        if (gBattleStruct->passiveHpUpdate[gBattlerAttacker] > 0 && !IsBattlerUnaffectedByMove(gBattlerTarget))
         {
             s32 healAmount = gBattleStruct->passiveHpUpdate[gBattlerAttacker];
             SetHealScript(healAmount);
