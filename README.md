@@ -49,7 +49,7 @@ Si vous souhaitez [rapporter un bug](CONTRIBUTING.md#Bug-Report), [ouvrir une pu
 
 # [Communauté](https://discord.gg/jPmhCJFM8T)
 
-[![](https://dcbadge.limes.pink/api/server/6CzjAG6GZk)](https://discord.gg/jPmhCJFM8T)
+[![](https://dcbadge.limes.pink/api/server/jPmhCJFM8T)](https://discord.gg/jPmhCJFM8T)
 [![](https://dcbadge.limes.pink/api/server/6CzjAG6GZk)](https://discord.gg/6CzjAG6GZk)
 
 Je suis trouvable sur [le serveur discord de RomHacking [Fr]](https://discord.gg/jPmhCJFM8T), donc pour me contacter, ce sera par ce biais. J'invite tous ceux intéressés à se joindre à nous!
