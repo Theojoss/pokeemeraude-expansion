@@ -15616,10 +15616,13 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Bouclier Royal"),
         .description = COMPOUND_STRING(
-            "Prend une posture défensive pour bloquer\n"
-            "les dégâts. Diminue l'Attaque de tout\n"
-            "Pokémon qui entre en contact avec le\n"
-            "lanceur."),
+        #if B_KINGS_SHIELD_LOWER_ATK >= GEN_8
+            "Bloque les dégâts, et\n"
+            "réduit l'Atq.."),
+        #else
+            "Bloque les dégâts, et\n"
+            "réduit énormément l'Atq.."),
+        #endif
         .effect = EFFECT_PROTECT,
         .power = 0,
         .type = TYPE_STEEL,
