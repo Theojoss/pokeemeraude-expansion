@@ -2353,12 +2353,68 @@ static const struct BattleWindowText *const sBattleTextOnWindowsInfo[] =
 
 static const u8 sRecordedBattleTextSpeeds[] = {8, 4, 1, 0};
 
+static inline void SwapTrainerNameAndClass(u16 trainerId, u8 **dst)
+{
+    u32 i;
+    enum TrainerClassID class = GetTrainerClassFromId(trainerId);
+    static const u16 enemyTeamClasses[] = {TRAINER_CLASS_TEAM_MAGMA, TRAINER_CLASS_TEAM_AQUA, TRAINER_CLASS_TEAM_ROCKET_FRLG};
+
+    for (i = 0; i < NELEMS(enemyTeamClasses); ++i)
+    {
+        u8 *toSwap, *buffer;
+
+        if (class != enemyTeamClasses[i])
+            continue;
+
+        for (toSwap = NULL, buffer = *dst; *buffer != EOS; ++buffer)
+        {
+            if (*buffer != PLACEHOLDER_BEGIN)
+                continue;
+
+            ++buffer;
+            if (*buffer == B_TXT_TRAINER1_CLASS)
+            {
+                toSwap = buffer;
+            }
+            else if (*buffer == B_TXT_TRAINER1_NAME && toSwap != NULL)
+            {
+                *toSwap = B_TXT_TRAINER1_NAME;
+                *buffer = B_TXT_TRAINER1_CLASS;
+            }
+        }
+
+        break;
+    }
+}
+
+static inline u8 *TryTrainerNameAndClassSwap(const u8 *src)
+{
+    u32 size = StringLength(src) + 1;
+    u8 *dst = Alloc(size);
+
+    memcpy(dst, src, size);
+    if ((gBattleTypeFlags & BATTLE_TYPE_SECRET_BASE) 
+        || (gBattleTypeFlags & BATTLE_TYPE_FRONTIER) 
+        || (gBattleTypeFlags & BATTLE_TYPE_EREADER_TRAINER)
+        || (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
+        || (TRAINER_BATTLE_PARAM.opponentA == TRAINER_UNION_ROOM)
+        || (TRAINER_BATTLE_PARAM.opponentA == TRAINER_FRONTIER_BRAIN))
+        return dst;
+
+
+    if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && TRAINER_BATTLE_PARAM.opponentA < TRAINERS_COUNT)
+        SwapTrainerNameAndClass(TRAINER_BATTLE_PARAM.opponentA, &dst);
+    if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && TRAINER_BATTLE_PARAM.opponentB < TRAINERS_COUNT)
+        SwapTrainerNameAndClass(TRAINER_BATTLE_PARAM.opponentB, &dst);
+
+    return dst;
+}
+
 void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
 {
     s32 i;
     const u8 *stringPtr = NULL;
-    u32 size;
-    u8 *txtBuff;
+    u8 *buffer;
 
     gBattleMsgDataPtr = (struct BattleMsgData *)(&gBattleResources->bufferA[battler][4]);
     gLastUsedItem = gBattleMsgDataPtr->lastItem;
@@ -2844,71 +2900,9 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
         break;
     }
 
-    //!< French Specific, to swap the Grunt's name and class
-    // TODO(french): Refactor this into a more readable version...
-    size = StringLength(stringPtr) + 1;
-    txtBuff = Alloc(size);
-    memcpy(txtBuff, stringPtr, size);
-    if (!(gBattleTypeFlags & BATTLE_TYPE_SECRET_BASE) && TRAINER_BATTLE_PARAM.opponentA != TRAINER_UNION_ROOM && TRAINER_BATTLE_PARAM.opponentA != TRAINER_FRONTIER_BRAIN
-        && !(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_TRAINER_HILL)))
-    {
-        u8 *toSwap, *txt;
-        enum TrainerClassID trClass;
-
-        if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && TRAINER_BATTLE_PARAM.opponentA < TRAINERS_COUNT)
-        {
-            trClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
-            if (trClass == TRAINER_CLASS_TEAM_MAGMA || trClass == TRAINER_CLASS_TEAM_AQUA)
-            {
-                toSwap = NULL, txt = txtBuff;
-                while (*txt != EOS)
-                {
-                    if (*txt == PLACEHOLDER_BEGIN)
-                    {
-                        txt++;
-                        if (*txt == B_TXT_TRAINER1_CLASS)
-                        {
-                            toSwap = txt;
-                        }
-                        else if (*txt == B_TXT_TRAINER1_NAME && toSwap != NULL)
-                        {
-                            *toSwap = B_TXT_TRAINER1_NAME;
-                            *txt = B_TXT_TRAINER1_CLASS;
-                        }
-                    }
-                    txt++;
-                }
-            }
-        }
-        if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && TRAINER_BATTLE_PARAM.opponentB < TRAINERS_COUNT)
-        {
-            trClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentB);
-            if (trClass == TRAINER_CLASS_TEAM_MAGMA || trClass == TRAINER_CLASS_TEAM_AQUA)
-            {
-                toSwap = NULL, txt = txtBuff;
-                while (*txt != EOS)
-                {
-                    if (*txt == PLACEHOLDER_BEGIN)
-                    {
-                        txt++;
-                        if (*txt == B_TXT_TRAINER2_CLASS)
-                        {
-                            toSwap = txt;
-                        }
-                        else if (*txt == B_TXT_TRAINER2_NAME && toSwap != NULL)
-                        {
-                            *toSwap = B_TXT_TRAINER2_NAME;
-                            *txt = B_TXT_TRAINER2_CLASS;
-                        }
-                    }
-                    txt++;
-                }
-            }
-        }
-    }
-
-    BattleStringExpandPlaceholdersToDisplayedString(txtBuff);
-    Free(txtBuff);
+    buffer = TryTrainerNameAndClassSwap(stringPtr);
+    BattleStringExpandPlaceholdersToDisplayedString(buffer);
+    Free(buffer);
 }
 
 u32 BattleStringExpandPlaceholdersToDisplayedString(const u8 *src)
