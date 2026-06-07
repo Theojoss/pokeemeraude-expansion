@@ -43,32 +43,7 @@ void GiveGiftRibbonToParty(u8 index, u8 ribbonId)
 Si vous utilisez **`pokeemeraude-expansion`**, veuillez créditer **RHH (Rom Hacking Hideout)**, et **Qigast**. Optionnellement, incluez la version pour plus de clarté.
 
 ```
-Basé sur pokeemeraude-expansion 1.16.2 de RHH et 
-void GiveGiftRibbonToParty(u8 index, u8 ribbonId)
-{
-    s32 i;
-    bool32 gotRibbon = FALSE;
-    u8 data = 1;
-    u8 array[ARRAY_COUNT(sGiftRibbonsMonDataIds)];
-    memcpy(array, sGiftRibbonsMonDataIds, sizeof(sGiftRibbonsMonDataIds));
-
-    if (index < GIFT_RIBBONS_COUNT && ribbonId <= MAX_GIFT_RIBBON)
-    {
-        gSaveBlock1Ptr->giftRibbons[index] = ribbonId;
-        for (i = 0; i < PARTY_SIZE; i++)
-        {
-            struct Pokemon *mon = &gPlayerParty[i];
-
-            if (GetMonData(mon, MON_DATA_SPECIES) != 0 && GetMonData(mon, MON_DATA_SANITY_IS_EGG) == 0)
-            {
-                SetMonData(mon, array[index], &data);
-                gotRibbon = TRUE;
-            }
-        }
-        if (gotRibbon)
-            FlagSet(FLAG_SYS_RIBBON_GET);
-    }
-}Qigast https://github.com/pokehacking-fr/pokeemeraude-expansion/
+Basé sur pokeemeraude-expansion 1.16.1 de RHH et Qigast https://github.com/pokehacking-fr/pokeemeraude-expansion/
 ```
 
 Pensez à [créditer tous les contributeurs](CREDITS.md) impliqués dans le projet!

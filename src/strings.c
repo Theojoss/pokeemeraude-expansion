@@ -45,12 +45,12 @@ const u8 gText_Boy[] = _("GARÇON");
 const u8 gText_Girl[] = _("FILLE");
 const u8 gText_ThisIsAPokemon[] = _("Voici ce qu'on appelle un “POKéMON”.{PAUSE 96}\p");
 const u8 gText_5MarksPokemon[] = _("?????");
-const u8 gText_UnkHeight[] = _("{CLEAR_TO 0x0C}??'??”");
+const u8 gText_UnkHeight[] = _("{CLEAR_TO 12}??'??”");
 const u8 gText_UnkHeightMetric[] = _("???.? m");
 const u8 gText_UnkWeight[] = _("????.? lbs.");
 const u8 gText_UnkWeightMetric[] = _("???.? kg.");
 const u8 gText_EmptyPkmnCategory[] = _("                       POKéMON"); // Unused
-const u8 gText_EmptyHeight[] = _("{CLEAR_TO 0x0C}    '    ”"); // Unused
+const u8 gText_EmptyHeight[] = _("{CLEAR_TO 12}    '    ”"); // Unused
 const u8 gText_EmptyWeight[] = _("        .   lbs."); // Unused
 const u8 gText_EmptyPokedexInfo1[] = _(""); // Unused
 const u8 gText_CryOf[] = _("CRI DE");
@@ -210,7 +210,7 @@ const u8 *const gPocketNamesStringsTable[] =
     [POCKET_KEY_ITEMS] =    COMPOUND_STRING("OBJ. RARES")
 };
 
-const u8 gText_NumberItem_TMBerry[] = _("{NO}{STR_VAR_1}{CLEAR 7}{STR_VAR_2}");
+const u8 gText_NumberItem_TMBerry[] = _("{NO}{STR_VAR_1}{CLEAR 3}{STR_VAR_2}");
 const u8 gText_NumberItem_HM[] = _("{CLEAR_TO 17}{STR_VAR_1}{CLEAR 5}{STR_VAR_2}");
 
 const u8 gText_ShopBuy[] = _("ACHETER");
@@ -966,7 +966,7 @@ const u8 gJPText_Player[] = _("プレイヤー"); // Unused
 const u8 gJPText_Sama[] = _("さま"); // Unused
 const u8 gText_DexHoenn[] = _("HOENN");
 const u8 gText_DexNational[] = _("NATIONAL");
-const u8 gText_PokedexDiploma[] = _("Joueur: {CLEAR 16}{COLOR 4}{SHADOW 5}{PLAYER}{COLOR 2}{SHADOW 3}\n\nPOKéDEX {STR_VAR_1}\nCe document certifie\nque vous avez complété\nvotre POKéDEX.\n\n{CLEAR_TO 66}{COLOR 4}{SHADOW 5}GAME FREAK");
+const u8 gText_PokedexDiploma[] = _("Joueur: {CLEAR 16}{COLOR RED}{SHADOW LIGHT_RED}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}\n\nPOKéDEX {STR_VAR_1}\nCe document certifie\nque vous avez complété\nvotre POKéDEX.\n\n{CLEAR_TO 66}{COLOR RED}{SHADOW LIGHT_RED}GAME FREAK");
 const u8 gJPText_GameFreak[] = _("{COLOR RED}{SHADOW LIGHT_RED}ゲ-ムフリ-ク"); // Unused
 const u8 gText_DiplomaEmpty[] = _("{COLOR 4}{SHADOW 5}");
 const u8 gText_Hoenn[] = _("HOENN");
