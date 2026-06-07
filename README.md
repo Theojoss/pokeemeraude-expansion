@@ -1,29 +1,5 @@
 
-void GiveGiftRibbonToParty(u8 index, u8 ribbonId)
-{
-    s32 i;
-    bool32 gotRibbon = FALSE;
-    u8 data = 1;
-    u8 array[ARRAY_COUNT(sGiftRibbonsMonDataIds)];
-    memcpy(array, sGiftRibbonsMonDataIds, sizeof(sGiftRibbonsMonDataIds));
-
-    if (index < GIFT_RIBBONS_COUNT && ribbonId <= MAX_GIFT_RIBBON)
-    {
-        gSaveBlock1Ptr->giftRibbons[index] = ribbonId;
-        for (i = 0; i < PARTY_SIZE; i++)
-        {
-            struct Pokemon *mon = &gPlayerParty[i];
-
-            if (GetMonData(mon, MON_DATA_SPECIES) != 0 && GetMonData(mon, MON_DATA_SANITY_IS_EGG) == 0)
-            {
-                SetMonData(mon, array[index], &data);
-                gotRibbon = TRUE;
-            }
-        }
-        if (gotRibbon)
-            FlagSet(FLAG_SYS_RIBBON_GET);
-    }
-}# A propos de `pokeemeraude-expansion`
+# A propos de `pokeemeraude-expansion`
 
 ![Gif qui montre les fonctionnalités de débogage uniques à pokeemeraude-expansion telles que le rerolling du Trainer ID, Cheat Start, PC depuis le menu de débogage, Debug PC Fill, Pokémon Sprite Visualizer, Debug Warp to Map et Battle Debug Menu.](https://github.com/user-attachments/assets/cf9dfbee-4c6b-4bca-8e0a-07f116ef891c) ![Gif qui montre les fonctionnalités de l'overworld uniques à pokeemeraude-expansion telles que la course en intérieur, les popups de carte de style BW2, les followers de l'overworld, les DNA Splicers, la pêche de style Gen 1, les descriptions d'objets OW, Quick Run from Battle, Use Last Ball, les Wild Double Battles et Catch from EXP.](https://github.com/user-attachments/assets/383af243-0904-4d41-bced-721492fbc48e) ![Gif qui montre un certain nombre de mécaniques de combat Pokémon modernes se produisant dans le moteur pokeemeraude-expansion : 2 contre 1, Pokémon modernes, objets, mouvements, capacités, adversaires et partenaires entièrement personnalisables, Trainer Slides et gimmicks générationnels.](https://github.com/user-attachments/assets/50c576bc-415e-4d66-a38f-ad712f3316be)
 
