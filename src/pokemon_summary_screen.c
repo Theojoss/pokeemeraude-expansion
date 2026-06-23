@@ -637,7 +637,7 @@ static const struct WindowTemplate sPageInfoTemplate[] =
         .tilemapLeft = 11,
         .tilemapTop = 9,
         .width = 19, //!< French Difference
-        .height = 4,
+        .height = 7,
         .paletteNum = 6,
         .baseBlock = 503,
     },
@@ -646,9 +646,9 @@ static const struct WindowTemplate sPageInfoTemplate[] =
         .tilemapLeft = 11,
         .tilemapTop = 17,
         .width = 18,
-        .height = 6,
+        .height = 3,
         .paletteNum = 6,
-        .baseBlock = 579, //!< French Difference
+        .baseBlock = 636, //!< French Difference
     },
 };
 static const struct WindowTemplate sPageSkillsTemplate[] =
@@ -724,7 +724,7 @@ static const struct WindowTemplate sPageMovesTemplate[] = // This is used for bo
         .tilemapLeft = 10,
         .tilemapTop = 15,
         .width = 20,
-        .height = 4,
+        .height = 5,
         .paletteNum = 6,
         .baseBlock = 617,
     },
@@ -4208,7 +4208,7 @@ static void PrintMoveDetails(enum Move move)
             if (B_SHOW_CATEGORY_ICON == TRUE)
                 ShowCategoryIcon(GetBattleMoveCategory(move));
             PrintMovePowerAndAccuracy(move);
-            PrintTextOnWindow(windowId, GetMoveDescription(move), 6, 1, 0, 0);
+            PrintLongTextOnWindow(windowId, GetMoveDescription(move), 6, 1, 0, 0);
         }
         else
         {
