@@ -87,7 +87,7 @@ static void CopyBagItemName(u8 *dst, enum Item itemId);
 static void FreeItemIconSpriteByAltId(u8);
 static void PrintItemDescription(s32);
 static void PrintSelectorArrowAtPos(u8, u8);
-static void PyramidBagPrint(u8, const u8 *, u8, u8, u8, u8, u8, u8);
+static void PyramidBagPrint(u8, u8, const u8 *, u8, u8, u8, u8, u8, u8);
 static void PyramidBagPrint_Quantity(u8, const u8 *, u8, u8, u8, u8, u8, u8);
 static u8 OpenMenuActionWindowById(u8);
 static void CloseMenuActionWindowById(u8);
@@ -219,9 +219,9 @@ static const struct WindowTemplate sWindowTemplates[] =
     [WIN_INFO] = {
         .bg = 0,
         .tilemapLeft = 0,
-        .tilemapTop = 13,
+        .tilemapTop = 12,
         .width = 14,
-        .height = 6,
+        .height = 7,
         .paletteNum = 15,
         .baseBlock = 270
     },
@@ -232,7 +232,7 @@ static const struct WindowTemplate sWindowTemplates[] =
         .width = 27,
         .height = 4,
         .paletteNum = 15,
-        .baseBlock = 354
+        .baseBlock = 368
     },
     [WIN_TOSS_NUM] = {
         .bg = 1,
@@ -241,7 +241,7 @@ static const struct WindowTemplate sWindowTemplates[] =
         .width = 5,
         .height = 2,
         .paletteNum = 15,
-        .baseBlock = 462
+        .baseBlock = 476
     },
     DUMMY_WIN_TEMPLATE,
 };
@@ -687,7 +687,7 @@ static void PrintItemDescription(s32 listMenuId)
         desc = gStringVar4;
     }
     FillWindowPixelBuffer(WIN_INFO, PIXEL_FILL(0));
-    PyramidBagPrint(WIN_INFO, desc, 3, 0, 0, 1, 0, COLORID_DARK_GRAY);
+    PyramidBagPrint(WIN_INFO, FONT_SMALL_NARROWER, desc, 3, 4, 0, 0, 0, COLORID_DARK_GRAY);
 }
 
 static void AddScrollArrows(void)
@@ -860,7 +860,7 @@ static void PrintSelectorArrowAtPos(u8 y, u8 colorId)
     if (colorId == COLORID_NONE) // If 'no color', erase arrow
         FillWindowPixelRect(WIN_LIST, PIXEL_FILL(0), 0, y, GetMenuCursorDimensionByFont(FONT_NORMAL, 0), GetMenuCursorDimensionByFont(FONT_NORMAL, 1));
     else
-        PyramidBagPrint(WIN_LIST, gText_SelectorArrow2, 0, y, 0, 0, 0, colorId);
+        PyramidBagPrint(WIN_LIST, FONT_NORMAL, gText_SelectorArrow2, 0, y, 0, 0, 0, colorId);
 }
 
 void CloseBattlePyramidBag(u8 taskId)
@@ -971,7 +971,7 @@ static void OpenContextMenu(u8 taskId)
     CopyItemName(gSpecialVar_ItemId, gStringVar1);
     StringExpandPlaceholders(gStringVar4, gText_Var1IsSelected);
     FillWindowPixelBuffer(WIN_INFO, PIXEL_FILL(0));
-    PyramidBagPrint(WIN_INFO, gStringVar4, 3, 0, 0, 1, 0, COLORID_DARK_GRAY);
+    PyramidBagPrint(WIN_INFO, FONT_NORMAL, gStringVar4, 3, 8, 0, 1, 0, COLORID_DARK_GRAY);
     if (gPyramidBagMenu->menuActionsCount == 1)
         PrintMenuActionText_SingleRow(OpenMenuActionWindowById(MENU_WIN_1x1));
     else if (gPyramidBagMenu->menuActionsCount == 2)
@@ -1146,7 +1146,7 @@ static void BagAction_Toss(u8 taskId)
         CopyItemName(gSpecialVar_ItemId, gStringVar1);
         StringExpandPlaceholders(gStringVar4, gText_TossHowManyVar1s);
         FillWindowPixelBuffer(WIN_INFO, PIXEL_FILL(0));
-        PyramidBagPrint(WIN_INFO, gStringVar4, 3, 0, 0, 1, 0, COLORID_DARK_GRAY);
+        PyramidBagPrint(WIN_INFO, FONT_NORMAL, gStringVar4, 3, 8, 0, 1, 0, COLORID_DARK_GRAY);
         ShowNumToToss();
         gTasks[taskId].func = Task_ChooseHowManyToToss;
     }
@@ -1160,7 +1160,7 @@ static void AskConfirmToss(u8 taskId)
     ConvertIntToDecimalStringN(gStringVar2, tNumToToss, STR_CONV_MODE_LEFT_ALIGN, MAX_PYRAMID_ITEM_DIGITS);
     StringExpandPlaceholders(gStringVar4, gText_ConfirmTossItems);
     FillWindowPixelBuffer(WIN_INFO, PIXEL_FILL(0));
-    PyramidBagPrint(WIN_INFO, gStringVar4, 3, 0, 0, 1, 0, COLORID_DARK_GRAY);
+    PyramidBagPrint(WIN_INFO, FONT_NORMAL, gStringVar4, 3, 8, 0, 1, 0, COLORID_DARK_GRAY);
     CreatePyramidBagYesNo(taskId, &sYesNoTossFuncions);
 }
 
@@ -1228,7 +1228,7 @@ static void TossItem(u8 taskId)
     ConvertIntToDecimalStringN(gStringVar2, tNumToToss, STR_CONV_MODE_LEFT_ALIGN, MAX_PYRAMID_ITEM_DIGITS);
     StringExpandPlaceholders(gStringVar4, gText_ThrewAwayVar2Var1s);
     FillWindowPixelBuffer(WIN_INFO, PIXEL_FILL(0));
-    PyramidBagPrint(WIN_INFO, gStringVar4, 3, 0, 0, 1, 0, COLORID_DARK_GRAY);
+    PyramidBagPrint(WIN_INFO, FONT_NORMAL, gStringVar4, 3, 8, 0, 1, 0, COLORID_DARK_GRAY);
     gTasks[taskId].func = Task_TossItem;
 }
 
@@ -1332,7 +1332,7 @@ static void Task_BeginItemSwap(u8 taskId)
     CopyItemName(gSaveBlock2Ptr->frontier.pyramidBag.itemId[gSaveBlock2Ptr->frontier.lvlMode][tListPos], gStringVar1);
     StringExpandPlaceholders(gStringVar4, gText_MoveVar1Where);
     FillWindowPixelBuffer(WIN_INFO, PIXEL_FILL(0));
-    PyramidBagPrint(WIN_INFO, gStringVar4, 3, 0, 0, 1, 0, COLORID_DARK_GRAY);
+    PyramidBagPrint(WIN_INFO, FONT_NORMAL, gStringVar4, 3, 8, 0, 1, 0, COLORID_DARK_GRAY);
     PrintSelectorArrow(tListTaskId, COLORID_LIGHT_GRAY);
     UpdateSwapLinePos(tListPos);
     gTasks[taskId].func = Task_ItemSwapHandleInput;
@@ -1472,9 +1472,9 @@ static void InitPyramidBagWindows(void)
     ScheduleBgCopyTilemapToVram(1);
 }
 
-static void PyramidBagPrint(u8 windowId, const u8 *src, u8 x, u8 y, u8 letterSpacing, u8 lineSpacing, u8 speed, u8 colorTableId)
+static void PyramidBagPrint(u8 windowId, u8 fontId, const u8 *src, u8 x, u8 y, u8 letterSpacing, u8 lineSpacing, u8 speed, u8 colorTableId)
 {
-    AddTextPrinterParameterized4(windowId, FONT_NORMAL, x, y, letterSpacing, lineSpacing, sTextColors[colorTableId], speed, src);
+    AddTextPrinterParameterized4(windowId, fontId, x, y, letterSpacing, lineSpacing, sTextColors[colorTableId], speed, src);
 }
 
 static void PyramidBagPrint_Quantity(u8 windowId, const u8 *src, u8 x, u8 y, u8 letterSpacing, u8 lineSpacing, u8 speed, u8 colorTableId)

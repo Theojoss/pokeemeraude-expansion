@@ -307,20 +307,20 @@ static const struct WindowTemplate sWindowTemplates_ItemStorage[ITEMPC_WIN_COUNT
     [ITEMPC_WIN_MESSAGE] = {
         .bg = 0,
         .tilemapLeft = 1,
-        .tilemapTop = 13,
+        .tilemapTop = 12,
         .width = 13,
-        .height = 6,
+        .height = 7,
         .paletteNum = 15,
         .baseBlock = 0x00EB
     },
     [ITEMPC_WIN_ICON] = {
         .bg = 0,
         .tilemapLeft = 1,
-        .tilemapTop = 8,
+        .tilemapTop = 7,
         .width = 3,
         .height = 3,
         .paletteNum = 15,
-        .baseBlock = 0x0153
+        .baseBlock = 0x0160
     },
     [ITEMPC_WIN_TITLE] = {
         .bg = 0,
@@ -329,25 +329,25 @@ static const struct WindowTemplate sWindowTemplates_ItemStorage[ITEMPC_WIN_COUNT
         .width = 13,
         .height = 2,
         .paletteNum = 15,
-        .baseBlock = 0x0139
+        .baseBlock = 0x0146
     },
     [ITEMPC_WIN_QUANTITY] = {
         .bg = 0,
         .tilemapLeft = 8,
-        .tilemapTop = 9,
+        .tilemapTop = 8,
         .width = 6,
         .height = 2,
         .paletteNum = 15,
-        .baseBlock = 0x015C
+        .baseBlock = 0x0169
     },
     [ITEMPC_WIN_YESNO] = {
         .bg = 0,
         .tilemapLeft = 9,
-        .tilemapTop = 7,
+        .tilemapTop = 6,
         .width = 5,
         .height = 4,
         .paletteNum = 15,
-        .baseBlock = 0x0168
+        .baseBlock = 0x0175
     }
 };
 
@@ -1057,7 +1057,7 @@ static void ItemStorage_PrintDescription(s32 id)
         description = gText_GoBackPrevMenu;
 
     FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
-    AddTextPrinterParameterized(windowId, FONT_NORMAL, description, 0, 1, 0, NULL);
+    AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROWER, 0, 1, 0, 0, (const u8[]){0, 2, 3}, 0, description);
 }
 
 static void ItemStorage_AddScrollIndicator(void)
@@ -1108,7 +1108,7 @@ static void ItemStorage_DrawItemIcon(enum Item itemId)
             *spriteIdLoc = spriteId;
             gSprites[spriteId].oam.priority = 0;
             gSprites[spriteId].x2 = 24;
-            gSprites[spriteId].y2 = 80;
+            gSprites[spriteId].y2 = 72;
         }
     }
 }
@@ -1378,7 +1378,7 @@ static void ItemStorage_HandleQuantityRolling(u8 taskId)
             // Canceled action
             PlaySE(SE_SELECT);
             ItemStorage_RemoveWindow(ITEMPC_WIN_QUANTITY);
-            ItemStorage_PrintMessage(GetItemDescription(gSaveBlock1Ptr->pcItems[pos].itemId));
+            ItemStorage_PrintDescription(pos);
             ItemStorage_ReturnToListInput(taskId);
         }
     }
@@ -1438,7 +1438,7 @@ static void ItemStorage_TossItemYes(u8 taskId)
 
 static void ItemStorage_TossItemNo(u8 taskId)
 {
-    ItemStorage_PrintMessage(GetItemDescription(gSaveBlock1Ptr->pcItems[gPlayerPCItemPageInfo.itemsAbove + gPlayerPCItemPageInfo.cursorPos].itemId));
+    ItemStorage_PrintDescription(gPlayerPCItemPageInfo.itemsAbove + gPlayerPCItemPageInfo.cursorPos);
     ItemStorage_ReturnToListInput(taskId);
 }
 
@@ -1462,7 +1462,7 @@ static void ItemStorage_HandleErrorMessageInput(u8 taskId)
 {
     if (JOY_NEW(A_BUTTON | B_BUTTON))
     {
-        ItemStorage_PrintMessage(GetItemDescription(gSaveBlock1Ptr->pcItems[gPlayerPCItemPageInfo.itemsAbove + gPlayerPCItemPageInfo.cursorPos].itemId));
+        ItemStorage_PrintDescription(gPlayerPCItemPageInfo.itemsAbove + gPlayerPCItemPageInfo.cursorPos);
         ItemStorage_ReturnToListInput(taskId);
     }
 }
