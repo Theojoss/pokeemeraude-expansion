@@ -3220,14 +3220,14 @@ static void SpriteCB_DexListStartMenuCursor(struct Sprite *sprite)
     }
 }
 
-static void PrintInfoScreenText(const u8 *str, u8 left, u8 top)
+static void PrintInfoScreenText(const u8 *str, u8 fontId, u8 left, u8 top)
 {
     u8 color[3];
     color[0] = TEXT_COLOR_TRANSPARENT;
     color[1] = TEXT_DYNAMIC_COLOR_6;
     color[2] = TEXT_COLOR_LIGHT_GRAY;
 
-    AddTextPrinterParameterized4(0, FONT_NORMAL, left, top, 0, 0, color, TEXT_SKIP_DRAW, str);
+    AddTextPrinterParameterized4(0, fontId, left, top, 0, 0, color, TEXT_SKIP_DRAW, str);
 }
 
 #define tScrolling       data[0]
@@ -3646,7 +3646,7 @@ static void Task_LoadCryScreen(u8 taskId)
         gMain.state++;
         break;
     case 4:
-        PrintInfoScreenText(gText_CryOf, 82, 33);
+        PrintInfoScreenText(gText_CryOf, FONT_NORMAL, 82, 33);
         PrintCryScreenSpeciesName(0, sPokedexListItem->dexNum, 82, 49);
         gMain.state++;
         break;
@@ -3839,7 +3839,7 @@ static void Task_LoadSizeScreen(u8 taskId)
 
             StringCopy(string, gText_SizeComparedTo);
             StringAppend(string, gSaveBlock2Ptr->playerName);
-            PrintInfoScreenText(string, GetStringCenterAlignXOffset(FONT_NORMAL, string, DISPLAY_WIDTH), 121);
+            PrintInfoScreenText(string, FONT_NORMAL, GetStringCenterAlignXOffset(FONT_NORMAL, string, DISPLAY_WIDTH), 121);
             gMain.state++;
         }
         break;
@@ -4203,20 +4203,20 @@ static void PrintMonInfo(u32 num, u32 value, u32 owned, u32 newEntry)
     u8 digitCount = (NATIONAL_DEX_COUNT > 999 && IsNationalPokedexEnabled()) ? 4 : 3;
 
     if (newEntry)
-        PrintInfoScreenText(gText_PokedexRegistration, GetStringCenterAlignXOffset(FONT_NORMAL, gText_PokedexRegistration, DISPLAY_WIDTH), 0);
+        PrintInfoScreenText(gText_PokedexRegistration, FONT_NORMAL, GetStringCenterAlignXOffset(FONT_NORMAL, gText_PokedexRegistration, DISPLAY_WIDTH), 0);
     if (value == 0)
         value = NationalToRegionalOrder(num);
     else
         value = num;
 
     ConvertIntToDecimalStringN(StringCopy(str, gText_NumberClear01), value, STR_CONV_MODE_LEADING_ZEROS, digitCount);
-    PrintInfoScreenText(str, 0x60, 0x19);
+    PrintInfoScreenText(str, FONT_NORMAL, 0x60, 0x19);
     species = NationalPokedexNumToSpecies(num);
     if (species)
         name = GetSpeciesName(species);
     else
         name = sText_TenDashes2;
-    PrintInfoScreenText(name, 114 + (6 * digitCount), 0x19);
+    PrintInfoScreenText(name, FONT_NORMAL, 114 + (6 * digitCount), 0x19);
 
     if (owned)
     {
@@ -4227,13 +4227,13 @@ static void PrintMonInfo(u32 num, u32 value, u32 owned, u32 newEntry)
     {
         category = gText_5MarksPokemon;
     }
-    PrintInfoScreenText(category, 0x64, 0x29);
+    PrintInfoScreenText(category, FONT_NORMAL, 0x64, 0x29);
     PrintMonMeasurements(species,owned);
     if (owned)
         description = GetSpeciesPokedexDescription(species);
     else
         description = sExpandedPlaceholder_PokedexDescription;
-    PrintInfoScreenText(description, GetStringCenterAlignXOffset(FONT_NORMAL, description, DISPLAY_WIDTH), 95);
+    PrintInfoScreenText(description, FONT_NARROW, GetStringCenterAlignXOffset(FONT_NARROW, description, DISPLAY_WIDTH), 95);
 }
 
 void PrintMonMeasurements(enum Species species, u32 owned)
@@ -4242,8 +4242,8 @@ void PrintMonMeasurements(enum Species species, u32 owned)
     u32 yTop = GetMeasurementTextPositions(DEX_Y_TOP);
     u32 yBottom = GetMeasurementTextPositions(DEX_Y_BOTTOM);
 
-    PrintInfoScreenText(gText_HTHeight, x, yTop);
-    PrintInfoScreenText(gText_WTWeight, x, yBottom);
+    PrintInfoScreenText(gText_HTHeight, FONT_NORMAL, x, yTop);
+    PrintInfoScreenText(gText_WTWeight, FONT_NORMAL, x, yBottom);
 
     if (owned)
         PrintOwnedMonMeasurements(species);
@@ -4279,8 +4279,8 @@ static void PrintUnknownMonMeasurements(void)
     u32 yTop = GetMeasurementTextPositions(DEX_Y_TOP);
     u32 yBottom = GetMeasurementTextPositions(DEX_Y_BOTTOM);
 
-    PrintInfoScreenText(heightString, x, yTop);
-    PrintInfoScreenText(weightString, x, yBottom);
+    PrintInfoScreenText(heightString, FONT_NORMAL, x, yTop);
+    PrintInfoScreenText(weightString, FONT_NORMAL, x, yBottom);
 
     Free(heightString);
     Free(weightString);
@@ -4339,7 +4339,7 @@ static void PrintOwnedMonHeight(enum Species species)
 
     heightString = ConvertMonHeightToString(height);
 
-    PrintInfoScreenText(heightString, x, yTop);
+    PrintInfoScreenText(heightString, FONT_NORMAL, x, yTop);
     Free(heightString);
 }
 
@@ -4360,7 +4360,7 @@ static void PrintOwnedMonWeight(enum Species species)
 
     weightString = ConvertMonWeightToString(weight);
 
-    PrintInfoScreenText(weightString, x, yBottom);
+    PrintInfoScreenText(weightString, FONT_NORMAL, x, yBottom);
     Free(weightString);
 }
 
