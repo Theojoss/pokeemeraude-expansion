@@ -3767,7 +3767,7 @@ void ScriptShowItemDescription(struct ScriptContext *ctx)
         return; //no box if item obtained previously
     }
 
-    SetWindowTemplateFields(&template, 0, 1, 1, 28, 3, 15, 8);
+    SetWindowTemplateFields(&template, 0, 1, 1, 28, 6, 15, 8);
     sHeaderBoxWindowId = AddWindow(&template);
     FillWindowPixelBuffer(sHeaderBoxWindowId, PIXEL_FILL(0));
     PutWindowTilemap(sHeaderBoxWindowId);
@@ -3781,7 +3781,7 @@ void ScriptShowItemDescription(struct ScriptContext *ctx)
         textY = 0;
 
     ShowItemIconSprite(item, TRUE, handleFlash);
-    AddTextPrinterParameterized(sHeaderBoxWindowId, 0, dst, ITEM_ICON_X + 2, textY, 0, NULL);
+    AddTextPrinterParameterized4(sHeaderBoxWindowId, FONT_SMALL_NARROW, ITEM_ICON_X + 2, textY, 0, 0, (const u8[]){0, 2, 3}, 0, dst);
 }
 
 void ScriptHideItemDescription(struct ScriptContext *ctx)
