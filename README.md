@@ -1,3 +1,4 @@
+
 # A propos de `pokeemeraude-expansion`
 
 ![Gif qui montre les fonctionnalités de débogage uniques à pokeemeraude-expansion telles que le rerolling du Trainer ID, Cheat Start, PC depuis le menu de débogage, Debug PC Fill, Pokémon Sprite Visualizer, Debug Warp to Map et Battle Debug Menu.](https://github.com/user-attachments/assets/cf9dfbee-4c6b-4bca-8e0a-07f116ef891c) ![Gif qui montre les fonctionnalités de l'overworld uniques à pokeemeraude-expansion telles que la course en intérieur, les popups de carte de style BW2, les followers de l'overworld, les DNA Splicers, la pêche de style Gen 1, les descriptions d'objets OW, Quick Run from Battle, Use Last Ball, les Wild Double Battles et Catch from EXP.](https://github.com/user-attachments/assets/383af243-0904-4d41-bced-721492fbc48e) ![Gif qui montre un certain nombre de mécaniques de combat Pokémon modernes se produisant dans le moteur pokeemeraude-expansion : 2 contre 1, Pokémon modernes, objets, mouvements, capacités, adversaires et partenaires entièrement personnalisables, Trainer Slides et gimmicks générationnels.](https://github.com/user-attachments/assets/50c576bc-415e-4d66-a38f-ad712f3316be)
@@ -18,7 +19,7 @@
 Si vous utilisez **`pokeemeraude-expansion`**, veuillez créditer **RHH (Rom Hacking Hideout)**, et **Qigast**. Optionnellement, incluez la version pour plus de clarté.
 
 ```
-Basé sur pokeemeraude-expansion 1.15.2 de RHH et Qigast https://github.com/pokehacking-fr/pokeemeraude-expansion/
+Basé sur pokeemeraude-expansion 1.16.2 de RHH et Qigast https://github.com/pokehacking-fr/pokeemeraude-expansion/
 ```
 
 Pensez à [créditer tous les contributeurs](CREDITS.md) impliqués dans le projet!

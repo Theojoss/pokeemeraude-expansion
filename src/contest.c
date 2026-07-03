@@ -98,9 +98,9 @@ static void PrintContestantMonName(u8);
 static void PrintContestantMonNameWithColor(u8, u8);
 static u8 CreateJudgeSprite(void);
 static u8 CreateJudgeSpeechBubbleSprite(void);
-static u8 CreateContestantSprite(u16, bool8, u32, u32);
+static u8 CreateContestantSprite(enum Species, bool8, u32, u32);
 static void PrintContestMoveDescription(enum Move move);
-static u16 SanitizeSpecies(u16);
+static enum Species SanitizeSpecies(enum Species);
 static void ContestClearGeneralTextWindow(void);
 static enum Move GetChosenMove(u8);
 static void GetAllChosenMoves(void);
@@ -361,29 +361,29 @@ EWRAM_DATA u8 gCurContestWinnerSaveIdx = 0;
 COMMON_DATA rng_value_t gContestRngValue = {0};
 
 //Text
-const u8 gText_LinkStandby4[] = COMPOUND_STRING("Connexion…");
+const u8 gText_LinkStandby4[] = _("Connexion…");
 
-const u8 gText_AppealNumWhichMoveWillBePlayed[] = COMPOUND_STRING("Démonstration nº {STR_VAR_1}!\nCe sera quelle capacité?");
-const u8 gText_AppealNumButItCantParticipate[] = COMPOUND_STRING("Démonstration nº {STR_VAR_1}!\nIl ne peut pas participer!");
-const u8 gText_MonAppealedWithMove[] = COMPOUND_STRING("{STR_VAR_1} exécute\n{STR_VAR_2}!");
-const u8 gText_MonWasWatchingOthers[] = COMPOUND_STRING("{STR_VAR_1} regarde\nles autres.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
-const u8 gText_AllOutOfAppealTime[] = COMPOUND_STRING("Le concours est \nterminé!{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
-const u8 gText_JudgeLookedAtMonExpectantly[] = COMPOUND_STRING("Le JUGE lance un regard\nintéressé à {STR_VAR_1}.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
-const u8 gText_AppealComboWentOverWell[] = COMPOUND_STRING("C'était un bon\ncombo.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
-const u8 gText_AppealComboWentOverVeryWell[] = COMPOUND_STRING("C'était un très bon\ncombo.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
-const u8 gText_AppealComboWentOverExcellently[] = COMPOUND_STRING("C'était un excellent\ncombo.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
-const u8 gText_MonWasTooNervousToMove[] = COMPOUND_STRING("{STR_VAR_1} était trop\nnerveux pour bouger.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
-const u8 gText_CouldntImproveItsCondition[] = COMPOUND_STRING("Mais il n'a pas pu\naméliorer sa condition…{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
-const u8 gText_BadConditionResultedInWeakAppeal[] = COMPOUND_STRING("Sa démo a été mauvaise\nà cause de sa condition.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
-const u8 gText_MonWasUnaffected[] = COMPOUND_STRING("Ça n'a eu aucun effet sur\n{STR_VAR_1}.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
-const u8 gText_RepeatedAppeal[] = COMPOUND_STRING("{STR_VAR_1}, décevant, a\nrefait la même démo.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
-const u8 gText_MonsXWentOverGreat[] = COMPOUND_STRING("Succès pour {STR_VAR_3}\ndu {STR_VAR_1}.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
-const u8 gText_MonsXDidntGoOverWell[] = COMPOUND_STRING("{STR_VAR_3} du\n{STR_VAR_1} ne plaît pas.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
-const u8 gText_MonsXGotTheCrowdGoing[] = COMPOUND_STRING("Ovation pour {STR_VAR_3}\ndu {STR_VAR_1}!{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
-const u8 gText_MonCantAppealNextTurn[] = COMPOUND_STRING("{STR_VAR_1} ne peut par-\nticiper au prochain tour…{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
-const u8 gText_AttractedCrowdsAttention[] = COMPOUND_STRING("Il a captivé la foule.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
-const u8 gText_CrowdContinuesToWatchMon[] = COMPOUND_STRING("La foule continue de\nregarder {STR_VAR_3}.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
-const u8 gText_MonsMoveIsIgnored[] = COMPOUND_STRING("{STR_VAR_2} du\n{STR_VAR_1} est ignoré.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
+const u8 gText_AppealNumWhichMoveWillBePlayed[] = _("Démonstration nº {STR_VAR_1}!\nCe sera quelle capacité?");
+const u8 gText_AppealNumButItCantParticipate[] = _("Démonstration nº {STR_VAR_1}!\nIl ne peut pas participer!");
+const u8 gText_MonAppealedWithMove[] = _("{STR_VAR_1} exécute\n{STR_VAR_2}!");
+const u8 gText_MonWasWatchingOthers[] = _("{STR_VAR_1} regarde\nles autres.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
+const u8 gText_AllOutOfAppealTime[] = _("Le concours est \nterminé!{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
+const u8 gText_JudgeLookedAtMonExpectantly[] = _("Le JUGE lance un regard\nintéressé à {STR_VAR_1}.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
+const u8 gText_AppealComboWentOverWell[] = _("C'était un bon\ncombo.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
+const u8 gText_AppealComboWentOverVeryWell[] = _("C'était un très bon\ncombo.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
+const u8 gText_AppealComboWentOverExcellently[] = _("C'était un excellent\ncombo.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
+const u8 gText_MonWasTooNervousToMove[] = _("{STR_VAR_1} était trop\nnerveux pour bouger.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
+const u8 gText_CouldntImproveItsCondition[] = _("Mais il n'a pas pu\naméliorer sa condition…{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
+const u8 gText_BadConditionResultedInWeakAppeal[] = _("Sa démo a été mauvaise\nà cause de sa condition.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
+const u8 gText_MonWasUnaffected[] = _("Ça n'a eu aucun effet sur\n{STR_VAR_1}.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
+const u8 gText_RepeatedAppeal[] = _("{STR_VAR_1}, décevant, a\nrefait la même démo.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
+const u8 gText_MonsXWentOverGreat[] = _("Succès pour {STR_VAR_3}\ndu {STR_VAR_1}.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
+const u8 gText_MonsXDidntGoOverWell[] = _("{STR_VAR_3} du\n{STR_VAR_1} ne plaît pas.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
+const u8 gText_MonsXGotTheCrowdGoing[] = _("Ovation pour {STR_VAR_3}\ndu {STR_VAR_1}!{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
+const u8 gText_MonCantAppealNextTurn[] = _("{STR_VAR_1} ne peut par-\nticiper au prochain tour…{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
+const u8 gText_AttractedCrowdsAttention[] = _("Il a captivé la foule.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
+const u8 gText_CrowdContinuesToWatchMon[] = _("La foule continue de\nregarder {STR_VAR_3}.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
+const u8 gText_MonsMoveIsIgnored[] = _("{STR_VAR_2} du\n{STR_VAR_1} est ignoré.{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}");
 
 static const u8 sSliderHeartYPositions[CONTESTANT_COUNT] =
 {
@@ -2845,30 +2845,30 @@ void CreateContestMonFromParty(u8 partyIndex)
         gContestMons[gContestPlayerMonIndex].trainerGfxId = OBJ_EVENT_GFX_LINK_MAY;
     gContestMons[gContestPlayerMonIndex].aiFlags = 0;
     gContestMons[gContestPlayerMonIndex].highestRank = 0;
-    gContestMons[gContestPlayerMonIndex].species = GetMonData(&gPlayerParty[partyIndex], MON_DATA_SPECIES);
-    GetMonData(&gPlayerParty[partyIndex], MON_DATA_NICKNAME, name);
+    gContestMons[gContestPlayerMonIndex].species = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_SPECIES);
+    GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_NICKNAME, name);
     StringGet_Nickname(name);
     if (gLinkContestFlags & LINK_CONTEST_FLAG_IS_LINK)
     {
-        StripMonNameForLinkContest(name, GetMonData(&gPlayerParty[partyIndex], MON_DATA_LANGUAGE));
+        StripMonNameForLinkContest(name, GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_LANGUAGE));
     }
     memcpy(gContestMons[gContestPlayerMonIndex].nickname, name, POKEMON_NAME_LENGTH + 1);
     StringCopy(gContestMons[gContestPlayerMonIndex].nickname, name);
-    gContestMons[gContestPlayerMonIndex].cool = GetMonData(&gPlayerParty[partyIndex], MON_DATA_COOL);
-    gContestMons[gContestPlayerMonIndex].beauty = GetMonData(&gPlayerParty[partyIndex], MON_DATA_BEAUTY);
-    gContestMons[gContestPlayerMonIndex].cute = GetMonData(&gPlayerParty[partyIndex], MON_DATA_CUTE);
-    gContestMons[gContestPlayerMonIndex].smart = GetMonData(&gPlayerParty[partyIndex], MON_DATA_SMART);
-    gContestMons[gContestPlayerMonIndex].tough = GetMonData(&gPlayerParty[partyIndex], MON_DATA_TOUGH);
-    gContestMons[gContestPlayerMonIndex].sheen = GetMonData(&gPlayerParty[partyIndex], MON_DATA_SHEEN);
-    gContestMons[gContestPlayerMonIndex].moves[0] = GetMonData(&gPlayerParty[partyIndex], MON_DATA_MOVE1);
-    gContestMons[gContestPlayerMonIndex].moves[1] = GetMonData(&gPlayerParty[partyIndex], MON_DATA_MOVE2);
-    gContestMons[gContestPlayerMonIndex].moves[2] = GetMonData(&gPlayerParty[partyIndex], MON_DATA_MOVE3);
-    gContestMons[gContestPlayerMonIndex].moves[3] = GetMonData(&gPlayerParty[partyIndex], MON_DATA_MOVE4);
-    gContestMons[gContestPlayerMonIndex].personality = GetMonData(&gPlayerParty[partyIndex], MON_DATA_PERSONALITY);
-    gContestMons[gContestPlayerMonIndex].otId = GetMonData(&gPlayerParty[partyIndex], MON_DATA_OT_ID);
-    gContestMons[gContestPlayerMonIndex].isShiny = GetMonData(&gPlayerParty[partyIndex], MON_DATA_IS_SHINY);
+    gContestMons[gContestPlayerMonIndex].cool = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_COOL);
+    gContestMons[gContestPlayerMonIndex].beauty = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_BEAUTY);
+    gContestMons[gContestPlayerMonIndex].cute = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_CUTE);
+    gContestMons[gContestPlayerMonIndex].smart = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_SMART);
+    gContestMons[gContestPlayerMonIndex].tough = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_TOUGH);
+    gContestMons[gContestPlayerMonIndex].sheen = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_SHEEN);
+    gContestMons[gContestPlayerMonIndex].moves[0] = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_MOVE1);
+    gContestMons[gContestPlayerMonIndex].moves[1] = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_MOVE2);
+    gContestMons[gContestPlayerMonIndex].moves[2] = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_MOVE3);
+    gContestMons[gContestPlayerMonIndex].moves[3] = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_MOVE4);
+    gContestMons[gContestPlayerMonIndex].personality = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_PERSONALITY);
+    gContestMons[gContestPlayerMonIndex].otId = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_OT_ID);
+    gContestMons[gContestPlayerMonIndex].isShiny = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_IS_SHINY);
 
-    heldItem = GetMonData(&gPlayerParty[partyIndex], MON_DATA_HELD_ITEM);
+    heldItem = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_HELD_ITEM);
     cool   = gContestMons[gContestPlayerMonIndex].cool;
     beauty = gContestMons[gContestPlayerMonIndex].beauty;
     cute   = gContestMons[gContestPlayerMonIndex].cute;
@@ -3150,7 +3150,7 @@ static u8 CreateJudgeSpeechBubbleSprite(void)
     return spriteId;
 }
 
-static u8 CreateContestantSprite(u16 species, bool8 isShiny, u32 personality, u32 index)
+static u8 CreateContestantSprite(enum Species species, bool8 isShiny, u32 personality, u32 index)
 {
     u8 spriteId;
     species = SanitizeSpecies(species);
@@ -3176,7 +3176,7 @@ static u8 CreateContestantSprite(u16 species, bool8 isShiny, u32 personality, u3
     return spriteId;
 }
 
-bool8 IsSpeciesNotUnown(u16 species)
+bool8 IsSpeciesNotUnown(enum Species species)
 {
     if (species == SPECIES_UNOWN)
         return FALSE;
@@ -5310,7 +5310,7 @@ static u16 SanitizeMove(enum Move move)
     return move;
 }
 
-static u16 SanitizeSpecies(u16 species)
+static enum Species SanitizeSpecies(enum Species species)
 {
     assertf(species < NUM_SPECIES, "invalid species: %d", species)
     {
@@ -5323,7 +5323,7 @@ static u16 SanitizeSpecies(u16 species)
 static void SetMoveSpecificAnimData(u8 contestant)
 {
     enum Move move = SanitizeMove(eContestantStatus[contestant].currMove);
-    u16 species = SanitizeSpecies(gContestMons[contestant].species);
+    enum Species species = SanitizeSpecies(gContestMons[contestant].species);
     u8 targetContestant;
 
     memset(&gContestResources->moveAnim->species, 0, 20);

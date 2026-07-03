@@ -372,9 +372,9 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
     [B_WIN_MOVE_DESCRIPTION] = {
         .bg = 0,
         .tilemapLeft = 1,
-        .tilemapTop = 47,
+        .tilemapTop = 51,
         .width = 18,
-        .height = 6,
+        .height = 2,
         .paletteNum = 5,
         .baseBlock = 0x0350,
     },
@@ -602,9 +602,9 @@ static const struct WindowTemplate sKantoTutorialBattleWindowTemplates[] =
     [B_WIN_MOVE_DESCRIPTION] = {
         .bg = 0,
         .tilemapLeft = 1,
-        .tilemapTop = 47,
+        .tilemapTop = 51,
         .width = 18,
-        .height = 6,
+        .height = 2,
         .paletteNum = 5,
         .baseBlock = 0x0350,
     },
@@ -832,9 +832,9 @@ static const struct WindowTemplate sBattleArenaWindowTemplates[] =
     [B_WIN_MOVE_DESCRIPTION] = {
         .bg = 0,
         .tilemapLeft = 1,
-        .tilemapTop = 47,
+        .tilemapTop = 51,
         .width = 18,
-        .height = 6,
+        .height = 2,
         .paletteNum = 5,
         .baseBlock = 0x0350,
     },
@@ -897,7 +897,7 @@ static u8 GetBattleEnvironmentOverride(void)
         return BATTLE_ENVIRONMENT_FRONTIER;
     else if (gBattleTypeFlags & BATTLE_TYPE_LEGENDARY)
     {
-        switch (GetMonData(&gEnemyParty[0], MON_DATA_SPECIES))
+        switch (GetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_SPECIES))
         {
         case SPECIES_GROUDON:
             return BATTLE_ENVIRONMENT_GROUDON;

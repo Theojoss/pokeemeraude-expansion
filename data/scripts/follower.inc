@@ -1,12 +1,15 @@
 gText_FollowerLovesYou::
-	.string "{STR_VAR_1} is regarding you with\nadoration!$"
+	.string "{STR_VAR_1} vous regarde en espérant\ndes caresses…$"
 
+@ Unused
 gText_FollowerLostInThought::
 	.string "{STR_VAR_1} seems lost in thought.$"
 
+@ Unused
 gText_FollowerDefault::
 	.string "ERROR 404: Script not found.$"
 
+@ Unused
 gText_WantsToFly::
 	.string "{STR_VAR_1} looks up at the\nsky restlessly.\pWould you like to use FLY?$"
 
