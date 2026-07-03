@@ -6,7 +6,7 @@
 #define WE_FLAG_NO_ENCOUNTER        0       // If this flag is set, wild encounters will be disabled.
 
 // Double Wild Battles
-#define WE_DOUBLE_WILD_CHANCE            0          // % chance of encountering two Pokémon in a Wild Encounter.
+#define WE_DOUBLE_WILD_CHANCE            20          // % chance of encountering two Pokémon in a Wild Encounter.
 #define WE_DOUBLE_WILD_REQUIRE_2_MONS    FALSE      // If set to TRUE, Wild Double Battles will default to Single Battles when the player only has 1 usable Pokémon, ignoring WE_DOUBLE_WILD_CHANCE and WE_FLAG_FORCE_DOUBLE_WILD.
 #define WE_WILD_NATURAL_ENEMIES          TRUE       // If set to TRUE, certain wild mon species will attack other species when partnered in double wild battles (eg. Zangoose vs Seviper)
 
@@ -31,7 +31,7 @@
 #define WE_OWE_SHINY_SPARKLE                    TRUE   // If TRUE, shiny OWEs will spawn with a sparkle animation and play the shiny sound effect.
 #define WE_OWE_FEEBAS_SPOTS                     FALSE   // If TRUE, any spot that could result in a Feebas fishing encounter can spawn a Feebas OWE.
 #define WE_OWE_DESPAWN_SOUND                    FALSE   // If TRUE, plays SE_FLEE when an OWE despawns.
-#define WE_OWE_APPROACH_FOR_BATTLE              FALSE    // If TRUE, OWEs will take steps to be right next to the player before the battle starts.
+#define WE_OWE_APPROACH_FOR_BATTLE              TRUE    // If TRUE, OWEs will take steps to be right next to the player before the battle starts.
 #define WE_OWE_PREVENT_SHINY_DESPAWN            FALSE   // If TRUE, shiny OWEs will not be despawned when off-screen if on the same map as the player, or be replaced if WE_OWE_SPAWN_REPLACEMENT is TRUE.
 #define WE_OWE_PREVENT_FEEBAS_DESPAWN           FALSE   // If TRUE, Feebas OWEs spawned from special Feebas fishing spots (when WE_OWE_FEEBAS_SPOTS is TRUE) will not be despawned when off-screen if on the same map as the player, or be replaced if WE_OWE_SPAWN_REPLACEMENT is TRUE.
 #define WE_OWE_PREVENT_SPECIAL_MOVEMENT_DESPAWN TRUE    // If TRUE, shiny OWEs (if WE_OWE_PREVENT_SHINY_DESPAWN is TRUE) or Feebas OWEs (if WE_OWE_PREVENT_FEEBAS_DESPAWN is TRUE) will not be despawned by their movement type (for example, OWE_DESPAWN_ON_NOTICE).
