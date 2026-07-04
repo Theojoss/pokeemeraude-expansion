@@ -148,8 +148,8 @@ static const u8 sText_HP[] = _("PV");
 static const u8 sText_Attack[] = _("Attaque");
 static const u8 sText_Defense[] = _("Défense");
 static const u8 sText_Speed[] = _("Vitesse");
-static const u8 sText_SpAttack[] = _("Atq Spé");
-static const u8 sText_SpDefense[] = _("Def Spé");
+static const u8 sText_SpAttack[] = _("Attaque Spéciale");
+static const u8 sText_SpDefense[] = _("Défense Spéciale");
 static const u8 sText_Accuracy[] = _("précision");
 static const u8 sText_Evasiveness[] = _("esquive");
 
