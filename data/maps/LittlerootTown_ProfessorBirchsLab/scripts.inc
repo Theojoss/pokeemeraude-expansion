@@ -546,6 +546,10 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex::
 	setflag FLAG_SYS_POKEDEX_GET
 	special SetUnlockedPokedexFlags
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
+	setflag FLAG_UNUSED_0x021 @ DN_FLAG_DEXNAV_GET
+	playfanfare MUS_OBTAIN_ITEM
+	message LittlerootTown_ProfessorBirchsLab_Text_ReceivedDexNav
+	waitfanfare
 	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
 	return
 
@@ -743,6 +747,9 @@ LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex:
 
 LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex:
 	.string "{PLAYER} reçoit le POKéDEX!$"
+
+LittlerootTown_ProfessorBirchsLab_Text_ReceivedDexNav:
+	.string "{PLAYER} reçoit le NAVI-DEX!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex:
 	.string "PROF. SEKO: Le POKéDEX est un outil\n"

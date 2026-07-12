@@ -393,7 +393,13 @@ void DisplayYesNoMenuWithDefault(u8 initialCursorPos)
 u8 AddStartMenuWindow(u8 numActions)
 {
     if (sStartMenuWindowId == WINDOW_NONE)
-        sStartMenuWindowId = AddWindowParameterized(0, 22, 1, 7, (numActions * 2) + 2, 15, 0x139);
+    {
+        // At 16px/row, more than 8 actions overflow the 160px-tall screen once the border is added.
+        // Shrink the row height so everything still fits instead of getting clipped off-screen.
+        u8 rowHeight = (numActions <= 8) ? 16 : (128 / numActions);
+        u8 height = ((numActions * rowHeight + 7) / 8) + 2;
+        sStartMenuWindowId = AddWindowParameterized(0, 22, 1, 7, height, 15, 0x139);
+    }
     return sStartMenuWindowId;
 }
 
