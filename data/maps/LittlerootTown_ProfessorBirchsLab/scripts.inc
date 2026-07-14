@@ -760,7 +760,15 @@ LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex:
 	.string "A chaque fois qu'un nouveau POKéMON\n"
 	.string "est enregistré dans son POKéDEX,\l"
 	.string "{RIVAL} vient me chercher sur le\l"
-	.string "terrain pour me le montrer.$"
+	.string "terrain pour me le montrer.\p"
+	.string "Je t'ai également donné un\n"
+	.string "NAVI-DEX, il te permettra de\l"
+	.string "chercher un POKéMON en particulier\l"
+	.string "dans une zone si jamais tu l'as\l"
+	.string "déjà aperçu !\p"
+	.string "Tu devras t'approcher lentement de\n"
+	.string "la case où se situe le POKéMON en\l"
+	.string "maintenant la touche A.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait:
 	.string "PROF. SEKO: Tu vas découvrir\n"
