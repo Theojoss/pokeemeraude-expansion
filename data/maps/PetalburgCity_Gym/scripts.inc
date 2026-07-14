@@ -388,6 +388,7 @@ PetalburgCity_Gym_EventScript_NormanBattle::
 	call PetalburgCity_Gym_EventScript_UnlockAllDoors
 	special DrawWholeMapView
 	call PetalburgCity_Gym_EventScript_GiveFacade
+	call PetalburgCity_Gym_EventScript_GiveMegaRing
 	delay 30
 	msgbox PetalburgCity_Gym_Text_DadHappyAndSad, MSGBOX_DEFAULT
 	closemessage
@@ -406,6 +407,35 @@ PetalburgCity_Gym_EventScript_GiveFacade::
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	setflag FLAG_RECEIVED_TM_FACADE
 	msgbox PetalburgCity_Gym_Text_ExplainFacade, MSGBOX_DEFAULT
+	return
+
+PetalburgCity_Gym_EventScript_GiveMegaRing::
+	giveitem ITEM_MEGA_RING
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	setflag FLAG_RECEIVED_MEGA_RING
+	msgbox PetalburgCity_Gym_Text_ExplainMegaRing, MSGBOX_DEFAULT
+	switch VAR_STARTER_MON
+	case 0, PetalburgCity_Gym_EventScript_GiveSceptilite
+	case 1, PetalburgCity_Gym_EventScript_GiveBlazikenite
+	case 2, PetalburgCity_Gym_EventScript_GiveSwampertite
+	end
+
+PetalburgCity_Gym_EventScript_GiveSceptilite::
+	giveitem ITEM_SCEPTILITE
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	msgbox PetalburgCity_Gym_Text_ExplainMegaGemme, MSGBOX_DEFAULT
+	return
+
+PetalburgCity_Gym_EventScript_GiveBlazikenite::
+	giveitem ITEM_BLAZIKENITE
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	msgbox PetalburgCity_Gym_Text_ExplainMegaGemme, MSGBOX_DEFAULT
+	return
+
+PetalburgCity_Gym_EventScript_GiveSwampertite::
+	giveitem ITEM_SWAMPERTITE
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	msgbox PetalburgCity_Gym_Text_ExplainMegaGemme, MSGBOX_DEFAULT
 	return
 
 PetalburgCity_Gym_EventScript_WallysDadArrivesNorth::
@@ -1290,6 +1320,27 @@ PetalburgCity_Gym_Text_ExplainFacade:
 	.string "paralysé ou brûlé.\p"
 	.string "Elle peut permettre de retourner une\n"
 	.string "situation difficile à son avantage.$"
+
+PetalburgCity_Gym_Text_ExplainMegaRing:
+	.string "PAPA: Tiens, prends aussi ceci.\p"
+	.string "C'est un MEGA-ANNEAU. Il réagit à\n"
+	.string "l'énergie d'une MEGA-GEMME tenue\l"
+	.string "par un POKéMON qui lui est lié.\p"
+	.string "Grâce à lui, ton POKéMON pourra\n"
+	.string "MEGA-EVOLUER en plein combat!\p"
+	.string "Pour cela, appuie sur START avant\n"
+	.string "de lancer une attaque.$"
+
+PetalburgCity_Gym_Text_ExplainMegaGemme:
+	.string "PAPA: Et voici la MEGA-GEMME\n"
+	.string "compatible avec ton partenaire\l"
+	.string "de toujours.\p"
+	.string "Fais-la lui tenir, et il pourra\n"
+	.string "MEGA-EVOLUER tant qu'il sera en\l"
+	.string "combat.\p"
+	.string "La MEGA-EVOLUTION ne dure que le\n"
+	.string "temps du combat, mais elle peut\l"
+	.string "grandement faire pencher la balance!$"
 
 PetalburgCity_Gym_Text_DadHappyAndSad:
 	.string "PAPA: En tant que CHAMPION,\n"
