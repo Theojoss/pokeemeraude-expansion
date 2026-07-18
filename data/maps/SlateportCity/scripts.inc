@@ -541,6 +541,77 @@ SlateportCity_Pokemart_PowerTMs:
 	.2byte ITEM_TM_SECRET_POWER
 	pokemartlistend
 
+SlateportCity_EventScript_MegaSeller::
+	lock
+	faceplayer
+	goto_if_unset FLAG_RECEIVED_MEGA_RING, SlateportCity_EventScript_MegaSellerNoRing
+	message SlateportCity_Text_MegaSellerGreeting
+	waitmessage
+	pokemart SlateportCity_Pokemart_MegaStones
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	release
+	end
+
+SlateportCity_EventScript_MegaSellerNoRing::
+	msgbox SlateportCity_Text_MegaSellerNoRing, MSGBOX_DEFAULT
+	release
+	end
+
+	.align 2
+SlateportCity_Pokemart_MegaStones:
+	.2byte ITEM_VENUSAURITE
+	.2byte ITEM_CHARIZARDITE_X
+	.2byte ITEM_CHARIZARDITE_Y
+	.2byte ITEM_BLASTOISINITE
+	.2byte ITEM_BEEDRILLITE
+	.2byte ITEM_PIDGEOTITE
+	.2byte ITEM_ALAKAZITE
+	.2byte ITEM_SLOWBRONITE
+	.2byte ITEM_GENGARITE
+	.2byte ITEM_KANGASKHANITE
+	.2byte ITEM_PINSIRITE
+	.2byte ITEM_GYARADOSITE
+	.2byte ITEM_AERODACTYLITE
+	.2byte ITEM_MEWTWONITE_X
+	.2byte ITEM_MEWTWONITE_Y
+	.2byte ITEM_AMPHAROSITE
+	.2byte ITEM_STEELIXITE
+	.2byte ITEM_SCIZORITE
+	.2byte ITEM_HERACRONITE
+	.2byte ITEM_HOUNDOOMINITE
+	.2byte ITEM_TYRANITARITE
+	.2byte ITEM_SCEPTILITE
+	.2byte ITEM_BLAZIKENITE
+	.2byte ITEM_SWAMPERTITE
+	.2byte ITEM_GARDEVOIRITE
+	.2byte ITEM_SABLENITE
+	.2byte ITEM_MAWILITE
+	.2byte ITEM_AGGRONITE
+	.2byte ITEM_MEDICHAMITE
+	.2byte ITEM_MANECTITE
+	.2byte ITEM_SHARPEDONITE
+	.2byte ITEM_CAMERUPTITE
+	.2byte ITEM_ALTARIANITE
+	.2byte ITEM_BANETTITE
+	.2byte ITEM_ABSOLITE
+	.2byte ITEM_GLALITITE
+	.2byte ITEM_SALAMENCITE
+	.2byte ITEM_METAGROSSITE
+	.2byte ITEM_LATIASITE
+	.2byte ITEM_LATIOSITE
+	.2byte ITEM_GALLADITE
+	.2byte ITEM_CLEFABLITE
+	.2byte ITEM_VICTREEBELITE
+	.2byte ITEM_STARMINITE
+	.2byte ITEM_DRAGONINITE
+	.2byte ITEM_MEGANIUMITE
+	.2byte ITEM_FERALIGITE
+	.2byte ITEM_SKARMORITE
+	.2byte ITEM_FROSLASSITE
+	.2byte ITEM_FALINKSITE
+	.2byte ITEM_CHIMECHITE
+	pokemartlistend
+
 @ Scene with Capt Sterns interview and Team Aqua announcing plans to steal Submarine
 SlateportCity_EventScript_CaptStern::
 	lockall
@@ -1238,6 +1309,23 @@ SlateportCity_Text_MarketSign:
 	.string "MARCHE DE POIVRESSEL\n"
 	.string "“Des objets uniques introuvables\l"
 	.string "ailleurs!”$"
+
+SlateportCity_Text_MegaSellerGreeting:
+	.string "Oh! Ce MÉGA-ANNEAU à ton poignet...\p"
+	.string "Alors comme ça, tu es prêt pour la\n"
+	.string "MÉGA-ÉVOLUTION!\p"
+	.string "J'ai justement toute une collection\n"
+	.string "de MÉGA-GEMMES à te proposer.\p"
+	.string "Vas-y, sers-toi!$"
+
+SlateportCity_Text_MegaSellerNoRing:
+	.string "Tu sais, il existe certains POKéMON\n"
+	.string "capables de méga-évoluer, ce qui leur\l"
+	.string "permet de repousser leurs limites le\l"
+	.string "temps d'un combat.\p"
+	.string "Mais tu n'es pas encore prêt pour ça,\n"
+	.string "il te manque quelque chose...\p"
+	.string "Reviens me voir plus tard, d'accord?$"
 
 SlateportCity_Text_HarborFerryUnderConstruction:
 	.string "EMBARCADERE DE POIVRESSEL\p"
