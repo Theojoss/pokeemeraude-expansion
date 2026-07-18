@@ -47,6 +47,19 @@ LilycoveCity_DepartmentStore_4F_Pokemart_DefenseTMs:
 	.2byte ITEM_TM_SAFEGUARD
 	.2byte ITEM_TM_REFLECT
 	.2byte ITEM_TM_LIGHT_SCREEN
+	.2byte ITEM_RAZOR_CLAW
+	.2byte ITEM_RAZOR_FANG
+	.2byte ITEM_PROTECTOR
+	.2byte ITEM_ELECTIRIZER
+	.2byte ITEM_MAGMARIZER
+	.2byte ITEM_REAPER_CLOTH
+	.2byte ITEM_DUBIOUS_DISC
+	.2byte ITEM_BLACK_AUGURITE
+	.2byte ITEM_PEAT_BLOCK
+	.2byte ITEM_SHINY_STONE
+	.2byte ITEM_DUSK_STONE
+	.2byte ITEM_DAWN_STONE
+	.2byte ITEM_ICE_STONE
 	pokemartlistend
 
 LilycoveCity_DepartmentStore_4F_Text_AttackOrDefenseTM:

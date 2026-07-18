@@ -4528,7 +4528,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_ICE_STONE] =
     {
         .name = ITEM_NAME("Pierre Glace"),
-        .price = (I_PRICE >= GEN_7) ? 3000 : 2100,
+        .price = 5000,
         .description = COMPOUND_STRING(
             "Une pierre étrange qui fait\n"
             "évoluer certaines espèces\n"
@@ -4596,7 +4596,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_SHINY_STONE] =
     {
         .name = ITEM_NAME("Pierre Éclat"),
-        .price = (I_PRICE >= GEN_7) ? 3000 : 2100,
+        .price = 5000,
         .description = COMPOUND_STRING(
             "Pierre étrange qui fait\n"
             "évoluer certaines espèces\n"
@@ -4616,7 +4616,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_DUSK_STONE] =
     {
         .name = ITEM_NAME("Pierre Nuit"),
-        .price = (I_PRICE >= GEN_7) ? 3000 : 2100,
+        .price = 5000,
         .description = COMPOUND_STRING(
             "Pierre étrange qui fait\n"
             "évoluer certaines espèces\n"
@@ -4636,7 +4636,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_DAWN_STONE] =
     {
         .name = ITEM_NAME("Pierre Aube"),
-        .price = (I_PRICE >= GEN_7) ? 3000 : 2100,
+        .price = 5000,
         .description = COMPOUND_STRING(
             "Pierre étrange qui fait\n"
             "évoluer certaines espèces\n"
@@ -4817,7 +4817,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_PROTECTOR] =
     {
         .name = ITEM_NAME("Protecteur"),
-        .price = (I_PRICE >= GEN_7) ? 2000 * TREASURE_FACTOR : 2100,
+        .price = 5000,
         .description = COMPOUND_STRING(
             "Objet protecteur très dur\n"
             "et très lourd, apprécié d'un\n"
@@ -4836,7 +4836,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_ELECTIRIZER] =
     {
         .name = ITEM_NAME("Électriseur"),
-        .price = (I_PRICE >= GEN_7) ? 2000 * TREASURE_FACTOR : 2100,
+        .price = 5000,
         .description = COMPOUND_STRING(
             "Une boîte remplie d'une\n"
             "énorme quantité d'énergie\n"
@@ -4856,7 +4856,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_MAGMARIZER] =
     {
         .name = ITEM_NAME("Magmariseur"),
-        .price = (I_PRICE >= GEN_7) ? 2000 * TREASURE_FACTOR : 2100,
+        .price = 5000,
         .description = COMPOUND_STRING(
             "Une boîte remplie d'une\n"
             "énorme quantité d'énergie\n"
@@ -4876,7 +4876,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_DUBIOUS_DISC] =
     {
         .name = ITEM_NAME("CD Douteux"),
-        .price = (I_PRICE >= GEN_7) ? 2000 * TREASURE_FACTOR : 2100,
+        .price = 5000,
         .description = COMPOUND_STRING(
             "Appareil transparent rempli\n"
             "de données douteuses. Son\n"
@@ -4895,7 +4895,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_REAPER_CLOTH] =
     {
         .name = ITEM_NAME("Tissu Fauche"),
-        .price = (I_PRICE >= GEN_7) ? 2000 * TREASURE_FACTOR : 2100,
+        .price = 5000,
         .description = COMPOUND_STRING(
             "Un tissu imprégné d'une\n"
             "énergie spirituelle\n"
@@ -11530,13 +11530,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_RAZOR_CLAW] =
     {
         .name = ITEM_NAME("Griffe Rasoir"),
-    #if I_PRICE >= GEN_9
-        .price = 15000,
-    #elif I_PRICE >= GEN_7
         .price = 5000,
-    #else
-        .price = 2100,
-    #endif
         .holdEffect = HOLD_EFFECT_SCOPE_LENS,
         .description = COMPOUND_STRING(
             "Objet à tenir. Griffe\n"
@@ -11557,13 +11551,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_RAZOR_FANG] =
     {
         .name = ITEM_NAME("Croc Rasoir"),
-    #if I_PRICE >= GEN_9
-        .price = 15000,
-    #elif I_PRICE >= GEN_7
         .price = 5000,
-    #else
-        .price = 2100,
-    #endif
         .holdEffect = HOLD_EFFECT_FLINCH,
         .holdEffectParam = 10,
         .description = COMPOUND_STRING(
@@ -16814,7 +16802,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_BLACK_AUGURITE] =
     {
         .name = ITEM_NAME("Obsidienne"),
-        .price = 8000,
+        .price = 5000,
         .description = COMPOUND_STRING(
             "Lorsqu'on brise cette\n"
             "pierre noire semblable à du\n"
@@ -16857,7 +16845,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_PEAT_BLOCK] =
     {
         .name = ITEM_NAME("Bloc de Tourbe"),
-        .price = 10000,
+        .price = 5000,
         .description = COMPOUND_STRING(
             "Un Bloc de Tourbe similaire à\n"
             "de la boue qu'on peut\n"
