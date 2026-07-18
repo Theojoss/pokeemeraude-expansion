@@ -1291,3 +1291,24 @@ RustboroCity_Text_YouCanHave2On2Battle:
 	.string "ils te défieront tous les deux.\p"
 	.string "Ça doit être trop cool de battre deux\n"
 	.string "DRESSEURS à la fois!$"
+
+RustboroCity_EventScript_Ziggy::
+	trainerbattle_single TRAINER_ZIGGY, RustboroCity_Text_ZiggyIntro, RustboroCity_Text_ZiggyDefeat, RustboroCity_EventScript_ZiggyAfterFirstWin, FALSE
+	goto_if_eq VAR_RESULT, TRUE, RustboroCity_EventScript_ZiggyRematch
+	end
+
+RustboroCity_EventScript_ZiggyAfterFirstWin::
+	end
+
+RustboroCity_EventScript_ZiggyRematch::
+	msgbox RustboroCity_Text_ZiggyPostBattle, MSGBOX_NPC
+	end
+
+RustboroCity_Text_ZiggyIntro:
+	.string "Tu connais Yum-yum?$"
+
+RustboroCity_Text_ZiggyDefeat:
+	.string "Bon, je n'ai plus qu'à retourner jouer\nà Magic…$"
+
+RustboroCity_Text_ZiggyPostBattle:
+	.string "Il fait trop chaud dans cette région,\nla pluie me manque!$"
