@@ -64,14 +64,14 @@ cd pokeemeraude-expansion
 ```bash
 make
 ```
-5. If everything worked correctly, something very similar to this should be seen. Si tout s'est bien passé, quelque chose de très similaire à ceci devrait être vu.
+5. Si tout s'est bien passé, quelque chose de très similaire à ceci devrait être vu.
 
     ```bash
     arm-none-eabi-ld: warning: ../../pokeemeraude.elf has a LOAD segment with RWX permissions
     Memory region         Used Size  Region Size  %age Used
             EWRAM:      226588 B       256 KB     86.44%
             IWRAM:       28384 B        32 KB     86.62%
-                ROM:    26546432 B        32 MB     79.11%
+            ROM:    26546432 B        32 MB     79.11%
     cd build/emeraude && arm-none-eabi-ld -Map ../../pokeemeraude.map --print-memory-usage --gc-sections -T ../../ld_script_modern.ld -o ../../pokeemeraude.elf <objs> <libs> | cat
     tools/gbafix/gbafix pokeemeraude.elf -t"POKEMON EMER" -cBPEF -m01 -r0 --silent
     arm-none-eabi-objcopy -O binary pokeemeraude.elf pokeemeraude.gba
