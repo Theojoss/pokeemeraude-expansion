@@ -2,6 +2,7 @@
 ## Sommaire
 - [Quelles fonctionnalités sont incluses ?](#quelles-fonctionnalités-sont-incluses)
   - [Sommaire](#sommaire)
+  - [Ajout de RFVF](#ajout-de-rfvf)
   - [Fichiers de configuration](#fichiers-de-configuration)
   - [Moteur de combat mis à jour](#moteur-de-combat-mis-à-jour)
   - [Personnalisation complète des dresseurs](#personnalisation-complète-des-dresseurs)
@@ -10,6 +11,9 @@
   - [Améliorations du moteur](#améliorations-du-moteur)
   - [Améliorations de l'overworld](#améliorations-de-loverworld)
   - [Outils pour développeurs](#outils-pour-développeurs)
+
+## Ajout de RFVF
+pokeemeraude-expansion possède *l'intégralité* du contenu de Rouge Feu et Vert Feuille (en Français), c'est-à-dire les maps, les scripts, les sprites, etc. Afin de compiler Rouge Feu ou Vert Feuille, consultez le [tutoriel dédié](docs/tutorials/how_to_frlg.md). Cette portion de pokeemeraude-expansion est jouable, mais n'est pas encore entièrement testée, et doit donc être utilisée avec précaution.
 
 ## Fichiers de configuration
 Une liste de nombreuses fonctionnalités ci-dessous peut être désactivée selon vos besoins. Vérifiez lesquelles dans ces fichiers :
@@ -74,7 +78,7 @@ Une liste de nombreuses fonctionnalités ci-dessous peut être désactivée selo
 - ***Générateur de nombres aléatoires de haute qualité:*** Plus de générateur de nombres aléatoires défectueux.
 
 ## Améliorations de l'overworld
-- ***Mécaniques modernes***: Anti-Brume comme capacité utilisable dans l'overworld, système de repousse du style N2B2+, courir dans les maps intérieures, pas de poison dans l'overworld, pêche à la chaîne, Cherche VS, message de défaite FRLG+.
+- ***Mécaniques modernes***: Anti-Brume comme capacité utilisable dans l'overworld, système de repousse du style N2B2+, courir dans les maps intérieures, pas de poison dans l'overworld, pêche à la chaîne, Cherche VS, message de défaite RFVF+.
 - ***Followers PNJ et Pokémon***: ([branche](https://github.com/aarant/pokeemerald/tree/followers-expanded-id) par @aarant)
     - *Inclut le support pour les palettes dynamiques dans l'overworld et l'expansion des IDs d'overworld au-delà de 255*
     - *Inclut les sprites de Pokémon jusqu'à la 9G.*
