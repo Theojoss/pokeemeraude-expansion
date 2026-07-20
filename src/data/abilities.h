@@ -3086,9 +3086,6 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
             "Attaque."
         ),
         .aiRating = 8,
-        .cantBeSwapped = TRUE,
-        .cantBeCopied = TRUE,
-        .cantBeOverwritten = TRUE,
     },
 
     [ABILITY_HADRON_ENGINE] =
@@ -3101,9 +3098,6 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
             "Spéciale si un champ électrifié est actif."
         ),
         .aiRating = 8,
-        .cantBeSwapped = TRUE,
-        .cantBeCopied = TRUE,
-        .cantBeOverwritten = TRUE,
     },
 
     [ABILITY_OPPORTUNIST] =

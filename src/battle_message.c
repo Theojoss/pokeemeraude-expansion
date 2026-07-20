@@ -414,7 +414,6 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_NOPPLEFT]                             = COMPOUND_STRING("Mais cette capacité n'a plus de PP!\p"),
     [STRINGID_BUTNOPPLEFT]                          = COMPOUND_STRING("Mais il n'y avait plus de PP pour cette capacité!"),
     [STRINGID_PLAYERUSEDITEM]                       = COMPOUND_STRING("Vous utilisez {B_LAST_ITEM}!"),
-    [STRINGID_WALLYUSEDITEM]                        = COMPOUND_STRING("TIMMY utilise {B_LAST_ITEM}!"),
     [STRINGID_TRAINERBLOCKEDBALL]                   = COMPOUND_STRING("L'adversaire détourne la Poké Ball!"),
     [STRINGID_DONTBEATHIEF]                         = COMPOUND_STRING("Ça ne se fait pas de voler les Pokémon des autres!"),
     [STRINGID_ITDODGEDBALL]                         = COMPOUND_STRING("Impossible de viser quand il y a plus d'un Pokémon!"),
@@ -753,8 +752,12 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_ATTACKERSWITCHEDSTATWITHTARGET]       = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} permute les changements de {B_BUFF1} avec ceux de sa cible!"),
     [STRINGID_BEINGHITCHARGEDPKMNWITHPOWER]         = COMPOUND_STRING("{B_EFF_NAME_WITH_PREFIX2} se charge en électricité en recevant {B_CURRENT_MOVE}!"),
     [STRINGID_SUNLIGHTACTIVATEDABILITY]             = COMPOUND_STRING("Le soleil brille, ce qui a permis à {B_SCR_NAME_WITH_PREFIX2} d'activer Paléosynthèse!"),
+    [STRINGID_ORICHALCUMPULSEACTIVATES]             = COMPOUND_STRING("Le soleil brille et {B_SCR_NAME_WITH_PREFIX} libère l'énergie d'une pulsation primitive!"),
+    [STRINGID_ORICHALCUMPULSEACTIVATESINSUN]        = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} tire profit des rayons du soleil et libère l'énergie d'une pulsation primitive!"),
     [STRINGID_STATWASHEIGHTENED]                    = COMPOUND_STRING("{B_BUFF1} de {B_SCR_NAME_WITH_PREFIX} est renforcé!"),
     [STRINGID_ELECTRICTERRAINACTIVATEDABILITY]      = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX2} a activé Charge Quantique grâce au champ électrifié!"),
+    [STRINGID_HADRONENGINEACTIVATES]                = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} crée un champ électrifié et active une machine du futur!"),
+    [STRINGID_HADRONENGINEACTIVATESINTERRAIN]       = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} active une machine du futur grâce au champ électrifié!"),
     [STRINGID_ABILITYWEAKENEDSURROUNDINGMONSSTAT]   = COMPOUND_STRING("Le talent {B_SCR_ABILITY} de {B_SCR_NAME_WITH_PREFIX} affaiblit {B_BUFF1} des Pokémon alentour!\p"),
     [STRINGID_ATTACKERGAINEDSTRENGTHFROMTHEFALLEN]  = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} reçoit la puissance de ses alliés mis K.O.!"),
     [STRINGID_PKMNSABILITYPREVENTSABILITY]          = COMPOUND_STRING("Le talent {B_SCR_ABILITY} de {B_SCR_NAME_WITH_PREFIX} empêche le talent {B_DEF_ABILITY} de {B_DEF_NAME_WITH_PREFIX2} de fonctionner!"),
@@ -2591,8 +2594,7 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
         }
         break;
     case STRINGID_INTROSENDOUT: // poke first send-out
-        if (BattlerIsPlayer(battler) || BattlerIsPlayer(BATTLE_PARTNER(battler))
-         || BattlerIsWally(battler) || BattlerIsWally(BATTLE_PARTNER(battler)))
+        if (IsOnPlayerSide(battler))
         {
             if (IsDoubleBattle() && IsValidForBattle(GetBattlerMon(BATTLE_PARTNER(battler))))
             {
@@ -3523,7 +3525,14 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                 break;
             case B_TXT_ATK_TRAINER_NAME_WITH_CLASS:
                 toCpy = textStart;
-                if (GetBattlerPosition(gBattlerAttacker) == B_POSITION_PLAYER_LEFT)
+                if (gBattleTypeFlags & BATTLE_TYPE_CATCH_TUTORIAL)
+                {
+                    if (IS_FRLG)
+                        textStart = StringCopy(textStart, COMPOUND_STRING("The old man"));
+                    else
+                        textStart = StringCopy(textStart, COMPOUND_STRING("WALLY"));
+                }
+                else if (GetBattlerPosition(gBattlerAttacker) == B_POSITION_PLAYER_LEFT)
                 {
                     textStart = StringCopy(textStart, BattleStringGetTrainerName(textStart, multiplayerId, gBattlerAttacker));
                 }
