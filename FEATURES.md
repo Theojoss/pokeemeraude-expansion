@@ -6,9 +6,9 @@
   - [Moteur de combat mis à jour](#moteur-de-combat-mis-à-jour)
   - [Personnalisation complète des dresseurs](#personnalisation-complète-des-dresseurs)
   - [Données des Pokémon](#données-des-pokémon)
-  - [Améliorations de l'interface](#améliorations-de-l'interface)
+  - [Améliorations de l'interface](#améliorations-de-linterface)
   - [Améliorations du moteur](#améliorations-du-moteur)
-  - [Améliorations de l'overworld](#améliorations-du-monde-ouvert)
+  - [Améliorations de l'overworld](#améliorations-de-loverworld)
   - [Outils pour développeurs](#outils-pour-développeurs)
 
 ## Fichiers de configuration
