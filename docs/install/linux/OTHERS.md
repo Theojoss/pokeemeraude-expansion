@@ -1,5 +1,5 @@
-# Instructions for other distributions
-1. Try to find the required software in its repositories:
+# Instructions générales pour les autres distributions Linux
+1. Essayez d'installer les paquets suivants à l'aide de votre gestionnaire de paquets:
     - `gcc`
     - `g++`
     - `arm-none-eabi-gcc`

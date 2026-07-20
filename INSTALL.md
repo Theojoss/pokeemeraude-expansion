@@ -1,185 +1,171 @@
 # Instructions
-Install instructions for each supported operating system can be found in their respective directories under `docs/install/`.
-Lines to those can be found under each heading.
-This file only contains a short introduction to each supported system.
-If you run into trouble, ask for help on Discord (see [README.md](README.md)).
+Les instructions d'installation pour chaque système d'exploitation pris en charge peuvent être trouvées dans leurs répertoires respectifs sous `docs/install/`.
+Les liens vers ceux-ci se trouvent sous chaque titre.
+Ce fichier ne contient qu'une courte introduction à chaque système pris en charge.
+Si vous rencontrez des problèmes, demandez de l'aide sur le Discord de RHH ou Pokémon Rom-Hacking FR (voir [README.md](README.md)).
 
-After completing the install instructions for your OS, proceed to [Building pokeemerald-expansion](#building-pokeemerald-expansion).
+Après avoir terminé les instructions d'installation pour votre système d'exploitation, passez à la [Compilation de pokeemeraude-expansion](#compilation-de-pokeemeraude-expansion).
 
 ## Windows
-**Windows needs one of the systems to build the project**
+**Windows nécessite l'un des systèmes suivants pour compiler le projet**
 
-**A note of caution**: As Windows 7 and Windows 8 are officially unsupported by Microsoft, some maintainers are unwilling to maintain the Windows 7/8 instructions. Thus, these instructions may break in the future with fixes taking longer than fixes to the Windows 10/11 instructions.
+**Une note d'avertissement**: Comme Windows 7 et Windows 8 ne sont officiellement pas pris en charge par Microsoft, certains mainteneurs ne sont pas disposés à maintenir les instructions pour Windows 7/8. Ainsi, ces instructions peuvent ne plus être valables à l'avenir avec des corrections prenant plus de temps que les corrections pour les instructions Windows 10/11.
 
-On Windows, the project can be built using the following systems:
-- WSL2, fastest
-- WSL1, 7 times slower than WSL2
-- Msys2, 20 times slower than WSL2
-- Cygwin, 30 timer slower than WSL2
+Sur Windows, le projet peut être compilé en utilisant les systèmes suivants:
+- WSL2, le plus rapide
+- WSL1, 7 fois plus lent que WSL2
+- Msys2, 20 fois plus lent que WSL2
+- Cygwin, 30 fois plus lent que WSL2
 
-**NOTE**: Only WSL systems are recommended.
+**NOTE**: Seuls les systèmes WSL sont recommandés.
 
-[WSL Install instructions](docs/install/windows/WSL.md)
+[Instructions d'installation WSL](docs/install/windows/WSL.md)
 
-[Msys2 Install instructions](docs/install/windows/MSYS2.md)
+[Instructions d'installation Msys2](docs/install/windows/MSYS2.md)
 
-[Cygwin Install instructions](docs/install/windows/CYGWIN.md)
+[Instructions d'installation Cygwin](docs/install/windows/CYGWIN.md)
 
 ## Linux
-The project can be built on any Linux distribution.
-Distributions with instructions:
+Le projet peut être compilé sur n'importe quelle distribution Linux.
+Les distributions avec instructions:
 - [Ubuntu](docs/install/linux/UBUNTU.md)
 - [Debian](docs/install/linux/DEBIAN.md)
 - [Arch Linux](docs/install/linux/ARCH_LINUX.md)
 - [NixOS](docs/install/linux/NIXOS.md)
 - [Fedora](docs/install/linux/FEDORA.md)
 
-Other distributions have to infer what to do from [general instructions](docs/install/linux/OTHERS.md).
+Les autres distributions doivent déduire quoi faire à partir des [instructions générales](docs/install/linux/OTHERS.md).
 
 ## Mac
-Some extra considerations exist to get the testing system working.
+Il y a quelques instructions supplémentaires pour que le système de test fonctionne.
 
-[Mac instructions](docs/install/mac/MAC_OS.md)
+[Instructions d'installation sur Mac](docs/install/mac/MAC_OS.md)
 
 ## ChromeOS
-Only tested on x86_64 based systems.
+Uniquement testé sur les systèmes basés sur x86_64.
 
-[Chrome OS instructions](docs/install/chromeos/CHROME_OS.md)
+[Instructions d'installation sur Chrome OS](docs/install/chromeos/CHROME_OS.md)
 
-# Building pokeemerald-expansion
-Follow these steps to build `pokeemerald-expansion`.
-1. Navigate to the directory you want to keep the project in, be aware of any system specific limitations.
-2. Download `pokeemerald-expansion` with `git`
+# Compilation de pokeemeraude-expansion
+Suivez ces étapes pour compiler `pokeemeraude-expansion`.
+1. Naviguez jusqu'au répertoire dans lequel vous souhaitez conserver le projet, en tenant compte des limitations spécifiques au système.
+2. Téléchargez `pokeemeraude-expansion` avec `git`:
 
-    ```console
-    git clone https://github.com/rh-hideout/pokeemerald-expansion
-    ```
-3. Navigate to the newly downloaded project.
+```bash
+git clone https://github.com/pokehacking-fr/pokeemeraude-expansion
+```
+3. Naviguez dans le répertoire du projet:
 
-    ```console
-    cd pokeemerald-expansion
-    ```
-4. Build the project.
+```bash
+cd pokeemeraude-expansion
+```
+4. Compilez le projet.
 
-    ```console
-    make
-    ```
-5. If everything worked correctly, something very similar to this should be seen.
+```bash
+make
+```
+5. If everything worked correctly, something very similar to this should be seen. Si tout s'est bien passé, quelque chose de très similaire à ceci devrait être vu.
 
-    ```console
-    arm-none-eabi-ld: warning: ../../pokeemerald.elf has a LOAD segment with RWX permissions
+    ```bash
+    arm-none-eabi-ld: warning: ../../pokeemeraude.elf has a LOAD segment with RWX permissions
     Memory region         Used Size  Region Size  %age Used
-               EWRAM:      243354 B       256 KB     92.83%
-               IWRAM:       30492 B        32 KB     93.05%
-                 ROM:    26072244 B        32 MB     77.70%
-    cd build/modern && arm-none-eabi-ld  -T ../../ld_script_modern.ld --print-memory-usage -o ../../pokeemerald.elf <objs> <libs> | cat
-    tools/gbafix/gbafix pokeemerald.elf -t"POKEMON EMER" -cBPEE -m01 -r0 --silent
-    arm-none-eabi-objcopy -O binary pokeemerald.elf pokeemerald.gba
-    tools/gbafix/gbafix pokeemerald.gba -p --silent
+            EWRAM:      226588 B       256 KB     86.44%
+            IWRAM:       28384 B        32 KB     86.62%
+                ROM:    26546432 B        32 MB     79.11%
+    cd build/emeraude && arm-none-eabi-ld -Map ../../pokeemeraude.map --print-memory-usage --gc-sections -T ../../ld_script_modern.ld -o ../../pokeemeraude.elf <objs> <libs> | cat
+    tools/gbafix/gbafix pokeemeraude.elf -t"POKEMON EMER" -cBPEF -m01 -r0 --silent
+    arm-none-eabi-objcopy -O binary pokeemeraude.elf pokeemeraude.gba
+    tools/gbafix/gbafix pokeemeraude.gba -p --silent
     ```
-    And the build ROM will be in the directory as `pokeemerald.gba`.
+    Et la ROM compilée sera dans le répertoire sous le nom `pokeemeraude.gba`.
 
-# Building guidance
+# Guidance à la compilation
 
-## Parallel builds
+## Compilation parallèle
+Voir [la documentation GNU](https://www.gnu.org/software/make/manual/html_node/Parallel.html) et [ce fil Stack Exchange](https://unix.stackexchange.com/questions/208568) pour plus d'informations.
 
-See [the GNU docs](https://www.gnu.org/software/make/manual/html_node/Parallel.html) and [this Stack Exchange thread](https://unix.stackexchange.com/questions/208568) for more information.
-
-To speed up building, first get the value of `nproc` by running the following command:
-```console
+Pour accélérer la compilation, obtenez d'abord la valeur de `nproc` en exécutant la commande suivante:
+```bash
 nproc
 ```
-Builds can then be sped up by running the following command:
+
+Les compilations peuvent ensuite être accélérées en exécutant la commande suivante:
 ```console
-make -j<output of nproc>
+make -j<résulat de nproc>
 ```
-Replace `<output of nproc>` with the number that the `nproc` command returned.
 
-`nproc` is not available on macOS. The alternative is `sysctl -n hw.ncpu` ([relevant Stack Overflow thread](https://stackoverflow.com/questions/1715580)).
+Remplacez `<résulat de nproc>` par le nombre que la commande `nproc` a renvoyé.
 
-### Other toolchains
+`nproc` n'est pas disponible sur macOS. L'alternative est `sysctl -n hw.ncpu` ([fil Stack Overflow pertinent](https://stackoverflow.com/questions/1715580)).
 
-To build using a toolchain other than devkitARM, override the `TOOLCHAIN` environment variable with the path to your toolchain, which must contain the subdirectory `bin`.
-```console
+### Autres outils
+
+Pour compiler en utilisant un autre outil que devkitARM, remplacez la variable d'environnement `TOOLCHAIN` par le chemin vers votre outil, qui doit contenir le sous-répertoire `bin`.
+```bash
 make TOOLCHAIN="/path/to/toolchain/here
 ```
-The following is an example:
-```console
+
+La commande suivante est un exemple:
+```bash
 make TOOLCHAIN="/usr/local/arm-none-eabi"
 ```
-To compile the `modern` target with this toolchain, the subdirectories `lib`, `include`, and `arm-none-eabi` must also be present.
 
-### Building with debug info
+Pour compiler la version `moderne` avec cet outil, les sous-répertoires `lib`, `include` et `arm-none-eabi` doivent également être présents.
 
-To build **pokeemerald.elf** with debug symbols and debug-compatible optimization under a modern toolchain:
-```console
+### Compiler avec des infos de débogage
+
+Pour compiler **pokeemeraude.elf** avec des symboles de débogage et une optimisation compatible avec le débogage sous un outil moderne:
+```bash
 make debug
 ```
 
-# Choosing a branch
-**pokeemerald-expansion** has different branches that users can decide to use.
+# Migrer depuis pokeemeraude
 
-## Latest Patch
-This option will have all officially released expansion functionality and bugfixes.
-
-## `master`
-The `master` branch has all of the functionality from "Latest Patch", as well as any bugfixes that have been discovered since that release.
-
-## `upcoming`
-The `master` branch has all of the functionality from "Latest Patch", as well as any functionality that has been added since that release.
-
-The bugfixes on `master` are occasionally merged into `upcoming`, but there is no official cadence.
-
-# Migrating from pokeemerald
-
-1. Set RHH as a git remote
-```console
-git remote add RHH https://github.com/rh-hideout/pokeemerald-expansion
+1. Définissez pokehacking-fr comme un dépôt distant git
+```bash
+git remote add pokehacking-fr https://github.com/pokehacking-fr/pokeemeraude-expansion
 ```
 
-2. Pull your desired branch
-There are three different options to pull from.
-```console
-git pull RHH master # if you've chosen to use the upcoming branch, replace the word master with upcoming.
-# If you've chosen the latest patch, replace the word master with expansion
-# If you've chosen Latest Patch, replace the word master with expansion/1.11.0 where 1.11.0 is replaced with whatever the latest released version is.
+2. Tirez (`pull`) la branche souhaitée
+```bash
+git pull pokehacking-fr master
 ```
 
-If you are not on the latest version of pret's pokeemerald, you should expect some merge conflicts that you'll need to resolve. Once complete, you'll be using **pokeemerald-expansion**.
+Si vous n'êtes pas sur la dernière version de pokeemeraude de Qigast, vous devriez vous attendre à certains conflits de fusion (merge conflicts) que vous devrez résoudre. Une fois terminé, vous utiliserez **pokeemeraude-expansion**.
 
-# Updating pokeemerald-expansion
+# Mettre à jour votre copie de pokeemeraude-expansion
 
-1. Set RHH as a git remote
-```console
-git remote add RHH https://github.com/rh-hideout/pokeemerald-expansion
+1. Définissez pokehacking-fr comme un dépôt distant git
+```bash
+git remote add pokehacking-fr https://github.com/pokehacking-fr/pokeemeraude-expansion
 ```
 
-2. Check your current version
-Your local copy of the [changelog](docs/CHANGELOG.md) will be updated with the version your repo is on.
+2. Vérifiez votre version actuelle
+Votre copie locale du [changelog](docs/CHANGELOG.md) sera mise à jour avec la version sur laquelle votre dépôt se trouve.
 
-3. Select a target version
-We recommend incrementally updating to the next version using the following order below.
-If you are on a version older than 1.6.2, you should target 1.6.2..
+3. Sélectionnez la version cible
+Nous recommandons de mettre à jour progressivement vers la version suivante en utilisant l'ordre ci-dessous.
+Si vous êtes sur une version antérieure à 1.6.2, vous devriez cibler 1.6.2.
     * 1.6.2
     * 1.7.4
     * 1.8.3
     * 1.9.4
     * 1.10.3
 
-For example, if your version is 1.7.0, you should update to 1.7.4.
+Par exemple, si votre version est 1.7.0, vous devriez mettre à jour vers 1.7.4.
 
-4. Pull the target version
-```console
-git pull RHH expansion/X.Y.Z # Replace X, Y and Z with the target version, such as `1.9.3`, `master`, or `upcoming`.
+4. Tirez (`pull`) la version cible
+```bash
+git pull pokehacking-fr expansion/X.Y.Z # Remplacez X, Y et Z avec la version cible, comme `1.9.3` 
 ```
 
-You may have merge conflicts that you need to resolve.
+Vous pourriez avoir des conflits de fusion (merge conflicts) que vous devrez résoudre.
 
-If you targeted a specific version that is not the latest version listed on the [tags](https://github.com/rh-hideout/pokeemerald-expansion/tags) page, you should repeat steps 3 and 4 until you are.
+Si vous avez ciblé une version spécifique qui n'est pas la dernière version répertoriée sur la page [tags](https://github.com/rh-hideout/pokeemerald-expansion/tags), vous devriez répéter les étapes 3 et 4 jusqu'à ce que vous le soyez.
 
-# Useful additional tools
+# Outils additionnels utiles
 
-* [porymap](https://github.com/huderlem/porymap) for viewing and editing maps
-* [porytiles](https://github.com/grunt-lucas/porytiles) for add new metatiles for maps
-* [poryscript](https://github.com/huderlem/poryscript) for scripting ([VS Code extension](https://marketplace.visualstudio.com/items?itemName=karathan.poryscript))
-* [Tilemap Studio](https://github.com/Rangi42/tilemap-studio) for viewing and editing tilemaps
+* [porymap](https://github.com/huderlem/porymap) pour visualiser et modifier les maps.
+* [porytiles](https://github.com/grunt-lucas/porytiles) pour ajouter de nouvelles metatiles pour les maps.
+* [poryscript](https://github.com/huderlem/poryscript) pour le scripting. ([Extension VS Code](https://marketplace.visualstudio.com/items?itemName=karathan.poryscript))
+* [Tilemap Studio](https://github.com/Rangi42/tilemap-studio) pour visualiser et modifier les tilemaps.

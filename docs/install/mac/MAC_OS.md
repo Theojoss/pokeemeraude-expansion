@@ -1,69 +1,66 @@
-# Instructions for macOS
-1. If the Xcode Command Line Tools are not installed, download the tools [here](https://developer.apple.com/xcode/resources/), open your Terminal, and run the following command:
+# Instructions d'installation pour MacOS
+1. Si l'outil de ligne de commande Xcode n'est pas installé, téléchargez l'outil [ici](https://developer.apple.com/xcode/resources/), ouvrez votre terminal et exécutez la commande suivante:
 
-    ```bash
-    xcode-select --install
-    ```
+```bash
+xcode-select --install
+```
 
-2.  - If libpng is **not installed**, then go to [Installing libpng (macOS)](#installing-libpng-macos).
-    - If pkg-config is **not installed**, then go to [Installing pkg-config (macos)](#installing-pkg-config-macos).
-    - If devkitARM is **not installed**, then go to [Installing devkitARM (macOS)](#installing-devkitarm-macos).
-    - Otherwise, **open the Terminal** and go to [Choosing where to store pokeemerald-expansion (macOS)](#choosing-where-to-store-pokeemerald-expansion-macos)
+2.  - Si libpng **n'est pas installé**, alors allez à l'[Installation de libpng (macOS)](#installation-de-libpng-macos).
+    - Si pkg-config **n'est pas installé**, alors allez à l'[Installation de pkg-config (macOS)](#installation-de-pkg-config-macos).
+    - Si devkitARM **n'est pas installé**, alors allez à l'[Installation de devkitARM (macOS)](#installation-de-devkitarm-macos).
 
-3. **Optional: To run tests**, if the homebrew environment is not installed, install the package manager using [this reference](https://brew.sh). Open your terminal and run the following commands:
+3. **Optionnel: Pour exécuter les tests**, si l'environnement homebrew n'est pas installé, installez le gestionnaire de paquets en utilisant [cette référence](https://brew.sh). Ouvrez votre terminal et exécutez les commandes suivantes:
 
-    ```bash
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    brew install coreutils
-    ```
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install coreutils
+```
 
-4. **Optional: To run tests via Rosetta**
-    - You probably don't want to do this as it's much slower. Most users can use native tools, but some may have other reasons to use this setup such as working with Intel-only custom tooling.
-    - You will need an Intel-compatible homebrew installation. Understanding how to get one can be found [here](https://github.com/Homebrew/brew/issues/9173#issuecomment-729206868).
-    - Install `coreutils` like in step 3, but using your Intel-compatible installation of homebrew.
+4. **Optionnel: Pour exécuter les tests via Rosetta**
+    - Vous ne voudrez probablement pas faire cela car c'est beaucoup plus lent. La plupart des utilisateurs peuvent utiliser les outils natifs, mais certains peuvent avoir d'autres raisons d'utiliser ce setup comme le travail avec des outils personnalisés uniquement pour Intel.
+    - Vous aurez besoin d'une installation homebrew compatible Intel. Comprendre comment en obtenir une peut être trouvé [ici](https://github.com/Homebrew/brew/issues/9173#issuecomment-729206868).
+    - Installez `coreutils` comme à l'étape 3, mais en utilisant votre installation homebrew compatible Intel.
 
-### Installing libpng (macOS)
+### Installation de libpng (macOS)
 <details>
-    <summary><i>Note for advanced users...</i></summary>
+    <summary><i>Note pour les utilisateurs expérimentés...</i></summary>
 
->   This guide installs libpng via Homebrew as it is the easiest method, however advanced users can install libpng through other means if they so desire.
+>   Ce guide installe libpng via Homebrew car c'est la méthode la plus simple, mais les utilisateurs expérimentés peuvent installer libpng par d'autres moyens s'ils le souhaitent.
 </details>
 
-1. Open the Terminal.
-2. If Homebrew is not installed, then install [Homebrew](https://brew.sh/) by following the instructions on the website.
-3. Run the following command to install libpng.
+1. Ouvrez le Terminal.
+2. Si Homebrew n'est pas installé, installez [Homebrew](https://brew.sh/) en suivant les instructions sur le site Web.
+3. Exécutez la commande suivante pour installer libpng.
 
     ```bash
     brew install libpng
     ```
-    libpng is now installed.
+    libpng est maintenant installé.
 
-    Continue to [Installing pkg-config (macOS)](#installing-pkg-config-macos) if **pkg-config is not installed**. Otherwise, continue to [Installing devkitARM (macOS)](#installing-devkitarm-macos) if **devkitARM is not installed**.
+    Continuez vers l'[Installation de pkg-config (macOS)](#installation-de-pkg-config-macos) si **pkg-config n'est pas installé**. Sinon, continuez vers l'[Installation de devkitARM (macOS)](#installation-de-devkitarm-macos) si **devkitARM n'est pas installé**.
 
-    If both pkg-config and devkitARM are already installed, go to [Choosing where to store pokeemerald-expansion (macOS)](#choosing-where-to-store-pokeemerald-expansion-macos).
-
-### Installing pkg-config (macOS)
+### Installation de pkg-config (macOS)
 <details>
-    <summary><i>Note for advanced users...</i></summary>
+    <summary><i>Note pour les utilisateurs expérimentés...</i></summary>
 
->   This guide installs pkg-config via Homebrew as it is the easiest method, however advanced users can install pkg-config through other means if they so desire.
+>   Ce guide installe pkg-config via Homebrew car c'est la méthode la plus simple, mais les utilisateurs expérimentés peuvent installer pkg-config par d'autres moyens s'ils le souhaitent.
 </details>
 
-1. Open the Terminal.
-2. If Homebrew is not installed, then install [Homebrew](https://brew.sh/) by following the instructions on the website.
-3. Run the following command to install libpng.
+1. Ouvrez le Terminal.
+2. Si Homebrew n'est pas installé, installez [Homebrew](https://brew.sh/) en suivant les instructions sur le site Web.
+3. Exécutez la commande suivante pour installer pkg-config.
 
     ```bash
     brew install pkg-config
     ```
-    pkg-config is now installed.
+    pkg-config est maintenant installé.
 
-    Continue to [Installing devkitARM (macOS)](#installing-devkitarm-macos) if **devkitARM is not installed**, otherwise, go to [Choosing where to store pokeemerald-expansion (macOS)](#choosing-where-to-store-pokeemerald-expansion-macos).
+    Continuez vers l'[Installation de devkitARM (macOS)](#installation-de-devkitarm-macos) si **devkitARM n'est pas installé**. Sinon, continuez vers l'[Installation de Python (macOS)](#installation-de-python-macos) si **Python n'est pas installé**.
 
-### Installing devkitARM (macOS)
-1. Download the `devkitpro-pacman-installer.pkg` package from [here](https://github.com/devkitPro/pacman/releases).
-2. Open the package to install devkitPro pacman.
-3. In the Terminal, run the following commands to install devkitARM:
+### Installation de devkitARM (macOS)
+1. Téléchargez le paquet `devkitpro-pacman-installer.pkg` depuis [ici](https://github.com/devkitPro/pacman/releases).
+2. Ouvrez le paquet pour installer devkitPro pacman.
+3. Dans le Terminal, exécutez les commandes suivantes pour installer devkitARM:
 
     ```bash
     sudo dkp-pacman -Sy
@@ -71,9 +68,9 @@
     sudo dkp-pacman -S devkitarm-rules
     ```
 
-    The command with gba-dev will ask for the selection of packages to install. Just press Enter to install all of them, followed by entering Y to proceed with the installation.
+    La commande avec gba-dev vous demandera de sélectionner les paquets à installer. Appuyez simplement sur Entrée pour installer tous ceux-ci, suivi de Y pour procéder à l'installation.
 
-4. After the tools are installed, devkitARM must now be made accessible from anywhere by the system. To do so, run the following commands:
+4. Après l'installation des outils, devkitARM doit maintenant être accessible depuis n'importe où par le système. Pour ce faire, exécutez les commandes suivantes:
 
     ```bash
     export DEVKITPRO=/opt/devkitpro
@@ -83,9 +80,9 @@
 
     echo "if [ -f ~/.zshrc ]; then . ~/.zshrc; fi" >> ~/.zprofile
     ```
-    *Note: Starting with macOS 10.15, the default Unix shell is now zsh. If you migrated from an older version of macOS, you might still be using bash. You can check my running `echo $0` in the terminal.*
+    *Note: Depuis macOS 10.15, le shell Unix par défaut est maintenant zsh. Si vous avez migré d'une version plus ancienne de macOS, vous utilisez peut-être encore bash. Vous pouvez vérifier en exécutant `echo $0` dans le terminal.*
     <details>
-        <summary><i>If your terminal is using bash instead of zsh...</i></summary>
+        <summary><i>Si votre terminal utilise bash au lieu de zsh...</i></summary>
 
     ```bash
     export DEVKITPRO=/opt/devkitpro
@@ -97,9 +94,9 @@
     ```
     </details>
 
-### Installing Python (macOS)
-1. Download the latest Python package from [here](https://www.python.org/downloads/).
-2. Open the package to install Python.
+### Installation de Python (macOS)
+1. Téléchargez le dernier paquet Python depuis [ici](https://www.python.org/downloads/).
+2. Ouvrez le paquet pour installer Python.
 
-Python is now installed.
+Python est maintenant installé.
 

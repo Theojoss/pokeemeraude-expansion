@@ -1,66 +1,68 @@
-# Windows WSL instructions
-## Choosing WSL version
-If you must store your project on the Windows file system (under /mnt/c/), you should use WSL1.
-If you want the best performance and least amount of issues with Windows interfering with compiling the project, use WSL2 and store the project on the Linux file system (under ~/).
-## Installing WSL
-1. Open [Windows Powershell **as Administrator**](https://i.imgur.com/QKmVbP9.png), and run the following commands (Right Click or Shift+Insert is paste in the Powershell).
+# Instructions d'installation Windows pour WSL
+## Choisir la version de WSL
+Si vous devez stocker votre projet sur le système de fichiers Windows (sous /mnt/c/), vous devriez utiliser WSL1.
+Si vous voulez les meilleures performances et le moins de problèmes avec Windows interférant avec la compilation du projet, utilisez WSL2 et stockez le projet sur le système de fichiers Linux (sous ~/).
 
-    ```powershell
-	wsl --install -d Ubuntu --enable-wsl1
-    ```
+## Installer WSL
+1. Ouvrez [Windows Powershell **en tant qu'administrateur**](https://i.imgur.com/QKmVbP9.png), et exécutez les commandes suivantes (clic droit ou Shift+Insert est coller dans Powershell).
 
-2. Once the process finishes, restart your machine.
+```powershell
+wsl --install -d Ubuntu --enable-wsl1
+```
+
+2. Quand le processus est terminé, redémarrez votre machine.
 
 ### WSL1
-3. Open Windows Powershell **as Administrator** again (after restarting), and run the following command to configure Ubuntu to use WSL1.
+3. Ouvrez Windows Powershell **en tant qu'administrateur** encore une fois (after le redémarrage), et exécutez la commande suivante pour qu'Ubuntu utilise WSL1.
 
-    ```powershell
-    wsl --set-version Ubuntu 1
-    ```
+```powershell
+wsl --set-version Ubuntu 1
+```
+
 ### WSL2
-3. Open Windows Powershell **as Administrator** again (after restarting), and run the following command to configure Ubuntu to use WSL2.
+3. Ouvrez Windows Powershell **en tant qu'administrateur** encore une fois (after le redémarrage), et exécutez la commande suivante pour qu'Ubuntu utilise WSL2.
 
-    ```powershell
-    wsl --set-version Ubuntu 2
-    ```
+```powershell
+wsl --set-version Ubuntu 2
+```
 
-    <details>
-        <summary><i>Note...</i></summary>
+<details>
+    <summary><i>Note...</i></summary>
 
-    >   WSL may open automatically after restarting, but you can ignore it for now.
-    </details>
+>   WSL peut s'ouvrir automatiquement après le redémarrage, mais vous pouvez l'ignorer pour l'instant.
+</details>
 
-## Installing dependencies
-Some tips before proceeding:
-- In WSL, Copy and Paste is either done via
-    - **right-click** (selection + right click to Copy, right click with no selection to Paste)
-    - **Ctrl+Shift+C/Ctrl+Shift+V** (enabled by right-clicking the title bar, going to Properties, then checking the checkbox next to "Use Ctrl+Shift+C/V as Copy/Paste").
-- Some of the commands that you'll run will ask for your WSL password and/or confirmation to perform the stated action. This is to be expected, just enter your WSL password and/or the yes action when necessary.
+## Installer les dépendances
+Quelques conseils avant de continuer:
+- Dans WSL, vous pouvez **copier/coller** en utilisant:
+    - **clic droit** (sélection + clic droit pour copier, clic droit sans sélection pour coller)
+    - **Ctrl+Shift+C/Ctrl+Shift+V** (activé en cliquant avec le bouton droit sur la barre de titre, en allant dans Propriétés, puis en cochant la case à côté de "Utiliser Ctrl+Shift+C/V comme Copier/Coller").
+- Certaines des commandes que vous exécuterez demanderont votre mot de passe WSL et/ou une confirmation pour effectuer l'action indiquée. C'est à prévoir, il suffit d'entrer votre mot de passe WSL et/ou l'action oui (`yes`) si nécessaire.
 
-1. Open **Ubuntu** (e.g. using Search).
-2. WSL/Ubuntu will set up its own installation when it runs for the first time. Once WSL/Ubuntu finishes installing, it will ask for a username and password (to be input in).
-    <details>
-        <summary><i>Note...</i></summary>
+1. Ouvrez **Ubuntu** (par exemple en utilisant le menu Démarrer).
+2. WSL/Ubuntu configurera sa propre installation lorsqu'il s'exécutera pour la première fois. Une fois que WSL/Ubuntu a terminé l'installation, il vous demandera un nom d'utilisateur et un mot de passe (à saisir).
+<details>
+    <summary><i>Note...</i></summary>
 
-    >   When typing in the password, there will be no visible response, but the terminal will still read in input.
-    </details>
+>   Quand vous saisissez le mot de passe, il n'y aura pas de réponse visible, mais le terminal lira toujours l'entrée.
+</details>
 
-3. Update WSL/Ubuntu before continuing. Do this by running the following command. These commands will likely take a long time to finish:
+3. Mettez à jour WSL/Ubuntu avant de continuer. Pour ce faire, exécutez les commandes suivantes. Ces commandes prendront probablement beaucoup de temps à se terminer:
 
-    ```bash
-    sudo apt update && sudo apt upgrade
-    ```
+```bash
+sudo apt update && sudo apt upgrade
+```
 
-4. Certain packages are required to build pokeemerald Expansion. Install these packages by running the following command:
+4. Certains paquets sont requis pour compiler pokeemeraude-expansion. Installez ces paquets en exécutant la commande suivante:
 
-    ```bash
-    sudo apt install build-essential binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi git libpng-dev python3
-    ```
+```bash
+sudo apt install build-essential binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi git libpng-dev python3
+```
 
-## Choosing a location to store pokeemerald Expansion, WSL1
-WSL has its own file system that's not natively accessible from Windows, but Windows files *are* accessible from WSL. So you're going to want to store pokeemerald Expansion within Windows.
+## Choisir un emplacement pour stocker pokeemeraude-expansion, WSL1
+WSL possède son propre système de fichiers qui n'est pas accessible nativement depuis Windows, mais les fichiers Windows *sont* accessibles depuis WSL. Ainsi, vous allez vouloir stocker pokeemeraude-expansion dans Windows. 
 
-For example, say you want to store pokeemerald Expansion in **C:\Users\\_\<user>_\Desktop\decomps**. First, ensure that the folder already exists. Then, enter this command to **change directory** to said folder, where *\<user>* is your **Windows** username:
+Par exemple, disons que vous voulez stocker pokeemeraude-expansion dans **C:\Users\\_\<user>_\Desktop\decomps**. Tout d'abord, assurez-vous que le dossier existe déjà. Ensuite, entrez cette commande pour **changer de répertoire** vers ledit dossier, où *\<user>* est votre nom d'utilisateur **Windows**:
 
 ```bash
 cd /mnt/c/Users/<user>/Desktop/decomps
@@ -69,16 +71,16 @@ cd /mnt/c/Users/<user>/Desktop/decomps
 <details>
     <summary><i>Notes...</i></summary>
 
->   Note 1: The Windows C:\ drive is called /mnt/c/ in WSL.
->   Note 2: If the path has spaces, then the path must be wrapped with quotations, e.g. `cd "/mnt/c/users/<user>/Desktop/decomp folder"`.
->   Note 3: Windows path names are case-insensitive so adhering to capitalization isn't needed
+>   Note 1: Le disque C:\ de Windows s'appelle /mnt/c/ dans WSL.
+>   Note 2: Si le chemin contient des espaces, le chemin doit être entouré de guillemets, par exemple `cd "/mnt/c/users/<user>/Desktop/decomp folder"`.
+>   Note 3: Les noms de chemin Windows ne sont pas sensibles à la casse, donc respecter la capitalisation n'est pas nécessaire.
 </details>
 
 ## Choosing a location to store pokeemerald Expansion, WSL2
-WSL has its own file system that's not natively accessible from Windows, but Windows files *are* accessible from WSL. But accessing files on the Windows file system with WSL2 is very slow, so you're going to want to store pokeemerald Expansion within WSL2.
-To access the files on the WSL filesystem from Windowsm, you have to open the WSL filesystem as a network attached storage in the file explorer, it should be at the bottom of the left sidebar as "Ubuntu".
+WSL possède son propre système de fichiers qui n'est pas accessible nativement depuis Windows, mais les fichiers Windows *sont* accessibles depuis WSL. Mais accéder aux fichiers sur le système de fichiers Windows avec WSL2 est très lent, vous allez donc vouloir stocker pokeemeraude-expansion dans WSL2.
+Pour accéder aux fichiers sur le système de fichiers WSL depuis Windows, vous devez ouvrir le système de fichiers WSL en tant que stockage en réseau dans l'explorateur de fichiers, il devrait se trouver en bas de la barre latérale gauche sous "Ubuntu".
 
-Thus you're going to make sure that you're in the WSL filesystem, then create the folder for decomps if it doesn't already exist, then move into that folder.
+Maintenant, vous allez vous assurer que vous êtes dans le système de fichiers WSL, puis créer le dossier pour les décomps s'il n'existe pas déjà, puis entrer dans ce dossier. Pour ce faire, exécutez les commandes suivantes:
 
 ```bash
 cd ~/
