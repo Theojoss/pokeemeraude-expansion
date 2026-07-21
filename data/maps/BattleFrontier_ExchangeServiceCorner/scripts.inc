@@ -275,7 +275,9 @@ BattleFrontier_ExchangeServiceCorner_EventScript_ChooseHoldItem::
 	case 6, BattleFrontier_ExchangeServiceCorner_EventScript_KingsRock
 	case 7, BattleFrontier_ExchangeServiceCorner_EventScript_FocusBand
 	case 8, BattleFrontier_ExchangeServiceCorner_EventScript_ScopeLens
-	case 9, BattleFrontier_ExchangeServiceCorner_EventScript_ClerkGoodbye
+	case 9, BattleFrontier_ExchangeServiceCorner_EventScript_AbilityCapsule
+	case 10, BattleFrontier_ExchangeServiceCorner_EventScript_AbilityPatch
+	case 11, BattleFrontier_ExchangeServiceCorner_EventScript_ClerkGoodbye
 	case MULTI_B_PRESSED, BattleFrontier_ExchangeServiceCorner_EventScript_ClerkGoodbye
 	end
 
@@ -320,6 +322,14 @@ BattleFrontier_ExchangeServiceCorner_EventScript_FocusBand::
 
 BattleFrontier_ExchangeServiceCorner_EventScript_ScopeLens::
 	setitemandprice ITEM_SCOPE_LENS, 64
+	goto BattleFrontier_ExchangeServiceCorner_EventScript_PurchaseHoldItem
+
+BattleFrontier_ExchangeServiceCorner_EventScript_AbilityCapsule::
+	setitemandprice ITEM_ABILITY_CAPSULE, 100
+	goto BattleFrontier_ExchangeServiceCorner_EventScript_PurchaseHoldItem
+
+BattleFrontier_ExchangeServiceCorner_EventScript_AbilityPatch::
+	setitemandprice ITEM_ABILITY_PATCH, 200
 	goto BattleFrontier_ExchangeServiceCorner_EventScript_PurchaseHoldItem
 
 BattleFrontier_ExchangeServiceCorner_EventScript_Man::
@@ -512,3 +522,11 @@ BattleFrontier_ExchangeServiceCorner_Text_FocusBandDesc::
 BattleFrontier_ExchangeServiceCorner_Text_ScopeLensDesc::
 	.string "Objet tenu pour monter le taux de\n"
 	.string "critiques.$"
+
+BattleFrontier_ExchangeServiceCorner_Text_AbilityCapsuleDesc::
+	.string "Permet de basculer entre les deux\n"
+	.string "talents normaux d'un POKéMON.$"
+
+BattleFrontier_ExchangeServiceCorner_Text_AbilityPatchDesc::
+	.string "Remplace le talent normal d'un\n"
+	.string "POKéMON par son talent caché.$"

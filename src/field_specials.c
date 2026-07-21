@@ -2431,7 +2431,7 @@ void ShowScrollableMultichoice(void)
         break;
     case SCROLL_MULTI_BF_EXCHANGE_CORNER_HOLD_ITEM_VENDOR:
         task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
-        task->tNumItems = 10;
+        task->tNumItems = 12;
         task->tLeft = 14;
         task->tTop = 1;
         task->tWidth = 15;
@@ -2595,6 +2595,8 @@ static const u8 *const sScrollableMultichoiceOptions[][MAX_SCROLL_MULTI_LENGTH] 
         COMPOUND_STRING("ROCHE ROYALE{CLEAR_TO 94}64{Pco}"),
         COMPOUND_STRING("BANDEAU{CLEAR_TO 94}64{Pco}"),
         COMPOUND_STRING("LENTILSCOPE{CLEAR_TO 94}64{Pco}"),
+        COMPOUND_STRING("PILULE TALENT{CLEAR_TO 96}100{Pco}"),
+        COMPOUND_STRING("PATCH TALENT{CLEAR_TO 96}200{Pco}"),
         gText_Exit
     },
     [SCROLL_MULTI_BERRY_POWDER_VENDOR] =
