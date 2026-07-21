@@ -60,6 +60,58 @@ static const u8* const sTrainerSlides[DIFFICULTY_COUNT][TRAINER_PARTNER(PARTNER_
 {
     [DIFFICULTY_NORMAL] =
     {
+        [TRAINER_ARCHIE] =
+        {
+            [TRAINER_SLIDE_MEGA_EVOLUTION] = COMPOUND_STRING("ARTHUR: Sharpedo, tu portes\ndésormais toute la force des\nocéans! Montre-lui ta puissance!{PAUSE_UNTIL_PRESS}"),
+        },
+        [TRAINER_MAXIE_MAGMA_HIDEOUT] =
+        {
+            [TRAINER_SLIDE_MEGA_EVOLUTION] = COMPOUND_STRING("MAX: Camérupt, la terre a répondu\nà ton appel! Fais-lui sentir sa\ncolère!{PAUSE_UNTIL_PRESS}"),
+        },
+        [TRAINER_MAXIE_MOSSDEEP] =
+        {
+            [TRAINER_SLIDE_MEGA_EVOLUTION] = COMPOUND_STRING("MAX: Camérupt, montre à ces\nintrus la volonté de la Team\nMagma!{PAUSE_UNTIL_PRESS}"),
+        },
+        [TRAINER_SIDNEY] =
+        {
+            [TRAINER_SLIDE_MEGA_EVOLUTION] = COMPOUND_STRING("DAMIEN: Absol, voilà un combat\ncomme je les aime… Montre-lui\ntoute ton intensité!{PAUSE_UNTIL_PRESS}"),
+        },
+        [TRAINER_PHOEBE] =
+        {
+            [TRAINER_SLIDE_MEGA_EVOLUTION] = COMPOUND_STRING("SPECTRA: Ténéfix, les esprits du\nMont Pyre veillent sur nous…\nDévoile ta vraie nature!{PAUSE_UNTIL_PRESS}"),
+        },
+        [TRAINER_GLACIA] =
+        {
+            [TRAINER_SLIDE_MEGA_EVOLUTION] = COMPOUND_STRING("GLACIA: Oniglali, ton pouvoir\nglacial vient de s'éveiller!\nMontre-lui le froid absolu!{PAUSE_UNTIL_PRESS}"),
+        },
+        [TRAINER_DRAKE] =
+        {
+            [TRAINER_SLIDE_MEGA_EVOLUTION] = COMPOUND_STRING("ARAGON: Drattak, notre lien vient\nde se sceller! Montre-lui la\nvraie puissance d'un Dragon!{PAUSE_UNTIL_PRESS}"),
+        },
+        [TRAINER_WALLACE] =
+        {
+            [TRAINER_SLIDE_MEGA_EVOLUTION] = COMPOUND_STRING("MARC: Léviator, quelle prestance!\nOffrons-lui un combat digne d'un\nChampion!{PAUSE_UNTIL_PRESS}"),
+        },
+        [TRAINER_WALLY_VR_1] =
+        {
+            [TRAINER_SLIDE_MEGA_EVOLUTION] = COMPOUND_STRING("TIMMY: Gardevoir, on a fait tout\nce chemin ensemble! Montre-lui\nnotre force!{PAUSE_UNTIL_PRESS}"),
+        },
+        [TRAINER_WALLY_VR_2] =
+        {
+            [TRAINER_SLIDE_MEGA_EVOLUTION] = COMPOUND_STRING("TIMMY: Gardevoir, on a fait tout\nce chemin ensemble! Montre-lui\nnotre force!{PAUSE_UNTIL_PRESS}"),
+        },
+        [TRAINER_WALLY_VR_3] =
+        {
+            [TRAINER_SLIDE_MEGA_EVOLUTION] = COMPOUND_STRING("TIMMY: Gardevoir, on a fait tout\nce chemin ensemble! Montre-lui\nnotre force!{PAUSE_UNTIL_PRESS}"),
+        },
+        [TRAINER_WALLY_VR_4] =
+        {
+            [TRAINER_SLIDE_MEGA_EVOLUTION] = COMPOUND_STRING("TIMMY: Gardevoir, on a fait tout\nce chemin ensemble! Montre-lui\nnotre force!{PAUSE_UNTIL_PRESS}"),
+        },
+        [TRAINER_WALLY_VR_5] =
+        {
+            [TRAINER_SLIDE_MEGA_EVOLUTION] = COMPOUND_STRING("TIMMY: Gardevoir, on a fait tout\nce chemin ensemble! Montre-lui\nnotre force!{PAUSE_UNTIL_PRESS}"),
+        },
     },
 };
 

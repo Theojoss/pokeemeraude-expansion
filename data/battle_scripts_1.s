@@ -3894,7 +3894,6 @@ BattleScript_FocusPunchSetUp::
 
 BattleScript_MegaEvolution::
 	flushtextbox
-	trytrainerslidemegaevolutionmsg
 	printstring STRINGID_MEGAEVOREACTING
 BattleScript_MegaEvolutionAfterString:
 	waitmessage B_WAIT_TIME_LONG
@@ -3904,12 +3903,12 @@ BattleScript_MegaEvolutionAfterString:
 	handleformchange BS_SCRIPTING, 1
 	printstring STRINGID_MEGAEVOEVOLVED
 	waitmessage B_WAIT_TIME_LONG
+	trytrainerslidemegaevolutionmsg
 	switchinabilities BS_SCRIPTING
 	end3
 
 BattleScript_WishMegaEvolution::
 	flushtextbox
-	trytrainerslidemegaevolutionmsg
 	printstring STRINGID_FERVENTWISHREACHED
 	goto BattleScript_MegaEvolutionAfterString
 
