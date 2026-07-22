@@ -1806,14 +1806,14 @@ void UpdatePalettesWithTime(u32 palettes)
     palettes &= PALETTES_MAP | PALETTES_OBJECTS; // Don't blend UI pals
     if (!palettes)
         return;
-    TimeMixPalettes(palettes, gPlttBufferUnfaded, gPlttBufferFaded, &gTimeBlend.startBlend, &gTimeBlend.endBlend, gTimeBlend.weight);
+    TimeMixPalettes(palettes, gPlttBufferUnfaded, gPlttBufferFaded, &gTimeBlend.startBlend, &gTimeBlend.endBlend, gTimeBlend.weight, 256);
 }
 
 u8 UpdateSpritePaletteWithTime(u8 paletteNum)
 {
     if (MapHasNaturalLight(gMapHeader.mapType)
      && !IS_BLEND_IMMUNE_TAG(GetSpritePaletteTagByPaletteNum(paletteNum)))
-        TimeMixPalettes(1, &gPlttBufferUnfaded[OBJ_PLTT_ID(paletteNum)], &gPlttBufferFaded[OBJ_PLTT_ID(paletteNum)], &gTimeBlend.startBlend, &gTimeBlend.endBlend, gTimeBlend.weight);
+        TimeMixPalettes(1, &gPlttBufferUnfaded[OBJ_PLTT_ID(paletteNum)], &gPlttBufferFaded[OBJ_PLTT_ID(paletteNum)], &gTimeBlend.startBlend, &gTimeBlend.endBlend, gTimeBlend.weight, 256);
     return paletteNum;
 }
 
@@ -1831,16 +1831,13 @@ static void OverworldBasic(void)
     // Every minute if no palette fade is active, update TOD blending as needed
     if (!gPaletteFade.active && --gTimeUpdateCounter <= 0)
     {
-        struct TimeBlendSettings cachedBlend = gTimeBlend;
-        u32 *bld0 = (u32*)&cachedBlend;
-        u32 *bld1 = (u32*)&gTimeBlend;
         gTimeUpdateCounter = (SECONDS_PER_MINUTE * 60 / FakeRtc_GetSecondsRatio());
         UpdateTimeOfDay();
         FormChangeTimeUpdate();
-        if (MapHasNaturalLight(gMapHeader.mapType) &&
-           (bld0[0] != bld1[0]
-         || bld0[1] != bld1[1]
-         || bld0[2] != bld1[2]))
+        // Retried unconditionally (not just when the blend value changed) so a refresh
+        // silently skipped by ApplyWeatherColorMapIfIdle (e.g. weather mid-fade right after
+        // a warp) gets retried on the very next minute tick instead of staying stuck.
+        if (MapHasNaturalLight(gMapHeader.mapType))
         {
             ApplyWeatherColorMapIfIdle(gWeatherPtr->colorMapIndex);
         }
