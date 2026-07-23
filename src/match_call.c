@@ -7,6 +7,7 @@
 #include "data.h"
 #include "event_data.h"
 #include "event_object_movement.h"
+#include "fake_rtc.h"
 #include "field_player_avatar.h"
 #include "main.h"
 #include "match_call.h"
@@ -1043,9 +1044,17 @@ static u32 GetCurrentTotalMinutes(struct Time *time)
 static bool32 UpdateMatchCallMinutesCounter(void)
 {
     int curMinutes;
+    int minuteThreshold = 9;
+
     RtcCalcLocalTime();
     curMinutes = GetCurrentTotalMinutes(&gLocalTime);
-    if (sMatchCallState.minutes > curMinutes || curMinutes - sMatchCallState.minutes > 9)
+
+    // The fake RTC can advance faster than real time (OW_ALTERED_TIME_RATIO). Scale the
+    // threshold so match calls stay paced by real-world time instead of firing more often.
+    if (OW_USE_FAKE_RTC)
+        minuteThreshold *= FakeRtc_GetSecondsRatio();
+
+    if (sMatchCallState.minutes > curMinutes || curMinutes - sMatchCallState.minutes > minuteThreshold)
     {
         sMatchCallState.minutes = curMinutes;
         return TRUE;
