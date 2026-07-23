@@ -31,6 +31,7 @@
 #include "party_menu.h"
 #include "pokedex.h"
 #include "pokenav.h"
+#include "rtc.h"
 #include "safari_zone.h"
 #include "save.h"
 #include "scanline_effect.h"
@@ -85,6 +86,7 @@ COMMON_DATA bool8 (*gMenuCallback)(void) = NULL;
 
 // EWRAM
 EWRAM_DATA static u8 sSafariBallsWindowId = 0;
+EWRAM_DATA static u8 sStartClockWindowId = 0;
 EWRAM_DATA static u8 sBattlePyramidFloorWindowId = 0;
 EWRAM_DATA static u8 sStartMenuCursorPos = 0;
 EWRAM_DATA static u8 sNumStartMenuActions = 0;
@@ -148,11 +150,40 @@ static bool8 FieldCB_ReturnToFieldStartMenu(void);
 static const struct WindowTemplate sWindowTemplate_SafariBalls = {
     .bg = 0,
     .tilemapLeft = 1,
-    .tilemapTop = 1,
+    .tilemapTop = 5,
     .width = 9,
     .height = 4,
     .paletteNum = 15,
     .baseBlock = 0x8
+};
+
+static const struct WindowTemplate sWindowTemplate_StartClock = {
+    .bg = 0,
+    .tilemapLeft = 1,
+    .tilemapTop = 1,
+    .width = 13,
+    .height = 2,
+    .paletteNum = 15,
+    .baseBlock = 0x38
+};
+
+static const u8 sText_Dimanche[] = _("Dimanche");
+static const u8 sText_Lundi[] = _("Lundi");
+static const u8 sText_Mardi[] = _("Mardi");
+static const u8 sText_Mercredi[] = _("Mercredi");
+static const u8 sText_Jeudi[] = _("Jeudi");
+static const u8 sText_Vendredi[] = _("Vendredi");
+static const u8 sText_Samedi[] = _("Samedi");
+
+static const u8 *const sDayNameStringsTable[WEEKDAY_COUNT] =
+{
+    [WEEKDAY_SUN] = sText_Dimanche,
+    [WEEKDAY_MON] = sText_Lundi,
+    [WEEKDAY_TUE] = sText_Mardi,
+    [WEEKDAY_WED] = sText_Mercredi,
+    [WEEKDAY_THU] = sText_Jeudi,
+    [WEEKDAY_FRI] = sText_Vendredi,
+    [WEEKDAY_SAT] = sText_Samedi,
 };
 
 static const u8 *const sPyramidFloorNames[FRONTIER_STAGES_PER_CHALLENGE + 1] =
@@ -170,7 +201,7 @@ static const u8 *const sPyramidFloorNames[FRONTIER_STAGES_PER_CHALLENGE + 1] =
 static const struct WindowTemplate sWindowTemplate_PyramidFloor = {
     .bg = 0,
     .tilemapLeft = 1,
-    .tilemapTop = 1,
+    .tilemapTop = 5,
     .width = 10,
     .height = 4,
     .paletteNum = 15,
@@ -180,7 +211,7 @@ static const struct WindowTemplate sWindowTemplate_PyramidFloor = {
 static const struct WindowTemplate sWindowTemplate_PyramidPeak = {
     .bg = 0,
     .tilemapLeft = 1,
-    .tilemapTop = 1,
+    .tilemapTop = 5,
     .width = 12,
     .height = 4,
     .paletteNum = 15,
@@ -258,6 +289,8 @@ static void BuildBattlePyramidStartMenu(void);
 static void BuildMultiPartnerRoomStartMenu(void);
 static void ShowSafariBallsWindow(void);
 static void ShowPyramidFloorWindow(void);
+static void ShowTimeWindow(void);
+static void RefreshStartClockWindow(void);
 static void RemoveExtraStartMenuWindows(void);
 static bool32 PrintStartMenuActions(s8 *pIndex, u32 count);
 static bool32 InitStartMenuStep(void);
@@ -478,6 +511,45 @@ static void ShowPyramidFloorWindow(void)
     CopyWindowToVram(sBattlePyramidFloorWindowId, COPYWIN_GFX);
 }
 
+#define CLOCK_WINDOW_WIDTH 104
+
+// Prints the current weekday and 24-hour time into the already-created clock window.
+static void PrintClockText(void)
+{
+    u16 weekday;
+
+    RtcCalcLocalTime();
+
+    // Avoid GetDayOfWeek()/ConvertTimeToDateTime(): DateTime_AddDays loops "days" times, and
+    // gLocalTime.days (s16) going negative turns into a near-infinite loop once cast to u32.
+    weekday = ((u16)gLocalTime.days + WEEKDAY_SAT) % WEEKDAY_COUNT;
+
+    FillWindowPixelBuffer(sStartClockWindowId, PIXEL_FILL(1));
+
+    StringExpandPlaceholders(gStringVar4, sDayNameStringsTable[weekday]);
+    AddTextPrinterParameterized(sStartClockWindowId, FONT_NORMAL, gStringVar4, 0, 1, TEXT_SKIP_DRAW, NULL);
+
+    FormatDecimalTimeWithoutSeconds(gStringVar4, gLocalTime.hours, gLocalTime.minutes, TRUE);
+    AddTextPrinterParameterized(sStartClockWindowId, FONT_NORMAL, gStringVar4, GetStringRightAlignXOffset(FONT_NORMAL, gStringVar4, CLOCK_WINDOW_WIDTH), 1, TEXT_SKIP_DRAW, NULL);
+
+    CopyWindowToVram(sStartClockWindowId, COPYWIN_GFX);
+}
+
+static void ShowTimeWindow(void)
+{
+    sStartClockWindowId = AddWindow(&sWindowTemplate_StartClock);
+    PutWindowTilemap(sStartClockWindowId);
+    DrawStdWindowFrame(sStartClockWindowId, FALSE);
+    PrintClockText();
+}
+
+// Refreshes the clock text in place (no window re-creation), so the safari balls / pyramid
+// floor windows aren't wiped and the window pool isn't churned every frame the menu is idle.
+static void RefreshStartClockWindow(void)
+{
+    PrintClockText();
+}
+
 static void RemoveExtraStartMenuWindows(void)
 {
     if (GetSafariZoneFlag())
@@ -491,6 +563,9 @@ static void RemoveExtraStartMenuWindows(void)
         ClearStdWindowAndFrameToTransparent(sBattlePyramidFloorWindowId, FALSE);
         RemoveWindow(sBattlePyramidFloorWindowId);
     }
+
+    ClearStdWindowAndFrameToTransparent(sStartClockWindowId, FALSE);
+    RemoveWindow(sStartClockWindowId);
 }
 
 static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
@@ -551,10 +626,14 @@ static bool32 InitStartMenuStep(void)
         sInitStartMenuData[0]++;
         break;
     case 4:
+        ShowTimeWindow();
+        sInitStartMenuData[0]++;
+        break;
+    case 5:
         if (PrintStartMenuActions(&sInitStartMenuData[1], 2))
             sInitStartMenuData[0]++;
         break;
-    case 5:
+    case 6:
         sStartMenuCursorPos = InitMenuNormal(GetStartMenuWindowId(), FONT_NORMAL, 0, 9, GetStartMenuRowHeight(), sNumStartMenuActions, sStartMenuCursorPos);
         CopyWindowToVram(GetStartMenuWindowId(), COPYWIN_MAP);
         return TRUE;
@@ -684,6 +763,7 @@ static bool8 HandleStartMenuInput(void)
         return TRUE;
     }
 
+    RefreshStartClockWindow();
     return FALSE;
 }
 
