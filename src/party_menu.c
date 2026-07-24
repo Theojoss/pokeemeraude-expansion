@@ -2970,6 +2970,21 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
         }
     }
 
+    // Some field moves (Surf, Flash, Dive) can also be used by a mon that
+    // doesn't currently know them, as long as its species is capable of
+    // learning the move and the player has already received the HM.
+    for (j = 0; j != FIELD_MOVES_COUNT; j++)
+    {
+        enum Move move = FieldMove_GetMoveId(j);
+        u16 receivedFlag = FieldMove_GetReceivedFlag(j);
+
+        if (FieldMove_HasMenuCapabilityCheck(j)
+         && !MonKnowsMove(&mons[slotId], move)
+         && receivedFlag != 0 && FlagGet(receivedFlag)
+         && CanLearnTeachableMove(GetMonData(&mons[slotId], MON_DATA_SPECIES), move))
+            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, j + MENU_FIELD_MOVES);
+    }
+
     if (!InBattlePike())
     {
         if (GetMonData(&mons[1], MON_DATA_SPECIES) != SPECIES_NONE)

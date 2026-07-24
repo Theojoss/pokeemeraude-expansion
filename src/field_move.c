@@ -4,7 +4,9 @@
 #include "fldeff.h"
 #include "fldeff_misc.h"
 #include "party_menu.h"
+#include "pokemon.h"
 #include "constants/field_move.h"
+#include "constants/flags.h"
 #include "constants/moves.h"
 #include "constants/party_menu.h"
 
@@ -111,6 +113,8 @@ const struct FieldMoveInfo gFieldMoveInfo[FIELD_MOVES_COUNT] =
         .isUnlockedFunc = IsFieldMoveUnlocked_Cut,
         .moveID = MOVE_CUT,
         .partyMsgID = PARTY_MSG_NOTHING_TO_CUT,
+        .receivedFlag = FLAG_RECEIVED_HM_CUT,
+        .overworldCapabilityCheck = TRUE,
     },
 
     [FIELD_MOVE_FLASH] =
@@ -119,6 +123,10 @@ const struct FieldMoveInfo gFieldMoveInfo[FIELD_MOVES_COUNT] =
         .isUnlockedFunc = IsFieldMoveUnlocked_Flash,
         .moveID = MOVE_FLASH,
         .partyMsgID = PARTY_MSG_CANT_USE_HERE,
+        // Flash is never triggered by an overworld A-press interaction, only
+        // from the party menu, so only the menu capability check applies.
+        .receivedFlag = FLAG_RECEIVED_HM_FLASH,
+        .menuCapabilityCheck = TRUE,
     },
 
     [FIELD_MOVE_ROCK_SMASH] =
@@ -127,6 +135,8 @@ const struct FieldMoveInfo gFieldMoveInfo[FIELD_MOVES_COUNT] =
         .isUnlockedFunc = IsFieldMoveUnlocked_RockSmash,
         .moveID = MOVE_ROCK_SMASH,
         .partyMsgID = PARTY_MSG_CANT_USE_HERE,
+        .receivedFlag = FLAG_RECEIVED_HM_ROCK_SMASH,
+        .overworldCapabilityCheck = TRUE,
     },
 
     [FIELD_MOVE_STRENGTH] =
@@ -135,6 +145,8 @@ const struct FieldMoveInfo gFieldMoveInfo[FIELD_MOVES_COUNT] =
         .isUnlockedFunc = IsFieldMoveUnlocked_Strength,
         .moveID = MOVE_STRENGTH,
         .partyMsgID = PARTY_MSG_CANT_USE_HERE,
+        .receivedFlag = FLAG_RECEIVED_HM_STRENGTH,
+        .overworldCapabilityCheck = TRUE,
     },
 
     [FIELD_MOVE_SURF] =
@@ -143,6 +155,11 @@ const struct FieldMoveInfo gFieldMoveInfo[FIELD_MOVES_COUNT] =
         .isUnlockedFunc = IsFieldMoveUnlocked_Surf,
         .moveID = MOVE_SURF,
         .partyMsgID = PARTY_MSG_CANT_SURF_HERE,
+        // Surf already has an overworld A-press trigger (facing water), so
+        // unlike Fly/Flash/Dive the party-menu action still requires actually
+        // knowing the move.
+        .receivedFlag = FLAG_RECEIVED_HM_SURF,
+        .overworldCapabilityCheck = TRUE,
     },
 
     [FIELD_MOVE_FLY] =
@@ -151,6 +168,10 @@ const struct FieldMoveInfo gFieldMoveInfo[FIELD_MOVES_COUNT] =
         .isUnlockedFunc = IsFieldMoveUnlocked_Fly,
         .moveID = MOVE_FLY,
         .partyMsgID = PARTY_MSG_CANT_USE_HERE,
+        // Fly has no overworld A-press trigger at all, so the party-menu
+        // capability check is the only way to use it without teaching it.
+        .receivedFlag = FLAG_RECEIVED_HM_FLY,
+        .menuCapabilityCheck = TRUE,
     },
 
     [FIELD_MOVE_DIVE] =
@@ -159,6 +180,12 @@ const struct FieldMoveInfo gFieldMoveInfo[FIELD_MOVES_COUNT] =
         .isUnlockedFunc = IsFieldMoveUnlocked_Dive,
         .moveID = MOVE_DIVE,
         .partyMsgID = PARTY_MSG_CANT_USE_HERE,
+        // Resurfacing uses pressedBButton rather than an A-press interaction
+        // (see TrySetupDiveEmergeScript), so the overworld trigger still needs
+        // a party mon that actually knows Dive; only the party-menu list gets
+        // the capability check.
+        .receivedFlag = FLAG_RECEIVED_HM_DIVE,
+        .menuCapabilityCheck = TRUE,
     },
 
     [FIELD_MOVE_WATERFALL] =
@@ -167,6 +194,8 @@ const struct FieldMoveInfo gFieldMoveInfo[FIELD_MOVES_COUNT] =
         .isUnlockedFunc = IsFieldMoveUnlocked_Waterfall,
         .moveID = MOVE_WATERFALL,
         .partyMsgID = PARTY_MSG_CANT_USE_HERE,
+        .receivedFlag = FLAG_RECEIVED_HM_WATERFALL,
+        .overworldCapabilityCheck = TRUE,
     },
 
     [FIELD_MOVE_TELEPORT] =
@@ -231,3 +260,35 @@ const struct FieldMoveInfo gFieldMoveInfo[FIELD_MOVES_COUNT] =
         .partyMsgID = PARTY_MSG_CANT_USE_HERE,
     },
 };
+
+// Finds the first party Pokémon that can be used for this field move on the
+// overworld. Once the associated HM has been received (receivedFlag set), any
+// party member whose species is capable of learning the move counts, even if
+// it doesn't currently know it — mirroring how HMs work in newer games where
+// carrying a compatible Pokémon is enough. Field moves without a receivedFlag
+// (and any given move before its HM has been received) still require a party
+// member to actually know the move, same as the party-menu "use move" action.
+bool32 FieldMove_TryGetPartyUser(enum FieldMove fieldMove, u8 *partyIndex, enum Species *species)
+{
+    enum Move move = FieldMove_GetMoveId(fieldMove);
+    u16 receivedFlag = FieldMove_GetReceivedFlag(fieldMove);
+    bool32 useCapabilityCheck = (gFieldMoveInfo[fieldMove].overworldCapabilityCheck && receivedFlag != 0 && FlagGet(receivedFlag));
+
+    for (u32 i = 0; i < PARTY_SIZE; i++)
+    {
+        struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][i];
+        enum Species monSpecies = GetMonData(mon, MON_DATA_SPECIES);
+
+        if (monSpecies == SPECIES_NONE)
+            break;
+        if (GetMonData(mon, MON_DATA_IS_EGG))
+            continue;
+        if (useCapabilityCheck ? CanLearnTeachableMove(monSpecies, move) : MonKnowsMove(mon, move))
+        {
+            *partyIndex = i;
+            *species = monSpecies;
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
