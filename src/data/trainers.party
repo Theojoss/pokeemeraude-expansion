@@ -16897,3 +16897,84 @@ Adamant Nature
 - Close Combat
 - Poison Jab
 - Iron Head
+
+=== TRAINER_THEOJOSS ===
+Name: THEOJOSS
+Class: Leader
+Pic: Theojoss
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer / Ace Pokemon
+
+Tropius @ Sitrus Berry
+Ability: Harvest
+Level: 80
+Ball: Poke
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 4 Def
+Adamant Nature
+- Leaf Blade
+- Aerial Ace
+- Earthquake
+- Synthesis
+
+Chimecho
+Ability: Levitate
+Level: 80
+Ball: Poke
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Def / 4 SpD
+Bold Nature
+- Calm Mind
+- Psychic
+- Shadow Ball
+- Recover
+
+Mawile @ Leftovers
+Ability: Intimidate
+Level: 80
+Ball: Poke
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 4 SpD
+Adamant Nature
+- Swords Dance
+- Play Rough
+- Iron Head
+- Sucker Punch
+
+Sceptile @ Sitrus Berry
+Ability: Unburden
+Level: 80
+Ball: Poke
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Substitute
+- Leaf Blade
+- Acrobatics
+- Earthquake
+
+Lunatone @ Life Orb
+Ability: Levitate
+Level: 80
+Ball: Poke
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 SpA / 4 SpD
+Quiet Nature
+- Trick Room
+- Psychic
+- Power Gem
+- Earth Power
+
+Falinks @ Falinksite
+Ability: Defiant
+Level: 80
+Ball: Poke
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 4 Def
+Adamant Nature
+- First Impression
+- No Retreat
+- Close Combat
+- Rock Slide

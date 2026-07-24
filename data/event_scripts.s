@@ -547,6 +547,7 @@ gStdScripts_End::
 	.include "data/maps/FarawayIsland_Interior/scripts.inc"
 	.include "data/maps/BirthIsland_Exterior/scripts.inc"
 	.include "data/maps/BirthIsland_Harbor/scripts.inc"
+	.include "data/maps/CreatorIsland/scripts.inc"
 	.include "data/maps/TrainerHill_Entrance/scripts.inc"
 	.include "data/maps/TrainerHill_1F/scripts.inc"
 	.include "data/maps/TrainerHill_2F/scripts.inc"

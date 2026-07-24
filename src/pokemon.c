@@ -68,6 +68,7 @@
 #include "constants/items.h"
 #include "constants/layouts.h"
 #include "constants/moves.h"
+#include "constants/opponents.h"
 #include "constants/party_menu.h"
 #include "constants/regions.h"
 #include "constants/songs.h"
@@ -5283,6 +5284,9 @@ u16 GetBattleBGM(void)
     else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
     {
         enum TrainerClassID trainerClass;
+
+        if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_THEOJOSS)
+            return MUS_VS_RAYQUAZA;
 
         if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
             trainerClass = GetFrontierOpponentClass(TRAINER_BATTLE_PARAM.opponentA);

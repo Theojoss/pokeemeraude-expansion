@@ -160,6 +160,7 @@ enum
     OBJ_EVENT_GFX_TATE,
     OBJ_EVENT_GFX_WALLACE,
     OBJ_EVENT_GFX_STEVEN,
+    OBJ_EVENT_GFX_THEOJOSS,
     OBJ_EVENT_GFX_WALLY,
     OBJ_EVENT_GFX_LITTLE_BOY_3,
     OBJ_EVENT_GFX_BRENDAN_FISHING,
@@ -604,6 +605,7 @@ enum
 // Gen VIII
 #define OBJ_EVENT_PAL_TAG_BALL_STRANGE            0x116A
 #endif //OW_FOLLOWERS_POKEBALLS
+#define OBJ_EVENT_PAL_TAG_THEOJOSS                 0x116B
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611
 #define OBJ_EVENT_PAL_TAG_LIGHT                   0x8001

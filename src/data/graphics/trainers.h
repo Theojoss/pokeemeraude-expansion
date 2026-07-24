@@ -169,6 +169,9 @@ const u16 gTrainerPalette_Youngster[] = INCGFX_U16("graphics/trainers/front_pics
 const u32 gTrainerFrontPic_ChampionWallace[] = INCGFX_U32("graphics/trainers/front_pics/champion_wallace.png", ".4bpp.smol");
 const u16 gTrainerPalette_ChampionWallace[] = INCGFX_U16("graphics/trainers/front_pics/champion_wallace.png", ".gbapal");
 
+const u32 gTrainerFrontPic_Theojoss[] = INCGFX_U32("graphics/trainers/front_pics/theojoss.png", ".4bpp.smol");
+const u16 gTrainerPalette_Theojoss[] = INCGFX_U16("graphics/trainers/front_pics/theojoss.png", ".gbapal");
+
 const u32 gTrainerFrontPic_Fisherman[] = INCGFX_U32("graphics/trainers/front_pics/fisherman.png", ".4bpp.smol");
 const u16 gTrainerPalette_Fisherman[] = INCGFX_U16("graphics/trainers/front_pics/fisherman.png", ".gbapal");
 
@@ -857,6 +860,10 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_CHAMPION_WALLACE] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_ChampionWallace, gTrainerPalette_ChampionWallace, -8, 7, 0x188),
+    },
+    [TRAINER_PIC_THEOJOSS] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Theojoss, gTrainerPalette_Theojoss),
     },
     [TRAINER_PIC_FISHERMAN] =
     {
