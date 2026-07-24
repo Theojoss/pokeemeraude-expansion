@@ -56,7 +56,6 @@
 struct MainMenuResources
 {
     MainCallback savedCallback;     // determines callback to run when we exit. e.g. where do we want to go after closing the menu
-    u8 gfxLoadState;
     u16 iconBoxSpriteIds[6];
     u16 iconMonSpriteIds[6];
     u16 mugshotSpriteId;
@@ -65,11 +64,11 @@ struct MainMenuResources
 
 enum WindowIds
 {
-    WINDOW_HEADER,
-    WINDOW_MIDDLE,
-    WINDOW_CONTINUE_LABEL,
+    WINDOW_CONTINUE,
     WINDOW_NEW_GAME_LABEL,
     WINDOW_OPTION_LABEL,
+    WINDOW_MYSTERY_GIFT_LABEL,
+    WINDOW_MYSTERY_EVENTS_LABEL,
 };
 
 enum {
@@ -105,8 +104,6 @@ enum
 
 //==========EWRAM==========//
 static EWRAM_DATA struct MainMenuResources *sMainMenuDataPtr = NULL;
-static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
-static EWRAM_DATA u8 *sBg2TilemapBuffer = NULL;
 static EWRAM_DATA u8 sSelectedOption = {0};
 static EWRAM_DATA u8 menuType = {0};
 
@@ -116,6 +113,7 @@ static bool8 MainMenu_DoGfxSetup(void);
 static bool8 MainMenu_InitBgs(void);
 static void MainMenu_FadeAndBail(void);
 static bool8 MainMenu_LoadGraphics(void);
+static void MainMenu_LoadAccentPalette(void);
 static void MainMenu_InitWindows(void);
 static void PrintToWindow(u8 windowId, u8 colorIdx);
 static void Task_MainMenuWaitFadeIn(u8 taskId);
@@ -139,76 +137,70 @@ static const struct BgTemplate sMainMenuBgTemplates[] =
         .charBaseIndex = 0,
         .mapBaseIndex = 31,
         .priority = 0
-    }, 
-    {
-        .bg = 1,                // Main Background
-        .charBaseIndex = 3,
-        .mapBaseIndex = 30,
-        .priority = 2
     },
-    {
-        .bg = 2,                // Scroll Background
-        .charBaseIndex = 2,
-        .mapBaseIndex = 28,
-        .priority = 2
-    }
 };
 
-static const struct WindowTemplate sMainMenuWindowTemplates[] = 
+// Boxes are laid out so each one's border sits on tile rows/columns no other box's
+// border ever touches. Sharing a row (as an earlier version of this table did) means
+// whichever box is drawn second overwrites the first box's border tiles on that shared
+// row - which reads as "the border is missing" - and a GPU highlight-window rect that
+// extends into a neighboring box's row leaves that neighbor only partially darkened
+// when unselected. Left/width match vanilla's own MENU_LEFT=2/MENU_WIDTH=26 box margins.
+static const struct WindowTemplate sMainMenuWindowTemplates[] =
 {
-    [WINDOW_HEADER] = // Prints the Map and Playtime
-    {
-        .bg = 0,            // which bg to print text on
-        .tilemapLeft = 10,  // position from left (per 8 pixels)
-        .tilemapTop = 1,    // position from top (per 8 pixels)
-        .width = 18,        // width (per 8 pixels)
-        .height = 2,        // height (per 8 pixels)
-        .paletteNum = 0,    // palette index to use for text
-        .baseBlock = 1,     // tile start in VRAM
-    },
-
-    [WINDOW_MIDDLE] = // Prints the name, dex number, and badges
-    {
-        .bg = 0,                   // which bg to print text on
-        .tilemapLeft = 6,          // position from left (per 8 pixels)
-        .tilemapTop = 4,           // position from top (per 8 pixels)
-        .width = 18,               // width (per 8 pixels)
-        .height = 7,               // height (per 8 pixels)
-        .paletteNum = 0,           // palette index to use for text
-        .baseBlock = 1 + (18 * 2), // tile start in VRAM
-    },
-
-    [WINDOW_CONTINUE_LABEL] = // Prints "Continuer" over the blanked-out button graphic
+    [WINDOW_CONTINUE] = // The big top box: map name/playtime/name/dex/badges text, plus the mugshot and party icon sprites drawn on top.
     {
         .bg = 0,
         .tilemapLeft = 2,
         .tilemapTop = 1,
-        .width = 8,
-        .height = 2,
-        .paletteNum = 0,
-        .baseBlock = 1 + (18 * 2) + (18 * 7), // right after WINDOW_MIDDLE
+        .width = 26,
+        .height = 11,
+        .paletteNum = 15,
+        .baseBlock = 1,
     },
 
-    [WINDOW_NEW_GAME_LABEL] = // Prints "Nouvelle partie" over the blanked-out button graphic
+    [WINDOW_NEW_GAME_LABEL] = // "Nouvelle partie" box
     {
         .bg = 0,
         .tilemapLeft = 2,
-        .tilemapTop = 13,
-        .width = 11,
+        .tilemapTop = 14,
+        .width = 12,
         .height = 2,
-        .paletteNum = 0,
-        .baseBlock = 1 + (18 * 2) + (18 * 7) + (8 * 2),
+        .paletteNum = 15,
+        .baseBlock = 1 + (26 * 11),
     },
 
-    [WINDOW_OPTION_LABEL] = // Prints "Options" over the blanked-out button graphic
+    [WINDOW_OPTION_LABEL] = // "Options" box
     {
         .bg = 0,
-        .tilemapLeft = 17,
-        .tilemapTop = 13,
-        .width = 11,
+        .tilemapLeft = 16,
+        .tilemapTop = 14,
+        .width = 12,
         .height = 2,
-        .paletteNum = 0,
-        .baseBlock = 1 + (18 * 2) + (18 * 7) + (8 * 2) + (11 * 2),
+        .paletteNum = 15,
+        .baseBlock = 1 + (26 * 11) + (12 * 2),
+    },
+
+    [WINDOW_MYSTERY_GIFT_LABEL] = // "Cadeau Myst." box, only shown if menuType includes mystery gift
+    {
+        .bg = 0,
+        .tilemapLeft = 2,
+        .tilemapTop = 18,
+        .width = 12,
+        .height = 1,
+        .paletteNum = 15,
+        .baseBlock = 1 + (26 * 11) + (12 * 2) + (12 * 2),
+    },
+
+    [WINDOW_MYSTERY_EVENTS_LABEL] = // "Evenements Mystere" box, only shown if menuType includes mystery events
+    {
+        .bg = 0,
+        .tilemapLeft = 16,
+        .tilemapTop = 18,
+        .width = 12,
+        .height = 1,
+        .paletteNum = 15,
+        .baseBlock = 1 + (26 * 11) + (12 * 2) + (12 * 2) + (12 * 1),
     },
     DUMMY_WIN_TEMPLATE
 };
@@ -225,32 +217,30 @@ struct HWWindowPosition {
     struct HighlightWindowCoords winv;
 };
 
-static const struct HWWindowPosition HWinCoords[6] = 
+// Matches the box footprints in sMainMenuWindowTemplates exactly (outer border bounds,
+// padded 1px in, same convention as main_menu.c's MENU_WIN_HCOORDS/MENU_WIN_VCOORDS
+// macros) so the darken/highlight effect covers a whole box and never leaks into the
+// next one.
+static const struct HWWindowPosition HWinCoords[6] =
 {
-    [HW_WIN_CONTINUE]        = {{7, 233},   {7, 89},},
-    [HW_WIN_NEW_GAME]        = {{7, 113},   {103, 122},},
-    [HW_WIN_OPTIONS]         = {{126, 233}, {103, 122},},
-    [HW_WIN_MYSTERY_GIFT]    = {{7, 113},   {135, 154},},
-    [HW_WIN_MYSTERY_EVENT]   = {{126, 233}, {135, 154},},
-    [HW_WIN_MYSTERY_BOTH]    = {{7, 233},   {135, 154}},
+    [HW_WIN_CONTINUE]        = {{9, 231},   {1, 103},},
+    [HW_WIN_NEW_GAME]        = {{9, 119},   {105, 135},},
+    [HW_WIN_OPTIONS]         = {{121, 231}, {105, 135},},
+    [HW_WIN_MYSTERY_GIFT]    = {{9, 119},   {137, 159},},
+    [HW_WIN_MYSTERY_EVENT]   = {{121, 231}, {137, 159},},
+    [HW_WIN_MYSTERY_BOTH]    = {{9, 231},   {137, 159}},
 };
 
 
 //
-//  Graphic and Tilemap Pointers for Bgs and Mughsots
+//  Vanilla background/box colors (periwinkle backdrop, white box interior, gender accent)
 //
-static const u32 sMainBgTiles[] = INCBIN_U32("graphics/ui_main_menu/main_tiles.4bpp.lz");
-static const u32 sMainBgTilemap[] = INCBIN_U32("graphics/ui_main_menu/main_tiles.bin.lz");
-static const u16 sMainBgPalette[] = INCBIN_U16("graphics/ui_main_menu/main_tiles.gbapal");
+static const u16 sVanillaMainMenuBgPal[] = INCGFX_U16("graphics/interface/main_menu_bg.pal", ".gbapal");
+static const u16 sVanillaMainMenuTextPal[] = INCGFX_U16("graphics/interface/main_menu_text.pal", ".gbapal");
 
-static const u32 sMainBgTilesFem[] = INCBIN_U32("graphics/ui_main_menu/main_tiles_fem.4bpp.lz");
-static const u32 sMainBgTilemapFem[] = INCBIN_U32("graphics/ui_main_menu/main_tiles_fem.bin.lz");
-static const u16 sMainBgPaletteFem[] = INCBIN_U16("graphics/ui_main_menu/main_tiles_fem.gbapal");
-
-static const u32 sScrollBgTiles[] = INCBIN_U32("graphics/ui_main_menu/scroll_tiles.4bpp.lz");
-static const u32 sScrollBgTilemap[] = INCBIN_U32("graphics/ui_main_menu/scroll_tiles.bin.lz");
-static const u16 sScrollBgPalette[] = INCBIN_U16("graphics/ui_main_menu/scroll_tiles.gbapal");
-
+//
+//  Graphic Pointers for Mugshot Icon Shadows
+//
 static const u16 sIconBox_Pal[] = INCBIN_U16("graphics/ui_main_menu/icon_shadow.gbapal");
 static const u32 sIconBox_Gfx[] = INCBIN_U32("graphics/ui_main_menu/icon_shadow.4bpp.lz");
 
@@ -355,7 +345,6 @@ void MainMenu_Init(MainCallback callback)
     }
     
     // initialize stuff
-    sMainMenuDataPtr->gfxLoadState = 0;
     sMainMenuDataPtr->savedCallback = callback;
     for(i = 0; i < 6; i++)
     {
@@ -389,7 +378,6 @@ static void MainMenu_VBlankCB(void)
     LoadOam();
     ProcessSpriteCopyRequests();
     TransferPlttBuffer();
-    ChangeBgY(2, 128, BG_COORD_SUB); // This controls the scrolling of the scroll bg, remove it to stop scrolling
 }
 
 //
@@ -398,8 +386,6 @@ static void MainMenu_VBlankCB(void)
 static void MainMenu_FreeResources(void)
 {
     try_free(sMainMenuDataPtr);
-    try_free(sBg1TilemapBuffer);
-    try_free(sBg2TilemapBuffer);
     FreeAllWindowBuffers();
     DestroyMugshot();
     DestroyIconShadow();
@@ -486,7 +472,6 @@ static bool8 MainMenu_DoGfxSetup(void)
     case 2:
         if (MainMenu_InitBgs())
         {
-            sMainMenuDataPtr->gfxLoadState = 0;
             gMain.state++;
         }
         else
@@ -501,11 +486,14 @@ static bool8 MainMenu_DoGfxSetup(void)
         break;
     case 4:
         LoadMessageBoxAndBorderGfx();
+        LoadPalette(sVanillaMainMenuBgPal, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
+        LoadPalette(sVanillaMainMenuTextPal, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
+        MainMenu_LoadAccentPalette();
         MainMenu_InitWindows();
         gMain.state++;
         break;
     case 5: // Here is where the sprites are drawn and text is printed
-        PrintToWindow(WINDOW_HEADER, FONT_WHITE);
+        PrintToWindow(WINDOW_CONTINUE, FONT_WHITE);
         CreateIconShadow();
         CreatePartyMonIcons();
         CreateMugshot();
@@ -531,23 +519,7 @@ static bool8 MainMenu_InitBgs(void)
     ResetBgsAndClearDma3BusyFlags(0);
     InitBgsFromTemplates(0, sMainMenuBgTemplates, NELEMS(sMainMenuBgTemplates));
 
-    sBg1TilemapBuffer = Alloc(0x800);
-    if (sBg1TilemapBuffer == NULL)
-        return FALSE;
-    memset(sBg1TilemapBuffer, 0, 0x800);
-    SetBgTilemapBuffer(1, sBg1TilemapBuffer);
-    ScheduleBgCopyTilemapToVram(1);
-
-    sBg2TilemapBuffer = Alloc(0x800);
-    if (sBg2TilemapBuffer == NULL)
-        return FALSE;
-    memset(sBg2TilemapBuffer, 0, 0x800);
-    SetBgTilemapBuffer(2, sBg2TilemapBuffer);
-    ScheduleBgCopyTilemapToVram(2);
-
     ShowBg(0);
-    ShowBg(1);
-    ShowBg(2);
     return TRUE;
 }
 
@@ -568,9 +540,9 @@ static void MainMenu_InitializeGPUWindows(void) // This function creates the win
                 break;
         }
 
-    SetGpuReg(REG_OFFSET_WININ, (WININ_WIN1_BG0 | WININ_WIN1_BG2) | (WININ_WIN0_BG_ALL | WININ_WIN0_OBJ)); // Set Win 0 Active everywhere, Win 1 active on everything except bg 1 
-    SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_ALL);                                                                     // where the main tiles are so the window hides whats behind it
-    SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_EFFECT_DARKEN | BLDCNT_TGT1_BG0 | BLDCNT_TGT1_BG1 | BLDCNT_TGT1_OBJ);   // Set Darken Effect on things not in the window on bg 0, 1, and sprite layer
+    SetGpuReg(REG_OFFSET_WININ, WININ_WIN1_BG0 | (WININ_WIN0_BG_ALL | WININ_WIN0_OBJ)); // Set Win 0 Active everywhere, Win 1 active on bg 0
+    SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_ALL);
+    SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_EFFECT_DARKEN | BLDCNT_TGT1_BG0 | BLDCNT_TGT1_OBJ);   // Set Darken Effect on things not in the window on bg 0 and sprite layer
     SetGpuReg(REG_OFFSET_BLDY, 7);  // Set Level of Darken effect, can be changed 0-16
 }
 
@@ -580,98 +552,52 @@ static void MoveHWindowsWithInput(void) // Update GPU windows after selection is
     SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(HWinCoords[sSelectedOption].winv.left, HWinCoords[sSelectedOption].winv.right));
 }
 
-static bool8 MainMenu_LoadGraphics(void) // Load all the tilesets, tilemaps, spritesheets, and palettes
+static bool8 MainMenu_LoadGraphics(void) // Load the icon shadow spritesheet/palette
 {
-    switch (sMainMenuDataPtr->gfxLoadState)
+    if (gSaveBlock2Ptr->playerGender == MALE)
     {
-    case 0:
-        ResetTempTileDataBuffers();
-        if (gSaveBlock2Ptr->playerGender == MALE)
-        {
-            DecompressAndCopyTileDataToVram(1, sMainBgTiles, 0, 0, 0);
-        }
-        else
-        {
-            DecompressAndCopyTileDataToVram(1, sMainBgTilesFem, 0, 0, 0);
-        }
-        sMainMenuDataPtr->gfxLoadState++;
-        break;
-    case 1:
-        if (FreeTempTileDataBuffersIfPossible() != TRUE)
-        {
-            if (gSaveBlock2Ptr->playerGender == MALE)
-            {
-                DecompressDataWithHeaderWram(sMainBgTilemap, sBg1TilemapBuffer);
-            }
-            else
-            {
-                DecompressDataWithHeaderWram(sMainBgTilemapFem, sBg1TilemapBuffer);
-            }
-            sMainMenuDataPtr->gfxLoadState++;
-        }
-        break;
-    case 2:
-        ResetTempTileDataBuffers();
-        DecompressAndCopyTileDataToVram(2, sScrollBgTiles, 0, 0, 0);
-        sMainMenuDataPtr->gfxLoadState++;
-        break;
-    case 3:
-        if (FreeTempTileDataBuffersIfPossible() != TRUE)
-        {
-            DecompressDataWithHeaderWram(sScrollBgTilemap, sBg2TilemapBuffer);
-            sMainMenuDataPtr->gfxLoadState++;
-        }
-        break;
-    case 4:
+        LoadCompressedSpriteSheet(&sSpriteSheet_IconBox);
+        LoadSpritePalette(&sSpritePal_IconBox);
+    }
+    else
     {
-        if(gSaveBlock2Ptr->playerGender == MALE)
-        {
-            LoadCompressedSpriteSheet(&sSpriteSheet_IconBox);
-            LoadSpritePalette(&sSpritePal_IconBox);
-            LoadPalette(sMainBgPalette, 0, 32);
-        }
-        else
-        {
-            LoadCompressedSpriteSheet(&sSpriteSheet_IconBoxFem);
-            LoadSpritePalette(&sSpritePal_IconBoxFem);
-            LoadPalette(sMainBgPaletteFem, 0, 32);
-        }
-        LoadPalette(sScrollBgPalette, 16, 32);
+        LoadCompressedSpriteSheet(&sSpriteSheet_IconBoxFem);
+        LoadSpritePalette(&sSpritePal_IconBoxFem);
     }
-        sMainMenuDataPtr->gfxLoadState++;
-        break;
-    default:
-        sMainMenuDataPtr->gfxLoadState = 0;
-        return TRUE;
-    }
-    return FALSE;
+    return TRUE;
 }
 
-static void MainMenu_InitWindows(void) // Init Text Windows
+// Ported from the dead vanilla code in main_menu.c's Task_DisplayMainMenu: colors the
+// standard window frame's interior white (index 10), shades the border (11/12/14), and
+// tints index 1 with the player's gender accent color (blue for male, pink for female).
+static void MainMenu_LoadAccentPalette(void)
+{
+    u16 palette;
+
+    palette = RGB_BLACK;
+    LoadPalette(&palette, BG_PLTT_ID(15) + 14, PLTT_SIZEOF(1));
+
+    palette = RGB_WHITE;
+    LoadPalette(&palette, BG_PLTT_ID(15) + 10, PLTT_SIZEOF(1));
+
+    palette = RGB(12, 12, 12);
+    LoadPalette(&palette, BG_PLTT_ID(15) + 11, PLTT_SIZEOF(1));
+
+    palette = RGB(26, 26, 25);
+    LoadPalette(&palette, BG_PLTT_ID(15) + 12, PLTT_SIZEOF(1));
+
+    if (gSaveBlock2Ptr->playerGender == MALE)
+        palette = RGB(4, 16, 31);
+    else
+        palette = RGB(31, 3, 21);
+    LoadPalette(&palette, BG_PLTT_ID(15) + 1, PLTT_SIZEOF(1));
+}
+
+static void MainMenu_InitWindows(void) // Init Text Windows; borders + fills are drawn per-box in PrintToWindow
 {
     InitWindows(sMainMenuWindowTemplates);
     DeactivateAllTextPrinters();
     ScheduleBgCopyTilemapToVram(0);
-    
-    FillWindowPixelBuffer(WINDOW_HEADER, 0);
-    PutWindowTilemap(WINDOW_HEADER);
-    CopyWindowToVram(WINDOW_HEADER, 3);
-
-    FillWindowPixelBuffer(WINDOW_MIDDLE, 0);
-    PutWindowTilemap(WINDOW_MIDDLE);
-    CopyWindowToVram(WINDOW_MIDDLE, 3);
-
-    FillWindowPixelBuffer(WINDOW_CONTINUE_LABEL, 0);
-    PutWindowTilemap(WINDOW_CONTINUE_LABEL);
-    CopyWindowToVram(WINDOW_CONTINUE_LABEL, 3);
-
-    FillWindowPixelBuffer(WINDOW_NEW_GAME_LABEL, 0);
-    PutWindowTilemap(WINDOW_NEW_GAME_LABEL);
-    CopyWindowToVram(WINDOW_NEW_GAME_LABEL, 3);
-
-    FillWindowPixelBuffer(WINDOW_OPTION_LABEL, 0);
-    PutWindowTilemap(WINDOW_OPTION_LABEL);
-    CopyWindowToVram(WINDOW_OPTION_LABEL, 3);
 }
 
 
@@ -683,7 +609,7 @@ static void MainMenu_InitWindows(void) // Init Text Windows
 static void CreateMugshot()
 {
     u16 gfxId = GetRivalAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, gSaveBlock2Ptr->playerGender);
-    sMainMenuDataPtr->mugshotSpriteId = CreateObjectGraphicsSprite(gfxId, SpriteCallbackDummy, 40, 50, 0);
+    sMainMenuDataPtr->mugshotSpriteId = CreateObjectGraphicsSprite(gfxId, SpriteCallbackDummy, 32, 50, 0); // vertically centered on the "Dex" text line
     gSprites[sMainMenuDataPtr->mugshotSpriteId].invisible = FALSE;
     gSprites[sMainMenuDataPtr->mugshotSpriteId].oam.priority = 0;
     StartSpriteAnim(&gSprites[sMainMenuDataPtr->mugshotSpriteId], ANIM_STD_GO_SOUTH);
@@ -699,8 +625,8 @@ static void DestroyMugshot()
 //
 //  Create Mon Icon and Shadow Sprites
 //
-#define ICON_BOX_1_START_X          136 + 8
-#define ICON_BOX_1_START_Y          38
+#define ICON_BOX_1_START_X          144 // pushed right, clear of the name/dex/badges column; rightmost icon edge (x=224) is flush with WINDOW_CONTINUE's interior right edge
+#define ICON_BOX_1_START_Y          44 // pushed down, clear of the header row; bottom icon row edge (y=92) stays inside WINDOW_CONTINUE's interior (bottom at y=96)
 #define ICON_BOX_X_DIFFERENCE       32
 #define ICON_BOX_Y_DIFFERENCE       32
 static void CreateIconShadow()
@@ -820,40 +746,62 @@ static const u8 sText_Badges[] = _("Badges {STR_VAR_1}");
 static const u8 sText_Continue[] = _("Continuer");
 static const u8 sText_NewGame[] = _("Nouvelle partie");
 static const u8 sText_Option[] = _("Options");
+static const u8 sText_MysteryGift[] = _("Cadeau Myst.");
+static const u8 sText_MysteryEvents[] = _("Evenements Mystere");
+
+// Matches vanilla main_menu.c's sTextColor_Headers/sTextColor_MenuInfo: index 1 is the
+// gender-accent color (set by MainMenu_LoadAccentPalette), 0xA/0xB/0xC are white/grey shades.
+static const u8 sTextColor_Headers[] = {TEXT_DYNAMIC_COLOR_1, TEXT_DYNAMIC_COLOR_2, TEXT_DYNAMIC_COLOR_3};
+static const u8 sTextColor_MenuInfo[] = {TEXT_DYNAMIC_COLOR_1, TEXT_COLOR_WHITE, TEXT_DYNAMIC_COLOR_3};
+
+// Draws the standard vanilla window border + white interior for a box, ready for text.
+static void DrawMainMenuBox(u8 windowId)
+{
+    DrawStdFrameWithCustomTileAndPalette(windowId, FALSE, STD_WINDOW_BASE_TILE_NUM, STD_WINDOW_PALETTE_NUM);
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_DYNAMIC_COLOR_1));
+}
+
 static void PrintToWindow(u8 windowId, u8 colorIdx)
 {
-    const u8 colors[3] = {0,  2,  3};
     u8 mapDisplayHeader[24];
     u8 *withoutPrefixPtr, *playTimePtr;
     u16 dexCount = 0; u8 badgeCount = 0;
     u32 i = 0;
 
-    FillWindowPixelBuffer(WINDOW_HEADER, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_MIDDLE, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_CONTINUE_LABEL, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_NEW_GAME_LABEL, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    FillWindowPixelBuffer(WINDOW_OPTION_LABEL, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    DrawMainMenuBox(WINDOW_CONTINUE);
+    DrawMainMenuBox(WINDOW_NEW_GAME_LABEL);
+    DrawMainMenuBox(WINDOW_OPTION_LABEL);
+    if (menuType == HAS_MYSTERY_GIFT || menuType == HAS_MYSTERY_EVENTS)
+        DrawMainMenuBox(WINDOW_MYSTERY_GIFT_LABEL);
+    if (menuType == HAS_MYSTERY_EVENTS)
+        DrawMainMenuBox(WINDOW_MYSTERY_EVENTS_LABEL);
 
     // Print Button Labels
-    AddTextPrinterParameterized3(WINDOW_CONTINUE_LABEL, FONT_NORMAL, 4, 2, colors, TEXT_SKIP_DRAW, sText_Continue);
-    AddTextPrinterParameterized3(WINDOW_NEW_GAME_LABEL, FONT_NORMAL, 4, 2, colors, TEXT_SKIP_DRAW, sText_NewGame);
-    AddTextPrinterParameterized3(WINDOW_OPTION_LABEL, FONT_NORMAL, 4, 2, colors, TEXT_SKIP_DRAW, sText_Option);
+    AddTextPrinterParameterized3(WINDOW_NEW_GAME_LABEL, FONT_NORMAL, 4, 2, sTextColor_Headers, TEXT_SKIP_DRAW, sText_NewGame);
+    AddTextPrinterParameterized3(WINDOW_OPTION_LABEL, FONT_NORMAL, 4, 2, sTextColor_Headers, TEXT_SKIP_DRAW, sText_Option);
+    if (menuType == HAS_MYSTERY_GIFT || menuType == HAS_MYSTERY_EVENTS)
+        AddTextPrinterParameterized3(WINDOW_MYSTERY_GIFT_LABEL, FONT_NORMAL, 4, 2, sTextColor_Headers, TEXT_SKIP_DRAW, sText_MysteryGift);
+    if (menuType == HAS_MYSTERY_EVENTS)
+        AddTextPrinterParameterized3(WINDOW_MYSTERY_EVENTS_LABEL, FONT_NORMAL, 4, 2, sTextColor_Headers, TEXT_SKIP_DRAW, sText_MysteryEvents);
 
-    // Print Map Name In Header
+    // Print "Continuer" label (top-left corner of the merged Continue box)
+    AddTextPrinterParameterized3(WINDOW_CONTINUE, FONT_NORMAL, 4, 2, sTextColor_Headers, TEXT_SKIP_DRAW, sText_Continue);
+
+    // Print Map Name In Header (former WINDOW_HEADER content, offset to WINDOW_CONTINUE's origin)
     withoutPrefixPtr = &(mapDisplayHeader[3]);
     GetMapName(withoutPrefixPtr, GetCurrentRegionMapSectionId(), 0);
     mapDisplayHeader[0] = EXT_CTRL_CODE_BEGIN;
     mapDisplayHeader[1] = EXT_CTRL_CODE_HIGHLIGHT;
     mapDisplayHeader[2] = TEXT_COLOR_TRANSPARENT;
-    AddTextPrinterParameterized4(WINDOW_HEADER, FONT_NARROW, GetStringCenterAlignXOffset(FONT_NARROW, withoutPrefixPtr, 10 * 8), 1, 0, 0, colors, 0xFF, mapDisplayHeader);
+    AddTextPrinterParameterized4(WINDOW_CONTINUE, FONT_NARROW, 72 + GetStringCenterAlignXOffset(FONT_NARROW, withoutPrefixPtr, 10 * 8), 1, 0, 0, sTextColor_MenuInfo, 0xFF, mapDisplayHeader);
 
     // Print Playtime In Header
     playTimePtr = ConvertIntToDecimalStringN(gStringVar4, gSaveBlock2Ptr->playTimeHours, STR_CONV_MODE_LEFT_ALIGN, 3);
     *playTimePtr = 0xF0;
     ConvertIntToDecimalStringN(playTimePtr + 1, gSaveBlock2Ptr->playTimeMinutes, STR_CONV_MODE_LEADING_ZEROS, 2);
-    AddTextPrinterParameterized4(WINDOW_HEADER, FONT_NORMAL, (104 - 12) + GetStringRightAlignXOffset(FONT_NORMAL, gStringVar4, (6*8)), 1, 0, 0, colors, TEXT_SKIP_DRAW, gStringVar4);
+    AddTextPrinterParameterized4(WINDOW_CONTINUE, FONT_NORMAL, GetStringRightAlignXOffset(FONT_NORMAL, gStringVar4, 200), 1, 0, 0, sTextColor_MenuInfo, TEXT_SKIP_DRAW, gStringVar4); // right-aligned with an 8px margin before the box's right border (window is 208px wide)
 
-    // Print Dex Numbers if You Have It
+    // Print Dex Numbers if You Have It (former WINDOW_MIDDLE content, offset to WINDOW_CONTINUE's origin)
     if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
     {
         if (IsNationalPokedexEnabled())
@@ -862,7 +810,7 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
             dexCount = GetHoennPokedexCount(FLAG_GET_CAUGHT);
         ConvertIntToDecimalStringN(gStringVar1, dexCount, STR_CONV_MODE_RIGHT_ALIGN, 4);
         StringExpandPlaceholders(gStringVar4, sText_DexNum);
-        AddTextPrinterParameterized4(WINDOW_MIDDLE, FONT_NORMAL, 8 + 8, 16 + 2, 0, 0, colors, TEXT_SKIP_DRAW, gStringVar4);
+        AddTextPrinterParameterized4(WINDOW_CONTINUE, FONT_NORMAL, 36, 24 + 16 + 2, 0, 0, sTextColor_MenuInfo, TEXT_SKIP_DRAW, gStringVar4);
     }
 
     // Print Badge Numbers if You Have Them
@@ -870,24 +818,30 @@ static void PrintToWindow(u8 windowId, u8 colorIdx)
     {
         if (FlagGet(i))
             badgeCount++;
-    } 
+    }
     ConvertIntToDecimalStringN(gStringVar1, badgeCount, STR_CONV_MODE_LEADING_ZEROS, 1);
     StringExpandPlaceholders(gStringVar4, sText_Badges);
-    AddTextPrinterParameterized4(WINDOW_MIDDLE, FONT_NORMAL, 16, 32 + 2, 0, 0, colors, TEXT_SKIP_DRAW, gStringVar4);
+    AddTextPrinterParameterized4(WINDOW_CONTINUE, FONT_NORMAL, 36, 24 + 32 + 2, 0, 0, sTextColor_MenuInfo, TEXT_SKIP_DRAW, gStringVar4);
 
     // Print Player Name
-    AddTextPrinterParameterized3(WINDOW_MIDDLE, FONT_NORMAL, 16, 2, colors, TEXT_SKIP_DRAW, gSaveBlock2Ptr->playerName);
+    AddTextPrinterParameterized3(WINDOW_CONTINUE, FONT_NORMAL, 36, 24 + 2, sTextColor_MenuInfo, TEXT_SKIP_DRAW, gSaveBlock2Ptr->playerName);
 
-    PutWindowTilemap(WINDOW_HEADER);
-    CopyWindowToVram(WINDOW_HEADER, 3);
-    PutWindowTilemap(WINDOW_MIDDLE);
-    CopyWindowToVram(WINDOW_MIDDLE, 3);
-    PutWindowTilemap(WINDOW_CONTINUE_LABEL);
-    CopyWindowToVram(WINDOW_CONTINUE_LABEL, 3);
+    PutWindowTilemap(WINDOW_CONTINUE);
+    CopyWindowToVram(WINDOW_CONTINUE, COPYWIN_FULL);
     PutWindowTilemap(WINDOW_NEW_GAME_LABEL);
-    CopyWindowToVram(WINDOW_NEW_GAME_LABEL, 3);
+    CopyWindowToVram(WINDOW_NEW_GAME_LABEL, COPYWIN_FULL);
     PutWindowTilemap(WINDOW_OPTION_LABEL);
-    CopyWindowToVram(WINDOW_OPTION_LABEL, 3);
+    CopyWindowToVram(WINDOW_OPTION_LABEL, COPYWIN_FULL);
+    if (menuType == HAS_MYSTERY_GIFT || menuType == HAS_MYSTERY_EVENTS)
+    {
+        PutWindowTilemap(WINDOW_MYSTERY_GIFT_LABEL);
+        CopyWindowToVram(WINDOW_MYSTERY_GIFT_LABEL, COPYWIN_FULL);
+    }
+    if (menuType == HAS_MYSTERY_EVENTS)
+    {
+        PutWindowTilemap(WINDOW_MYSTERY_EVENTS_LABEL);
+        CopyWindowToVram(WINDOW_MYSTERY_EVENTS_LABEL, COPYWIN_FULL);
+    }
 }
 
 
