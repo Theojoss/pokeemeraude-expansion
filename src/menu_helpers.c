@@ -87,6 +87,21 @@ static const struct SpriteTemplate sSpriteTemplate_SwapLine =
     .anims = sAnims_SwapLine,
 };
 
+// tx_registered_items_menu
+#define TAG_SWAP_LINE_TX 5110
+static const struct CompressedSpriteSheet sSpriteSheet_SwapLine_RegisteredItemsMenu =
+{
+    gSwapLineGfx_RegisteredItemsMenu, 0x100, TAG_SWAP_LINE
+};
+
+static const struct SpriteTemplate sSpriteTemplate_SwapLine_RegisteredItemsMenu =
+{
+    .tileTag = TAG_SWAP_LINE,
+    .paletteTag = TAG_SWAP_LINE_TX,
+    .oam = &sOamData_SwapLine,
+    .anims = sAnims_SwapLine,
+};
+
 // code
 void ResetVramOamAndBgCntRegs(void)
 {
@@ -392,6 +407,12 @@ void LoadListMenuSwapLineGfx(void)
     LoadSpritePalette(&sSpritePalette_SwapLine);
 }
 
+// tx_registered_items_menu
+void LoadListMenuSwapLineGfx_RegisteredItemsMenu(void)
+{
+    LoadCompressedSpriteSheet(&sSpriteSheet_SwapLine_RegisteredItemsMenu);
+}
+
 void CreateSwapLineSprites(u8 *spriteIds, u8 count)
 {
     u8 i;
@@ -399,6 +420,21 @@ void CreateSwapLineSprites(u8 *spriteIds, u8 count)
     for (i = 0; i < count; i++)
     {
         spriteIds[i] = CreateSprite(&sSpriteTemplate_SwapLine, i * 16, 0, 0);
+        if (i != 0)
+            StartSpriteAnim(&gSprites[spriteIds[i]], 1);
+
+        gSprites[spriteIds[i]].invisible = TRUE;
+    }
+}
+
+// tx_registered_items_menu
+void CreateSwapLineSprites_RegisteredItemsMenu(u8 *spriteIds, u8 count)
+{
+    u8 i;
+
+    for (i = 0; i < count; i++)
+    {
+        spriteIds[i] = CreateSprite(&sSpriteTemplate_SwapLine_RegisteredItemsMenu, i * 16, 0, 0);
         if (i != 0)
             StartSpriteAnim(&gSprites[spriteIds[i]], 1);
 
