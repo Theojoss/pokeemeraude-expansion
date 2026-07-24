@@ -88,7 +88,7 @@ CreatorIsland_Text_TheojossNoRoom:
 	.string "toujours.$"
 
 CreatorIsland_Text_TheojossPostBattle:
-	.string "THEOJOSS: Continue comme ça,\n"
+	.string "Continue comme ça,\n"
 	.string "{PLAYER}{KUN}.\p"
 	.string "Je serai toujours là si tu as besoin\n"
 	.string "d'un adversaire à ta hauteur.$"
