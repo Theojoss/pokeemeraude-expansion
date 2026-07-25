@@ -86,14 +86,14 @@ TEST("Berries are sorted correctly in the bag")
 
     SortItemsInBag(&gBagPockets[POCKET_BERRIES], SORT_ALPHABETICALLY);
 
-    EXPECT_EQ(pocket->itemSlots[0].itemId, ITEM_CHARTI_BERRY);
-    EXPECT_EQ(pocket->itemSlots[1].itemId, ITEM_CHERI_BERRY);
-    EXPECT_EQ(pocket->itemSlots[2].itemId, ITEM_GANLON_BERRY);
-    EXPECT_EQ(pocket->itemSlots[3].itemId, ITEM_KELPSY_BERRY);
-    EXPECT_EQ(pocket->itemSlots[4].itemId, ITEM_MAGOST_BERRY);
-    EXPECT_EQ(pocket->itemSlots[5].itemId, ITEM_MICLE_BERRY);
-    EXPECT_EQ(pocket->itemSlots[6].itemId, ITEM_ORAN_BERRY);
-    EXPECT_EQ(pocket->itemSlots[7].itemId, ITEM_POMEG_BERRY);
+    EXPECT_EQ(pocket->itemSlots[0].itemId, ITEM_KELPSY_BERRY); // Alga
+    EXPECT_EQ(pocket->itemSlots[1].itemId, ITEM_CHERI_BERRY);  // Ceriz
+    EXPECT_EQ(pocket->itemSlots[2].itemId, ITEM_CHARTI_BERRY); // Charti
+    EXPECT_EQ(pocket->itemSlots[3].itemId, ITEM_POMEG_BERRY);  // Grena
+    EXPECT_EQ(pocket->itemSlots[4].itemId, ITEM_GANLON_BERRY); // Lingan
+    EXPECT_EQ(pocket->itemSlots[5].itemId, ITEM_MAGOST_BERRY); // Mangou
+    EXPECT_EQ(pocket->itemSlots[6].itemId, ITEM_MICLE_BERRY);  // Micle
+    EXPECT_EQ(pocket->itemSlots[7].itemId, ITEM_ORAN_BERRY);   // Oran
     EXPECT_EQ(pocket->itemSlots[8].itemId, ITEM_NONE);
 }
 
@@ -134,12 +134,12 @@ TEST("Items are correctly sorted and compacted in the bag")
 
     SortItemsInBag(&gBagPockets[POCKET_ITEMS], SORT_ALPHABETICALLY);
 
-    EXPECT_EQ(pocket->itemSlots[0].itemId, ITEM_BIG_MUSHROOM);
-    EXPECT_EQ(pocket->itemSlots[1].itemId, ITEM_BIG_NUGGET);
-    EXPECT_EQ(pocket->itemSlots[2].itemId, ITEM_BIG_PEARL);
-    EXPECT_EQ(pocket->itemSlots[3].itemId, ITEM_NUGGET);
-    EXPECT_EQ(pocket->itemSlots[4].itemId, ITEM_PEARL);
-    EXPECT_EQ(pocket->itemSlots[5].itemId, ITEM_TINY_MUSHROOM);
+    EXPECT_EQ(pocket->itemSlots[0].itemId, ITEM_BIG_PEARL);     // Grande Perle
+    EXPECT_EQ(pocket->itemSlots[1].itemId, ITEM_BIG_MUSHROOM);  // Gros Champi
+    EXPECT_EQ(pocket->itemSlots[2].itemId, ITEM_BIG_NUGGET);    // Maxi Pépite
+    EXPECT_EQ(pocket->itemSlots[3].itemId, ITEM_NUGGET);        // Pépite
+    EXPECT_EQ(pocket->itemSlots[4].itemId, ITEM_PEARL);         // Perle
+    EXPECT_EQ(pocket->itemSlots[5].itemId, ITEM_TINY_MUSHROOM); // Petit Champi
     EXPECT_EQ(pocket->itemSlots[6].itemId, ITEM_NONE);
 
     // Try removing the big items, check that everything is compacted correctly
