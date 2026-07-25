@@ -91,10 +91,10 @@ nproc
 
 Les compilations peuvent ensuite être accélérées en exécutant la commande suivante:
 ```console
-make -j<résulat de nproc>
+make -j<résultat de nproc>
 ```
 
-Remplacez `<résulat de nproc>` par le nombre que la commande `nproc` a renvoyé.
+Remplacez `<résultat de nproc>` par le nombre que la commande `nproc` a renvoyé.
 
 `nproc` n'est pas disponible sur macOS. L'alternative est `sysctl -n hw.ncpu` ([fil Stack Overflow pertinent](https://stackoverflow.com/questions/1715580)).
 
