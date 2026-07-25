@@ -1484,6 +1484,10 @@ void Task_HandleChooseMonInput(u8 taskId)
         case B_BUTTON: // Selected Cancel / pressed B
             HandleChooseMonCancel(taskId, slotPtr);
             break;
+        case SELECT_BUTTON: // Shortcut: immediately pick up the mon to move it, skipping the action menu
+            if (gPartyMenu.action == PARTY_ACTION_CHOOSE_MON && *slotPtr < PARTY_SIZE)
+                CursorCb_Switch(taskId);
+            break;
         case START_BUTTON:
             if (sPartyMenuInternal->chooseHalf)
             {
@@ -1803,7 +1807,7 @@ static u16 PartyMenuButtonHandler(s8 *slotPtr)
     if (JOY_NEW(A_BUTTON) && *slotPtr == PARTY_SIZE + 1)
         return B_BUTTON;
 
-    return JOY_NEW(A_BUTTON | B_BUTTON);
+    return JOY_NEW(A_BUTTON | B_BUTTON | SELECT_BUTTON);
 }
 
 static void UpdateCurrentPartySelection(s8 *slotPtr, s8 movementDir)
