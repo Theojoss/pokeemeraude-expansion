@@ -884,9 +884,9 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_PARTYCUREDFREEZE]                     = COMPOUND_STRING("{B_BUFF1} n'est plus gelé!"),
     [STRINGID_PARTYCUREDFROSTBITE]                  = COMPOUND_STRING("{B_BUFF1} s'est remis de sa gelure!"),
     [STRINGID_PKMNATKNOTLOWERED]                    = COMPOUND_STRING("L'Attaque de {B_SCR_NAME_WITH_PREFIX} ne baisse pas!"),
-    [STRINGID_REFLECTWOREOFF]                       = COMPOUND_STRING("Protection n'a plus d'effet sur {B_DEF_TEAM1}!"),
-    [STRINGID_LIGHTSCREENWOREOFF]                   = COMPOUND_STRING("Mur Lumière n'a plus d'effet sur {B_DEF_TEAM1}!"),
-    [STRINGID_AURORAVEILWOREOFF]                    = COMPOUND_STRING("Voile Aurore n'a plus d'effet sur {B_DEF_TEAM1}!"),
+    [STRINGID_REFLECTWOREOFF]                       = COMPOUND_STRING("Protection n'a plus d'effet sur {B_DEF_TEAM2}!"),
+    [STRINGID_LIGHTSCREENWOREOFF]                   = COMPOUND_STRING("Mur Lumière n'a plus d'effet sur {B_DEF_TEAM2}!"),
+    [STRINGID_AURORAVEILWOREOFF]                    = COMPOUND_STRING("Voile Aurore n'a plus d'effet sur {B_DEF_TEAM2}!"),
     [STRINGID_STICKYWEBDISAPPEAREDFROMYOU]          = COMPOUND_STRING("La toile gluante du côté de votre équipe a disparu!"),
 };
 
