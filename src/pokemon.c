@@ -5286,7 +5286,7 @@ u16 GetBattleBGM(void)
         enum TrainerClassID trainerClass;
 
         if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_THEOJOSS)
-            return MUS_VS_RAYQUAZA;
+            return MUS_RG_VS_CHAMPION;
 
         if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
             trainerClass = GetFrontierOpponentClass(TRAINER_BATTLE_PARAM.opponentA);
