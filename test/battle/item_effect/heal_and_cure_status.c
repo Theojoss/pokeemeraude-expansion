@@ -23,28 +23,28 @@ SINGLE_BATTLE_TEST("Full Restore restores a battler's HP and cures any primary s
     } WHEN {
         TURN { USE_ITEM(player, ITEM_FULL_RESTORE, partyIndex: 0); }
     } SCENE {
-        MESSAGE("Wobbuffet had its HP restored.");
+        MESSAGE("Qulbutoké récupère des PV.");
         if (status != STATUS1_NONE) {
             switch (status)
             {
                 case STATUS1_BURN:
-                    MESSAGE("Wobbuffet's burn was cured!");
+                    MESSAGE("Qulbutoké n'est plus brûlé!");
                     break;
                 case STATUS1_FREEZE:
-                    MESSAGE("Wobbuffet thawed out!");
+                    MESSAGE("Qulbutoké n'est plus gelé!");
                     break;
                 case STATUS1_PARALYSIS:
-                    MESSAGE("Wobbuffet was cured of paralysis!");
+                    MESSAGE("Qulbutoké n'est plus paralysé!");
                     break;
                 case STATUS1_POISON:
                 case STATUS1_TOXIC_POISON:
-                    MESSAGE("Wobbuffet was cured of its poisoning!");
+                    MESSAGE("Qulbutoké n'est plus empoisonné!");
                     break;
                 case STATUS1_SLEEP:
-                    MESSAGE("Wobbuffet woke up!");
+                    MESSAGE("Qulbutoké se réveille!");
                     break;
                 case STATUS1_FROSTBITE:
-                    MESSAGE("Wobbuffet's frostbite was cured!");
+                    MESSAGE("Qulbutoké s'est remis de sa gelure!");
                     break;
             } // The message is not printed if status wasn't healed.
         }
@@ -73,28 +73,28 @@ SINGLE_BATTLE_TEST("Full Restore restores a party members HP and cures any prima
         TURN { USE_ITEM(player, ITEM_FULL_RESTORE, partyIndex: 1); }
         TURN { SWITCH(player, 1); }
     } SCENE {
-        MESSAGE("Wynaut had its HP restored.");
+        MESSAGE("Okéoké récupère des PV.");
         if (status != STATUS1_NONE) {
             switch (status)
             {
                 case STATUS1_BURN:
-                    MESSAGE("Wynaut's burn was cured!");
+                    MESSAGE("Okéoké n'est plus brûlé!");
                     break;
                 case STATUS1_FREEZE:
-                    MESSAGE("Wynaut thawed out!");
+                    MESSAGE("Okéoké n'est plus gelé!");
                     break;
                 case STATUS1_PARALYSIS:
-                    MESSAGE("Wynaut was cured of paralysis!");
+                    MESSAGE("Okéoké n'est plus paralysé!");
                     break;
                 case STATUS1_POISON:
                 case STATUS1_TOXIC_POISON:
-                    MESSAGE("Wynaut was cured of its poisoning!");
+                    MESSAGE("Okéoké n'est plus empoisonné!");
                     break;
                 case STATUS1_SLEEP:
-                    MESSAGE("Wynaut woke up!");
+                    MESSAGE("Okéoké se réveille!");
                     break;
                 case STATUS1_FROSTBITE:
-                    MESSAGE("Wynaut's frostbite was cured!");
+                    MESSAGE("Okéoké s'est remis de sa gelure!");
                     break;
             } // The message is not printed if status wasn't healed.
         }
@@ -121,27 +121,27 @@ SINGLE_BATTLE_TEST("Full Restore heals a battler from any primary status")
     } WHEN {
         TURN { USE_ITEM(player, ITEM_FULL_RESTORE, partyIndex: 0); }
     } SCENE {
-        NOT MESSAGE("Wobbuffet had its HP restored."); // The message is not printed if mon has max HP.
+        NOT MESSAGE("Qulbutoké récupère des PV!"); // The message is not printed if mon has max HP.
         switch (status)
         {
             case STATUS1_BURN:
-                MESSAGE("Wobbuffet's burn was cured!");
+                MESSAGE("Qulbutoké n'est plus brûlé!");
                 break;
             case STATUS1_FREEZE:
-                MESSAGE("Wobbuffet thawed out!");
+                MESSAGE("Qulbutoké n'est plus gelé!");
                 break;
             case STATUS1_PARALYSIS:
-                MESSAGE("Wobbuffet was cured of paralysis!");
+                MESSAGE("Qulbutoké n'est plus paralysé!");
                 break;
             case STATUS1_POISON:
             case STATUS1_TOXIC_POISON:
-                MESSAGE("Wobbuffet was cured of its poisoning!");
+                MESSAGE("Qulbutoké n'est plus empoisonné!");
                 break;
             case STATUS1_SLEEP:
-                MESSAGE("Wobbuffet woke up!");
+                MESSAGE("Qulbutoké se réveille!");
                 break;
             case STATUS1_FROSTBITE:
-                MESSAGE("Wobbuffet's frostbite was cured!");
+                MESSAGE("Qulbutoké s'est remis de sa gelure!");
                 break;
         }
     } THEN {
@@ -166,24 +166,24 @@ SINGLE_BATTLE_TEST("Full Restore heals a party member from any primary status")
         TURN { USE_ITEM(player, ITEM_FULL_RESTORE, partyIndex: 1); }
         TURN { SWITCH(player, 1); }
     } SCENE {
-        NOT MESSAGE("Wynaut had its HP restored."); // The message is not printed if mon has max HP.
+        NOT MESSAGE("Okéoké récupère des PV!"); // The message is not printed if mon has max HP.
         switch (status)
         {
             case STATUS1_BURN:
-                MESSAGE("Wynaut's burn was cured!");
+                MESSAGE("Okéoké n'est plus brûlé!");
                 break;
             case STATUS1_FREEZE:
-                MESSAGE("Wynaut thawed out!");
+                MESSAGE("Okéoké n'est plus gelé!");
                 break;
             case STATUS1_PARALYSIS:
-                MESSAGE("Wynaut was cured of paralysis!");
+                MESSAGE("Okéoké n'est plus paralysé!");
                 break;
             case STATUS1_POISON:
             case STATUS1_TOXIC_POISON:
-                MESSAGE("Wynaut was cured of its poisoning!");
+                MESSAGE("Okéoké n'est plus empoisonné!");
                 break;
             case STATUS1_SLEEP:
-                MESSAGE("Wynaut woke up!");
+                MESSAGE("Okéoké se réveille!");
                 break;
         }
     } THEN {
@@ -202,8 +202,8 @@ SINGLE_BATTLE_TEST("Full Restore restores a battler's HP and cures confusion")
         TURN { USE_ITEM(player, ITEM_FULL_RESTORE, partyIndex: 0); }
         TURN { MOVE(player, MOVE_SCRATCH); }
     } SCENE {
-        MESSAGE("Wobbuffet had its HP restored.");
-        NONE_OF { MESSAGE("Wobbuffet is confused!"); }
+        MESSAGE("Qulbutoké récupère des PV.");
+        NONE_OF { MESSAGE("Qulbutoké est confus!"); }
     } THEN {
         EXPECT_EQ(player->hp, player->maxHP);
     }
@@ -219,9 +219,9 @@ SINGLE_BATTLE_TEST("Full Restore resets Toxic Counter")
         TURN {}
         TURN { USE_ITEM(player, ITEM_FULL_RESTORE, partyIndex: 0); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Toxic!");
-        MESSAGE("Wobbuffet had its HP restored.");
-        MESSAGE("Wobbuffet was cured of its poisoning!");
+        MESSAGE("Qulbutoké ennemi utilise\nToxik!");
+        MESSAGE("Qulbutoké récupère des PV.");
+        MESSAGE("Qulbutoké n'est plus empoisonné!");
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }
