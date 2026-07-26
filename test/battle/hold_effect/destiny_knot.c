@@ -15,7 +15,7 @@ SINGLE_BATTLE_TEST("Destiny Knot infatuates back when holder is targeted")
         TURN { MOVE(player, MOVE_ATTRACT); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
-        MESSAGE("Wobbuffet fell in love because of the Destiny Knot!");
+        MESSAGE("Nœud Destin rend Qulbutoké amoureux!");
     } THEN {
         EXPECT(player->volatiles.infatuation);
     }
@@ -30,7 +30,7 @@ SINGLE_BATTLE_TEST("Destiny Knot infatuates back when holder is attacking")
         TURN { MOVE(player, MOVE_TACKLE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("The opposing Clefairy fell in love because of the Destiny Knot!");
+        MESSAGE("Nœud Destin rend Mélofée ennemi amoureux!");
     } THEN {
         EXPECT(opponent->volatiles.infatuation);
     }
@@ -46,7 +46,7 @@ SINGLE_BATTLE_TEST("Destiny Knot procs but fails if the target is already infatu
         TURN { MOVE(opponent, MOVE_ATTRACT); MOVE(player, MOVE_ATTRACT,  WITH_RNG(RNG_INFATUATION, FALSE)); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -75,6 +75,6 @@ SINGLE_BATTLE_TEST("Destiny Knot procs but fails if the target is already infatu
         TURN { MOVE(opponent, MOVE_TACKLE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }

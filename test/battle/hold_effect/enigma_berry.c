@@ -18,7 +18,7 @@ SINGLE_BATTLE_TEST("Enigma Berry recovers 25% of HP if hit by super effective mo
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ENDURE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BITE, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, player);
-        MESSAGE("Wynaut restored its health using its Enigma Berry!");
+        MESSAGE("Okéoké récupère des PV grâce à Baie Enigma!");
         HP_BAR(player, damage: -maxHP / 4);
     }
 }
@@ -35,7 +35,7 @@ SINGLE_BATTLE_TEST("Enigma Berry does nothing if not hit by super effective move
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BITE, opponent);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, player);
-            MESSAGE("Mightyena restored its health using its Enigma Berry!");
+            MESSAGE("Grahyèna récupère des PV grâce à Baie Enigma!");
         }
     }
 }
@@ -54,7 +54,7 @@ SINGLE_BATTLE_TEST("Enigma Berry does nothing if Heal Block applies")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BITE, opponent);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, player);
-            MESSAGE("Wynaut restored its health using its Enigma Berry!");
+            MESSAGE("Okéoké récupère des PV grâce à Baie Enigma!");
         }
     }
 }

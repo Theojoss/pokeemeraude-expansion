@@ -20,15 +20,15 @@ SINGLE_BATTLE_TEST("Ability Shield protects against Neutralizing Gas")
         TURN {}
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_NEUTRALIZING_GAS);
-        MESSAGE("Neutralizing gas filled the area!");
+        MESSAGE("Un gaz inhibiteur envahit les lieux!");
         if (item == ITEM_ABILITY_SHIELD) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Torkoal's Ability is protected by the effects of its Ability Shield!");
+            MESSAGE("Le talent de Chartor est protégé par l'effet de Garde-Talent!");
             ABILITY_POPUP(player, ABILITY_DROUGHT);
         } else {
             NONE_OF {
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-                MESSAGE("Torkoal's Ability is protected by the effects of its Ability Shield!");
+                MESSAGE("Le talent de Chartor est protégé par l'effet de Garde-Talent!");
                 ABILITY_POPUP(player, ABILITY_DROUGHT);
             }
         }
@@ -46,21 +46,21 @@ DOUBLE_BATTLE_TEST("Ability Shield prevents Intimidate from reactivating after N
         TURN { MOVE(playerLeft, MOVE_SCRATCH, target: opponentLeft); }
     } SCENE {
         ABILITY_POPUP(opponentLeft, ABILITY_NEUTRALIZING_GAS);
-        MESSAGE("Neutralizing gas filled the area!");
+        MESSAGE("Un gaz inhibiteur envahit les lieux!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponentRight);
-        MESSAGE("The opposing Gyarados's Ability is protected by the effects of its Ability Shield!");
+        MESSAGE("Le talent de Léviator ennemi est protégé par l'effet de Garde-Talent!");
         ABILITY_POPUP(opponentRight, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerLeft);
         HP_BAR(opponentLeft);
-        MESSAGE("The effects of the neutralizing gas wore off!");
+        MESSAGE("Les effets du gaz inhibiteur se sont dissipés.");
         NONE_OF {
             ABILITY_POPUP(opponentRight, ABILITY_INTIMIDATE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
         }
-        MESSAGE("The opposing Koffing fainted!");
+        MESSAGE("Smogo ennemi est K.O.!\p");
     } THEN {
         EXPECT_EQ(playerLeft->statStages[STAT_ATK], DEFAULT_STAT_STAGE - 1);
         EXPECT_EQ(playerRight->statStages[STAT_ATK], DEFAULT_STAT_STAGE - 1);
@@ -84,7 +84,7 @@ SINGLE_BATTLE_TEST("Ability Shield protects against Mold Breaker (no message)")
         if (item == ITEM_ABILITY_SHIELD) {
             NONE_OF {
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-                MESSAGE("Flygon's Ability is protected by the effects of its Ability Shield!");
+                MESSAGE("Le talent de Libégon est protégé par l'effet de Garde-Talent!");
                 HP_BAR(player);
             }
             ABILITY_POPUP(player, ABILITY_LEVITATE);
@@ -116,7 +116,7 @@ SINGLE_BATTLE_TEST("Ability Shield protects against Mycelium Might (no message)"
                 ANIMATION(ANIM_TYPE_MOVE, MOVE_SPORE, opponent);
                 STATUS_ICON(player, sleep: TRUE);
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-                MESSAGE("Vigoroth's Ability is protected by the effects of its Ability Shield!");
+                MESSAGE("Le talent de Vigoroth est protégé par l'effet de Garde-Talent!");
             }
             ABILITY_POPUP(player, ABILITY_VITAL_SPIRIT);
         } else {
@@ -143,12 +143,12 @@ SINGLE_BATTLE_TEST("Ability Shield protects against Sunsteel Strike (no message)
         if (item == ITEM_ABILITY_SHIELD) {
             NONE_OF {
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-                MESSAGE("Shedinja's Ability is protected by the effects of its Ability Shield!");
-                MESSAGE("Shedinja fainted!");
+                MESSAGE("Le talent de Munja est protégé par l'effet de Garde-Talent!");
+                MESSAGE("Munja est K.O.!\p");
             }
             ABILITY_POPUP(player, ABILITY_WONDER_GUARD);
         } else {
-            MESSAGE("Shedinja fainted!");
+            MESSAGE("Munja est K.O.!\p");
             NOT ABILITY_POPUP(player, ABILITY_WONDER_GUARD);
         }
     }
@@ -165,20 +165,20 @@ SINGLE_BATTLE_TEST("Ability Shield activates a previously suppressed ability whe
         TURN { MOVE(opponent, MOVE_TRICK); }
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_NEUTRALIZING_GAS);
-        MESSAGE("Neutralizing gas filled the area!");
+        MESSAGE("Un gaz inhibiteur envahit les lieux!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Gyarados's Ability is protected by the effects of its Ability Shield!");
+            MESSAGE("Le talent de Léviator est protégé par l'effet de Garde-Talent!");
             ABILITY_POPUP(player, ABILITY_INTIMIDATE);
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TRICK, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Gyarados's Ability is protected by the effects of its Ability Shield!");
+        MESSAGE("Le talent de Léviator est protégé par l'effet de Garde-Talent!");
         ABILITY_POPUP(player, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TRICK, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TRICK, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Gyarados's Ability is protected by the effects of its Ability Shield!");
+        MESSAGE("Le talent de Léviator est protégé par l'effet de Garde-Talent!");
         ABILITY_POPUP(player, ABILITY_INTIMIDATE);
     }
 }
@@ -194,14 +194,14 @@ SINGLE_BATTLE_TEST("Ability Shield doesn't reactivate an ability when receiving 
         TURN { MOVE(player, MOVE_TRICK); }
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_NEUTRALIZING_GAS);
-        MESSAGE("Neutralizing gas filled the area!");
+        MESSAGE("Un gaz inhibiteur envahit les lieux!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Gyarados's Ability is protected by the effects of its Ability Shield!");
+        MESSAGE("Le talent de Léviator est protégé par l'effet de Garde-Talent!");
         ABILITY_POPUP(player, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TRICK, player);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Gyarados's Ability is protected by the effects of its Ability Shield!");
+            MESSAGE("Le talent de Léviator est protégé par l'effet de Garde-Talent!");
             ABILITY_POPUP(player, ABILITY_INTIMIDATE);
         }
     }
@@ -269,7 +269,7 @@ SINGLE_BATTLE_TEST("Ability Shield protects against Skill Swap")
                 ABILITY_POPUP(opponent, ABILITY_INTIMIDATE);
             }
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Gyarados's Ability is protected by the effects of its Ability Shield!");
+            MESSAGE("Le talent de Léviator est protégé par l'effet de Garde-Talent!");
         } else {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SKILL_SWAP, opponent);
             ABILITY_POPUP(opponent, ABILITY_INTIMIDATE);
@@ -294,7 +294,7 @@ SINGLE_BATTLE_TEST("Ability Shield protects against Skill Swap even if user has 
         if (item == ITEM_ABILITY_SHIELD) {
             NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SKILL_SWAP, opponent);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Lopunny's Ability is protected by the effects of its Ability Shield!");
+            MESSAGE("Le talent de Lockpin est protégé par l'effet de Garde-Talent!");
         } else {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SKILL_SWAP, opponent);
         }
@@ -319,7 +319,7 @@ DOUBLE_BATTLE_TEST("Ability Shield prevents Receiver/Power of Alchemy holder fro
     } SCENE {
         ABILITY_POPUP(opponentRight, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerLeft);
-        MESSAGE("The opposing Gyarados fainted!");
+        MESSAGE("Léviator ennemi est K.O.!\p");
         NONE_OF {
             ABILITY_POPUP(opponentLeft, ability);
             ABILITY_POPUP(opponentLeft, ABILITY_INTIMIDATE);
@@ -349,7 +349,7 @@ DOUBLE_BATTLE_TEST("Ability Shield on fainted ally does not block Receiver/Power
     } SCENE {
         ABILITY_POPUP(opponentRight, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerLeft);
-        MESSAGE("The opposing Gyarados fainted!");
+        MESSAGE("Léviator ennemi est K.O.!\p");
         ABILITY_POPUP(opponentLeft, ability);
         ABILITY_POPUP(opponentLeft, ABILITY_INTIMIDATE);
     } THEN {

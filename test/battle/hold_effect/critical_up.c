@@ -25,11 +25,11 @@ SINGLE_BATTLE_TEST("Lansat Berry raises the holder's critical-hit-ratio by two s
         if (move == MOVE_SCRATCH) {
             NONE_OF {
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, player);
-                MESSAGE("Wobbuffet used the Lansat Berry to get pumped!");
+                MESSAGE("Qulbutoké est plein d'énergie grâce à Baie Lansat!");
             }
         } else {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, player);
-            MESSAGE("Wobbuffet used the Lansat Berry to get pumped!");
+            MESSAGE("Qulbutoké est plein d'énergie grâce à Baie Lansat!");
         }
     }
 }
@@ -44,7 +44,7 @@ SINGLE_BATTLE_TEST("Lansat Berry raises the holder's critical-hit-ratio by two s
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_RAGE, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, player);
-        MESSAGE("Bellsprout used the Lansat Berry to get pumped!");
+        MESSAGE("Chétiflor est plein d'énergie grâce à Baie Lansat!");
     }
 }
 
@@ -66,8 +66,8 @@ SINGLE_BATTLE_TEST("Lansat Berry raises the holder's critical-hit-ratio by 2 sta
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_RAGE, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, player);
-        MESSAGE("Wobbuffet used the Lansat Berry to get pumped!");
+        MESSAGE("Qulbutoké est plein d'énergie grâce à Baie Lansat!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
-        MESSAGE("A critical hit!");
+        MESSAGE("Coup critique!");
     }
 }

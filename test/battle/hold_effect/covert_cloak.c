@@ -33,12 +33,12 @@ SINGLE_BATTLE_TEST("Covert Cloak blocks secondary effects")
         ANIMATION(ANIM_TYPE_MOVE, move, player);
         HP_BAR(opponent);
         NONE_OF {
-            MESSAGE("The opposing Wobbuffet is paralyzed, so it may be unable to move!");
-            MESSAGE("The opposing Wobbuffet was burned!");
-            MESSAGE("The opposing Wobbuffet was poisoned!");
-            MESSAGE("The opposing Wobbuffet flinched and couldn't move!");
+            MESSAGE("Qulbutoké ennemi est paralysé! Il aura du mal à attaquer!");
+            MESSAGE("Qulbutoké ennemi est brûlé!");
+            MESSAGE("Qulbutoké ennemi est empoisonné!");
+            MESSAGE("Qulbutoké ennemi a la trouille! Il ne peut plus attaquer!");
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("The opposing Wobbuffet was prevented from healing!");
+            MESSAGE("Qulbutoké ennemi ne peut pas guérir!\p");
         }
     } THEN { // Can't find good way to test trapping
         EXPECT(!opponent->volatiles.escapePrevention);
@@ -68,16 +68,16 @@ SINGLE_BATTLE_TEST("Covert Cloak does not block primary effects")
         HP_BAR(opponent);
         switch (move) {
             case MOVE_INFESTATION:
-                MESSAGE("The opposing Skarmory has been afflicted with an infestation by Wobbuffet!");
+                MESSAGE("Airmure ennemi est harcelé par Qulbutoké!");
                 break;
             case MOVE_THOUSAND_ARROWS:
-                MESSAGE("The opposing Skarmory fell straight down!");
+                MESSAGE("Airmure ennemi s'écrase au sol!");
                 break;
             case MOVE_JAW_LOCK:
-                MESSAGE("Neither Pokémon can run away!");
+                MESSAGE("Les Pokémon ne peuvent plus s'enfuir!");
                 break;
             case MOVE_PAY_DAY:
-                MESSAGE("Coins were scattered everywhere!");
+                MESSAGE("Il pleut des pièces!");
                 break;
             default:
                 break;
@@ -120,7 +120,7 @@ SINGLE_BATTLE_TEST("Covert Cloak does not block self-targeting effects, primary 
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
                 break;
             case MOVE_METEOR_ASSAULT: // second turn
-                MESSAGE("Wobbuffet must recharge!");
+                MESSAGE("Le contrecoup empêche Qulbutoké de bouger!");
                 break;
             default:
                 break;
@@ -143,11 +143,11 @@ DOUBLE_BATTLE_TEST("Covert Cloak does or does not block Sparkling Aria depending
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPARKLING_ARIA, playerLeft);
         if (moveToUse == MOVE_SCRATCH) {
-            MESSAGE("The opposing Wobbuffet's burn was cured!");
+            MESSAGE("Qulbutoké ennemi n'est plus brûlé!");
             STATUS_ICON(opponentLeft, none: TRUE);
         } else {
             NONE_OF {
-                MESSAGE("The opposing Wobbuffet's burn was cured!");
+                MESSAGE("Qulbutoké ennemi n'est plus brûlé!");
                 STATUS_ICON(opponentLeft, none: TRUE);
             }
         }
@@ -173,7 +173,7 @@ DOUBLE_BATTLE_TEST("Covert Cloak does block Sparkling Aria when only one mon is 
         ANIMATION(ANIM_TYPE_MOVE, move, opponentRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPARKLING_ARIA, playerLeft);
         NONE_OF {
-            MESSAGE("The opposing Wobbuffet's burn was cured!");
+            MESSAGE("Qulbutoké ennemi n'est plus brûlé!");
             STATUS_ICON(opponentLeft, none: TRUE);
         }
     }
@@ -189,7 +189,7 @@ SINGLE_BATTLE_TEST("Covert Cloak blocks Sparkling Aria in singles")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPARKLING_ARIA, player);
         NONE_OF {
-            MESSAGE("The opposing Wobbuffet's burn was cured!");
+            MESSAGE("Qulbutoké ennemi n'est plus brûlé!");
             STATUS_ICON(opponent, none: TRUE);
         }
     }
@@ -203,6 +203,6 @@ SINGLE_BATTLE_TEST("Covert Cloak does not prevent ability stat changes")
     } WHEN {
         TURN { MOVE(player, MOVE_SCRATCH); }
     } SCENE {
-        MESSAGE("Wobbuffet's Speed fell!");
+        MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
     }
 }

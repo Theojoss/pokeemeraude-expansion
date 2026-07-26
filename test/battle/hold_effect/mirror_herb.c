@@ -59,12 +59,12 @@ DOUBLE_BATTLE_TEST("Mirror Herb does not trigger for Ally's Soul Heart's stat ra
     } WHEN {
         TURN { MOVE(playerRight, MOVE_SCRATCH, target:opponentLeft); }
     } SCENE {
-        MESSAGE("Wynaut used Scratch!");
-        MESSAGE("The opposing Wobbuffet fainted!");
+        MESSAGE("Okéoké utilise\nGriffe!");
+        MESSAGE("Qulbutoké ennemi est K.O.!\p");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
-            MESSAGE("Wobbuffet used its Mirror Herb to mirror its opponent's stat changes!");
+            MESSAGE("Qulbutoké copie les changements de stats de la cible grâce à la Feuille Copieuse!");
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
         }
     }

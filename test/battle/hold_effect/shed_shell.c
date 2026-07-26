@@ -17,8 +17,8 @@ SINGLE_BATTLE_TEST("Shed Shell allows switching out even when trapped by Mean Lo
         TURN { SWITCH(player, 1); MOVE(opponent, MOVE_CELEBRATE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MEAN_LOOK, opponent);
-        SWITCH_OUT_MESSAGE("Wobbuffet");
-        SEND_IN_MESSAGE("Wynaut");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
+        SEND_IN_MESSAGE("Okéoké");
     }
 }
 
@@ -31,8 +31,8 @@ SINGLE_BATTLE_TEST("Shed Shell allows switching out even when trapped by Shadow 
     } WHEN {
         TURN { SWITCH(player, 1); MOVE(opponent, MOVE_CELEBRATE); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Wobbuffet");
-        SEND_IN_MESSAGE("Wynaut");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
+        SEND_IN_MESSAGE("Okéoké");
     }
 }
 
@@ -45,8 +45,8 @@ SINGLE_BATTLE_TEST("Shed Shell allows switching out even when trapped by Arena T
     } WHEN {
         TURN { SWITCH(player, 1); MOVE(opponent, MOVE_CELEBRATE); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Diglett");
-        SEND_IN_MESSAGE("Wynaut");
+        SWITCH_OUT_MESSAGE("Taupiqueur");
+        SEND_IN_MESSAGE("Okéoké");
     }
 }
 
@@ -61,7 +61,7 @@ SINGLE_BATTLE_TEST("Shed Shell does not allow Teleport when trapped")
         TURN { MOVE(player, MOVE_TELEPORT); MOVE(opponent, MOVE_CELEBRATE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MEAN_LOOK, opponent);
-        MESSAGE("Wobbuffet used Teleport!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké utilise\nTéléport!");
+        MESSAGE("Mais cela échoue!");
     }
 }

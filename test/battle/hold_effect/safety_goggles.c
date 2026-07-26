@@ -16,7 +16,7 @@ SINGLE_BATTLE_TEST("Safety Goggles block powder and spore moves")
         TURN { MOVE(player, MOVE_STUN_SPORE); }
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_STUN_SPORE, player);
-        MESSAGE("The opposing Abra is not affected thanks to its Safety Goggles!");
+        MESSAGE("Abra ennemi est protégé grâce à Lunettes Filtre!");
     }
 }
 
@@ -28,7 +28,7 @@ SINGLE_BATTLE_TEST("Safety Goggles blocks damage from Hail")
     } WHEN {
         TURN { MOVE(player, MOVE_HAIL); }
     } SCENE {
-        NOT MESSAGE("The opposing Wobbuffet is buffeted by the hail!");
+        NOT MESSAGE("Qulbutoké ennemi est blessé par la grêle!");
     }
 }
 
@@ -40,7 +40,7 @@ SINGLE_BATTLE_TEST("Safety Goggles blocks damage from Sandstorm")
     } WHEN {
         TURN { MOVE(player, MOVE_SANDSTORM); }
     } SCENE {
-        NOT MESSAGE("The opposing Wobbuffet is buffeted by the sandstorm!");
+        NOT MESSAGE("La tempête de sable inflige des dégâts à Qulbutoké ennemi!");
     }
 }
 
@@ -60,15 +60,15 @@ SINGLE_BATTLE_TEST("Safety Goggles blocks Effect Spore's effect")
             ABILITY_POPUP(opponent, ABILITY_EFFECT_SPORE);
 
             ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PSN, player);
-            MESSAGE("Wobbuffet was poisoned!");
+            MESSAGE("Qulbutoké est empoisonné!");
             STATUS_ICON(player, poison: TRUE);
 
             ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PRZ, player);
-            MESSAGE("Wobbuffet is paralyzed, so it may be unable to move!");
+            MESSAGE("Qulbutoké est paralysé! Il aura du mal à attaquer!");
             STATUS_ICON(player, paralysis: TRUE);
 
             ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_SLP, player);
-            MESSAGE("Wobbuffet fell asleep!");
+            MESSAGE("Qulbutoké s'est endormi!");
             STATUS_ICON(player, sleep: TRUE);
         }
     }

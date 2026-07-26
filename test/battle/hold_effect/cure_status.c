@@ -244,22 +244,22 @@ SINGLE_BATTLE_TEST("Opponent Pokemon can be further poisoned with Toxic spikes a
         TURN { SWITCH(opponent, 1); }
         TURN { SWITCH(opponent, 0); }
     } SCENE {
-        MESSAGE("Wobbuffet used Toxic Spikes!");
+        MESSAGE("Qulbutoké utilise\nPics Toxik!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TOXIC_SPIKES, player);
-        MESSAGE("Poison spikes were scattered on the ground all around the opposing team!");
+        MESSAGE("Des pics toxiques se répandent autour de l'équipe ennemie!");
         // 1st switch-in
-        MESSAGE("2 sent out Wynaut!");
+        MESSAGE("2 envoie\nun Okéoké!");
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PSN, opponent);
         STATUS_ICON(opponent, poison: TRUE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, opponent);
         if (item == ITEM_PECHA_BERRY) {
-            MESSAGE("The opposing Wynaut's Pecha Berry cured its poison!");
+            MESSAGE("Okéoké ennemi n'est plus empoisonné grâce à Baie Pêcha!");
         } else {
-            MESSAGE("The opposing Wynaut's Lum Berry cured its poison!");
+            MESSAGE("Okéoké ennemi n'est plus empoisonné grâce à Baie Prine!");
         }
         STATUS_ICON(opponent, poison: FALSE);
         // 2nd switch-in
-        MESSAGE("2 sent out Wobbuffet!");
+        MESSAGE("2 envoie\nun Qulbutoké!");
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PSN, opponent);
         STATUS_ICON(opponent, poison: TRUE);
     }
@@ -285,22 +285,22 @@ SINGLE_BATTLE_TEST("Player Pokemon can be further poisoned with Toxic spikes aft
         TURN { SWITCH(player, 1); }
         TURN { SWITCH(player, 2); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Toxic Spikes!");
+        MESSAGE("Qulbutoké ennemi utilise\nPics Toxik!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TOXIC_SPIKES, opponent);
-        MESSAGE("Poison spikes were scattered on the ground all around your team!");
+        MESSAGE("Des pics toxiques se répandent autour de votre équipe!");
         // 1st switch-in
-        SEND_IN_MESSAGE("Wobbuffet");
+        SEND_IN_MESSAGE("Qulbutoké");
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PSN, player);
         STATUS_ICON(player, poison: TRUE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, player);
         if (item == ITEM_PECHA_BERRY) {
-            MESSAGE("Wobbuffet's Pecha Berry cured its poison!");
+            MESSAGE("Qulbutoké n'est plus empoisonné grâce à Baie Pêcha!");
         } else {
-            MESSAGE("Wobbuffet's Lum Berry cured its poison!");
+            MESSAGE("Qulbutoké n'est plus empoisonné grâce à Baie Prine!");
         }
         STATUS_ICON(player, poison: FALSE);
         // 2nd switch-in
-        SEND_IN_MESSAGE("Wynaut");
+        SEND_IN_MESSAGE("Okéoké");
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PSN, player);
         STATUS_ICON(player, poison: TRUE);
     }
@@ -343,7 +343,7 @@ SINGLE_BATTLE_TEST("Lum Berry properly cures a battler affected by only confusio
         TURN { MOVE(opponent, MOVE_SWITCHEROO); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, player);
-        MESSAGE("Wobbuffet's Lum Berry snapped it out of its confusion!");
+        MESSAGE("Qulbutoké n'est plus confus grâce à Baie Prine!");
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
         EXPECT(player->volatiles.confusionTurns == 0);
@@ -372,25 +372,25 @@ SINGLE_BATTLE_TEST("Lum Berry properly cures a battler affected by a non-volatil
         switch (status)
         {
             case STATUS1_BURN:
-                MESSAGE("Wobbuffet's Lum Berry cured its burn!");
+                MESSAGE("Qulbutoké n'est plus brûlé grâce à Baie Prine!");
                 break;
             case STATUS1_FREEZE:
-                MESSAGE("Wobbuffet's Lum Berry defrosted it!");
+                MESSAGE("Qulbutoké n'est plus gelé grâce à Baie Prine!");
                 break;
             case STATUS1_PARALYSIS:
-                MESSAGE("Wobbuffet's Lum Berry cured its paralysis!");
+                MESSAGE("Qulbutoké n'est plus paralysé grâce à Baie Prine!");
                 break;
             case STATUS1_POISON:
-                MESSAGE("Wobbuffet's Lum Berry cured its poison!");
+                MESSAGE("Qulbutoké n'est plus empoisonné grâce à Baie Prine!");
                 break;
             case STATUS1_TOXIC_POISON:
-                MESSAGE("Wobbuffet's Lum Berry cured its poison!");
+                MESSAGE("Qulbutoké n'est plus empoisonné grâce à Baie Prine!");
                 break;
             case STATUS1_SLEEP:
-                MESSAGE("Wobbuffet's Lum Berry woke it up!");
+                MESSAGE("Qulbutoké se réveille grâce à Baie Prine!");
                 break;
         }
-        MESSAGE("Wobbuffet's Lum Berry snapped it out of its confusion!");
+        MESSAGE("Qulbutoké n'est plus confus grâce à Baie Prine!");
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
         EXPECT(player->volatiles.confusionTurns == 0);

@@ -20,8 +20,8 @@ SINGLE_BATTLE_TEST("Red Card switches the attacker with a random non-fainted rep
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Wobbuffet held up its Red Card against the opposing Wobbuffet!");
-        MESSAGE("The opposing Bulbasaur was dragged out!");
+        MESSAGE("Qulbutoké a mis un Carton Rouge à Qulbutoké ennemi!");
+        MESSAGE("Bulbizarre ennemi est traîné de force au combat!\p");
     } THEN {
         EXPECT(player->item == ITEM_NONE);
     }
@@ -43,8 +43,8 @@ DOUBLE_BATTLE_TEST("Red Card switches the target with a random non-battler, non-
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
-        MESSAGE("Wobbuffet held up its Red Card against the opposing Wobbuffet!");
-        MESSAGE("The opposing Bulbasaur was dragged out!");
+        MESSAGE("Qulbutoké a mis un Carton Rouge à Qulbutoké ennemi!");
+        MESSAGE("Bulbizarre ennemi est traîné de force au combat!\p");
     } THEN {
         EXPECT(playerLeft->item == ITEM_NONE);
     }
@@ -63,7 +63,7 @@ SINGLE_BATTLE_TEST("Red Card does not activate if holder faints")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Wobbuffet held up its Red Card against the opposing Wobbuffet!");
+            MESSAGE("Qulbutoké a mis un Carton Rouge à Qulbutoké ennemi!");
         }
     } THEN {
         EXPECT(player->item == ITEM_NONE);
@@ -83,7 +83,7 @@ SINGLE_BATTLE_TEST("Red Card does not activate if attacker faints from recoil")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FLARE_BLITZ, player);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
-            MESSAGE("The opposing Wobbuffet held up its Red Card against Wobbuffet!");
+            MESSAGE("Qulbutoké ennemi a mis un Carton Rouge à Qulbutoké!");
         }
     } THEN {
         EXPECT_EQ(opponent->item, ITEM_RED_CARD);
@@ -102,7 +102,7 @@ SINGLE_BATTLE_TEST("Red Card does not activate if target is behind a Substitute"
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Wobbuffet held up its Red Card against the opposing Wobbuffet!");
+            MESSAGE("Qulbutoké a mis un Carton Rouge à Qulbutoké ennemi!");
         }
     } THEN {
         EXPECT(player->item == ITEM_RED_CARD); // Not activated, so still has the item.
@@ -122,7 +122,7 @@ SINGLE_BATTLE_TEST("Red Card activates after the last hit of a multi-hit move")
         HP_BAR(player);
         HP_BAR(player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Wobbuffet held up its Red Card against the opposing Wobbuffet!");
+        MESSAGE("Qulbutoké a mis un Carton Rouge à Qulbutoké ennemi!");
     } THEN {
         EXPECT(player->item == ITEM_NONE);
     }
@@ -139,7 +139,7 @@ SINGLE_BATTLE_TEST("Red Card does not activate if no replacements")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Wobbuffet held up its Red Card against the opposing Wobbuffet!");
+            MESSAGE("Qulbutoké a mis un Carton Rouge à Qulbutoké ennemi!");
         }
     } THEN {
         EXPECT(player->item == ITEM_RED_CARD); // Not activated, so still has the item.
@@ -158,7 +158,7 @@ SINGLE_BATTLE_TEST("Red Card does not activate if replacements fainted")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Wobbuffet held up its Red Card against the opposing Wobbuffet!");
+            MESSAGE("Qulbutoké a mis un Carton Rouge à Qulbutoké ennemi!");
         }
     } THEN {
         EXPECT(player->item == ITEM_RED_CARD); // Not activated, so still has the item.
@@ -177,7 +177,7 @@ SINGLE_BATTLE_TEST("Red Card does not activate if knocked off")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_KNOCK_OFF, opponent);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Wobbuffet held up its Red Card against the opposing Wobbuffet!");
+            MESSAGE("Qulbutoké a mis un Carton Rouge à Qulbutoké ennemi!");
         }
     } THEN {
         EXPECT(player->item == ITEM_NONE);
@@ -202,11 +202,11 @@ SINGLE_BATTLE_TEST("Red Card does not activate if stolen by a move")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_THIEF, opponent);
         if (activate) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Wobbuffet held up its Red Card against the opposing Wobbuffet!");
+            MESSAGE("Qulbutoké a mis un Carton Rouge à Qulbutoké ennemi!");
         } else {
             NONE_OF {
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-                MESSAGE("Wobbuffet held up its Red Card against the opposing Wobbuffet!");
+                MESSAGE("Qulbutoké a mis un Carton Rouge à Qulbutoké ennemi!");
             }
         }
     } THEN {
@@ -231,11 +231,11 @@ SINGLE_BATTLE_TEST("Red Card does not activate if stolen by Magician")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         if (activate) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Wobbuffet held up its Red Card against the opposing Fennekin!");
+            MESSAGE("Qulbutoké a mis un Carton Rouge à Feunnec ennemi!");
         } else {
             NONE_OF {
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-                MESSAGE("Wobbuffet held up its Red Card against the opposing Fennekin!");
+                MESSAGE("Qulbutoké a mis un Carton Rouge à Feunnec ennemi!");
             }
         }
     } THEN {
@@ -260,14 +260,14 @@ DOUBLE_BATTLE_TEST("Red Card activates for only the fastest target")
         // Fastest target's Red Card activates.
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROCK_SLIDE, opponentLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
-        MESSAGE("Wobbuffet held up its Red Card against the opposing Wobbuffet!");
-        MESSAGE("The opposing Unown was dragged out!");
+        MESSAGE("Qulbutoké a mis un Carton Rouge à Qulbutoké ennemi!");
+        MESSAGE("Zarbi ennemi est traîné de force au combat!\p");
 
         // Slower target's Red Card still able to activate on other battler.
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentRight);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerRight);
-        MESSAGE("Wynaut held up its Red Card against the opposing Wynaut!");
-        MESSAGE("The opposing Wobbuffet was dragged out!");
+        MESSAGE("Okéoké a mis un Carton Rouge à Okéoké ennemi!");
+        MESSAGE("Qulbutoké ennemi est traîné de force au combat!\p");
     } THEN {
         EXPECT(playerLeft->item == ITEM_NONE);
         EXPECT(playerRight->item == ITEM_NONE);
@@ -291,15 +291,15 @@ DOUBLE_BATTLE_TEST("Red Card activates but fails if the attacker is rooted")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
-        MESSAGE("Wobbuffet held up its Red Card against the opposing Wobbuffet!");
-        MESSAGE("The opposing Wobbuffet is anchored in place with its roots!");
-        NOT MESSAGE("The opposing Unown was dragged out!");
+        MESSAGE("Qulbutoké a mis un Carton Rouge à Qulbutoké ennemi!");
+        MESSAGE("Qulbutoké ennemi s'accroche avec ses racines!");
+        NOT MESSAGE("Zarbi ennemi est traîné de force au combat!\p");
 
         // Red Card already consumed so cannot activate.
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentRight);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
-            MESSAGE("Wobbuffet held up its Red Card against the opposing Wynaut!");
+            MESSAGE("Qulbutoké a mis un Carton Rouge à Okéoké ennemi!");
         }
     }
 }
@@ -320,15 +320,15 @@ DOUBLE_BATTLE_TEST("Red Card activates but fails if the attacker has Suction Cup
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
-        MESSAGE("Wobbuffet held up its Red Card against the opposing Octillery!");
-        MESSAGE("The opposing Octillery is anchored in place with its suction cups!");
-        NOT MESSAGE("The opposing Unown was dragged out!");
+        MESSAGE("Qulbutoké a mis un Carton Rouge à Octillery ennemi!");
+        MESSAGE("Octillery ennemi s'accroche avec ses ventouses!");
+        NOT MESSAGE("Zarbi ennemi est traîné de force au combat!\p");
 
         // Red Card already consumed so cannot activate.
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentRight);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
-            MESSAGE("Wobbuffet held up its Red Card against the opposing Wynaut!");
+            MESSAGE("Qulbutoké a mis un Carton Rouge à Okéoké ennemi!");
         }
     }
 }
@@ -349,14 +349,14 @@ DOUBLE_BATTLE_TEST("Red Card activates but fails if the attacker has Guard Dog")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
-        MESSAGE("Wobbuffet held up its Red Card against the opposing Okidogi!");
-        NOT MESSAGE("The opposing Unown was dragged out!");
+        MESSAGE("Qulbutoké a mis un Carton Rouge à Félicanis ennemi!");
+        NOT MESSAGE("Zarbi ennemi est traîné de force au combat!\p");
 
         // Red Card already consumed so cannot activate.
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentRight);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
-            MESSAGE("Wobbuffet held up its Red Card against the opposing Wynaut!");
+            MESSAGE("Qulbutoké a mis un Carton Rouge à Okéoké ennemi!");
         }
     }
 }
@@ -378,11 +378,11 @@ SINGLE_BATTLE_TEST("Red Card does not activate if switched by Dragon Tail")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_TAIL, opponent);
         if (activate) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Wobbuffet held up its Red Card against the opposing Wobbuffet!");
+            MESSAGE("Qulbutoké a mis un Carton Rouge à Qulbutoké ennemi!");
         } else {
             NONE_OF {
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-                MESSAGE("Wobbuffet held up its Red Card against the opposing Wobbuffet!");
+                MESSAGE("Qulbutoké a mis un Carton Rouge à Qulbutoké ennemi!");
             }
         }
     }
@@ -399,7 +399,7 @@ SINGLE_BATTLE_TEST("Red Card activates and overrides U-turn")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_U_TURN, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Wobbuffet held up its Red Card against the opposing Wobbuffet!");
+        MESSAGE("Qulbutoké a mis un Carton Rouge à Qulbutoké ennemi!");
     }
 }
 
@@ -420,11 +420,11 @@ SINGLE_BATTLE_TEST("Red Card does not activate if attacker's Sheer Force applied
         ANIMATION(ANIM_TYPE_MOVE, move, opponent);
         if (activate) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Wobbuffet held up its Red Card against the opposing Tauros!");
+            MESSAGE("Qulbutoké a mis un Carton Rouge à Tauros ennemi!");
         } else {
             NONE_OF {
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-                MESSAGE("Wobbuffet held up its Red Card against the opposing Tauros!");
+                MESSAGE("Qulbutoké a mis un Carton Rouge à Tauros ennemi!");
             }
         }
     }
@@ -447,14 +447,14 @@ SINGLE_BATTLE_TEST("Red Card is consumed after dragged out replacement has its S
         // 2nd turn Red Card activation
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
-        MESSAGE("The opposing Wobbuffet held up its Red Card against Wobbuffet!");
-        MESSAGE("Wynaut was dragged out!");
-        MESSAGE("Wynaut was caught in a sticky web!");
+        MESSAGE("Qulbutoké ennemi a mis un Carton Rouge à Qulbutoké!");
+        MESSAGE("Okéoké est traîné de force au combat!\p");
+        MESSAGE("Okéoké est pris dans une toile gluante!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         // 3rd turn, Red Card was consumed, it can't trigger again
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
-            MESSAGE("The opposing Wobbuffet held up its Red Card against Wynaut!");
+            MESSAGE("Qulbutoké ennemi a mis un Carton Rouge à Okéoké!");
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         }
     } THEN {
@@ -473,8 +473,8 @@ SINGLE_BATTLE_TEST("Red Card does not cause the dragged out mon to lose hp due t
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
-        MESSAGE("The opposing Wobbuffet held up its Red Card against Wobbuffet!");
-        MESSAGE("Wynaut was dragged out!");
+        MESSAGE("Qulbutoké ennemi a mis un Carton Rouge à Qulbutoké!");
+        MESSAGE("Okéoké est traîné de force au combat!\p");
         NOT HP_BAR(player);
     }
 }
@@ -492,10 +492,10 @@ SINGLE_BATTLE_TEST("Red Card does not activate if holder is switched in mid-turn
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ENDURE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Wobbuffet is switched out with the Eject Button!");
+        MESSAGE("Qulbutoké se retire grâce au Bouton Fuite!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Wobbuffet held up its Red Card against the opposing Wobbuffet!");
+            MESSAGE("Qulbutoké a mis un Carton Rouge à Qulbutoké ennemi!");
         }
     }
 }
@@ -530,8 +530,8 @@ SINGLE_BATTLE_TEST("Red Card activates and is consumed but fails if the attacker
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
-        MESSAGE("The opposing Wobbuffet held up its Red Card against Wobbuffet!");
-        NOT MESSAGE("Wobbuffet is switched out with the Eject Button!");
+        MESSAGE("Qulbutoké ennemi a mis un Carton Rouge à Qulbutoké!");
+        NOT MESSAGE("Qulbutoké se retire grâce au Bouton Fuite!");
     } THEN {
         EXPECT_EQ(opponent->item, ITEM_NONE);
     }
@@ -551,10 +551,10 @@ SINGLE_BATTLE_TEST("Red Card activates before Eject Pack")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_OVERHEAT, player);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Wobbuffet is switched out with the Eject Button!");
+            MESSAGE("Qulbutoké se retire grâce au Bouton Fuite!");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
-        MESSAGE("The opposing Wobbuffet held up its Red Card against Wobbuffet!");
+        MESSAGE("Qulbutoké ennemi a mis un Carton Rouge à Qulbutoké!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
     }
 }

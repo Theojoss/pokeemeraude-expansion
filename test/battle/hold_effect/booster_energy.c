@@ -21,17 +21,17 @@ SINGLE_BATTLE_TEST("Booster Energy will activate Quark Drive after Electric Terr
         ABILITY_POPUP(opponent, ABILITY_ELECTRIC_SURGE);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Iron Moth used its Booster Energy to activate Quark Drive!");
-            MESSAGE("Iron Moth's Sp. Atk was heightened!");
+            MESSAGE("Mite-de-Fer a activé Charge Quantique grâce à son Énergie Booster!");
+            MESSAGE("Attaque Spéciale de Mite-de-Fer est renforcé!");
         }
         ABILITY_POPUP(player, ABILITY_QUARK_DRIVE);
-        MESSAGE("The Electric Terrain activated Iron Moth's Quark Drive!");
-        MESSAGE("Iron Moth's Sp. Atk was heightened!");
-        MESSAGE("The electricity disappeared from the battlefield.");
+        MESSAGE("Mite-de-Fer a activé Charge Quantique grâce au champ électrifié!");
+        MESSAGE("Attaque Spéciale de Mite-de-Fer est renforcé!");
+        MESSAGE("L'électricité parcourant le terrain s'est dissipée.");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
         ABILITY_POPUP(player, ABILITY_QUARK_DRIVE);
-        MESSAGE("Iron Moth used its Booster Energy to activate Quark Drive!");
-        MESSAGE("Iron Moth's Sp. Atk was heightened!");
+        MESSAGE("Mite-de-Fer a activé Charge Quantique grâce à son Énergie Booster!");
+        MESSAGE("Attaque Spéciale de Mite-de-Fer est renforcé!");
     }
 }
 
@@ -51,17 +51,17 @@ SINGLE_BATTLE_TEST("Booster Energy will activate Protosynthesis after harsh sunl
         ABILITY_POPUP(opponent, ABILITY_DROUGHT);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Raging Bolt used its Booster Energy to activate Protosynthesis!");
-            MESSAGE("Raging Bolt's Sp. Atk was heightened!");
+            MESSAGE("Ire-Foudre a activé Paléosynthèse grâce à son Énergie Booster!");
+            MESSAGE("Attaque Spéciale de Ire-Foudre est renforcé!");
         }
         ABILITY_POPUP(player, ABILITY_PROTOSYNTHESIS);
-        MESSAGE("The harsh sunlight activated Raging Bolt's Protosynthesis!");
-        MESSAGE("Raging Bolt's Sp. Atk was heightened!");
-        MESSAGE("The sunlight faded.");
+        MESSAGE("Le soleil brille, ce qui a permis à Ire-Foudre d'activer Paléosynthèse!");
+        MESSAGE("Attaque Spéciale de Ire-Foudre est renforcé!");
+        MESSAGE("Les rayons du soleil s'affaiblissent.");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
         ABILITY_POPUP(player, ABILITY_PROTOSYNTHESIS);
-        MESSAGE("Raging Bolt used its Booster Energy to activate Protosynthesis!");
-        MESSAGE("Raging Bolt's Sp. Atk was heightened!");
+        MESSAGE("Ire-Foudre a activé Paléosynthèse grâce à son Énergie Booster!");
+        MESSAGE("Attaque Spéciale de Ire-Foudre est renforcé!");
     }
 }
 
@@ -79,10 +79,10 @@ SINGLE_BATTLE_TEST("Booster Energy's Protosynthesis boost is preserved when weat
         TURN {}
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Raging Bolt used its Booster Energy to activate Protosynthesis!");
-        MESSAGE("Raging Bolt's Attack was heightened!");
+        MESSAGE("Ire-Foudre a activé Paléosynthèse grâce à son Énergie Booster!");
+        MESSAGE("Attaque de Ire-Foudre est renforcé!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUNNY_DAY, opponent);
-        MESSAGE("The sunlight faded.");
+        MESSAGE("Les rayons du soleil s'affaiblissent.");
     } THEN {
         EXPECT(gBattleMons[B_POSITION_PLAYER_LEFT].volatiles.paradoxBoostedStat == STAT_ATK);
     }
@@ -106,17 +106,17 @@ SINGLE_BATTLE_TEST("Booster Energy activates Protosynthesis and increases highes
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
         ABILITY_POPUP(player, ABILITY_PROTOSYNTHESIS);
-        MESSAGE("Raging Bolt used its Booster Energy to activate Protosynthesis!");
+        MESSAGE("Ire-Foudre a activé Paléosynthèse grâce à son Énergie Booster!");
         if (attack == 110)
-            MESSAGE("Raging Bolt's Attack was heightened!");
+            MESSAGE("Attaque de Ire-Foudre est renforcé!");
         else if (defense == 110)
-            MESSAGE("Raging Bolt's Defense was heightened!");
+            MESSAGE("Défense de Ire-Foudre est renforcé!");
         else if (speed == 110)
-            MESSAGE("Raging Bolt's Speed was heightened!");
+            MESSAGE("Vitesse de Ire-Foudre est renforcé!");
         else if (spAttack == 110)
-            MESSAGE("Raging Bolt's Sp. Atk was heightened!");
+            MESSAGE("Attaque Spéciale de Ire-Foudre est renforcé!");
         else if (spDefense == 110)
-            MESSAGE("Raging Bolt's Sp. Def was heightened!");
+            MESSAGE("Défense Spéciale de Ire-Foudre est renforcé!");
     } THEN {
         EXPECT(player->item == ITEM_NONE);
     }
@@ -140,15 +140,15 @@ SINGLE_BATTLE_TEST("Booster Energy activates Quark Drive and increases highest s
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
         if (attack == 110)
-            MESSAGE("Iron Moth's Attack was heightened!");
+            MESSAGE("Attaque de Mite-de-Fer est renforcé!");
         else if (defense == 110)
-            MESSAGE("Iron Moth's Defense was heightened!");
+            MESSAGE("Défense de Mite-de-Fer est renforcé!");
         else if (speed == 110)
-            MESSAGE("Iron Moth's Speed was heightened!");
+            MESSAGE("Vitesse de Mite-de-Fer est renforcé!");
         else if (spAttack == 110)
-            MESSAGE("Iron Moth's Sp. Atk was heightened!");
+            MESSAGE("Attaque Spéciale de Mite-de-Fer est renforcé!");
         else if (spDefense == 110)
-            MESSAGE("Iron Moth's Sp. Def was heightened!");
+            MESSAGE("Défense Spéciale de Mite-de-Fer est renforcé!");
     } THEN {
         EXPECT(player->item == ITEM_NONE);
     }
@@ -168,10 +168,10 @@ SINGLE_BATTLE_TEST("Booster Energy's Quark Drive boost is preserved when terrain
         TURN {}
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Iron Moth used its Booster Energy to activate Quark Drive!");
-        MESSAGE("Iron Moth's Attack was heightened!");
+        MESSAGE("Mite-de-Fer a activé Charge Quantique grâce à son Énergie Booster!");
+        MESSAGE("Attaque de Mite-de-Fer est renforcé!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GRASSY_TERRAIN, opponent);
-        MESSAGE("The grass disappeared from the battlefield.");
+        MESSAGE("Le gazon disparaît.");
     } THEN {
         EXPECT(gBattleMons[B_POSITION_PLAYER_LEFT].volatiles.paradoxBoostedStat == STAT_ATK);
     }
@@ -240,7 +240,7 @@ SINGLE_BATTLE_TEST("Booster Energy can't be tricked if a Paradox species is invo
         TURN { MOVE(opponent, MOVE_TRICK); }
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_TRICK, opponent);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 

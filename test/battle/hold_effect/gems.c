@@ -17,11 +17,11 @@ SINGLE_BATTLE_TEST("Gem is consumed when it corresponds to the type of a move")
     } SCENE {
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("The Fire Gem strengthened Wobbuffet's power!");
+            MESSAGE("Joyau Feu renforce la capacité de Qulbutoké!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EMBER, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("The Normal Gem strengthened Wobbuffet's power!");
+        MESSAGE("Joyau Normal renforce la capacité de Qulbutoké!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
     }
 }
@@ -45,7 +45,7 @@ SINGLE_BATTLE_TEST("Gem is not consumed when using Struggle", s16 damage)
     } SCENE {
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("The Normal Gem strengthened Wobbuffet's power!");
+            MESSAGE("Joyau Normal renforce la capacité de Qulbutoké!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STRUGGLE, player);
         HP_BAR(opponent, captureDamage: &results[i].damage);
@@ -67,7 +67,7 @@ SINGLE_BATTLE_TEST("Gem boost is only applied once")
         TURN { MOVE(player, MOVE_SCRATCH); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("The Normal Gem strengthened Wobbuffet's power!");
+        MESSAGE("Joyau Normal renforce la capacité de Qulbutoké!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
         HP_BAR(opponent, captureDamage: &boostedHit);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
@@ -113,7 +113,7 @@ SINGLE_BATTLE_TEST("Gem is consumed if the move type is changed")
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("The Normal Gem strengthened Delcatty's power!");
+        MESSAGE("Joyau Normal renforce la capacité de Delcatty!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FEINT_ATTACK, player);
     }
 }

@@ -17,7 +17,7 @@ SINGLE_BATTLE_TEST("White Herb restores stats when they're lowered")
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Wobbuffet returned its stats to normal using its White Herb!");
+        MESSAGE("Herbe Blanche fait revenir Qulbutoké à la normale.");
     } THEN {
         EXPECT(player->item == ITEM_NONE);
         EXPECT(player->statStages[STAT_DEF] = DEFAULT_STAT_STAGE);
@@ -35,7 +35,7 @@ SINGLE_BATTLE_TEST("White Herb restores stats after Attack was lowered by Intimi
         ABILITY_POPUP(opponent, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Wobbuffet returned its stats to normal using its White Herb!");
+        MESSAGE("Herbe Blanche fait revenir Qulbutoké à la normale.");
     } THEN {
         EXPECT(player->item == ITEM_NONE);
         EXPECT(player->statStages[STAT_DEF] = DEFAULT_STAT_STAGE);
@@ -58,9 +58,9 @@ DOUBLE_BATTLE_TEST("White Herb restores stats after Attack was lowered by Intimi
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponentLeft);
-        MESSAGE("The opposing Wobbuffet returned its stats to normal using its White Herb!");
+        MESSAGE("Herbe Blanche fait revenir Qulbutoké ennemi à la normale.");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponentRight);
-        MESSAGE("The opposing Wynaut returned its stats to normal using its White Herb!");
+        MESSAGE("Herbe Blanche fait revenir Okéoké ennemi à la normale.");
     } THEN {
         EXPECT(opponentLeft->item == ITEM_NONE);
         EXPECT(opponentLeft->statStages[STAT_DEF] = DEFAULT_STAT_STAGE);
@@ -81,11 +81,11 @@ SINGLE_BATTLE_TEST("White Herb restores stats after Attack was lowered by Intimi
         ABILITY_POPUP(opponent, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Wobbuffet returned its stats to normal using its White Herb!");
+        MESSAGE("Herbe Blanche fait revenir Qulbutoké à la normale.");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CLOSE_COMBAT, player);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Wobbuffet returned its stats to normal using its White Herb!");
+            MESSAGE("Herbe Blanche fait revenir Qulbutoké à la normale.");
         }
     } THEN {
         EXPECT(player->item == ITEM_NONE);
@@ -112,12 +112,12 @@ SINGLE_BATTLE_TEST("White Herb restores stats after all hits of a multi hit move
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DUAL_WINGBEAT, player);
         ABILITY_POPUP(opponent, ability);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Wobbuffet's Speed fell!");
+        MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
         ABILITY_POPUP(opponent, ability);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Wobbuffet's Speed fell!");
+        MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Wobbuffet returned its stats to normal using its White Herb!");
+        MESSAGE("Herbe Blanche fait revenir Qulbutoké à la normale.");
     } THEN {
         EXPECT(player->item == ITEM_NONE);
         EXPECT(player->statStages[STAT_SPEED] = DEFAULT_STAT_STAGE);
@@ -142,16 +142,16 @@ SINGLE_BATTLE_TEST("White Herb wont have time to activate if it is knocked off o
         ANIMATION(ANIM_TYPE_MOVE, move, opponent);
         ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Slugma's Defense fell!");
-        MESSAGE("Slugma's Speed rose sharply!");
+        MESSAGE("Ah, Défense du Limagma baisse!");
+        MESSAGE("Ah, Vitesse du Limagma augmente beaucoup!");
         if (move == MOVE_KNOCK_OFF) {
-            MESSAGE("The opposing Wobbuffet knocked off Slugma's White Herb!");
+            MESSAGE("Qulbutoké ennemi fait tomber Herbe Blanche de Limagma!");
         } else if (move == MOVE_THIEF) {
-            MESSAGE("The opposing Wobbuffet stole Slugma's White Herb!");
+            MESSAGE("Qulbutoké ennemi vole Herbe Blanche de Limagma!");
         }
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Slugma returned its stats to normal using its White Herb!");
+            MESSAGE("Herbe Blanche fait revenir Limagma à la normale.");
         }
     } THEN {
         EXPECT(player->statStages[STAT_DEF] = DEFAULT_STAT_STAGE - 1);
@@ -170,13 +170,13 @@ SINGLE_BATTLE_TEST("White Herb wont have time to activate if Magician steals it"
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Slugma's Defense fell!");
-        MESSAGE("Slugma's Speed rose sharply!");
+        MESSAGE("Ah, Défense du Limagma baisse!");
+        MESSAGE("Ah, Vitesse du Limagma augmente beaucoup!");
         ABILITY_POPUP(opponent, ABILITY_MAGICIAN);
-        MESSAGE("The opposing Fennekin stole Slugma's White Herb!");
+        MESSAGE("Feunnec ennemi vole Herbe Blanche de Limagma!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Slugma returned its stats to normal using its White Herb!");
+            MESSAGE("Herbe Blanche fait revenir Limagma à la normale.");
         }
     } THEN {
         EXPECT(player->statStages[STAT_DEF] = DEFAULT_STAT_STAGE - 1);
@@ -204,7 +204,7 @@ SINGLE_BATTLE_TEST("White Herb has correct interactions with Intimidate triggere
         // Defiant activates first, so White Herb doesn't have a chance to trigger.
         if (ability == ABILITY_COMPETITIVE) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Igglybuff returned its stats to normal using its White Herb!");
+            MESSAGE("Herbe Blanche fait revenir Toudoudou à la normale.");
         }
     } THEN {
         if (ability == ABILITY_COMPETITIVE) {
@@ -228,7 +228,7 @@ DOUBLE_BATTLE_TEST("White Herb is correctly displayed")
         TURN { MOVE(playerRight, MOVE_SUPERPOWER, target: opponentRight); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerRight);
-        MESSAGE("Wynaut returned its stats to normal using its White Herb!");
+        MESSAGE("Herbe Blanche fait revenir Okéoké à la normale.");
     } THEN {
         EXPECT(playerLeft->item == ITEM_NONE);
         EXPECT(playerLeft->statStages[STAT_DEF] = DEFAULT_STAT_STAGE);
