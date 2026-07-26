@@ -16,23 +16,23 @@ SINGLE_BATTLE_TEST("Thousand Arrows does neutral damage to non-grounded Flying t
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_THOUSAND_ARROWS, player);
         if (pokemon == SPECIES_SKARMORY) {
-            MESSAGE("The opposing Skarmory fell straight down!");
-            MESSAGE("The opposing Skarmory used Celebrate!");
+            MESSAGE("Airmure ennemi s'écrase au sol!");
+            MESSAGE("Airmure ennemi utilise\nCélébration!");
         } else {
-            MESSAGE("The opposing Scyther fell straight down!");
-            MESSAGE("The opposing Scyther used Celebrate!");
+            MESSAGE("Insécateur ennemi s'écrase au sol!");
+            MESSAGE("Insécateur ennemi utilise\nCélébration!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
-        MESSAGE("Congratulations, 1!");
-        MESSAGE("Wobbuffet used Thousand Arrows!");
+        MESSAGE("Félicitations, 1!");
+        MESSAGE("Qulbutoké utilise\nMyria-Flèches!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_THOUSAND_ARROWS, player);
         if (pokemon == SPECIES_SKARMORY)
         {
-            MESSAGE("It's super effective!");
+            MESSAGE("C'est super efficace!");
         }
         else
         {
-            MESSAGE("It's not very effective…");
+            MESSAGE("Ce n'est pas très efficace…");
         }
     }
 }
