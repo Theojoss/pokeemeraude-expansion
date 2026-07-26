@@ -36,11 +36,11 @@ SINGLE_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSENDOUT, ST
     } WHEN {
         TURN { SWITCH(opponent, 1); }
     } SCENE {
-        MESSAGE("Un combat est lancé\npar 2!\p");
-        MESSAGE("Un Qulbutoké est envoyé\npar 2!");
+        MESSAGE("2\nveut se battre!{PAUSE 49}");
+        MESSAGE("2 envoie\nun Qulbutoké!");
         MESSAGE("Fantominus! Go!");
         MESSAGE("2 retire Qulbutoké!");
-        MESSAGE("Un Girafarig est envoyé\npar 2!");
+        MESSAGE("2 envoie\nun Girafarig!");
     }
 }
 
@@ -54,10 +54,10 @@ AI_SINGLE_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSENDOUT,
     } WHEN {
         TURN { EXPECT_SWITCH(opponent, 1); }
     } SCENE {
-        MESSAGE("Un combat est lancé\npar !\p");
+        MESSAGE("Un combat est lancé\npar " AI_TRAINER_NAME "!\p");
         MESSAGE("Un Qulbutoké est envoyé\npar " AI_TRAINER_NAME "!");
         MESSAGE("Fantominus! Go!");
-        MESSAGE(AI_TRAINER_NAME " retire Qulbutoké!");
+        MESSAGE("Qulbutoké est retiré par\n" AI_TRAINER_NAME "!");
         MESSAGE("Un Girafarig est envoyé\npar " AI_TRAINER_NAME "!");
     }
 }
@@ -77,13 +77,13 @@ DOUBLE_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSENDOUT, ST
             SWITCH(opponentRight, 2);
         }
     } SCENE {
-        MESSAGE("Un combat est lancé\npar 2!\p");
-        MESSAGE("Un Qulbutoké et un Okéoké\nsont envoyés par\l2!");
+        MESSAGE("2\nveut se battre!{PAUSE 49}");
+        MESSAGE("2 envoie\nun Qulbutoké et un Okéoké!");
         MESSAGE("Fantominus et\nSpectrum! Go!");
         MESSAGE("2 retire Qulbutoké!");
-        MESSAGE("Un Farigiraf est envoyé\npar 2!");
+        MESSAGE("2 envoie\nun Farigiraf!");
         MESSAGE("2 retire Okéoké!");
-        MESSAGE("Un Girafarig est envoyé\npar 2!");
+        MESSAGE("2 envoie\nun Girafarig!");
     }
 }
 
@@ -106,9 +106,9 @@ AI_DOUBLE_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSENDOUT,
         MESSAGE("Un combat est lancé\npar " AI_TRAINER_NAME "!\p");
         MESSAGE("Un Qulbutoké et un Okéoké\nsont envoyés par\l" AI_TRAINER_NAME "!");
         MESSAGE("Fantominus et\nSpectrum! Go!");
-        MESSAGE(AI_TRAINER_NAME " retire Qulbutoké!");
+        MESSAGE("Qulbutoké est retiré par " AI_TRAINER_NAME "!");
         MESSAGE("Un Farigiraf est envoyé\npar " AI_TRAINER_NAME "!");
-        MESSAGE(AI_TRAINER_NAME " retire Okéoké!");
+        MESSAGE("Okéoké est retiré par " AI_TRAINER_NAME "!");
         MESSAGE("Un Girafarig est envoyé\npar " AI_TRAINER_NAME "!");
     }
 }
@@ -130,15 +130,15 @@ MULTI_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSENDOUT, STR
             SWITCH(opponentRight, 1);
         }
     } SCENE {
-        MESSAGE("Un combat est lancé\npar 2 et\l4!\p");
+        MESSAGE("2 et 4\nveulent se battre!");
         MESSAGE("2 envoie\nun Qulbutoké!\p4 envoie\nun Okéoké!");
         MESSAGE("3 envoie\nSpectrum!\pFantominus! Go!");
         MESSAGE("2 retire Qulbutoké!");
-        MESSAGE("Un Farigiraf est envoyé\npar 2!");
+        MESSAGE("2 envoie\nun Farigiraf!");
         MESSAGE("3 retire Spectrum!");
-        MESSAGE("Un Ectoplasma est envoyé\npar 3!");
+        MESSAGE("3 envoie\nEctoplasma!");
         MESSAGE("4 retire Okéoké!");
-        MESSAGE("Un Girafarig est envoyé\npar 4!");
+        MESSAGE("4 envoie\nun Girafarig!");
     }
 }
 
@@ -161,13 +161,13 @@ AI_MULTI_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSENDOUT, 
         }
     } SCENE {
         MESSAGE("Un combat est lancé\npar " AI_TRAINER_NAME " et\l" AI_TRAINER_2_NAME "!\p");
-        MESSAGE(AI_TRAINER_NAME " envoie\nun Qulbutoké!\p" AI_TRAINER_2_NAME " envoie\nun Okéoké!");
-        MESSAGE(AI_PARTNER_NAME " envoie\nSpectrum!\pFantominus! Go!");
-        MESSAGE(AI_TRAINER_NAME " retire Qulbutoké!");
+        MESSAGE("Un Qulbutoké est envoyé\npar " AI_TRAINER_NAME "!\pUn Okéoké est envoyé\npar " AI_TRAINER_2_NAME "!");
+        MESSAGE("Spectrum est envoyé par\n" AI_PARTNER_NAME "!\pFantominus! Go!");
+        MESSAGE("Qulbutoké est retiré par " AI_TRAINER_NAME "!");
         MESSAGE("Un Farigiraf est envoyé\npar " AI_TRAINER_NAME "!");
         MESSAGE(AI_PARTNER_NAME " retire Spectrum!");
-        MESSAGE("Un Ectoplasma est envoyé\npar " AI_PARTNER_NAME "!");
-        MESSAGE(AI_TRAINER_2_NAME " retire Okéoké!");
+        MESSAGE("Ectoplasma est envoyé par " AI_PARTNER_NAME "!");
+        MESSAGE("Okéoké est retiré par " AI_TRAINER_2_NAME "!");
         MESSAGE("Un Girafarig est envoyé\npar " AI_TRAINER_2_NAME "!");
     }
 }
@@ -189,15 +189,15 @@ TWO_VS_ONE_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSENDOUT
             SWITCH(opponentRight, 2);
         }
     } SCENE {
-        MESSAGE("Un combat est lancé\npar 2!\p");
-        MESSAGE("Un Qulbutoké et un Okéoké\nsont envoyés par\l2!");
+        MESSAGE("2\nveut se battre!");
+        MESSAGE("2 envoie\nun Qulbutoké et un Okéoké!");
         MESSAGE("3 envoie\nSpectrum!\pFantominus! Go!");
         MESSAGE("2 retire Qulbutoké!");
-        MESSAGE("Un Farigiraf est envoyé\npar 2!");
+        MESSAGE("2 envoie\nun Farigiraf!");
         MESSAGE("2 retire Okéoké!");
-        MESSAGE("Un Girafarig est envoyé\npar 2!");
+        MESSAGE("2 envoie\nun Girafarig!");
         MESSAGE("3 retire Spectrum!");
-        MESSAGE("Un Ectoplasma est envoyé\npar 3!");
+        MESSAGE("3 envoie\nEctoplasma!");
     }
 }
 
@@ -221,13 +221,13 @@ AI_TWO_VS_ONE_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSEND
     } SCENE {
         MESSAGE("Un combat est lancé\npar " AI_TRAINER_NAME "!\p");
         MESSAGE("Un Qulbutoké et un Okéoké\nsont envoyés par\l" AI_TRAINER_NAME "!");
-        MESSAGE(AI_PARTNER_NAME " envoie\nSpectrum!\pFantominus! Go!");
-        MESSAGE(AI_TRAINER_NAME " retire Qulbutoké!");
+        MESSAGE("Spectrum est envoyé par\n" AI_PARTNER_NAME "!\pFantominus! Go!");
+        MESSAGE("Qulbutoké est retiré par " AI_TRAINER_NAME "!");
         MESSAGE("Un Farigiraf est envoyé\npar " AI_TRAINER_NAME "!");
-        MESSAGE(AI_TRAINER_NAME " retire Okéoké!");
+        MESSAGE("Okéoké est retiré par " AI_TRAINER_NAME "!");
         MESSAGE("Un Girafarig est envoyé\npar " AI_TRAINER_NAME "!");
         MESSAGE(AI_PARTNER_NAME " retire Spectrum!");
-        MESSAGE("Un Ectoplasma est envoyé\npar " AI_PARTNER_NAME "!");
+        MESSAGE("Ectoplasma est envoyé par " AI_PARTNER_NAME "!");
     }
 }
 
@@ -246,13 +246,13 @@ ONE_VS_TWO_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSENDOUT
             SWITCH(opponentRight, 1);
         }
     } SCENE {
-        MESSAGE("Un combat est lancé\npar 2 et\l4!\p");
+        MESSAGE("2 et 4\nveulent se battre!");
         MESSAGE("2 envoie\nun Qulbutoké!\p4 envoie\nun Okéoké!");
         MESSAGE("Fantominus et\nSpectrum! Go!");
         MESSAGE("2 retire Qulbutoké!");
-        MESSAGE("Un Farigiraf est envoyé\npar 2!");
+        MESSAGE("2 envoie\nun Farigiraf!");
         MESSAGE("4 retire Okéoké!");
-        MESSAGE("Un Girafarig est envoyé\npar 4!");
+        MESSAGE("4 envoie\nun Girafarig!");
     }
 }
 
@@ -273,11 +273,11 @@ AI_ONE_VS_TWO_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSEND
         }
     } SCENE {
         MESSAGE("Un combat est lancé\npar " AI_TRAINER_NAME " et\l" AI_TRAINER_2_NAME "!\p");
-        MESSAGE(AI_TRAINER_NAME " envoie\nun Qulbutoké!\p" AI_TRAINER_2_NAME " envoie\nun Okéoké!");
+        MESSAGE("Un Qulbutoké est envoyé\npar " AI_TRAINER_NAME "!\pUn Okéoké est envoyé\npar " AI_TRAINER_2_NAME "!");
         MESSAGE("Fantominus et\nSpectrum! Go!");
-        MESSAGE(AI_TRAINER_NAME " retire Qulbutoké!");
+        MESSAGE("Qulbutoké est retiré par " AI_TRAINER_NAME "!");
         MESSAGE("Un Farigiraf est envoyé\npar " AI_TRAINER_NAME "!");
-        MESSAGE(AI_TRAINER_2_NAME " retire Okéoké!");
+        MESSAGE("Okéoké est retiré par " AI_TRAINER_2_NAME "!");
         MESSAGE("Un Girafarig est envoyé\npar " AI_TRAINER_2_NAME "!");
     }
 }
