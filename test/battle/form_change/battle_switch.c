@@ -14,8 +14,8 @@ SINGLE_BATTLE_TEST("Aegislash reverts to Shield Form upon switching out")
     } SCENE {
         ABILITY_POPUP(player, ABILITY_STANCE_CHANGE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FORM_CHANGE, player);
-        MESSAGE("Aegislash used Scratch!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Exagide utilise\nGriffe!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
     } THEN {
         EXPECT_EQ(player->species, SPECIES_AEGISLASH_SHIELD);
     }

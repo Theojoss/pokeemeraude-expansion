@@ -77,12 +77,12 @@ SINGLE_BATTLE_TEST("Palafin returns to Zero form upon battle end")
         TURN { SWITCH(player, 1); }
         TURN { SWITCH(player, 0); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Palafin");
-        SEND_IN_MESSAGE("Wobbuffet");
-        SWITCH_OUT_MESSAGE("Wobbuffet");
-        SEND_IN_MESSAGE("Palafin");
+        SWITCH_OUT_MESSAGE("Superdofin");
+        SEND_IN_MESSAGE("Qulbutoké");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
+        SEND_IN_MESSAGE("Superdofin");
         ABILITY_POPUP(player, ABILITY_ZERO_TO_HERO);
-        MESSAGE("Palafin underwent a heroic transformation!");
+        MESSAGE("Superdofin subit une transformation héroïque!");
     } THEN {
         EXPECT_EQ(GetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_SPECIES), SPECIES_PALAFIN_ZERO);
     }
@@ -100,7 +100,7 @@ SINGLE_BATTLE_TEST("Shaymin retains Land form if it was frozen or frostbitten in
         ANIMATION(ANIM_TYPE_MOVE, MOVE_POWDER_SNOW, opponent);
         FREEZE_OR_FROSTBURN_STATUS(player, TRUE);
         NOT HP_BAR(player); // Regression caused by Mimikyu form change
-        MESSAGE("Shaymin transformed!");
+        MESSAGE("Shaymin se transforme!");
     } THEN {
         EXPECT_EQ(GetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_SPECIES), SPECIES_SHAYMIN_LAND);
     }
@@ -116,7 +116,7 @@ SINGLE_BATTLE_TEST("Meloetta returns to Aria form upon battle end after using Re
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RELIC_SONG, player);
         HP_BAR(opponent);
-        MESSAGE("Meloetta transformed!");
+        MESSAGE("Meloetta se transforme!");
     } THEN {
         EXPECT_EQ(GetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_SPECIES), SPECIES_MELOETTA_ARIA);
     }
@@ -133,10 +133,10 @@ SINGLE_BATTLE_TEST("Battle Bond Greninja returns to base form upon battle end af
         TURN { MOVE(player, MOVE_WATER_GUN); SEND_OUT(opponent, 1); }
     } SCENE {
         HP_BAR(opponent);
-        MESSAGE("The opposing Wobbuffet fainted!");
+        MESSAGE("Qulbutoké ennemi est K.O.!\p");
         ABILITY_POPUP(player, ABILITY_BATTLE_BOND);
-        MESSAGE("Greninja became fully charged due to its bond with its trainer!");
-        MESSAGE("Greninja became Ash-Greninja!");
+        MESSAGE("Amphinobi est complètement chargé grâce à son lien avec son Dresseur!\p");
+        MESSAGE("Amphinobi s'est transformé en Amphinobi d'Aurore!\p");
     } THEN {
         EXPECT_EQ(GetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_SPECIES), SPECIES_GRENINJA_BATTLE_BOND);
     }
@@ -235,7 +235,7 @@ SINGLE_BATTLE_TEST("Eiscue Noice reverts to Ice Form upon battle end after being
     } SCENE {
         ABILITY_POPUP(player, ABILITY_ICE_FACE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FORM_CHANGE, player);
-        MESSAGE("Eiscue transformed!");
+        MESSAGE("Bekaglaçon se transforme!");
     } THEN {
         EXPECT_EQ(GetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_SPECIES), SPECIES_EISCUE_ICE);
     }
@@ -249,8 +249,8 @@ SINGLE_BATTLE_TEST("Morpeko Hangry reverts to Full Belly Form upon battle end af
     } WHEN {
         TURN { MOVE(player, MOVE_CELEBRATE); }
     } SCENE {
-        MESSAGE("Morpeko used Celebrate!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Morpeko utilise\nCélébration!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FORM_CHANGE, player);
     } THEN {
         EXPECT_EQ(GetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_SPECIES), SPECIES_MORPEKO_FULL_BELLY);
@@ -302,7 +302,7 @@ SINGLE_BATTLE_TEST("Power Construct Zygarde reverts to its original form upon ba
     } WHEN {
         TURN { MOVE(opponent, MOVE_SCRATCH); }
     } SCENE {
-        MESSAGE("You sense the presence of many!");
+        MESSAGE("Vous sentez la présence d'un grand nombre d'individus!");
         ABILITY_POPUP(player, ABILITY_POWER_CONSTRUCT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_POWER_CONSTRUCT, player);
 

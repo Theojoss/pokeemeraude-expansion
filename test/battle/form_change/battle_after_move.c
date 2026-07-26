@@ -11,7 +11,7 @@ SINGLE_BATTLE_TEST("Relic Song transforms Meloetta if used successfully")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RELIC_SONG, player);
         HP_BAR(opponent);
-        MESSAGE("Meloetta transformed!");
+        MESSAGE("Meloetta se transforme!");
     } THEN {
         EXPECT_EQ(player->species, SPECIES_MELOETTA_PIROUETTE);
     }
@@ -29,7 +29,7 @@ SINGLE_BATTLE_TEST("Relic Song does not transform Pokemon other than Meloetta")
         HP_BAR(opponent);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FORM_CHANGE, player);
-            MESSAGE("Wobbuffet transformed!");
+            MESSAGE("Qulbutoké se transforme!");
         }
     } THEN {
         EXPECT_EQ(player->species, SPECIES_WOBBUFFET);
@@ -47,10 +47,10 @@ SINGLE_BATTLE_TEST("Relic Song transforms Meloetta twice if used successfully")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RELIC_SONG, player);
         HP_BAR(opponent);
-        MESSAGE("Meloetta transformed!");
+        MESSAGE("Meloetta se transforme!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RELIC_SONG, player);
         HP_BAR(opponent);
-        MESSAGE("Meloetta transformed!");
+        MESSAGE("Meloetta se transforme!");
     } THEN {
         EXPECT_EQ(player->species, SPECIES_MELOETTA_ARIA);
     }
@@ -67,9 +67,9 @@ SINGLE_BATTLE_TEST("Relic Song transformation activates after target faints")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RELIC_SONG, player);
         HP_BAR(opponent);
         ABILITY_POPUP(opponent, ABILITY_COTTON_DOWN);
-        MESSAGE("Meloetta's Speed fell!");
-        MESSAGE("The opposing Gossifleur fainted!");
-        MESSAGE("Meloetta transformed!");
+        MESSAGE("Ah, Vitesse du Meloetta baisse!");
+        MESSAGE("Tournicoton ennemi est K.O.!\p");
+        MESSAGE("Meloetta se transforme!");
     } THEN {
         EXPECT_EQ(player->species, SPECIES_MELOETTA_PIROUETTE);
     }
@@ -88,7 +88,7 @@ DOUBLE_BATTLE_TEST("Relic Song transforms once Meloetta in a double battle")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RELIC_SONG, playerLeft);
         HP_BAR(opponentLeft);
         HP_BAR(opponentRight);
-        MESSAGE("Meloetta transformed!");
+        MESSAGE("Meloetta se transforme!");
     } THEN {
         EXPECT_EQ(playerLeft->species, SPECIES_MELOETTA_PIROUETTE);
     }
@@ -105,7 +105,7 @@ SINGLE_BATTLE_TEST("Relic Song loses the form-changing effect with Sheer Force")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SKILL_SWAP, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RELIC_SONG, player);
         HP_BAR(opponent);
-        NOT MESSAGE("Meloetta transformed!");
+        NOT MESSAGE("Meloetta se transforme!");
     } THEN {
         EXPECT_EQ(player->species, SPECIES_MELOETTA_ARIA);
     }
@@ -123,8 +123,8 @@ SINGLE_BATTLE_TEST("Relic Song transforms Meloetta after Magician was activated"
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RELIC_SONG, player);
         HP_BAR(opponent);
         ABILITY_POPUP(player, ABILITY_MAGICIAN);
-        MESSAGE("Meloetta stole the opposing Delphox's Potion!");
-        MESSAGE("Meloetta transformed!");
+        MESSAGE("Meloetta vole Potion de Goupelin ennemi!");
+        MESSAGE("Meloetta se transforme!");
     } THEN {
         EXPECT_EQ(player->species, SPECIES_MELOETTA_PIROUETTE);
     }
@@ -141,7 +141,7 @@ SINGLE_BATTLE_TEST("Relic Song transforms Meloetta before taking Life Orb damage
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RELIC_SONG, player);
         HP_BAR(opponent);
-        MESSAGE("Meloetta transformed!");
+        MESSAGE("Meloetta se transforme!");
         HP_BAR(player);
     } THEN {
         EXPECT_EQ(player->species, SPECIES_MELOETTA_PIROUETTE);
