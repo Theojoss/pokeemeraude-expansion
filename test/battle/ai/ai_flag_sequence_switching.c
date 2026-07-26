@@ -27,14 +27,14 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SEQUENCE_SWITCHING: AI will always switch after a
         }
     } SCENE {
         if (aiSequenceSwitchingFlag) {
-            MESSAGE(AI_TRAINER_NAME " sent out Machoke!");
-            MESSAGE(AI_TRAINER_NAME " sent out Machamp!");
-            MESSAGE(AI_TRAINER_NAME " sent out Mankey!");
-            MESSAGE(AI_TRAINER_NAME " sent out Primeape!");
-            MESSAGE(AI_TRAINER_NAME " sent out Magnezone!");
+            MESSAGE("Un Machopeur est envoyé\npar " AI_TRAINER_NAME  "!");
+            MESSAGE("Un Mackogneur est envoyé\npar " AI_TRAINER_NAME  "!");
+            MESSAGE("Un Férosinge est envoyé\npar " AI_TRAINER_NAME  "!");
+            MESSAGE("Un Colossinge est envoyé\npar " AI_TRAINER_NAME  "!");
+            MESSAGE("Un Magnézone est envoyé\npar " AI_TRAINER_NAME  "!");
         }
         else {
-            MESSAGE(AI_TRAINER_NAME " sent out Magnezone!");
+            MESSAGE("Un Magnézone est envoyé\npar " AI_TRAINER_NAME "!");
         }
     }
 }
@@ -60,7 +60,7 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SEQUENCE_SWITCHING: Roar and Dragon Tail still fo
         TURN { MOVE(player, move); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, move, player);
-        MESSAGE("The opposing Bulbasaur was dragged out!");
+        MESSAGE("Bulbizarre ennemi est traîné de force au combat!\p");
     }
 }
 
