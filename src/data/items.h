@@ -17465,6 +17465,23 @@ const struct ItemInfo gItemsInfo[] =
         .iconPic = gItemIcon_PokeshiDoll,
         .iconPalette = gItemIconPalette_PokeshiDoll,
     },
+
+    [ITEM_OUTFIT_BOX] =
+    {
+        .name = ITEM_NAME("Boîte à Costumes"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "Une boîte permettant de\n"
+            "ranger et de changer ses\n"
+            "costumes en toute sécurité."
+        ),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_OutfitBox,
+        .iconPic = gItemIcon_OutfitBox,
+        .iconPalette = gItemIconPalette_OutfitBox,
+    },
 };
 
 #undef ITEM_NAME

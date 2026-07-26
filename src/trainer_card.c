@@ -48,6 +48,7 @@ struct TrainerCardData
     u8 bgPalLoadState;
     u8 flipDrawState;
     bool8 isLink;
+    bool8 isOwnCard;
     u8 timeColonBlinkTimer;
     bool8 timeColonInvisible;
     bool8 onBack;
@@ -298,6 +299,8 @@ static const u8 sTrainerPicOffset[2][GENDER_COUNT][2] =
         [FEMALE] = {1, 0}
     },
 };
+
+extern u16 GetPlayerTrainerPicIdByOutfit(u16 outfitId, u8 gender);
 
 static const u8 sTrainerPicFacilityClass[][GENDER_COUNT] =
 {
@@ -1777,6 +1780,7 @@ void ShowPlayerTrainerCard(void (*callback)(void))
         sData->isLink = TRUE;
     else
         sData->isLink = FALSE;
+    sData->isOwnCard = TRUE;
 
     sData->language = GAME_LANGUAGE;
     TrainerCard_GenerateCardForPlayer(&sData->trainerCard);
@@ -1788,6 +1792,7 @@ void ShowTrainerCardInLink(u8 cardId, void (*callback)(void))
     sData = AllocZeroed(sizeof(*sData));
     sData->callback2 = callback;
     sData->isLink = TRUE;
+    sData->isOwnCard = FALSE;
     sData->trainerCard = gTrainerCards[cardId];
     sData->language = gLinkPlayers[cardId].language;
     SetMainCallback2(CB2_InitTrainerCard);
@@ -1853,6 +1858,15 @@ static void CreateTrainerCardTrainerPic(void)
     if (InUnionRoom() == TRUE && gReceivedRemoteLinkPlayers)
     {
         CreateTrainerCardTrainerPicSprite(FacilityClassToPicIndex(sData->trainerCard.unionRoomClass),
+                    TRUE,
+                    sTrainerPicOffset[sData->isHoenn][sData->trainerCard.gender][0],
+                    sTrainerPicOffset[sData->isHoenn][sData->trainerCard.gender][1],
+                    8,
+                    WIN_TRAINER_PIC);
+    }
+    else if (sData->isOwnCard && sData->cardType == CARD_TYPE_EMERALD)
+    {
+        CreateTrainerCardTrainerPicSprite(GetPlayerTrainerPicIdByOutfit(gSaveBlock2Ptr->currOutfitId, sData->trainerCard.gender),
                     TRUE,
                     sTrainerPicOffset[sData->isHoenn][sData->trainerCard.gender][0],
                     sTrainerPicOffset[sData->isHoenn][sData->trainerCard.gender][1],

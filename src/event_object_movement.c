@@ -505,6 +505,14 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Npc3Reflection,        OBJ_EVENT_PAL_TAG_NPC_3_REFLECTION},
     {gObjectEventPal_Npc4Reflection,        OBJ_EVENT_PAL_TAG_NPC_4_REFLECTION},
     {gObjectEventPal_Brendan,               OBJ_EVENT_PAL_TAG_BRENDAN},
+    {gObjectEventPal_Gold,                  OBJ_EVENT_PAL_TAG_GOLD},
+    {gObjectEventPal_JohtoF,                OBJ_EVENT_PAL_TAG_JOHTO_F},
+    {gObjectEventPal_Hoenn,                 OBJ_EVENT_PAL_TAG_HOENN},
+    {gObjectEventPal_HoennF,                OBJ_EVENT_PAL_TAG_HOENN_F},
+    {gObjectEventPal_KantoM,                OBJ_EVENT_PAL_TAG_KANTO_M},
+    {gObjectEventPal_KantoF,                OBJ_EVENT_PAL_TAG_KANTO_F},
+    {gObjectEventPal_Sinnoh,                OBJ_EVENT_PAL_TAG_SINNOH},
+    {gObjectEventPal_SinnohF,               OBJ_EVENT_PAL_TAG_SINNOH_F},
     {gObjectEventPal_BrendanReflection,     OBJ_EVENT_PAL_TAG_BRENDAN_REFLECTION},
     {gObjectEventPal_BridgeReflection,      OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION},
     {gObjectEventPal_PlayerUnderwater,      OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER},
@@ -615,6 +623,14 @@ static const u16 sReflectionPaletteTags_PlayerUnderwater[] = {
 
 static const struct PairedPalettes sPlayerReflectionPaletteSets[] = {
     {OBJ_EVENT_PAL_TAG_BRENDAN,           sReflectionPaletteTags_Brendan},
+    {OBJ_EVENT_PAL_TAG_GOLD,              sReflectionPaletteTags_Brendan},
+    {OBJ_EVENT_PAL_TAG_JOHTO_F,           sReflectionPaletteTags_May},
+    {OBJ_EVENT_PAL_TAG_HOENN,             sReflectionPaletteTags_Brendan},
+    {OBJ_EVENT_PAL_TAG_HOENN_F,           sReflectionPaletteTags_May},
+    {OBJ_EVENT_PAL_TAG_KANTO_M,           sReflectionPaletteTags_Brendan},
+    {OBJ_EVENT_PAL_TAG_KANTO_F,           sReflectionPaletteTags_May},
+    {OBJ_EVENT_PAL_TAG_SINNOH,            sReflectionPaletteTags_Brendan},
+    {OBJ_EVENT_PAL_TAG_SINNOH_F,          sReflectionPaletteTags_May},
     {OBJ_EVENT_PAL_TAG_MAY,               sReflectionPaletteTags_May},
     {OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER, sReflectionPaletteTags_PlayerUnderwater},
     {OBJ_EVENT_PAL_TAG_NONE,              NULL},
@@ -3074,7 +3090,7 @@ static void SetPlayerAvatarObjectEventIdAndObjectId(u8 objectEventId, u8 spriteI
 {
     gPlayerAvatar.objectEventId = objectEventId;
     gPlayerAvatar.spriteId = spriteId;
-    gPlayerAvatar.gender = GetPlayerAvatarGenderByGraphicsId(gObjectEvents[objectEventId].graphicsId);
+    gPlayerAvatar.gender = gSaveBlock2Ptr->playerGender;
     SetPlayerAvatarExtraStateTransition(gObjectEvents[objectEventId].graphicsId, PLAYER_AVATAR_FLAG_CONTROLLABLE);
 }
 

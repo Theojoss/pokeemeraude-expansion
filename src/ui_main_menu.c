@@ -608,7 +608,7 @@ static void MainMenu_InitWindows(void) // Init Text Windows; borders + fills are
 //
 static void CreateMugshot()
 {
-    u16 gfxId = GetRivalAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, gSaveBlock2Ptr->playerGender);
+    u16 gfxId = GetPlayerAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, gSaveBlock2Ptr->playerGender);
     sMainMenuDataPtr->mugshotSpriteId = CreateObjectGraphicsSprite(gfxId, SpriteCallbackDummy, 32, 50, 0); // vertically centered on the "Dex" text line
     gSprites[sMainMenuDataPtr->mugshotSpriteId].invisible = FALSE;
     gSprites[sMainMenuDataPtr->mugshotSpriteId].oam.priority = 0;

@@ -52,6 +52,7 @@
 #include "tv.h"
 #include "pokemon_summary_screen.h"
 #include "wild_encounter.h"
+#include "outfit_menu.h"
 #include "constants/abilities.h"
 #include "constants/battle_ai.h"
 #include "constants/battle_frontier.h"
@@ -353,6 +354,7 @@ static void DebugAction_Give_Pokemon_Move(u8 taskId);
 static void DebugAction_Give_Decoration(u8 taskId);
 static void DebugAction_Give_Decoration_SelectId(u8 taskId);
 static void DebugAction_Give_MaxMoney(u8 taskId);
+static void DebugAction_Give_UnlockGoldOutfit(u8 taskId);
 static void DebugAction_Give_MaxCoins(u8 taskId);
 static void DebugAction_Give_MaxBattlePoints(u8 taskId);
 static void DebugAction_Give_DayCareEgg(u8 taskId);
@@ -650,6 +652,7 @@ static const struct DebugMenuOption sDebugMenu_Actions_Give[] =
     { COMPOUND_STRING("Donner Œuf"),         DebugAction_Give_NewEgg },
     { COMPOUND_STRING("Donner Déco…"),       DebugAction_Give_Decoration },
     { COMPOUND_STRING("Argent Max"),         DebugAction_Give_MaxMoney },
+    { COMPOUND_STRING("Déb. tous Costumes"), DebugAction_Give_UnlockGoldOutfit },
     { COMPOUND_STRING("Jetons Max"),         DebugAction_Give_MaxCoins },
     { COMPOUND_STRING("{Pco} Max"),          DebugAction_Give_MaxBattlePoints },
     { COMPOUND_STRING("Œuf de Pension"),     DebugAction_Give_DayCareEgg },
@@ -3654,6 +3657,14 @@ static void DebugAction_Give_Decoration_SelectId(u8 taskId)
 static void DebugAction_Give_MaxMoney(u8 taskId)
 {
     SetMoney(&gSaveBlock1Ptr->money, MAX_MONEY);
+}
+
+static void DebugAction_Give_UnlockGoldOutfit(u8 taskId)
+{
+    u32 i;
+    for (i = OUTFIT_BEGIN; i <= OUTFIT_END; i++)
+        UnlockOutfit(i);
+    AddBagItem(ITEM_OUTFIT_BOX, 1);
 }
 
 static void DebugAction_Give_MaxCoins(u8 taskId)

@@ -14,8 +14,8 @@
 #define TRAINER_PIC_HEIGHT 64
 #define TRAINER_PIC_SIZE (TRAINER_PIC_WIDTH * TRAINER_PIC_HEIGHT / 2)
 
-// Red and Leaf's back pics have 5 frames, but this is presumably irrelevant in the places this is used.
-#define MAX_TRAINER_PIC_FRAMES 4
+// Red and Leaf's back pics have 5 frames.
+#define MAX_TRAINER_PIC_FRAMES 5
 
 enum {
     BATTLER_AFFINE_NORMAL,
@@ -425,5 +425,21 @@ static inline const u16 *GetTrainerBackPicPalette(enum TrainerPicID trainerPic)
 {
     return gTrainerPicInfo[SanitizeBackTrainerPic(trainerPic)].backPic->paletteData;
 }
+
+// outfits (costume system)
+
+struct Outfit
+{
+    u8 isHidden:1; // Will not show up in the outfit menu if locked.
+    u32 prices[GENDER_COUNT];
+    const u8 *name;
+    const u8 *desc;
+    u16 trainerPics[GENDER_COUNT]; // TRAINER_PIC_* id, used for both front & back pic
+    u16 avatarGfxIds[GENDER_COUNT][PLAYER_AVATAR_STATE_VSSEEKER + 1]; // OBJ_EVENT_GFX_* per player avatar state
+    const u8 *regionMapIconGfx[GENDER_COUNT]; // NULL to use the vanilla region map icon for that gender
+    const u16 *regionMapIconPal[GENDER_COUNT];
+};
+
+extern const struct Outfit gOutfits[OUTFIT_COUNT];
 
 #endif // GUARD_DATA_H

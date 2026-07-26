@@ -1980,6 +1980,65 @@
 	.4byte \msg
 	.endm
 
+	@ Unlocks or locks the specified outfit. type is OUTFIT_TOGGLE_UNLOCK or OUTFIT_TOGGLE_LOCK.
+	.macro toggleoutfit outfitId:req, type:req
+	.byte SCR_OP_TOGGLEOUTFIT
+	.2byte \outfitId
+	.byte \type
+	.endm
+
+	@ Gets the status of the specified outfit into VAR_RESULT. data is OUTFIT_CHECK_FLAG (unlocked?)
+	@ or OUTFIT_CHECK_USED (currently worn?).
+	.macro getoutfitstatus outfitId:req, data:req
+	.byte SCR_OP_GETOUTFITSTATUS
+	.2byte \outfitId
+	.byte \data
+	.endm
+
+	@ Buffers either the name or the description of an outfit into a string var.
+	.macro bufferoutfitstr stringVarId:req, outfitId:req, type:req
+	.byte SCR_OP_BUFFEROUTFITSTR
+	stringvar \stringVarId
+	.2byte \outfitId
+	.byte \type
+	.endm
+
+	.macro checkoutfitflag outfitId:req
+	getoutfitstatus \outfitId, OUTFIT_CHECK_FLAG
+	.endm
+
+	.macro iswearingoutfit outfitId:req
+	getoutfitstatus \outfitId, OUTFIT_CHECK_USED
+	.endm
+
+	.macro bufferoutfitname stringVarId:req, outfitId:req
+	bufferoutfitstr \stringVarId, \outfitId, OUTFIT_BUFFER_NAME
+	.endm
+
+	.macro bufferoutfitdesc stringVarId:req, outfitId:req
+	bufferoutfitstr \stringVarId, \outfitId, OUTFIT_BUFFER_DESC
+	.endm
+
+	.macro unlockoutfit outfitId:req
+	toggleoutfit \outfitId, OUTFIT_TOGGLE_UNLOCK
+	.endm
+
+	.macro lockoutfit outfitId:req
+	toggleoutfit \outfitId, OUTFIT_TOGGLE_LOCK
+	.endm
+
+	@ Jumps to \dest if the specified outfit is unlocked.
+	.macro call_if_outfitunlocked outfit:req, dest:req
+	checkoutfitflag \outfit
+	call_if TRUE, \dest
+	.endm
+
+	@ Jumps to \dest if the specified outfit is locked.
+	.macro call_if_outfitlocked outfit:req, dest:req
+	checkoutfitflag \outfit
+	call_if FALSE, \dest
+	.endm
+
 	.macro dynmultistack left:req, top:req, ignoreBPress:req, maxBeforeScroll:req, shouldSort:req, initialSelected:req, callbacks:req
 	_dynmultichoice \left, \top, \ignoreBPress, \maxBeforeScroll, \shouldSort, \initialSelected, \callbacks, NULL
 	.endm

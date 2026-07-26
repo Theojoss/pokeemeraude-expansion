@@ -49,6 +49,7 @@
 #include "constants/move_relearner.h"
 #include "constants/moves.h"
 #include "constants/mystery_gift.h"
+#include "constants/outfits.h"
 #include "constants/party_menu.h"
 #include "constants/pokeball.h"
 #include "constants/pokedex.h"

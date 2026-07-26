@@ -1773,6 +1773,8 @@ extern const u32 gItemIcon_SwapSnack[];
 extern const u16 gItemIconPalette_SwapSnack[];
 extern const u32 gItemIcon_TwiceSpicedRadish[];
 extern const u16 gItemIconPalette_TwiceSpicedRadish[];
+extern const u32 gItemIcon_OutfitBox[];
+extern const u16 gItemIconPalette_OutfitBox[];
 
 extern const u32 gItemIcon_ReturnToFieldArrow[];
 extern const u16 gItemIconPalette_ReturnToFieldArrow[];

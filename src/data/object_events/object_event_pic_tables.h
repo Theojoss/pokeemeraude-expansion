@@ -1363,6 +1363,490 @@ static const struct SpriteFrameImage sPicTable_ApricornTree[] = {
     overworld_frame(gObjectEventPic_ApricornTree, 2, 2, 0),
 };
 
+// Gold outfit (costume system)
+static const struct SpriteFrameImage sPicTable_GoldNormal[] = {
+    overworld_ascending_frames(gObjectEventPic_GoldNormalRunning, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_GoldMachBike[] = {
+    overworld_ascending_frames(gObjectEventPic_GoldMachBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_GoldAcroBike[] = {
+    overworld_ascending_frames(gObjectEventPic_GoldAcroBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_GoldSurfing[] = {
+    overworld_frame(gObjectEventPic_GoldSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_GoldSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_GoldSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_GoldSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_GoldSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_GoldSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_GoldSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_GoldSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_GoldSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_GoldSurfing, 4, 4, 1),
+    overworld_frame(gObjectEventPic_GoldSurfing, 4, 4, 3),
+    overworld_frame(gObjectEventPic_GoldSurfing, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_GoldUnderwater[] = {
+    overworld_frame(gObjectEventPic_GoldUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_GoldUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_GoldUnderwater, 4, 4, 2),
+    overworld_frame(gObjectEventPic_GoldUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_GoldUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_GoldUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_GoldUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_GoldUnderwater, 4, 4, 2),
+    overworld_frame(gObjectEventPic_GoldUnderwater, 4, 4, 2),
+};
+
+static const struct SpriteFrameImage sPicTable_GoldFieldMove[] = {
+    overworld_ascending_frames(gObjectEventPic_GoldFieldMove, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_GoldFishing[] = {
+    overworld_ascending_frames(gObjectEventPic_GoldFishing, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_GoldWatering[] = {
+    overworld_frame(gObjectEventPic_GoldWatering, 4, 4, 0),
+    overworld_frame(gObjectEventPic_GoldWatering, 4, 4, 2),
+    overworld_frame(gObjectEventPic_GoldWatering, 4, 4, 4),
+    overworld_frame(gObjectEventPic_GoldWatering, 4, 4, 1),
+    overworld_frame(gObjectEventPic_GoldWatering, 4, 4, 1),
+    overworld_frame(gObjectEventPic_GoldWatering, 4, 4, 3),
+    overworld_frame(gObjectEventPic_GoldWatering, 4, 4, 3),
+    overworld_frame(gObjectEventPic_GoldWatering, 4, 4, 5),
+    overworld_frame(gObjectEventPic_GoldWatering, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_GoldDecorating[] = {
+    obj_frame_tiles(gObjectEventPic_GoldDecorating),
+};
+
+// Johto outfit, female (costume system)
+static const struct SpriteFrameImage sPicTable_JohtoFNormal[] = {
+    overworld_ascending_frames(gObjectEventPic_JohtoFNormalRunning, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_JohtoFMachBike[] = {
+    overworld_ascending_frames(gObjectEventPic_JohtoFMachBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_JohtoFAcroBike[] = {
+    overworld_ascending_frames(gObjectEventPic_JohtoFAcroBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_JohtoFSurfing[] = {
+    overworld_frame(gObjectEventPic_JohtoFSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_JohtoFSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_JohtoFSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_JohtoFSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_JohtoFSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_JohtoFSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_JohtoFSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_JohtoFSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_JohtoFSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_JohtoFSurfing, 4, 4, 1),
+    overworld_frame(gObjectEventPic_JohtoFSurfing, 4, 4, 3),
+    overworld_frame(gObjectEventPic_JohtoFSurfing, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_JohtoFUnderwater[] = {
+    overworld_frame(gObjectEventPic_JohtoFUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_JohtoFUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_JohtoFUnderwater, 4, 4, 2),
+    overworld_frame(gObjectEventPic_JohtoFUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_JohtoFUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_JohtoFUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_JohtoFUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_JohtoFUnderwater, 4, 4, 2),
+    overworld_frame(gObjectEventPic_JohtoFUnderwater, 4, 4, 2),
+};
+
+static const struct SpriteFrameImage sPicTable_JohtoFFieldMove[] = {
+    overworld_ascending_frames(gObjectEventPic_JohtoFFieldMove, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_JohtoFFishing[] = {
+    overworld_ascending_frames(gObjectEventPic_JohtoFFishing, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_JohtoFWatering[] = {
+    overworld_frame(gObjectEventPic_JohtoFWatering, 4, 4, 0),
+    overworld_frame(gObjectEventPic_JohtoFWatering, 4, 4, 2),
+    overworld_frame(gObjectEventPic_JohtoFWatering, 4, 4, 4),
+    overworld_frame(gObjectEventPic_JohtoFWatering, 4, 4, 1),
+    overworld_frame(gObjectEventPic_JohtoFWatering, 4, 4, 1),
+    overworld_frame(gObjectEventPic_JohtoFWatering, 4, 4, 3),
+    overworld_frame(gObjectEventPic_JohtoFWatering, 4, 4, 3),
+    overworld_frame(gObjectEventPic_JohtoFWatering, 4, 4, 5),
+    overworld_frame(gObjectEventPic_JohtoFWatering, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_JohtoFDecorating[] = {
+    obj_frame_tiles(gObjectEventPic_JohtoFDecorating),
+};
+
+// Hoenn outfit, female (costume system)
+static const struct SpriteFrameImage sPicTable_HoennFNormal[] = {
+    overworld_ascending_frames(gObjectEventPic_HoennFNormalRunning, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_HoennFMachBike[] = {
+    overworld_ascending_frames(gObjectEventPic_HoennFMachBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_HoennFAcroBike[] = {
+    overworld_ascending_frames(gObjectEventPic_HoennFAcroBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_HoennFSurfing[] = {
+    overworld_frame(gObjectEventPic_HoennFSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_HoennFSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_HoennFSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_HoennFSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_HoennFSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_HoennFSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_HoennFSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_HoennFSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_HoennFSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_HoennFSurfing, 4, 4, 1),
+    overworld_frame(gObjectEventPic_HoennFSurfing, 4, 4, 3),
+    overworld_frame(gObjectEventPic_HoennFSurfing, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_HoennFUnderwater[] = {
+    overworld_frame(gObjectEventPic_HoennFUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_HoennFUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_HoennFUnderwater, 4, 4, 2),
+    overworld_frame(gObjectEventPic_HoennFUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_HoennFUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_HoennFUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_HoennFUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_HoennFUnderwater, 4, 4, 2),
+    overworld_frame(gObjectEventPic_HoennFUnderwater, 4, 4, 2),
+};
+
+static const struct SpriteFrameImage sPicTable_HoennFFieldMove[] = {
+    overworld_ascending_frames(gObjectEventPic_HoennFFieldMove, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_HoennFFishing[] = {
+    overworld_ascending_frames(gObjectEventPic_HoennFFishing, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_HoennFWatering[] = {
+    overworld_frame(gObjectEventPic_HoennFWatering, 4, 4, 0),
+    overworld_frame(gObjectEventPic_HoennFWatering, 4, 4, 2),
+    overworld_frame(gObjectEventPic_HoennFWatering, 4, 4, 4),
+    overworld_frame(gObjectEventPic_HoennFWatering, 4, 4, 1),
+    overworld_frame(gObjectEventPic_HoennFWatering, 4, 4, 1),
+    overworld_frame(gObjectEventPic_HoennFWatering, 4, 4, 3),
+    overworld_frame(gObjectEventPic_HoennFWatering, 4, 4, 3),
+    overworld_frame(gObjectEventPic_HoennFWatering, 4, 4, 5),
+    overworld_frame(gObjectEventPic_HoennFWatering, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_HoennFDecorating[] = {
+    obj_frame_tiles(gObjectEventPic_HoennFDecorating),
+};
+
+// Hoenn outfit (costume system)
+static const struct SpriteFrameImage sPicTable_HoennNormal[] = {
+    overworld_ascending_frames(gObjectEventPic_HoennNormalRunning, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_HoennMachBike[] = {
+    overworld_ascending_frames(gObjectEventPic_HoennMachBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_HoennAcroBike[] = {
+    overworld_ascending_frames(gObjectEventPic_HoennAcroBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_HoennSurfing[] = {
+    overworld_frame(gObjectEventPic_HoennSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_HoennSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_HoennSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_HoennSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_HoennSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_HoennSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_HoennSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_HoennSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_HoennSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_HoennSurfing, 4, 4, 1),
+    overworld_frame(gObjectEventPic_HoennSurfing, 4, 4, 3),
+    overworld_frame(gObjectEventPic_HoennSurfing, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_HoennFieldMove[] = {
+    overworld_ascending_frames(gObjectEventPic_HoennFieldMove, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_HoennFishing[] = {
+    overworld_ascending_frames(gObjectEventPic_HoennFishing, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_HoennWatering[] = {
+    overworld_frame(gObjectEventPic_HoennWatering, 4, 4, 0),
+    overworld_frame(gObjectEventPic_HoennWatering, 4, 4, 2),
+    overworld_frame(gObjectEventPic_HoennWatering, 4, 4, 4),
+    overworld_frame(gObjectEventPic_HoennWatering, 4, 4, 1),
+    overworld_frame(gObjectEventPic_HoennWatering, 4, 4, 1),
+    overworld_frame(gObjectEventPic_HoennWatering, 4, 4, 3),
+    overworld_frame(gObjectEventPic_HoennWatering, 4, 4, 3),
+    overworld_frame(gObjectEventPic_HoennWatering, 4, 4, 5),
+    overworld_frame(gObjectEventPic_HoennWatering, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_HoennDecorating[] = {
+    obj_frame_tiles(gObjectEventPic_HoennDecorating),
+};
+
+// Kanto outfit, male (costume system)
+static const struct SpriteFrameImage sPicTable_KantoMNormal[] = {
+    overworld_ascending_frames(gObjectEventPic_KantoMNormalRunning, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_KantoMMachBike[] = {
+    overworld_ascending_frames(gObjectEventPic_KantoMMachBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_KantoMAcroBike[] = {
+    overworld_ascending_frames(gObjectEventPic_KantoMAcroBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_KantoMSurfing[] = {
+    overworld_frame(gObjectEventPic_KantoMSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_KantoMSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_KantoMSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_KantoMSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_KantoMSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_KantoMSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_KantoMSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_KantoMSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_KantoMSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_KantoMSurfing, 4, 4, 1),
+    overworld_frame(gObjectEventPic_KantoMSurfing, 4, 4, 3),
+    overworld_frame(gObjectEventPic_KantoMSurfing, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_KantoMUnderwater[] = {
+    overworld_frame(gObjectEventPic_KantoMUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_KantoMUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_KantoMUnderwater, 4, 4, 2),
+    overworld_frame(gObjectEventPic_KantoMUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_KantoMUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_KantoMUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_KantoMUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_KantoMUnderwater, 4, 4, 2),
+    overworld_frame(gObjectEventPic_KantoMUnderwater, 4, 4, 2),
+};
+
+static const struct SpriteFrameImage sPicTable_KantoMFieldMove[] = {
+    overworld_ascending_frames(gObjectEventPic_KantoMFieldMove, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_KantoMFishing[] = {
+    overworld_ascending_frames(gObjectEventPic_KantoMFishing, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_KantoMWatering[] = {
+    overworld_frame(gObjectEventPic_KantoMWatering, 4, 4, 0),
+    overworld_frame(gObjectEventPic_KantoMWatering, 4, 4, 2),
+    overworld_frame(gObjectEventPic_KantoMWatering, 4, 4, 4),
+    overworld_frame(gObjectEventPic_KantoMWatering, 4, 4, 1),
+    overworld_frame(gObjectEventPic_KantoMWatering, 4, 4, 1),
+    overworld_frame(gObjectEventPic_KantoMWatering, 4, 4, 3),
+    overworld_frame(gObjectEventPic_KantoMWatering, 4, 4, 3),
+    overworld_frame(gObjectEventPic_KantoMWatering, 4, 4, 5),
+    overworld_frame(gObjectEventPic_KantoMWatering, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_KantoMDecorating[] = {
+    obj_frame_tiles(gObjectEventPic_KantoMDecorating),
+};
+
+// Kanto outfit, female (costume system)
+static const struct SpriteFrameImage sPicTable_KantoFNormal[] = {
+    overworld_ascending_frames(gObjectEventPic_KantoFNormalRunning, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_KantoFMachBike[] = {
+    overworld_ascending_frames(gObjectEventPic_KantoFMachBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_KantoFAcroBike[] = {
+    overworld_ascending_frames(gObjectEventPic_KantoFAcroBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_KantoFSurfing[] = {
+    overworld_frame(gObjectEventPic_KantoFSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_KantoFSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_KantoFSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_KantoFSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_KantoFSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_KantoFSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_KantoFSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_KantoFSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_KantoFSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_KantoFSurfing, 4, 4, 1),
+    overworld_frame(gObjectEventPic_KantoFSurfing, 4, 4, 3),
+    overworld_frame(gObjectEventPic_KantoFSurfing, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_KantoFUnderwater[] = {
+    overworld_frame(gObjectEventPic_KantoFUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_KantoFUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_KantoFUnderwater, 4, 4, 2),
+    overworld_frame(gObjectEventPic_KantoFUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_KantoFUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_KantoFUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_KantoFUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_KantoFUnderwater, 4, 4, 2),
+    overworld_frame(gObjectEventPic_KantoFUnderwater, 4, 4, 2),
+};
+
+static const struct SpriteFrameImage sPicTable_KantoFFieldMove[] = {
+    overworld_ascending_frames(gObjectEventPic_KantoFFieldMove, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_KantoFFishing[] = {
+    overworld_ascending_frames(gObjectEventPic_KantoFFishing, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_KantoFWatering[] = {
+    overworld_frame(gObjectEventPic_KantoFWatering, 4, 4, 0),
+    overworld_frame(gObjectEventPic_KantoFWatering, 4, 4, 2),
+    overworld_frame(gObjectEventPic_KantoFWatering, 4, 4, 4),
+    overworld_frame(gObjectEventPic_KantoFWatering, 4, 4, 1),
+    overworld_frame(gObjectEventPic_KantoFWatering, 4, 4, 1),
+    overworld_frame(gObjectEventPic_KantoFWatering, 4, 4, 3),
+    overworld_frame(gObjectEventPic_KantoFWatering, 4, 4, 3),
+    overworld_frame(gObjectEventPic_KantoFWatering, 4, 4, 5),
+    overworld_frame(gObjectEventPic_KantoFWatering, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_KantoFDecorating[] = {
+    obj_frame_tiles(gObjectEventPic_KantoFDecorating),
+};
+
+// Sinnoh outfit (costume system)
+static const struct SpriteFrameImage sPicTable_SinnohNormal[] = {
+    overworld_ascending_frames(gObjectEventPic_SinnohNormalRunning, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_SinnohMachBike[] = {
+    overworld_ascending_frames(gObjectEventPic_SinnohMachBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_SinnohAcroBike[] = {
+    overworld_ascending_frames(gObjectEventPic_SinnohAcroBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_SinnohSurfing[] = {
+    overworld_frame(gObjectEventPic_SinnohSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_SinnohSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_SinnohSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_SinnohSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_SinnohSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_SinnohSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_SinnohSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_SinnohSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_SinnohSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_SinnohSurfing, 4, 4, 1),
+    overworld_frame(gObjectEventPic_SinnohSurfing, 4, 4, 3),
+    overworld_frame(gObjectEventPic_SinnohSurfing, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_SinnohUnderwater[] = {
+    overworld_frame(gObjectEventPic_SinnohUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_SinnohUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_SinnohUnderwater, 4, 4, 2),
+    overworld_frame(gObjectEventPic_SinnohUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_SinnohUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_SinnohUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_SinnohUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_SinnohUnderwater, 4, 4, 2),
+    overworld_frame(gObjectEventPic_SinnohUnderwater, 4, 4, 2),
+};
+
+static const struct SpriteFrameImage sPicTable_SinnohFieldMove[] = {
+    overworld_ascending_frames(gObjectEventPic_SinnohFieldMove, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_SinnohFishing[] = {
+    overworld_ascending_frames(gObjectEventPic_SinnohFishing, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_SinnohWatering[] = {
+    overworld_frame(gObjectEventPic_SinnohWatering, 4, 4, 0),
+    overworld_frame(gObjectEventPic_SinnohWatering, 4, 4, 2),
+    overworld_frame(gObjectEventPic_SinnohWatering, 4, 4, 4),
+    overworld_frame(gObjectEventPic_SinnohWatering, 4, 4, 1),
+    overworld_frame(gObjectEventPic_SinnohWatering, 4, 4, 1),
+    overworld_frame(gObjectEventPic_SinnohWatering, 4, 4, 3),
+    overworld_frame(gObjectEventPic_SinnohWatering, 4, 4, 3),
+    overworld_frame(gObjectEventPic_SinnohWatering, 4, 4, 5),
+    overworld_frame(gObjectEventPic_SinnohWatering, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_SinnohDecorating[] = {
+    obj_frame_tiles(gObjectEventPic_SinnohDecorating),
+};
+
+// Sinnoh outfit, female (costume system)
+static const struct SpriteFrameImage sPicTable_SinnohFNormal[] = {
+    overworld_ascending_frames(gObjectEventPic_SinnohFNormalRunning, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_SinnohFMachBike[] = {
+    overworld_ascending_frames(gObjectEventPic_SinnohFMachBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_SinnohFSurfing[] = {
+    overworld_frame(gObjectEventPic_SinnohFSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_SinnohFSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_SinnohFSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_SinnohFSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_SinnohFSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_SinnohFSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_SinnohFSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_SinnohFSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_SinnohFSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_SinnohFSurfing, 4, 4, 1),
+    overworld_frame(gObjectEventPic_SinnohFSurfing, 4, 4, 3),
+    overworld_frame(gObjectEventPic_SinnohFSurfing, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_SinnohFFieldMove[] = {
+    overworld_ascending_frames(gObjectEventPic_SinnohFFieldMove, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_SinnohFFishing[] = {
+    overworld_ascending_frames(gObjectEventPic_SinnohFFishing, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_SinnohFWatering[] = {
+    overworld_frame(gObjectEventPic_SinnohFWatering, 4, 4, 0),
+    overworld_frame(gObjectEventPic_SinnohFWatering, 4, 4, 2),
+    overworld_frame(gObjectEventPic_SinnohFWatering, 4, 4, 4),
+    overworld_frame(gObjectEventPic_SinnohFWatering, 4, 4, 1),
+    overworld_frame(gObjectEventPic_SinnohFWatering, 4, 4, 1),
+    overworld_frame(gObjectEventPic_SinnohFWatering, 4, 4, 3),
+    overworld_frame(gObjectEventPic_SinnohFWatering, 4, 4, 3),
+    overworld_frame(gObjectEventPic_SinnohFWatering, 4, 4, 5),
+    overworld_frame(gObjectEventPic_SinnohFWatering, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_SinnohFDecorating[] = {
+    obj_frame_tiles(gObjectEventPic_SinnohFDecorating),
+};
+
 #if IS_FRLG
 
 static const struct SpriteFrameImage sPicTable_RedNormal[] = {

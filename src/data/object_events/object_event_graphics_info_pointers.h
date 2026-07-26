@@ -401,6 +401,75 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Giddy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan2;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ApricornTree;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GoldNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GoldMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GoldAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GoldSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GoldFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GoldUnderwater;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GoldFishing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GoldWatering;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GoldDecorating;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_JohtoFNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_JohtoFMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_JohtoFAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_JohtoFSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_JohtoFUnderwater;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_JohtoFFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_JohtoFFishing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_JohtoFWatering;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_JohtoFDecorating;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoennFNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoennFMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoennFAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoennFSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoennFUnderwater;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoennFFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoennFFishing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoennFWatering;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoennFDecorating;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoennNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoennMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoennAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoennSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoennFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoennFishing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoennWatering;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoennDecorating;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KantoMNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KantoMMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KantoMAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KantoMSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KantoMFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KantoMUnderwater;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KantoMFishing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KantoMWatering;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KantoMDecorating;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KantoFNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KantoFMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KantoFAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KantoFSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KantoFFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KantoFUnderwater;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KantoFFishing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KantoFWatering;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KantoFDecorating;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SinnohNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SinnohMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SinnohAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SinnohSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SinnohFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SinnohUnderwater;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SinnohFishing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SinnohWatering;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SinnohDecorating;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SinnohFNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SinnohFMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SinnohFSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SinnohFFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SinnohFFishing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SinnohFWatering;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SinnohFDecorating;
 
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
     [OBJ_EVENT_GFX_BRENDAN_NORMAL] =           &gObjectEventGraphicsInfo_BrendanNormal,
@@ -647,6 +716,75 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_OW_MON] =                   &gObjectEventGraphicsInfo_Follower,
     [OBJ_EVENT_GFX_LIGHT_SPRITE] =             &gObjectEventGraphicsInfo_BallLight,
     [OBJ_EVENT_GFX_APRICORN_TREE] =            &gObjectEventGraphicsInfo_ApricornTree,
+    [OBJ_EVENT_GFX_GOLD_NORMAL] =              &gObjectEventGraphicsInfo_GoldNormal,
+    [OBJ_EVENT_GFX_GOLD_MACH_BIKE] =           &gObjectEventGraphicsInfo_GoldMachBike,
+    [OBJ_EVENT_GFX_GOLD_ACRO_BIKE] =           &gObjectEventGraphicsInfo_GoldAcroBike,
+    [OBJ_EVENT_GFX_GOLD_SURFING] =             &gObjectEventGraphicsInfo_GoldSurfing,
+    [OBJ_EVENT_GFX_GOLD_FIELD_MOVE] =          &gObjectEventGraphicsInfo_GoldFieldMove,
+    [OBJ_EVENT_GFX_GOLD_UNDERWATER] =          &gObjectEventGraphicsInfo_GoldUnderwater,
+    [OBJ_EVENT_GFX_GOLD_FISHING] =             &gObjectEventGraphicsInfo_GoldFishing,
+    [OBJ_EVENT_GFX_GOLD_WATERING] =            &gObjectEventGraphicsInfo_GoldWatering,
+    [OBJ_EVENT_GFX_GOLD_DECORATING] =          &gObjectEventGraphicsInfo_GoldDecorating,
+    [OBJ_EVENT_GFX_JOHTO_F_NORMAL] =           &gObjectEventGraphicsInfo_JohtoFNormal,
+    [OBJ_EVENT_GFX_JOHTO_F_MACH_BIKE] =        &gObjectEventGraphicsInfo_JohtoFMachBike,
+    [OBJ_EVENT_GFX_JOHTO_F_ACRO_BIKE] =        &gObjectEventGraphicsInfo_JohtoFAcroBike,
+    [OBJ_EVENT_GFX_JOHTO_F_SURFING] =          &gObjectEventGraphicsInfo_JohtoFSurfing,
+    [OBJ_EVENT_GFX_JOHTO_F_UNDERWATER] =       &gObjectEventGraphicsInfo_JohtoFUnderwater,
+    [OBJ_EVENT_GFX_JOHTO_F_FIELD_MOVE] =       &gObjectEventGraphicsInfo_JohtoFFieldMove,
+    [OBJ_EVENT_GFX_JOHTO_F_FISHING] =          &gObjectEventGraphicsInfo_JohtoFFishing,
+    [OBJ_EVENT_GFX_JOHTO_F_WATERING] =         &gObjectEventGraphicsInfo_JohtoFWatering,
+    [OBJ_EVENT_GFX_JOHTO_F_DECORATING] =       &gObjectEventGraphicsInfo_JohtoFDecorating,
+    [OBJ_EVENT_GFX_HOENN_F_NORMAL] =           &gObjectEventGraphicsInfo_HoennFNormal,
+    [OBJ_EVENT_GFX_HOENN_F_MACH_BIKE] =        &gObjectEventGraphicsInfo_HoennFMachBike,
+    [OBJ_EVENT_GFX_HOENN_F_ACRO_BIKE] =        &gObjectEventGraphicsInfo_HoennFAcroBike,
+    [OBJ_EVENT_GFX_HOENN_F_SURFING] =          &gObjectEventGraphicsInfo_HoennFSurfing,
+    [OBJ_EVENT_GFX_HOENN_F_UNDERWATER] =       &gObjectEventGraphicsInfo_HoennFUnderwater,
+    [OBJ_EVENT_GFX_HOENN_F_FIELD_MOVE] =       &gObjectEventGraphicsInfo_HoennFFieldMove,
+    [OBJ_EVENT_GFX_HOENN_F_FISHING] =          &gObjectEventGraphicsInfo_HoennFFishing,
+    [OBJ_EVENT_GFX_HOENN_F_WATERING] =         &gObjectEventGraphicsInfo_HoennFWatering,
+    [OBJ_EVENT_GFX_HOENN_F_DECORATING] =       &gObjectEventGraphicsInfo_HoennFDecorating,
+    [OBJ_EVENT_GFX_HOENN_NORMAL] =             &gObjectEventGraphicsInfo_HoennNormal,
+    [OBJ_EVENT_GFX_HOENN_MACH_BIKE] =          &gObjectEventGraphicsInfo_HoennMachBike,
+    [OBJ_EVENT_GFX_HOENN_ACRO_BIKE] =          &gObjectEventGraphicsInfo_HoennAcroBike,
+    [OBJ_EVENT_GFX_HOENN_SURFING] =            &gObjectEventGraphicsInfo_HoennSurfing,
+    [OBJ_EVENT_GFX_HOENN_FIELD_MOVE] =         &gObjectEventGraphicsInfo_HoennFieldMove,
+    [OBJ_EVENT_GFX_HOENN_FISHING] =            &gObjectEventGraphicsInfo_HoennFishing,
+    [OBJ_EVENT_GFX_HOENN_WATERING] =           &gObjectEventGraphicsInfo_HoennWatering,
+    [OBJ_EVENT_GFX_HOENN_DECORATING] =         &gObjectEventGraphicsInfo_HoennDecorating,
+    [OBJ_EVENT_GFX_KANTO_M_NORMAL] =           &gObjectEventGraphicsInfo_KantoMNormal,
+    [OBJ_EVENT_GFX_KANTO_M_MACH_BIKE] =        &gObjectEventGraphicsInfo_KantoMMachBike,
+    [OBJ_EVENT_GFX_KANTO_M_ACRO_BIKE] =        &gObjectEventGraphicsInfo_KantoMAcroBike,
+    [OBJ_EVENT_GFX_KANTO_M_SURFING] =          &gObjectEventGraphicsInfo_KantoMSurfing,
+    [OBJ_EVENT_GFX_KANTO_M_FIELD_MOVE] =       &gObjectEventGraphicsInfo_KantoMFieldMove,
+    [OBJ_EVENT_GFX_KANTO_M_UNDERWATER] =       &gObjectEventGraphicsInfo_KantoMUnderwater,
+    [OBJ_EVENT_GFX_KANTO_M_FISHING] =          &gObjectEventGraphicsInfo_KantoMFishing,
+    [OBJ_EVENT_GFX_KANTO_M_WATERING] =         &gObjectEventGraphicsInfo_KantoMWatering,
+    [OBJ_EVENT_GFX_KANTO_M_DECORATING] =       &gObjectEventGraphicsInfo_KantoMDecorating,
+    [OBJ_EVENT_GFX_KANTO_F_NORMAL] =           &gObjectEventGraphicsInfo_KantoFNormal,
+    [OBJ_EVENT_GFX_KANTO_F_MACH_BIKE] =        &gObjectEventGraphicsInfo_KantoFMachBike,
+    [OBJ_EVENT_GFX_KANTO_F_ACRO_BIKE] =        &gObjectEventGraphicsInfo_KantoFAcroBike,
+    [OBJ_EVENT_GFX_KANTO_F_SURFING] =          &gObjectEventGraphicsInfo_KantoFSurfing,
+    [OBJ_EVENT_GFX_KANTO_F_FIELD_MOVE] =       &gObjectEventGraphicsInfo_KantoFFieldMove,
+    [OBJ_EVENT_GFX_KANTO_F_UNDERWATER] =       &gObjectEventGraphicsInfo_KantoFUnderwater,
+    [OBJ_EVENT_GFX_KANTO_F_FISHING] =          &gObjectEventGraphicsInfo_KantoFFishing,
+    [OBJ_EVENT_GFX_KANTO_F_WATERING] =         &gObjectEventGraphicsInfo_KantoFWatering,
+    [OBJ_EVENT_GFX_KANTO_F_DECORATING] =       &gObjectEventGraphicsInfo_KantoFDecorating,
+    [OBJ_EVENT_GFX_SINNOH_NORMAL] =            &gObjectEventGraphicsInfo_SinnohNormal,
+    [OBJ_EVENT_GFX_SINNOH_MACH_BIKE] =         &gObjectEventGraphicsInfo_SinnohMachBike,
+    [OBJ_EVENT_GFX_SINNOH_ACRO_BIKE] =         &gObjectEventGraphicsInfo_SinnohAcroBike,
+    [OBJ_EVENT_GFX_SINNOH_SURFING] =           &gObjectEventGraphicsInfo_SinnohSurfing,
+    [OBJ_EVENT_GFX_SINNOH_FIELD_MOVE] =        &gObjectEventGraphicsInfo_SinnohFieldMove,
+    [OBJ_EVENT_GFX_SINNOH_UNDERWATER] =        &gObjectEventGraphicsInfo_SinnohUnderwater,
+    [OBJ_EVENT_GFX_SINNOH_FISHING] =           &gObjectEventGraphicsInfo_SinnohFishing,
+    [OBJ_EVENT_GFX_SINNOH_WATERING] =          &gObjectEventGraphicsInfo_SinnohWatering,
+    [OBJ_EVENT_GFX_SINNOH_DECORATING] =        &gObjectEventGraphicsInfo_SinnohDecorating,
+    [OBJ_EVENT_GFX_SINNOH_F_NORMAL] =          &gObjectEventGraphicsInfo_SinnohFNormal,
+    [OBJ_EVENT_GFX_SINNOH_F_MACH_BIKE] =       &gObjectEventGraphicsInfo_SinnohFMachBike,
+    [OBJ_EVENT_GFX_SINNOH_F_SURFING] =         &gObjectEventGraphicsInfo_SinnohFSurfing,
+    [OBJ_EVENT_GFX_SINNOH_F_FIELD_MOVE] =      &gObjectEventGraphicsInfo_SinnohFFieldMove,
+    [OBJ_EVENT_GFX_SINNOH_F_FISHING] =         &gObjectEventGraphicsInfo_SinnohFFishing,
+    [OBJ_EVENT_GFX_SINNOH_F_WATERING] =        &gObjectEventGraphicsInfo_SinnohFWatering,
+    [OBJ_EVENT_GFX_SINNOH_F_DECORATING] =      &gObjectEventGraphicsInfo_SinnohFDecorating,
 #if IS_FRLG
     [OBJ_EVENT_GFX_RED_NORMAL] =               &gObjectEventGraphicsInfo_RedNormal,
     [OBJ_EVENT_GFX_RED_BIKE] =                 &gObjectEventGraphicsInfo_RedBike,

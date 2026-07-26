@@ -1,5 +1,6 @@
 #include "global.h"
 #include "main.h"
+#include "data.h"
 #include "text.h"
 #include "menu.h"
 #include "malloc.h"
@@ -1759,6 +1760,17 @@ void CreateRegionMapPlayerIcon(u16 tileTag, u16 paletteTag)
         sheet.data = sRegionMapPlayerIcon_RedGfx;
         palette.data = sRegionMapPlayerIcon_RedPal;
     }
+
+    {
+        u8 outfitId = gSaveBlock2Ptr->currOutfitId;
+        enum Gender gender = gSaveBlock2Ptr->playerGender;
+        if (outfitId < OUTFIT_COUNT && gOutfits[outfitId].regionMapIconGfx[gender] != NULL)
+        {
+            sheet.data = gOutfits[outfitId].regionMapIconGfx[gender];
+            palette.data = gOutfits[outfitId].regionMapIconPal[gender];
+        }
+    }
+
     LoadSpriteSheet(&sheet);
     LoadSpritePalette(&palette);
     spriteId = CreateSprite(&template, 0, 0, 1);

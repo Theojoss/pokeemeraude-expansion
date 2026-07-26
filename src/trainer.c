@@ -1,9 +1,13 @@
 #include "global.h"
+#include "data.h"
 #include "constants/trainers.h"
 
 static enum TrainerPicID GetEmeraldTrainerPic(enum Gender gender)
 {
-    return gender == MALE ? TRAINER_PIC_BRENDAN : TRAINER_PIC_MAY;
+    u8 outfitId = gSaveBlock2Ptr->currOutfitId;
+    if (outfitId == OUTFIT_NONE || outfitId >= OUTFIT_COUNT)
+        return gender == MALE ? TRAINER_PIC_BRENDAN : TRAINER_PIC_MAY;
+    return gOutfits[outfitId].trainerPics[gender];
 }
 static enum TrainerPicID GetRSTrainerPic(enum Gender gender)
 {

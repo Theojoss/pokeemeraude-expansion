@@ -901,6 +901,15 @@ LittlerootTown_EventScript_GiveRunningShoes::
 	msgbox LittlerootTown_Text_ExplainRunningShoes, MSGBOX_DEFAULT
 	msgbox LittlerootTown_Text_ComeHomeIfAnythingHappens, MSGBOX_DEFAULT
 	closemessage
+	msgbox LittlerootTown_Text_GiveOutfitBox, MSGBOX_DEFAULT
+	giveitem ITEM_OUTFIT_BOX
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	unlockoutfit OUTFIT_DEFAULT
+	unlockoutfit OUTFIT_KANTO
+	unlockoutfit OUTFIT_GOLD
+	unlockoutfit OUTFIT_HOENN
+	unlockoutfit OUTFIT_SINNOH
+	setflag FLAG_RECEIVED_OUTFIT_BOX
 	delay 30
 	return
 
@@ -955,6 +964,13 @@ LittlerootTown_Text_ComeHomeIfAnythingHappens:
 	.string "Mais je t'en prie, fais attention.\n"
 	.string "Si ça se passe mal, tu peux rentrer.\p"
 	.string "Vas-y, va tous les attraper, chouchou!$"
+
+LittlerootTown_Text_GiveOutfitBox:
+	.string "MAMAN: Oh, j'allais oublier!\p"
+	.string "Tiens, prends aussi cette BOÎTE À\n"
+	.string "COSTUMES.\p"
+	.string "Tu pourras changer d'apparence quand\n"
+	.string "tu le souhaites, chouchou!$"
 
 LittlerootTown_Text_CanUsePCToStoreItems:
 	.string "Si tu utilises un PC, tu peux stocker\n"
