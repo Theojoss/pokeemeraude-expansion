@@ -25825,10 +25825,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_MAX_GUARD] =
     {
-        .name = COMPOUND_STRING("Max Guard"),
+        .name = COMPOUND_STRING("Gardomax"),
         .description = COMPOUND_STRING(
-            "Evades attack, but may fail\n"
-            "if used in succession."),
+            "Le lanceur se protège de toutes\n"
+            "les attaques. Peut échouer si utilisée\n"
+            "plusieurs fois de suite."),
         .effect = EFFECT_PROTECT,
         .power = 0,
         .type = TYPE_NORMAL,
