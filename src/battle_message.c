@@ -2398,8 +2398,15 @@ static const struct BattleWindowText *const sBattleTextOnWindowsInfo[] =
 
 static const u8 sRecordedBattleTextSpeeds[] = {8, 4, 1, 0};
 
-static inline bool32 IsTrainerClassToSwap(enum TrainerClassID class)
+static inline bool32 IsTrainerIdToSwap(u16 trainerId)
 {
+    enum TrainerClassID class;
+    
+    if (trainerId >= TRAINERS_COUNT)
+        return FALSE;
+
+    class = GetTrainerClassFromId(trainerId);
+
     // Add to this list if you want to swap the trainer name and class for a specific trainer class.
     // In French, this displays as: SBIRE TEAM MAGMA instead of TEAM MAGMA SBIRE.
     return (class == TRAINER_CLASS_TEAM_MAGMA
@@ -2410,9 +2417,8 @@ static inline bool32 IsTrainerClassToSwap(enum TrainerClassID class)
 static inline void SwapTrainerNameAndClass(u16 trainerId, u8 **dst)
 {
     u8 *toSwap, *buffer;
-    enum TrainerClassID class = GetTrainerClassFromId(trainerId);
 
-    if (!IsTrainerClassToSwap(class))
+    if (!IsTrainerIdToSwap(trainerId))
         return;
 
     for (toSwap = NULL, buffer = *dst; *buffer != EOS; ++buffer)
@@ -2458,7 +2464,7 @@ static inline void SwapTrainerNameAndClass(u16 trainerId, u8 **dst)
 
 #define LOAD_TRAINER_NAME_WITH_CLASS(trainerId, multiplayerId, battlerPosition)                                             \
     do {                                                                                                                    \
-        if (IsTrainerClassToSwap(GetTrainerClassFromId(trainerId))) {                                                       \
+        if (IsTrainerIdToSwap((trainerId))) {                                                                               \
             nameString = BattleStringGetOpponentNameByTrainerId((trainerId), textStart, multiplayerId, battlerPosition);    \
             COPY_TRAINER_NAME(CHAR_SPACE);                                                                                  \
             textStart += nameLength + 1;                                                                                    \
@@ -3538,28 +3544,28 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                 }
                 else
                 {
-                    enum TrainerClassID class = TRAINER_CLASS_PKMN_TRAINER_1;
-
+                    bool32 shouldSwap = FALSE;
                     classString = NULL;
+                    
                     switch (GetBattlerPosition(gBattlerAttacker))
                     {
                     case B_POSITION_PLAYER_RIGHT:
                         if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) {
-                            class = GetFrontierOpponentClass(gPartnerTrainerId);
-                            classString = gTrainerClasses[class].name;
+                            shouldSwap = IsTrainerIdToSwap(gPartnerTrainerId);
+                            classString = gTrainerClasses[GetFrontierOpponentClass(gPartnerTrainerId)].name;
                         }
                         break;
                     case B_POSITION_OPPONENT_LEFT:
-                        class = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
+                        shouldSwap = IsTrainerIdToSwap(TRAINER_BATTLE_PARAM.opponentA);
                         classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentA);
                         break;
                     case B_POSITION_OPPONENT_RIGHT:
                         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && !BATTLE_TWO_VS_ONE_OPPONENT) {
-                            class = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentB);
+                            shouldSwap = IsTrainerIdToSwap(TRAINER_BATTLE_PARAM.opponentB);
                             classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentB);
                         }
                         else {
-                            class = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
+                            shouldSwap = IsTrainerIdToSwap(TRAINER_BATTLE_PARAM.opponentA);
                             classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentA);
                         }
                         break;
@@ -3569,7 +3575,7 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                     classLength = 0;
                     nameLength = 0;
                     
-                    if (!IsTrainerClassToSwap(class)) {
+                    if (!shouldSwap) {
                         COPY_TRAINER_CLASS(CHAR_SPACE);
                         textStart += classLength + 1;
                         nameString = BattleStringGetTrainerName(textStart, multiplayerId, gBattlerAttacker);
