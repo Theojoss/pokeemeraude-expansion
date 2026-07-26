@@ -209,7 +209,7 @@ SINGLE_BATTLE_TEST("Strong winds can be replaced by Desolate Land")
         TURN { SWITCH(opponent, 1); }
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_DESOLATE_LAND);
-        MESSAGE("The sunlight turned extremely harsh!");
+        MESSAGE("Les rayons du soleil s'intensifient énormément!");
     } THEN {
         EXPECT(gBattleWeather & B_WEATHER_SUN_PRIMAL);
     }
@@ -226,7 +226,7 @@ SINGLE_BATTLE_TEST("Strong winds can be replaced by Primordial Sea")
         TURN { SWITCH(opponent, 1); }
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_PRIMORDIAL_SEA);
-        MESSAGE("A heavy rain began to fall!");
+        MESSAGE("Une pluie battante s'abat soudainement!");
     } THEN {
         EXPECT(gBattleWeather & B_WEATHER_RAIN_PRIMAL);
     }
