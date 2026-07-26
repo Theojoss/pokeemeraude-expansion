@@ -36,7 +36,7 @@ SINGLE_BATTLE_TEST("Frostbite deals 1/8th damage (Gen1-6) or 1/16th (Gen7+) per 
     } WHEN {
         TURN {}
     } SCENE {
-        MESSAGE("The opposing Wobbuffet was hurt by its frostbite!");
+        MESSAGE("Qulbutoké ennemi est blessé par sa gelure!");
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRB, opponent);
         HP_BAR(opponent, captureDamage: &frostbiteDamage);
     } THEN {
@@ -63,10 +63,10 @@ SINGLE_BATTLE_TEST("Frostbite is healed if hit with a thawing move")
         ANIMATION(ANIM_TYPE_MOVE, move, player);
         if (move == MOVE_EMBER) {
             NONE_OF {
-                MESSAGE("The opposing Wobbuffet's frostbite was cured!");
+                MESSAGE("Qulbutoké ennemi s'est remis de sa gelure!");
             }
         } else {
-            MESSAGE("The opposing Wobbuffet's frostbite was cured!");
+            MESSAGE("Qulbutoké ennemi s'est remis de sa gelure!");
         }
    }
 }
@@ -90,11 +90,11 @@ SINGLE_BATTLE_TEST("Frostbite is healed when the user uses a thawing move")
         ANIMATION(ANIM_TYPE_MOVE, move, player);
         HP_BAR(opponent);
         if (move == MOVE_EMBER) {
-            MESSAGE("Wobbuffet was hurt by its frostbite!");
+            MESSAGE("Qulbutoké est blessé par sa gelure!");
             ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRB, player);
         } else {
             NONE_OF {
-                MESSAGE("Wobbuffet was hurt by its frostbite!");
+                MESSAGE("Qulbutoké est blessé par sa gelure!");
                 ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRB, player);
             }
         }

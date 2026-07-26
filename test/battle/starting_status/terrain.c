@@ -30,29 +30,29 @@ SINGLE_BATTLE_TEST("SetStartingStatus starts a chosen terrain at the beginning o
         switch (terrain)
         {
         case STARTING_STATUS_GRASSY_TERRAIN:
-            MESSAGE("The battlefield is covered with grass!");
+            MESSAGE("Un beau gazon recouvre le terrain!");
             break;
         case STARTING_STATUS_PSYCHIC_TERRAIN:
-            MESSAGE("The battlefield seems weird!");
+            MESSAGE("Le sol réagit de façon étrange…");
             break;
         case STARTING_STATUS_MISTY_TERRAIN:
-            MESSAGE("Mist swirls around the battlefield!");
+            MESSAGE("Le terrain est couvert de brume!");
             break;
         case STARTING_STATUS_ELECTRIC_TERRAIN:
-            MESSAGE("An electric current is running across the battlefield!");
+            MESSAGE("De l'électricité parcourt le terrain!");
             break;
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_RESTORE_BG);
         if (terrain != STARTING_STATUS_ELECTRIC_TERRAIN_TEMPORARY) {
             NONE_OF {
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_RESTORE_BG);
-                MESSAGE("The weirdness disappeared from the battlefield!");
-                MESSAGE("The electricity disappeared from the battlefield.");
-                MESSAGE("The mist disappeared from the battlefield.");
-                MESSAGE("The grass disappeared from the battlefield.");
+                MESSAGE("Le sol redevient normal.");
+                MESSAGE("L'électricité parcourant le terrain s'est dissipée.");
+                MESSAGE("La brume qui recouvrait le terrain se dissipe.");
+                MESSAGE("Le gazon disparaît.");
             }
         } else {
-            MESSAGE("The electricity disappeared from the battlefield.");
+            MESSAGE("L'électricité parcourant le terrain s'est dissipée.");
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_RESTORE_BG);
         }
     } THEN {
@@ -83,30 +83,30 @@ SINGLE_BATTLE_TEST("Terrain started after the one which started the battle lasts
         TURN {}
     } SCENE {
         // Electric Terrain at battle's start
-        MESSAGE("An electric current is running across the battlefield!");
+        MESSAGE("De l'électricité parcourt le terrain!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_RESTORE_BG);
         // Player uses Grassy Terrain
         if (viaMove) {
-            MESSAGE("Tapu Bulu used Grassy Terrain!");
+            MESSAGE("Tokotoro utilise\nChamp Herbu!");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_GRASSY_TERRAIN, player);
-            MESSAGE("Grass grew to cover the battlefield!");
+            MESSAGE("Un beau gazon pousse sur le terrain!");
         } else {
             ABILITY_POPUP(player, ABILITY_GRASSY_SURGE);
-            MESSAGE("Grass grew to cover the battlefield!");
+            MESSAGE("Un beau gazon pousse sur le terrain!");
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_RESTORE_BG);
         }
 
         // 5 turns
-        MESSAGE("Tapu Bulu used Celebrate!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Tokotoro utilise\nCélébration!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
 
-        MESSAGE("Tapu Bulu used Celebrate!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Tokotoro utilise\nCélébration!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
 
-        MESSAGE("Tapu Bulu used Celebrate!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Tokotoro utilise\nCélébration!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
 
-        MESSAGE("The grass disappeared from the battlefield.");
+        MESSAGE("Le gazon disparaît.");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_RESTORE_BG);
     } THEN {
         ResetStartingStatuses();

@@ -24,15 +24,15 @@ SINGLE_BATTLE_TEST("Paralysis reduces Speed by 50% (Gen 7+) or 75% (Gen 1-6)")
     } SCENE {
         if (playerFirst) {
             ONE_OF {
-                MESSAGE("Wobbuffet used Celebrate!");
-                MESSAGE("Wobbuffet is paralyzed, so it may be unable to move!");
+                MESSAGE("Qulbutoké utilise\nCélébration!");
+                MESSAGE("Qulbutoké est paralysé! Il aura du mal à attaquer!");
             }
-            MESSAGE("The opposing Wobbuffet used Celebrate!");
+            MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
         } else {
-            MESSAGE("The opposing Wobbuffet used Celebrate!");
+            MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
             ONE_OF {
-                MESSAGE("Wobbuffet used Celebrate!");
-                MESSAGE("Wobbuffet is paralyzed, so it may be unable to move!");
+                MESSAGE("Qulbutoké utilise\nCélébration!");
+                MESSAGE("Qulbutoké est paralysé! Il aura du mal à attaquer!");
             }
         }
     }
@@ -47,7 +47,7 @@ SINGLE_BATTLE_TEST("Paralysis has a 25% chance of skipping the turn")
     } WHEN {
         TURN { MOVE(player, MOVE_CELEBRATE); }
     } SCENE {
-        MESSAGE("Wobbuffet couldn't move because it's paralyzed!");
+        MESSAGE("Qulbutoké est paralysé! Il n'a pas pu attaquer!");
     }
 }
 
@@ -64,13 +64,13 @@ SINGLE_BATTLE_TEST("Thunder Wave doesn't affect Electric types (Gen6+)")
     } WHEN {
         TURN { MOVE(player, MOVE_THUNDER_WAVE); }
     } SCENE {
-        MESSAGE("Wobbuffet used Thunder Wave!");
+        MESSAGE("Qulbutoké utilise\nCage Éclair!");
         if (gen == GEN_6) {
             NONE_OF {
                 ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PRZ, opponent);
                 STATUS_ICON(opponent, paralysis: TRUE);
             }
-            MESSAGE("It doesn't affect the opposing Pikachu…");
+            MESSAGE("Ça n'affecte pas Pikachu ennemi…");
         } else {
             ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PRZ, opponent);
             STATUS_ICON(opponent, paralysis: TRUE);
@@ -87,8 +87,8 @@ SINGLE_BATTLE_TEST("Thunder Wave doesn't print an effectiveness message")
     } WHEN {
         TURN { MOVE(opponent, MOVE_THUNDER_WAVE); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Thunder Wave!");
-        NOT MESSAGE("It's super effective!");
+        MESSAGE("Qulbutoké ennemi utilise\nCage Éclair!");
+        NOT MESSAGE("C'est super efficace!");
     }
 }
 
@@ -100,9 +100,9 @@ SINGLE_BATTLE_TEST("Thunder Wave prints an avoided attack message when it misses
     } WHEN {
         TURN { MOVE(player, MOVE_THUNDER_WAVE, hit: FALSE); }
     } SCENE {
-        MESSAGE("Wobbuffet used Thunder Wave!");
-        MESSAGE("The opposing Wobbuffet avoided the attack!");
-        NOT MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké utilise\nCage Éclair!");
+        MESSAGE("Qulbutoké ennemi évite l'attaque!");
+        NOT MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -114,8 +114,8 @@ SINGLE_BATTLE_TEST("Thunder Wave prints failure when the target already has a di
     } WHEN {
         TURN { MOVE(player, MOVE_THUNDER_WAVE); }
     } SCENE {
-        MESSAGE("Wobbuffet used Thunder Wave!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké utilise\nCage Éclair!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -127,8 +127,8 @@ SINGLE_BATTLE_TEST("Thunder Wave prints already paralyzed message with the right
     } WHEN {
         TURN { MOVE(player, MOVE_THUNDER_WAVE); }
     } SCENE {
-        MESSAGE("Wobbuffet used Thunder Wave!");
-        MESSAGE("The opposing Zigzagoon is already paralyzed!");
-        NOT MESSAGE("Wobbuffet is already paralyzed!");
+        MESSAGE("Qulbutoké utilise\nCage Éclair!");
+        MESSAGE("Zigzaton ennemi est déjà paralysé.");
+        NOT MESSAGE("Qulbutoké est déjà paralysé.");
     }
 }
