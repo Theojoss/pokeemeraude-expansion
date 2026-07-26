@@ -25,22 +25,22 @@ SINGLE_BATTLE_TEST("Shed Skin triggers 33% of the time (Gen 3)")
         switch (status)
         {
             case STATUS1_BURN:
-                MESSAGE("The opposing Arbok's burn was cured!");
+                MESSAGE("Arbok ennemi n'est plus brûlé!");
                 break;
             case STATUS1_PARALYSIS:
-                MESSAGE("The opposing Arbok was cured of paralysis!");
+                MESSAGE("Arbok ennemi n'est plus paralysé!");
                 break;
             case STATUS1_FROSTBITE:
-                MESSAGE("The opposing Arbok's frostbite was cured!");
+                MESSAGE("Arbok ennemi s'est remis de sa gelure!");
                 break;
             case STATUS1_POISON:
-                MESSAGE("The opposing Arbok was cured of its poisoning!");
+                MESSAGE("Arbok ennemi n'est plus empoisonné!");
                 break;
             case STATUS1_TOXIC_POISON:
-                MESSAGE("The opposing Arbok was cured of its poisoning!");
+                MESSAGE("Arbok ennemi n'est plus empoisonné!");
                 break;
             case STATUS1_SLEEP:
-                MESSAGE("The opposing Arbok woke up!");
+                MESSAGE("Arbok ennemi se réveille!");
                 break;
         }
         STATUS_ICON(opponent, poison: FALSE);
@@ -71,22 +71,22 @@ SINGLE_BATTLE_TEST("Shed Skin triggers 30% of the time (Gen 4)")
         switch (status)
         {
             case STATUS1_BURN:
-                MESSAGE("The opposing Arbok's burn was cured!");
+                MESSAGE("Arbok ennemi n'est plus brûlé!");
                 break;
             case STATUS1_PARALYSIS:
-                MESSAGE("The opposing Arbok was cured of paralysis!");
+                MESSAGE("Arbok ennemi n'est plus paralysé!");
                 break;
             case STATUS1_FROSTBITE:
-                MESSAGE("The opposing Arbok's frostbite was cured!");
+                MESSAGE("Arbok ennemi s'est remis de sa gelure!");
                 break;
             case STATUS1_POISON:
-                MESSAGE("The opposing Arbok was cured of its poisoning!");
+                MESSAGE("Arbok ennemi n'est plus empoisonné!");
                 break;
             case STATUS1_TOXIC_POISON:
-                MESSAGE("The opposing Arbok was cured of its poisoning!");
+                MESSAGE("Arbok ennemi n'est plus empoisonné!");
                 break;
             case STATUS1_SLEEP:
-                MESSAGE("The opposing Arbok woke up!");
+                MESSAGE("Arbok ennemi se réveille!");
                 break;
         }
         STATUS_ICON(opponent, poison: FALSE);
@@ -117,22 +117,22 @@ SINGLE_BATTLE_TEST("Shed Skin triggers 33% of the time (Gen 5)")
         switch (status)
         {
             case STATUS1_BURN:
-                MESSAGE("The opposing Arbok's burn was cured!");
+                MESSAGE("Arbok ennemi n'est plus brûlé!");
                 break;
             case STATUS1_PARALYSIS:
-                MESSAGE("The opposing Arbok was cured of paralysis!");
+                MESSAGE("Arbok ennemi n'est plus paralysé!");
                 break;
             case STATUS1_FROSTBITE:
-                MESSAGE("The opposing Arbok's frostbite was cured!");
+                MESSAGE("Arbok ennemi s'est remis de sa gelure!");
                 break;
             case STATUS1_POISON:
-                MESSAGE("The opposing Arbok was cured of its poisoning!");
+                MESSAGE("Arbok ennemi n'est plus empoisonné!");
                 break;
             case STATUS1_TOXIC_POISON:
-                MESSAGE("The opposing Arbok was cured of its poisoning!");
+                MESSAGE("Arbok ennemi n'est plus empoisonné!");
                 break;
             case STATUS1_SLEEP:
-                MESSAGE("The opposing Arbok woke up!");
+                MESSAGE("Arbok ennemi se réveille!");
                 break;
         }
         STATUS_ICON(opponent, poison: FALSE);

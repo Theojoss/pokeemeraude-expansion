@@ -10,7 +10,7 @@ SINGLE_BATTLE_TEST("Neutralizing Gas activates on switch-in")
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_NEUTRALIZING_GAS);
-        MESSAGE("Neutralizing gas filled the area!");
+        MESSAGE("Un gaz inhibiteur envahit les lieux!");
     }
 }
 
@@ -25,7 +25,7 @@ SINGLE_BATTLE_TEST("Neutralizing Gas prevents opponent's switch-in ability from 
         ABILITY_POPUP(player, ABILITY_NEUTRALIZING_GAS);
         NONE_OF {
             ABILITY_POPUP(opponent, ABILITY_TERAVOLT);
-            MESSAGE("The opposing Zekrom is radiating a bursting aura!");
+            MESSAGE("Zekrom ennemi dégage une aura électrique instable!");
         }
     }
 }
@@ -43,7 +43,7 @@ DOUBLE_BATTLE_TEST("Neutralizing Gas prevents ally's switch-in ability from acti
         ABILITY_POPUP(playerLeft, ABILITY_NEUTRALIZING_GAS);
         NONE_OF {
             ABILITY_POPUP(playerRight, ABILITY_TERAVOLT);
-            MESSAGE("Zekrom is radiating a bursting aura!");
+            MESSAGE("Zekrom dégage une aura électrique instable!");
         }
     }
 }
@@ -60,7 +60,7 @@ DOUBLE_BATTLE_TEST("Neutralizing Gas ignores all battlers' ability effects")
         TURN { MOVE(playerLeft, MOVE_SURF); MOVE(playerRight, MOVE_SURF); }
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_NEUTRALIZING_GAS);
-        MESSAGE("Neutralizing gas filled the area!");
+        MESSAGE("Un gaz inhibiteur envahit les lieux!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SURF, playerLeft);
         NONE_OF {
             ABILITY_POPUP(playerRight, ABILITY_TELEPATHY);
@@ -180,9 +180,9 @@ DOUBLE_BATTLE_TEST("Neutralizing Gas leaving the field allows abilities to activ
         TURN { SWITCH(playerLeft, 2); }
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_NEUTRALIZING_GAS);
-        MESSAGE("Neutralizing gas filled the area!");
-        SWITCH_OUT_MESSAGE("Weezing");
-        MESSAGE("The effects of the neutralizing gas wore off!");
+        MESSAGE("Un gaz inhibiteur envahit les lieux!");
+        SWITCH_OUT_MESSAGE("Smogogo");
+        MESSAGE("Les effets du gaz inhibiteur se sont dissipés.");
         if (speedPlayerRight > speedOppLeft)
         {
             if (speedPlayerRight > speedOppRight) {
@@ -216,7 +216,7 @@ DOUBLE_BATTLE_TEST("Neutralizing Gas leaving the field allows abilities to activ
                 ABILITY_POPUP(playerRight, ABILITY_INTREPID_SWORD);
             }
         }
-        SEND_IN_MESSAGE("Wobbuffet");
+        SEND_IN_MESSAGE("Qulbutoké");
     }
 }
 
@@ -290,7 +290,7 @@ SINGLE_BATTLE_TEST("Neutralizing Gas exiting the field does not activate abiliti
         TURN { SWITCH(opponent, 1); }
     } SCENE {
         ABILITY_POPUP(player, ability);
-        MESSAGE("The effects of the neutralizing gas wore off!");
+        MESSAGE("Les effets du gaz inhibiteur se sont dissipés.");
         NOT ABILITY_POPUP(player, ability);
     }
 }
@@ -306,7 +306,7 @@ SINGLE_BATTLE_TEST("Neutralizing Gas exiting the field does not activate Imposte
         TURN { SWITCH(player, 1); SWITCH(opponent, 1); }
     } SCENE {
         NOT ABILITY_POPUP(player, ABILITY_IMPOSTER);
-        MESSAGE("The effects of the neutralizing gas wore off!");
+        MESSAGE("Les effets du gaz inhibiteur se sont dissipés.");
         NOT ABILITY_POPUP(player, ABILITY_IMPOSTER);
     }
 }
@@ -330,7 +330,7 @@ SINGLE_BATTLE_TEST("Neutralizing Gas exiting the field does not activate Air Loc
         TURN { MOVE(player, MOVE_RAIN_DANCE); }
     } SCENE {
         NOT ABILITY_POPUP(player, ABILITY_AIR_LOCK);
-        MESSAGE("The effects of the neutralizing gas wore off!");
+        MESSAGE("Les effets du gaz inhibiteur se sont dissipés.");
         NOT ABILITY_POPUP(player, ABILITY_AIR_LOCK);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAIN_DANCE, player);
         NOT ABILITY_POPUP(opponent, ABILITY_RAIN_DISH);
@@ -349,9 +349,9 @@ SINGLE_BATTLE_TEST("Neutralizing Gas only displays exiting message for the last 
     } SCENE {
         ABILITY_POPUP(player, ABILITY_NEUTRALIZING_GAS);
         ABILITY_POPUP(opponent, ABILITY_NEUTRALIZING_GAS);
-        SEND_IN_MESSAGE("Wobbuffet");
-        MESSAGE("The effects of the neutralizing gas wore off!");
-        NOT MESSAGE("The effects of the neutralizing gas wore off!");
+        SEND_IN_MESSAGE("Qulbutoké");
+        MESSAGE("Les effets du gaz inhibiteur se sont dissipés.");
+        NOT MESSAGE("Les effets du gaz inhibiteur se sont dissipés.");
     }
 }
 
@@ -370,8 +370,8 @@ DOUBLE_BATTLE_TEST("Neutralizing Gas is active for the duration of a Spread Move
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ORIGIN_PULSE, opponentLeft);
         HP_BAR(playerLeft);
         HP_BAR(playerRight);
-        MESSAGE("Weezing fainted!");
-        MESSAGE("Golem fainted!");
+        MESSAGE("Smogogo est K.O.!\p");
+        MESSAGE("Grolem est K.O.!\p");
         NOT ABILITY_POPUP(playerRight, ABILITY_STURDY);
     }
 }
@@ -390,9 +390,9 @@ DOUBLE_BATTLE_TEST("Neutralizing Gas is active until the last Dragon Darts hit e
         ABILITY_POPUP(playerLeft, ABILITY_NEUTRALIZING_GAS);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_DARTS, opponentLeft);
         HP_BAR(playerLeft);
-        MESSAGE("Weezing fainted!");
+        MESSAGE("Smogogo est K.O.!\p");
         HP_BAR(playerRight);
-        NOT MESSAGE("Golem fainted!");
+        NOT MESSAGE("Grolem est K.O.!\p");
         ABILITY_POPUP(playerRight, ABILITY_STURDY);
     }
 }
@@ -408,17 +408,17 @@ DOUBLE_BATTLE_TEST("Neutralizing Gas doesn't reactivate Beads of Ruin after Chi-
         TURN { MOVE(playerLeft, MOVE_SCRATCH, target: opponentRight); MOVE(playerRight, MOVE_SCRATCH, target: opponentLeft); }
     } SCENE {
         ABILITY_POPUP(opponentLeft, ABILITY_NEUTRALIZING_GAS);
-        MESSAGE("Neutralizing gas filled the area!");
+        MESSAGE("Un gaz inhibiteur envahit les lieux!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerLeft);
         HP_BAR(opponentRight);
-        MESSAGE("The opposing Chi-Yu fainted!");
+        MESSAGE("Yuyu ennemi est K.O.!\p");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerRight);
         HP_BAR(opponentLeft);
-        MESSAGE("The effects of the neutralizing gas wore off!");
+        MESSAGE("Les effets du gaz inhibiteur se sont dissipés.");
         NONE_OF {
             ABILITY_POPUP(opponentRight, ABILITY_BEADS_OF_RUIN);
-            MESSAGE("The opposing Chi-Yu's Beads of Ruin weakened the Sp. Def of all surrounding Pokémon!");
+            MESSAGE("Le talent Perles du Fléau de Yuyu ennemi affaiblit Défense Spéciale des Pokémon alentour!\p");
         }
-        MESSAGE("The opposing Weezing fainted!");
+        MESSAGE("Smogogo ennemi est K.O.!\p");
     }
 }

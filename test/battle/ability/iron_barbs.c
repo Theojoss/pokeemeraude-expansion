@@ -19,10 +19,10 @@ SINGLE_BATTLE_TEST("Iron Barbs: Damages attackers that make contact")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_POPULATION_BOMB, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_POPULATION_BOMB, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_POPULATION_BOMB, player);
-        MESSAGE("The Pokémon was hit 4 time(s)!");
+        MESSAGE("Touché 4 fois!");
         NONE_OF {
             HP_BAR(player);
-            MESSAGE("Wobbuffet was hurt by the opposing Ferroseed's Iron Barbs!");
+            MESSAGE("Qulbutoké est blessé par Épine de Fer de Grindur!");
         }
     } THEN {
         EXPECT_EQ(player->hp, maxHP - ironBarbsDamage * 4);
@@ -46,7 +46,7 @@ SINGLE_BATTLE_TEST("Rough Skin and Iron Barbs cause the attacker to take damage 
             ABILITY_POPUP(opponent, ABILITY_ROUGH_SKIN);
         else
             ABILITY_POPUP(opponent, ABILITY_IRON_BARBS);
-        MESSAGE("Wobbuffet was hurt!");
+        MESSAGE("Qulbutoké est blessé!");
     }
 }
 

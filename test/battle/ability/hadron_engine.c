@@ -10,7 +10,7 @@ SINGLE_BATTLE_TEST("Hadron Engine creates Electric Terrain when entering the bat
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_HADRON_ENGINE);
-        MESSAGE("Miraidon turned the ground into Electric Terrain, energizing its futuristic engine!");
+        MESSAGE("Miraidon crée un champ électrifié et active une machine du futur!");
     }
 }
 
@@ -25,7 +25,7 @@ SINGLE_BATTLE_TEST("Hadron Engine activates when entering battle on Electric Ter
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_ELECTRIC_SURGE);
         ABILITY_POPUP(player, ABILITY_HADRON_ENGINE);
-        MESSAGE("Miraidon used the Electric Terrain to energize its futuristic engine!");
+        MESSAGE("Miraidon active une machine du futur grâce au champ électrifié!");
     }
 }
 
@@ -38,10 +38,10 @@ SINGLE_BATTLE_TEST("Hadron Engine announces Electric Terrain before triggering Q
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_HADRON_ENGINE);
-        MESSAGE("Miraidon turned the ground into Electric Terrain, energizing its futuristic engine!");
+        MESSAGE("Miraidon crée un champ électrifié et active une machine du futur!");
         ABILITY_POPUP(opponent, ABILITY_QUARK_DRIVE);
-        MESSAGE("The Electric Terrain activated the opposing Iron Bundle's Quark Drive!");
-        MESSAGE("The opposing Iron Bundle's Sp. Atk was heightened!");
+        MESSAGE("Hotte-de-Fer ennemi a activé Charge Quantique grâce au champ électrifié!");
+        MESSAGE("Attaque Spéciale de Hotte-de-Fer ennemi est renforcé!");
     }
 }
 

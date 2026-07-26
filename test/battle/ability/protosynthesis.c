@@ -17,8 +17,8 @@ SINGLE_BATTLE_TEST("Protosynthesis boosts the highest stat")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUNNY_DAY, player);
         ABILITY_POPUP(player, ABILITY_PROTOSYNTHESIS);
-        MESSAGE("The harsh sunlight activated Walking Wake's Protosynthesis!");
-        MESSAGE("Walking Wake's Sp. Atk was heightened!");
+        MESSAGE("Le soleil brille, ce qui a permis à Serpente-Eau d'activer Paléosynthèse!");
+        MESSAGE("Attaque Spéciale de Serpente-Eau est renforcé!");
     }
 }
 
@@ -69,19 +69,19 @@ SINGLE_BATTLE_TEST("Protosynthesis ability pop up activates only once during the
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_DROUGHT);
         ABILITY_POPUP(player, ABILITY_PROTOSYNTHESIS);
-        MESSAGE("The harsh sunlight activated Walking Wake's Protosynthesis!");
-        MESSAGE("Walking Wake's Sp. Atk was heightened!");
+        MESSAGE("Le soleil brille, ce qui a permis à Serpente-Eau d'activer Paléosynthèse!");
+        MESSAGE("Attaque Spéciale de Serpente-Eau est renforcé!");
         NONE_OF {
             for (turns = 0; turns < 4; turns++) {
                 ABILITY_POPUP(player, ABILITY_PROTOSYNTHESIS);
-                MESSAGE("The harsh sunlight activated Walking Wake's Protosynthesis!");
-                MESSAGE("Walking Wake's Sp. Atk was heightened!");
+                MESSAGE("Le soleil brille, ce qui a permis à Serpente-Eau d'activer Paléosynthèse!");
+                MESSAGE("Attaque Spéciale de Serpente-Eau est renforcé!");
             }
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUNNY_DAY, opponent);
         ABILITY_POPUP(player, ABILITY_PROTOSYNTHESIS);
-        MESSAGE("The harsh sunlight activated Walking Wake's Protosynthesis!");
-        MESSAGE("Walking Wake's Sp. Atk was heightened!");
+        MESSAGE("Le soleil brille, ce qui a permis à Serpente-Eau d'activer Paléosynthèse!");
+        MESSAGE("Attaque Spéciale de Serpente-Eau est renforcé!");
     }
 }
 
@@ -96,8 +96,8 @@ SINGLE_BATTLE_TEST("Protosynthesis activates on switch-in")
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_DROUGHT);
         ABILITY_POPUP(player, ABILITY_PROTOSYNTHESIS);
-        MESSAGE("The harsh sunlight activated Roaring Moon's Protosynthesis!");
-        MESSAGE("Roaring Moon's Attack was heightened!");
+        MESSAGE("Le soleil brille, ce qui a permis à Rugit-Lune d'activer Paléosynthèse!");
+        MESSAGE("Attaque de Rugit-Lune est renforcé!");
     }
 }
 
@@ -119,16 +119,16 @@ SINGLE_BATTLE_TEST("Protosynthesis prioritizes stats in the case of a tie in the
         ABILITY_POPUP(player, ABILITY_PROTOSYNTHESIS);
         switch(i) {
             case 0:
-                MESSAGE("Great Tusk's Attack was heightened!");
+                MESSAGE("Attaque de Fort-Ivoire est renforcé!");
                 break;
             case 1:
-                MESSAGE("Great Tusk's Defense was heightened!");
+                MESSAGE("Défense de Fort-Ivoire est renforcé!");
                 break;
             case 2:
-                MESSAGE("Great Tusk's Sp. Atk was heightened!");
+                MESSAGE("Attaque Spéciale de Fort-Ivoire est renforcé!");
                 break;
             case 3:
-                MESSAGE("Great Tusk's Sp. Def was heightened!");
+                MESSAGE("Défense Spéciale de Fort-Ivoire est renforcé!");
                 break;
         }
     }
@@ -146,8 +146,8 @@ SINGLE_BATTLE_TEST("Protosynthesis uses Wonder Room swapped defenses when choosi
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WONDER_ROOM, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUNNY_DAY, opponent);
         ABILITY_POPUP(player, ABILITY_PROTOSYNTHESIS);
-        MESSAGE("The harsh sunlight activated Roaring Moon's Protosynthesis!");
-        MESSAGE("Roaring Moon's Sp. Def was heightened!");
+        MESSAGE("Le soleil brille, ce qui a permis à Rugit-Lune d'activer Paléosynthèse!");
+        MESSAGE("Défense Spéciale de Rugit-Lune est renforcé!");
     }
 }
 
@@ -252,8 +252,8 @@ SINGLE_BATTLE_TEST("Protosynthesis accounts for Sticky Web when determining the 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUNNY_DAY, player);
         ABILITY_POPUP(player, ABILITY_PROTOSYNTHESIS);
-        MESSAGE("The harsh sunlight activated Flutter Mane's Protosynthesis!");
-        MESSAGE("Flutter Mane's Sp. Atk was heightened!");
+        MESSAGE("Le soleil brille, ce qui a permis à Flotte-Mèche d'activer Paléosynthèse!");
+        MESSAGE("Attaque Spéciale de Flotte-Mèche est renforcé!");
     }
 }
 
@@ -294,10 +294,10 @@ SINGLE_BATTLE_TEST("Protosynthesis recalculates the boosted stat after Neutraliz
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUNNY_DAY, player);
         NOT ABILITY_POPUP(player, ABILITY_PROTOSYNTHESIS);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ICY_WIND, opponent);
-        MESSAGE("The effects of the neutralizing gas wore off!");
+        MESSAGE("Les effets du gaz inhibiteur se sont dissipés.");
         ABILITY_POPUP(player, ABILITY_PROTOSYNTHESIS);
-        MESSAGE("The harsh sunlight activated Flutter Mane's Protosynthesis!");
-        MESSAGE("Flutter Mane's Sp. Atk was heightened!");
+        MESSAGE("Le soleil brille, ce qui a permis à Flotte-Mèche d'activer Paléosynthèse!");
+        MESSAGE("Attaque Spéciale de Flotte-Mèche est renforcé!");
     }
 }
 
@@ -321,8 +321,8 @@ SINGLE_BATTLE_TEST("Protosynthesis retains its boosted stat after Neutralizing G
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROUND, player);
         HP_BAR(opponent, captureDamage: &damage[0]);
         ABILITY_POPUP(opponent, ABILITY_NEUTRALIZING_GAS);
-        MESSAGE("Neutralizing gas filled the area!");
-        MESSAGE("The effects of the neutralizing gas wore off!");
+        MESSAGE("Un gaz inhibiteur envahit les lieux!");
+        MESSAGE("Les effets du gaz inhibiteur se sont dissipés.");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROUND, player);
         HP_BAR(opponent, captureDamage: &damage[1]);
     } THEN {

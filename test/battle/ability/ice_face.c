@@ -12,7 +12,7 @@ SINGLE_BATTLE_TEST("Ice Face blocks physical moves, changing Eiscue into its Noi
     } SCENE {
         ABILITY_POPUP(player, ABILITY_ICE_FACE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FORM_CHANGE, player);
-        MESSAGE("Eiscue transformed!");
+        MESSAGE("Bekaglaçon se transforme!");
     } THEN {
         EXPECT_EQ(player->species, SPECIES_EISCUE_NOICE);
     }
@@ -54,13 +54,13 @@ SINGLE_BATTLE_TEST("Ice Face is restored if hail or snow begins while Noice Face
     } SCENE {
         ABILITY_POPUP(player, ABILITY_ICE_FACE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FORM_CHANGE, player);
-        MESSAGE("Eiscue transformed!");
+        MESSAGE("Bekaglaçon se transforme!");
         ABILITY_POPUP(player, ABILITY_ICE_FACE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FORM_CHANGE, player);
-        MESSAGE("Eiscue transformed!");
+        MESSAGE("Bekaglaçon se transforme!");
         ABILITY_POPUP(player, ABILITY_ICE_FACE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FORM_CHANGE, player);
-        MESSAGE("Eiscue transformed!");
+        MESSAGE("Bekaglaçon se transforme!");
     } THEN {
         EXPECT_EQ(player->species, SPECIES_EISCUE_NOICE);
     }
@@ -86,11 +86,11 @@ SINGLE_BATTLE_TEST("Ice Face is restored if Noice Face Eiscue is sent in while h
         TURN { SWITCH(player, 0); MOVE(opponent, MOVE_SCRATCH); }
     } SCENE {
         ABILITY_POPUP(player, ABILITY_ICE_FACE);
-        MESSAGE("Eiscue transformed!");
+        MESSAGE("Bekaglaçon se transforme!");
         ABILITY_POPUP(player, ABILITY_ICE_FACE);
-        MESSAGE("Eiscue transformed!");
+        MESSAGE("Bekaglaçon se transforme!");
         ABILITY_POPUP(player, ABILITY_ICE_FACE);
-        MESSAGE("Eiscue transformed!");
+        MESSAGE("Bekaglaçon se transforme!");
     }
 }
 
@@ -112,9 +112,9 @@ SINGLE_BATTLE_TEST("Ice Face is not restored if Eiscue changes into Noice Face f
         TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_SCRATCH); }
     } SCENE {
         ABILITY_POPUP(player, ABILITY_ICE_FACE);
-        MESSAGE("Eiscue transformed!");
-        MESSAGE("Eiscue used Celebrate!");
-        MESSAGE("Eiscue fainted!");
+        MESSAGE("Bekaglaçon se transforme!");
+        MESSAGE("Bekaglaçon utilise\nCélébration!");
+        MESSAGE("Bekaglaçon est K.O.!\p");
     }
 }
 
@@ -131,8 +131,8 @@ SINGLE_BATTLE_TEST("Ice Face form change persists after switching out")
         TURN { SWITCH(player, 0); MOVE(opponent, MOVE_SCRATCH); SEND_OUT(player, 1); }
     } SCENE {
         ABILITY_POPUP(player, ABILITY_ICE_FACE);
-        MESSAGE("Eiscue transformed!");
-        MESSAGE("Eiscue fainted!");
+        MESSAGE("Bekaglaçon se transforme!");
+        MESSAGE("Bekaglaçon est K.O.!\p");
     }
 }
 
@@ -147,8 +147,8 @@ SINGLE_BATTLE_TEST("Ice Face doesn't transform Eiscue if Cloud Nine/Air Lock is 
         TURN { MOVE(player, MOVE_SNOWSCAPE); MOVE(opponent, MOVE_SCRATCH); }
     } SCENE {
         ABILITY_POPUP(player, ABILITY_ICE_FACE);
-        MESSAGE("Eiscue transformed!");
-        MESSAGE("Eiscue fainted!");
+        MESSAGE("Bekaglaçon se transforme!");
+        MESSAGE("Bekaglaçon est K.O.!\p");
     }
 }
 
@@ -172,14 +172,14 @@ SINGLE_BATTLE_TEST("Ice Face is not restored if hail or snow and Eiscue are alre
         TURN { SWITCH(opponent, 1); }
     } SCENE {
         ABILITY_POPUP(player, ABILITY_ICE_FACE);
-        MESSAGE("Eiscue transformed!");
+        MESSAGE("Bekaglaçon se transforme!");
         ABILITY_POPUP(player, ABILITY_ICE_FACE);
-        MESSAGE("Eiscue transformed!");
+        MESSAGE("Bekaglaçon se transforme!");
         ABILITY_POPUP(player, ABILITY_ICE_FACE);
-        MESSAGE("Eiscue transformed!");
+        MESSAGE("Bekaglaçon se transforme!");
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_ICE_FACE);
-            MESSAGE("Eiscue transformed!");
+            MESSAGE("Bekaglaçon se transforme!");
         }
     }
 }

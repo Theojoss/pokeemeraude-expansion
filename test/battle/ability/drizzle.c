@@ -15,7 +15,7 @@ SINGLE_BATTLE_TEST("Drizzle summons rain", s16 damage)
     } SCENE {
         if (ability == ABILITY_DRIZZLE) {
             ABILITY_POPUP(player, ABILITY_DRIZZLE);
-            MESSAGE("It started to rain!");
+            MESSAGE("Il commence à pleuvoir!");
         }
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
@@ -37,11 +37,11 @@ SINGLE_BATTLE_TEST("Drizzle sets up rain for 5 turns (Gen6+)")
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_DRIZZLE);
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("The rain stopped.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie s'est arrêtée.");
     }
 }
 
@@ -63,14 +63,14 @@ SINGLE_BATTLE_TEST("Drizzle sets up rain for 8 turns with Damp Rock (Gen6+)")
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_DRIZZLE);
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("The rain stopped.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie s'est arrêtée.");
     }
 }
 
@@ -92,15 +92,15 @@ SINGLE_BATTLE_TEST("Drizzle sets up permanent rain (Gen3-5)")
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_DRIZZLE);
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        NOT MESSAGE("The rain stopped.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        NOT MESSAGE("La pluie s'est arrêtée.");
     }
 }

@@ -21,21 +21,21 @@ SINGLE_BATTLE_TEST("Protean/Libero changes the type of the user to the move used
     } SCENE {
         ABILITY_POPUP(opponent, ability);
         if (species == SPECIES_KECLEON)
-            MESSAGE("The opposing Kecleon transformed into the Water type!");
+            MESSAGE("Kecleon ennemi prend le type Eau!");
         else
-            MESSAGE("The opposing Raboot transformed into the Water type!");
+            MESSAGE("Lapyro ennemi prend le type Eau!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WATER_GUN, opponent);
         ABILITY_POPUP(opponent, ability);
         if (species == SPECIES_KECLEON)
-            MESSAGE("The opposing Kecleon transformed into the Normal type!");
+            MESSAGE("Kecleon ennemi prend le type Normal!");
         else
-            MESSAGE("The opposing Raboot transformed into the Normal type!");
+            MESSAGE("Lapyro ennemi prend le type Normal!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         ABILITY_POPUP(opponent, ability);
         if (species == SPECIES_KECLEON)
-            MESSAGE("The opposing Kecleon transformed into the Water type!");
+            MESSAGE("Kecleon ennemi prend le type Eau!");
         else
-            MESSAGE("The opposing Raboot transformed into the Water type!");
+            MESSAGE("Lapyro ennemi prend le type Eau!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WATER_GUN, opponent);
     }
 }
@@ -59,21 +59,21 @@ SINGLE_BATTLE_TEST("Protean/Libero changes the type of the user only once per sw
     } SCENE {
         ABILITY_POPUP(opponent, ability);
         if (species == SPECIES_KECLEON)
-            MESSAGE("The opposing Kecleon transformed into the Water type!");
+            MESSAGE("Kecleon ennemi prend le type Eau!");
         else
-            MESSAGE("The opposing Raboot transformed into the Water type!");
+            MESSAGE("Lapyro ennemi prend le type Eau!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WATER_GUN, opponent);
         NONE_OF {
             ABILITY_POPUP(opponent, ability);
-            MESSAGE("The opposing Kecleon transformed into the Normal type!");
-            MESSAGE("The opposing Raboot transformed into the Normal type!");
+            MESSAGE("Kecleon ennemi prend le type Normal!");
+            MESSAGE("Lapyro ennemi prend le type Normal!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         ABILITY_POPUP(opponent, ability);
         if (species == SPECIES_KECLEON)
-            MESSAGE("The opposing Kecleon transformed into the Water type!");
+            MESSAGE("Kecleon ennemi prend le type Eau!");
         else
-            MESSAGE("The opposing Raboot transformed into the Water type!");
+            MESSAGE("Lapyro ennemi prend le type Eau!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WATER_GUN, opponent);
     }
 }
@@ -91,8 +91,8 @@ SINGLE_BATTLE_TEST("Protean/Libero does not change the user's type when using St
     } SCENE {
         NONE_OF {
             ABILITY_POPUP(opponent, ability);
-            MESSAGE("The opposing Greninja transformed into the Normal type!");
-            MESSAGE("The opposing Raboot transformed into the Normal type!");
+            MESSAGE("Amphinobi ennemi prend le type Normal!");
+            MESSAGE("Lapyro ennemi prend le type Normal!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STRUGGLE, opponent);
     }

@@ -64,9 +64,9 @@ SINGLE_BATTLE_TEST("Disguised Mimikyu takes no damage from a confusion hit and c
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CONFUSE_RAY, opponent);
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_CONFUSION, player);
-        MESSAGE("Mimikyu became confused!");
-        MESSAGE("Mimikyu is confused!");
-        MESSAGE("It hurt itself in its confusion!");
+        MESSAGE("Ça rend Mimiqui confus!");
+        MESSAGE("Mimiqui est confus!");
+        MESSAGE("Il se blesse dans sa confusion.");
         NOT HP_BAR(player);
         ABILITY_POPUP(player, ABILITY_DISGUISE);
     } THEN {
@@ -90,7 +90,7 @@ SINGLE_BATTLE_TEST("Disguised Mimikyu takes damage from secondary damage without
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STEALTH_ROCK, opponent);
         HP_BAR(player);
-        MESSAGE("Pointed stones dug into Mimikyu!");
+        MESSAGE("Des pierres pointues transpercent Mimiqui!");
     } THEN {
         EXPECT_EQ(player->species, species);
     }
@@ -131,7 +131,7 @@ SINGLE_BATTLE_TEST("Disguised Mimikyu takes damage from Rocky Helmet without bre
         ANIMATION(ANIM_TYPE_MOVE, MOVE_AERIAL_ACE, player);
         HP_BAR(opponent);
         HP_BAR(player);
-        MESSAGE("Mimikyu was hurt by the opposing Wobbuffet's Rocky Helmet!");
+        MESSAGE("Mimiqui est blessé par Casque Brut de Qulbutoké ennemi!");
     } THEN {
         EXPECT_EQ(player->species, species);
     }
@@ -152,7 +152,7 @@ SINGLE_BATTLE_TEST("Disguised Mimikyu takes damage from Rough Skin without break
         HP_BAR(opponent);
         ABILITY_POPUP(opponent, ABILITY_ROUGH_SKIN);
         HP_BAR(player);
-        MESSAGE("Mimikyu was hurt!");
+        MESSAGE("Mimiqui est blessé!");
     } THEN {
         EXPECT_EQ(player->species, species);
     }
@@ -190,12 +190,12 @@ SINGLE_BATTLE_TEST("Disguised Mimikyu's types revert back to Ghost/Fairy when Di
         TURN { MOVE(opponent, MOVE_SCRATCH); }
         TURN { MOVE(opponent, MOVE_SHADOW_CLAW); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Soak!");
-        MESSAGE("Mimikyu transformed into the Water type!");
-        MESSAGE("The opposing Wobbuffet used Scratch!");
+        MESSAGE("Qulbutoké ennemi utilise\nDétrempage!");
+        MESSAGE("Mimiqui prend le type Eau!");
+        MESSAGE("Qulbutoké ennemi utilise\nGriffe!");
         ABILITY_POPUP(player, ABILITY_DISGUISE);
-        MESSAGE("The opposing Wobbuffet used Shadow Claw!");
-        MESSAGE("It's super effective!");
+        MESSAGE("Qulbutoké ennemi utilise\nGriffe Ombre!");
+        MESSAGE("C'est super efficace!");
     }
 }
 
@@ -214,7 +214,7 @@ SINGLE_BATTLE_TEST("Disguised Mimikyu blocks a move after getting Gastro Acid Ba
         TURN { MOVE(opponent, MOVE_SHADOW_CLAW); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GASTRO_ACID, opponent);
-        MESSAGE("Wobbuffet's Ability was suppressed!");
+        MESSAGE("Le talent de Qulbutoké a été rendu inactif!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BATON_PASS, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SHADOW_CLAW, opponent);
         ABILITY_POPUP(player, ABILITY_DISGUISE);

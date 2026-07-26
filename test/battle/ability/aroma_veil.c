@@ -189,7 +189,7 @@ DOUBLE_BATTLE_TEST("Aroma Veil protects the Pokémon's side from Destiny Knot in
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ATTRACT, moveTarget);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponentLeft);
         ABILITY_POPUP(playerLeft, ABILITY_AROMA_VEIL);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(!moveTarget->volatiles.infatuation);
     }

@@ -20,7 +20,7 @@ SINGLE_BATTLE_TEST("Beads of Ruin reduces Sp. Def if opposing mon's ability does
         TURN { MOVE(player, MOVE_WATER_GUN); }
     } SCENE {
         ABILITY_POPUP(player, ABILITY_BEADS_OF_RUIN);
-        MESSAGE("Chi-Yu's Beads of Ruin weakened the Sp. Def of all surrounding Pokémon!");
+        MESSAGE("Le talent Perles du Fléau de Yuyu affaiblit Défense Spéciale des Pokémon alentour!\p");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WATER_GUN, player);
         HP_BAR(opponent, captureDamage: &damage[0]);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROLE_PLAY, opponent);
@@ -46,10 +46,10 @@ SINGLE_BATTLE_TEST("Beads of Ruin's message displays correctly after all battler
         HP_BAR(opponent, hp: 0);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EXPLOSION, opponent);
         // Everyone faints.
-        MESSAGE("Go! Chi-Yu!");
-        MESSAGE("2 sent out Wobbuffet!");
+        MESSAGE("Yuyu! Go!");
+        MESSAGE("2 envoie\nun Qulbutoké!");
         ABILITY_POPUP(player, ABILITY_BEADS_OF_RUIN);
-        MESSAGE("Chi-Yu's Beads of Ruin weakened the Sp. Def of all surrounding Pokémon!");
+        MESSAGE("Le talent Perles du Fléau de Yuyu affaiblit Défense Spéciale des Pokémon alentour!\p");
     }
 }
 
@@ -68,10 +68,10 @@ SINGLE_BATTLE_TEST("Beads of Ruin's message displays correctly after all battler
         HP_BAR(player, hp: 0);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EXPLOSION, player);
         // Everyone faints.
-        SEND_IN_MESSAGE("Wobbuffet");
-        MESSAGE("2 sent out Chi-Yu!");
+        SEND_IN_MESSAGE("Qulbutoké");
+        MESSAGE("2 envoie\nun Yuyu!");
         ABILITY_POPUP(opponent, ABILITY_BEADS_OF_RUIN);
-        MESSAGE("The opposing Chi-Yu's Beads of Ruin weakened the Sp. Def of all surrounding Pokémon!");
+        MESSAGE("Le talent Perles du Fléau de Yuyu ennemi affaiblit Défense Spéciale des Pokémon alentour!\p");
     }
 }
 
@@ -100,7 +100,7 @@ DOUBLE_BATTLE_TEST("Beads of Ruin increases damage taken by physical moves in Wo
             TURN { MOVE(playerRight, move, target: opponentLeft); }
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_BEADS_OF_RUIN);
-        MESSAGE("Chi-Yu's Beads of Ruin weakened the Sp. Def of all surrounding Pokémon!");
+        MESSAGE("Le talent Perles du Fléau de Yuyu affaiblit Défense Spéciale des Pokémon alentour!\p");
         ANIMATION(ANIM_TYPE_MOVE, move, playerRight);
         HP_BAR(opponentLeft, captureDamage: &results[i].damage);
     } FINALLY {
@@ -129,13 +129,13 @@ SINGLE_BATTLE_TEST("Beads of Ruin doesn't activate when dragged out by Mold Brea
         {
             NONE_OF {
                 ABILITY_POPUP(player, ABILITY_BEADS_OF_RUIN);
-                MESSAGE("Chi-Yu's Beads of Ruin weakened the Sp. Def of all surrounding Pokémon!");
+                MESSAGE("Le talent Perles du Fléau de Yuyu affaiblit Défense Spéciale des Pokémon alentour!\p");
             }
         }
         else
         {
             ABILITY_POPUP(player, ABILITY_BEADS_OF_RUIN);
-            MESSAGE("Chi-Yu's Beads of Ruin weakened the Sp. Def of all surrounding Pokémon!");
+            MESSAGE("Le talent Perles du Fléau de Yuyu affaiblit Défense Spéciale des Pokémon alentour!\p");
         }
     }
 }
@@ -156,7 +156,7 @@ DOUBLE_BATTLE_TEST("Beads of Ruin's Sp. Def reduction is not ignored by Mold Bre
         TURN { MOVE(opponentLeft, MOVE_ROUND, target: playerRight); }
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_BEADS_OF_RUIN);
-        MESSAGE("Chi-Yu's Beads of Ruin weakened the Sp. Def of all surrounding Pokémon!");
+        MESSAGE("Le talent Perles du Fléau de Yuyu affaiblit Défense Spéciale des Pokémon alentour!\p");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROUND, opponentLeft);
         HP_BAR(playerRight, captureDamage: &results[i].damage);
     } FINALLY {
@@ -181,7 +181,7 @@ DOUBLE_BATTLE_TEST("Beads of Ruin's Sp. Def reduction is ignored by Gastro Acid"
         TURN { MOVE(opponentRight, move, target: playerLeft); MOVE(opponentLeft, MOVE_ROUND, target: playerRight); }
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_BEADS_OF_RUIN);
-        MESSAGE("Chi-Yu's Beads of Ruin weakened the Sp. Def of all surrounding Pokémon!");
+        MESSAGE("Le talent Perles du Fléau de Yuyu affaiblit Défense Spéciale des Pokémon alentour!\p");
         ANIMATION(ANIM_TYPE_MOVE, move, opponentRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROUND, opponentLeft);
         HP_BAR(playerRight, captureDamage: &results[i].damage);
@@ -246,7 +246,7 @@ DOUBLE_BATTLE_TEST("Beads of Ruin will not reactivate after Sunsteel Strike fain
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUNSTEEL_STRIKE, playerRight);
         HP_BAR(opponentLeft);
-        MESSAGE("The opposing Weezing fainted!");
+        MESSAGE("Smogogo ennemi est K.O.!\p");
 
         NOT ABILITY_POPUP(playerLeft, ABILITY_BEADS_OF_RUIN);
 

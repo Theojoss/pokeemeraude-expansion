@@ -15,11 +15,11 @@ SINGLE_BATTLE_TEST("Sand Stream sets up sandstorm for 5 turns (Gen6+)")
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_SAND_STREAM);
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm subsided.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable se calme.");
     }
 }
 
@@ -41,14 +41,14 @@ SINGLE_BATTLE_TEST("Sand Stream sets up sandstorm for 8 turns with Smooth Rock (
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_SAND_STREAM);
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm subsided.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable se calme.");
     }
 }
 
@@ -70,15 +70,15 @@ SINGLE_BATTLE_TEST("Sand Stream sets up permanent sandstorm (Gen3-5)")
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_SAND_STREAM);
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        NOT MESSAGE("The sandstorm subsided.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        NOT MESSAGE("La tempête de sable se calme.");
     }
 }

@@ -16,13 +16,13 @@ SINGLE_BATTLE_TEST("Primordial Sea blocks damaging Fire-type moves")
         TURN { MOVE(opponent, MOVE_EMBER); }
         TURN { MOVE(opponent, MOVE_EMBER); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Ember!");
+        MESSAGE("Qulbutoké ennemi utilise\nFlammèche!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_EMBER, opponent);
-        MESSAGE("The Fire-type attack fizzled out in the heavy rain!");
+        MESSAGE("La pluie battante empêche toute attaque de type Feu!");
         NOT HP_BAR(player);
-        MESSAGE("The opposing Wobbuffet used Ember!");
+        MESSAGE("Qulbutoké ennemi utilise\nFlammèche!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_EMBER, opponent);
-        MESSAGE("The Fire-type attack fizzled out in the heavy rain!");
+        MESSAGE("La pluie battante empêche toute attaque de type Feu!");
         NOT HP_BAR(player);
     } THEN {
         EXPECT_EQ(player->hp, player->maxHP);
@@ -42,10 +42,10 @@ DOUBLE_BATTLE_TEST("Primordial Sea blocks damaging Fire-type moves and prints th
     } WHEN {
         TURN { MOVE(opponentLeft, MOVE_ERUPTION); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Eruption!");
+        MESSAGE("Qulbutoké ennemi utilise\nÉruption!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_ERUPTION, opponentLeft);
-        MESSAGE("The Fire-type attack fizzled out in the heavy rain!");
-        NOT MESSAGE("The Fire-type attack fizzled out in the heavy rain!");
+        MESSAGE("La pluie battante empêche toute attaque de type Feu!");
+        NOT MESSAGE("La pluie battante empêche toute attaque de type Feu!");
     } THEN {
         EXPECT_EQ(playerLeft->hp, playerLeft->maxHP);
         EXPECT_EQ(playerRight->hp, playerRight->maxHP);
@@ -60,8 +60,8 @@ SINGLE_BATTLE_TEST("Primordial Sea does not block a move if Pokémon is asleep a
     } WHEN {
         TURN { MOVE(opponent, MOVE_EMBER); }
     } SCENE {
-        NOT MESSAGE("The Fire-type attack fizzled out in the heavy rain!");
-        MESSAGE("The opposing Wobbuffet is fast asleep.");
+        NOT MESSAGE("La pluie battante empêche toute attaque de type Feu!");
+        MESSAGE("Qulbutoké ennemi dort profondément.");
     }
 }
 
@@ -123,7 +123,7 @@ SINGLE_BATTLE_TEST("Primordial Sea can be replaced by Delta Stream")
         TURN { MOVE(opponent, MOVE_CELEBRATE, gimmick: GIMMICK_MEGA); }
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_DELTA_STREAM);
-        MESSAGE("Mysterious strong winds are protecting Flying-type Pokémon!");
+        MESSAGE("Un vent mystérieux enveloppe les Pokémon de type Vol!");
     } THEN {
         EXPECT(gBattleWeather & B_WEATHER_STRONG_WINDS);
     }
@@ -139,7 +139,7 @@ SINGLE_BATTLE_TEST("Primordial Sea can be replaced by Desolate Land")
         TURN { SWITCH(opponent, 1); }
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_DESOLATE_LAND);
-        MESSAGE("The sunlight turned extremely harsh!");
+        MESSAGE("Les rayons du soleil s'intensifient énormément!");
     } THEN {
         EXPECT(gBattleWeather & B_WEATHER_SUN_PRIMAL);
     }

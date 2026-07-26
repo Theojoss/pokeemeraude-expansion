@@ -22,16 +22,16 @@ SINGLE_BATTLE_TEST("Mummy/Lingering Aroma replace the attacker's ability on cont
         if (MoveMakesContact(move)) {
             ABILITY_POPUP(opponent, ability);
             if (ability == ABILITY_MUMMY)
-                MESSAGE("Wobbuffet acquired Mummy!");
+                MESSAGE("Qulbutoké acquiert le talent Momie!");
             else
-                MESSAGE("Wobbuffet acquired Lingering Aroma!");
+                MESSAGE("Qulbutoké acquiert le talent Odeur Tenace!");
         } else {
             NONE_OF {
                 ABILITY_POPUP(opponent, ability);
                 if (ability == ABILITY_MUMMY)
-                    MESSAGE("Wobbuffet acquired Mummy!");
+                    MESSAGE("Qulbutoké acquiert le talent Momie!");
                 else
-                    MESSAGE("Wobbuffet acquired Lingering Aroma!");
+                    MESSAGE("Qulbutoké acquiert le talent Odeur Tenace!");
             }
         }
     }
@@ -59,10 +59,10 @@ SINGLE_BATTLE_TEST("Mummy and Lingering Aroma don't replace each other")
             ABILITY_POPUP(player, ability2);
             ABILITY_POPUP(opponent, ability1);
             ABILITY_POPUP(opponent, ability2);
-            MESSAGE("Yamask acquired Mummy!");
-            MESSAGE("Yamask acquired Lingering Aroma!");
-            MESSAGE("Oinkologne acquired Mummy!");
-            MESSAGE("Oinkologne acquired Lingering Aroma!");
+            MESSAGE("Tutafeh acquiert le talent Momie!");
+            MESSAGE("Tutafeh acquiert le talent Odeur Tenace!");
+            MESSAGE("Fragroin acquiert le talent Momie!");
+            MESSAGE("Fragroin acquiert le talent Odeur Tenace!");
         }
     }
 }

@@ -68,7 +68,7 @@ SINGLE_BATTLE_TEST("Dry Skin doesn't heal in Rain if Cloud Nine/Air Lock is on t
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_DRY_SKIN);
             HP_BAR(player);
-            MESSAGE("Parasect had its HP restored.");
+            MESSAGE("Parasect récupère des PV!");
         }
     }
 }
@@ -90,7 +90,7 @@ SINGLE_BATTLE_TEST("Dry Skin increases damage taken from Fire-type moves by 25%"
     } WHEN {
         TURN { MOVE(player, MOVE_EMBER); }
     } SCENE {
-        MESSAGE("Wobbuffet used Ember!");
+        MESSAGE("Qulbutoké utilise\nFlammèche!");
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
         // Due to numerics related to rounding on each applied multiplier,
@@ -112,7 +112,7 @@ SINGLE_BATTLE_TEST("Dry Skin heals 25% when hit by water type moves")
     } SCENE {
         ABILITY_POPUP(player, ABILITY_DRY_SKIN);
         HP_BAR(player, damage: -50);
-        MESSAGE("Parasect had its HP restored.");
+        MESSAGE("Parasect récupère des PV!");
     }
 }
 
@@ -125,7 +125,7 @@ SINGLE_BATTLE_TEST("Dry Skin does not activate if protected")
     } WHEN {
         TURN { MOVE(player, MOVE_PROTECT); MOVE(opponent, MOVE_BUBBLE); }
     } SCENE {
-        NONE_OF { ABILITY_POPUP(player, ABILITY_DRY_SKIN); HP_BAR(player); MESSAGE("Parasect restored HP using its Dry Skin!"); }
+        NONE_OF { ABILITY_POPUP(player, ABILITY_DRY_SKIN); HP_BAR(player); MESSAGE("Parasect restored PV using its Peau Sèche!"); }
     }
 }
 
@@ -141,7 +141,7 @@ SINGLE_BATTLE_TEST("Dry Skin is only triggered once on multi strike moves")
     } SCENE {
         ABILITY_POPUP(player, ABILITY_DRY_SKIN);
         HP_BAR(player, damage: -50);
-        MESSAGE("Parasect had its HP restored.");
+        MESSAGE("Parasect récupère des PV!");
     }
 }
 
@@ -159,7 +159,7 @@ SINGLE_BATTLE_TEST("Dry Skin prevents Absorb Bulb and Luminous Moss from activat
     } SCENE {
         ABILITY_POPUP(player, ABILITY_DRY_SKIN);
         HP_BAR(player, damage: -50);
-        MESSAGE("Parasect had its HP restored.");
+        MESSAGE("Parasect récupère des PV!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);

@@ -10,9 +10,9 @@ SINGLE_BATTLE_TEST("Sturdy prevents OHKO moves")
     } WHEN {
         TURN { MOVE(opponent, MOVE_FISSURE); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Fissure!");
+        MESSAGE("Qulbutoké ennemi utilise\nAbîme!");
         ABILITY_POPUP(player, ABILITY_STURDY);
-        MESSAGE("It doesn't affect Geodude…");
+        MESSAGE("Ça n'affecte pas Racaillou…");
     } THEN {
         EXPECT_EQ(player->hp, player->maxHP);
     }
@@ -40,14 +40,14 @@ SINGLE_BATTLE_TEST("Sturdy prevents OHKOs (Gen5+)")
         if (config >= GEN_5) {
             HP_BAR(player, hp: 1);
             ABILITY_POPUP(player, ABILITY_STURDY);
-            MESSAGE("Geodude endured the hit!");
+            MESSAGE("Racaillou encaisse les coups!");
         } else {
             HP_BAR(player, hp: 0);
             NONE_OF {
                 ABILITY_POPUP(player, ABILITY_STURDY);
-                MESSAGE("Geodude endured the hit!");
+                MESSAGE("Racaillou encaisse les coups!");
             }
-            SEND_IN_MESSAGE("Geodude");
+            SEND_IN_MESSAGE("Racaillou");
         }
     }
 }

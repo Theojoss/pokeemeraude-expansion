@@ -35,7 +35,7 @@ SINGLE_BATTLE_TEST("Illusion breaks if the target faints")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         HP_BAR(player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ILLUSION_OFF, player);
-        MESSAGE("Zoroark's illusion wore off!");
+        MESSAGE("L'illusion de Zoroark se brise!");
     }
 }
 
@@ -53,7 +53,7 @@ SINGLE_BATTLE_TEST("Illusion does not break if the attacker faints without takin
         HP_BAR(player);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ILLUSION_OFF, player);
-            MESSAGE("Zoroark's illusion wore off!");
+            MESSAGE("L'illusion de Zoroark se brise!");
         }
     }
 }
@@ -146,7 +146,7 @@ SINGLE_BATTLE_TEST("Illusion breaks when hit through a substitute")
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SWAP_FROM_SUBSTITUTE, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ILLUSION_OFF, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SWAP_TO_SUBSTITUTE, opponent);
-        MESSAGE("The opposing Zoroark's illusion wore off!");
+        MESSAGE("L'illusion de Zoroark ennemi se brise!");
     }
 }
 
@@ -162,7 +162,7 @@ SINGLE_BATTLE_TEST("Illusion does not break if indirect damage causes the user t
         HP_BAR(player);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ILLUSION_OFF, player);
-            MESSAGE("Zoroark's illusion wore off!");
+            MESSAGE("L'illusion de Zoroark se brise!");
         }
     }
 }

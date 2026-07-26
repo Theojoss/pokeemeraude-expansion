@@ -14,13 +14,13 @@ SINGLE_BATTLE_TEST("Orichalcum Pulse sets up sun for 5 turns")
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_ORICHALCUM_PULSE);
-        MESSAGE("The sunlight turned harsh!");
-        MESSAGE("Koraidon turned the sunlight harsh, sending its ancient pulse into a frenzy!");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight faded.");
+        MESSAGE("Les rayons du soleil s'intensifient!");
+        MESSAGE("Le soleil brille et Koraidon libère l'énergie d'une pulsation primitive!");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil s'affaiblissent.");
     }
 }
 
@@ -41,16 +41,16 @@ SINGLE_BATTLE_TEST("Orichalcum Pulse sets up sun for 8 turns with Heat Rock")
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_ORICHALCUM_PULSE);
-        MESSAGE("The sunlight turned harsh!");
-        MESSAGE("Koraidon turned the sunlight harsh, sending its ancient pulse into a frenzy!");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight faded.");
+        MESSAGE("Les rayons du soleil s'intensifient!");
+        MESSAGE("Le soleil brille et Koraidon libère l'énergie d'une pulsation primitive!");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil s'affaiblissent.");
     }
 }
 
@@ -65,7 +65,7 @@ SINGLE_BATTLE_TEST("Orichalcum Pulse activates when entering battle in sun")
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_DROUGHT);
         ABILITY_POPUP(player, ABILITY_ORICHALCUM_PULSE);
-        MESSAGE("Koraidon basked in the sunlight, sending its ancient pulse into a frenzy!");
+        MESSAGE("Koraidon tire profit des rayons du soleil et libère l'énergie d'une pulsation primitive!");
     }
 }
 
@@ -78,11 +78,11 @@ SINGLE_BATTLE_TEST("Orichalcum Pulse triggers Protosynthesis before announcing i
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_ORICHALCUM_PULSE);
-        MESSAGE("The sunlight turned harsh!");
+        MESSAGE("Les rayons du soleil s'intensifient!");
         ABILITY_POPUP(opponent, ABILITY_PROTOSYNTHESIS);
-        MESSAGE("The harsh sunlight activated the opposing Walking Wake's Protosynthesis!");
-        MESSAGE("The opposing Walking Wake's Sp. Atk was heightened!");
-        MESSAGE("Koraidon turned the sunlight harsh, sending its ancient pulse into a frenzy!");
+        MESSAGE("Le soleil brille, ce qui a permis à Serpente-Eau ennemi d'activer Paléosynthèse!");
+        MESSAGE("Attaque Spéciale de Serpente-Eau ennemi est renforcé!");
+        MESSAGE("Le soleil brille et Koraidon libère l'énergie d'une pulsation primitive!");
     }
 }
 

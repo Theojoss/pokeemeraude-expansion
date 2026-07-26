@@ -11,7 +11,7 @@ SINGLE_BATTLE_TEST("Stench has a 10% chance to flinch")
     } WHEN {
         TURN { MOVE(player, MOVE_SCRATCH); MOVE(opponent, MOVE_CELEBRATE); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet flinched and couldn't move!");
+        MESSAGE("Qulbutoké ennemi a la trouille! Il ne peut plus attaquer!");
     }
 }
 
@@ -27,7 +27,7 @@ SINGLE_BATTLE_TEST("Stench does not stack with King's Rock")
     } WHEN {
         TURN { MOVE(player, MOVE_SCRATCH); MOVE(opponent, MOVE_CELEBRATE); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet flinched and couldn't move!");
+        MESSAGE("Qulbutoké ennemi a la trouille! Il ne peut plus attaquer!");
     }
 }
 
@@ -51,7 +51,7 @@ DOUBLE_BATTLE_TEST("Stench only triggers if target takes damage")
             MOVE(playerRight, MOVE_SCRATCH, target: opponentRight);
         }
     } SCENE {
-        NONE_OF { MESSAGE("Wynaut flinched and couldn't move!"); }
+        NONE_OF { MESSAGE("Okéoké a la trouille! Il ne peut plus attaquer!"); }
     }
 }
 
@@ -72,9 +72,9 @@ DOUBLE_BATTLE_TEST("Stench doesn't trigger if partner uses a move")
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, playerLeft);
-        MESSAGE("The opposing Grimer flinched and couldn't move!");
+        MESSAGE("Tadmorv ennemi a la trouille! Il ne peut plus attaquer!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentRight);
-        NOT MESSAGE("Wynaut flinched and couldn't move!");
+        NOT MESSAGE("Okéoké a la trouille! Il ne peut plus attaquer!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerRight);
     }
 }
@@ -90,7 +90,7 @@ SINGLE_BATTLE_TEST("Stench is blocked by Shield Dust")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
         NONE_OF {
-            MESSAGE("The opposing Vivillon flinched and couldn't move!");
+            MESSAGE("Prismillon ennemi a la trouille! Il ne peut plus attaquer!");
         }
     }
 }
@@ -107,7 +107,7 @@ SINGLE_BATTLE_TEST("Stench is blocked by Covert Cloak")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
         NONE_OF {
-            MESSAGE("The opposing Wobbuffet flinched and couldn't move!");
+            MESSAGE("Qulbutoké ennemi a la trouille! Il ne peut plus attaquer!");
         }
     }
 }

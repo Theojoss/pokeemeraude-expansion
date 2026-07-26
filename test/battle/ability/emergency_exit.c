@@ -198,9 +198,9 @@ DOUBLE_BATTLE_TEST("Emergency Exit activates when taking Sea of Fire damage and 
     } SCENE {
         HP_BAR(playerLeft);
         ABILITY_POPUP(playerLeft, ABILITY_EMERGENCY_EXIT);
-        MESSAGE("Golisopod is healed by the grassy terrain!");
+        MESSAGE("Sarmuraï récupère des PV grâce au gazon!");
         HP_BAR(playerLeft);
-        SEND_IN_MESSAGE("Wobbuffet");
+        SEND_IN_MESSAGE("Qulbutoké");
     }
 }
 
@@ -232,7 +232,7 @@ DOUBLE_BATTLE_TEST("Emergency Exit activates when taking residual damage and bat
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SALT_CURE_DAMAGE, playerLeft);
             HP_BAR(playerLeft);
         }
-        SEND_IN_MESSAGE("Wobbuffet");
+        SEND_IN_MESSAGE("Qulbutoké");
     }
 }
 

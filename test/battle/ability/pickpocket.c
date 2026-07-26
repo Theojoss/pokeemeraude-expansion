@@ -21,7 +21,7 @@ DOUBLE_BATTLE_TEST("Pickpocket checks contact/effect per target for spread moves
         TURN { MOVE(playerLeft, MOVE_BREAKING_SWIPE); }
     } SCENE {
         ABILITY_POPUP(opponentLeft, ABILITY_PICKPOCKET);
-        MESSAGE("The opposing Sneasel stole Wobbuffet's Magost Berry!");
+        MESSAGE("Farfuret ennemi vole Baie Mangou de Qulbutoké!");
     } THEN {
         EXPECT(opponentLeft->item == ITEM_MAGOST_BERRY);
         EXPECT(playerLeft->item == ITEM_NONE);
@@ -40,7 +40,7 @@ DOUBLE_BATTLE_TEST("Pickpocket activates for the fastest itemless target when bo
         TURN { MOVE(playerLeft, MOVE_BREAKING_SWIPE); }
     } SCENE {
         ABILITY_POPUP(opponentLeft, ABILITY_PICKPOCKET);
-        MESSAGE("The opposing Sneasel stole Wobbuffet's Magost Berry!");
+        MESSAGE("Farfuret ennemi vole Baie Mangou de Qulbutoké!");
     } THEN {
         EXPECT(opponentLeft->item == ITEM_MAGOST_BERRY);
         EXPECT(opponentRight->item == ITEM_NONE);
@@ -62,11 +62,11 @@ SINGLE_BATTLE_TEST("Pickpocket steals the attacker's item unless it already has 
         if (targetHasItem) {
             NONE_OF {
                 ABILITY_POPUP(opponent, ABILITY_PICKPOCKET);
-                MESSAGE("The opposing Sneasel stole Wobbuffet's Magost Berry!");
+                MESSAGE("Farfuret ennemi vole Baie Mangou de Qulbutoké!");
             }
         } else {
             ABILITY_POPUP(opponent, ABILITY_PICKPOCKET);
-            MESSAGE("The opposing Sneasel stole Wobbuffet's Magost Berry!");
+            MESSAGE("Farfuret ennemi vole Baie Mangou de Qulbutoké!");
         }
     } THEN {
         if (targetHasItem) {
@@ -90,9 +90,9 @@ SINGLE_BATTLE_TEST("Pickpocket does not activate if the user faints")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
         NONE_OF {
             ABILITY_POPUP(opponent, ABILITY_PICKPOCKET);
-            MESSAGE("The opposing Sneasel stole Wobbuffet's Magost Berry!");
+            MESSAGE("Farfuret ennemi vole Baie Mangou de Qulbutoké!");
         }
-        MESSAGE("The opposing Sneasel fainted!");
+        MESSAGE("Farfuret ennemi est K.O.!\p");
     } THEN {
         EXPECT(opponent->item == ITEM_NONE);
         EXPECT(player->item == ITEM_MAGOST_BERRY);
@@ -109,7 +109,7 @@ SINGLE_BATTLE_TEST("Pickpocket cannot steal from Sticky Hold")
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_PICKPOCKET);
         ABILITY_POPUP(player, ABILITY_STICKY_HOLD);
-        MESSAGE("Grimer's item cannot be removed!");
+        MESSAGE("L'objet de Tadmorv ne peut pas être volé!");
     } THEN {
         EXPECT(opponent->item == ITEM_NONE);
         EXPECT(player->item == ITEM_MAGOST_BERRY);
@@ -147,9 +147,9 @@ SINGLE_BATTLE_TEST("Pickpocket activates after the final hit of a multi-strike m
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FURY_SWIPES, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FURY_SWIPES, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FURY_SWIPES, player);
-        MESSAGE("The Pokémon was hit 3 time(s)!");
+        MESSAGE("Touché 3 fois!");
         ABILITY_POPUP(opponent, ABILITY_PICKPOCKET);
-        MESSAGE("The opposing Sneasel stole Wobbuffet's Magost Berry!");
+        MESSAGE("Farfuret ennemi vole Baie Mangou de Qulbutoké!");
     } THEN {
         EXPECT(opponent->item == ITEM_MAGOST_BERRY);
         EXPECT(player->item == ITEM_NONE);
@@ -165,9 +165,9 @@ SINGLE_BATTLE_TEST("Pickpocket activates after Magician steals an item")
         TURN { MOVE(player, MOVE_SCRATCH); }
     } SCENE {
         ABILITY_POPUP(player, ABILITY_MAGICIAN);
-        MESSAGE("Delphox stole the opposing Sneasel's Magost Berry!");
+        MESSAGE("Goupelin vole Baie Mangou de Farfuret ennemi!");
         ABILITY_POPUP(opponent, ABILITY_PICKPOCKET);
-        MESSAGE("The opposing Sneasel stole Delphox's Magost Berry!");
+        MESSAGE("Farfuret ennemi vole Baie Mangou de Goupelin!");
     } THEN {
         EXPECT(opponent->item == ITEM_MAGOST_BERRY);
         EXPECT(player->item == ITEM_NONE);
@@ -183,9 +183,9 @@ SINGLE_BATTLE_TEST("Pickpocket activates after Sticky Barb transfers")
     } WHEN {
         TURN { MOVE(player, MOVE_SCRATCH); }
     } SCENE {
-        MESSAGE("The Sticky Barb attached itself to Wobbuffet!");
+        MESSAGE("Piquants s'attache à Qulbutoké!");
         ABILITY_POPUP(opponent, ABILITY_PICKPOCKET);
-        MESSAGE("The opposing Sneasel stole Wobbuffet's Sticky Barb!");
+        MESSAGE("Farfuret ennemi vole Piquants de Qulbutoké!");
     } THEN {
         EXPECT(opponent->item == ITEM_STICKY_BARB);
         EXPECT(player->item == ITEM_NONE);
@@ -205,9 +205,9 @@ SINGLE_BATTLE_TEST("Pickpocket activates after Thief or Covet steals an item")
     } WHEN {
         TURN { MOVE(player, move); }
     } SCENE {
-        MESSAGE("Wobbuffet stole the opposing Sneasel's Magost Berry!");
+        MESSAGE("Qulbutoké vole Baie Mangou de Farfuret ennemi!");
         ABILITY_POPUP(opponent, ABILITY_PICKPOCKET);
-        MESSAGE("The opposing Sneasel stole Wobbuffet's Magost Berry!");
+        MESSAGE("Farfuret ennemi vole Baie Mangou de Qulbutoké!");
     } THEN {
         EXPECT(opponent->item == ITEM_MAGOST_BERRY);
         EXPECT(player->item == ITEM_NONE);
@@ -225,9 +225,9 @@ SINGLE_BATTLE_TEST("Pickpocket activates after Focus Sash is consumed")
         TURN { MOVE(player, MOVE_SEISMIC_TOSS); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SEISMIC_TOSS, player);
-        MESSAGE("The opposing Sneasel hung on using its Focus Sash!");
+        MESSAGE("Farfuret ennemi tient bon grâce à Ceinture Force!");
         ABILITY_POPUP(opponent, ABILITY_PICKPOCKET);
-        MESSAGE("The opposing Sneasel stole Wobbuffet's Magost Berry!");
+        MESSAGE("Farfuret ennemi vole Baie Mangou de Qulbutoké!");
     } THEN {
         EXPECT(opponent->item == ITEM_MAGOST_BERRY);
         EXPECT(player->item == ITEM_NONE);
@@ -248,7 +248,7 @@ SINGLE_BATTLE_TEST("Pickpocket activates after Knock Off, Bug Bite, or Pluck")
         TURN { MOVE(player, move); }
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_PICKPOCKET);
-        MESSAGE("The opposing Sneasel stole Wobbuffet's Magost Berry!");
+        MESSAGE("Farfuret ennemi vole Baie Mangou de Qulbutoké!");
     } THEN {
         EXPECT(opponent->item == ITEM_MAGOST_BERRY);
         EXPECT(player->item == ITEM_NONE);
@@ -264,9 +264,9 @@ SINGLE_BATTLE_TEST("Pickpocket steals Life Orb after it activates")
     } WHEN {
         TURN { MOVE(player, MOVE_SCRATCH); }
     } SCENE {
-        MESSAGE("Wobbuffet was hurt by the Life Orb!");
+        MESSAGE("Qulbutoké est blessé par Orbe Vie!");
         ABILITY_POPUP(opponent, ABILITY_PICKPOCKET);
-        MESSAGE("The opposing Sneasel stole Wobbuffet's Life Orb!");
+        MESSAGE("Farfuret ennemi vole Orbe Vie de Qulbutoké!");
     } THEN {
         EXPECT(opponent->item == ITEM_LIFE_ORB);
         EXPECT(player->item == ITEM_NONE);
@@ -286,7 +286,7 @@ SINGLE_BATTLE_TEST("Pickpocket steals Shell Bell after it heals the user")
         HP_BAR(opponent);
         HP_BAR(player);
         ABILITY_POPUP(opponent, ABILITY_PICKPOCKET);
-        MESSAGE("The opposing Sneasel stole Wobbuffet's Shell Bell!");
+        MESSAGE("Farfuret ennemi vole Grelot Coque de Qulbutoké!");
     } THEN {
         EXPECT(opponent->item == ITEM_SHELL_BELL);
         EXPECT(player->item == ITEM_NONE);
@@ -303,8 +303,8 @@ SINGLE_BATTLE_TEST("Pickpocket does not prevent King's Rock or Razor Fang flinch
         TURN { MOVE(player, MOVE_SCRATCH, WITH_RNG(RNG_HOLD_EFFECT_FLINCH, 1)); MOVE(opponent, MOVE_SCRATCH); }
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_PICKPOCKET);
-        MESSAGE("The opposing Sneasel stole Wobbuffet's King's Rock!");
-        MESSAGE("The opposing Sneasel flinched and couldn't move!");
+        MESSAGE("Farfuret ennemi vole Roche Royale de Qulbutoké!");
+        MESSAGE("Farfuret ennemi a la trouille! Il ne peut plus attaquer!");
     } THEN {
         EXPECT(opponent->item == ITEM_KINGS_ROCK);
         EXPECT(player->item == ITEM_NONE);
@@ -365,7 +365,7 @@ SINGLE_BATTLE_TEST("Pickpocket can steal the attacker's Air Balloon")
     } WHEN {
         TURN { MOVE(player, MOVE_SCRATCH); }
     } SCENE {
-        MESSAGE("Wobbuffet floats in the air with its Air Balloon!");
+        MESSAGE("Qulbutoké flotte grâce à son Ballon!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
         ABILITY_POPUP(opponent, ABILITY_PICKPOCKET);
     } THEN {

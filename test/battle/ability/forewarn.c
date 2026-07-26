@@ -12,7 +12,7 @@ DOUBLE_BATTLE_TEST("Forewarn warns about the highest power move among all opposi
         TURN {}
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_FOREWARN);
-        MESSAGE("Forewarn alerted Musharna to the opposing Excadrill's Fissure!");
+        MESSAGE("Le talent Prédiction alerte Mushana de Abîme de Minotaupe ennemi!");
     }
 }
 
@@ -28,7 +28,7 @@ SINGLE_BATTLE_TEST("Forewarn randomly chooses between same-power moves on one op
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_FOREWARN);
-        MESSAGE("Forewarn alerted Musharna to the opposing Zubat's Tackle!");
+        MESSAGE("Le talent Prédiction alerte Mushana de Charge de Nosferapti ennemi!");
     }
 }
 
@@ -47,7 +47,7 @@ DOUBLE_BATTLE_TEST("Forewarn randomly chooses between opponents with same-power 
         TURN {}
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_FOREWARN);
-        MESSAGE("Forewarn alerted Musharna to the opposing Zubat's Tackle!");
+        MESSAGE("Le talent Prédiction alerte Mushana de Charge de Nosferapti ennemi!");
     }
 }
 
@@ -77,8 +77,8 @@ DOUBLE_BATTLE_TEST("Forewarn does not trigger if a mon switches in while the opp
         ANIMATION(ANIM_TYPE_MOVE, MOVE_U_TURN, playerLeft);
         HP_BAR(opponentLeft);
         NOT ABILITY_POPUP(playerLeft, ABILITY_FOREWARN);
-        MESSAGE("2 sent out Treecko!");
-        MESSAGE("2 sent out Torchic!");
+        MESSAGE("2 envoie\nun Arcko!");
+        MESSAGE("2 envoie\nun Poussifeu!");
         NOT ABILITY_POPUP(playerLeft, ABILITY_FOREWARN);
     }
 }

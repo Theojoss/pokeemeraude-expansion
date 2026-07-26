@@ -16,12 +16,12 @@ SINGLE_BATTLE_TEST("Sand Spit sets up sandstorm for 5 turns when hit")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         HP_BAR(player);
         ABILITY_POPUP(player, ABILITY_SAND_SPIT);
-        MESSAGE("A sandstorm kicked up!");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm subsided.");
+        MESSAGE("Une tempête de sable se prépare!");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable se calme.");
     }
 }
 
@@ -44,15 +44,15 @@ SINGLE_BATTLE_TEST("Sand Spit sets up sandstorm for 8 turns when hit with Smooth
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         HP_BAR(player);
         ABILITY_POPUP(player, ABILITY_SAND_SPIT);
-        MESSAGE("A sandstorm kicked up!");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm subsided.");
+        MESSAGE("Une tempête de sable se prépare!");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable se calme.");
     }
 }
 
@@ -69,8 +69,8 @@ SINGLE_BATTLE_TEST("Sand Spit triggers even if the user is knocked out by the hi
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         HP_BAR(player);
         ABILITY_POPUP(player, ABILITY_SAND_SPIT);
-        MESSAGE("A sandstorm kicked up!");
-        MESSAGE("The sandstorm is raging.");
-        MESSAGE("The sandstorm is raging.");
+        MESSAGE("Une tempête de sable se prépare!");
+        MESSAGE("La tempête de sable fait rage.");
+        MESSAGE("La tempête de sable fait rage.");
     }
 }

@@ -11,7 +11,7 @@ SINGLE_BATTLE_TEST("Bulletproof makes ballistic moves fail against the ability u
         TURN { MOVE(player, MOVE_ELECTRO_BALL); }
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_BULLETPROOF);
-        MESSAGE("It doesn't affect the opposing Chespin…");
+        MESSAGE("Ça n'affecte pas Marisson ennemi…");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRO_BALL, player);
             HP_BAR(opponent);

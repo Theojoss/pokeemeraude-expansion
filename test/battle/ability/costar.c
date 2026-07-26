@@ -14,12 +14,12 @@ DOUBLE_BATTLE_TEST("Costar copies an ally's stat stages upon entering battle")
         TURN { SWITCH(opponentRight, 2); MOVE(playerLeft, MOVE_CELEBRATE); }
     } SCENE {
         // Turn 1 - buff up
-        MESSAGE("The opposing Wobbuffet used Swords Dance!");
+        MESSAGE("Qulbutoké ennemi utilise\nDanse Lames!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
         // Turn 2 - Switch into Flamigo
-        MESSAGE("2 sent out Flamigo!");
+        MESSAGE("2 envoie\nun Flamenroule!");
         ABILITY_POPUP(opponentRight, ABILITY_COSTAR);
-        MESSAGE("The opposing Flamigo copied the opposing Wobbuffet's stat changes!");
+        MESSAGE("Flamenroule ennemi copie les changements de stats de Qulbutoké ennemi!");
     } THEN {
         EXPECT_EQ(opponentRight->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 2);
     }
@@ -44,7 +44,7 @@ DOUBLE_BATTLE_TEST("Costar copies an ally's Dragon Cheer critical hit boost")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_CHEER, playerRight);
         ABILITY_POPUP(playerRight, ABILITY_COSTAR);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, playerRight);
-        MESSAGE("A critical hit!");
+        MESSAGE("Coup critique!");
     }
 }
 
@@ -90,7 +90,7 @@ DOUBLE_BATTLE_TEST("Costar copies an ally's Focus Energy critical hit boost")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FOCUS_ENERGY, playerLeft);
         ABILITY_POPUP(playerRight, ABILITY_COSTAR);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, playerRight);
-        MESSAGE("A critical hit!");
+        MESSAGE("Coup critique!");
     }
 }
 
@@ -114,7 +114,7 @@ DOUBLE_BATTLE_TEST("Costar copies an ally's Dragon Cheer critical hit boost")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SWORDS_DANCE, playerLeft);
         ABILITY_POPUP(playerRight, ABILITY_COSTAR);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, playerRight);
-        MESSAGE("A critical hit!");
+        MESSAGE("Coup critique!");
     }
 }
 
@@ -169,11 +169,11 @@ DOUBLE_BATTLE_TEST("Costar's message displays correctly after all battlers faint
             SEND_OUT(opponentRight, 3);
         }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Explosion!");
+        MESSAGE("Qulbutoké ennemi utilise\nExplosion!");
         ABILITY_POPUP(playerLeft, ABILITY_INTREPID_SWORD);
-        MESSAGE("Zacian's Attack rose!");
+        MESSAGE("Ah, Attaque du Zacian augmente!");
         ABILITY_POPUP(playerRight, ABILITY_COSTAR);
-        MESSAGE("Flamigo copied Zacian's stat changes!");
+        MESSAGE("Flamenroule copie les changements de stats de Zacian!");
     }
 }
 
@@ -198,10 +198,10 @@ DOUBLE_BATTLE_TEST("Costar's message displays correctly after all battlers faint
             SEND_OUT(opponentRight, 3);
         }
     } SCENE {
-        MESSAGE("Wobbuffet used Explosion!");
+        MESSAGE("Qulbutoké utilise\nExplosion!");
         ABILITY_POPUP(opponentLeft, ABILITY_INTREPID_SWORD);
-        MESSAGE("The opposing Zacian's Attack rose!");
+        MESSAGE("Ah, Attaque du Zacian ennemi augmente!");
         ABILITY_POPUP(opponentRight, ABILITY_COSTAR);
-        MESSAGE("The opposing Flamigo copied the opposing Zacian's stat changes!");
+        MESSAGE("Flamenroule ennemi copie les changements de stats de Zacian ennemi!");
     }
 }

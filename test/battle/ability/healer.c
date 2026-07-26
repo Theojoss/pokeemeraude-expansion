@@ -23,22 +23,22 @@ DOUBLE_BATTLE_TEST("Healer cures adjacent ally's status condition 30% of the tim
         switch (status)
         {
             case STATUS1_BURN:
-                MESSAGE("The opposing Wobbuffet's burn was cured!");
+                MESSAGE("Qulbutoké ennemi n'est plus brûlé!");
                 break;
             case STATUS1_PARALYSIS:
-                MESSAGE("The opposing Wobbuffet was cured of paralysis!");
+                MESSAGE("Qulbutoké ennemi n'est plus paralysé!");
                 break;
             case STATUS1_FROSTBITE:
-                MESSAGE("The opposing Wobbuffet's frostbite was cured!");
+                MESSAGE("Qulbutoké ennemi s'est remis de sa gelure!");
                 break;
             case STATUS1_POISON:
-                MESSAGE("The opposing Wobbuffet was cured of its poisoning!");
+                MESSAGE("Qulbutoké ennemi n'est plus empoisonné!");
                 break;
             case STATUS1_TOXIC_POISON:
-                MESSAGE("The opposing Wobbuffet was cured of its poisoning!");
+                MESSAGE("Qulbutoké ennemi n'est plus empoisonné!");
                 break;
             case STATUS1_SLEEP:
-                MESSAGE("The opposing Wobbuffet woke up!");
+                MESSAGE("Qulbutoké ennemi se réveille!");
                 break;
         }
     }
@@ -60,20 +60,20 @@ DOUBLE_BATTLE_TEST("Healer cures status condition before burn or poison damage i
     } WHEN {
         TURN {}
     } SCENE {
-        NOT MESSAGE("The opposing Wobbuffet fainted!");
+        NOT MESSAGE("Qulbutoké ennemi est K.O.!\p");
         switch (status)
         {
             case STATUS1_POISON:
-                MESSAGE("The opposing Wobbuffet was cured of its poisoning!");
+                MESSAGE("Qulbutoké ennemi n'est plus empoisonné!");
                 break;
             case STATUS1_BURN:
-                MESSAGE("The opposing Wobbuffet's burn was cured!");
+                MESSAGE("Qulbutoké ennemi n'est plus brûlé!");
                 break;
             case STATUS1_TOXIC_POISON:
-                MESSAGE("The opposing Wobbuffet was cured of its poisoning!");
+                MESSAGE("Qulbutoké ennemi n'est plus empoisonné!");
                 break;
             case STATUS1_FROSTBITE:
-                MESSAGE("The opposing Wobbuffet's frostbite was cured!");
+                MESSAGE("Qulbutoké ennemi s'est remis de sa gelure!");
                 break;
         }
     }

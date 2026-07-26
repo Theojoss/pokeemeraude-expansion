@@ -198,7 +198,7 @@ SINGLE_BATTLE_TEST("Innards Out uses correct damage amount for Future Sight")
         TURN { SEND_OUT(player, 1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FUTURE_SIGHT, opponent);
-        MESSAGE("Pyukumuku took the Future Sight attack!");
+        MESSAGE("Concombaffe subit l'attaque Prescience!");
         HP_BAR(player);
         ABILITY_POPUP(player, ABILITY_INNARDS_OUT);
         HP_BAR(opponent, damage: 1);
@@ -219,7 +219,7 @@ SINGLE_BATTLE_TEST("Innards Out doesn't trigger if Future Sight user is not on f
         TURN { SEND_OUT(player, 1); } //SEND_OUT(opponent, 0); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FUTURE_SIGHT, opponent);
-        MESSAGE("Pyukumuku took the Future Sight attack!");
+        MESSAGE("Concombaffe subit l'attaque Prescience!");
         HP_BAR(player);
         NONE_OF {
          ABILITY_POPUP(player, ABILITY_INNARDS_OUT);
@@ -241,7 +241,7 @@ SINGLE_BATTLE_TEST("Innards Out triggers if Future Sight user is back on the fie
         TURN { SWITCH(opponent, 0); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FUTURE_SIGHT, opponent);
-        MESSAGE("Pyukumuku took the Future Sight attack!");
+        MESSAGE("Concombaffe subit l'attaque Prescience!");
         HP_BAR(player);
         ABILITY_POPUP(player, ABILITY_INNARDS_OUT);
         HP_BAR(opponent);

@@ -25,17 +25,17 @@ SINGLE_BATTLE_TEST("Normalize turns a move into a Normal-type move")
         if (ability == ABILITY_CUTE_CHARM)
         {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_WATER_GUN, opponent);
-            NOT { MESSAGE("It doesn't affect Gastly…"); }
+            NOT { MESSAGE("Ça n'affecte pas Fantominus…"); }
         }
         else
         {
             NOT { ANIMATION(ANIM_TYPE_MOVE, MOVE_WATER_GUN, opponent); }
-            MESSAGE("It doesn't affect Gastly…");
+            MESSAGE("Ça n'affecte pas Fantominus…");
         }
     }
 }
 
-#define FAILURE_MESSAGE MESSAGE("It doesn't affect Drilbur…")
+#define FAILURE_MESSAGE MESSAGE("Ça n'affecte pas Rototaupe…")
 SINGLE_BATTLE_TEST("Normalize affects status moves")
 {
     enum Ability ability;
@@ -77,7 +77,7 @@ SINGLE_BATTLE_TEST("Normalize still makes Freeze-Dry do super effective damage t
     } WHEN {
         TURN { MOVE(opponent, MOVE_FREEZE_DRY); }
     } SCENE {
-        MESSAGE("It's super effective!");
+        MESSAGE("C'est super efficace!");
     } FINALLY {
         EXPECT_MUL_EQ(results[0].damage, Q_4_12(1.8), results[1].damage); // STAB + Ate
     }
@@ -205,7 +205,7 @@ SINGLE_BATTLE_TEST("Normalize doesn't affect Weather Ball's type", s16 damage)
     } SCENE {
         HP_BAR(opponent, captureDamage: &results[i].damage);
         if (move == MOVE_SUNNY_DAY)
-            MESSAGE("It's super effective!");
+            MESSAGE("C'est super efficace!");
     } FINALLY {
         EXPECT_MUL_EQ(results[0].damage, Q_4_12(4.0), results[1].damage); // double base power + type effectiveness + sun 50% boost - STAB
         EXPECT_MUL_EQ(results[2].damage, Q_4_12(4.0), results[3].damage);
@@ -229,7 +229,7 @@ SINGLE_BATTLE_TEST("Normalize doesn't affect Natural Gift's type")
         TURN { MOVE(player, MOVE_NATURAL_GIFT); }
     } SCENE {
         NOT { ANIMATION(ANIM_TYPE_MOVE, MOVE_NATURAL_GIFT, player); }
-        MESSAGE("It doesn't affect the opposing Beldum…");
+        MESSAGE("Ça n'affecte pas Terhal ennemi…");
     }
 }
 
@@ -257,7 +257,7 @@ SINGLE_BATTLE_TEST("Normalize doesn't affect Judgment / Techno Blast / Multi-Att
         TURN { MOVE(player, move); }
     } SCENE {
         NOT { ANIMATION(ANIM_TYPE_MOVE, move, player); }
-        MESSAGE("It doesn't affect the opposing Diglett…");
+        MESSAGE("Ça n'affecte pas Taupiqueur ennemi…");
     }
 }
 
@@ -273,7 +273,7 @@ SINGLE_BATTLE_TEST("Normalize doesn't affect Hidden Power's type")
         TURN { MOVE(player, MOVE_HIDDEN_POWER); }
     } SCENE {
         NOT { ANIMATION(ANIM_TYPE_MOVE, MOVE_HIDDEN_POWER, player); }
-        MESSAGE("It doesn't affect the opposing Diglett…");
+        MESSAGE("Ça n'affecte pas Taupiqueur ennemi…");
     }
 }
 
@@ -289,7 +289,7 @@ SINGLE_BATTLE_TEST("Normalize doesn't change Tera Blast's type when Terastallize
         TURN { MOVE(player, MOVE_TERA_BLAST, gimmick: GIMMICK_TERA); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TERA_BLAST, player);
-        MESSAGE("It's super effective!");
+        MESSAGE("C'est super efficace!");
     }
 }
 
@@ -307,9 +307,9 @@ SINGLE_BATTLE_TEST("Normalize makes Flying Press do Normal/Flying damage")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FLYING_PRESS, player);
         if (ability == ABILITY_NORMALIZE)
-            MESSAGE("It's not very effective…");
+            MESSAGE("Ce n'est pas très efficace…");
         else
-            NOT { MESSAGE("It's not very effective…"); }
+            NOT { MESSAGE("Ce n'est pas très efficace…"); }
     }
 }
 
@@ -327,7 +327,7 @@ SINGLE_BATTLE_TEST("Normalize doesn't affect Terrain Pulse's type")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRIC_TERRAIN, opponent);
         NOT { ANIMATION(ANIM_TYPE_MOVE, MOVE_TERRAIN_PULSE, player); }
-        MESSAGE("It doesn't affect the opposing Sandshrew…");
+        MESSAGE("Ça n'affecte pas Sabelette ennemi…");
     }
 }
 
@@ -343,6 +343,6 @@ SINGLE_BATTLE_TEST("Normalize doesn't affect damaging Z-Move types")
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ZMOVE_ACTIVATE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HYDRO_VORTEX, player);
-        MESSAGE("It's super effective!");
+        MESSAGE("C'est super efficace!");
     }
 }

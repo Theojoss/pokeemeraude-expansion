@@ -90,7 +90,7 @@ DOUBLE_BATTLE_TEST("Dark Aura's effect doesn't stack multiple times")
         HP_BAR(playerLeft, captureDamage: &damage[2]);
 
         // Turn 2
-        SWITCH_OUT_MESSAGE("Wobbuffet");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
         SEND_IN_MESSAGE("Yveltal");
 
         // Turn 3

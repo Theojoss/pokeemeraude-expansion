@@ -27,10 +27,10 @@ SINGLE_BATTLE_TEST("Mimicry changes the battler's type based on Terrain")
         ABILITY_POPUP(opponent);
         switch (terrainMove)
         {
-        case MOVE_ELECTRIC_TERRAIN: MESSAGE("The opposing Stunfisk's type changed to Electric!"); break;
-        case MOVE_PSYCHIC_TERRAIN:  MESSAGE("The opposing Stunfisk's type changed to Psychic!"); break;
-        case MOVE_GRASSY_TERRAIN:   MESSAGE("The opposing Stunfisk's type changed to Grass!"); break;
-        case MOVE_MISTY_TERRAIN:    MESSAGE("The opposing Stunfisk's type changed to Fairy!"); break;
+        case MOVE_ELECTRIC_TERRAIN: MESSAGE("Limonde ennemi prend le type Electrik!"); break;
+        case MOVE_PSYCHIC_TERRAIN:  MESSAGE("Limonde ennemi prend le type Psy!"); break;
+        case MOVE_GRASSY_TERRAIN:   MESSAGE("Limonde ennemi prend le type Plante!"); break;
+        case MOVE_MISTY_TERRAIN:    MESSAGE("Limonde ennemi prend le type Fée!"); break;
         default: break;
         }
     } THEN {
@@ -61,10 +61,10 @@ SINGLE_BATTLE_TEST("Mimicry restores the battler's types when terrain is removed
     } SCENE {
         switch (terrainMove)
         {
-        case MOVE_ELECTRIC_TERRAIN: MESSAGE("The electricity disappeared from the battlefield."); break;
-        case MOVE_PSYCHIC_TERRAIN:  MESSAGE("The weirdness disappeared from the battlefield!"); break;
-        case MOVE_GRASSY_TERRAIN:   MESSAGE("The grass disappeared from the battlefield."); break;
-        case MOVE_MISTY_TERRAIN:    MESSAGE("The mist disappeared from the battlefield."); break;
+        case MOVE_ELECTRIC_TERRAIN: MESSAGE("L'électricité parcourant le terrain s'est dissipée."); break;
+        case MOVE_PSYCHIC_TERRAIN:  MESSAGE("Le sol redevient normal."); break;
+        case MOVE_GRASSY_TERRAIN:   MESSAGE("Le gazon disparaît."); break;
+        case MOVE_MISTY_TERRAIN:    MESSAGE("La brume qui recouvrait le terrain se dissipe."); break;
         default: break;
         }
     } THEN {
@@ -83,13 +83,13 @@ DOUBLE_BATTLE_TEST("Mimicry can trigger multiple times in a turn")
     } WHEN {
         TURN { MOVE(opponentRight, MOVE_ELECTRIC_TERRAIN); MOVE(opponentLeft, MOVE_MISTY_TERRAIN); }
     } SCENE {
-        MESSAGE("The opposing Bagon used Electric Terrain!");
+        MESSAGE("Draby ennemi utilise\nChamp Électrifié!");
         ABILITY_POPUP(playerLeft, ABILITY_MIMICRY);
-        MESSAGE("Stunfisk's type changed to Electric!");
+        MESSAGE("Limonde prend le type Electrik!");
         // igglybuff
-        MESSAGE("The opposing Igglybuff used Misty Terrain!");
+        MESSAGE("Toudoudou ennemi utilise\nChamp Brumeux!");
         ABILITY_POPUP(playerLeft, ABILITY_MIMICRY);
-        MESSAGE("Stunfisk's type changed to Fairy!");
+        MESSAGE("Limonde prend le type Fée!");
     } THEN {
         EXPECT_EQ(gBattleMons[0].types[0], TYPE_FAIRY);
         EXPECT_EQ(gBattleMons[0].types[1], TYPE_FAIRY);
@@ -111,14 +111,14 @@ DOUBLE_BATTLE_TEST("Mimicry triggers after Skill Swap")
              }
     } SCENE {
         // turn 1
-        MESSAGE("Shiftry used Grassy Terrain!");
+        MESSAGE("Tengalice utilise\nChamp Herbu!");
         ABILITY_POPUP(playerLeft, ABILITY_MIMICRY);
-        MESSAGE("Stunfisk's type changed to Grass!");
+        MESSAGE("Limonde prend le type Plante!");
         // turn 2
-        MESSAGE("Shiftry used Skill Swap!");
+        MESSAGE("Tengalice utilise\nÉchange!");
         ABILITY_POPUP(playerRight, ABILITY_MIMICRY);
-        MESSAGE("Shiftry's type changed to Grass!");
-        MESSAGE("Stunfisk used Splash!"); // make sure popup occurs before the subsequent move
+        MESSAGE("Tengalice prend le type Plante!");
+        MESSAGE("Limonde utilise\nTrempette!"); // make sure popup occurs before the subsequent move
     } THEN {
         EXPECT_EQ(playerLeft->types[0], TYPE_GRASS);
         EXPECT_EQ(playerLeft->types[1], TYPE_GRASS);

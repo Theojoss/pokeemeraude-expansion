@@ -25,8 +25,8 @@ SINGLE_BATTLE_TEST("Arena Trap doesn't prevent switch outs if the Pokémon is sw
     } WHEN {
         TURN { SWITCH(player, 1); SWITCH(opponent, 1); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Wobbuffet");
-        SEND_IN_MESSAGE("Wynaut");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
+        SEND_IN_MESSAGE("Okéoké");
     } THEN {
         EXPECT_EQ(player->species, SPECIES_WYNAUT);
         EXPECT_EQ(opponent->species, SPECIES_DIGLETT);
@@ -59,7 +59,7 @@ SINGLE_BATTLE_TEST("Arena Trap doesn't prevent switch outs via moves that switch
         if (move == MOVE_VOLT_SWITCH)
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SOAK, player);
         ANIMATION(ANIM_TYPE_MOVE, move, player);
-        SEND_IN_MESSAGE("Wynaut");
+        SEND_IN_MESSAGE("Okéoké");
     }
 }
 
@@ -73,8 +73,8 @@ SINGLE_BATTLE_TEST("Arena Trap doesn't prevent switch outs via Shed Shell")
     } WHEN {
         TURN { SWITCH(player, 1); MOVE(opponent, MOVE_CELEBRATE); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Wobbuffet");
-        SEND_IN_MESSAGE("Wynaut");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
+        SEND_IN_MESSAGE("Okéoké");
     }
 }
 

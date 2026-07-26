@@ -16,11 +16,11 @@ SINGLE_BATTLE_TEST("Snow Warning sets up hail for 5 turns (Gen6-8)")
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_SNOW_WARNING);
-        MESSAGE("The hail is crashing down.");
-        MESSAGE("The hail is crashing down.");
-        MESSAGE("The hail is crashing down.");
-        MESSAGE("The hail is crashing down.");
-        MESSAGE("The hail stopped.");
+        MESSAGE("La grêle s'abat violemment.");
+        MESSAGE("La grêle s'abat violemment.");
+        MESSAGE("La grêle s'abat violemment.");
+        MESSAGE("La grêle s'abat violemment.");
+        MESSAGE("La grêle s'est arrêtée.");
     }
 }
 
@@ -43,14 +43,14 @@ SINGLE_BATTLE_TEST("Snow Warning sets up hail for 8 turns with Icy Rock (Gen6-8)
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_SNOW_WARNING);
-        MESSAGE("The hail is crashing down.");
-        MESSAGE("The hail is crashing down.");
-        MESSAGE("The hail is crashing down.");
-        MESSAGE("The hail is crashing down.");
-        MESSAGE("The hail is crashing down.");
-        MESSAGE("The hail is crashing down.");
-        MESSAGE("The hail is crashing down.");
-        MESSAGE("The hail stopped.");
+        MESSAGE("La grêle s'abat violemment.");
+        MESSAGE("La grêle s'abat violemment.");
+        MESSAGE("La grêle s'abat violemment.");
+        MESSAGE("La grêle s'abat violemment.");
+        MESSAGE("La grêle s'abat violemment.");
+        MESSAGE("La grêle s'abat violemment.");
+        MESSAGE("La grêle s'abat violemment.");
+        MESSAGE("La grêle s'est arrêtée.");
     }
 }
 
@@ -73,16 +73,16 @@ SINGLE_BATTLE_TEST("Snow Warning sets up permanent hail (Gen4-5)")
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_SNOW_WARNING);
-        MESSAGE("The hail is crashing down.");
-        MESSAGE("The hail is crashing down.");
-        MESSAGE("The hail is crashing down.");
-        MESSAGE("The hail is crashing down.");
-        MESSAGE("The hail is crashing down.");
-        MESSAGE("The hail is crashing down.");
-        MESSAGE("The hail is crashing down.");
-        MESSAGE("The hail is crashing down.");
-        MESSAGE("The hail is crashing down.");
-        NOT MESSAGE("The hail stopped.");
+        MESSAGE("La grêle s'abat violemment.");
+        MESSAGE("La grêle s'abat violemment.");
+        MESSAGE("La grêle s'abat violemment.");
+        MESSAGE("La grêle s'abat violemment.");
+        MESSAGE("La grêle s'abat violemment.");
+        MESSAGE("La grêle s'abat violemment.");
+        MESSAGE("La grêle s'abat violemment.");
+        MESSAGE("La grêle s'abat violemment.");
+        MESSAGE("La grêle s'abat violemment.");
+        NOT MESSAGE("La grêle s'est arrêtée.");
     }
 }
 
@@ -101,11 +101,11 @@ SINGLE_BATTLE_TEST("Snow Warning sets up snow for 5 turns (Gen9+)")
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_SNOW_WARNING);
-        MESSAGE("Snow continues to fall.");
-        MESSAGE("Snow continues to fall.");
-        MESSAGE("Snow continues to fall.");
-        MESSAGE("Snow continues to fall.");
-        MESSAGE("The snow stopped.");
+        MESSAGE("La neige continue de tomber.");
+        MESSAGE("La neige continue de tomber.");
+        MESSAGE("La neige continue de tomber.");
+        MESSAGE("La neige continue de tomber.");
+        MESSAGE("La neige s'est arrêtée.");
     }
 }
 
@@ -128,13 +128,13 @@ SINGLE_BATTLE_TEST("Snow Warning sets up snow for 8 turns with Icy Rock (Gen9+)"
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_SNOW_WARNING);
-        MESSAGE("Snow continues to fall.");
-        MESSAGE("Snow continues to fall.");
-        MESSAGE("Snow continues to fall.");
-        MESSAGE("Snow continues to fall.");
-        MESSAGE("Snow continues to fall.");
-        MESSAGE("Snow continues to fall.");
-        MESSAGE("Snow continues to fall.");
-        MESSAGE("The snow stopped.");
+        MESSAGE("La neige continue de tomber.");
+        MESSAGE("La neige continue de tomber.");
+        MESSAGE("La neige continue de tomber.");
+        MESSAGE("La neige continue de tomber.");
+        MESSAGE("La neige continue de tomber.");
+        MESSAGE("La neige continue de tomber.");
+        MESSAGE("La neige continue de tomber.");
+        MESSAGE("La neige s'est arrêtée.");
     }
 }

@@ -15,11 +15,11 @@ SINGLE_BATTLE_TEST("Drought sets up sun for 5 turns (Gen6+)")
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_DROUGHT);
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight faded.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil s'affaiblissent.");
     }
 }
 
@@ -41,14 +41,14 @@ SINGLE_BATTLE_TEST("Drought sets up sun for 8 turns with Heat Rock (Gen6+)")
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_DROUGHT);
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight faded.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil s'affaiblissent.");
     }
 }
 
@@ -70,15 +70,15 @@ SINGLE_BATTLE_TEST("Drought sets up permanent sun (Gen3-5)")
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_DROUGHT);
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        MESSAGE("The sunlight is strong.");
-        NOT MESSAGE("The sunlight faded.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil brillent.");
+        NOT MESSAGE("Les rayons du soleil s'affaiblissent.");
     }
 }

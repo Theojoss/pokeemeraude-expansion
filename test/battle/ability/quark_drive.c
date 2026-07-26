@@ -17,8 +17,8 @@ SINGLE_BATTLE_TEST("Quark Drive boosts the highest stat")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRIC_TERRAIN, player);
         ABILITY_POPUP(player, ABILITY_QUARK_DRIVE);
-        MESSAGE("The Electric Terrain activated Iron Moth's Quark Drive!");
-        MESSAGE("Iron Moth's Sp. Atk was heightened!");
+        MESSAGE("Mite-de-Fer a activé Charge Quantique grâce au champ électrifié!");
+        MESSAGE("Attaque Spéciale de Mite-de-Fer est renforcé!");
     }
 }
 
@@ -98,8 +98,8 @@ SINGLE_BATTLE_TEST("Quark Drive retains its boosted stat after Neutralizing Gas 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROUND, player);
         HP_BAR(opponent, captureDamage: &damage[0]);
         ABILITY_POPUP(opponent, ABILITY_NEUTRALIZING_GAS);
-        MESSAGE("Neutralizing gas filled the area!");
-        MESSAGE("The effects of the neutralizing gas wore off!");
+        MESSAGE("Un gaz inhibiteur envahit les lieux!");
+        MESSAGE("Les effets du gaz inhibiteur se sont dissipés.");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROUND, player);
         HP_BAR(opponent, captureDamage: &damage[1]);
     } THEN {
@@ -122,19 +122,19 @@ SINGLE_BATTLE_TEST("Quark Drive ability pop up activates only once during the du
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRIC_TERRAIN, player);
         ABILITY_POPUP(player, ABILITY_QUARK_DRIVE);
-        MESSAGE("The Electric Terrain activated Iron Moth's Quark Drive!");
-        MESSAGE("Iron Moth's Sp. Atk was heightened!");
+        MESSAGE("Mite-de-Fer a activé Charge Quantique grâce au champ électrifié!");
+        MESSAGE("Attaque Spéciale de Mite-de-Fer est renforcé!");
         NONE_OF {
             for (turns = 0; turns < 4; turns++) {
                 ABILITY_POPUP(player, ABILITY_QUARK_DRIVE);
-                MESSAGE("The Electric Terrain activated Iron Moth's Quark Drive!");
-                MESSAGE("Iron Moth's Sp. Atk was heightened!");
+                MESSAGE("Mite-de-Fer a activé Charge Quantique grâce au champ électrifié!");
+                MESSAGE("Attaque Spéciale de Mite-de-Fer est renforcé!");
             }
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRIC_TERRAIN, player);
         ABILITY_POPUP(player, ABILITY_QUARK_DRIVE);
-        MESSAGE("The Electric Terrain activated Iron Moth's Quark Drive!");
-        MESSAGE("Iron Moth's Sp. Atk was heightened!");
+        MESSAGE("Mite-de-Fer a activé Charge Quantique grâce au champ électrifié!");
+        MESSAGE("Attaque Spéciale de Mite-de-Fer est renforcé!");
     }
 }
 
@@ -149,8 +149,8 @@ SINGLE_BATTLE_TEST("Quark Drive activates on switch-in")
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_ELECTRIC_SURGE);
         ABILITY_POPUP(player, ABILITY_QUARK_DRIVE);
-        MESSAGE("The Electric Terrain activated Iron Moth's Quark Drive!");
-        MESSAGE("Iron Moth's Sp. Atk was heightened!");
+        MESSAGE("Mite-de-Fer a activé Charge Quantique grâce au champ électrifié!");
+        MESSAGE("Attaque Spéciale de Mite-de-Fer est renforcé!");
     }
 }
 
@@ -186,16 +186,16 @@ SINGLE_BATTLE_TEST("Quark Drive prioritizes stats in the case of a tie in the fo
         ABILITY_POPUP(player, ABILITY_QUARK_DRIVE);
         switch(i) {
             case 0:
-                MESSAGE("Iron Treads's Attack was heightened!");
+                MESSAGE("Attaque de Roue-de-Fer est renforcé!");
                 break;
             case 1:
-                MESSAGE("Iron Treads's Defense was heightened!");
+                MESSAGE("Défense de Roue-de-Fer est renforcé!");
                 break;
             case 2:
-                MESSAGE("Iron Treads's Sp. Atk was heightened!");
+                MESSAGE("Attaque Spéciale de Roue-de-Fer est renforcé!");
                 break;
             case 3:
-                MESSAGE("Iron Treads's Sp. Def was heightened!");
+                MESSAGE("Défense Spéciale de Roue-de-Fer est renforcé!");
                 break;
         }
     }
@@ -213,8 +213,8 @@ SINGLE_BATTLE_TEST("Quark Drive uses Wonder Room swapped defenses when choosing 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WONDER_ROOM, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRIC_TERRAIN, opponent);
         ABILITY_POPUP(player, ABILITY_QUARK_DRIVE);
-        MESSAGE("The Electric Terrain activated Iron Leaves's Quark Drive!");
-        MESSAGE("Iron Leaves's Sp. Def was heightened!");
+        MESSAGE("Vert-de-Fer a activé Charge Quantique grâce au champ électrifié!");
+        MESSAGE("Défense Spéciale de Vert-de-Fer est renforcé!");
     }
 }
 

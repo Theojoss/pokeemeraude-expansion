@@ -38,7 +38,7 @@ SINGLE_BATTLE_TEST("Sap Sipper increases Attack by one stage when hit by a Grass
     } SCENE {
         ABILITY_POPUP(player, ABILITY_SAP_SIPPER);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Marill's Attack rose!");
+        MESSAGE("Ah, Attaque du Marill augmente!");
     }
 }
 
@@ -53,7 +53,7 @@ SINGLE_BATTLE_TEST("Sap Sipper does not increase Attack if already maxed")
         ABILITY_POPUP(player, ABILITY_SAP_SIPPER);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Marill's Attack rose!");
+            MESSAGE("Ah, Attaque du Marill augmente!");
         }
     }
 }
@@ -67,14 +67,14 @@ SINGLE_BATTLE_TEST("Sap Sipper blocks multi-hit grass type moves")
     } WHEN {
         TURN { MOVE(opponent, MOVE_BULLET_SEED); }
     } SCENE {
-        MESSAGE("The opposing Shellder used Bullet Seed!");
+        MESSAGE("Kokiyas ennemi utilise\nBalle Graine!");
         ABILITY_POPUP(player, ABILITY_SAP_SIPPER);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Marill's Attack rose!");
+        MESSAGE("Ah, Attaque du Marill augmente!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, opponent);
             HP_BAR(player);
-            MESSAGE("The Pokémon was hit 5 time(s)!");
+            MESSAGE("Touché 5 fois!");
         }
     }
 }

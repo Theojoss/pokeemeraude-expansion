@@ -16,11 +16,11 @@ SINGLE_BATTLE_TEST("Comatose prevents status-inducing moves")
     } WHEN {
         TURN { MOVE(opponent, move); }
     } SCENE {
-        MESSAGE("Komala is drowsing!");
+        MESSAGE("Dodoala est en Hypersommeil!");
 
         NOT ANIMATION(ANIM_TYPE_MOVE, move, opponent);
         ABILITY_POPUP(player, ABILITY_COMATOSE);
-        MESSAGE("It doesn't affect Komala…");
+        MESSAGE("Ça n'affecte pas Dodoala…");
     }
 }
 
@@ -43,10 +43,10 @@ SINGLE_BATTLE_TEST("Comatose may be suppressed if Pokémon transformed into a Po
         TURN { MOVE(player, MOVE_GASTRO_ACID); MOVE(opponent, MOVE_TRANSFORM); }
         TURN { MOVE(player, move); }
     } SCENE {
-        MESSAGE("Komala is drowsing!");
-        MESSAGE("Komala used Gastro Acid!");
-        MESSAGE("The opposing Ditto used Transform!");
-        MESSAGE("The opposing Ditto transformed into Komala!");
+        MESSAGE("Dodoala est en Hypersommeil!");
+        MESSAGE("Dodoala utilise\nSuc Digestif!");
+        MESSAGE("Métamorph ennemi utilise\nMorphing!");
+        MESSAGE("Métamorph ennemi prend l'apparence de Dodoala!");
 
         ANIMATION(ANIM_TYPE_MOVE, move, player);
         if (move == MOVE_POISONPOWDER)      { STATUS_ICON(opponent, poison: TRUE); }
@@ -126,7 +126,7 @@ SINGLE_BATTLE_TEST("Comatose isn't affected by Mold Breaker, Turboblaze or Terav
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_TOXIC, opponent);
         ABILITY_POPUP(player, ABILITY_COMATOSE);
-        MESSAGE("It doesn't affect Komala…");
+        MESSAGE("Ça n'affecte pas Dodoala…");
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }

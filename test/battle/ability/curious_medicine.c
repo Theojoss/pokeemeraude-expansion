@@ -19,14 +19,14 @@ DOUBLE_BATTLE_TEST("Curious Medicine resets ally's stat stages upon entering bat
         TURN { SWITCH(opponentRight, 2); MOVE(playerLeft, MOVE_CELEBRATE); }
     } SCENE {
         // Turn 1 - buff up
-        MESSAGE("The opposing Scolipede used Quiver Dance!");
+        MESSAGE("Brutapode ennemi utilise\nPapillodanse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
         // Turn 2 - Switch into Slowking
-        MESSAGE("2 sent out Slowking!");
+        MESSAGE("2 envoie\nun Roigada!");
         if (ability == ABILITY_CURIOUS_MEDICINE)
         {
             ABILITY_POPUP(opponentRight, ABILITY_CURIOUS_MEDICINE);
-            MESSAGE("The opposing Scolipede's stat changes were removed!");
+            MESSAGE("Les changements de stats de Brutapode ennemi ont tous été annulés!");
         }
     } THEN {
         EXPECT_EQ(opponentLeft->statStages[STAT_ATK], (ability == ABILITY_CURIOUS_MEDICINE) ? DEFAULT_STAT_STAGE : DEFAULT_STAT_STAGE - 2);

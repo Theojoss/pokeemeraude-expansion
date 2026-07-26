@@ -18,12 +18,12 @@ SINGLE_BATTLE_TEST("Gale Wings only grants priority at full HP (Gen 7+)")
         TURN { MOVE(player, MOVE_AERIAL_ACE); }
     } SCENE {
         if (hp == 100 || config <= GEN_6) {
-            MESSAGE("Talonflame used Aerial Ace!");
-            MESSAGE("The opposing Wobbuffet used Celebrate!");
+            MESSAGE("Flambusard utilise\nAéropique!");
+            MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
         }
         else {
-            MESSAGE("The opposing Wobbuffet used Celebrate!");
-            MESSAGE("Talonflame used Aerial Ace!");
+            MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
+            MESSAGE("Flambusard utilise\nAéropique!");
         }
     }
 }
@@ -42,12 +42,12 @@ SINGLE_BATTLE_TEST("Gale Wings only grants priority to Flying-type moves")
         TURN { MOVE(player, move); }
     } SCENE {
         if (move == MOVE_AERIAL_ACE) {
-            MESSAGE("Talonflame used Aerial Ace!");
-            MESSAGE("The opposing Wobbuffet used Celebrate!");
+            MESSAGE("Flambusard utilise\nAéropique!");
+            MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
         }
         else {
-            MESSAGE("The opposing Wobbuffet used Celebrate!");
-            MESSAGE("Talonflame used Flare Blitz!");
+            MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
+            MESSAGE("Flambusard utilise\nBoutefeu!");
         }
     }
 }
@@ -73,18 +73,18 @@ SINGLE_BATTLE_TEST("Gale Wings doesn't increase priority of Flying-type Natural 
     } WHEN {
         TURN { MOVE(opponent, move); }
     } SCENE {
-            MESSAGE("Wobbuffet used Celebrate!");
+            MESSAGE("Qulbutoké utilise\nCélébration!");
         if (move == MOVE_NATURAL_GIFT) {
-            MESSAGE("The opposing Talonflame used Natural Gift!");
+            MESSAGE("Flambusard ennemi utilise\nDon Naturel!");
         }
         else if (move == MOVE_JUDGMENT) {
-            MESSAGE("The opposing Talonflame used Judgment!");
+            MESSAGE("Flambusard ennemi utilise\nJugement!");
         }
         else if (move == MOVE_HIDDEN_POWER) {
-            MESSAGE("The opposing Talonflame used Hidden Power!");
+            MESSAGE("Flambusard ennemi utilise\nPuiss. Cachée!");
         }
         else {
-            MESSAGE("The opposing Talonflame used Tera Blast!");
+            MESSAGE("Flambusard ennemi utilise\nTéra Explosion!");
         }
     }
 }

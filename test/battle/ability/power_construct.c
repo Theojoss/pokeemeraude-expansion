@@ -19,7 +19,7 @@ SINGLE_BATTLE_TEST("Power Construct switches Zygarde's form when HP is below hal
     } WHEN {
         TURN { MOVE(opponent, MOVE_SCRATCH); MOVE(player, MOVE_CELEBRATE); }
     } SCENE {
-        MESSAGE("You sense the presence of many!");
+        MESSAGE("Vous sentez la présence d'un grand nombre d'individus!");
         ABILITY_POPUP(player, ABILITY_POWER_CONSTRUCT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_POWER_CONSTRUCT, player);
     } THEN {
@@ -45,7 +45,7 @@ WILD_BATTLE_TEST("Power Construct Zygarde reverts to its original form upon catc
         TURN { USE_ITEM(player, ITEM_MASTER_BALL); }
     } SCENE {
         // Turn 1
-        MESSAGE("You sense the presence of many!");
+        MESSAGE("Vous sentez la présence d'un grand nombre d'individus!");
         ABILITY_POPUP(opponent, ABILITY_POWER_CONSTRUCT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_POWER_CONSTRUCT, opponent);
 
@@ -78,7 +78,7 @@ SINGLE_BATTLE_TEST("Power Construct does not switch Zygarde's form if end-turn h
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
         HP_BAR(player, damage: -10);
         NONE_OF {
-            MESSAGE("You sense the presence of many!");
+            MESSAGE("Vous sentez la présence d'un grand nombre d'individus!");
             ABILITY_POPUP(player, ABILITY_POWER_CONSTRUCT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_POWER_CONSTRUCT, player);
         }
@@ -108,7 +108,7 @@ SINGLE_BATTLE_TEST("Power Construct does not switch Zygarde's form if end-turn d
     } SCENE {
         HP_BAR(player);
         NONE_OF {
-            MESSAGE("You sense the presence of many!");
+            MESSAGE("Vous sentez la présence d'un grand nombre d'individus!");
             ABILITY_POPUP(player, ABILITY_POWER_CONSTRUCT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_POWER_CONSTRUCT, player);
         }

@@ -21,35 +21,35 @@ DOUBLE_BATTLE_TEST("Competitive sharply raises player's Sp. Atk after Intimidate
         //1st mon Intimidate
         ABILITY_POPUP(opponentLeft, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Igglybuff's Attack fell!");
+        MESSAGE("Ah, Attaque du Toudoudou baisse!");
         if (abilityLeft == ABILITY_COMPETITIVE) {
             ABILITY_POPUP(playerLeft, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-            MESSAGE("Igglybuff's Sp. Atk rose sharply!");
+            MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Jigglypuff's Attack fell!");
+        MESSAGE("Ah, Attaque du Rondoudou baisse!");
         if (abilityRight == ABILITY_COMPETITIVE) {
             ABILITY_POPUP(playerRight, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-            MESSAGE("Jigglypuff's Sp. Atk rose sharply!");
+            MESSAGE("Ah, Attaque Spéciale du Rondoudou augmente beaucoup!");
         }
 
         //2nd mon Intimidate
         ABILITY_POPUP(opponentRight, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Igglybuff's Attack fell!");
+        MESSAGE("Ah, Attaque du Toudoudou baisse!");
         if (abilityLeft == ABILITY_COMPETITIVE) {
             ABILITY_POPUP(playerLeft, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-            MESSAGE("Igglybuff's Sp. Atk rose sharply!");
+            MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Jigglypuff's Attack fell!");
+        MESSAGE("Ah, Attaque du Rondoudou baisse!");
         if (abilityRight == ABILITY_COMPETITIVE) {
             ABILITY_POPUP(playerRight, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-            MESSAGE("Jigglypuff's Sp. Atk rose sharply!");
+            MESSAGE("Ah, Attaque Spéciale du Rondoudou augmente beaucoup!");
         }
     } THEN {
         EXPECT_EQ(playerLeft->statStages[STAT_SPATK], DEFAULT_STAT_STAGE + (abilityLeft == ABILITY_COMPETITIVE ? 4 : 0));
@@ -78,35 +78,35 @@ DOUBLE_BATTLE_TEST("Competitive sharply raises opponent's Sp. Atk after Intimida
         //1st mon Intimidate
         ABILITY_POPUP(playerLeft, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("The opposing Igglybuff's Attack fell!");
+        MESSAGE("Ah, Attaque du Toudoudou ennemi baisse!");
         if (abilityLeft == ABILITY_COMPETITIVE) {
             ABILITY_POPUP(opponentLeft, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("The opposing Igglybuff's Sp. Atk rose sharply!");
+            MESSAGE("Ah, Attaque Spéciale du Toudoudou ennemi augmente beaucoup!");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("The opposing Jigglypuff's Attack fell!");
+        MESSAGE("Ah, Attaque du Rondoudou ennemi baisse!");
         if (abilityRight == ABILITY_COMPETITIVE) {
             ABILITY_POPUP(opponentRight, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-            MESSAGE("The opposing Jigglypuff's Sp. Atk rose sharply!");
+            MESSAGE("Ah, Attaque Spéciale du Rondoudou ennemi augmente beaucoup!");
         }
 
         //2nd mon Intimidate
         ABILITY_POPUP(playerRight, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("The opposing Igglybuff's Attack fell!");
+        MESSAGE("Ah, Attaque du Toudoudou ennemi baisse!");
         if (abilityLeft == ABILITY_COMPETITIVE) {
             ABILITY_POPUP(opponentLeft, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("The opposing Igglybuff's Sp. Atk rose sharply!");
+            MESSAGE("Ah, Attaque Spéciale du Toudoudou ennemi augmente beaucoup!");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("The opposing Jigglypuff's Attack fell!");
+        MESSAGE("Ah, Attaque du Rondoudou ennemi baisse!");
         if (abilityRight == ABILITY_COMPETITIVE) {
             ABILITY_POPUP(opponentRight, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-            MESSAGE("The opposing Jigglypuff's Sp. Atk rose sharply!");
+            MESSAGE("Ah, Attaque Spéciale du Rondoudou ennemi augmente beaucoup!");
         }
     } THEN {
         EXPECT_EQ(opponentLeft->statStages[STAT_SPATK], DEFAULT_STAT_STAGE + (abilityLeft == ABILITY_COMPETITIVE ? 4 : 0));
@@ -126,14 +126,14 @@ SINGLE_BATTLE_TEST("Competitive activates after Sticky Web lowers Speed")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, opponent);
         // Switch-in - Sticky Web activates
-        SEND_IN_MESSAGE("Igglybuff");
-        MESSAGE("Igglybuff was caught in a sticky web!");
+        SEND_IN_MESSAGE("Toudoudou");
+        MESSAGE("Toudoudou est pris dans une toile gluante!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Igglybuff's Speed fell!");
+        MESSAGE("Ah, Vitesse du Toudoudou baisse!");
         // Competitive activates
         ABILITY_POPUP(player, ABILITY_COMPETITIVE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Igglybuff's Sp. Atk rose sharply!");
+        MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
     }
 }
 
@@ -151,15 +151,15 @@ SINGLE_BATTLE_TEST("Competitive doesn't activate after Sticky Web lowers Speed i
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COURT_CHANGE, opponent);
         // Switch-in - Sticky Web activates
-        SEND_IN_MESSAGE("Igglybuff");
-        MESSAGE("Igglybuff was caught in a sticky web!");
+        SEND_IN_MESSAGE("Toudoudou");
+        MESSAGE("Toudoudou est pris dans une toile gluante!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Igglybuff's Speed fell!");
+        MESSAGE("Ah, Vitesse du Toudoudou baisse!");
         // Competitive doesn't activate
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Igglybuff's Sp. Atk rose sharply!");
+            MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
         }
     }
 }
@@ -179,23 +179,23 @@ SINGLE_BATTLE_TEST("Competitive correctly activates after Sticky Web lowers Spee
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COURT_CHANGE, opponent);
         // Switch-in - Sticky Web activates
-        SEND_IN_MESSAGE("Igglybuff");
-        MESSAGE("Igglybuff was caught in a sticky web!");
+        SEND_IN_MESSAGE("Toudoudou");
+        MESSAGE("Toudoudou est pris dans une toile gluante!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Igglybuff's Speed fell!");
+        MESSAGE("Ah, Vitesse du Toudoudou baisse!");
         // Competitive doesn't activate
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Igglybuff's Sp. Atk rose sharply!");
+            MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
         }
         // Competitive triggers correctly after Sticky Web
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GROWL, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Igglybuff's Attack fell!");
+        MESSAGE("Ah, Attaque du Toudoudou baisse!");
         ABILITY_POPUP(player, ABILITY_COMPETITIVE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Igglybuff's Sp. Atk rose sharply!");
+        MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
     }
 }
 
@@ -213,19 +213,19 @@ DOUBLE_BATTLE_TEST("Competitive is activated by Cotton Down for non-ally pokemon
         ABILITY_POPUP(opponentLeft, ABILITY_COTTON_DOWN);
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("The opposing Igglybuff's Speed fell!");
+        MESSAGE("Ah, Vitesse du Toudoudou ennemi baisse!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Igglybuff's Speed fell!");
+        MESSAGE("Ah, Vitesse du Toudoudou baisse!");
         ABILITY_POPUP(playerLeft, ABILITY_COMPETITIVE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Igglybuff's Sp. Atk rose sharply!");
+        MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Igglybuff's Speed fell!");
+        MESSAGE("Ah, Vitesse du Toudoudou baisse!");
         ABILITY_POPUP(playerRight, ABILITY_COMPETITIVE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Igglybuff's Sp. Atk rose sharply!");
+        MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
 
     } THEN {
         EXPECT_EQ(playerLeft->statStages[STAT_SPEED], DEFAULT_STAT_STAGE - 1);
@@ -351,15 +351,15 @@ SINGLE_BATTLE_TEST("Competitive activates before White Herb")
 
         ABILITY_POPUP(player, ABILITY_COMPETITIVE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Igglybuff's Sp. Atk rose sharply!");
+        MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
 
         if (move == MOVE_LEER) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Igglybuff returned its stats to normal using its White Herb!");
+            MESSAGE("Herbe Blanche fait revenir Toudoudou à la normale.");
         } else {
             NONE_OF {
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-                MESSAGE("Igglybuff returned its stats to normal using its White Herb!");
+                MESSAGE("Herbe Blanche fait revenir Toudoudou à la normale.");
             }
         }
     } THEN {
@@ -384,15 +384,15 @@ SINGLE_BATTLE_TEST("Competitive activates for each stat that is lowered")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TICKLE, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
 
-        MESSAGE("Igglybuff's Attack fell!");
+        MESSAGE("Ah, Attaque du Toudoudou baisse!");
         ABILITY_POPUP(player, ABILITY_COMPETITIVE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Igglybuff's Sp. Atk rose sharply!");
+        MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
 
-        MESSAGE("Igglybuff's Defense fell!");
+        MESSAGE("Ah, Défense du Toudoudou baisse!");
         ABILITY_POPUP(player, ABILITY_COMPETITIVE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Igglybuff's Sp. Atk rose sharply!");
+        MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
 
     } THEN {
         EXPECT_EQ(player->statStages[STAT_SPATK], DEFAULT_STAT_STAGE + 4);
@@ -424,7 +424,7 @@ SINGLE_BATTLE_TEST("Competitive doesn't activate if the pokemon lowers it's own 
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Igglybuff's Sp. Atk rose sharply!");
+            MESSAGE("Ah, Attaque Spéciale du Toudoudou augmente beaucoup!");
         }
     } THEN {
         if (move == MOVE_SUPERPOWER)
@@ -473,7 +473,7 @@ SINGLE_BATTLE_TEST("Competitive doesn't activate when an opposing stat drop fail
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPIN_OUT, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPIN_OUT, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPIN_OUT, player);
-        MESSAGE("The opposing Wobbuffet used Scary Face!");
+        MESSAGE("Qulbutoké ennemi utilise\nGrimace!");
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_COMPETITIVE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);

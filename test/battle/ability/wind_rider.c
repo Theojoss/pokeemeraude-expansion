@@ -18,7 +18,7 @@ SINGLE_BATTLE_TEST("Wind Rider raises Attack by one stage if it sets up Tailwind
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TAILWIND, opponent);
         ABILITY_POPUP(opponent, ABILITY_WIND_RIDER);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Bramblin's Attack rose!");
+        MESSAGE("Ah, Attaque du Virovent ennemi augmente!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 1);
     }
@@ -37,7 +37,7 @@ DOUBLE_BATTLE_TEST("Wind Rider raises Attack by one stage if Tailwind is setup b
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TAILWIND, opponentLeft);
         ABILITY_POPUP(opponentRight, ABILITY_WIND_RIDER);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("The opposing Bramblin's Attack rose!");
+        MESSAGE("Ah, Attaque du Virovent ennemi augmente!");
     } THEN {
         EXPECT_EQ(opponentRight->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 1);
     }
@@ -55,7 +55,7 @@ SINGLE_BATTLE_TEST("Wind Rider doesn't raise Attack if opponent sets up Tailwind
         NONE_OF {
             ABILITY_POPUP(opponent, ABILITY_WIND_RIDER);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("The opposing Bramblin's Attack rose!");
+            MESSAGE("Ah, Attaque du Virovent ennemi augmente!");
         }
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
@@ -75,7 +75,7 @@ SINGLE_BATTLE_TEST("Wind Rider raises Attack by one stage if switched into Tailw
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TAILWIND, opponent);
         ABILITY_POPUP(opponent, ABILITY_WIND_RIDER);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Bramblin's Attack rose!");
+        MESSAGE("Ah, Attaque du Virovent ennemi augmente!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 1);
@@ -93,13 +93,13 @@ SINGLE_BATTLE_TEST("Wind Rider activates when it's no longer effected by Neutral
         TURN { SWITCH(player, 1); }
     } SCENE {
         ABILITY_POPUP(player, ABILITY_NEUTRALIZING_GAS);
-        MESSAGE("Neutralizing gas filled the area!");
+        MESSAGE("Un gaz inhibiteur envahit les lieux!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TAILWIND, opponent);
-        SWITCH_OUT_MESSAGE("Weezing");
-        MESSAGE("The effects of the neutralizing gas wore off!");
+        SWITCH_OUT_MESSAGE("Smogogo");
+        MESSAGE("Les effets du gaz inhibiteur se sont dissipés.");
         ABILITY_POPUP(opponent, ABILITY_WIND_RIDER);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Bramblin's Attack rose!");
+        MESSAGE("Ah, Attaque du Virovent ennemi augmente!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 1);
     }
@@ -120,7 +120,7 @@ SINGLE_BATTLE_TEST("Wind Rider absorbs Wind moves and raises Attack by one stage
         }
         ABILITY_POPUP(opponent, ABILITY_WIND_RIDER);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Bramblin's Attack rose!");
+        MESSAGE("Ah, Attaque du Virovent ennemi augmente!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 1);
     }
@@ -139,7 +139,7 @@ DOUBLE_BATTLE_TEST("Tailwind does not trigger Wind Rider on an absent ally battl
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WATER_GUN, opponentLeft);
         HP_BAR(playerRight);
-        MESSAGE("Bramblin fainted!");
+        MESSAGE("Virovent est K.O.!\p");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TAILWIND, playerLeft);
         NONE_OF {
             ABILITY_POPUP(playerRight, ABILITY_WIND_RIDER);

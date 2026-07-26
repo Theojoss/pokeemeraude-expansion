@@ -12,7 +12,7 @@ SINGLE_BATTLE_TEST("Seed Sower sets up Grassy Terrain when hit by an attack")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         HP_BAR(player);
         ABILITY_POPUP(player, ABILITY_SEED_SOWER);
-        MESSAGE("Grass grew to cover the battlefield!");
+        MESSAGE("Un beau gazon pousse sur le terrain!");
     }
 }
 
@@ -27,8 +27,8 @@ SINGLE_BATTLE_TEST("Seed Sower sets up Grassy Terrain even when the user faints 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         HP_BAR(player);
         ABILITY_POPUP(player, ABILITY_SEED_SOWER);
-        MESSAGE("Grass grew to cover the battlefield!");
-        MESSAGE("Arboliva fainted!");
+        MESSAGE("Un beau gazon pousse sur le terrain!");
+        MESSAGE("Arboliva est K.O.!\p");
     }
 } 
 
@@ -37,7 +37,7 @@ SINGLE_BATTLE_TEST("Seed Sower sets up Grassy Terrain even when the user faints 
 {                                                       \
     if (abilities[position] == ABILITY_SEED_SOWER) {    \
         ABILITY_POPUP(target);                          \
-        MESSAGE("Grass grew to cover the battlefield!");\
+        MESSAGE("Un beau gazon pousse sur le terrain!");\
     }                                                   \
 }
 
