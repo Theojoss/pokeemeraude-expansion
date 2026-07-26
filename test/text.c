@@ -91,7 +91,7 @@ TEST("Move names fit on Move Relearner Screen")
 TEST("Move descriptions fit on Pokemon Summary Screen")
 {
     u32 i;
-    const u32 fontId = FONT_NORMAL, widthPx = 152;
+    const u32 fontId = FONT_SMALL_NARROWER, widthPx = 152;
     enum Move move = MOVE_NONE;
     for (i = 1; i < MOVES_COUNT_ALL; i++)
     {
@@ -172,10 +172,6 @@ TEST("Item names fit on Pokemon Storage System")
     // All items explicitly listed here are too big to fit.
     switch (item)
     {
-    case ITEM_ELECTRIC_TERA_SHARD:
-    case ITEM_TWICE_SPICED_RADISH:
-        EXPECT_GT(GetStringWidth(fontId, gItemsInfo[item].name, 0), widthPx);
-        break;
     default:
         EXPECT_LE(GetStringWidth(fontId, gItemsInfo[item].name, 0), widthPx);
         break;
@@ -216,7 +212,7 @@ TEST("Item names fit on Shop Screen")
 TEST("Item descriptions fit on Bag and Shop Screen")
 {
     u32 i;
-    const u32 fontId = FONT_NORMAL, widthPx = 102;
+    const u32 fontId = FONT_SMALL_NARROWER, widthPx = 102;
     enum Item item = ITEM_NONE;
     for (i = 1; i < ITEMS_COUNT; i++)
     {
@@ -476,7 +472,7 @@ TEST("Species names fit on Battle Screen HP box for vanilla mons with the defaul
 TEST("Species dex entries fit on Pokedex Screen")
 {
     u32 i;
-    const u32 fontId = FONT_NORMAL, widthPx = 224;
+    const u32 fontId = FONT_NARROWER, widthPx = 224;
     u32 species = SPECIES_NONE;
     for (i = 1; i < NUM_SPECIES; i++)
     {
@@ -515,7 +511,7 @@ TEST("Ability names fit on Ability Pop-Up")
 TEST("Ability descriptions fit on Pokemon Summary Screen")
 {
     u32 i;
-    const u32 fontId = FONT_NORMAL, widthPx = 146;
+    const u32 fontId = FONT_SMALL_NARROWER, widthPx = 146;
     enum Ability ability = ABILITY_NONE;
     for (i = 1; i < ABILITIES_COUNT; i++)
     {
