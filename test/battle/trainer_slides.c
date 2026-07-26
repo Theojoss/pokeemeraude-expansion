@@ -178,9 +178,9 @@ AI_SINGLE_BATTLE_TEST("Trainer Slide: Singles: Mega Evolution")
     } WHEN {
         TURN { EXPECT_MOVE(opponent, MOVE_CELEBRATE, gimmick: GIMMICK_MEGA); }
     } SCENE {
-        MESSAGE("Trainer A: This message plays before the enemy activates the Mega Evolution gimmick.{PAUSE_UNTIL_PRESS}");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, opponent);
         MESSAGE("Lockpin ennemi méga-évolue en Méga-Lockpin!");
+        MESSAGE("Trainer A: This message plays after the enemy's Mega Evolution completes.{PAUSE_UNTIL_PRESS}");
     }
 }
 
@@ -446,12 +446,12 @@ AI_DOUBLE_BATTLE_TEST("Trainer Slide: Doubles: Mega Evolution")
     } WHEN {
         TURN { EXPECT_MOVE(opponentLeft, MOVE_CELEBRATE, gimmick: GIMMICK_MEGA); }
     } SCENE {
-        MESSAGE("Trainer A: This message plays before the enemy activates the Mega Evolution gimmick.{PAUSE_UNTIL_PRESS}");
-        NONE_OF {
-            MESSAGE("Trainer A: This message plays before the enemy activates the Mega Evolution gimmick.{PAUSE_UNTIL_PRESS}");
-        }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, opponentLeft);
         MESSAGE("Lockpin ennemi méga-évolue en Méga-Lockpin!");
+        MESSAGE("Trainer A: This message plays after the enemy's Mega Evolution completes.{PAUSE_UNTIL_PRESS}");
+        NONE_OF {
+            MESSAGE("Trainer A: This message plays after the enemy's Mega Evolution completes.{PAUSE_UNTIL_PRESS}");
+        }
     }
 }
 
@@ -765,15 +765,15 @@ AI_MULTI_BATTLE_TEST("Trainer Slide: Multi: Mega Evolution")
             MOVE(playerRight, MOVE_CELEBRATE, gimmick: GIMMICK_MEGA);
             EXPECT_MOVE(opponentRight, MOVE_CELEBRATE, gimmick: GIMMICK_MEGA); }
     } SCENE {
-        MESSAGE("Trainer A: This message plays before the enemy activates the Mega Evolution gimmick.{PAUSE_UNTIL_PRESS}");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, opponentLeft);
         MESSAGE("Lockpin ennemi méga-évolue en Méga-Lockpin!");
-        MESSAGE("Trainer Partner: This message plays before the enemy activates the Mega Evolution gimmick.{PAUSE_UNTIL_PRESS}");
+        MESSAGE("Trainer A: This message plays after the enemy's Mega Evolution completes.{PAUSE_UNTIL_PRESS}");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, playerRight);
         MESSAGE("Ptéra méga-évolue en Méga-Ptéra!");
-        MESSAGE("Trainer B: This message plays before the enemy activates the Mega Evolution gimmick.{PAUSE_UNTIL_PRESS}");
+        MESSAGE("Trainer Partner: This message plays after the enemy's Mega Evolution completes.{PAUSE_UNTIL_PRESS}");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, opponentRight);
         MESSAGE("Charmina ennemi méga-évolue en Méga-Charmina!");
+        MESSAGE("Trainer B: This message plays after the enemy's Mega Evolution completes.{PAUSE_UNTIL_PRESS}");
     }
 }
 
