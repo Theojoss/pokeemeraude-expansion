@@ -13,11 +13,11 @@ SINGLE_BATTLE_TEST("Conversion 2 randomly changes the type of the user to a type
         TURN { MOVE(player, MOVE_OMINOUS_WIND); MOVE(opponent, MOVE_CONVERSION_2); }
     } SCENE {
         // turn 1
-        MESSAGE("Wobbuffet used Ominous Wind!");
+        MESSAGE("Qulbutoké utilise\nVent Mauvais!");
         // turn 1
         ONE_OF {
-            MESSAGE("The opposing Wobbuffet transformed into the Normal type!");
-            MESSAGE("The opposing Wobbuffet transformed into the Dark type!");
+            MESSAGE("Qulbutoké ennemi prend le type Normal!");
+            MESSAGE("Qulbutoké ennemi prend le type Ténèbres!");
         }
     }
 }
@@ -33,12 +33,12 @@ SINGLE_BATTLE_TEST("Conversion 2's type change considers Struggle to be Normal t
         TURN { MOVE(player, MOVE_CONVERSION_2); }
     } SCENE {
         // turn 1
-        MESSAGE("The opposing Wobbuffet used Struggle!");
+        MESSAGE("Qulbutoké ennemi utilise\nLutte!");
         // turn 2
         ONE_OF {
-            MESSAGE("Wobbuffet transformed into the Steel type!");
-            MESSAGE("Wobbuffet transformed into the Rock type!");
-            MESSAGE("Wobbuffet transformed into the Ghost type!");
+            MESSAGE("Qulbutoké prend le type Acier!");
+            MESSAGE("Qulbutoké prend le type Roche!");
+            MESSAGE("Qulbutoké prend le type Spectre!");
         }
     }
 }
@@ -53,11 +53,11 @@ SINGLE_BATTLE_TEST("Conversion 2 randomly changes the type of the user to a type
         TURN { MOVE(player, MOVE_OMINOUS_WIND); MOVE(opponent, MOVE_CONVERSION_2); }
     } SCENE {
         // turn 1
-        MESSAGE("Wobbuffet used Ominous Wind!");
+        MESSAGE("Qulbutoké utilise\nVent Mauvais!");
         // turn 1
         ONE_OF {
-            MESSAGE("The opposing Wobbuffet transformed into the Normal type!");
-            MESSAGE("The opposing Wobbuffet transformed into the Dark type!");
+            MESSAGE("Qulbutoké ennemi prend le type Normal!");
+            MESSAGE("Qulbutoké ennemi prend le type Ténèbres!");
         }
     }
 }
@@ -73,11 +73,11 @@ SINGLE_BATTLE_TEST("Conversion 2's type change considers status moves (Gen 5+)")
         TURN { MOVE(player, MOVE_CONVERSION_2); }
     } SCENE {
         // turn 1
-        MESSAGE("The opposing Wobbuffet used Curse!");
+        MESSAGE("Qulbutoké ennemi utilise\nMalédiction!");
         // turn 2
         ONE_OF {
-            MESSAGE("Wobbuffet transformed into the Normal type!");
-            MESSAGE("Wobbuffet transformed into the Dark type!");
+            MESSAGE("Qulbutoké prend le type Normal!");
+            MESSAGE("Qulbutoké prend le type Ténèbres!");
         }
     }
 }
@@ -93,11 +93,11 @@ SINGLE_BATTLE_TEST("Conversion 2's type change considers the type of moves calle
         TURN { MOVE(player, MOVE_CONVERSION_2); }
     } SCENE {
         // turn 1
-        MESSAGE("The opposing Wobbuffet used Mirror Move!");
+        MESSAGE("Qulbutoké ennemi utilise\nMimique!");
         // turn 2
         ONE_OF {
-            MESSAGE("Wobbuffet transformed into the Normal type!");
-            MESSAGE("Wobbuffet transformed into the Dark type!");
+            MESSAGE("Qulbutoké prend le type Normal!");
+            MESSAGE("Qulbutoké prend le type Ténèbres!");
         }
     }
 }
@@ -113,13 +113,13 @@ SINGLE_BATTLE_TEST("Conversion 2's type change considers dynamic type moves")
         TURN { MOVE(player, MOVE_CONVERSION_2); }
     } SCENE {
         // turn 1
-        MESSAGE("The opposing Wobbuffet used Weather Ball!");
+        MESSAGE("Qulbutoké ennemi utilise\nBall'Météo!");
         // turn 2
         ONE_OF {
-            MESSAGE("Wobbuffet transformed into the Steel type!");
-            MESSAGE("Wobbuffet transformed into the Fire type!");
-            MESSAGE("Wobbuffet transformed into the Water type!");
-            MESSAGE("Wobbuffet transformed into the Ice type!");
+            MESSAGE("Qulbutoké prend le type Acier!");
+            MESSAGE("Qulbutoké prend le type Feu!");
+            MESSAGE("Qulbutoké prend le type Eau!");
+            MESSAGE("Qulbutoké prend le type Glace!");
         }
     }
 }
@@ -136,21 +136,21 @@ SINGLE_BATTLE_TEST("Conversion 2's type change considers move types changed by N
         TURN { MOVE(player, MOVE_WATER_GUN); MOVE(opponent, MOVE_CONVERSION_2); }
     } SCENE {
         // turn 1
-        MESSAGE("Wobbuffet used Electrify!");
-        MESSAGE("The opposing Wobbuffet used Pound!");
+        MESSAGE("Qulbutoké utilise\nÉlectrisation!");
+        MESSAGE("Qulbutoké ennemi utilise\nÉcras'Face!");
         // turn 2
         ONE_OF {
-            MESSAGE("Wobbuffet transformed into the Ground type!");
-            MESSAGE("Wobbuffet transformed into the Dragon type!");
-            MESSAGE("Wobbuffet transformed into the Grass type!");
-            MESSAGE("Wobbuffet transformed into the Electric type!");
+            MESSAGE("Qulbutoké prend le type Sol!");
+            MESSAGE("Qulbutoké prend le type Dragon!");
+            MESSAGE("Qulbutoké prend le type Plante!");
+            MESSAGE("Qulbutoké prend le type Electrik!");
         }
         // turn 3
-        MESSAGE("Wobbuffet used Water Gun!");
+        MESSAGE("Qulbutoké utilise\nPistolet à O!");
         ONE_OF {
-            MESSAGE("The opposing Wobbuffet transformed into the Steel type!");
-            MESSAGE("The opposing Wobbuffet transformed into the Rock type!");
-            MESSAGE("The opposing Wobbuffet transformed into the Ghost type!");
+            MESSAGE("Qulbutoké ennemi prend le type Acier!");
+            MESSAGE("Qulbutoké ennemi prend le type Roche!");
+            MESSAGE("Qulbutoké ennemi prend le type Spectre!");
         }
     }
 }
@@ -166,10 +166,10 @@ SINGLE_BATTLE_TEST("Conversion 2's type change fails targeting Struggle (Gen 5+)
         TURN { MOVE(player, MOVE_CONVERSION_2); }
     } SCENE {
         // turn 1
-        MESSAGE("The opposing Wobbuffet used Struggle!");
+        MESSAGE("Qulbutoké ennemi utilise\nLutte!");
         // turn 2
-        MESSAGE("Wobbuffet used Conversion 2!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké utilise\nConversion 2!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -185,12 +185,12 @@ SINGLE_BATTLE_TEST("Conversion 2 fails if the move used is of typeless damage (G
         TURN { MOVE(player, MOVE_CONVERSION_2); }
     } SCENE {
         // turn 1
-        MESSAGE("The opposing Entei used Burn Up!");
+        MESSAGE("Entei ennemi utilise\nFlamme Ultime!");
         // turn 2
-        MESSAGE("The opposing Entei used Revelation Dance!");
+        MESSAGE("Entei ennemi utilise\nDanse Éveil!");
         // turn 3
-        MESSAGE("Wobbuffet used Conversion 2!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké utilise\nConversion 2!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -203,11 +203,11 @@ SINGLE_BATTLE_TEST("Conversion 2 fails if the targeted move is Stellar Type")
         TURN { MOVE(player, MOVE_TERA_BLAST, gimmick: GIMMICK_TERA); MOVE(opponent, MOVE_CONVERSION_2); }
     } SCENE {
         // turn 1
-        MESSAGE("Wobbuffet used Tera Blast!");
+        MESSAGE("Qulbutoké utilise\nTéra Explosion!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TERA_BLAST, player);
         // turn 1
-        MESSAGE("The opposing Wobbuffet used Conversion 2!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké ennemi utilise\nConversion 2!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -220,8 +220,8 @@ SINGLE_BATTLE_TEST("Conversion 2 fails if used by a Terastallized Pokemon")
         TURN { MOVE(opponent, MOVE_TACKLE); }
         TURN { MOVE(player, MOVE_CONVERSION_2, gimmick: GIMMICK_TERA); }
     } SCENE {
-        MESSAGE("Wobbuffet used Conversion 2!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké utilise\nConversion 2!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -235,10 +235,10 @@ SINGLE_BATTLE_TEST("Conversion 2 fails if last hit by a Stellar-type move (Gen 1
         TURN { MOVE(player, MOVE_TERA_BLAST, gimmick: GIMMICK_TERA); MOVE(opponent, MOVE_CONVERSION_2); }
     } SCENE {
         // turn 1
-        MESSAGE("Wobbuffet used Tera Blast!");
+        MESSAGE("Qulbutoké utilise\nTéra Explosion!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TERA_BLAST, player);
         // turn 2
-        MESSAGE("The opposing Wobbuffet used Conversion 2!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké ennemi utilise\nConversion 2!");
+        MESSAGE("Mais cela échoue!");
     }
 }

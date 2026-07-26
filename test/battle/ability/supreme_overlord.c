@@ -24,7 +24,7 @@ DOUBLE_BATTLE_TEST("Supreme Overlord boosts Attack by an additive 10% per fainte
     } SCENE {
         if (switchMon) {
             ABILITY_POPUP(playerLeft, ABILITY_SUPREME_OVERLORD);
-            MESSAGE("Kingambit gained strength from the fallen!");
+            MESSAGE("Scalpereur reçoit la puissance de ses alliés mis K.O.!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerLeft);
         HP_BAR(opponentLeft, captureDamage: &results[i].damage);
@@ -58,7 +58,7 @@ DOUBLE_BATTLE_TEST("Supreme Overlord's boost caps at a 1.5x multipler", s16 dama
         TURN { MOVE(playerRight, MOVE_SCRATCH, target: opponentLeft); }
     } SCENE {
         ABILITY_POPUP(playerRight, ABILITY_SUPREME_OVERLORD);
-        MESSAGE("Kingambit gained strength from the fallen!");
+        MESSAGE("Scalpereur reçoit la puissance de ses alliés mis K.O.!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerRight);
         HP_BAR(opponentLeft, captureDamage: &results[i].damage);
     } FINALLY {
@@ -85,7 +85,7 @@ SINGLE_BATTLE_TEST("Supreme Overlord does not boost attack if party members are 
     } SCENE {
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_SUPREME_OVERLORD);
-            MESSAGE("Kingambit gained strength from the fallen!");
+            MESSAGE("Scalpereur reçoit la puissance de ses alliés mis K.O.!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
         HP_BAR(opponent, captureDamage: &results[i].damage);
@@ -108,10 +108,10 @@ SINGLE_BATTLE_TEST("Supreme Overlord's message displays correctly after all batt
         HP_BAR(opponent, hp: 0);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EXPLOSION, opponent);
         // Everyone faints.
-        SEND_IN_MESSAGE("Kingambit");
-        MESSAGE("2 sent out Wobbuffet!");
+        SEND_IN_MESSAGE("Scalpereur");
+        MESSAGE("2 envoie\nun Qulbutoké!");
         ABILITY_POPUP(player, ABILITY_SUPREME_OVERLORD);
-        MESSAGE("Kingambit gained strength from the fallen!");
+        MESSAGE("Scalpereur reçoit la puissance de ses alliés mis K.O.!");
     }
 }
 
@@ -129,10 +129,10 @@ SINGLE_BATTLE_TEST("Supreme Overlord's message displays correctly after all batt
         HP_BAR(player, hp: 0);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EXPLOSION, player);
         // Everyone faints.
-        SEND_IN_MESSAGE("Wobbuffet");
-        MESSAGE("2 sent out Kingambit!");
+        SEND_IN_MESSAGE("Qulbutoké");
+        MESSAGE("2 envoie\nun Scalpereur!");
         ABILITY_POPUP(opponent, ABILITY_SUPREME_OVERLORD);
-        MESSAGE("The opposing Kingambit gained strength from the fallen!");
+        MESSAGE("Scalpereur ennemi reçoit la puissance de ses alliés mis K.O.!");
     }
 }
 
@@ -158,7 +158,7 @@ MULTI_BATTLE_TEST("Supreme Overlord does not count a partner Trainer's fainted P
     } SCENE {
         NONE_OF {
             ABILITY_POPUP(playerLeft, ABILITY_SUPREME_OVERLORD);
-            MESSAGE("Kingambit gained strength from the fallen!");
+            MESSAGE("Scalpereur reçoit la puissance de ses alliés mis K.O.!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerLeft);
         HP_BAR(opponentLeft, captureDamage: &results[i].damage);
@@ -189,7 +189,7 @@ MULTI_BATTLE_TEST("Supreme Overlord does not count an opposing partner Trainer's
     } SCENE {
         NONE_OF {
             ABILITY_POPUP(opponentRight, ABILITY_SUPREME_OVERLORD);
-            MESSAGE("The opposing Kingambit gained strength from the fallen!");
+            MESSAGE("Scalpereur ennemi reçoit la puissance de ses alliés mis K.O.!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentRight);
         HP_BAR(playerLeft, captureDamage: &results[i].damage);

@@ -20,16 +20,16 @@ SINGLE_BATTLE_TEST("Syrup Bomb covers the foe in sticky syrup for 3 turns")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SYRUP_BOMB, player);
         HP_BAR(opponent);
-        MESSAGE("The opposing Wobbuffet got covered in sticky candy syrup!");
+        MESSAGE("Qulbutoké ennemi est recouvert de sirop!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
-        MESSAGE("The opposing Wobbuffet's Speed fell!");
+        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
-        MESSAGE("The opposing Wobbuffet's Speed fell!");
+        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
-        MESSAGE("The opposing Wobbuffet's Speed fell!");
+        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
-            MESSAGE("The opposing Wobbuffet's Speed fell!");
+            MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
         }
     }
 }
@@ -45,12 +45,12 @@ SINGLE_BATTLE_TEST("Sticky Syrup isn't applied again if the target is already co
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SYRUP_BOMB, player);
         HP_BAR(opponent);
-        MESSAGE("The opposing Wobbuffet got covered in sticky candy syrup!");
+        MESSAGE("Qulbutoké ennemi est recouvert de sirop!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
-        MESSAGE("The opposing Wobbuffet's Speed fell!");
+        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SYRUP_BOMB, player);
         HP_BAR(opponent);
-        NOT MESSAGE("The opposing Wobbuffet got covered in sticky candy syrup!");
+        NOT MESSAGE("Qulbutoké ennemi est recouvert de sirop!");
     }
 }
 
@@ -63,7 +63,7 @@ SINGLE_BATTLE_TEST("Syrup Bomb is prevented by Bulletproof")
         TURN { MOVE(player, MOVE_SYRUP_BOMB); }
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_BULLETPROOF);
-        MESSAGE("It doesn't affect the opposing Chespin…");
+        MESSAGE("Ça n'affecte pas Marisson ennemi…");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SYRUP_BOMB, player);
             HP_BAR(opponent);
@@ -92,32 +92,32 @@ SINGLE_BATTLE_TEST("Sticky Syrup speed reduction is prevented by Clear Body, Whi
         HP_BAR(opponent);
         if (species == SPECIES_BELDUM)
         {
-            MESSAGE("The opposing Beldum got covered in sticky candy syrup!");
+            MESSAGE("Terhal ennemi est recouvert de sirop!");
             ABILITY_POPUP(opponent, ABILITY_CLEAR_BODY);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
-            MESSAGE("The opposing Beldum's stats were not lowered!");
+            MESSAGE("Les stats de Terhal ennemi ne baissent pas!");
             NONE_OF {
-                MESSAGE("The opposing Beldum's Speed fell!");
+                MESSAGE("Ah, Vitesse du Terhal ennemi baisse!");
             }
         }
         else if (species == SPECIES_TORKOAL)
         {
-            MESSAGE("The opposing Torkoal got covered in sticky candy syrup!");
+            MESSAGE("Chartor ennemi est recouvert de sirop!");
             ABILITY_POPUP(opponent, ABILITY_WHITE_SMOKE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
-            MESSAGE("The opposing Torkoal's stats were not lowered!");
+            MESSAGE("Les stats de Chartor ennemi ne baissent pas!");
             NONE_OF {
-                MESSAGE("The opposing Torkoal's Speed fell!");
+                MESSAGE("Ah, Vitesse du Chartor ennemi baisse!");
             }
         }
         else if (species == SPECIES_SOLGALEO)
         {
-            MESSAGE("The opposing Solgaleo got covered in sticky candy syrup!");
+            MESSAGE("Solgaleo ennemi est recouvert de sirop!");
             ABILITY_POPUP(opponent, ABILITY_FULL_METAL_BODY);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
-            MESSAGE("The opposing Solgaleo's stats were not lowered!");
+            MESSAGE("Les stats de Solgaleo ennemi ne baissent pas!");
             NONE_OF {
-                MESSAGE("The opposing Solgaleo's Speed fell!");
+                MESSAGE("Ah, Vitesse du Solgaleo ennemi baisse!");
             }
         }
     }
@@ -133,11 +133,11 @@ SINGLE_BATTLE_TEST("Sticky Syrup speed reduction is prevented by Clear Amulet")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SYRUP_BOMB, player);
         HP_BAR(opponent);
-        MESSAGE("The opposing Wobbuffet got covered in sticky candy syrup!");
-        MESSAGE("The effects of the Clear Amulet held by the opposing Wobbuffet prevents its stats from being lowered!");
+        MESSAGE("Qulbutoké ennemi est recouvert de sirop!");
+        MESSAGE("L'effet de Talisman Sain tenu par Qulbutoké ennemi empêche ses stats de baisser!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
-            MESSAGE("The opposing Wobbuffet's Speed fell!");
+            MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
         }
     }
 }
@@ -161,11 +161,11 @@ SINGLE_BATTLE_TEST("Sticky syrup will not decrease speed further then minus six"
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SYRUP_BOMB, player);
         HP_BAR(opponent);
-        MESSAGE("The opposing Wobbuffet got covered in sticky candy syrup!");
+        MESSAGE("Qulbutoké ennemi est recouvert de sirop!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
-        MESSAGE("The opposing Wobbuffet's Speed won't go any lower!");
+        MESSAGE("Vitesse de Qulbutoké ennemi ne peut plus baisser!");
         NONE_OF {
-            MESSAGE("The opposing Wobbuffet's Speed fell!");
+            MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
         }
     }
 }
@@ -182,12 +182,12 @@ SINGLE_BATTLE_TEST("Sticky Syrup is removed when the user switches out")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SYRUP_BOMB, player);
         HP_BAR(opponent);
-        MESSAGE("The opposing Wobbuffet got covered in sticky candy syrup!");
+        MESSAGE("Qulbutoké ennemi est recouvert de sirop!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
-        MESSAGE("The opposing Wobbuffet's Speed fell!");
+        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
-            MESSAGE("The opposing Wobbuffet's Speed fell!");
+            MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
         }
     }
 }
@@ -206,14 +206,14 @@ SINGLE_BATTLE_TEST("Sticky Syrup is removed when the user faints")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SYRUP_BOMB, player);
         HP_BAR(opponent);
-        MESSAGE("The opposing Wobbuffet got covered in sticky candy syrup!");
+        MESSAGE("Qulbutoké ennemi est recouvert de sirop!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         HP_BAR(player);
-        MESSAGE("Wobbuffet fainted!");
-        SEND_IN_MESSAGE("Wynaut");
+        MESSAGE("Qulbutoké est K.O.!\p");
+        SEND_IN_MESSAGE("Okéoké");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
-            MESSAGE("The opposing Wobbuffet's Speed fell!");
+            MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
         }
     }
 }
@@ -228,7 +228,7 @@ SINGLE_BATTLE_TEST("Sticky Syrup is not reflected by Mirror Armor")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SYRUP_BOMB, player);
         HP_BAR(opponent);
-        MESSAGE("The opposing Corviknight got covered in sticky candy syrup!");
+        MESSAGE("Corvaillus ennemi est recouvert de sirop!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
         NONE_OF {
             ABILITY_POPUP(opponent, ABILITY_MIRROR_ARMOR);
@@ -253,7 +253,7 @@ SINGLE_BATTLE_TEST("Sticky Syrup stat drop is prevented by Mist")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MIST, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SYRUP_BOMB, player);
         HP_BAR(opponent);
-        MESSAGE("The opposing Wobbuffet got covered in sticky candy syrup!");
+        MESSAGE("Qulbutoké ennemi est recouvert de sirop!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SYRUP_BOMB_SPEED_DROP, opponent);
         NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
     } THEN {

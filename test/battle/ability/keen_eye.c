@@ -27,11 +27,11 @@ SINGLE_BATTLE_TEST("Keen Eye, Gen9+ Illuminate & Minds Eye prevent accuracy stag
         ABILITY_POPUP(opponent, ability);
         NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         if (species == SPECIES_HITMONCHAN)
-            MESSAGE("The opposing Hitmonchan's accuracy was not lowered!");
+            MESSAGE("précision de Tygnon ennemi ne baisse pas!");
         else if (species == SPECIES_STARYU)
-            MESSAGE("The opposing Staryu's accuracy was not lowered!");
+            MESSAGE("précision de Stari ennemi ne baisse pas!");
         else
-            MESSAGE("The opposing Ursaluna's accuracy was not lowered!");
+            MESSAGE("précision de Ursaking ennemi ne baisse pas!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
     }
 }
@@ -114,22 +114,22 @@ SINGLE_BATTLE_TEST("Keen Eye, Gen9+ Illuminate & Minds Eye don't prevent Topsy-T
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HONE_CLAWS, opponent);
         if (species == SPECIES_HITMONCHAN) {
-            MESSAGE("The opposing Hitmonchan's Attack rose!");
-            MESSAGE("The opposing Hitmonchan's accuracy rose!");
+            MESSAGE("Ah, Attaque du Tygnon ennemi augmente!");
+            MESSAGE("Ah, précision du Tygnon ennemi augmente!");
         } else if (species == SPECIES_STARYU) {
-            MESSAGE("The opposing Staryu's Attack rose!");
-            MESSAGE("The opposing Staryu's accuracy rose!");
+            MESSAGE("Ah, Attaque du Stari ennemi augmente!");
+            MESSAGE("Ah, précision du Stari ennemi augmente!");
         } else {
-            MESSAGE("The opposing Ursaluna's Attack rose!");
-            MESSAGE("The opposing Ursaluna's accuracy rose!");
+            MESSAGE("Ah, Attaque du Ursaking ennemi augmente!");
+            MESSAGE("Ah, précision du Ursaking ennemi augmente!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TOPSY_TURVY, player);
         if (species == SPECIES_HITMONCHAN)
-            MESSAGE("All stat changes on the opposing Hitmonchan were inverted!");
+            MESSAGE("Les changements de stats de Tygnon ennemi sont inversés!");
         else if (species == SPECIES_STARYU)
-            MESSAGE("All stat changes on the opposing Staryu were inverted!");
+            MESSAGE("Les changements de stats de Stari ennemi sont inversés!");
         else
-            MESSAGE("All stat changes on the opposing Ursaluna were inverted!");
+            MESSAGE("Les changements de stats de Ursaking ennemi sont inversés!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ACC], DEFAULT_STAT_STAGE - 1);
     }
@@ -158,11 +158,11 @@ SINGLE_BATTLE_TEST("Keen Eye, Gen9+ Illuminate & Minds Eye don't prevent receivi
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SAND_ATTACK, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BATON_PASS, opponent);
         if (species == SPECIES_HITMONCHAN)
-            MESSAGE("2 sent out Hitmonchan!");
+            MESSAGE("2 envoie\nun Tygnon!");
         else if (species == SPECIES_STARYU)
-            MESSAGE("2 sent out Staryu!");
+            MESSAGE("2 envoie\nun Stari!");
         else
-            MESSAGE("2 sent out Ursaluna!");
+            MESSAGE("2 envoie\nun Ursaking!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ACC], DEFAULT_STAT_STAGE - 1);
     }
@@ -188,15 +188,15 @@ SINGLE_BATTLE_TEST("Keen Eye & Gen9+ Illuminate don't prevent Spectral Thief fro
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HONE_CLAWS, opponent);
         if (species == SPECIES_HITMONCHAN)
         {
-            MESSAGE("The opposing Hitmonchan's Attack rose!");
-            MESSAGE("The opposing Hitmonchan's accuracy rose!");
+            MESSAGE("Ah, Attaque du Tygnon ennemi augmente!");
+            MESSAGE("Ah, précision du Tygnon ennemi augmente!");
         }
         else
         {
-            MESSAGE("The opposing Staryu's Attack rose!");
-            MESSAGE("The opposing Staryu's accuracy rose!");
+            MESSAGE("Ah, Attaque du Stari ennemi augmente!");
+            MESSAGE("Ah, précision du Stari ennemi augmente!");
         }
-        MESSAGE("Wobbuffet stole the target's boosted stats!");
+        MESSAGE("Qulbutoké vole les augmentations de stats!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPECTRAL_THIEF, player);
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ACC], DEFAULT_STAT_STAGE);

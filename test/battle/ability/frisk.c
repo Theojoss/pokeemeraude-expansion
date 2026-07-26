@@ -29,9 +29,9 @@ SINGLE_BATTLE_TEST("Frisk triggers in a Single Battle")
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_FRISK);
-        MESSAGE("Furret frisked the opposing Sentret and found its Potion!");
+        MESSAGE("Fouinar fouille Fouinette ennemi et trouve Potion!");
         ABILITY_POPUP(opponent, ABILITY_FRISK);
-        MESSAGE("The opposing Sentret frisked Furret and found its Potion!");
+        MESSAGE("Fouinette ennemi fouille Fouinar et trouve Potion!");
     }
 }
 
@@ -51,10 +51,10 @@ DOUBLE_BATTLE_TEST("Frisk triggers for player in a Double Battle after switching
     } WHEN {
         TURN { MOVE(opponentLeft, MOVE_POUND, target: target); SEND_OUT(target, 2); }
     } SCENE {
-        MESSAGE("The opposing Wynaut used Pound!");
-        MESSAGE("Wobbuffet fainted!");
+        MESSAGE("Okéoké ennemi utilise\nÉcras'Face!");
+        MESSAGE("Qulbutoké est K.O.!\p");
         ABILITY_POPUP(target, ABILITY_FRISK);
-        MESSAGE("Furret frisked the opposing Wynaut and found its Potion!");
+        MESSAGE("Fouinar fouille Okéoké ennemi et trouve Potion!");
     }
 }
 
@@ -74,9 +74,9 @@ DOUBLE_BATTLE_TEST("Frisk triggers for opponent in a Double Battle after switchi
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_POUND, target: target); SEND_OUT(target, 2); }
     } SCENE {
-        MESSAGE("Wynaut used Pound!");
-        MESSAGE("The opposing Wobbuffet fainted!");
+        MESSAGE("Okéoké utilise\nÉcras'Face!");
+        MESSAGE("Qulbutoké ennemi est K.O.!\p");
         ABILITY_POPUP(target, ABILITY_FRISK);
-        MESSAGE("The opposing Furret frisked Wynaut and found its Potion!");
+        MESSAGE("Fouinar ennemi fouille Okéoké et trouve Potion!");
     }
 }

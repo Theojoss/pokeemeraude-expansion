@@ -27,11 +27,11 @@ SINGLE_BATTLE_TEST("Jaboca Berry causes the attacker to lose 1/8 of its max HP i
         if (move == MOVE_SCRATCH) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, opponent);
             HP_BAR(player, captureDamage: &damage);
-            MESSAGE("Wobbuffet was hurt by the opposing Wobbuffet's Jaboca Berry!");
+            MESSAGE("Qulbutoké est blessé par Baie Jaboca de Qulbutoké ennemi!");
         } else {
             NONE_OF {
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, opponent);
-                MESSAGE("Wobbuffet was hurt by the opposing Wobbuffet's Jaboca Berry!");
+                MESSAGE("Qulbutoké est blessé par Baie Jaboca de Qulbutoké ennemi!");
             }
         }
     } THEN {
@@ -53,8 +53,8 @@ SINGLE_BATTLE_TEST("Jaboca Berry triggers before Bug Bite can steal it")
         HP_BAR(opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, opponent);
         HP_BAR(player);
-        MESSAGE("Wynaut was hurt by the opposing Wobbuffet's Jaboca Berry!");
-        NOT MESSAGE("Wynaut stole and ate the opposing Wobbuffet's Jaboca Berry!");
+        MESSAGE("Okéoké est blessé par Baie Jaboca de Qulbutoké ennemi!");
+        NOT MESSAGE("Okéoké vole Baie Jaboca de and ate Qulbutoké ennemi!");
     }
 }
 
@@ -69,6 +69,6 @@ SINGLE_BATTLE_TEST("Jaboca Berry is triggered even if berry user faints")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, player);
         HP_BAR(player);
-        MESSAGE("Wobbuffet was hurt by the opposing Wobbuffet's Jaboca Berry!");
+        MESSAGE("Qulbutoké est blessé par Baie Jaboca de Qulbutoké ennemi!");
     }
 }

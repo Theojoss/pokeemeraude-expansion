@@ -9,9 +9,9 @@ SINGLE_BATTLE_TEST("Dusk Mane Necrozma can Ultra Burst holding Ultranecrozium Z"
     } WHEN {
         TURN { MOVE(player, MOVE_CELEBRATE, gimmick: GIMMICK_ULTRA_BURST); }
     } SCENE {
-        MESSAGE("Bright light is about to burst out of Necrozma!");
+        MESSAGE("Une lumière éblouissante émane de Necrozma!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ULTRA_BURST, player);
-        MESSAGE("Necrozma regained its true power through Ultra Burst!");
+        MESSAGE("Necrozma a pris une nouvelle forme grâce à l'Ultra-Explosion!");
     } THEN {
         EXPECT_EQ(player->species, SPECIES_NECROZMA_ULTRA);
     }
@@ -27,12 +27,12 @@ DOUBLE_BATTLE_TEST("Ultra Burst's order is determined by Speed - opponent faster
     } WHEN {
         TURN { MOVE(opponentLeft, MOVE_CELEBRATE, gimmick: GIMMICK_ULTRA_BURST); MOVE(playerLeft, MOVE_CELEBRATE, gimmick: GIMMICK_ULTRA_BURST); }
     } SCENE {
-        MESSAGE("Bright light is about to burst out of the opposing Necrozma!");
+        MESSAGE("Une lumière éblouissante émane de Necrozma ennemi!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ULTRA_BURST, opponentLeft);
-        MESSAGE("The opposing Necrozma regained its true power through Ultra Burst!");
-        MESSAGE("Bright light is about to burst out of Necrozma!");
+        MESSAGE("Necrozma ennemi a pris une nouvelle forme grâce à l'Ultra-Explosion!");
+        MESSAGE("Une lumière éblouissante émane de Necrozma!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ULTRA_BURST, playerLeft);
-        MESSAGE("Necrozma regained its true power through Ultra Burst!");
+        MESSAGE("Necrozma a pris une nouvelle forme grâce à l'Ultra-Explosion!");
     }
 }
 
@@ -46,12 +46,12 @@ DOUBLE_BATTLE_TEST("Ultra Burst's order is determined by Speed - player faster")
     } WHEN {
         TURN { MOVE(opponentLeft, MOVE_CELEBRATE, gimmick: GIMMICK_ULTRA_BURST); MOVE(playerLeft, MOVE_CELEBRATE, gimmick: GIMMICK_ULTRA_BURST); }
     } SCENE {
-        MESSAGE("Bright light is about to burst out of Necrozma!");
+        MESSAGE("Une lumière éblouissante émane de Necrozma!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ULTRA_BURST, playerLeft);
-        MESSAGE("Necrozma regained its true power through Ultra Burst!");
-        MESSAGE("Bright light is about to burst out of the opposing Necrozma!");
+        MESSAGE("Necrozma a pris une nouvelle forme grâce à l'Ultra-Explosion!");
+        MESSAGE("Une lumière éblouissante émane de Necrozma ennemi!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ULTRA_BURST, opponentLeft);
-        MESSAGE("The opposing Necrozma regained its true power through Ultra Burst!");
+        MESSAGE("Necrozma ennemi a pris une nouvelle forme grâce à l'Ultra-Explosion!");
     }
 }
 
@@ -64,8 +64,8 @@ SINGLE_BATTLE_TEST("Ultra Burst affects turn order")
     } WHEN {
         TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_CELEBRATE, gimmick: GIMMICK_ULTRA_BURST); }
     } SCENE {
-        MESSAGE("Necrozma used Celebrate!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Necrozma utilise\nCélébration!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
     } THEN {
         EXPECT_EQ(player->speed, 263);
     }
@@ -84,18 +84,18 @@ DOUBLE_BATTLE_TEST("Ultra Burst happens after switching, but before Focus Punch-
         TURN { SWITCH(opponentRight, 2); MOVE(playerRight, MOVE_FOCUS_PUNCH, gimmick: GIMMICK_ULTRA_BURST, target: opponentLeft); MOVE(playerLeft, MOVE_FOCUS_PUNCH, target: opponentLeft); }
         TURN {}
     } SCENE {
-        MESSAGE("2 withdrew Wobbuffet!");
-        MESSAGE("2 sent out Wobbuffet!");
+        MESSAGE("2 retire Qulbutoké!");
+        MESSAGE("2 envoie\nun Qulbutoké!");
 
-        MESSAGE("Bright light is about to burst out of Necrozma!");
+        MESSAGE("Une lumière éblouissante émane de Necrozma!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ULTRA_BURST, playerRight);
-        MESSAGE("Necrozma regained its true power through Ultra Burst!");
+        MESSAGE("Necrozma a pris une nouvelle forme grâce à l'Ultra-Explosion!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, playerRight);
-        MESSAGE("Necrozma is tightening its focus!");
+        MESSAGE("Necrozma se concentre au maximum!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, playerLeft);
-        MESSAGE("Wobbuffet is tightening its focus!");
+        MESSAGE("Qulbutoké se concentre au maximum!");
     }
 }
 
@@ -107,13 +107,13 @@ SINGLE_BATTLE_TEST("Ultra Burst and Mega Evolution can happen on the same turn")
     } WHEN {
         TURN { MOVE(player, MOVE_CELEBRATE, gimmick: GIMMICK_ULTRA_BURST); MOVE(opponent, MOVE_CELEBRATE, gimmick: GIMMICK_MEGA); }
     } SCENE {
-        MESSAGE("Bright light is about to burst out of Necrozma!");
+        MESSAGE("Une lumière éblouissante émane de Necrozma!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ULTRA_BURST, player);
-        MESSAGE("Necrozma regained its true power through Ultra Burst!");
+        MESSAGE("Necrozma a pris une nouvelle forme grâce à l'Ultra-Explosion!");
 
-        MESSAGE("The opposing Gardevoir's Gardevoirite is reacting to 2's Mega Ring!");
+        MESSAGE("Gardevoirite de Gardevoir ennemi réagit au Méga-Anneau de 2!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, opponent);
-        MESSAGE("The opposing Gardevoir has Mega Evolved into Mega Gardevoir!");
+        MESSAGE("Gardevoir ennemi méga-évolue en Méga-Gardevoir!");
     } THEN {
         EXPECT_EQ(player->species, SPECIES_NECROZMA_ULTRA);
         EXPECT_EQ(opponent->species, SPECIES_GARDEVOIR_MEGA);

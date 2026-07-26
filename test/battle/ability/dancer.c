@@ -49,8 +49,8 @@ DOUBLE_BATTLE_TEST("Dancer can copy Teeter Dance and confuse both opposing targe
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TEETER_DANCE, playerLeft);
         ABILITY_POPUP(opponentLeft, ABILITY_DANCER);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TEETER_DANCE, opponentLeft);
-        MESSAGE("Wobbuffet became confused!");
-        MESSAGE("Wynaut became confused!");
+        MESSAGE("Ça rend Qulbutoké confus!");
+        MESSAGE("Ça rend Okéoké confus!");
     }
 }
 
@@ -174,7 +174,7 @@ SINGLE_BATTLE_TEST("Dancer doesn't trigger if the original user flinches")
         TURN { MOVE(opponent, MOVE_FAKE_OUT); MOVE(player, MOVE_DRAGON_DANCE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponent);
-        MESSAGE("Wobbuffet flinched and couldn't move!");
+        MESSAGE("Qulbutoké a la trouille! Il ne peut plus attaquer!");
         NONE_OF {
             ABILITY_POPUP(opponent, ABILITY_DANCER);
             ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_DANCE, opponent);
@@ -199,14 +199,14 @@ DOUBLE_BATTLE_TEST("Dancer still triggers if another dancer flinches")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_DANCE, playerRight);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
         ABILITY_POPUP(playerLeft, ABILITY_DANCER);
-        MESSAGE("Oricorio flinched and couldn't move!");
+        MESSAGE("Plumeline a la trouille! Il ne peut plus attaquer!");
         NONE_OF {
-            MESSAGE("Oricorio used Dragon Dance!");
+            MESSAGE("Plumeline utilise\nDanse Draco!");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_DANCE, playerLeft);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
         }
         ABILITY_POPUP(opponentLeft, ABILITY_DANCER);
-        MESSAGE("The opposing Oricorio used Dragon Dance!");
+        MESSAGE("Plumeline ennemi utilise\nDanse Draco!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_DANCE, opponentLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
     }
@@ -223,11 +223,11 @@ SINGLE_BATTLE_TEST("Dancer-called attacks have their type updated")
         TURN { MOVE(player, MOVE_REVELATION_DANCE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_REVELATION_DANCE, player);
-        MESSAGE("It's not very effective…");
+        MESSAGE("Ce n'est pas très efficace…");
         ABILITY_POPUP(opponent, ABILITY_DANCER);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_REVELATION_DANCE, opponent);
-        NOT MESSAGE("It's not very effective…");
-        MESSAGE("It's super effective!");
+        NOT MESSAGE("Ce n'est pas très efficace…");
+        MESSAGE("C'est super efficace!");
     }
 }
 
@@ -318,7 +318,7 @@ DOUBLE_BATTLE_TEST("Dancer doesn't activate if the original move missed")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DOUBLE_TEAM, opponentLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_FIERY_DANCE, playerLeft);
-        MESSAGE("The opposing Oricorio avoided the attack!");
+        MESSAGE("Plumeline ennemi évite l'attaque!");
         NONE_OF {
             ABILITY_POPUP(opponentLeft, ABILITY_DANCER);
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIERY_DANCE, opponentLeft);
@@ -407,7 +407,7 @@ SINGLE_BATTLE_TEST("Dancer-called moves can be reflected by Magic Bounce")
         ABILITY_POPUP(opponent, ABILITY_DANCER);
         ABILITY_POPUP(player, ABILITY_MAGIC_BOUNCE);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_FEATHER_DANCE, opponent);
-        MESSAGE("The opposing Oricorio's Feather Dance was bounced back!");
+        MESSAGE("La capacité Danse Plumes de Plumeline ennemi a été renvoyée!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FEATHER_DANCE, player);
     } THEN {
         EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
@@ -494,8 +494,8 @@ DOUBLE_BATTLE_TEST("Dancer-called moves do not update move to be called by Mimic
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_DANCE, opponentLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MIMIC, playerLeft);
-        MESSAGE("Wobbuffet learned Scratch!");
-        NOT MESSAGE("Wobbuffet learned Dragon Dance!");
+        MESSAGE("Qulbutoké apprend Griffe!");
+        NOT MESSAGE("Qulbutoké apprend Danse Draco!");
     }
 }
 
@@ -519,10 +519,10 @@ DOUBLE_BATTLE_TEST("Dancer-called moves doesn't update move to be called by Mirr
         ABILITY_POPUP(opponentLeft, ABILITY_DANCER);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_DANCE, opponentLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("Wobbuffet used Mirror Move!");
-        MESSAGE("Wobbuffet used Scratch!");
+        MESSAGE("Qulbutoké utilise\nMimique!");
+        MESSAGE("Qulbutoké utilise\nGriffe!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerLeft);
-        NOT MESSAGE("Wobbuffet used Dragon Dance!");
+        NOT MESSAGE("Qulbutoké utilise\nDanse Draco!");
     }
 }
 
@@ -560,13 +560,13 @@ DOUBLE_BATTLE_TEST("Dancer still activates after Red Card")
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_FIERY_DANCE, target: opponentLeft); }
     } SCENE {
-        MESSAGE("Wobbuffet used Fiery Dance!");
+        MESSAGE("Qulbutoké utilise\nDanse du Feu!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FIERY_DANCE, playerLeft);
         HP_BAR(opponentLeft);
         // Red card trigger
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponentLeft);
-        MESSAGE("The opposing Wobbuffet held up its Red Card against Wobbuffet!");
-        MESSAGE("Chansey was dragged out!");
+        MESSAGE("Qulbutoké ennemi a mis un Carton Rouge à Qulbutoké!");
+        MESSAGE("Leveinard est traîné de force au combat!\p");
         // Dancer
         ABILITY_POPUP(playerRight, ABILITY_DANCER);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FIERY_DANCE, playerRight);
@@ -586,14 +586,14 @@ DOUBLE_BATTLE_TEST("Dancer still activates after Red Card even if blocked by Suc
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_FIERY_DANCE, target: opponentLeft); }
     } SCENE {
-        MESSAGE("Octillery used Fiery Dance!");
+        MESSAGE("Octillery utilise\nDanse du Feu!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FIERY_DANCE, playerLeft);
         HP_BAR(opponentLeft);
         // red card trigger
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponentLeft);
-        MESSAGE("The opposing Wobbuffet held up its Red Card against Octillery!");
-        MESSAGE("Octillery is anchored in place with its suction cups!");
-        NOT MESSAGE("Chansey was dragged out!");
+        MESSAGE("Qulbutoké ennemi a mis un Carton Rouge à Octillery!");
+        MESSAGE("Octillery s'accroche avec ses ventouses!");
+        NOT MESSAGE("Leveinard est traîné de force au combat!\p");
         // Dancer
         ABILITY_POPUP(playerRight, ABILITY_DANCER);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FIERY_DANCE, playerRight);
@@ -711,12 +711,12 @@ SINGLE_BATTLE_TEST("Dancer user may hit itself in confusion instead of copying a
         TURN { MOVE(player, MOVE_DRAGON_DANCE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CONFUSE_RAY, player);
-        MESSAGE("The opposing Oricorio became confused!");
+        MESSAGE("Ça rend Plumeline ennemi confus!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_DANCE, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         ABILITY_POPUP(opponent, ABILITY_DANCER);
-        MESSAGE("The opposing Oricorio is confused!");
-        MESSAGE("It hurt itself in its confusion!");
+        MESSAGE("Plumeline ennemi est confus!");
+        MESSAGE("Il se blesse dans sa confusion.");
         HP_BAR(opponent);
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_DANCE, opponent);
@@ -810,7 +810,7 @@ SINGLE_BATTLE_TEST("Dancer can still copy a move even if it's being forced into 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         HP_BAR(player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ENCORE, player);
-        MESSAGE("The opposing Oricorio must do an encore!");
+        MESSAGE("Plumeline ennemi! Encore une fois!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SWORDS_DANCE, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         ABILITY_POPUP(opponent, ABILITY_DANCER);
@@ -881,13 +881,13 @@ DOUBLE_BATTLE_TEST("Dancer copies Lunar Dance after the original user faints, bu
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LUNAR_DANCE, playerLeft);
         HP_BAR(playerLeft, hp: 0);
-        MESSAGE("Wobbuffet fainted!");
+        MESSAGE("Qulbutoké est K.O.!\p");
         ABILITY_POPUP(playerRight, ABILITY_DANCER);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LUNAR_DANCE, playerRight);
         HP_BAR(playerRight, hp: 0);
-        MESSAGE("Oricorio fainted!");
-        SEND_IN_MESSAGE("Wynaut");
-        SEND_IN_MESSAGE("Chansey");
+        MESSAGE("Plumeline est K.O.!\p");
+        SEND_IN_MESSAGE("Okéoké");
+        SEND_IN_MESSAGE("Leveinard");
     }
 }
 

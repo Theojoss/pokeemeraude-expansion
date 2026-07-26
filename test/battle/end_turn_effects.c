@@ -14,15 +14,15 @@ DOUBLE_BATTLE_TEST("End Turn Effects: First Event Block is executed correctly (d
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_GRASSY_TERRAIN); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet is healed by the grassy terrain!");
+        MESSAGE("Qulbutoké ennemi récupère des PV grâce au gazon!");
         HP_BAR(opponentRight, captureDamage: &healed);
         HP_BAR(opponentRight, captureDamage: &damage);
-        MESSAGE("The opposing Wobbuffet was hurt by the Black Sludge!");
-        MESSAGE("The opposing Wynaut is healed by the grassy terrain!");
-        MESSAGE("The opposing Wynaut restored a little HP using its Leftovers!");
-        MESSAGE("Ekans is healed by the grassy terrain!");
-        MESSAGE("Ekans's burn was cured!");
-        MESSAGE("Wynaut is healed by the grassy terrain!");
+        MESSAGE("Qulbutoké ennemi est blessé par Boue Noire!");
+        MESSAGE("Okéoké ennemi récupère des PV grâce au gazon!");
+        MESSAGE("Okéoké ennemi récupère un peu de PV grâce à Restes!");
+        MESSAGE("Abo récupère des PV grâce au gazon!");
+        MESSAGE("Abo n'est plus brûlé!");
+        MESSAGE("Okéoké récupère des PV grâce au gazon!");
     } THEN {
         EXPECT_GT(0, healed);
         EXPECT_GT(damage, 0);
@@ -67,15 +67,15 @@ MULTI_BATTLE_TEST("End Turn Effects: First Event Block is executed correctly (mu
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_GRASSY_TERRAIN); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet is healed by the grassy terrain!");
+        MESSAGE("Qulbutoké ennemi récupère des PV grâce au gazon!");
         HP_BAR(opponentRight, captureDamage: &healed);
         HP_BAR(opponentRight, captureDamage: &damage);
-        MESSAGE("The opposing Wobbuffet was hurt by the Black Sludge!");
-        MESSAGE("The opposing Wynaut is healed by the grassy terrain!");
-        MESSAGE("The opposing Wynaut restored a little HP using its Leftovers!");
-        MESSAGE("Ekans is healed by the grassy terrain!");
-        MESSAGE("Ekans's burn was cured!");
-        MESSAGE("Wynaut is healed by the grassy terrain!");
+        MESSAGE("Qulbutoké ennemi est blessé par Boue Noire!");
+        MESSAGE("Okéoké ennemi récupère des PV grâce au gazon!");
+        MESSAGE("Okéoké ennemi récupère un peu de PV grâce à Restes!");
+        MESSAGE("Abo récupère des PV grâce au gazon!");
+        MESSAGE("Abo n'est plus brûlé!");
+        MESSAGE("Okéoké récupère des PV grâce au gazon!");
     } THEN {
         EXPECT_GT(0, healed);
         EXPECT_GT(damage, 0);
@@ -96,15 +96,15 @@ TWO_VS_ONE_BATTLE_TEST("End Turn Effects: First Event Block is executed correctl
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_GRASSY_TERRAIN); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet is healed by the grassy terrain!");
+        MESSAGE("Qulbutoké ennemi récupère des PV grâce au gazon!");
         HP_BAR(opponentRight, captureDamage: &healed);
         HP_BAR(opponentRight, captureDamage: &damage);
-        MESSAGE("The opposing Wobbuffet was hurt by the Black Sludge!");
-        MESSAGE("The opposing Wynaut is healed by the grassy terrain!");
-        MESSAGE("The opposing Wynaut restored a little HP using its Leftovers!");
-        MESSAGE("Ekans is healed by the grassy terrain!");
-        MESSAGE("Ekans's burn was cured!");
-        MESSAGE("Wynaut is healed by the grassy terrain!");
+        MESSAGE("Qulbutoké ennemi est blessé par Boue Noire!");
+        MESSAGE("Okéoké ennemi récupère des PV grâce au gazon!");
+        MESSAGE("Okéoké ennemi récupère un peu de PV grâce à Restes!");
+        MESSAGE("Abo récupère des PV grâce au gazon!");
+        MESSAGE("Abo n'est plus brûlé!");
+        MESSAGE("Okéoké récupère des PV grâce au gazon!");
     } THEN {
         EXPECT_GT(0, healed);
         EXPECT_GT(damage, 0);
@@ -125,15 +125,15 @@ ONE_VS_TWO_BATTLE_TEST("End Turn Effects: First Event Block is executed correctl
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_GRASSY_TERRAIN); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet is healed by the grassy terrain!");
+        MESSAGE("Qulbutoké ennemi récupère des PV grâce au gazon!");
         HP_BAR(opponentRight, captureDamage: &healed);
         HP_BAR(opponentRight, captureDamage: &damage);
-        MESSAGE("The opposing Wobbuffet was hurt by the Black Sludge!");
-        MESSAGE("The opposing Wynaut is healed by the grassy terrain!");
-        MESSAGE("The opposing Wynaut restored a little HP using its Leftovers!");
-        MESSAGE("Ekans is healed by the grassy terrain!");
-        MESSAGE("Ekans's burn was cured!");
-        MESSAGE("Wynaut is healed by the grassy terrain!");
+        MESSAGE("Qulbutoké ennemi est blessé par Boue Noire!");
+        MESSAGE("Okéoké ennemi récupère des PV grâce au gazon!");
+        MESSAGE("Okéoké ennemi récupère un peu de PV grâce à Restes!");
+        MESSAGE("Abo récupère des PV grâce au gazon!");
+        MESSAGE("Abo n'est plus brûlé!");
+        MESSAGE("Okéoké récupère des PV grâce au gazon!");
     } THEN {
         EXPECT_GT(0, healed);
         EXPECT_GT(damage, 0);

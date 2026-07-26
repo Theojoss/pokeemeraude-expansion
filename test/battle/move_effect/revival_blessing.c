@@ -17,7 +17,7 @@ SINGLE_BATTLE_TEST("Revival Blessing revives a chosen fainted party member for t
         TURN { MOVE(player, MOVE_REVIVAL_BLESSING, partyIndex:2); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_REVIVAL_BLESSING, player);
-        MESSAGE("Wynaut was revived and is ready to fight again!");
+        MESSAGE("Okéoké a repris connaissance et est prêt à se battre de nouveau!");
     }
 }
 
@@ -32,7 +32,7 @@ SINGLE_BATTLE_TEST("Revival Blessing revives a fainted party member for an oppon
         TURN { MOVE(opponent, MOVE_REVIVAL_BLESSING, partyIndex:1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_REVIVAL_BLESSING, opponent);
-        MESSAGE("Pichu was revived and is ready to fight again!");
+        MESSAGE("Pichu a repris connaissance et est prêt à se battre de nouveau!");
     }
 }
 
@@ -44,8 +44,8 @@ SINGLE_BATTLE_TEST("Revival Blessing fails if no party members are fainted")
     } WHEN {
         TURN { MOVE(player, MOVE_REVIVAL_BLESSING); }
     } SCENE {
-        MESSAGE("Wobbuffet used Revival Blessing!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké utilise\nSecond Souffle!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -61,9 +61,9 @@ DOUBLE_BATTLE_TEST("Revival Blessing doesn't prevent revived battlers from losin
                MOVE(opponentLeft, MOVE_REVIVAL_BLESSING, partyIndex: 1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerLeft);
-        MESSAGE("The opposing Wynaut fainted!");
+        MESSAGE("Okéoké ennemi est K.O.!\p");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_REVIVAL_BLESSING, opponentLeft);
-        MESSAGE("Wynaut was revived and is ready to fight again!");
+        MESSAGE("Okéoké a repris connaissance et est prêt à se battre de nouveau!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponentRight);
     }
 }
@@ -81,19 +81,19 @@ DOUBLE_BATTLE_TEST("Revival Blessing correctly updates battler absent flags")
         TURN { MOVE(playerLeft, MOVE_EARTHQUAKE); }
     } SCENE {
         // Turn 1
-        MESSAGE("Salamence used Earthquake!");
-        MESSAGE("It doesn't affect Pidgeot…");
-        MESSAGE("It doesn't affect the opposing Starly…");
+        MESSAGE("Drattak utilise\nSéisme!");
+        MESSAGE("Ça n'affecte pas Roucarnage…");
+        MESSAGE("Ça n'affecte pas Étourmi ennemi…");
         HP_BAR(opponentLeft);
-        MESSAGE("The opposing Geodude fainted!");
-        MESSAGE("The opposing Starly used Revival Blessing!");
-        MESSAGE("Geodude was revived and is ready to fight again!"); // Should have prefix but it doesn't currently.
+        MESSAGE("Racaillou ennemi est K.O.!\p");
+        MESSAGE("Étourmi ennemi utilise\nSecond Souffle!");
+        MESSAGE("Racaillou a repris connaissance et est prêt à se battre de nouveau!"); // Should have prefix but it doesn't currently.
         // Turn 2
-        MESSAGE("Salamence used Earthquake!");
-        MESSAGE("It doesn't affect Pidgeot…");
-        MESSAGE("It doesn't affect the opposing Starly…");
+        MESSAGE("Drattak utilise\nSéisme!");
+        MESSAGE("Ça n'affecte pas Roucarnage…");
+        MESSAGE("Ça n'affecte pas Étourmi ennemi…");
         HP_BAR(opponentLeft);
-        MESSAGE("The opposing Geodude fainted!");
+        MESSAGE("Racaillou ennemi est K.O.!\p");
     }
 }
 

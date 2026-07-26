@@ -13,7 +13,7 @@ DOUBLE_BATTLE_TEST("Commander will activate once Dondozo switches in")
         TURN { SWITCH(playerLeft, 2); }
     } SCENE {
         ABILITY_POPUP(playerRight, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
     }
 }
 
@@ -28,13 +28,13 @@ DOUBLE_BATTLE_TEST("Commander increases all stats by 2 stages once it is trigger
         TURN {}
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Dondozo's Attack rose sharply!");
-        MESSAGE("Dondozo's Defense rose sharply!");
-        MESSAGE("Dondozo's Sp. Atk rose sharply!");
-        MESSAGE("Dondozo's Sp. Def rose sharply!");
-        MESSAGE("Dondozo's Speed rose sharply!");
+        MESSAGE("Ah, Attaque du Oyacata augmente beaucoup!");
+        MESSAGE("Ah, Défense du Oyacata augmente beaucoup!");
+        MESSAGE("Ah, Attaque Spéciale du Oyacata augmente beaucoup!");
+        MESSAGE("Ah, Défense Spéciale du Oyacata augmente beaucoup!");
+        MESSAGE("Ah, Vitesse du Oyacata augmente beaucoup!");
     } THEN {
         EXPECT_EQ(playerRight->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 2);
         EXPECT_EQ(playerRight->statStages[STAT_DEF], DEFAULT_STAT_STAGE + 2);
@@ -55,9 +55,9 @@ DOUBLE_BATTLE_TEST("Commander Tatsugiri avoids moves targetted towards it")
         TURN { MOVE(opponentLeft, MOVE_SCRATCH, target: playerLeft); MOVE(opponentRight, MOVE_SCRATCH, target: playerRight); }
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
-        MESSAGE("Tatsugiri avoided the attack!");
+        MESSAGE("Nigirigon évite l'attaque!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentRight);
     }
 }
@@ -74,7 +74,7 @@ DOUBLE_BATTLE_TEST("Commander Tatsugiri will still take residual damage from a f
     } SCENE {
         ABILITY_POPUP(opponentLeft, ABILITY_SAND_STREAM);
         ABILITY_POPUP(playerLeft, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
         HP_BAR(playerRight);
         HP_BAR(playerLeft);
         HP_BAR(opponentRight);
@@ -92,7 +92,7 @@ DOUBLE_BATTLE_TEST("Commander Tatsugiri will still take poison damage if while i
         TURN {}
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
         HP_BAR(playerLeft);
     }
 }
@@ -108,9 +108,9 @@ DOUBLE_BATTLE_TEST("Commander Tatsugiri still avoids moves even when the attacke
         TURN { MOVE(opponentLeft, MOVE_SCRATCH, target: playerLeft); }
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
-        MESSAGE("Tatsugiri avoided the attack!");
+        MESSAGE("Nigirigon évite l'attaque!");
     }
 }
 
@@ -127,11 +127,11 @@ DOUBLE_BATTLE_TEST("Commander cannot affect a Dondozo that was previously affect
         TURN { MOVE(playerRight, MOVE_CELEBRATE); SWITCH(playerLeft, 2); SEND_OUT(playerLeft, 3); }
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
         HP_BAR(playerLeft);
         NONE_OF {
             ABILITY_POPUP(playerLeft, ABILITY_COMMANDER);
-            MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+            MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
         }
     }
 }
@@ -150,11 +150,11 @@ DOUBLE_BATTLE_TEST("Commander prevents Whirlwind from working against Dondozo or
         TURN { MOVE(opponentRight, MOVE_WHIRLWIND, target: playerRight); }
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
-        MESSAGE("The opposing Wobbuffet used Whirlwind!");
-        MESSAGE("Tatsugiri avoided the attack!");
-        MESSAGE("The opposing Wobbuffet used Whirlwind!");
-        MESSAGE("But it failed!"); // Avoided on tatsu, but it failed on dozo
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
+        MESSAGE("Qulbutoké ennemi utilise\nCyclone!");
+        MESSAGE("Nigirigon évite l'attaque!");
+        MESSAGE("Qulbutoké ennemi utilise\nCyclone!");
+        MESSAGE("Mais cela échoue!"); // Avoided on tatsu, but it failed on dozo
     }
 }
 
@@ -171,7 +171,7 @@ DOUBLE_BATTLE_TEST("Commander prevents Red Card from working while Commander is 
         TURN { MOVE(playerRight, MOVE_SCRATCH, target: opponentLeft); }
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponentLeft);
     } THEN {
         EXPECT(opponentLeft->item == ITEM_NONE);
@@ -223,7 +223,7 @@ DOUBLE_BATTLE_TEST("Commander prevents Eject Button from switching out Dondozo")
         HP_BAR(playerRight);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerRight);
-            MESSAGE("Dondozo is switched out with the Eject Button!");
+            MESSAGE("Oyacata se retire grâce au Bouton Fuite!");
         }
     } THEN {
         EXPECT_EQ(playerLeft->species, SPECIES_TATSUGIRI);
@@ -249,7 +249,7 @@ DOUBLE_BATTLE_TEST("Commander prevents Eject Pack from switching out Dondozo")
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerRight);
-            MESSAGE("Dondozo is switched out with the Eject Pack!");
+            MESSAGE("Oyacata se retire grâce au Sac Fuite!");
         }
     } THEN {
         EXPECT_EQ(playerLeft->species, SPECIES_TATSUGIRI);
@@ -275,7 +275,7 @@ DOUBLE_BATTLE_TEST("Commander prevents Eject Pack from activating after a switch
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerRight);
-            MESSAGE("Dondozo is switched out with the Eject Pack!");
+            MESSAGE("Oyacata se retire grâce au Sac Fuite!");
         }
     } THEN {
         EXPECT_EQ(playerLeft->species, SPECIES_TATSUGIRI);
@@ -302,7 +302,7 @@ DOUBLE_BATTLE_TEST("Commander prevents Tatsugiri's Eject Pack from activating af
         ABILITY_POPUP(playerLeft, ABILITY_COMMANDER);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
-            MESSAGE("Tatsugiri is switched out with the Eject Pack!");
+            MESSAGE("Nigirigon se retire grâce au Sac Fuite!");
         }
     } THEN {
         EXPECT_EQ(playerLeft->species, SPECIES_TATSUGIRI);
@@ -338,7 +338,7 @@ DOUBLE_BATTLE_TEST("Commander prevents pivot moves from switching out Dondozo")
         if (move == MOVE_BATON_PASS || move == MOVE_TELEPORT || move == MOVE_SHED_TAIL)
         {
             NOT ANIMATION(ANIM_TYPE_MOVE, move, playerRight);
-            MESSAGE("But it failed!");
+            MESSAGE("Mais cela échoue!");
         }
         else
         {
@@ -365,7 +365,7 @@ DOUBLE_BATTLE_TEST("Commander prevents Ally Switch from swapping Dondozo with Ta
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_COMMANDER);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_ALLY_SWITCH, playerRight);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT_EQ(playerLeft->species, SPECIES_TATSUGIRI);
         EXPECT_EQ(playerRight->species, SPECIES_DONDOZO);
@@ -385,11 +385,11 @@ DOUBLE_BATTLE_TEST("Commander Tatsugiri is not damaged by a double target move i
         TURN { MOVE(opponentLeft, MOVE_EARTHQUAKE); SEND_OUT(playerLeft, 2); }
     } SCENE {
         ABILITY_POPUP(playerRight, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
         HP_BAR(playerLeft);
         HP_BAR(opponentRight);
         NOT HP_BAR(playerRight);
-        MESSAGE("Dondozo fainted!");
+        MESSAGE("Oyacata est K.O.!\p");
     }
 }
 
@@ -406,7 +406,7 @@ DOUBLE_BATTLE_TEST("Commander Tatsugiri takes no damage from multi-target damagi
         TURN { MOVE(opponentLeft, MOVE_EARTHQUAKE); MOVE(opponentRight, MOVE_EARTHQUAKE); SWITCH(playerLeft, 2); }
     } SCENE {
         ABILITY_POPUP(playerRight, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, opponentLeft);
         HP_BAR(playerLeft);
@@ -432,7 +432,7 @@ DOUBLE_BATTLE_TEST("Commander doesn't prevent Transform from working on a Comman
         TURN { MOVE(opponentRight, MOVE_TRANSFORM, target: playerRight); }
     } SCENE {
         ABILITY_POPUP(playerRight, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TRANSFORM, opponentRight);
     }
 }
@@ -450,9 +450,9 @@ DOUBLE_BATTLE_TEST("Commander doesn't prevent Imposter from working on a Command
         TURN { SWITCH(opponentLeft, 2); }
     } SCENE {
         ABILITY_POPUP(playerRight, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
         ABILITY_POPUP(opponentLeft, ABILITY_IMPOSTER);
-        MESSAGE("The opposing Ditto transformed into Tatsugiri!");
+        MESSAGE("Métamorph ennemi prend l'apparence de Nigirigon!");
     }
 }
 
@@ -472,9 +472,9 @@ DOUBLE_BATTLE_TEST("Commander Tatsugiri faints from Perish Song if it heard the 
         TURN {}
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PERISH_SONG, opponentLeft);
-        MESSAGE("All Pokémon that heard the song will faint in three turns!");
+        MESSAGE("Les Pokémon qui ont entendu la chanson seront K.O. dans trois tours!");
         ABILITY_POPUP(playerRight, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
     } THEN {
         EXPECT_GT(playerLeft->hp, 0);
         EXPECT_EQ(playerRight->hp, 0);
@@ -497,7 +497,7 @@ DOUBLE_BATTLE_TEST("Commander Tatsugiri is still affected by Haze while controll
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SWORDS_DANCE, playerRight);
         ABILITY_POPUP(playerRight, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HAZE, opponentRight);
     } THEN {
         EXPECT_EQ(playerRight->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
@@ -519,8 +519,8 @@ DOUBLE_BATTLE_TEST("Commander Attacker is kept (Dondozo Left Slot)")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentRight);
         ABILITY_POPUP(playerRight, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
-        MESSAGE("Tatsugiri avoided the attack!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
+        MESSAGE("Nigirigon évite l'attaque!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, opponentLeft);
         HP_BAR(playerLeft);
         HP_BAR(opponentRight);
@@ -542,8 +542,8 @@ DOUBLE_BATTLE_TEST("Commander Attacker is kept (Dondozo Right Slot)")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentRight);
         ABILITY_POPUP(playerLeft, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
-        MESSAGE("Tatsugiri avoided the attack!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
+        MESSAGE("Nigirigon évite l'attaque!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, opponentLeft);
         HP_BAR(playerRight);
         HP_BAR(opponentRight);
@@ -569,7 +569,7 @@ DOUBLE_BATTLE_TEST("Commander Tatsugiri does not attack if Dondozo faints the sa
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
         HP_BAR(playerLeft);
-        MESSAGE("Dondozo fainted!");
+        MESSAGE("Oyacata est K.O.!\p");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentRight);
         HP_BAR(playerRight);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, playerRight);
@@ -588,10 +588,10 @@ DOUBLE_BATTLE_TEST("Commander Tatsugiri does not get hit by Dragon Darts when a 
     } WHEN {
         TURN { SWITCH(playerLeft, 2); MOVE(opponentRight, MOVE_DRAGON_DARTS, target: playerRight); SEND_OUT(playerRight, 0); }
     } SCENE {
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_DARTS, opponentRight);
         HP_BAR(playerRight);
-        MESSAGE("Dondozo fainted!");
+        MESSAGE("Oyacata est K.O.!\p");
         NOT HP_BAR(playerLeft);
     }
 }
@@ -613,7 +613,7 @@ DOUBLE_BATTLE_TEST("Commander Tatsugiri does not get hit by Dragon Darts when co
         else
             TURN { MOVE(opponentRight, MOVE_DRAGON_DARTS, target: playerLeft); }
     } SCENE {
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_DARTS, opponentRight);
         HP_BAR(playerRight);
         NOT HP_BAR(playerLeft);
@@ -637,7 +637,7 @@ DOUBLE_BATTLE_TEST("Commander will not activate if Dondozo fainted right before 
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentRight);
         HP_BAR(playerRight);
-        MESSAGE("Dondozo fainted!");
+        MESSAGE("Oyacata est K.O.!\p");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SHED_TAIL, playerLeft);
         NOT ABILITY_POPUP(playerLeft, ABILITY_COMMANDER);
     }
@@ -657,7 +657,7 @@ DOUBLE_BATTLE_TEST("Commander prevent Dondozo from switch out by Dragon Tail")
     } SCENE {
         ABILITY_POPUP(playerRight, ABILITY_COMMANDER);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_TAIL, opponentLeft);
-        NOT MESSAGE("Wobbuffet was dragged out!");
+        NOT MESSAGE("Qulbutoké est traîné de force au combat!\p");
     }
 }
 
@@ -720,7 +720,7 @@ DOUBLE_BATTLE_TEST("Commander cancels Tatsugiri's pending Mega Evolution")
         }
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
         NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, playerLeft);
     } THEN {
         EXPECT_EQ(playerLeft->species, SPECIES_TATSUGIRI);
@@ -744,7 +744,7 @@ DOUBLE_BATTLE_TEST("Commander cancels Tatsugiri's pending Z-Move")
         }
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ZMOVE_ACTIVATE, playerLeft);
             ANIMATION(ANIM_TYPE_MOVE, MOVE_BREAKNECK_BLITZ, playerLeft);
@@ -767,9 +767,9 @@ DOUBLE_BATTLE_TEST("Commander cancels Tatsugiri's pending Dynamax")
         }
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
         NONE_OF {
-            MESSAGE("Time to Dynamax!");
+            MESSAGE("C'est l'heure du Dynamax!");
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_DYNAMAX_GROWTH, playerLeft);
         }
     }
@@ -790,7 +790,7 @@ DOUBLE_BATTLE_TEST("Commander cancels Tatsugiri's pending Terastallization")
         }
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_TERA_CHARGE, playerLeft);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_TERA_ACTIVATE, playerLeft);
@@ -820,10 +820,10 @@ DOUBLE_BATTLE_TEST("Commander clears when Dondozo is replaced and Tatsugiri can 
         }
     } SCENE {
         ABILITY_POPUP(playerRight, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_VOLT_SWITCH, opponentRight);
         HP_BAR(playerLeft);
-        MESSAGE("Dondozo fainted!");
+        MESSAGE("Oyacata est K.O.!\p");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
         HP_BAR(playerRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
@@ -849,13 +849,13 @@ DOUBLE_BATTLE_TEST("Commander does not clear semi-invulnerability of non-Tatsugi
         }
     } SCENE {
         ABILITY_POPUP(playerRight, ABILITY_COMMANDER);
-        MESSAGE("Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon a été avalé par Oyacata et devient son commandant.");
         HP_BAR(playerRight);
-        MESSAGE("Tatsugiri fainted!");
+        MESSAGE("Nigirigon est K.O.!\p");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FLY, playerRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
         HP_BAR(playerLeft);
-        MESSAGE("Dondozo fainted!");
+        MESSAGE("Oyacata est K.O.!\p");
         NOT HP_BAR(playerRight);
     } THEN {
         EXPECT_EQ(playerRight->hp, playerRight->maxHP);
@@ -882,17 +882,17 @@ DOUBLE_BATTLE_TEST("Commander still blocks forced switch after swallowed Tatsugi
         TURN { MOVE(playerLeft, move, target: opponentLeft); }
     } SCENE {
         ABILITY_POPUP(opponentRight, ABILITY_COMMANDER);
-        MESSAGE("The opposing Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon ennemi a été avalé par Oyacata et devient son commandant.");
         HP_BAR(opponentRight);
-        MESSAGE("The opposing Tatsugiri fainted!");
+        MESSAGE("Nigirigon ennemi est K.O.!\p");
         if (move == MOVE_DRAGON_TAIL)
         {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_TAIL, playerLeft);
-            NOT MESSAGE("The opposing Dondozo was dragged out!");
+            NOT MESSAGE("Oyacata ennemi est traîné de force au combat!\p");
         }
         else
         {
-            MESSAGE("But it failed!");
+            MESSAGE("Mais cela échoue!");
         }
     } THEN {
         EXPECT(opponentLeft->species == SPECIES_DONDOZO);
@@ -914,9 +914,9 @@ DOUBLE_BATTLE_TEST("Red Card is still consumed but cannot force out Dondozo afte
         TURN { MOVE(opponentLeft, MOVE_SCRATCH, target: playerLeft); }
     } SCENE {
         ABILITY_POPUP(opponentRight, ABILITY_COMMANDER);
-        MESSAGE("The opposing Tatsugiri was swallowed by Dondozo and became Dondozo's commander!");
+        MESSAGE("Nigirigon ennemi a été avalé par Oyacata et devient son commandant.");
         HP_BAR(opponentRight);
-        MESSAGE("The opposing Tatsugiri fainted!");
+        MESSAGE("Nigirigon ennemi est K.O.!\p");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
     } THEN {

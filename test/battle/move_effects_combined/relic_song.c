@@ -31,7 +31,7 @@ SINGLE_BATTLE_TEST("Relic Song is prevented by Soundproof")
         TURN { MOVE(player, MOVE_RELIC_SONG); }
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_SOUNDPROOF);
-        MESSAGE("It doesn't affect the opposing Voltorb…");
+        MESSAGE("Ça n'affecte pas Voltorbe ennemi…");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_RELIC_SONG, player);
             HP_BAR(opponent);
@@ -49,7 +49,7 @@ SINGLE_BATTLE_TEST("Relic Song will become a Water-type move when used by a Pok�
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RELIC_SONG, opponent);
         HP_BAR(player);
-        MESSAGE("It's super effective!");
+        MESSAGE("C'est super efficace!");
     }
 }
 
@@ -63,7 +63,7 @@ SINGLE_BATTLE_TEST("Relic Song is blocked by Throat Chop")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_THROAT_CHOP, opponent);
         HP_BAR(player);
-        MESSAGE("The effects of Throat Chop prevent Wobbuffet from using certain moves!");
+        MESSAGE("Exécu-Son empêche Qulbutoké d'utiliser cette capacité!\p");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_RELIC_SONG, player);
     }
 }

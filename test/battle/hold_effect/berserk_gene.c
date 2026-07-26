@@ -21,9 +21,9 @@ SINGLE_BATTLE_TEST("Berserk Gene sharply raises attack at the start of a single 
         if (item == ITEM_BERSERK_GENE)
         {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("The Berserk Gene sharply boosted Wobbuffet's Attack!");
+            MESSAGE("Grâce à ADN Berzerk, Attaque de Qulbutoké augmente beaucoup!");
             ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_CONFUSION, player);
-            MESSAGE("Wobbuffet became confused!");
+            MESSAGE("Ça rend Qulbutoké confus!");
         }
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
@@ -48,9 +48,9 @@ DOUBLE_BATTLE_TEST("Berserk Gene sharply raises attack at the start of a double 
         if (item == ITEM_BERSERK_GENE)
         {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-            MESSAGE("The Berserk Gene sharply boosted Wobbuffet's Attack!");
+            MESSAGE("Grâce à ADN Berzerk, Attaque de Qulbutoké augmente beaucoup!");
             ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_CONFUSION, playerRight);
-            MESSAGE("Wobbuffet became confused!");
+            MESSAGE("Ça rend Qulbutoké confus!");
         }
         HP_BAR(opponentLeft, captureDamage: &results[i].damage);
     } FINALLY {
@@ -75,9 +75,9 @@ SINGLE_BATTLE_TEST("Berserk Gene activates on switch in", s16 damage)
         if (item == ITEM_BERSERK_GENE)
         {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("The Berserk Gene sharply boosted Wobbuffet's Attack!");
+            MESSAGE("Grâce à ADN Berzerk, Attaque de Qulbutoké augmente beaucoup!");
             ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_CONFUSION, player);
-            MESSAGE("Wobbuffet became confused!");
+            MESSAGE("Ça rend Qulbutoké confus!");
         }
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
@@ -102,12 +102,12 @@ SINGLE_BATTLE_TEST("Berserk Gene does not confuse a Pokemon with Own Tempo but s
         if (item == ITEM_BERSERK_GENE)
         {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("The Berserk Gene sharply boosted Slowbro's Attack!");
+            MESSAGE("Grâce à ADN Berzerk, Attaque de Flagadoss augmente beaucoup!");
             ABILITY_POPUP(player, ABILITY_OWN_TEMPO);
-            MESSAGE("Slowbro cannot be confused!");
+            MESSAGE("Flagadoss ne peut pas être rendu confus!");
         }
         HP_BAR(opponent, captureDamage: &results[i].damage);
-        NOT MESSAGE("Slowbro became confused!");
+        NOT MESSAGE("Ça rend Flagadoss confus!");
     } FINALLY {
         EXPECT_MUL_EQ(results[0].damage, Q_4_12(2.0), results[1].damage);
     }
@@ -140,12 +140,12 @@ DOUBLE_BATTLE_TEST("Berserk Gene does not confuse a Pokemon with Own Tempo but s
         if (item == ITEM_BERSERK_GENE)
         {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, (positionLeft) ? playerLeft : playerRight);
-            MESSAGE("The Berserk Gene sharply boosted Slowbro's Attack!");
+            MESSAGE("Grâce à ADN Berzerk, Attaque de Flagadoss augmente beaucoup!");
             ABILITY_POPUP(positionLeft ? playerLeft : playerRight, ABILITY_OWN_TEMPO);
-            MESSAGE("Slowbro cannot be confused!");
+            MESSAGE("Flagadoss ne peut pas être rendu confus!");
         }
         HP_BAR(opponentLeft, captureDamage: &results[i].damage);
-        NOT MESSAGE("Slowbro became confused!");
+        NOT MESSAGE("Ça rend Flagadoss confus!");
     } FINALLY {
         EXPECT_MUL_EQ(results[0].damage, Q_4_12(2.0), results[1].damage);
         EXPECT_MUL_EQ(results[0].damage, Q_4_12(2.0), results[2].damage);
@@ -165,8 +165,8 @@ SINGLE_BATTLE_TEST("Berserk Gene does not confuse on Misty Terrain but still rai
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("The Berserk Gene sharply boosted Tapu Fini's Attack!");
-        NOT MESSAGE("Tapu Fini became confused!");
+        MESSAGE("Grâce à ADN Berzerk, Attaque de Tokopisco augmente beaucoup!");
+        NOT MESSAGE("Ça rend Tokopisco confus!");
     }
 }
 
@@ -181,9 +181,9 @@ SINGLE_BATTLE_TEST("Berserk Gene does not confuse when Safeguard is active")
         TURN { SWITCH(player, 1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("The Berserk Gene sharply boosted Wobbuffet's Attack!");
-        MESSAGE("Wobbuffet is protected by Safeguard!");
-        NOT MESSAGE("Wobbuffet became confused!");
+        MESSAGE("Grâce à ADN Berzerk, Attaque de Qulbutoké augmente beaucoup!");
+        MESSAGE("Qulbutoké est protégé par la brume!");
+        NOT MESSAGE("Ça rend Qulbutoké confus!");
     }
 }
 
@@ -200,7 +200,7 @@ SINGLE_BATTLE_TEST("Berserk Gene causes confusion for more than 5 turns") // how
         TURN {}
         TURN {}
     } SCENE {
-        NOT MESSAGE("Wobbuffet snapped out of confusion!");
+        NOT MESSAGE("Qulbutoké snapped out of confusion!");
     }
 }
 
@@ -249,7 +249,7 @@ SINGLE_BATTLE_TEST("Berserk Gene does not cause an infinite loop")
         TURN { MOVE(player, MOVE_BESTOW); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The Berserk Gene sharply boosted the opposing Wobbuffet's Attack!");
+        MESSAGE("Grâce à ADN Berzerk, Attaque de Qulbutoké ennemi augmente beaucoup!");
     }
 }
 
@@ -276,7 +276,7 @@ SINGLE_BATTLE_TEST("Berserker Gene confusion can be healed with bag items")
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_CONFUSION, player);
-        MESSAGE("Wobbuffet snapped out of its confusion!");
+        MESSAGE("Qulbutoké n'est plus confus!");
     } THEN {
         EXPECT(player->volatiles.infiniteConfusion == 0);
     }

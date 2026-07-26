@@ -24,7 +24,7 @@ SINGLE_BATTLE_TEST("Rage's volatile causes Attack to rise by 1 when hit by a dam
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAGE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Wobbuffet's rage is building!");
+        MESSAGE("La frénésie de Qulbutoké augmente!");
     }
 }
 
@@ -39,10 +39,10 @@ SINGLE_BATTLE_TEST("Rage volatile is cleared when using a different move")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAGE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, opponent);
-        MESSAGE("Wobbuffet's rage is building!");
+        MESSAGE("La frénésie de Qulbutoké augmente!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, opponent);
-        NOT MESSAGE("Wobbuffet's rage is building!");
+        NOT MESSAGE("La frénésie de Qulbutoké augmente!");
     }
 }
 
@@ -56,7 +56,7 @@ SINGLE_BATTLE_TEST("Rage does not build Attack from status moves")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAGE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GROWL, opponent);
-        NOT MESSAGE("Wobbuffet's rage is building!");
+        NOT MESSAGE("La frénésie de Qulbutoké augmente!");
     }
 }
 
@@ -72,13 +72,13 @@ SINGLE_BATTLE_TEST("Rage builds Attack multiple times when hit multiple times")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAGE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, opponent);
-        MESSAGE("Wobbuffet's rage is building!");
+        MESSAGE("La frénésie de Qulbutoké augmente!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAGE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, opponent);
-        MESSAGE("Wobbuffet's rage is building!");
+        MESSAGE("La frénésie de Qulbutoké augmente!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAGE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, opponent);
-        MESSAGE("Wobbuffet's rage is building!");
+        MESSAGE("La frénésie de Qulbutoké augmente!");
     }
 }
 
@@ -93,10 +93,10 @@ SINGLE_BATTLE_TEST("Rage volatile persists when using Rage again")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAGE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, opponent);
-        MESSAGE("Wobbuffet's rage is building!");
+        MESSAGE("La frénésie de Qulbutoké augmente!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAGE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, opponent);
-        MESSAGE("Wobbuffet's rage is building!");
+        MESSAGE("La frénésie de Qulbutoké augmente!");
     }
 }
 
@@ -112,7 +112,7 @@ SINGLE_BATTLE_TEST("Rage does not build Attack when user's Attack is at max stag
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BELLY_DRUM, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAGE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, opponent);
-        NOT MESSAGE("Wobbuffet's rage is building!");
+        NOT MESSAGE("La frénésie de Qulbutoké augmente!");
     }
 }
 
@@ -130,12 +130,12 @@ SINGLE_BATTLE_TEST("Rage volatile behavior on Protect depends on generation")
         TURN { MOVE(opponent, MOVE_TACKLE); MOVE(player, MOVE_RAGE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PROTECT, opponent);
-        MESSAGE("The opposing Wobbuffet protected itself!");
+        MESSAGE("Qulbutoké ennemi se protège!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, opponent);
         if (config == GEN_3) {
-            MESSAGE("Wobbuffet's rage is building!");
+            MESSAGE("La frénésie de Qulbutoké augmente!");
         } else {
-            NOT MESSAGE("Wobbuffet's rage is building!");
+            NOT MESSAGE("La frénésie de Qulbutoké augmente!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAGE, player);
     }
@@ -156,13 +156,13 @@ SINGLE_BATTLE_TEST("Rage volatile behavior on miss depends on generation")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAGE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, opponent);
-        MESSAGE("Wobbuffet's rage is building!");
-        MESSAGE("The opposing Wobbuffet avoided the attack!");
+        MESSAGE("La frénésie de Qulbutoké augmente!");
+        MESSAGE("Qulbutoké ennemi évite l'attaque!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, opponent);
         if (config == GEN_3) {
-            MESSAGE("Wobbuffet's rage is building!");
+            MESSAGE("La frénésie de Qulbutoké augmente!");
         } else {
-            NOT MESSAGE("Wobbuffet's rage is building!");
+            NOT MESSAGE("La frénésie de Qulbutoké augmente!");
         }
     }
 }

@@ -29,11 +29,11 @@ SINGLE_BATTLE_TEST("Hyperspace Fury fails if used by a Pokémon other than Hoopa
             break;
         case SPECIES_HOOPA_CONFINED:
             NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_HYPERSPACE_FURY, player);
-            MESSAGE("But Hoopa can't use it the way it is now!");
+            MESSAGE("Mais Hoopa n'en est pas capable sous cette forme!");
             break;
         case SPECIES_WOBBUFFET:
             NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_HYPERSPACE_FURY, player);
-            MESSAGE("But Wobbuffet can't use the move!");
+            MESSAGE("Mais Qulbutoké ne peut pas utiliser la capacité!");
             break;
         default:
             NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_HYPERSPACE_FURY, player);

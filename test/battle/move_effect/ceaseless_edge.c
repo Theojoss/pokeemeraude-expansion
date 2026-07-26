@@ -19,10 +19,10 @@ SINGLE_BATTLE_TEST("Ceaseless Edge sets up hazards after hitting the target")
         s32 maxHP = GetMonData(&OPPONENT_PARTY[1], MON_DATA_MAX_HP);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CEASELESS_EDGE, player);
         HP_BAR(opponent);
-        MESSAGE("Spikes were scattered on the ground all around the opposing team!");
-        MESSAGE("2 sent out Wobbuffet!");
+        MESSAGE("Des picots s'éparpillent autour de l'équipe ennemie!");
+        MESSAGE("2 envoie\nun Qulbutoké!");
         HP_BAR(opponent, damage: maxHP / 8);
-        MESSAGE("The opposing Wobbuffet was hurt by the spikes!");
+        MESSAGE("Qulbutoké ennemi est blessé par les picots!");
     }
 }
 
@@ -43,23 +43,23 @@ SINGLE_BATTLE_TEST("Ceaseless Edge can set up to 3 layers of Spikes")
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CEASELESS_EDGE, player);
         HP_BAR(opponent);
-        MESSAGE("Spikes were scattered on the ground all around the opposing team!");
+        MESSAGE("Des picots s'éparpillent autour de l'équipe ennemie!");
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CEASELESS_EDGE, player);
         HP_BAR(opponent);
-        MESSAGE("Spikes were scattered on the ground all around the opposing team!");
+        MESSAGE("Des picots s'éparpillent autour de l'équipe ennemie!");
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CEASELESS_EDGE, player);
         HP_BAR(opponent);
-        MESSAGE("Spikes were scattered on the ground all around the opposing team!");
+        MESSAGE("Des picots s'éparpillent autour de l'équipe ennemie!");
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CEASELESS_EDGE, player);
         HP_BAR(opponent);
-        NOT MESSAGE("Spikes were scattered on the ground all around the opposing team!");
+        NOT MESSAGE("Des picots s'éparpillent autour de l'équipe ennemie!");
 
-        MESSAGE("2 sent out Wynaut!");
+        MESSAGE("2 envoie\nun Okéoké!");
         HP_BAR(opponent, damage: maxHP / 4);
-        MESSAGE("The opposing Wynaut was hurt by the spikes!");
+        MESSAGE("Okéoké ennemi est blessé par les picots!");
     }
 }
 
@@ -74,8 +74,8 @@ SINGLE_BATTLE_TEST("Ceaseless Edge fails to set up hazards if user faints")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CEASELESS_EDGE, player);
         HP_BAR(player);
-        MESSAGE("Wobbuffet was hurt by the opposing Wobbuffet's Rocky Helmet!");
-        NOT MESSAGE("Spikes were scattered on the ground all around the opposing team!");
+        MESSAGE("Qulbutoké est blessé par Casque Brut de Qulbutoké ennemi!");
+        NOT MESSAGE("Des picots s'éparpillent autour de l'équipe ennemie!");
     }
 }
 
@@ -90,7 +90,7 @@ SINGLE_BATTLE_TEST("Ceaseless Edge does not set up hazards if target was not hit
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PROTECT, opponent);
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_CEASELESS_EDGE, player);
-            MESSAGE("Spikes were scattered on the ground all around the opposing team!");
+            MESSAGE("Des picots s'éparpillent autour de l'équipe ennemie!");
         }
     }
 }

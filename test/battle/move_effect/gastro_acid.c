@@ -36,7 +36,7 @@ SINGLE_BATTLE_TEST("Gastro Acid fails if target has a banned ability")
         TURN { MOVE(player, MOVE_GASTRO_ACID); }
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_GASTRO_ACID, player);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -49,9 +49,9 @@ SINGLE_BATTLE_TEST("Gastro Acid immediately ends Neutralizing Gas and reactivate
         TURN { MOVE(player, MOVE_GASTRO_ACID); }
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_NEUTRALIZING_GAS);
-        MESSAGE("Neutralizing gas filled the area!");
+        MESSAGE("Un gaz inhibiteur envahit les lieux!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GASTRO_ACID, player);
-        MESSAGE("The effects of the neutralizing gas wore off!");
+        MESSAGE("Les effets du gaz inhibiteur se sont dissipés.");
         ABILITY_POPUP(player, ABILITY_DROUGHT);
     }
 }

@@ -228,9 +228,9 @@ SINGLE_BATTLE_TEST("Corrosion can poison Poison/Steel types if the Pokémon uses
         TURN { MOVE(player, MOVE_BANEFUL_BUNKER); MOVE(opponent, MOVE_SCRATCH); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BANEFUL_BUNKER, player);
-        MESSAGE("Salandit protected itself!");
+        MESSAGE("Tritox se protège!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
-        MESSAGE("Salandit protected itself!");
+        MESSAGE("Tritox se protège!");
         STATUS_ICON(opponent, poison: TRUE);
     }
 }

@@ -70,7 +70,7 @@ SINGLE_BATTLE_TEST("Magic Room: An item that can activate will activate once Mag
             ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
         }
 
-        MESSAGE("Magic Room wore off, and held items' effects returned to normal!");
+        MESSAGE("L'effet des objets tenus est rétabli!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
     }
 }

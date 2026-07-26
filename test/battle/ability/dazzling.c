@@ -25,7 +25,7 @@ DOUBLE_BATTLE_TEST("Dazzling, Queenly Majesty and Armor Tail protect the user fr
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_QUICK_ATTACK, opponentRight);
         ABILITY_POPUP(opponentLeft, ability);
-        MESSAGE("Wobbuffet cannot use Quick Attack!");
+        MESSAGE("Qulbutoké ne peut pas utiliser la capacité Vive-Attaque!");
     }
 }
 
@@ -48,7 +48,7 @@ DOUBLE_BATTLE_TEST("Dazzling, Queenly Majesty and Armor Tail protect users partn
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_QUICK_ATTACK, opponentRight);
         ABILITY_POPUP(opponentLeft, ability);
-        MESSAGE("Wobbuffet cannot use Quick Attack!");
+        MESSAGE("Qulbutoké ne peut pas utiliser la capacité Vive-Attaque!");
     }
 }
 
@@ -245,10 +245,10 @@ DOUBLE_BATTLE_TEST("Instruct-called moves keep their priority, which is consider
         ANIMATION(ANIM_TYPE_MOVE, MOVE_QUICK_ATTACK, playerRight);
         HP_BAR(opponentLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponentLeft);
-        MESSAGE("The opposing Wobbuffet is switched out with the Eject Button!");
+        MESSAGE("Qulbutoké ennemi se retire grâce au Bouton Fuite!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_INSTRUCT, playerLeft);
         ABILITY_POPUP(opponentLeft, ability);
-        MESSAGE("Wobbuffet cannot use Quick Attack!");
+        MESSAGE("Qulbutoké ne peut pas utiliser la capacité Vive-Attaque!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_QUICK_ATTACK, playerRight);
     }
 }
@@ -269,9 +269,9 @@ SINGLE_BATTLE_TEST("Dazzling, Queenly Majesty and Armor Tail do not block high-p
     } WHEN {
         TURN { MOVE(player, MOVE_METRONOME, WITH_RNG(RNG_METRONOME, MOVE_QUICK_ATTACK)); }
     } SCENE {
-        MESSAGE("Wobbuffet used Metronome!");
+        MESSAGE("Qulbutoké utilise\nMétronome!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_METRONOME, player);
-        MESSAGE("Waggling a finger let it use Quick Attack!");
+        MESSAGE("Métronome lance la capacité Vive-Attaque!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_QUICK_ATTACK, player);
         HP_BAR(opponent);
         NOT ABILITY_POPUP(opponent, ability);

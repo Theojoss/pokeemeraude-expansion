@@ -21,9 +21,9 @@ SINGLE_BATTLE_TEST("Confusion adds a 50/33% chance to hit self with 40 power")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         HP_BAR(player, captureDamage: &damage[0]);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CONFUSE_RAY, player);
-        MESSAGE("The opposing Wobbuffet became confused!");
-        MESSAGE("The opposing Wobbuffet is confused!");
-        MESSAGE("It hurt itself in its confusion!");
+        MESSAGE("Ça rend Qulbutoké ennemi confus!");
+        MESSAGE("Qulbutoké ennemi est confus!");
+        MESSAGE("Il se blesse dans sa confusion.");
         HP_BAR(opponent, captureDamage: &damage[1]);
     } THEN {
         EXPECT_EQ(damage[0], damage[1]);
@@ -47,9 +47,9 @@ SINGLE_BATTLE_TEST("Confusion self hit does not consume Gems")
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Normal Gem strengthened Wobbuffet's power!");
+            MESSAGE("Joyau Normal strengthened Qulbutoké's power!");
         }
-        MESSAGE("It hurt itself in its confusion!");
+        MESSAGE("Il se blesse dans sa confusion.");
     }
 }
 
@@ -64,7 +64,7 @@ SINGLE_BATTLE_TEST("Confusion damage activates Focus Sash")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CONFUSE_RAY, opponent);
         HP_BAR(player); // Confusion damage
-        MESSAGE("Wobbuffet hung on using its Focus Sash!");
+        MESSAGE("Qulbutoké tient bon grâce à Ceinture Force!");
     }
 }
 

@@ -23,9 +23,9 @@ SINGLE_BATTLE_TEST("Spectral Thief steals opponents boost before attacking", s16
             TURN { MOVE(player, move); MOVE(opponent, MOVE_SPECTRAL_THIEF); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, move, player);
-        MESSAGE("The opposing Wobbuffet used Spectral Thief!");
+        MESSAGE("Qulbutoké ennemi utilise\nClepto-Mânes!");
         if (move == MOVE_SWORDS_DANCE)
-            MESSAGE("The opposing Wobbuffet stole the target's boosted stats!");
+            MESSAGE("Qulbutoké ennemi vole les augmentations de stats!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPECTRAL_THIEF, opponent);
         HP_BAR(player, captureDamage: &results[i].damage);
     } FINALLY {
@@ -43,9 +43,9 @@ SINGLE_BATTLE_TEST("Spectral Thief can't steal opponent's boost if target is imm
             TURN { MOVE(player, MOVE_SWORDS_DANCE); MOVE(opponent, MOVE_SPECTRAL_THIEF); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SWORDS_DANCE, player);
-        MESSAGE("The opposing Wobbuffet used Spectral Thief!");
+        MESSAGE("Qulbutoké ennemi utilise\nClepto-Mânes!");
         NONE_OF {
-            MESSAGE("The opposing Wobbuffet stole the target's boosted stats!");
+            MESSAGE("Qulbutoké ennemi vole les augmentations de stats!");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SPECTRAL_THIEF, opponent);
         }
     } THEN {

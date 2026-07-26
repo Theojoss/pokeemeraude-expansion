@@ -17,16 +17,16 @@ SINGLE_BATTLE_TEST("Cloud Nine/Air Lock prevent basic weather effects, but witho
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ability);
-        MESSAGE("The effects of the weather disappeared.");
-        MESSAGE("The opposing Wobbuffet used Sandstorm!");
-        MESSAGE("The sandstorm is raging.");
+        MESSAGE("Les effets de la météo se dissipent.");
+        MESSAGE("Qulbutoké ennemi utilise\nTempête Sable!");
+        MESSAGE("La tempête de sable fait rage.");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SANDSTORM_CONTINUES);
         NONE_OF {
             HP_BAR(player);
             HP_BAR(opponent);
-            MESSAGE("The opposing Wobbuffet is buffeted by the sandstorm!");
+            MESSAGE("La tempête de sable inflige des dégâts à Qulbutoké ennemi!");
         }
-        MESSAGE("The sandstorm is raging.");
+        MESSAGE("La tempête de sable fait rage.");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SANDSTORM_CONTINUES);
     }
 }

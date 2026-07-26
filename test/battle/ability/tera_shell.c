@@ -13,18 +13,18 @@ SINGLE_BATTLE_TEST("Tera Shell makes all moves against Terapagos not very effect
         TURN { MOVE(opponent, MOVE_SCRATCH); }
     } SCENE {
         if (hp == 100) {
-            MESSAGE("The opposing Wobbuffet used Scratch!");
+            MESSAGE("Qulbutoké ennemi utilise\nGriffe!");
             ABILITY_POPUP(player, ABILITY_TERA_SHELL);
-            MESSAGE("Terapagos made its shell gleam! It's distorting type matchups!");
+            MESSAGE("Terapagos fait briller sa carapace et fausse les affinités de type!");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
             HP_BAR(player);
-            MESSAGE("It's not very effective…");
+            MESSAGE("Ce n'est pas très efficace…");
         }
         else {
             NONE_OF {
                 ABILITY_POPUP(player, ABILITY_TERA_SHELL);
-                MESSAGE("Terapagos made its shell gleam! It's distorting type matchups!");
-                MESSAGE("It's not very effective…");
+                MESSAGE("Terapagos fait briller sa carapace et fausse les affinités de type!");
+                MESSAGE("Ce n'est pas très efficace…");
             }
         }
     }
@@ -40,14 +40,14 @@ SINGLE_BATTLE_TEST("Tera Shell makes all hits of multi-hit moves against Terapag
     } WHEN {
         TURN { MOVE(opponent, MOVE_DOUBLE_HIT); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Double Hit!");
+        MESSAGE("Qulbutoké ennemi utilise\nCoup Double!");
         ABILITY_POPUP(player, ABILITY_TERA_SHELL);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DOUBLE_HIT, opponent);
         HP_BAR(player, captureDamage: &firstHit);
         NOT ABILITY_POPUP(player, ABILITY_TERA_SHELL);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DOUBLE_HIT, opponent);
         HP_BAR(player, captureDamage: &secondHit);
-        MESSAGE("It's not very effective…");
+        MESSAGE("Ce n'est pas très efficace…");
     } THEN {
         EXPECT_EQ(firstHit, secondHit);
     }
@@ -66,13 +66,13 @@ DOUBLE_BATTLE_TEST("Tera Shell only makes the first hit of a double battle turn 
         TURN { MOVE(opponentLeft, MOVE_SCRATCH, target: playerLeft); MOVE(opponentRight, MOVE_SCRATCH, target: playerLeft); }
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_TERA_SHELL);
-        MESSAGE("Terapagos made its shell gleam! It's distorting type matchups!");
+        MESSAGE("Terapagos fait briller sa carapace et fausse les affinités de type!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
         HP_BAR(playerLeft, captureDamage: &firstHit);
-        MESSAGE("It's not very effective…");
+        MESSAGE("Ce n'est pas très efficace…");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentRight);
         HP_BAR(playerLeft, captureDamage: &secondHit);
-        NOT MESSAGE("It's not very effective…");
+        NOT MESSAGE("Ce n'est pas très efficace…");
     } THEN {
         EXPECT_MUL_EQ(firstHit, Q_4_12(2.0), secondHit);
     }
@@ -89,12 +89,12 @@ DOUBLE_BATTLE_TEST("Tera Shell only makes the first hit against Terapagos from a
         TURN { MOVE(opponentLeft, MOVE_BLIZZARD); }
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_TERA_SHELL);
-        MESSAGE("Terapagos made its shell gleam! It's distorting type matchups!");
+        MESSAGE("Terapagos fait briller sa carapace et fausse les affinités de type!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BLIZZARD, opponentLeft);
         HP_BAR(playerLeft);
         HP_BAR(playerRight);
-        MESSAGE("It's not very effective…");
-        NOT MESSAGE("It's not very effective…");
+        MESSAGE("Ce n'est pas très efficace…");
+        NOT MESSAGE("Ce n'est pas très efficace…");
     }
 }
 

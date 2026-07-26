@@ -21,12 +21,12 @@ SINGLE_BATTLE_TEST("Lightning Rod absorbs Electric-type moves and increases the 
             };
             ABILITY_POPUP(opponent, ABILITY_LIGHTNING_ROD);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("The opposing Raichu's Sp. Atk rose!");
+            MESSAGE("Ah, Attaque Spéciale du Raichu ennemi augmente!");
         } else {
             NONE_OF {
                 ABILITY_POPUP(opponent, ABILITY_LIGHTNING_ROD);
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-                MESSAGE("The opposing Raichu's Sp. Atk rose!");
+                MESSAGE("Ah, Attaque Spéciale du Raichu ennemi augmente!");
             };
             ANIMATION(ANIM_TYPE_MOVE, MOVE_THUNDERBOLT, player);
             HP_BAR(opponent);
@@ -68,10 +68,10 @@ DOUBLE_BATTLE_TEST("Lightning Rod forces single-target Electric-type moves to ta
             };
             ABILITY_POPUP(opponentLeft, ABILITY_LIGHTNING_ROD);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("The opposing Raichu's Sp. Atk rose!");
+            MESSAGE("Ah, Attaque Spéciale du Raichu ennemi augmente!");
             ABILITY_POPUP(opponentLeft, ABILITY_LIGHTNING_ROD);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("The opposing Raichu's Sp. Atk rose!");
+            MESSAGE("Ah, Attaque Spéciale du Raichu ennemi augmente!");
         } else {
             NONE_OF {
                 HP_BAR(opponentRight);
@@ -97,13 +97,13 @@ DOUBLE_BATTLE_TEST("Lightning Rod redirects an ally's attack")
     } WHEN {
         TURN { MOVE(opponentRight, MOVE_THUNDERBOLT, target: playerLeft); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Thunderbolt!");
+        MESSAGE("Qulbutoké ennemi utilise\nTonnerre!");
         if (B_REDIRECT_ABILITY_ALLIES >= GEN_4)
         {
             NOT HP_BAR(playerLeft);
             ABILITY_POPUP(opponentLeft, ABILITY_LIGHTNING_ROD);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("The opposing Raichu's Sp. Atk rose!");
+            MESSAGE("Ah, Attaque Spéciale du Raichu ennemi augmente!");
         }
         else
         {
@@ -143,7 +143,7 @@ DOUBLE_BATTLE_TEST("Lightning Rod doesn't activate if user has fainted")
         TURN { MOVE(playerLeft, MOVE_POUND, target: opponentRight); MOVE(playerRight, MOVE_SPARK, target: opponentLeft); }
     } SCENE {
         NONE_OF {
-            MESSAGE("The opposing Raichu's Lightning Rod took the attack");
+            MESSAGE("Raichu's Paratonnerre took the attack ennemi");
             ABILITY_POPUP(opponentRight, ABILITY_LIGHTNING_ROD);
         }
     }

@@ -32,17 +32,17 @@ SINGLE_BATTLE_TEST("Hydration cures non-volatile Status conditions if it is rain
         switch (status)
         {
             case STATUS1_BURN:
-                MESSAGE("Vaporeon's burn was cured!");
+                MESSAGE("Aquali n'est plus brûlé!");
                 break;
             case STATUS1_PARALYSIS:
-                MESSAGE("Vaporeon was cured of paralysis!");
+                MESSAGE("Aquali n'est plus paralysé!");
                 break;
             case STATUS1_POISON:
             case STATUS1_TOXIC_POISON:
-                MESSAGE("Vaporeon was cured of its poisoning!");
+                MESSAGE("Aquali n'est plus empoisonné!");
                 break;
             case STATUS1_FROSTBITE:
-                MESSAGE("Vaporeon's frostbite was cured!");
+                MESSAGE("Aquali s'est remis de sa gelure!");
                 break;
         }
         STATUS_ICON(player, none: TRUE);
@@ -58,6 +58,6 @@ SINGLE_BATTLE_TEST("Hydration doesn't cure status conditions if Cloud Nine/Air L
         TURN { MOVE(player, MOVE_RAIN_DANCE); }
     } SCENE {
         NOT ABILITY_POPUP(player, ABILITY_HYDRATION);
-        MESSAGE("Vaporeon was hurt by its burn!");
+        MESSAGE("Aquali souffre de sa brûlure!");
     }
 }

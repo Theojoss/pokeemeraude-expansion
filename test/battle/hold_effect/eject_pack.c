@@ -19,8 +19,8 @@ SINGLE_BATTLE_TEST("Eject Pack does not cause the new Pokémon to lose HP due to
         ANIMATION(ANIM_TYPE_MOVE, MOVE_OVERHEAT, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Wobbuffet is switched out with the Eject Pack!");
-        SEND_IN_MESSAGE("Wynaut");
+        MESSAGE("Qulbutoké se retire grâce au Sac Fuite!");
+        SEND_IN_MESSAGE("Okéoké");
         NOT HP_BAR(player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
     }
@@ -38,7 +38,7 @@ SINGLE_BATTLE_TEST("Eject Pack does not activate if there are no Pokémon left t
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Wobbuffet is switched out with the Eject Pack!");
+            MESSAGE("Qulbutoké se retire grâce au Sac Fuite!");
         }
     }
 }
@@ -58,8 +58,8 @@ SINGLE_BATTLE_TEST("Eject Pack is triggered by self-inflicting stat decreases")
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Wobbuffet is switched out with the Eject Pack!");
-        SEND_IN_MESSAGE("Wynaut");
+        MESSAGE("Qulbutoké se retire grâce au Sac Fuite!");
+        SEND_IN_MESSAGE("Okéoké");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
     }
 }
@@ -79,8 +79,8 @@ SINGLE_BATTLE_TEST("Eject Pack switches the user out even if rooted by Ingrain")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_OVERHEAT, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Wobbuffet is switched out with the Eject Pack!");
-        SEND_IN_MESSAGE("Wynaut");
+        MESSAGE("Qulbutoké se retire grâce au Sac Fuite!");
+        SEND_IN_MESSAGE("Okéoké");
     }
 }
 
@@ -98,7 +98,7 @@ SINGLE_BATTLE_TEST("Eject Pack will miss timing to switch out user if Emergency 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Wobbuffet is switched out with the Eject Pack!");
+            MESSAGE("Qulbutoké se retire grâce au Sac Fuite!");
         }
         ABILITY_POPUP(opponent, ABILITY_EMERGENCY_EXIT);
     } THEN {
@@ -119,7 +119,7 @@ SINGLE_BATTLE_TEST("Eject Pack activates once intimidate mon switches in")
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Wobbuffet is switched out with the Eject Pack!");
+        MESSAGE("Qulbutoké se retire grâce au Sac Fuite!");
     }
 }
 
@@ -136,7 +136,7 @@ SINGLE_BATTLE_TEST("Eject Pack will not activate if Parting Shot user can switch
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PARTING_SHOT, opponent);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Wobbuffet is switched out with the Eject Pack!");
+            MESSAGE("Qulbutoké se retire grâce au Sac Fuite!");
         }
     }
 }
@@ -172,7 +172,7 @@ SINGLE_BATTLE_TEST("Eject Pack will miss timing to switch out user if Eject Butt
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Wobbuffet is switched out with the Eject Pack!");
+            MESSAGE("Qulbutoké se retire grâce au Sac Fuite!");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
     } THEN {
@@ -353,8 +353,8 @@ SINGLE_BATTLE_TEST("Eject Pack does not activate if mon is switched in due to Ej
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLDOZE, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
-        MESSAGE("The opposing Wobbuffet is switched out with the Eject Button!");
-        MESSAGE("2 sent out Wobbuffet!");
+        MESSAGE("Qulbutoké ennemi se retire grâce au Bouton Fuite!");
+        MESSAGE("2 envoie\nun Qulbutoké!");
         NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
     }
 }

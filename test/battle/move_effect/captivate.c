@@ -19,7 +19,7 @@ SINGLE_BATTLE_TEST("Captivate decreases the target's Sp. Attack if they're oppos
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CAPTIVATE, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Nidoking's Sp. Atk harshly fell!");
+        MESSAGE("Ah, Attaque Spéciale du Nidoking ennemi baisse beaucoup!");
     } THEN {
         EXPECT(opponent->statStages[STAT_SPATK] == DEFAULT_STAT_STAGE - 2);
     }
@@ -33,7 +33,7 @@ SINGLE_BATTLE_TEST("Captivate fails if the target and user share gender")
     } WHEN {
         TURN { MOVE(player, MOVE_CAPTIVATE); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(opponent->statStages[STAT_SPATK] == DEFAULT_STAT_STAGE);
     }
@@ -47,7 +47,7 @@ SINGLE_BATTLE_TEST("Captivate fails if the target is genderless")
     } WHEN {
         TURN { MOVE(player, MOVE_CAPTIVATE); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(opponent->statStages[STAT_SPATK] == DEFAULT_STAT_STAGE);
     }
@@ -61,7 +61,7 @@ SINGLE_BATTLE_TEST("Captivate fails if the user is genderless")
     } WHEN {
         TURN { MOVE(player, MOVE_CAPTIVATE); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(opponent->statStages[STAT_SPATK] == 6);
     }
@@ -75,7 +75,7 @@ SINGLE_BATTLE_TEST("Captivate fails if both the user and the opponent are gender
     } WHEN {
         TURN { MOVE(player, MOVE_CAPTIVATE); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(opponent->statStages[STAT_SPATK] == 6);
     }
@@ -89,8 +89,8 @@ SINGLE_BATTLE_TEST("Attract fails when used by a genderless Pokémon")
     } WHEN {
         TURN { MOVE(player, MOVE_ATTRACT); }
     } SCENE {
-        MESSAGE("Starmie used Attract!");
-        MESSAGE("But it failed!");
+        MESSAGE("Staross utilise\nAttraction!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(!(opponent->volatiles.infatuation));
     }
@@ -104,8 +104,8 @@ SINGLE_BATTLE_TEST("Attract fails if both the user and the target are genderless
     } WHEN {
         TURN { MOVE(player, MOVE_ATTRACT); }
     } SCENE {
-        MESSAGE("Starmie used Attract!");
-        MESSAGE("But it failed!");
+        MESSAGE("Staross utilise\nAttraction!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(!(opponent->volatiles.infatuation));
     }
@@ -129,15 +129,15 @@ DOUBLE_BATTLE_TEST("Captivate decreases the target's Sp. Attack if they're oppos
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CAPTIVATE, playerLeft);
         if (species == SPECIES_NIDOKING) {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("The opposing Nidoking's Sp. Atk harshly fell!");
+        MESSAGE("Ah, Attaque Spéciale du Nidoking ennemi baisse beaucoup!");
         } else {
             NONE_OF {
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-                MESSAGE("The opposing Nidoqueen's Sp. Atk harshly fell!");
+                MESSAGE("Ah, Attaque Spéciale du Nidoqueen ennemi baisse beaucoup!");
             }
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("The opposing Nidoking's Sp. Atk harshly fell!");
+        MESSAGE("Ah, Attaque Spéciale du Nidoking ennemi baisse beaucoup!");
     } THEN {
         if (species == SPECIES_NIDOKING) {
             EXPECT(opponentLeft->statStages[STAT_SPATK] == DEFAULT_STAT_STAGE - 2);

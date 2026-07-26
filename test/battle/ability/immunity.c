@@ -25,9 +25,9 @@ SINGLE_BATTLE_TEST("Immunity prevents Toxic bad poison")
     } WHEN {
         TURN { MOVE(player, MOVE_TOXIC); }
     } SCENE {
-        MESSAGE("Wobbuffet used Toxic!");
+        MESSAGE("Qulbutoké utilise\nToxik!");
         ABILITY_POPUP(opponent, ABILITY_IMMUNITY);
-        MESSAGE("It doesn't affect the opposing Snorlax…");
+        MESSAGE("Ça n'affecte pas Ronflex ennemi…");
         NOT STATUS_ICON(opponent, poison: TRUE);
     }
 }

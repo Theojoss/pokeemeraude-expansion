@@ -60,28 +60,28 @@ DOUBLE_BATTLE_TEST("Opportunist raises Attack only once when partner has Intimid
         ABILITY_POPUP(playerLeft, ABILITY_INTIMIDATE);
         if (abilityLeft == ABILITY_CONTRARY) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("The opposing Spinda's Attack rose!");
+            MESSAGE("Ah, Attaque du Spinda ennemi augmente!");
         } else {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("The opposing Spinda's Attack fell!");
+            MESSAGE("Ah, Attaque du Spinda ennemi baisse!");
         }
         if (abilityRight == ABILITY_CONTRARY) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-            MESSAGE("The opposing Spinda's Attack rose!");
+            MESSAGE("Ah, Attaque du Spinda ennemi augmente!");
         } else {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-            MESSAGE("The opposing Spinda's Attack fell!");
+            MESSAGE("Ah, Attaque du Spinda ennemi baisse!");
         }
 
         if ((abilityLeft == ABILITY_CONTRARY && abilityRight != ABILITY_CONTRARY)
                 || (abilityLeft != ABILITY_CONTRARY && abilityRight == ABILITY_CONTRARY)) {
             ABILITY_POPUP(playerRight, ABILITY_OPPORTUNIST);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-            MESSAGE("Espathra's Attack rose!");
+            MESSAGE("Ah, Attaque du Cléopsytra augmente!");
         } else if (abilityLeft == ABILITY_CONTRARY && abilityRight == ABILITY_CONTRARY) {
             ABILITY_POPUP(playerRight, ABILITY_OPPORTUNIST);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-            MESSAGE("Espathra's Attack rose sharply!");
+            MESSAGE("Ah, Attaque du Cléopsytra augmente beaucoup!");
         }
 
         HP_BAR(playerLeft, captureDamage: &results[i].damageLeft);
@@ -225,7 +225,7 @@ DOUBLE_BATTLE_TEST("Opportunist copies the stat of each Pokémon that were raise
         ABILITY_POPUP(opponentRight, ABILITY_INTREPID_SWORD);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
         ABILITY_POPUP(playerRight, ABILITY_OPPORTUNIST);
-        MESSAGE("Espathra's Attack rose sharply!");
+        MESSAGE("Ah, Attaque du Cléopsytra augmente beaucoup!");
     } THEN {
         EXPECT_EQ(playerRight->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 2);
     }
@@ -316,4 +316,41 @@ DOUBLE_BATTLE_TEST("Opportunist and Mirror Herb resolve correctly")
     }
 }
 
+SINGLE_BATTLE_TEST("Opportunist copies the stats boosted by Speed Boost")
+{
+    GIVEN {
+        PLAYER(SPECIES_ESPATHRA) { Ability(ABILITY_OPPORTUNIST); }
+        OPPONENT(SPECIES_TORCHIC) { Ability(ABILITY_SPEED_BOOST); }
+    } WHEN {
+        TURN {}
+    } SCENE {
+        ABILITY_POPUP(opponent, ABILITY_SPEED_BOOST);
+        ABILITY_POPUP(player, ABILITY_OPPORTUNIST);
+    } THEN {
+        EXPECT_EQ(opponent->statStages[STAT_SPEED], DEFAULT_STAT_STAGE + 1);
+        EXPECT_EQ(player->statStages[STAT_SPEED], DEFAULT_STAT_STAGE + 1);
+    }
+}
+
+DOUBLE_BATTLE_TEST("Opportunist activates before Mirror Herb during the end turn")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { Speed(10); Item(ITEM_MIRROR_HERB); }
+        PLAYER(SPECIES_ESPATHRA) { Speed(2); Ability(ABILITY_OPPORTUNIST); }
+        OPPONENT(SPECIES_TORCHIC) { Speed(3); Ability(ABILITY_SPEED_BOOST); }
+        OPPONENT(SPECIES_WOBBUFFET) { Speed(4); }
+    } WHEN {
+        TURN {}
+    } SCENE {
+        ABILITY_POPUP(opponentLeft, ABILITY_SPEED_BOOST);
+        ABILITY_POPUP(playerRight, ABILITY_OPPORTUNIST);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
+    } THEN {
+        EXPECT_EQ(opponentLeft->statStages[STAT_SPEED], DEFAULT_STAT_STAGE + 1);
+        EXPECT_EQ(playerLeft->statStages[STAT_SPEED], DEFAULT_STAT_STAGE + 1);
+        EXPECT_EQ(playerRight->statStages[STAT_SPEED], DEFAULT_STAT_STAGE + 1);
+    }
+}
+
 TO_DO_BATTLE_TEST("Opportunist copies stat changes from the opponent's X Attack and other stat-boosting items.")
+

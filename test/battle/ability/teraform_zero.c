@@ -12,8 +12,8 @@ DOUBLE_BATTLE_TEST("Teraform Zero clears weather and terrain upon activation")
         TURN { MOVE(playerLeft, MOVE_CELEBRATE, gimmick: GIMMICK_TERA); }
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_TERAFORM_ZERO);
-        MESSAGE("The rain stopped.");
-        MESSAGE("The electricity disappeared from the battlefield.");
+        MESSAGE("La pluie s'est arrêtée.");
+        MESSAGE("L'électricité parcourant le terrain s'est dissipée.");
     }
 }
 
@@ -30,8 +30,8 @@ DOUBLE_BATTLE_TEST("Teraform Zero can be supressed")
     } SCENE {
         ABILITY_POPUP(playerRight, ABILITY_NEUTRALIZING_GAS);
         NONE_OF {
-            MESSAGE("The rain stopped.");
-            MESSAGE("The electricity disappeared from the battlefield.");
+            MESSAGE("La pluie s'est arrêtée.");
+            MESSAGE("L'électricité parcourant le terrain s'est dissipée.");
         }
     }
 }
@@ -47,11 +47,11 @@ SINGLE_BATTLE_TEST("Teraform Zero can be replaced")
         TURN { MOVE(opponent, MOVE_POUND); }
         TURN { MOVE(opponent, MOVE_WORRY_SEED); MOVE(player, MOVE_REST, gimmick: GIMMICK_TERA); }
     } SCENE {
-        MESSAGE("The opposing Whimsicott used Worry Seed!");
-        MESSAGE("Terapagos acquired Insomnia!");
-        MESSAGE("Terapagos used Rest!");
+        MESSAGE("Farfaduvet ennemi utilise\nSoucigraine!");
+        MESSAGE("Terapagos acquiert le talent Insomnia!");
+        MESSAGE("Terapagos utilise\nRepos!");
         ABILITY_POPUP(player, ABILITY_INSOMNIA);
-        MESSAGE("Terapagos stayed awake!");
+        MESSAGE("Terapagos ne s'endort pas!");
     }
 }
 
@@ -64,8 +64,8 @@ SINGLE_BATTLE_TEST("Teraform Zero cannot be swapped")
     } WHEN {
         TURN { MOVE(player, MOVE_CELEBRATE, gimmick: GIMMICK_TERA); MOVE(opponent, MOVE_SKILL_SWAP); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Skill Swap!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké ennemi utilise\nÉchange!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -78,8 +78,8 @@ SINGLE_BATTLE_TEST("Teraform Zero cannot be copied")
     } WHEN {
         TURN { MOVE(player, MOVE_CELEBRATE, gimmick: GIMMICK_TERA); MOVE(opponent, MOVE_ROLE_PLAY); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Role Play!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké ennemi utilise\nImitation!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -94,10 +94,10 @@ DOUBLE_BATTLE_TEST("Teraform Zero shouldn't cause Neutralizing Gas to show it's 
     } WHEN {
         TURN {  SWITCH(playerRight, 2); MOVE(playerLeft, MOVE_CELEBRATE, gimmick: GIMMICK_TERA); }
     } SCENE {
-        MESSAGE("Terapagos is storing energy!");
-        MESSAGE("Terapagos terastallized into the Stellar type!");
+        MESSAGE("Terapagos prend son mal en patience!");
+        MESSAGE("Terapagos se Téracristallise en type Stellair!");
         NOT ABILITY_POPUP(playerRight, ABILITY_NEUTRALIZING_GAS);
-        MESSAGE("Terapagos used Celebrate!");
+        MESSAGE("Terapagos utilise\nCélébration!");
     }
 }
 
@@ -131,11 +131,11 @@ SINGLE_BATTLE_TEST("Teraform Zero doesn't reactivate when Terapagos-Stellar swit
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_TERA_CHARGE, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_TERA_ACTIVATE, player);
         ABILITY_POPUP(player, ABILITY_TERAFORM_ZERO);
-        MESSAGE("The rain stopped.");
+        MESSAGE("La pluie s'est arrêtée.");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAIN_DANCE, opponent);
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_TERAFORM_ZERO);
-            MESSAGE("The rain stopped.");
+            MESSAGE("La pluie s'est arrêtée.");
         }
     }
 }

@@ -13,7 +13,7 @@ SINGLE_BATTLE_TEST("Color Change changes the type of a Pokemon being hit by a mo
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PSYWAVE, player);
         ABILITY_POPUP(opponent, ABILITY_COLOR_CHANGE);
-        MESSAGE("The opposing Kecleon's type changed to Psychic!");
+        MESSAGE("Kecleon ennemi prend le type Psy!");
     }
 }
 
@@ -30,7 +30,7 @@ SINGLE_BATTLE_TEST("Color Change does not change the type when hit by a move tha
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
         NONE_OF {
             ABILITY_POPUP(opponent, ABILITY_COLOR_CHANGE);
-            MESSAGE("The opposing Kecleon's Color Change made it the Normal type!");
+            MESSAGE("Kecleon's Homochromie made it the Normal type ennemi!");
         }
     }
 }
@@ -47,7 +47,7 @@ SINGLE_BATTLE_TEST("Color Change does not change the type of a dual-type Pokemon
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PSYCHO_CUT, player);
         NONE_OF {
             ABILITY_POPUP(opponent, ABILITY_COLOR_CHANGE);
-            MESSAGE("The opposing Slowbro's Color Change made it the Psychic type!");
+            MESSAGE("Flagadoss's Homochromie made it the Psyko type ennemi!");
         }
     }
 }
@@ -64,7 +64,7 @@ SINGLE_BATTLE_TEST("Color Change does not change the type of a dual-type Pokemon
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PSYCHO_CUT, player);
         NONE_OF {
             ABILITY_POPUP(opponent, ABILITY_COLOR_CHANGE);
-            MESSAGE("The opposing Slowbro's Color Change made it the Psychic type!");
+            MESSAGE("Flagadoss's Homochromie made it the Psyko type ennemi!");
         }
     }
 }
@@ -79,7 +79,7 @@ SINGLE_BATTLE_TEST("Color Change changes the user to Electric type if hit by a m
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PSYCHO_CUT, player);
         ABILITY_POPUP(opponent, ABILITY_COLOR_CHANGE);
-        MESSAGE("The opposing Kecleon's type changed to Electric!");
+        MESSAGE("Kecleon ennemi prend le type Electrik!");
     }
 }
 
@@ -94,9 +94,9 @@ SINGLE_BATTLE_TEST("Color Change changes the type when a Pokemon is hit by Futur
         TURN {}
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FUTURE_SIGHT, player);
-        MESSAGE("The opposing Kecleon took the Future Sight attack!");
+        MESSAGE("Kecleon ennemi subit l'attaque Prescience!");
         ABILITY_POPUP(opponent, ABILITY_COLOR_CHANGE);
-        MESSAGE("The opposing Kecleon's type changed to Psychic!");
+        MESSAGE("Kecleon ennemi prend le type Psy!");
     }
 }
 
@@ -111,9 +111,9 @@ SINGLE_BATTLE_TEST("Color Change changes the type when a Pokemon is hit by Doom 
         TURN {}
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DOOM_DESIRE, player);
-        MESSAGE("The opposing Kecleon took the Doom Desire attack!");
+        MESSAGE("Kecleon ennemi subit l'attaque Vœu Destruct.!");
         ABILITY_POPUP(opponent, ABILITY_COLOR_CHANGE);
-        MESSAGE("The opposing Kecleon's type changed to Steel!");
+        MESSAGE("Kecleon ennemi prend le type Acier!");
     }
 }
 
@@ -128,9 +128,9 @@ SINGLE_BATTLE_TEST("Color Change changes the type to Electric when a Pokemon is 
         TURN { MOVE(opponent, MOVE_ELECTRIFY); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FUTURE_SIGHT, player);
-        MESSAGE("The opposing Kecleon took the Future Sight attack!");
+        MESSAGE("Kecleon ennemi subit l'attaque Prescience!");
         ABILITY_POPUP(opponent, ABILITY_COLOR_CHANGE);
-        MESSAGE("The opposing Kecleon's type changed to Electric!");
+        MESSAGE("Kecleon ennemi prend le type Electrik!");
     }
 }
 
@@ -145,12 +145,12 @@ SINGLE_BATTLE_TEST("Color Change changes the type to Normal when a Pokemon is hi
         TURN {}
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FUTURE_SIGHT, player);
-        MESSAGE("Wobbuffet used Soak!");
+        MESSAGE("Qulbutoké utilise\nDétrempage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SOAK, player);
-        MESSAGE("The opposing Kecleon transformed into the Water type!");
-        MESSAGE("The opposing Kecleon took the Future Sight attack!");
+        MESSAGE("Kecleon ennemi prend le type Eau!");
+        MESSAGE("Kecleon ennemi subit l'attaque Prescience!");
         ABILITY_POPUP(opponent, ABILITY_COLOR_CHANGE);
-        MESSAGE("The opposing Kecleon's type changed to Normal!");
+        MESSAGE("Kecleon ennemi prend le type Normal!");
     }
 }
 
@@ -165,11 +165,11 @@ SINGLE_BATTLE_TEST("Color Change does not change the type to Normal when a Pokem
         TURN {}
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SOAK, player);
-        MESSAGE("The opposing Kecleon transformed into the Water type!");
+        MESSAGE("Kecleon ennemi prend le type Eau!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STRUGGLE, player);
         NONE_OF {
             ABILITY_POPUP(opponent, ABILITY_COLOR_CHANGE);
-            MESSAGE("The opposing Kecleon's type changed to Normal!");
+            MESSAGE("Kecleon ennemi prend le type Normal!");
         }
     }
 }

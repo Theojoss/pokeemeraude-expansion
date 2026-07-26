@@ -31,7 +31,7 @@ SINGLE_BATTLE_TEST("(Z-MOVE) Z-Moves are not affected by -ate abilities")
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ZMOVE_ACTIVATE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BREAKNECK_BLITZ, player);
-        NOT { MESSAGE("It's super effective!"); }
+        NOT { MESSAGE("C'est super efficace!"); }
     }
 }
 
@@ -47,7 +47,7 @@ SINGLE_BATTLE_TEST("(Z-MOVE) Z-Moves are affected by Ion Deluge")
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ZMOVE_ACTIVATE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BREAKNECK_BLITZ, player);
-        MESSAGE("It's super effective!");
+        MESSAGE("C'est super efficace!");
     }
 }
 
@@ -135,7 +135,7 @@ SINGLE_BATTLE_TEST("(Z-MOVE) Z_EFFECT_BOOST_CRITS raises a battler's critical hi
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ZMOVE_ACTIVATE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FORESIGHT, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
-        MESSAGE("A critical hit!");
+        MESSAGE("Coup critique!");
     }
 }
 
@@ -472,8 +472,8 @@ DOUBLE_BATTLE_TEST("(Z-MOVE) Instruct fails if the target last used a Z-Move")
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ZMOVE_ACTIVATE, playerLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BREAKNECK_BLITZ, playerLeft);
-        MESSAGE("Wynaut used Instruct!");
-        MESSAGE("But it failed!");
+        MESSAGE("Okéoké utilise\nSommation!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -542,7 +542,7 @@ SINGLE_BATTLE_TEST("(Z-MOVE) 10,000,000 Volt Thunderbolt has an increased critic
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ZMOVE_ACTIVATE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_10_000_000_VOLT_THUNDERBOLT, player);
-        MESSAGE("A critical hit!");
+        MESSAGE("Coup critique!");
     }
 }
 
@@ -594,7 +594,7 @@ SINGLE_BATTLE_TEST("(Z-MOVE) Genesis Supernova sets up psychic terrain")
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ZMOVE_ACTIVATE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GENESIS_SUPERNOVA, player);
         NOT { ANIMATION(ANIM_TYPE_MOVE, MOVE_QUICK_ATTACK, player); }
-        MESSAGE("The opposing Wobbuffet is protected by the Psychic Terrain!");
+        MESSAGE("Qulbutoké ennemi est protégé par un champ psychique!");
     }
 }
 
@@ -612,7 +612,7 @@ SINGLE_BATTLE_TEST("(Z-MOVE) Genesis Supernova sets up psychic terrain when the 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GENESIS_SUPERNOVA, player);
         SUB_HIT(opponent);
         NOT { ANIMATION(ANIM_TYPE_MOVE, MOVE_QUICK_ATTACK, player); }
-        MESSAGE("The opposing Wobbuffet is protected by the Psychic Terrain!");
+        MESSAGE("Qulbutoké ennemi est protégé par un champ psychique!");
     }
 }
 
@@ -628,7 +628,7 @@ SINGLE_BATTLE_TEST("(Z-MOVE) Splintered Stormshards removes terrain")
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ZMOVE_ACTIVATE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPLINTERED_STORMSHARDS, player);
-        MESSAGE("The weirdness disappeared from the battlefield!");
+        MESSAGE("Le sol redevient normal.");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_QUICK_ATTACK, player);
         HP_BAR(opponent);
     }
@@ -648,7 +648,7 @@ SINGLE_BATTLE_TEST("(Z-MOVE) Splintered Stormshards removes terrain when the tar
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ZMOVE_ACTIVATE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPLINTERED_STORMSHARDS, player);
         SUB_HIT(opponent);
-        MESSAGE("The weirdness disappeared from the battlefield!");
+        MESSAGE("Le sol redevient normal.");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_QUICK_ATTACK, player);
     }
 }
@@ -704,7 +704,7 @@ SINGLE_BATTLE_TEST("(Z-MOVE) Searing Sunraze Smash ignores the target's abilitie
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ZMOVE_ACTIVATE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SEARING_SUNRAZE_SMASH, player);
         HP_BAR(opponent);
-        MESSAGE("A critical hit!");
+        MESSAGE("Coup critique!");
     }
 }
 

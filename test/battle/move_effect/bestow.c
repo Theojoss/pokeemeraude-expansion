@@ -22,7 +22,7 @@ SINGLE_BATTLE_TEST("Bestow fails if the user has no held item")
     } WHEN {
         TURN { MOVE(player, MOVE_BESTOW); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(player->item == ITEM_NONE);
         EXPECT(opponent->item == ITEM_NONE);
@@ -37,7 +37,7 @@ SINGLE_BATTLE_TEST("Bestow fails if the target already has a held item")
     } WHEN {
         TURN { MOVE(player, MOVE_BESTOW); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(player->item == ITEM_SITRUS_BERRY);
         EXPECT(opponent->item == ITEM_LUM_BERRY);
@@ -54,7 +54,7 @@ SINGLE_BATTLE_TEST("Bestow fails if the user is holding Mail")
     } WHEN {
         TURN { MOVE(player, MOVE_BESTOW); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(player->item == ITEM_ORANGE_MAIL);
         EXPECT(opponent->item == ITEM_NONE);
@@ -69,7 +69,7 @@ SINGLE_BATTLE_TEST("Bestow fails if the user's held item is a Mega Stone")
     } WHEN {
         TURN { MOVE(player, MOVE_BESTOW); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(player->item == ITEM_BLAZIKENITE);
         EXPECT(opponent->item == ITEM_NONE);
@@ -85,7 +85,7 @@ SINGLE_BATTLE_TEST("Bestow fails if the user's held item is a Z-Crystal")
     } WHEN {
         TURN { MOVE(player, MOVE_BESTOW); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(player->item == ITEM_FIGHTINIUM_Z);
         EXPECT(opponent->item == ITEM_NONE);
@@ -116,9 +116,9 @@ SINGLE_BATTLE_TEST("Bestow fails if the target is behind a Substitute (Gen 6+)")
         TURN { MOVE(opponent, MOVE_SUBSTITUTE); MOVE(player, MOVE_BESTOW); }
     } SCENE {
         if (B_UPDATED_MOVE_FLAGS >= GEN_6) {
-            NOT MESSAGE("But it failed!");
+            NOT MESSAGE("Mais cela échoue!");
         } else {
-            MESSAGE("But it failed!");
+            MESSAGE("Mais cela échoue!");
         }
     } THEN {
         if (B_UPDATED_MOVE_FLAGS >= GEN_6) {
@@ -139,7 +139,7 @@ SINGLE_BATTLE_TEST("Bestow fails if the user's held item changes its form")
     } WHEN {
         TURN { MOVE(player, MOVE_BESTOW); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(player->item == ITEM_GRISEOUS_CORE);
         EXPECT(opponent->item == ITEM_NONE);

@@ -36,11 +36,11 @@ AI_MULTI_BATTLE_TEST("12v12: AI can use all 6 party slots in a 12v12 (battler 1)
         TURN {}
         TURN {}
     } SCENE {
-        MESSAGE(AI_TRAINER_NAME " sent out Hypno!");
-        MESSAGE(AI_TRAINER_NAME " sent out Wynaut!");
-        MESSAGE(AI_TRAINER_NAME " sent out Alakazam!");
-        MESSAGE(AI_TRAINER_NAME " sent out Kadabra!");
-        MESSAGE(AI_TRAINER_NAME " sent out Abra!");
+        MESSAGE("Un Hypnomade est envoyé\npar " AI_TRAINER_NAME  "!");
+        MESSAGE("Un Okéoké est envoyé\npar " AI_TRAINER_NAME  "!");
+        MESSAGE("Un Alakazam est envoyé\npar " AI_TRAINER_NAME  "!");
+        MESSAGE("Un Kadabra est envoyé\npar " AI_TRAINER_NAME  "!");
+        MESSAGE("Un Abra est envoyé\npar " AI_TRAINER_NAME  "!");
     }
 }
 
@@ -78,11 +78,11 @@ AI_MULTI_BATTLE_TEST("12v12: AI can use all 6 party slots in a 12v12 (battler 2)
         TURN {}
         TURN {}
     } SCENE {
-        MESSAGE(AI_PARTNER_NAME " sent out Hypno!");
-        MESSAGE(AI_PARTNER_NAME " sent out Wynaut!");
-        MESSAGE(AI_PARTNER_NAME " sent out Alakazam!");
-        MESSAGE(AI_PARTNER_NAME " sent out Kadabra!");
-        MESSAGE(AI_PARTNER_NAME " sent out Abra!");
+        MESSAGE("Hypnomade est envoyé par\n" AI_PARTNER_NAME  "!");
+        MESSAGE("Okéoké est envoyé par\n" AI_PARTNER_NAME  "!");
+        MESSAGE("Alakazam est envoyé par\n" AI_PARTNER_NAME  "!");
+        MESSAGE("Kadabra est envoyé par\n" AI_PARTNER_NAME  "!");
+        MESSAGE("Abra est envoyé par\n" AI_PARTNER_NAME  "!");
     }
 }
 
@@ -120,10 +120,10 @@ AI_MULTI_BATTLE_TEST("12v12: AI can use all 6 party slots in a 12v12 (battler 3)
         TURN {}
         TURN {}
     } SCENE {
-        MESSAGE(AI_TRAINER_2_NAME " sent out Hypno!");
-        MESSAGE(AI_TRAINER_2_NAME " sent out Wynaut!");
-        MESSAGE(AI_TRAINER_2_NAME " sent out Alakazam!");
-        MESSAGE(AI_TRAINER_2_NAME " sent out Kadabra!");
-        MESSAGE(AI_TRAINER_2_NAME " sent out Abra!");
+        MESSAGE("Un Hypnomade est envoyé\npar " AI_TRAINER_2_NAME  "!");
+        MESSAGE("Un Okéoké est envoyé\npar " AI_TRAINER_2_NAME  "!");
+        MESSAGE("Un Alakazam est envoyé\npar " AI_TRAINER_2_NAME  "!");
+        MESSAGE("Un Kadabra est envoyé\npar " AI_TRAINER_2_NAME  "!");
+        MESSAGE("Un Abra est envoyé\npar " AI_TRAINER_2_NAME  "!");
     }
 }

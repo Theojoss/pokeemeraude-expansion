@@ -19,12 +19,12 @@ SINGLE_BATTLE_TEST("Zen Mode switches Darmanitan's form when HP is half or less 
     } WHEN {
             TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_SCRATCH); }
     } SCENE {
-        MESSAGE("Darmanitan used Celebrate!");
-        MESSAGE("The opposing Wobbuffet used Scratch!");
+        MESSAGE("Darumacho utilise\nCélébration!");
+        MESSAGE("Qulbutoké ennemi utilise\nGriffe!");
         HP_BAR(player);
         ABILITY_POPUP(player, ABILITY_ZEN_MODE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FORM_CHANGE, player);
-        MESSAGE("Zen Mode triggered!");
+        MESSAGE("Le talent Mode Transe s'active!");
     } THEN {
         EXPECT_LT(player->hp, player->maxHP / 2);
         EXPECT_EQ(player->species, zenSpecies);
@@ -52,18 +52,18 @@ SINGLE_BATTLE_TEST("Zen Mode switches Darmanitan's form to Standard when swapped
         TURN { SWITCH(player, 1); MOVE(opponent, MOVE_CELEBRATE); }
         TURN { SWITCH(player, 0); MOVE(opponent, MOVE_CELEBRATE); }
     } SCENE {
-        MESSAGE("Darmanitan used Celebrate!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Darumacho utilise\nCélébration!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
         ABILITY_POPUP(player, ABILITY_ZEN_MODE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FORM_CHANGE, player);
-        MESSAGE("Zen Mode triggered!");
-        MESSAGE("Go! Wobbuffet!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
-        MESSAGE("Go! Darmanitan!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Le talent Mode Transe s'active!");
+        MESSAGE("Qulbutoké! Go!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
+        MESSAGE("Darumacho! Go!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
         ABILITY_POPUP(player, ABILITY_ZEN_MODE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FORM_CHANGE, player);
-        MESSAGE("Zen Mode triggered!");
+        MESSAGE("Le talent Mode Transe s'active!");
     } THEN {
         EXPECT_LE(player->hp, player->maxHP / 2);
         EXPECT_EQ(player->species, zenSpecies);
@@ -89,17 +89,17 @@ SINGLE_BATTLE_TEST("Zen Mode switches Darmanitan's form when HP is healed above 
         TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
         TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_HEAL_PULSE); }
     } SCENE {
-        MESSAGE("Darmanitan used Celebrate!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Darumacho utilise\nCélébration!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
         ABILITY_POPUP(player, ABILITY_ZEN_MODE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FORM_CHANGE, player);
-        MESSAGE("Zen Mode triggered!");
-        MESSAGE("Darmanitan used Celebrate!");
-        MESSAGE("The opposing Wobbuffet used Heal Pulse!");
+        MESSAGE("Le talent Mode Transe s'active!");
+        MESSAGE("Darumacho utilise\nCélébration!");
+        MESSAGE("Qulbutoké ennemi utilise\nVibra Soin!");
         HP_BAR(player);
         ABILITY_POPUP(player, ABILITY_ZEN_MODE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FORM_CHANGE, player);
-        MESSAGE("Zen Mode ended!");
+        MESSAGE("Le talent Mode Transe n'est plus actif!");
     } THEN {
         EXPECT_GT(player->hp, player->maxHP / 2);
         EXPECT_EQ(player->species, standardSpecies);

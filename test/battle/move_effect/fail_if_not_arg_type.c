@@ -15,9 +15,9 @@ SINGLE_BATTLE_TEST("Burn Up user loses its Fire-type")
         TURN { MOVE(player, MOVE_BURN_UP); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BURN_UP, player);
-        MESSAGE("Cyndaquil burned itself out!");
-        MESSAGE("Cyndaquil used Burn Up!");
-        MESSAGE("But it failed!");
+        MESSAGE("Héricendre a utilisé tout son feu intérieur!");
+        MESSAGE("Héricendre utilise\nFlamme Ultime!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -32,9 +32,9 @@ SINGLE_BATTLE_TEST("Burn Up fails if the user isn't a Fire-type")
     } WHEN {
         TURN { MOVE(player, MOVE_BURN_UP); }
     } SCENE {
-        MESSAGE("Wobbuffet used Burn Up!");
+        MESSAGE("Qulbutoké utilise\nFlamme Ultime!");
         NONE_OF { ANIMATION(ANIM_TYPE_MOVE, MOVE_BURN_UP, player); }
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -50,12 +50,12 @@ SINGLE_BATTLE_TEST("Burn Up fails if the user has Protean/Libero and is not a Fi
     } WHEN {
         TURN { MOVE(opponent, MOVE_BURN_UP); }
     } SCENE {
-        MESSAGE("The opposing Kecleon used Burn Up!");
+        MESSAGE("Kecleon ennemi utilise\nFlamme Ultime!");
         NONE_OF {
             ABILITY_POPUP(opponent, ABILITY_PROTEAN);
             ANIMATION(ANIM_TYPE_MOVE, MOVE_BURN_UP, player);
         }
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -75,7 +75,7 @@ SINGLE_BATTLE_TEST("Burn Up user loses its Fire-type if enemy faints")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BURN_UP, player);
         HP_BAR(opponent, hp: 0);
-        MESSAGE("Cyndaquil burned itself out!");
+        MESSAGE("Héricendre a utilisé tout son feu intérieur!");
     }
 }
 
@@ -93,9 +93,9 @@ SINGLE_BATTLE_TEST("Double Shock user loses its Electric-type")
         TURN { MOVE(player, MOVE_DOUBLE_SHOCK); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DOUBLE_SHOCK, player);
-        MESSAGE("Pikachu used up all its electricity!");
-        MESSAGE("Pikachu used Double Shock!");
-        MESSAGE("But it failed!");
+        MESSAGE("Pikachu a utilisé toute son électricité!");
+        MESSAGE("Pikachu utilise\nDouble Décharge!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -111,8 +111,8 @@ SINGLE_BATTLE_TEST("Double Shock fails if the user isn't an Electric-type")
         TURN { MOVE(player, MOVE_DOUBLE_SHOCK); }
     } SCENE {
         NONE_OF { ANIMATION(ANIM_TYPE_MOVE, MOVE_DOUBLE_SHOCK, player); }
-        MESSAGE("Wobbuffet used Double Shock!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké utilise\nDouble Décharge!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -130,6 +130,6 @@ SINGLE_BATTLE_TEST("Double Shock user loses its Electric-type if enemy faints")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DOUBLE_SHOCK, player);
         HP_BAR(opponent, hp: 0);
-        MESSAGE("Pikachu used up all its electricity!");
+        MESSAGE("Pikachu a utilisé toute son électricité!");
     }
 }

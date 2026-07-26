@@ -43,7 +43,7 @@ SINGLE_BATTLE_TEST("OHKO moves can can be endured by Focus Sash")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FISSURE, player);
         HP_BAR(opponent, hp: 1);
-        MESSAGE("The opposing Wobbuffet hung on using its Focus Sash!");
+        MESSAGE("Qulbutoké ennemi tient bon grâce à Ceinture Force!");
     }
 }
 
@@ -124,7 +124,7 @@ SINGLE_BATTLE_TEST("Sheer Cold can be endured by Focus Sash")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SHEER_COLD, player);
         HP_BAR(opponent, hp: 1);
-        MESSAGE("The opposing Wobbuffet hung on using its Focus Sash!");
+        MESSAGE("Qulbutoké ennemi tient bon grâce à Ceinture Force!");
     }
 }
 
@@ -151,7 +151,7 @@ SINGLE_BATTLE_TEST("Sheer Cold doesn't affect Ice-type Pokémon (Gen3-6)")
     } WHEN {
         TURN { MOVE(player, MOVE_SHEER_COLD); }
     } SCENE {
-        NOT MESSAGE("It doesn't affect the opposing Glalie…");
+        NOT MESSAGE("Ça n'affecte pas Oniglali ennemi…");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SHEER_COLD, player);
         HP_BAR(opponent, hp: 0);
     }
@@ -168,7 +168,7 @@ SINGLE_BATTLE_TEST("Sheer Cold doesn't affect Ice-type Pokémon (Gen7+)")
         TURN { MOVE(player, MOVE_SHEER_COLD); }
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SHEER_COLD, player);
-        MESSAGE("It doesn't affect the opposing Glalie…");
+        MESSAGE("Ça n'affecte pas Oniglali ennemi…");
     }
 }
 

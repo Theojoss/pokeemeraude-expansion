@@ -13,7 +13,7 @@ SINGLE_BATTLE_TEST("Magic Bounce bounces back status moves")
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_MAGIC_BOUNCE);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_TOXIC, player);
-        MESSAGE("Wynaut's Toxic was bounced back!");
+        MESSAGE("La capacité Toxik de Okéoké a été renvoyée!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TOXIC, opponent);
         STATUS_ICON(player, badPoison: TRUE);
     }
@@ -72,7 +72,7 @@ SINGLE_BATTLE_TEST("Magic Bounce bounces back powder moves")
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_MAGIC_BOUNCE);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_TOXIC, player);
-        MESSAGE("Wynaut's Stun Spore was bounced back!");
+        MESSAGE("La capacité Para-Spore de Okéoké a été renvoyée!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STUN_SPORE, opponent);
         STATUS_ICON(player, paralysis: TRUE);
     }
@@ -91,9 +91,9 @@ SINGLE_BATTLE_TEST("Magic Bounce cannot bounce back powder moves against Grass T
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_MAGIC_BOUNCE);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_STUN_SPORE, player);
-        MESSAGE("Oddish's Stun Spore was bounced back!");
+        MESSAGE("La capacité Para-Spore de Mystherbe a été renvoyée!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_STUN_SPORE, opponent);
-        MESSAGE("It doesn't affect Oddish…");
+        MESSAGE("Ça n'affecte pas Mystherbe…");
         NOT STATUS_ICON(player, paralysis: TRUE);
     }
 }
@@ -112,16 +112,16 @@ DOUBLE_BATTLE_TEST("Magic Bounce bounces back moves hitting both foes at two foe
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LEER, playerLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("The opposing Wynaut's Defense fell!");
+        MESSAGE("Ah, Défense du Okéoké ennemi baisse!");
 
         ABILITY_POPUP(opponentLeft, ABILITY_MAGIC_BOUNCE);
-        MESSAGE("Abra's Leer was bounced back!");
+        MESSAGE("La capacité Groz'Yeux de Abra a été renvoyée!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LEER, opponentLeft);
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Abra's Defense fell!");
+        MESSAGE("Ah, Défense du Abra baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Kadabra's Defense fell!");
+        MESSAGE("Ah, Défense du Kadabra baisse!");
     }
 }
 
@@ -139,18 +139,18 @@ DOUBLE_BATTLE_TEST("Magic Bounce activates on all opposing mons")
     } SCENE {
         ABILITY_POPUP(opponentLeft, ABILITY_MAGIC_BOUNCE);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_LEER, playerLeft);
-        MESSAGE("Abra's Leer was bounced back!");
+        MESSAGE("La capacité Groz'Yeux de Abra a été renvoyée!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LEER, opponentLeft);
         NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Abra's Defense fell!");
+        MESSAGE("Ah, Défense du Abra baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Kadabra's Defense fell!");
+        MESSAGE("Ah, Défense du Kadabra baisse!");
         NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Abra's Defense fell!");
+        MESSAGE("Ah, Défense du Abra baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Kadabra's Defense fell!");
+        MESSAGE("Ah, Défense du Kadabra baisse!");
     }
 }
 
@@ -178,10 +178,10 @@ DOUBLE_BATTLE_TEST("Magic Bounce bounces back moves hitting foes field")
             ABILITY_POPUP(opponentRight, ABILITY_MAGIC_BOUNCE);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_STEALTH_ROCK, playerLeft);
         if (abilityBattlerOne == ABILITY_MAGIC_BOUNCE) {
-            MESSAGE("Abra's Stealth Rock was bounced back!");
+            MESSAGE("La capacité Piège de Roc de Abra a été renvoyée!");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_STEALTH_ROCK, opponentLeft);
         } else {
-            MESSAGE("Abra's Stealth Rock was bounced back!");
+            MESSAGE("La capacité Piège de Roc de Abra a été renvoyée!");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_STEALTH_ROCK, opponentRight);
         }
     }
@@ -199,7 +199,7 @@ SINGLE_BATTLE_TEST("Magic Bounce bounced back status moves can not be bounced ba
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_MAGIC_BOUNCE);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_TOXIC, player);
-        MESSAGE("Espeon's Toxic was bounced back!");
+        MESSAGE("La capacité Toxik de Mentali a été renvoyée!");
         NOT ABILITY_POPUP(player, ABILITY_MAGIC_BOUNCE);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TOXIC, opponent);
         STATUS_ICON(player, badPoison: TRUE);
@@ -219,7 +219,7 @@ SINGLE_BATTLE_TEST("Magic Bounce can't reflect back Stealth Rock from a semi-inv
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DIG, opponent);
         NOT ABILITY_POPUP(opponent, ABILITY_MAGIC_BOUNCE);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STEALTH_ROCK, player);
-        MESSAGE("Pointed stones float in the air around the opposing team!");
+        MESSAGE("Des pierres pointues lévitent autour de l'équipe ennemie!");
     }
 }
 
@@ -263,6 +263,6 @@ DOUBLE_BATTLE_TEST("Magic Bounce will trigger after all valid targets have been 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerRight);
-        MESSAGE("Kadabra is switched out with the Eject Pack!");
+        MESSAGE("Kadabra se retire grâce au Sac Fuite!");
     }
 }

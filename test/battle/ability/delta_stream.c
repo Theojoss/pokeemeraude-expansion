@@ -19,10 +19,10 @@ DOUBLE_BATTLE_TEST("Delta Stream doesn't activate if there's already strong wind
         }
     } SCENE {
         ABILITY_POPUP(opponentLeft, ABILITY_DELTA_STREAM);
-        MESSAGE("Mysterious strong winds are protecting Flying-type Pokémon!");
+        MESSAGE("Un vent mystérieux enveloppe les Pokémon de type Vol!");
         NONE_OF {
             ABILITY_POPUP(playerLeft, ABILITY_DELTA_STREAM);
-            MESSAGE("Mysterious strong winds are protecting Flying-type Pokémon!");
+            MESSAGE("Un vent mystérieux enveloppe les Pokémon de type Vol!");
         }
     }
 }
@@ -45,7 +45,7 @@ DOUBLE_BATTLE_TEST("Strong winds continue as long as there's a Pokémon with Del
         ABILITY_POPUP(playerLeft, ABILITY_DELTA_STREAM);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
         HP_BAR(playerLeft);
-        NOT MESSAGE("The mysterious strong winds have dissipated!");
+        NOT MESSAGE("Le vent mystérieux s'est dissipé.");
     } THEN {
         EXPECT(gBattleWeather & B_WEATHER_STRONG_WINDS);
     }

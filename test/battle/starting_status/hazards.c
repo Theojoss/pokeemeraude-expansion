@@ -20,10 +20,10 @@ SINGLE_BATTLE_TEST("SetStartingStatus can start Spikes on the opposing side", s1
     } WHEN {
         TURN { SWITCH(opponent, 1); }
     } SCENE {
-        MESSAGE("2 sent out Wynaut!");
+        MESSAGE("2 envoie\nun Okéoké!");
         s32 maxHP = GetMonData(&OPPONENT_PARTY[1], MON_DATA_MAX_HP);
         HP_BAR(opponent, damage: maxHP / divisor);
-        MESSAGE("The opposing Wynaut was hurt by the spikes!");
+        MESSAGE("Okéoké ennemi est blessé par les picots!");
     } FINALLY {
         ResetStartingStatuses();
     }
@@ -40,8 +40,8 @@ SINGLE_BATTLE_TEST("Starting Toxic Spikes poison the opposing switch-in")
     } WHEN {
         TURN { SWITCH(opponent, 1); }
     } SCENE {
-        MESSAGE("2 sent out Wynaut!");
-        MESSAGE("The opposing Wynaut was poisoned!");
+        MESSAGE("2 envoie\nun Okéoké!");
+        MESSAGE("Okéoké ennemi est empoisonné!");
         STATUS_ICON(opponent, poison: TRUE);
         NOT STATUS_ICON(opponent, badPoison: TRUE);
     } THEN {
@@ -60,8 +60,8 @@ SINGLE_BATTLE_TEST("Starting Toxic Spikes badly poison the opposing switch-in")
     } WHEN {
         TURN { SWITCH(opponent, 1); }
     } SCENE {
-        MESSAGE("2 sent out Wynaut!");
-        MESSAGE("The opposing Wynaut was badly poisoned!");
+        MESSAGE("2 envoie\nun Okéoké!");
+        MESSAGE("Okéoké ennemi est gravement empoisonné!");
         STATUS_ICON(opponent, badPoison: TRUE);
     } THEN {
         ResetStartingStatuses();
@@ -79,9 +79,9 @@ SINGLE_BATTLE_TEST("Starting Sticky Web lowers Speed on entry")
     } WHEN {
         TURN { SWITCH(opponent, 1); }
     } SCENE {
-        MESSAGE("2 sent out Wynaut!");
-        MESSAGE("The opposing Wynaut was caught in a sticky web!");
-        MESSAGE("The opposing Wynaut's Speed fell!");
+        MESSAGE("2 envoie\nun Okéoké!");
+        MESSAGE("Okéoké ennemi est pris dans une toile gluante!");
+        MESSAGE("Ah, Vitesse du Okéoké ennemi baisse!");
     } THEN {
         ResetStartingStatuses();
     }
@@ -100,10 +100,10 @@ SINGLE_BATTLE_TEST("Starting Stealth Rock damages the opposing switch-in")
     } WHEN {
         TURN { SWITCH(opponent, 1); }
     } SCENE {
-        MESSAGE("2 sent out Charizard!");
+        MESSAGE("2 envoie\nun Dracaufeu!");
         s32 maxHP = GetMonData(&OPPONENT_PARTY[1], MON_DATA_MAX_HP);
         HP_BAR(opponent, damage: maxHP / 2);
-        MESSAGE("Pointed stones dug into the opposing Charizard!");
+        MESSAGE("Des pierres pointues transpercent Dracaufeu ennemi!");
     } THEN {
         ResetStartingStatuses();
     }
@@ -121,10 +121,10 @@ SINGLE_BATTLE_TEST("Starting sharp steel damages the opposing switch-in")
     } WHEN {
         TURN { SWITCH(opponent, 1); }
     } SCENE {
-        MESSAGE("2 sent out Sylveon!");
+        MESSAGE("2 envoie\nun Nymphali!");
         s32 maxHP = GetMonData(&OPPONENT_PARTY[1], MON_DATA_MAX_HP);
         HP_BAR(opponent, damage: maxHP / 4);
-        MESSAGE("The sharp steel bit into the opposing Sylveon!");
+        MESSAGE("L'acier pointu transperce Nymphali ennemi!");
     } THEN {
         ResetStartingStatuses();
     }
@@ -150,10 +150,10 @@ SINGLE_BATTLE_TEST("SetStartingStatus can start Spikes on the player side", s16 
     } WHEN {
         TURN { SWITCH(player, 1); }
     } SCENE {
-        MESSAGE("Go! Wynaut!");
+        MESSAGE("Okéoké! Go!");
         s32 maxHP = GetMonData(&PLAYER_PARTY[1], MON_DATA_MAX_HP);
         HP_BAR(player, damage: maxHP / divisor);
-        MESSAGE("Wynaut was hurt by the spikes!");
+        MESSAGE("Okéoké est blessé par les picots!");
     } FINALLY {
         ResetStartingStatuses();
     }
@@ -170,8 +170,8 @@ SINGLE_BATTLE_TEST("Starting Toxic Spikes poison the player's switch-in")
     } WHEN {
         TURN { SWITCH(player, 1); }
     } SCENE {
-        MESSAGE("Go! Wynaut!");
-        MESSAGE("Wynaut was poisoned!");
+        MESSAGE("Okéoké! Go!");
+        MESSAGE("Okéoké est empoisonné!");
         STATUS_ICON(player, poison: TRUE);
         NOT STATUS_ICON(player, badPoison: TRUE);
     } THEN {
@@ -190,8 +190,8 @@ SINGLE_BATTLE_TEST("Starting Toxic Spikes badly poison the player's switch-in")
     } WHEN {
         TURN { SWITCH(player, 1); }
     } SCENE {
-        MESSAGE("Go! Wynaut!");
-        MESSAGE("Wynaut was badly poisoned!");
+        MESSAGE("Okéoké! Go!");
+        MESSAGE("Okéoké est gravement empoisonné!");
         STATUS_ICON(player, badPoison: TRUE);
     } THEN {
         ResetStartingStatuses();
@@ -209,9 +209,9 @@ SINGLE_BATTLE_TEST("Starting Sticky Web lowers Speed on player's entry")
     } WHEN {
         TURN { SWITCH(player, 1); }
     } SCENE {
-        MESSAGE("Go! Wynaut!");
-        MESSAGE("Wynaut was caught in a sticky web!");
-        MESSAGE("Wynaut's Speed fell!");
+        MESSAGE("Okéoké! Go!");
+        MESSAGE("Okéoké est pris dans une toile gluante!");
+        MESSAGE("Ah, Vitesse du Okéoké baisse!");
     } THEN {
         ResetStartingStatuses();
     }
@@ -230,10 +230,10 @@ SINGLE_BATTLE_TEST("Starting Stealth Rock damages the player's switch-in")
     } WHEN {
         TURN { SWITCH(player, 1); }
     } SCENE {
-        MESSAGE("Go! Charizard!");
+        MESSAGE("Dracaufeu! Go!");
         s32 maxHP = GetMonData(&PLAYER_PARTY[1], MON_DATA_MAX_HP);
         HP_BAR(player, damage: maxHP / 2);
-        MESSAGE("Pointed stones dug into Charizard!");
+        MESSAGE("Des pierres pointues transpercent Dracaufeu!");
     } THEN {
         ResetStartingStatuses();
     }
@@ -251,10 +251,10 @@ SINGLE_BATTLE_TEST("Starting sharp steel damages the player's switch-in")
     } WHEN {
         TURN { SWITCH(player, 1); }
     } SCENE {
-        MESSAGE("Go! Sylveon!");
+        MESSAGE("Nymphali! Go!");
         s32 maxHP = GetMonData(&PLAYER_PARTY[1], MON_DATA_MAX_HP);
         HP_BAR(player, damage: maxHP / 4);
-        MESSAGE("The sharp steel bit into Sylveon!");
+        MESSAGE("L'acier pointu transperce Nymphali!");
     } THEN {
         ResetStartingStatuses();
     }

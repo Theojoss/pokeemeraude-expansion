@@ -26,7 +26,7 @@ SINGLE_BATTLE_TEST("Leaf Guard prevents non-volatile status conditions in sun")
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, move, opponent);
         ABILITY_POPUP(player, ABILITY_LEAF_GUARD);
-        MESSAGE("It doesn't affect Leafeon…");
+        MESSAGE("Ça n'affecte pas Phyllali…");
         NOT STATUS_ICON(player, status);
     }
 }
@@ -63,7 +63,7 @@ SINGLE_BATTLE_TEST("Leaf Guard doesn't prevent non-volatile status conditions if
         ANIMATION(ANIM_TYPE_MOVE, move, opponent);
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_LEAF_GUARD);
-            MESSAGE("It doesn't affect Leafeon…");
+            MESSAGE("Ça n'affecte pas Phyllali…");
         }
         STATUS_ICON(player, status);
     }
@@ -83,10 +83,10 @@ SINGLE_BATTLE_TEST("Leaf Guard prevents status conditions from Flame Orb and Tox
         TURN { MOVE(player, MOVE_SUNNY_DAY); }
     } SCENE {
         if (item == ITEM_FLAME_ORB) {
-            NONE_OF { MESSAGE("Leafeon was burned!"); STATUS_ICON(player, burn: TRUE); }
+            NONE_OF { MESSAGE("Phyllali est brûlé!"); STATUS_ICON(player, burn: TRUE); }
         }
         else {
-            NONE_OF { MESSAGE("Leafeon was badly poisoned!"); STATUS_ICON(player, badPoison: TRUE); }
+            NONE_OF { MESSAGE("Phyllali est gravement empoisonné!"); STATUS_ICON(player, badPoison: TRUE); }
         }
     }
 }
@@ -109,11 +109,11 @@ SINGLE_BATTLE_TEST("Leaf Guard doesn't prevent status conditions from Flame Orb 
         TURN { MOVE(player, MOVE_SUNNY_DAY); }
     } SCENE {
         if (item == ITEM_FLAME_ORB) {
-            MESSAGE("Leafeon was burned!");
+            MESSAGE("Phyllali est brûlé!");
             STATUS_ICON(player, burn: TRUE);
         }
         else {
-            MESSAGE("Leafeon was badly poisoned!");
+            MESSAGE("Phyllali est gravement empoisonné!");
             STATUS_ICON(player, badPoison: TRUE);
         }
     }

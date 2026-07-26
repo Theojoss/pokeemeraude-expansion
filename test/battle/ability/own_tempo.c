@@ -14,7 +14,7 @@ SINGLE_BATTLE_TEST("Own Tempo doesn't prevent Intimidate (Gen3-7)")
         ABILITY_POPUP(player, ABILITY_INTIMIDATE);
         NONE_OF {
             ABILITY_POPUP(opponent, ABILITY_OWN_TEMPO);
-            MESSAGE("The opposing Slowpoke's Attack was not lowered!");
+            MESSAGE("L'Attaque de Ramoloss ennemi ne baisse pas!");
         }
     }
 }
@@ -31,11 +31,11 @@ SINGLE_BATTLE_TEST("Own Tempo prevents Intimidate but no other stat down changes
     } SCENE {
         ABILITY_POPUP(player, ABILITY_INTIMIDATE);
         ABILITY_POPUP(opponent, ABILITY_OWN_TEMPO);
-        MESSAGE("The opposing Slowpoke's Attack was not lowered!");
+        MESSAGE("Attaque de Ramoloss ennemi ne baisse pas!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCARY_FACE, player);
         NONE_OF {
             ABILITY_POPUP(opponent, ABILITY_OWN_TEMPO);
-            MESSAGE("The opposing Slowpoke's Attack was not lowered!");
+            MESSAGE("Attaque de Ramoloss ennemi ne baisse pas!");
         }
     }
 }
@@ -50,7 +50,7 @@ SINGLE_BATTLE_TEST("Own Tempo prevents confusion from moves by the opponent")
         TURN { MOVE(player, MOVE_CONFUSE_RAY); }
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_OWN_TEMPO);
-        MESSAGE("The opposing Slowpoke cannot be confused!");
+        MESSAGE("Ramoloss ennemi ne peut pas être rendu confus!");
     }
 }
 
@@ -70,7 +70,7 @@ SINGLE_BATTLE_TEST("Own Tempo prevents confusion from moves by the user")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PETAL_DANCE, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PETAL_DANCE, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PETAL_DANCE, opponent);
-        NONE_OF { MESSAGE("The opposing Slowpoke became confused due to fatigue!"); }
+        NONE_OF { MESSAGE("La fatigue rend Ramoloss ennemi confus!"); }
     }
 }
 
@@ -84,7 +84,7 @@ SINGLE_BATTLE_TEST("Mold Breaker ignores Own Tempo")
         TURN { MOVE(player, MOVE_CONFUSE_RAY); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CONFUSE_RAY, player);
-        NOT MESSAGE("The opposing Slowpoke's Own Tempo prevents confusion!");
+        NOT MESSAGE("Ramoloss's Tempo Perso prevents confusion ennemi!");
     }
 }
 
@@ -98,12 +98,12 @@ SINGLE_BATTLE_TEST("Mold Breaker does not prevent Own Tempo from curing confusio
         TURN { MOVE(player, MOVE_CONFUSE_RAY); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CONFUSE_RAY, player);
-        MESSAGE("The opposing Slowpoke became confused!");
+        MESSAGE("Ça rend Ramoloss ennemi confus!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_CONFUSION, opponent);
         }
         ABILITY_POPUP(opponent, ABILITY_OWN_TEMPO);
-        MESSAGE("The opposing Slowpoke snapped out of its confusion!");
+        MESSAGE("Ramoloss ennemi n'est plus confus!");
     }
 }
 
@@ -121,10 +121,10 @@ SINGLE_BATTLE_TEST("Own Tempo cures confusion if it's obtained via Skill Swap")
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CONFUSE_RAY, player);
-        MESSAGE("The opposing Wobbuffet became confused!");
+        MESSAGE("Ça rend Qulbutoké ennemi confus!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SKILL_SWAP, player);
         ABILITY_POPUP(opponent, ABILITY_OWN_TEMPO);
-        MESSAGE("The opposing Wobbuffet snapped out of its confusion!");
+        MESSAGE("Qulbutoké ennemi n'est plus confus!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
     }
 }

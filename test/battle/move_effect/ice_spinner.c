@@ -42,16 +42,16 @@ SINGLE_BATTLE_TEST("Ice Spinner and Steel Roller remove a terrain from field")
         switch (terrainMove)
         {
         case MOVE_ELECTRIC_TERRAIN:
-            MESSAGE("The electricity disappeared from the battlefield.");
+            MESSAGE("L'électricité parcourant le terrain s'est dissipée.");
             break;
         case MOVE_PSYCHIC_TERRAIN:
-            MESSAGE("The weirdness disappeared from the battlefield!");
+            MESSAGE("Le sol redevient normal.");
             break;
         case MOVE_GRASSY_TERRAIN:
-            MESSAGE("The grass disappeared from the battlefield.");
+            MESSAGE("Le gazon disparaît.");
             break;
         case MOVE_MISTY_TERRAIN:
-            MESSAGE("The mist disappeared from the battlefield.");
+            MESSAGE("La brume qui recouvrait le terrain se dissipe.");
             break;
         default:
             break;
@@ -69,7 +69,7 @@ SINGLE_BATTLE_TEST("Ice Spinner fails to remove terrain if user faints during at
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRIC_TERRAIN, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ICE_SPINNER, opponent);
-        NOT MESSAGE("The electricity disappeared from the battlefield.");
+        NOT MESSAGE("L'électricité parcourant le terrain s'est dissipée.");
     }
 }
 
@@ -85,7 +85,7 @@ SINGLE_BATTLE_TEST("Ice Spinner will not be remove Terrain if user is switched o
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRIC_TERRAIN, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ICE_SPINNER, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        NOT MESSAGE("The electricity disappeared from the battlefield.");
+        NOT MESSAGE("L'électricité parcourant le terrain s'est dissipée.");
     }
 }
 
@@ -99,8 +99,8 @@ SINGLE_BATTLE_TEST("Ice Spinner doesn't fail if there is no terrain on the field
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ICE_SPINNER, player);
         NONE_OF {
-            MESSAGE("But it failed!");
-            MESSAGE("Mist swirled around the battlefield!");
+            MESSAGE("Mais cela échoue!");
+            MESSAGE("La brume recouvre le terrain!");
         }
     }
 }

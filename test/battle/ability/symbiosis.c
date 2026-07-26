@@ -19,9 +19,9 @@ DOUBLE_BATTLE_TEST("Symbiosis transfers its item to an ally after it consumes an
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
         // symbiosis triggers
         ABILITY_POPUP(playerRight, ABILITY_SYMBIOSIS);
-        MESSAGE("Oranguru shared its Toxic Orb with Wobbuffet!");
+        MESSAGE("Gouroutan donne Orbe Toxique à Qulbutoké!");
         // end of turn, wobb gets poisoned
-        MESSAGE("Wobbuffet was badly poisoned!");
+        MESSAGE("Qulbutoké est gravement empoisonné!");
         STATUS_ICON(playerLeft, STATUS1_TOXIC_POISON);
     } THEN {
         EXPECT_EQ(playerLeft->item, ITEM_TOXIC_ORB);
@@ -47,9 +47,9 @@ DOUBLE_BATTLE_TEST("Symbiosis triggers after partners berry eaten from bug bite"
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
         // symbiosis triggers
         ABILITY_POPUP(playerRight, ABILITY_SYMBIOSIS);
-        MESSAGE("Oranguru shared its Toxic Orb with Wobbuffet!");
+        MESSAGE("Gouroutan donne Orbe Toxique à Qulbutoké!");
         // end of turn, wobb gets poisoned
-        MESSAGE("Wobbuffet was badly poisoned!");
+        MESSAGE("Qulbutoké est gravement empoisonné!");
         STATUS_ICON(playerLeft, STATUS1_TOXIC_POISON);
     } THEN {
         EXPECT_EQ(playerLeft->item, ITEM_TOXIC_ORB);
@@ -71,15 +71,15 @@ DOUBLE_BATTLE_TEST("Symbiosis triggers after partner bestows its item")
         TURN { MOVE(playerLeft, MOVE_BESTOW, target: opponentLeft); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BESTOW, playerLeft);
-        MESSAGE("The opposing Staravia received Flame Orb from Wobbuffet!");
+        MESSAGE("Étourvol ennemi reçoit Orbe Flamme de Qulbutoké!");
         // symbiosis triggers
         ABILITY_POPUP(playerRight, ABILITY_SYMBIOSIS);
-        MESSAGE("Oranguru shared its Toxic Orb with Wobbuffet!");
+        MESSAGE("Gouroutan donne Orbe Toxique à Qulbutoké!");
         // end of turn, wobb gets poisoned
-        MESSAGE("Wobbuffet was badly poisoned!");
+        MESSAGE("Qulbutoké est gravement empoisonné!");
         STATUS_ICON(playerLeft, STATUS1_TOXIC_POISON);
         // staravia gets burned
-        MESSAGE("The opposing Staravia was burned!");
+        MESSAGE("Étourvol ennemi est brûlé!");
         STATUS_ICON(opponentLeft, STATUS1_BURN);
     } THEN {
         EXPECT_EQ(playerLeft->item, ITEM_TOXIC_ORB);
@@ -102,13 +102,13 @@ DOUBLE_BATTLE_TEST("Symbiosis triggers after partner flings its item")
         TURN { MOVE(playerLeft, MOVE_FLING, target: opponentLeft); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FLING, playerLeft);
-        MESSAGE("The opposing Staravia was burned!");
+        MESSAGE("Étourvol ennemi est brûlé!");
         STATUS_ICON(opponentLeft, STATUS1_BURN);
         // symbiosis triggers
         ABILITY_POPUP(playerRight, ABILITY_SYMBIOSIS);
-        MESSAGE("Oranguru shared its Toxic Orb with Wobbuffet!");
+        MESSAGE("Gouroutan donne Orbe Toxique à Qulbutoké!");
         // end of turn, wobb gets poisoned
-        MESSAGE("Wobbuffet was badly poisoned!");
+        MESSAGE("Qulbutoké est gravement empoisonné!");
         STATUS_ICON(playerLeft, STATUS1_TOXIC_POISON);
     } THEN {
         EXPECT_EQ(playerLeft->item, ITEM_TOXIC_ORB);
@@ -152,7 +152,7 @@ DOUBLE_BATTLE_TEST("Symbiosis transfers its item after Gem consumption and move 
         TURN { MOVE(playerLeft, MOVE_SCRATCH, target: opponentLeft); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
-        MESSAGE("The Normal Gem strengthened Wobbuffet's power!");
+        MESSAGE("Joyau Normal renforce la capacité de Qulbutoké!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerLeft);
         ABILITY_POPUP(playerRight, ABILITY_SYMBIOSIS);
         STATUS_ICON(playerLeft, STATUS1_TOXIC_POISON);
@@ -176,7 +176,7 @@ DOUBLE_BATTLE_TEST("Symbiosis transfers its item after Gem consumption, but befo
         TURN { MOVE(playerLeft, MOVE_SCRATCH, target: opponentLeft); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
-        MESSAGE("The Normal Gem strengthened Wobbuffet's power!");
+        MESSAGE("Joyau Normal renforce la capacité de Qulbutoké!");
         ABILITY_POPUP(playerRight, ABILITY_SYMBIOSIS);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerLeft);
         STATUS_ICON(playerLeft, STATUS1_TOXIC_POISON);
@@ -200,7 +200,7 @@ DOUBLE_BATTLE_TEST("Symbiosis does not transfer its item after an ally's Eject B
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
-        MESSAGE("Wobbuffet is switched out with the Eject Button!");
+        MESSAGE("Qulbutoké se retire grâce au Bouton Fuite!");
         NOT ABILITY_POPUP(playerRight, ABILITY_SYMBIOSIS);
     } THEN {
         EXPECT_EQ(playerRight->item, ITEM_POTION);
@@ -223,7 +223,7 @@ DOUBLE_BATTLE_TEST("Symbiosis does not transfer its item after an ally's Eject P
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CHARM, opponentLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
-        MESSAGE("Wobbuffet is switched out with the Eject Pack!");
+        MESSAGE("Qulbutoké se retire grâce au Sac Fuite!");
         NOT ABILITY_POPUP(playerRight, ABILITY_SYMBIOSIS);
     } THEN {
         EXPECT_EQ(playerRight->item, ITEM_POTION);

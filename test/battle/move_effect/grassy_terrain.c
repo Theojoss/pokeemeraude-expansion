@@ -15,16 +15,16 @@ SINGLE_BATTLE_TEST("Grassy Terrain recovers 1/16th HP at end of turn")
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GRASSY_TERRAIN, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
-        MESSAGE("Wobbuffet is healed by the grassy terrain!");
+        MESSAGE("Qulbutoké récupère des PV grâce au gazon!");
         HP_BAR(player, damage: -maxHPPlayer / 16);
-        MESSAGE("The opposing Wobbuffet is healed by the grassy terrain!");
+        MESSAGE("Qulbutoké ennemi récupère des PV grâce au gazon!");
         HP_BAR(opponent, damage: -maxHPOpponent / 16);
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
-        MESSAGE("Wobbuffet is healed by the grassy terrain!");
+        MESSAGE("Qulbutoké récupère des PV grâce au gazon!");
         HP_BAR(player, damage: -maxHPPlayer / 16);
-        MESSAGE("The opposing Wobbuffet is healed by the grassy terrain!");
+        MESSAGE("Qulbutoké ennemi récupère des PV grâce au gazon!");
         HP_BAR(opponent, damage: -maxHPOpponent / 16);
     }
 }
@@ -42,7 +42,7 @@ SINGLE_BATTLE_TEST("Grassy Terrain increases power of Grass-type moves by 30/50 
             TURN { MOVE(player, MOVE_GRASSY_TERRAIN); }
         TURN { MOVE(player, MOVE_ABSORB); }
     } SCENE {
-        MESSAGE("Wobbuffet used Absorb!");
+        MESSAGE("Qulbutoké utilise\nVole-Vie!");
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
         if (B_TERRAIN_TYPE_BOOST >= GEN_8)
@@ -64,20 +64,20 @@ SINGLE_BATTLE_TEST("Grassy Terrain lasts for 5 turns")
         TURN {}
         TURN {}
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GRASSY_TERRAIN, player);
-        MESSAGE("Grass grew to cover the battlefield!");
+        MESSAGE("Un beau gazon pousse sur le terrain!");
 
-        MESSAGE("Wobbuffet used Celebrate!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Qulbutoké utilise\nCélébration!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
 
-        MESSAGE("Wobbuffet used Celebrate!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Qulbutoké utilise\nCélébration!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
 
-        MESSAGE("Wobbuffet used Celebrate!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Qulbutoké utilise\nCélébration!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
 
-        MESSAGE("The grass disappeared from the battlefield.");
+        MESSAGE("Le gazon disparaît.");
     }
 }
 
@@ -93,14 +93,14 @@ SINGLE_BATTLE_TEST("Grassy Terrain heals the Pokémon on the field for the durat
         TURN {}
         TURN {}
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GRASSY_TERRAIN, player);
-        MESSAGE("Grass grew to cover the battlefield!");
-        MESSAGE("The opposing Wobbuffet is healed by the grassy terrain!");
-        MESSAGE("The opposing Wobbuffet is healed by the grassy terrain!");
-        MESSAGE("The opposing Wobbuffet is healed by the grassy terrain!");
-        MESSAGE("The opposing Wobbuffet is healed by the grassy terrain!");
-        MESSAGE("The opposing Wobbuffet is healed by the grassy terrain!");
-        MESSAGE("The grass disappeared from the battlefield.");
+        MESSAGE("Un beau gazon pousse sur le terrain!");
+        MESSAGE("Qulbutoké ennemi récupère des PV grâce au gazon!");
+        MESSAGE("Qulbutoké ennemi récupère des PV grâce au gazon!");
+        MESSAGE("Qulbutoké ennemi récupère des PV grâce au gazon!");
+        MESSAGE("Qulbutoké ennemi récupère des PV grâce au gazon!");
+        MESSAGE("Qulbutoké ennemi récupère des PV grâce au gazon!");
+        MESSAGE("Le gazon disparaît.");
     }
 }

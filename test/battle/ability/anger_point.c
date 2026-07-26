@@ -11,10 +11,10 @@ SINGLE_BATTLE_TEST("Anger Point raises Attack stage to maximum after receiving a
         TURN { MOVE(opponent, MOVE_FROST_BREATH); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FROST_BREATH, opponent);
-        MESSAGE("A critical hit!");
+        MESSAGE("Coup critique!");
         ABILITY_POPUP(player, ABILITY_ANGER_POINT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Primeape maxed its Attack!");
+        MESSAGE("Colossinge monte son Attaque au maximum!");
     } THEN {
         EXPECT_EQ(player->statStages[STAT_ATK], MAX_STAT_STAGE);
     }
@@ -32,13 +32,13 @@ SINGLE_BATTLE_TEST("Anger Point does not trigger when already at maximum Attack 
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BELLY_DRUM, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Primeape cut its own HP and maximized its Attack!");
+        MESSAGE("Colossinge sacrifie des PV et augmente son Attaque au maximum!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FROST_BREATH, opponent);
-        MESSAGE("A critical hit!");
+        MESSAGE("Coup critique!");
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_ANGER_POINT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Primeape maxed its Attack!");
+            MESSAGE("Colossinge monte son Attaque au maximum!");
         }
     } THEN {
         EXPECT_EQ(player->statStages[STAT_ATK], MAX_STAT_STAGE);
@@ -58,13 +58,13 @@ SINGLE_BATTLE_TEST("Anger Point does not trigger when a substitute takes the hit
         TURN { MOVE(player, MOVE_SUBSTITUTE); MOVE(opponent, MOVE_FROST_BREATH); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUBSTITUTE, player);
-        MESSAGE("Primeape put in a substitute!");
+        MESSAGE("Colossinge crée un clone!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FROST_BREATH, opponent);
-        MESSAGE("A critical hit!");
+        MESSAGE("Coup critique!");
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_ANGER_POINT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Primeape maxed its Attack!");
+            MESSAGE("Colossinge monte son Attaque au maximum!");
         }
     } THEN {
         EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE);

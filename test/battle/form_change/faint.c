@@ -14,10 +14,10 @@ SINGLE_BATTLE_TEST("Aegislash reverts to Shield Form upon fainting (start as Shi
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GUST, opponent);
         HP_BAR(player);
-        MESSAGE("Aegislash fainted!");
-        SEND_IN_MESSAGE("Wobbuffet");
-        SWITCH_OUT_MESSAGE("Wobbuffet")
-        SEND_IN_MESSAGE("Aegislash");
+        MESSAGE("Exagide est K.O.!\p");
+        SEND_IN_MESSAGE("Qulbutoké");
+        SWITCH_OUT_MESSAGE("Qulbutoké")
+        SEND_IN_MESSAGE("Exagide");
     } THEN {
         // We do not check gParties[B_TRAINER_PLAYER] data to avoid triggering FORM_CHANGE_END_BATTLE.
         EXPECT_EQ(player->species, SPECIES_AEGISLASH_SHIELD);
@@ -37,10 +37,10 @@ SINGLE_BATTLE_TEST("Aegislash reverts to Shield Form upon fainting (start as Bla
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GUST, opponent);
         HP_BAR(player);
-        MESSAGE("Aegislash fainted!");
-        SEND_IN_MESSAGE("Wobbuffet");
-        SWITCH_OUT_MESSAGE("Wobbuffet")
-        SEND_IN_MESSAGE("Aegislash");
+        MESSAGE("Exagide est K.O.!\p");
+        SEND_IN_MESSAGE("Qulbutoké");
+        SWITCH_OUT_MESSAGE("Qulbutoké")
+        SEND_IN_MESSAGE("Exagide");
     } THEN {
         // We do not check gParties[B_TRAINER_PLAYER] data to avoid triggering FORM_CHANGE_END_BATTLE.
         EXPECT_EQ(player->species, SPECIES_AEGISLASH_SHIELD);
@@ -61,11 +61,11 @@ DOUBLE_BATTLE_TEST("Causing a Forecast or Flower Gift Pokémon to faint should n
         TURN { MOVE(playerRight, MOVE_GYRO_BALL, target: opponentRight); }
     } SCENE {
         if (species == SPECIES_CASTFORM) {
-            MESSAGE("The opposing Castform fainted!");
-            NOT MESSAGE("The opposing Castform transformed!");
+            MESSAGE("Morphéo ennemi est K.O.!\p");
+            NOT MESSAGE("Morphéo ennemi se transforme!");
         } else {
-            MESSAGE("The opposing Cherrim fainted!");
-            NOT MESSAGE("The opposing Cherrim transformed!");
+            MESSAGE("Ceriflor ennemi est K.O.!\p");
+            NOT MESSAGE("Ceriflor ennemi se transforme!");
         }
     }
 }

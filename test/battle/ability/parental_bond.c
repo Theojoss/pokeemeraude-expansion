@@ -12,9 +12,9 @@ SINGLE_BATTLE_TEST("Parental Bond converts Scratch into a two-strike move")
     } WHEN {
         TURN { MOVE(player, MOVE_SCRATCH, gimmick: GIMMICK_MEGA); MOVE(opponent, MOVE_CELEBRATE); }
     } SCENE {
-        MESSAGE("Kangaskhan's Kangaskhanite is reacting to 1's Mega Ring!");
+        MESSAGE("Kangourexite de Kangourex réagit au Méga-Anneau de 1!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, player);
-        MESSAGE("Kangaskhan has Mega Evolved into Mega Kangaskhan!");
+        MESSAGE("Kangourex méga-évolue en Méga-Kangourex!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
         HP_BAR(opponent);
         HP_BAR(opponent);
@@ -34,9 +34,9 @@ SINGLE_BATTLE_TEST("Parental Bond does not convert a move with three or more str
     } WHEN {
         TURN { MOVE(player, MOVE_TRIPLE_KICK, gimmick: GIMMICK_MEGA); MOVE(opponent, MOVE_CELEBRATE); }
     } SCENE {
-        MESSAGE("Kangaskhan's Kangaskhanite is reacting to 1's Mega Ring!");
+        MESSAGE("Kangourexite de Kangourex réagit au Méga-Anneau de 1!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, player);
-        MESSAGE("Kangaskhan has Mega Evolved into Mega Kangaskhan!");
+        MESSAGE("Kangourex méga-évolue en Méga-Kangourex!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TRIPLE_KICK, player);
         HP_BAR(opponent);
         HP_BAR(opponent);
@@ -63,9 +63,9 @@ SINGLE_BATTLE_TEST("Parental Bond converts multi-target moves into a two-strike 
     } WHEN {
         TURN { MOVE(player, move, gimmick: GIMMICK_MEGA); MOVE(opponent, MOVE_CELEBRATE); }
     } SCENE {
-        MESSAGE("Kangaskhan's Kangaskhanite is reacting to 1's Mega Ring!");
+        MESSAGE("Kangourexite de Kangourex réagit au Méga-Anneau de 1!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, player);
-        MESSAGE("Kangaskhan has Mega Evolved into Mega Kangaskhan!");
+        MESSAGE("Kangourex méga-évolue en Méga-Kangourex!");
         ANIMATION(ANIM_TYPE_MOVE, move, player);
         HP_BAR(opponent);
         HP_BAR(opponent);
@@ -88,11 +88,11 @@ DOUBLE_BATTLE_TEST("Parental Bond does not convert multi-target moves into a two
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_EARTHQUAKE, gimmick: GIMMICK_MEGA); MOVE(playerRight, MOVE_CELEBRATE); MOVE(opponentLeft, MOVE_CELEBRATE); MOVE(opponentRight, MOVE_CELEBRATE); }
     } SCENE {
-        MESSAGE("Kangaskhan's Kangaskhanite is reacting to 1's Mega Ring!");
+        MESSAGE("Kangourexite de Kangourex réagit au Méga-Anneau de 1!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, playerLeft);
-        MESSAGE("Kangaskhan has Mega Evolved into Mega Kangaskhan!");
-        MESSAGE("It doesn't affect Pidgey…");
-        MESSAGE("It doesn't affect the opposing Pidgey…");
+        MESSAGE("Kangourex méga-évolue en Méga-Kangourex!");
+        MESSAGE("Ça n'affecte pas Roucool…");
+        MESSAGE("Ça n'affecte pas Roucool ennemi…");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, playerLeft);
         HP_BAR(opponentLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, playerRight);
@@ -120,9 +120,9 @@ SINGLE_BATTLE_TEST("Parental Bond-converted moves only hit once on Lightning Rod
     } WHEN {
         TURN { MOVE(player, move, gimmick: GIMMICK_MEGA); MOVE(opponent, MOVE_CELEBRATE); }
     } SCENE {
-        MESSAGE("Kangaskhan's Kangaskhanite is reacting to 1's Mega Ring!");
+        MESSAGE("Kangourexite de Kangourex réagit au Méga-Anneau de 1!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, player);
-        MESSAGE("Kangaskhan has Mega Evolved into Mega Kangaskhan!");
+        MESSAGE("Kangourex méga-évolue en Méga-Kangourex!");
         ABILITY_POPUP(opponent, ability);
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, move, player);
@@ -151,12 +151,12 @@ SINGLE_BATTLE_TEST("Parental Bond has no affect on multi hit moves and they stil
     } WHEN {
         TURN { MOVE(player, MOVE_COMET_PUNCH, gimmick: GIMMICK_MEGA); }
     } SCENE {
-        MESSAGE("Kangaskhan's Kangaskhanite is reacting to 1's Mega Ring!");
+        MESSAGE("Kangourexite de Kangourex réagit au Méga-Anneau de 1!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, player);
-        MESSAGE("Kangaskhan has Mega Evolved into Mega Kangaskhan!");
+        MESSAGE("Kangourex méga-évolue en Méga-Kangourex!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COMET_PUNCH, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COMET_PUNCH, player);
-        MESSAGE("The Pokémon was hit 2 time(s)!");
+        MESSAGE("Touché 2 fois!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
     }
     THEN {
@@ -180,13 +180,13 @@ SINGLE_BATTLE_TEST("Parental Bond has no affect on multi hit moves and they stil
     } WHEN {
         TURN { MOVE(player, MOVE_COMET_PUNCH, gimmick: GIMMICK_MEGA); }
     } SCENE {
-        MESSAGE("Kangaskhan's Kangaskhanite is reacting to 1's Mega Ring!");
+        MESSAGE("Kangourexite de Kangourex réagit au Méga-Anneau de 1!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, player);
-        MESSAGE("Kangaskhan has Mega Evolved into Mega Kangaskhan!");
+        MESSAGE("Kangourex méga-évolue en Méga-Kangourex!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COMET_PUNCH, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COMET_PUNCH, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COMET_PUNCH, player);
-        MESSAGE("The Pokémon was hit 3 time(s)!");
+        MESSAGE("Touché 3 fois!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
     }
     THEN {
@@ -210,14 +210,14 @@ SINGLE_BATTLE_TEST("Parental Bond has no affect on multi hit moves and they stil
     } WHEN {
         TURN { MOVE(player, MOVE_COMET_PUNCH, gimmick: GIMMICK_MEGA); }
     } SCENE {
-        MESSAGE("Kangaskhan's Kangaskhanite is reacting to 1's Mega Ring!");
+        MESSAGE("Kangourexite de Kangourex réagit au Méga-Anneau de 1!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, player);
-        MESSAGE("Kangaskhan has Mega Evolved into Mega Kangaskhan!");
+        MESSAGE("Kangourex méga-évolue en Méga-Kangourex!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COMET_PUNCH, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COMET_PUNCH, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COMET_PUNCH, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COMET_PUNCH, player);
-        MESSAGE("The Pokémon was hit 4 time(s)!");
+        MESSAGE("Touché 4 fois!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
     }
     THEN {
@@ -247,7 +247,7 @@ SINGLE_BATTLE_TEST("Parental Bond has no affect on multi hit moves and they stil
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COMET_PUNCH, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COMET_PUNCH, player);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_COMET_PUNCH, player);
-        MESSAGE("The Pokémon was hit 5 time(s)!");
+        MESSAGE("Touché 5 fois!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
     }
     THEN {
@@ -266,14 +266,14 @@ SINGLE_BATTLE_TEST("Parental Bond Smack Down effect triggers after 2nd hit")
     } WHEN {
         TURN { MOVE(player, MOVE_SMACK_DOWN, gimmick: GIMMICK_MEGA); }
     } SCENE {
-        MESSAGE("Kangaskhan's Kangaskhanite is reacting to 1's Mega Ring!");
+        MESSAGE("Kangourexite de Kangourex réagit au Méga-Anneau de 1!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, player);
-        MESSAGE("Kangaskhan has Mega Evolved into Mega Kangaskhan!");
+        MESSAGE("Kangourex méga-évolue en Méga-Kangourex!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SMACK_DOWN, player);
         HP_BAR(opponent);
-        NOT MESSAGE("The opposing Skarmory fell straight down!");
+        NOT MESSAGE("Airmure ennemi s'écrase au sol!");
         HP_BAR(opponent);
-        MESSAGE("The opposing Skarmory fell straight down!");
+        MESSAGE("Airmure ennemi s'écrase au sol!");
     } THEN {
         EXPECT_EQ(player->species, SPECIES_KANGASKHAN_MEGA);
     }
@@ -289,11 +289,11 @@ SINGLE_BATTLE_TEST("Parental Bond Snore strikes twice while asleep")
     } WHEN {
         TURN { MOVE(player, MOVE_SNORE, gimmick: GIMMICK_MEGA); }
     } SCENE {
-        MESSAGE("Kangaskhan is fast asleep.");
+        MESSAGE("Kangourex dort profondément.");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SNORE, player);
         HP_BAR(opponent, captureDamage: &damage[0]);
         HP_BAR(opponent, captureDamage: &damage[1]);
-        MESSAGE("The Pokémon was hit 2 time(s)!");
+        MESSAGE("Touché 2 fois!");
     } THEN {
         if (B_PARENTAL_BOND_DMG >= GEN_7)
             EXPECT_MUL_EQ(damage[0], Q_4_12(0.25), damage[1]);
@@ -315,7 +315,7 @@ SINGLE_BATTLE_TEST("Parental Bond only triggers Dragon Tail's target switch out 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_TAIL, player);
         HP_BAR(opponent);
         HP_BAR(opponent);
-        MESSAGE("The opposing Wynaut was dragged out!");
+        MESSAGE("Okéoké ennemi est traîné de force au combat!\p");
     }
     THEN {
         EXPECT_EQ(player->species, SPECIES_KANGASKHAN_MEGA);
@@ -368,7 +368,7 @@ SINGLE_BATTLE_TEST("Parental Bond does not trigger on OHKO moves")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FISSURE, player);
         HP_BAR(opponent, hp: 1);
-        MESSAGE("The opposing Machamp hung on using its Focus Sash!");
+        MESSAGE("Mackogneur ennemi tient bon grâce à Ceinture Force!");
         NOT HP_BAR(opponent);
     } THEN {
         EXPECT_EQ(opponent->hp, 1);

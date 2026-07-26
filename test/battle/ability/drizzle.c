@@ -15,7 +15,7 @@ SINGLE_BATTLE_TEST("Drizzle summons rain", s16 damage)
     } SCENE {
         if (ability == ABILITY_DRIZZLE) {
             ABILITY_POPUP(player, ABILITY_DRIZZLE);
-            MESSAGE("It started to rain!");
+            MESSAGE("Il commence à pleuvoir!");
         }
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
@@ -27,21 +27,21 @@ SINGLE_BATTLE_TEST("Drizzle sets up rain for 5 turns (Gen6+)")
 {
     GIVEN {
         WITH_CONFIG(B_ABILITY_WEATHER, GEN_6);
-        PLAYER(SPECIES_POLITOED) { Moves(MOVE_CELEBRATE); Ability(ABILITY_DRIZZLE); }
-        OPPONENT(SPECIES_WOBBUFFET) { Moves(MOVE_CELEBRATE); }
+        PLAYER(SPECIES_POLITOED) { Ability(ABILITY_DRIZZLE); }
+        OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
-        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
-        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
-        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
-        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
-        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
+        TURN {}
+        TURN {}
+        TURN {}
+        TURN {}
+        TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_DRIZZLE);
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("The rain stopped.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie s'est arrêtée.");
     }
 }
 
@@ -49,27 +49,28 @@ SINGLE_BATTLE_TEST("Drizzle sets up rain for 8 turns with Damp Rock (Gen6+)")
 {
     GIVEN {
         WITH_CONFIG(B_ABILITY_WEATHER, GEN_6);
-        PLAYER(SPECIES_POLITOED) { Moves(MOVE_CELEBRATE); Ability(ABILITY_DRIZZLE); Item(ITEM_DAMP_ROCK); }
-        OPPONENT(SPECIES_WOBBUFFET) { Moves(MOVE_CELEBRATE); }
+        ASSUME(gItemsInfo[ITEM_DAMP_ROCK].holdEffect == HOLD_EFFECT_DAMP_ROCK);
+        PLAYER(SPECIES_POLITOED) { Ability(ABILITY_DRIZZLE); Item(ITEM_DAMP_ROCK); }
+        OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
-        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
-        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
-        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
-        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
-        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
-        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
-        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
-        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
+        TURN {}
+        TURN {}
+        TURN {}
+        TURN {}
+        TURN {}
+        TURN {}
+        TURN {}
+        TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_DRIZZLE);
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("The rain stopped.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie s'est arrêtée.");
     }
 }
 
@@ -77,29 +78,29 @@ SINGLE_BATTLE_TEST("Drizzle sets up permanent rain (Gen3-5)")
 {
     GIVEN {
         WITH_CONFIG(B_ABILITY_WEATHER, GEN_3);
-        PLAYER(SPECIES_POLITOED) { Moves(MOVE_CELEBRATE); Ability(ABILITY_DRIZZLE); }
-        OPPONENT(SPECIES_WOBBUFFET) { Moves(MOVE_CELEBRATE); }
+        PLAYER(SPECIES_POLITOED) { Ability(ABILITY_DRIZZLE); }
+        OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
-        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
-        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
-        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
-        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
-        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
-        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
-        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
-        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
-        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_CELEBRATE); }
+        TURN {}
+        TURN {}
+        TURN {}
+        TURN {}
+        TURN {}
+        TURN {}
+        TURN {}
+        TURN {}
+        TURN {}
     } SCENE {
         ABILITY_POPUP(player, ABILITY_DRIZZLE);
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        MESSAGE("Rain continues to fall.");
-        NOT MESSAGE("The rain stopped.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        MESSAGE("La pluie continue de tomber.");
+        NOT MESSAGE("La pluie s'est arrêtée.");
     }
 }

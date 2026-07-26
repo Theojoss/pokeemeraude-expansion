@@ -18,10 +18,10 @@ SINGLE_BATTLE_TEST("Snatch steals stat-boosting moves from the opponent")
         TURN { MOVE(player, MOVE_SNATCH); MOVE(opponent, MOVE_SWORDS_DANCE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SNATCH, player);
-        MESSAGE("Wobbuffet is waiting for a target to make a move!");
-        MESSAGE("Wobbuffet snatched the opposing Wynaut's move!");
+        MESSAGE("Qulbutoké attend qu'une cible agisse!");
+        MESSAGE("Qulbutoké saisit la capacité de Okéoké ennemi!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SWORDS_DANCE, player);
-        MESSAGE("Wobbuffet's Attack rose sharply!");
+        MESSAGE("Ah, Attaque du Qulbutoké augmente beaucoup!");
     } THEN {
         EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 2);
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
@@ -38,7 +38,7 @@ SINGLE_BATTLE_TEST("Snatch does not steal non-snatchable moves")
         TURN { MOVE(player, MOVE_SNATCH); MOVE(opponent, MOVE_TACKLE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SNATCH, player);
-        MESSAGE("Wobbuffet is waiting for a target to make a move!");
+        MESSAGE("Qulbutoké attend qu'une cible agisse!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, opponent);
         HP_BAR(player);
     }
@@ -62,17 +62,17 @@ DOUBLE_BATTLE_TEST("Snatch does not steal a move that was already snatched this 
     } SCENE {
         // Both players use Snatch in turn order
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SNATCH, playerLeft);
-        MESSAGE("Wobbuffet is waiting for a target to make a move!");
+        MESSAGE("Qulbutoké attend qu'une cible agisse!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SNATCH, playerRight);
-        MESSAGE("Wynaut is waiting for a target to make a move!");
+        MESSAGE("Okéoké attend qu'une cible agisse!");
         // Opponent uses Celebrate (not snatchable)
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponentLeft);
         // Slowest opponent uses Swords Dance - only the first Snatch user should steal it
-        MESSAGE("Wobbuffet snatched the opposing Kadabra's move!");
+        MESSAGE("Qulbutoké saisit la capacité de Kadabra ennemi!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SWORDS_DANCE, playerLeft);
-        MESSAGE("Wobbuffet's Attack rose sharply!");
+        MESSAGE("Ah, Attaque du Qulbutoké augmente beaucoup!");
         // The second Snatch user should NOT steal the already-snatched move
-        NOT MESSAGE("Wynaut snatched the opposing Kadabra's move!");
+        NOT MESSAGE("Okéoké saisit la capacité de Kadabra ennemi!");
     } THEN {
         // Only playerLeft got the Attack boost
         EXPECT_EQ(playerLeft->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 2);
@@ -97,14 +97,14 @@ DOUBLE_BATTLE_TEST("Snatch steals from the correct target when multiple snatchab
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SNATCH, playerLeft);
-        MESSAGE("Wobbuffet is waiting for a target to make a move!");
+        MESSAGE("Qulbutoké attend qu'une cible agisse!");
         // First snatchable move is Swords Dance from opponentLeft
-        MESSAGE("Wobbuffet snatched the opposing Abra's move!");
+        MESSAGE("Qulbutoké saisit la capacité de Abra ennemi!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SWORDS_DANCE, playerLeft);
-        MESSAGE("Wobbuffet's Attack rose sharply!");
+        MESSAGE("Ah, Attaque du Qulbutoké augmente beaucoup!");
         // Agility should NOT be snatched (Snatch was already used)
         ANIMATION(ANIM_TYPE_MOVE, MOVE_AGILITY, opponentRight);
-        MESSAGE("The opposing Kadabra's Speed rose sharply!");
+        MESSAGE("Ah, Vitesse du Kadabra ennemi augmente beaucoup!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, playerRight);
     } THEN {
         EXPECT_EQ(playerLeft->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 2);
@@ -141,7 +141,7 @@ DOUBLE_BATTLE_TEST("Snatch fails when the only slower battler is a fainted ally"
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
-        MESSAGE("Wynaut fainted!");
+        MESSAGE("Okéoké est K.O.!\p");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponentLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponentRight);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SNATCH, playerLeft);
@@ -157,7 +157,7 @@ SINGLE_BATTLE_TEST("Snatch does not steal moves that cannot be snatched")
         TURN { MOVE(player, MOVE_SNATCH); MOVE(opponent, MOVE_CELEBRATE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SNATCH, player);
-        MESSAGE("Wobbuffet is waiting for a target to make a move!");
+        MESSAGE("Qulbutoké attend qu'une cible agisse!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
     }

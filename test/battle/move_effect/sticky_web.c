@@ -18,11 +18,11 @@ SINGLE_BATTLE_TEST("Sticky Web lowers Speed by 1 on switch-in")
         TURN {}
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, player);
-        MESSAGE("A sticky web has been laid out on the ground around the opposing team!");
-        MESSAGE("2 sent out Wynaut!");
-        MESSAGE("The opposing Wynaut was caught in a sticky web!");
+        MESSAGE("Le terrain est couvert d'une toile gluante du côté de l'équipe ennemie!");
+        MESSAGE("2 envoie\nun Okéoké!");
+        MESSAGE("Okéoké ennemi est pris dans une toile gluante!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Wynaut's Speed fell!");
+        MESSAGE("Ah, Vitesse du Okéoké ennemi baisse!");
     }
 }
 
@@ -35,13 +35,13 @@ SINGLE_BATTLE_TEST("Sticky Web can only be set up 1 time")
         TURN { MOVE(player, MOVE_STICKY_WEB); }
         TURN { MOVE(player, MOVE_STICKY_WEB); }
     } SCENE {
-        MESSAGE("Wobbuffet used Sticky Web!");
+        MESSAGE("Qulbutoké utilise\nToile Gluante!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, player);
-        MESSAGE("A sticky web has been laid out on the ground around the opposing team!");
+        MESSAGE("Le terrain est couvert d'une toile gluante du côté de l'équipe ennemie!");
 
-        MESSAGE("Wobbuffet used Sticky Web!");
+        MESSAGE("Qulbutoké utilise\nToile Gluante!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, player);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -62,16 +62,16 @@ DOUBLE_BATTLE_TEST("Sticky Web lowers Speed by 1 in a double battle after Explos
         TURN {}
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, playerRight);
-        MESSAGE("A sticky web has been laid out on the ground around the opposing team!");
+        MESSAGE("Le terrain est couvert d'une toile gluante du côté de l'équipe ennemie!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EXPLOSION, playerLeft);
-        MESSAGE("2 sent out Wynaut!");
-        MESSAGE("2 sent out Alakazam!");
-        MESSAGE("The opposing Alakazam was caught in a sticky web!");
+        MESSAGE("2 envoie\nun Okéoké!");
+        MESSAGE("2 envoie\nun Alakazam!");
+        MESSAGE("Alakazam ennemi est pris dans une toile gluante!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("The opposing Alakazam's Speed fell!");
-        MESSAGE("The opposing Wynaut was caught in a sticky web!");
+        MESSAGE("Ah, Vitesse du Alakazam ennemi baisse!");
+        MESSAGE("Okéoké ennemi est pris dans une toile gluante!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("The opposing Wynaut's Speed fell!");
+        MESSAGE("Ah, Vitesse du Okéoké ennemi baisse!");
     }
 }
 
@@ -87,11 +87,11 @@ SINGLE_BATTLE_TEST("Sticky Web raises Speed by 1 for a Pokemon with Contrary")
         TURN {}
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, player);
-        MESSAGE("A sticky web has been laid out on the ground around the opposing team!");
-        MESSAGE("2 sent out Shuckle!");
-        MESSAGE("The opposing Shuckle was caught in a sticky web!");
+        MESSAGE("Le terrain est couvert d'une toile gluante du côté de l'équipe ennemie!");
+        MESSAGE("2 envoie\nun Caratroc!");
+        MESSAGE("Caratroc ennemi est pris dans une toile gluante!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Shuckle's Speed rose!");
+        MESSAGE("Ah, Vitesse du Caratroc ennemi augmente!");
     }
 }
 
@@ -120,23 +120,23 @@ DOUBLE_BATTLE_TEST("Sticky Web has correct interactions with Mirror Armor - the 
         TURN { SWITCH(playerRight, 2); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, BATTLER_OPPONENT);
-        MESSAGE("A sticky web has been laid out on the ground around your team!");
+        MESSAGE("Le terrain est couvert d'une toile gluante du côté de votre équipe!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, BATTLER_PLAYER);
-        MESSAGE("A sticky web has been laid out on the ground around the opposing team!");
+        MESSAGE("Le terrain est couvert d'une toile gluante du côté de l'équipe ennemie!");
 
-        SEND_IN_MESSAGE("Corviknight");
-        MESSAGE("Corviknight was caught in a sticky web!");
+        SEND_IN_MESSAGE("Corvaillus");
+        MESSAGE("Corvaillus est pris dans une toile gluante!");
         ABILITY_POPUP(playerRight, ABILITY_MIRROR_ARMOR);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, BATTLER_OPPONENT);
         if (opponentSetUpper == 0) {
-            MESSAGE("The opposing Caterpie's Speed fell!");
+            MESSAGE("Ah, Vitesse du Chenipan ennemi baisse!");
             NONE_OF {
-                MESSAGE("The opposing Caterpie was caught in a sticky web!");
+                MESSAGE("Chenipan ennemi est pris dans une toile gluante!");
             }
         } else {
-            MESSAGE("The opposing Weedle's Speed fell!");
+            MESSAGE("Ah, Vitesse du Aspicot ennemi baisse!");
             NONE_OF {
-                MESSAGE("The opposing Weedle was caught in a sticky web!");
+                MESSAGE("Aspicot ennemi est pris dans une toile gluante!");
             }
         }
     }
@@ -167,18 +167,18 @@ DOUBLE_BATTLE_TEST("Sticky Web has correct interactions with Mirror Armor - no o
     } SCENE {
         if (speedPlayer > speedOpponent) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, playerRight);
-            MESSAGE("A sticky web has been laid out on the ground around the opposing team!");
+            MESSAGE("Le terrain est couvert d'une toile gluante du côté de l'équipe ennemie!");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, opponentLeft);
-            MESSAGE("A sticky web has been laid out on the ground around your team!");
+            MESSAGE("Le terrain est couvert d'une toile gluante du côté de votre équipe!");
         } else {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, opponentLeft);
-            MESSAGE("A sticky web has been laid out on the ground around your team!");
+            MESSAGE("Le terrain est couvert d'une toile gluante du côté de votre équipe!");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, playerRight);
-            MESSAGE("A sticky web has been laid out on the ground around the opposing team!");
+            MESSAGE("Le terrain est couvert d'une toile gluante du côté de l'équipe ennemie!");
         }
 
-        SEND_IN_MESSAGE("Corviknight");
-        MESSAGE("Corviknight was caught in a sticky web!");
+        SEND_IN_MESSAGE("Corvaillus");
+        MESSAGE("Corvaillus est pris dans une toile gluante!");
         ABILITY_POPUP(playerRight, ABILITY_MIRROR_ARMOR);
         NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
     } THEN {
@@ -218,16 +218,16 @@ DOUBLE_BATTLE_TEST("Sticky Web has correct interactions with Mirror Armor - no o
         TURN { SWITCH(playerRight, 2); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, opponentLeft);
-        MESSAGE("A sticky web has been laid out on the ground around your team!");
+        MESSAGE("Le terrain est couvert d'une toile gluante du côté de votre équipe!");
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MEMENTO, opponentLeft);
-        MESSAGE("The opposing Caterpie fainted!");
+        MESSAGE("Chenipan ennemi est K.O.!\p");
         if (hasReplacement) {
-            MESSAGE("2 sent out Pidgey!");
+            MESSAGE("2 envoie\nun Roucool!");
         }
 
-        SEND_IN_MESSAGE("Corviknight");
-        MESSAGE("Corviknight was caught in a sticky web!");
+        SEND_IN_MESSAGE("Corvaillus");
+        MESSAGE("Corvaillus est pris dans une toile gluante!");
         ABILITY_POPUP(playerRight, ABILITY_MIRROR_ARMOR);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
@@ -253,9 +253,9 @@ SINGLE_BATTLE_TEST("Sticky Web is placed on the correct side after Explosion")
     } SCENE {
         HP_BAR(player, hp: 0);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EXPLOSION, player);
-        MESSAGE("Wobbuffet fainted!");
+        MESSAGE("Qulbutoké est K.O.!\p");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, opponent);
-        MESSAGE("A sticky web has been laid out on the ground around your team!");
+        MESSAGE("Le terrain est couvert d'une toile gluante du côté de votre équipe!");
    }
 }
 
@@ -270,9 +270,9 @@ SINGLE_BATTLE_TEST("Sticky Web is placed on the correct side after Memento")
     } SCENE {
         HP_BAR(player, hp: 0);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MEMENTO, player);
-        MESSAGE("Wobbuffet fainted!");
+        MESSAGE("Qulbutoké est K.O.!\p");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, opponent);
-        MESSAGE("A sticky web has been laid out on the ground around your team!");
+        MESSAGE("Le terrain est couvert d'une toile gluante du côté de votre équipe!");
     }
 }
 
@@ -292,15 +292,15 @@ DOUBLE_BATTLE_TEST("Sticky Web setter has their speed lowered with Mirror Armor 
     } SCENE {
         // Turn 1 - set up sticky web
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, opponentLeft);
-        MESSAGE("A sticky web has been laid out on the ground around your team!");
+        MESSAGE("Le terrain est couvert d'une toile gluante du côté de votre équipe!");
         // Turn 2 - ally switch
-        MESSAGE("The opposing Natu used Ally Switch!");
+        MESSAGE("Natu ennemi utilise\nInterversion!");
         // turn 3 - send our corviknight
-        SEND_IN_MESSAGE("Corviknight");
-        MESSAGE("Corviknight was caught in a sticky web!");
+        SEND_IN_MESSAGE("Corvaillus");
+        MESSAGE("Corvaillus est pris dans une toile gluante!");
         ABILITY_POPUP(playerRight, ABILITY_MIRROR_ARMOR);
         // sticky web setter - caterpie (now opponentRight) gets speed lowered
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("The opposing Caterpie's Speed fell!");
+        MESSAGE("Ah, Vitesse du Chenipan ennemi baisse!");
     }
 }

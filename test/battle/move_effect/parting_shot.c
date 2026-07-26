@@ -17,7 +17,7 @@ SINGLE_BATTLE_TEST("Parting Shot: Passes Substitute and switches the user out")
         TURN { MOVE(player, MOVE_PARTING_SHOT); MOVE(opponent, MOVE_CELEBRATE); SEND_OUT(player, 1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PARTING_SHOT, player);
-        SEND_IN_MESSAGE("Wynaut");
+        SEND_IN_MESSAGE("Okéoké");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE - 1);
         EXPECT_EQ(opponent->statStages[STAT_SPATK], DEFAULT_STAT_STAGE - 1);
@@ -42,7 +42,7 @@ SINGLE_BATTLE_TEST("Parting Shot: Soundproof and Good as Gold block Parting Shot
     } SCENE {
         ABILITY_POPUP(opponent, ability);
         if (ability == ABILITY_SOUNDPROOF)
-            MESSAGE("It doesn't affect the opposing Exploud…");
+            MESSAGE("Ça n'affecte pas Brouhabam ennemi…");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_PARTING_SHOT, player);
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
@@ -61,7 +61,7 @@ SINGLE_BATTLE_TEST("Parting Shot: Hyper Cutter blocks Attack drop but still swit
         TURN { MOVE(player, MOVE_PARTING_SHOT); SEND_OUT(player, 1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PARTING_SHOT, player);
-        SEND_IN_MESSAGE("Wynaut");
+        SEND_IN_MESSAGE("Okéoké");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
         EXPECT_EQ(opponent->statStages[STAT_SPATK], DEFAULT_STAT_STAGE - 1);
@@ -69,37 +69,39 @@ SINGLE_BATTLE_TEST("Parting Shot: Hyper Cutter blocks Attack drop but still swit
     }
 }
 
-// SINGLE_BATTLE_TEST("Parting Shot: Magic Coat bounces it and switches the target out")
-// {
-//     GIVEN {
-//         PLAYER(SPECIES_WOBBUFFET) { Moves(MOVE_PARTING_SHOT); }
-//         OPPONENT(SPECIES_WOBBUFFET) { Moves(MOVE_MAGIC_COAT); }
-//         OPPONENT(SPECIES_WYNAUT);
-//     } WHEN {
-//         TURN { MOVE(opponent, MOVE_MAGIC_COAT); MOVE(player, MOVE_PARTING_SHOT); SEND_OUT(opponent, 1); }
-//     } THEN {
-//         EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE - 1);
-//         EXPECT_EQ(player->statStages[STAT_SPATK], DEFAULT_STAT_STAGE - 1);
-//         EXPECT_EQ(opponent->species, SPECIES_WYNAUT);
-//     }
-// }
+SINGLE_BATTLE_TEST("Parting Shot: Magic Coat bounces it and switches the target out and original user doesn't switch out")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { Moves(MOVE_PARTING_SHOT); }
+        PLAYER(SPECIES_WYNAUT);
+        OPPONENT(SPECIES_WOBBUFFET) { Moves(MOVE_MAGIC_COAT); }
+        OPPONENT(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_MAGIC_COAT); MOVE(player, MOVE_PARTING_SHOT); SEND_OUT(opponent, 1); }
+    } THEN {
+        EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE - 1);
+        EXPECT_EQ(player->statStages[STAT_SPATK], DEFAULT_STAT_STAGE - 1);
+        EXPECT_EQ(opponent->species, SPECIES_WYNAUT);
+    }
+}
 
-// SINGLE_BATTLE_TEST("Parting Shot: Magic Bounce bounces it and switches the target out")
-// {
-//     GIVEN {
-//         PLAYER(SPECIES_WOBBUFFET) { Moves(MOVE_PARTING_SHOT); }
-//         OPPONENT(SPECIES_ESPEON) { Ability(ABILITY_MAGIC_BOUNCE); }
-//         OPPONENT(SPECIES_WYNAUT);
-//     } WHEN {
-//         TURN { MOVE(player, MOVE_PARTING_SHOT); SEND_OUT(opponent, 1); }
-//     } SCENE {
-//         ABILITY_POPUP(opponent, ABILITY_MAGIC_BOUNCE);
-//     } THEN {
-//         EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE - 1);
-//         EXPECT_EQ(player->statStages[STAT_SPATK], DEFAULT_STAT_STAGE - 1);
-//         EXPECT_EQ(opponent->species, SPECIES_WYNAUT);
-//     }
-// }
+SINGLE_BATTLE_TEST("Parting Shot: Magic Bounce bounces it and switches the target out and original user doesn't switch out")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { Moves(MOVE_PARTING_SHOT); }
+        PLAYER(SPECIES_WYNAUT);
+        OPPONENT(SPECIES_ESPEON) { Ability(ABILITY_MAGIC_BOUNCE); }
+        OPPONENT(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { MOVE(player, MOVE_PARTING_SHOT); SEND_OUT(opponent, 1); }
+    } SCENE {
+        ABILITY_POPUP(opponent, ABILITY_MAGIC_BOUNCE);
+    } THEN {
+        EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE - 1);
+        EXPECT_EQ(player->statStages[STAT_SPATK], DEFAULT_STAT_STAGE - 1);
+        EXPECT_EQ(opponent->species, SPECIES_WYNAUT);
+    }
+}
 
 SINGLE_BATTLE_TEST("Parting Shot: Mirror Armor switches the user even if reflected drops fail")
 {
@@ -121,15 +123,15 @@ SINGLE_BATTLE_TEST("Parting Shot: Mirror Armor switches the user even if reflect
         ABILITY_POPUP(opponent, ABILITY_MIRROR_ARMOR);
         if (ability == ABILITY_CLEAR_BODY) {
             ABILITY_POPUP(player, ABILITY_CLEAR_BODY);
-            MESSAGE("Metagross's stats were not lowered!");
+            MESSAGE("Les stats de Métalosse ne baissent pas!");
         } else if (ability == ABILITY_WHITE_SMOKE) {
             ABILITY_POPUP(player, ABILITY_WHITE_SMOKE);
-            MESSAGE("Torkoal's stats were not lowered!");
+            MESSAGE("Les stats de Chartor ne baissent pas!");
         } else if (ability == ABILITY_FULL_METAL_BODY) {
             ABILITY_POPUP(player, ABILITY_FULL_METAL_BODY);
-            MESSAGE("Solgaleo's stats were not lowered!");
+            MESSAGE("Les stats de Solgaleo ne baissent pas!");
         } else if (item == ITEM_CLEAR_AMULET) {
-            MESSAGE("The effects of the Clear Amulet held by Lucario prevents its stats from being lowered!");
+            MESSAGE("L'effet de Talisman Sain tenu par Lucario empêche ses stats de baisser!");
         }
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
@@ -173,8 +175,8 @@ SINGLE_BATTLE_TEST("Parting Shot: Does not switch if both stats are at minimum (
         TURN { MOVE(player, MOVE_TOPSY_TURVY); MOVE(opponent, MOVE_CELEBRATE); }
         TURN { MOVE(player, MOVE_PARTING_SHOT); MOVE(opponent, MOVE_CELEBRATE); }
     } SCENE {
-        MESSAGE("The opposing Omastar's Attack won't go any lower!");
-        MESSAGE("The opposing Omastar's Sp. Atk won't go any lower!");
+        MESSAGE("Attaque de Amonistar ennemi ne peut plus baisser!");
+        MESSAGE("Attaque Spéciale de Amonistar ennemi ne peut plus baisser!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], MIN_STAT_STAGE);
         EXPECT_EQ(opponent->statStages[STAT_SPATK], MIN_STAT_STAGE);
@@ -196,8 +198,8 @@ SINGLE_BATTLE_TEST("Parting Shot: Does not switch if Contrary is at maximum stat
         TURN { MOVE(player, MOVE_TOPSY_TURVY); MOVE(opponent, MOVE_CELEBRATE); }
         TURN { MOVE(player, MOVE_PARTING_SHOT); MOVE(opponent, MOVE_CELEBRATE); }
     } SCENE {
-        MESSAGE("The opposing Inkay's Attack won't go any higher!");
-        MESSAGE("The opposing Inkay's Sp. Atk won't go any higher!");
+        MESSAGE("Attaque de Sepiatop ennemi ne peut plus augmenter!");
+        MESSAGE("Attaque Spéciale de Sepiatop ennemi ne peut plus augmenter!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], MAX_STAT_STAGE);
         EXPECT_EQ(opponent->statStages[STAT_SPATK], MAX_STAT_STAGE);
@@ -286,9 +288,9 @@ SINGLE_BATTLE_TEST("Parting Shot: Switches if both stats are at minimum (Gen6)")
         TURN { MOVE(player, MOVE_TOPSY_TURVY); MOVE(opponent, MOVE_CELEBRATE); }
         TURN { MOVE(player, MOVE_PARTING_SHOT); MOVE(opponent, MOVE_CELEBRATE); SEND_OUT(player, 1); }
     } SCENE {
-        MESSAGE("The opposing Omastar's Attack won't go any lower!");
-        MESSAGE("The opposing Omastar's Sp. Atk won't go any lower!");
-        SEND_IN_MESSAGE("Wynaut");
+        MESSAGE("Attaque de Amonistar ennemi ne peut plus baisser!");
+        MESSAGE("Attaque Spéciale de Amonistar ennemi ne peut plus baisser!");
+        SEND_IN_MESSAGE("Okéoké");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], MIN_STAT_STAGE);
         EXPECT_EQ(opponent->statStages[STAT_SPATK], MIN_STAT_STAGE);
@@ -310,9 +312,9 @@ SINGLE_BATTLE_TEST("Parting Shot: Switches if Contrary is at maximum stats (Gen6
         TURN { MOVE(player, MOVE_TOPSY_TURVY); MOVE(opponent, MOVE_CELEBRATE); }
         TURN { MOVE(player, MOVE_PARTING_SHOT); MOVE(opponent, MOVE_CELEBRATE); SEND_OUT(player, 1); }
     } SCENE {
-        MESSAGE("The opposing Inkay's Attack won't go any higher!");
-        MESSAGE("The opposing Inkay's Sp. Atk won't go any higher!");
-        SEND_IN_MESSAGE("Wynaut");
+        MESSAGE("Attaque de Sepiatop ennemi ne peut plus augmenter!");
+        MESSAGE("Attaque Spéciale de Sepiatop ennemi ne peut plus augmenter!");
+        SEND_IN_MESSAGE("Okéoké");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], MAX_STAT_STAGE);
         EXPECT_EQ(opponent->statStages[STAT_SPATK], MAX_STAT_STAGE);
@@ -339,7 +341,7 @@ SINGLE_BATTLE_TEST("Parting Shot: Stat drop prevention by abilities/items switch
         TURN { MOVE(player, MOVE_PARTING_SHOT); SEND_OUT(player, 1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PARTING_SHOT, player);
-        SEND_IN_MESSAGE("Wynaut");
+        SEND_IN_MESSAGE("Okéoké");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
         EXPECT_EQ(opponent->statStages[STAT_SPATK], DEFAULT_STAT_STAGE);
@@ -359,7 +361,7 @@ SINGLE_BATTLE_TEST("Parting Shot: Mist prevents stat drops and switches (Gen6)")
         TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_PARTING_SHOT); SEND_OUT(player, 1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PARTING_SHOT, player);
-        SEND_IN_MESSAGE("Wynaut");
+        SEND_IN_MESSAGE("Okéoké");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
         EXPECT_EQ(opponent->statStages[STAT_SPATK], DEFAULT_STAT_STAGE);

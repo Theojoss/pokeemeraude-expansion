@@ -21,35 +21,35 @@ DOUBLE_BATTLE_TEST("Defiant sharply raises player's Attack after Intimidate")
         //1st mon Intimidate
         ABILITY_POPUP(opponentLeft, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Mankey's Attack fell!");
+        MESSAGE("Ah, Attaque du Férosinge baisse!");
         if (abilityLeft == ABILITY_DEFIANT) {
             ABILITY_POPUP(playerLeft, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-            MESSAGE("Mankey's Attack rose sharply!");
+            MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Primeape's Attack fell!");
+        MESSAGE("Ah, Attaque du Colossinge baisse!");
         if (abilityRight == ABILITY_DEFIANT) {
             ABILITY_POPUP(playerRight, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-            MESSAGE("Primeape's Attack rose sharply!");
+            MESSAGE("Ah, Attaque du Colossinge augmente beaucoup!");
         }
 
         //2nd mon Intimidate
         ABILITY_POPUP(opponentRight, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Mankey's Attack fell!");
+        MESSAGE("Ah, Attaque du Férosinge baisse!");
         if (abilityLeft == ABILITY_DEFIANT) {
             ABILITY_POPUP(playerLeft, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-            MESSAGE("Mankey's Attack rose sharply!");
+            MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Primeape's Attack fell!");
+        MESSAGE("Ah, Attaque du Colossinge baisse!");
         if (abilityRight == ABILITY_DEFIANT) {
             ABILITY_POPUP(playerRight, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-            MESSAGE("Primeape's Attack rose sharply!");
+            MESSAGE("Ah, Attaque du Colossinge augmente beaucoup!");
         }
     } THEN {
         // -2 from Intimidates and +4 from Defiants gets +2 total
@@ -79,35 +79,35 @@ DOUBLE_BATTLE_TEST("Defiant sharply raises opponent's Attack after Intimidate")
         //1st mon Intimidate
         ABILITY_POPUP(playerLeft, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("The opposing Mankey's Attack fell!");
+        MESSAGE("Ah, Attaque du Férosinge ennemi baisse!");
         if (abilityLeft == ABILITY_DEFIANT) {
             ABILITY_POPUP(opponentLeft, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("The opposing Mankey's Attack rose sharply!");
+            MESSAGE("Ah, Attaque du Férosinge ennemi augmente beaucoup!");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("The opposing Primeape's Attack fell!");
+        MESSAGE("Ah, Attaque du Colossinge ennemi baisse!");
         if (abilityRight == ABILITY_DEFIANT) {
             ABILITY_POPUP(opponentRight, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-            MESSAGE("The opposing Primeape's Attack rose sharply!");
+            MESSAGE("Ah, Attaque du Colossinge ennemi augmente beaucoup!");
         }
 
         //2nd mon Intimidate
         ABILITY_POPUP(playerRight, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("The opposing Mankey's Attack fell!");
+        MESSAGE("Ah, Attaque du Férosinge ennemi baisse!");
         if (abilityLeft == ABILITY_DEFIANT) {
             ABILITY_POPUP(opponentLeft, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("The opposing Mankey's Attack rose sharply!");
+            MESSAGE("Ah, Attaque du Férosinge ennemi augmente beaucoup!");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("The opposing Primeape's Attack fell!");
+        MESSAGE("Ah, Attaque du Colossinge ennemi baisse!");
         if (abilityRight == ABILITY_DEFIANT) {
             ABILITY_POPUP(opponentRight, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-            MESSAGE("The opposing Primeape's Attack rose sharply!");
+            MESSAGE("Ah, Attaque du Colossinge ennemi augmente beaucoup!");
         }
     } THEN {
         // -2 from Intimidates and +4 from Defiants gets +2 total
@@ -128,14 +128,14 @@ SINGLE_BATTLE_TEST("Defiant activates after Sticky Web lowers Speed")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, opponent);
         // Switch-in - Sticky Web activates
-        SEND_IN_MESSAGE("Mankey");
-        MESSAGE("Mankey was caught in a sticky web!");
+        SEND_IN_MESSAGE("Férosinge");
+        MESSAGE("Férosinge est pris dans une toile gluante!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Mankey's Speed fell!");
+        MESSAGE("Ah, Vitesse du Férosinge baisse!");
         // Defiant activates
         ABILITY_POPUP(player, ABILITY_DEFIANT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Mankey's Attack rose sharply!");
+        MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
     }
 }
 
@@ -156,23 +156,23 @@ SINGLE_BATTLE_TEST("Defiant doesn't activate after Sticky Web lowers Speed if Co
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COURT_CHANGE, opponent);
         // Switch-in - Sticky Web activates
-        SEND_IN_MESSAGE("Mankey");
-        MESSAGE("Mankey was caught in a sticky web!");
+        SEND_IN_MESSAGE("Férosinge");
+        MESSAGE("Férosinge est pris dans une toile gluante!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Mankey's Speed fell!");
+        MESSAGE("Ah, Vitesse du Férosinge baisse!");
         // Defiant doesn't activate
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Mankey's Attack rose sharply!");
+            MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
         }
         // Defiant triggers correctly after Sticky Web
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GROWL, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Mankey's Attack fell!");
+        MESSAGE("Ah, Attaque du Férosinge baisse!");
         ABILITY_POPUP(player, ABILITY_DEFIANT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Mankey's Attack rose sharply!");
+        MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
     }
 }
 
@@ -193,20 +193,20 @@ SINGLE_BATTLE_TEST("Defiant activates after Sticky Web lowers Speed if Court Cha
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COURT_CHANGE, opponent);
         // Switch-in - Sticky Web activates
-        SEND_IN_MESSAGE("Mankey");
-        MESSAGE("Mankey was caught in a sticky web!");
+        SEND_IN_MESSAGE("Férosinge");
+        MESSAGE("Férosinge est pris dans une toile gluante!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Mankey's Speed fell!");
+        MESSAGE("Ah, Vitesse du Férosinge baisse!");
         ABILITY_POPUP(player, ABILITY_DEFIANT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Mankey's Attack rose sharply!");
+        MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
         // Defiant triggers correctly after Sticky Web
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GROWL, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Mankey's Attack fell!");
+        MESSAGE("Ah, Attaque du Férosinge baisse!");
         ABILITY_POPUP(player, ABILITY_DEFIANT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Mankey's Attack rose sharply!");
+        MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
     }
 }
 
@@ -224,19 +224,19 @@ DOUBLE_BATTLE_TEST("Defiant is activated by Cotton Down for non-ally Pokémon")
         ABILITY_POPUP(opponentLeft, ABILITY_COTTON_DOWN);
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("The opposing Mankey's Speed fell!");
+        MESSAGE("Ah, Vitesse du Férosinge ennemi baisse!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Mankey's Speed fell!");
+        MESSAGE("Ah, Vitesse du Férosinge baisse!");
         ABILITY_POPUP(playerLeft, ABILITY_DEFIANT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Mankey's Attack rose sharply!");
+        MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Mankey's Speed fell!");
+        MESSAGE("Ah, Vitesse du Férosinge baisse!");
         ABILITY_POPUP(playerRight, ABILITY_DEFIANT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Mankey's Attack rose sharply!");
+        MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
     } THEN {
         EXPECT_EQ(playerLeft->statStages[STAT_SPEED], DEFAULT_STAT_STAGE - 1);
         EXPECT_EQ(playerRight->statStages[STAT_SPEED], DEFAULT_STAT_STAGE - 1);
@@ -361,15 +361,15 @@ SINGLE_BATTLE_TEST("Defiant activates before White Herb")
 
         ABILITY_POPUP(player, ABILITY_DEFIANT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Mankey's Attack rose sharply!");
+        MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
 
         if (move == MOVE_LEER) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Mankey returned its stats to normal using its White Herb!");
+            MESSAGE("Herbe Blanche fait revenir Férosinge à la normale.");
         } else {
             NONE_OF {
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-                MESSAGE("Mankey returned its stats to normal using its White Herb!");
+                MESSAGE("Herbe Blanche fait revenir Férosinge à la normale.");
             }
         }
     } THEN {
@@ -393,15 +393,15 @@ SINGLE_BATTLE_TEST("Defiant activates for each stat that is lowered")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TICKLE, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Mankey's Attack fell!");
+        MESSAGE("Ah, Attaque du Férosinge baisse!");
         ABILITY_POPUP(player, ABILITY_DEFIANT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Mankey's Attack rose sharply!");
+        MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Mankey's Defense fell!");
+        MESSAGE("Ah, Défense du Férosinge baisse!");
         ABILITY_POPUP(player, ABILITY_DEFIANT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Mankey's Attack rose sharply!");
+        MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
 
     } THEN {
         EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 3);
@@ -433,7 +433,7 @@ SINGLE_BATTLE_TEST("Defiant doesn't activate if the Pokémon lowers it's own sta
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Mankey's Attack rose sharply!");
+            MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
         }
     } THEN {
         if (move == MOVE_SUPERPOWER)
@@ -480,17 +480,17 @@ SINGLE_BATTLE_TEST("Defiant doesn't display ability popup when already at Maximu
         // Maxed Attack
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TICKLE, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Mankey's Attack fell!");
+        MESSAGE("Ah, Attaque du Férosinge baisse!");
         ABILITY_POPUP(player, ABILITY_DEFIANT);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Mankey's Attack rose!");
+        MESSAGE("Ah, Attaque du Férosinge augmente!");
         // Maxed Attack
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Mankey's Defense fell!");
+        MESSAGE("Ah, Défense du Férosinge baisse!");
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Mankey's Attack rose sharply!");
+            MESSAGE("Ah, Attaque du Férosinge augmente beaucoup!");
         }
     } THEN {
         EXPECT_EQ(player->statStages[STAT_ATK], MAX_STAT_STAGE);
@@ -513,7 +513,7 @@ SINGLE_BATTLE_TEST("Defiant doesn't activate when an opposing stat drop fails at
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPIN_OUT, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPIN_OUT, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPIN_OUT, player);
-        MESSAGE("The opposing Wobbuffet used Scary Face!");
+        MESSAGE("Qulbutoké ennemi utilise\nGrimace!");
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_DEFIANT);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);

@@ -22,9 +22,9 @@ SINGLE_BATTLE_TEST("Transform fails on semi-invulnerable target in Gen2+")
         TURN { MOVE(player, MOVE_DIG); MOVE(opponent, MOVE_TRANSFORM); }
     } SCENE {
         if (expectFail)
-            MESSAGE("Wobbuffet avoided the attack!");
+            MESSAGE("Qulbutoké évite l'attaque!");
         else
-            MESSAGE("The opposing Ditto transformed into Wobbuffet!");
+            MESSAGE("Métamorph ennemi prend l'apparence de Qulbutoké!");
     }
 }
 
@@ -44,11 +44,11 @@ SINGLE_BATTLE_TEST("Transform fails on transformed target in Gen2+")
         TURN { MOVE(player, MOVE_TRANSFORM); MOVE(opponent, MOVE_CELEBRATE); }
         TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_TRANSFORM); }
     } SCENE {
-        MESSAGE("Ditto transformed into Wobbuffet!");
+        MESSAGE("Métamorph prend l'apparence de Qulbutoké!");
         if (expectFail)
-            MESSAGE("But it failed!");
+            MESSAGE("Mais cela échoue!");
         else
-            MESSAGE("The opposing Wobbuffet transformed into Wobbuffet!");
+            MESSAGE("Qulbutoké ennemi prend l'apparence de Qulbutoké!");
     }
 }
 
@@ -68,11 +68,11 @@ SINGLE_BATTLE_TEST("Transform fails when the user is already transformed in Gen5
         TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_TRANSFORM); }
         TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_TRANSFORM); }
     } SCENE {
-        MESSAGE("The opposing Ditto transformed into Wobbuffet!");
+        MESSAGE("Métamorph ennemi prend l'apparence de Qulbutoké!");
         if (expectFail)
-            MESSAGE("But it failed!");
+            MESSAGE("Mais cela échoue!");
         else
-            MESSAGE("The opposing Ditto transformed into Wobbuffet!");
+            MESSAGE("Métamorph ennemi prend l'apparence de Qulbutoké!");
     }
 }
 
@@ -92,9 +92,9 @@ SINGLE_BATTLE_TEST("Transform fails on target behind substitute in Gen5+")
         TURN { MOVE(player, MOVE_SUBSTITUTE); MOVE(opponent, MOVE_TRANSFORM); }
     } SCENE {
         if (expectFail)
-            MESSAGE("But it failed!");
+            MESSAGE("Mais cela échoue!");
         else
-            MESSAGE("The opposing Ditto transformed into Wobbuffet!");
+            MESSAGE("Métamorph ennemi prend l'apparence de Qulbutoké!");
     }
 }
 
@@ -151,8 +151,8 @@ SINGLE_BATTLE_TEST("(TERA) Transform does not copy the target's Tera Type, and i
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
         // turn 3
-        MESSAGE("Wobbuffet used Earthquake!");
-        MESSAGE("It doesn't affect the opposing Ditto…");
+        MESSAGE("Qulbutoké utilise\nSéisme!");
+        MESSAGE("Ça n'affecte pas Métamorph ennemi…");
         NOT { HP_BAR(opponent); }
     }
 }

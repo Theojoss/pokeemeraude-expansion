@@ -16,10 +16,10 @@ SINGLE_BATTLE_TEST("Curse lowers Speed, raises Attack, and raises Defense when u
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CURSE, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Wobbuffet's Speed fell!");
+        MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Wobbuffet's Attack rose!");
-        MESSAGE("Wobbuffet's Defense rose!");
+        MESSAGE("Ah, Attaque du Qulbutoké augmente!");
+        MESSAGE("Ah, Défense du Qulbutoké augmente!");
     }
 }
 
@@ -87,10 +87,10 @@ SINGLE_BATTLE_TEST("Curse lowering stats is not prevented by Mist")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MIST, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CURSE, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Wobbuffet's Speed fell!");
+        MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Wobbuffet's Attack rose!");
-        MESSAGE("Wobbuffet's Defense rose!");
+        MESSAGE("Ah, Attaque du Qulbutoké augmente!");
+        MESSAGE("Ah, Défense du Qulbutoké augmente!");
     } THEN {
         EXPECT_EQ(player->statStages[STAT_SPEED], DEFAULT_STAT_STAGE - 1);
         EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 1);
@@ -112,7 +112,7 @@ SINGLE_BATTLE_TEST("Baton Pass passes Cursed status")
         s32 playerMaxHP = GetMonData(&PLAYER_PARTY[1], MON_DATA_MAX_HP);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CURSE, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BATON_PASS, player);
-        SEND_IN_MESSAGE("Wynaut");
+        SEND_IN_MESSAGE("Okéoké");
         HP_BAR(player, damage: playerMaxHP / 4);
     }
 }

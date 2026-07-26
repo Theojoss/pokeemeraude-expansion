@@ -19,10 +19,10 @@ SINGLE_BATTLE_TEST("Stone Axe sets up hazards after hitting the target")
         s32 maxHP = GetMonData(&OPPONENT_PARTY[1], MON_DATA_MAX_HP);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STONE_AXE, player);
         HP_BAR(opponent);
-        MESSAGE("Pointed stones float in the air around the opposing team!");
-        MESSAGE("2 sent out Wobbuffet!");
+        MESSAGE("Des pierres pointues lévitent autour de l'équipe ennemie!");
+        MESSAGE("2 envoie\nun Qulbutoké!");
         HP_BAR(opponent, damage: maxHP / 8);
-        MESSAGE("Pointed stones dug into the opposing Wobbuffet!");
+        MESSAGE("Des pierres pointues transpercent Qulbutoké ennemi!");
     }
 }
 
@@ -43,23 +43,23 @@ SINGLE_BATTLE_TEST("Stone Axe can set up pointed stones only once")
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STONE_AXE, player);
         HP_BAR(opponent);
-        MESSAGE("Pointed stones float in the air around the opposing team!");
+        MESSAGE("Des pierres pointues lévitent autour de l'équipe ennemie!");
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STONE_AXE, player);
         HP_BAR(opponent);
-        NOT MESSAGE("Pointed stones float in the air around the opposing team!");
+        NOT MESSAGE("Des pierres pointues lévitent autour de l'équipe ennemie!");
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STONE_AXE, player);
         HP_BAR(opponent);
-        NOT MESSAGE("Pointed stones float in the air around the opposing team!");
+        NOT MESSAGE("Des pierres pointues lévitent autour de l'équipe ennemie!");
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STONE_AXE, player);
         HP_BAR(opponent);
-        NOT MESSAGE("Pointed stones float in the air around the opposing team!");
+        NOT MESSAGE("Des pierres pointues lévitent autour de l'équipe ennemie!");
 
-        MESSAGE("2 sent out Wynaut!");
+        MESSAGE("2 envoie\nun Okéoké!");
         HP_BAR(opponent, damage: maxHP / 8);
-        MESSAGE("Pointed stones dug into the opposing Wynaut!");
+        MESSAGE("Des pierres pointues transpercent Okéoké ennemi!");
     }
 }
 
@@ -73,7 +73,7 @@ SINGLE_BATTLE_TEST("Stone Axe sets up hazards after any ability activation")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STONE_AXE, player);
         ABILITY_POPUP(opponent, ABILITY_WEAK_ARMOR);
-        MESSAGE("Pointed stones float in the air around the opposing team!");
+        MESSAGE("Des pierres pointues lévitent autour de l'équipe ennemie!");
     }
 }
 
@@ -88,8 +88,8 @@ SINGLE_BATTLE_TEST("Stone Axe fails to set up hazards if user faints")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STONE_AXE, player);
         HP_BAR(player);
-        MESSAGE("Wobbuffet was hurt by the opposing Wobbuffet's Rocky Helmet!");
-        NOT MESSAGE("Pointed stones float in the air around the opposing team!");
+        MESSAGE("Qulbutoké est blessé par Casque Brut de Qulbutoké ennemi!");
+        NOT MESSAGE("Des pierres pointues lévitent autour de l'équipe ennemie!");
     }
 }
 

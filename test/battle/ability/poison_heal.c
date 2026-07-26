@@ -50,7 +50,7 @@ SINGLE_BATTLE_TEST("Poison Heal does not heal or cause damage when under Heal Bl
     } SCENE {
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_POISON_HEAL);
-            MESSAGE("The poisoning healed Shroomish a little bit!");
+            MESSAGE("Le poison restaure un peu de PV à Balignon!");
             HP_BAR(player, damage: -50);
         }
     }
@@ -66,7 +66,7 @@ SINGLE_BATTLE_TEST("Poison Heal activates before Toxic Orb")
     } SCENE {
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_POISON_HEAL);
-            MESSAGE("The poisoning healed Shroomish a little bit!");
+            MESSAGE("Le poison restaure un peu de PV à Balignon!");
             HP_BAR(player, damage: -50);
             HP_BAR(player, damage: 50);
         }

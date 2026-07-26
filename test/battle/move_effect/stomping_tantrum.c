@@ -81,7 +81,7 @@ SINGLE_BATTLE_TEST("Stomping Tantrum will not deal double damage if target prote
         HP_BAR(opponent, captureDamage: &damage[0]);
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PROTECT, opponent);
-        MESSAGE("The opposing Wobbuffet protected itself!");
+        MESSAGE("Qulbutoké ennemi se protège!");
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STOMPING_TANTRUM, player);
         HP_BAR(opponent, captureDamage: &damage[1]);
@@ -128,7 +128,7 @@ SINGLE_BATTLE_TEST("Stomping Tantrum will not deal double if it missed")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STOMPING_TANTRUM, player);
         HP_BAR(opponent, captureDamage: &damage[0]);
-        MESSAGE("The opposing Wobbuffet avoided the attack!");
+        MESSAGE("Qulbutoké ennemi évite l'attaque!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STOMPING_TANTRUM, player);
         HP_BAR(opponent, captureDamage: &damage[1]);
     } THEN {
@@ -150,7 +150,7 @@ SINGLE_BATTLE_TEST("Stomping Tantrum will deal double damage if user was immune 
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STOMPING_TANTRUM, player);
         HP_BAR(opponent, captureDamage: &damage[0]);
-        MESSAGE("It doesn't affect the opposing Pidgey…");
+        MESSAGE("Ça n'affecte pas Roucool ennemi…");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STOMPING_TANTRUM, player);
         HP_BAR(opponent, captureDamage: &damage[1]);
     } THEN {

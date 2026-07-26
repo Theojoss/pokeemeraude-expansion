@@ -35,7 +35,7 @@ SINGLE_BATTLE_TEST("Belly Drum maximizes the user's Attack stat", s16 damage)
         if (raiseAttack) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_BELLY_DRUM, player);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Wobbuffet cut its own HP and maximized its Attack!");
+            MESSAGE("Qulbutoké sacrifie des PV et augmente son Attaque au maximum!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
         HP_BAR(opponent, captureDamage: &results[i].damage);
@@ -52,7 +52,7 @@ SINGLE_BATTLE_TEST("Belly Drum fails if user's current HP is half or less than h
     } WHEN {
         TURN { MOVE(player, MOVE_BELLY_DRUM); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_BELLY_DRUM, player);
             HP_BAR(player);
@@ -74,15 +74,15 @@ SINGLE_BATTLE_TEST("Belly Drum fails if the user's Attack is already at +6")
         TURN { MOVE(player, MOVE_BELLY_DRUM); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Wobbuffet's Attack rose sharply!");
+        MESSAGE("Ah, Attaque du Qulbutoké augmente beaucoup!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Wobbuffet's Attack rose sharply!");
+        MESSAGE("Ah, Attaque du Qulbutoké augmente beaucoup!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Wobbuffet's Attack rose sharply!");
+        MESSAGE("Ah, Attaque du Qulbutoké augmente beaucoup!");
 
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_BELLY_DRUM, player);
             HP_BAR(player);
@@ -100,8 +100,8 @@ SINGLE_BATTLE_TEST("Belly Drum's HP cost doesn't trigger effects that trigger on
         TURN { MOVE(player, MOVE_BELLY_DRUM); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BELLY_DRUM, player);
-        MESSAGE("Wobbuffet cut its own HP and maximized its Attack!");
-        NOT MESSAGE("Wobbuffet's Air Balloon popped!");
+        MESSAGE("Qulbutoké sacrifie des PV et augmente son Attaque au maximum!");
+        NOT MESSAGE("Le Ballon de Qulbutoké a éclaté!");
     }
 }
 
@@ -121,7 +121,7 @@ SINGLE_BATTLE_TEST("Belly Drum minimizes the user's Attack stat with Contrary", 
         if (raiseAttack) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_BELLY_DRUM, player);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Wobbuffet cut its own HP and maximized its Attack!");  // Message unaffected by Contrary
+            MESSAGE("Qulbutoké sacrifie des PV et augmente son Attaque au maximum!");  // Message unaffected by Contrary
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
         HP_BAR(opponent, captureDamage: &results[i].damage);
@@ -146,7 +146,7 @@ SINGLE_BATTLE_TEST("Belly Drum maximizes the user's Attack stat, even when below
         if (raiseAttack) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_BELLY_DRUM, player);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Wobbuffet cut its own HP and maximized its Attack!");
+            MESSAGE("Qulbutoké sacrifie des PV et augmente son Attaque au maximum!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
         HP_BAR(opponent, captureDamage: &results[i].damage);
@@ -170,15 +170,15 @@ SINGLE_BATTLE_TEST("Belly Drum fails if the user's Attack is already at +6, even
         TURN { MOVE(player, MOVE_BELLY_DRUM); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Serperior's Attack rose sharply!");
+        MESSAGE("Ah, Attaque du Majaspic augmente beaucoup!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Serperior's Attack rose sharply!");
+        MESSAGE("Ah, Attaque du Majaspic augmente beaucoup!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Serperior's Attack rose sharply!");
+        MESSAGE("Ah, Attaque du Majaspic augmente beaucoup!");
 
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_BELLY_DRUM, player);
             HP_BAR(player);
@@ -200,17 +200,17 @@ SINGLE_BATTLE_TEST("Belly Drum deducts HP if the user has Contrary and is at -6"
         TURN { MOVE(player, MOVE_BELLY_DRUM); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Serperior's Attack harshly fell!");
+        MESSAGE("Ah, Attaque du Majaspic baisse beaucoup!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Serperior's Attack harshly fell!");
+        MESSAGE("Ah, Attaque du Majaspic baisse beaucoup!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Serperior's Attack harshly fell!");
+        MESSAGE("Ah, Attaque du Majaspic baisse beaucoup!");
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BELLY_DRUM, player);
         s32 maxHP = GetMonData(&PLAYER_PARTY[0], MON_DATA_MAX_HP);
         HP_BAR(player, hp: maxHP / 2);
-        MESSAGE("Serperior cut its own HP and maximized its Attack!");
+        MESSAGE("Majaspic sacrifie des PV et augmente son Attaque au maximum!");
     }
 }

@@ -16,10 +16,10 @@ SINGLE_BATTLE_TEST("Air Balloon prevents the holder from taking damage from grou
     } WHEN {
         TURN { MOVE(opponent, MOVE_EARTHQUAKE); }
     } SCENE {
-        MESSAGE("Wobbuffet floats in the air with its Air Balloon!");
-        MESSAGE("The opposing Wobbuffet used Earthquake!");
+        MESSAGE("Qulbutoké flotte grâce à son Ballon!");
+        MESSAGE("Qulbutoké ennemi utilise\nSéisme!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, opponent);
-        MESSAGE("It doesn't affect Wobbuffet…");
+        MESSAGE("Ça n'affecte pas Qulbutoké…");
     }
 }
 
@@ -32,8 +32,8 @@ SINGLE_BATTLE_TEST("Air Balloon only displays entry message when user switches i
     } WHEN {
         TURN { SWITCH(opponent, 1); }
     } SCENE {
-        MESSAGE("Wobbuffet floats in the air with its Air Balloon!");
-        NOT MESSAGE("Wobbuffet floats in the air with its Air Balloon!");
+        MESSAGE("Qulbutoké flotte grâce à son Ballon!");
+        NOT MESSAGE("Qulbutoké flotte grâce à son Ballon!");
     }
 }
 
@@ -45,9 +45,9 @@ SINGLE_BATTLE_TEST("Air Balloon pops when the holder is hit by a move that is no
     } WHEN {
         TURN { MOVE(opponent, MOVE_SCRATCH); }
     } SCENE {
-        MESSAGE("Wobbuffet floats in the air with its Air Balloon!");
+        MESSAGE("Qulbutoké flotte grâce à son Ballon!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
-        MESSAGE("Wobbuffet's Air Balloon popped!");
+        MESSAGE("Le Ballon de Qulbutoké a éclaté!");
     }
 }
 
@@ -60,11 +60,11 @@ SINGLE_BATTLE_TEST("Air Balloon no longer prevents the holder from taking damage
         TURN { MOVE(opponent, MOVE_SCRATCH); }
         TURN { MOVE(opponent, MOVE_EARTHQUAKE); }
     } SCENE {
-        MESSAGE("Wobbuffet floats in the air with its Air Balloon!");
+        MESSAGE("Qulbutoké flotte grâce à son Ballon!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
-        MESSAGE("Wobbuffet's Air Balloon popped!");
+        MESSAGE("Le Ballon de Qulbutoké a éclaté!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, opponent);
-        NOT MESSAGE("It doesn't affect Wobbuffet…");
+        NOT MESSAGE("Ça n'affecte pas Qulbutoké…");
     }
 }
 
@@ -80,11 +80,11 @@ SINGLE_BATTLE_TEST("Air Balloon can not be restored with Recycle after it has be
             MOVE(player, MOVE_RECYCLE);
         }
     } SCENE {
-        MESSAGE("Wobbuffet floats in the air with its Air Balloon!");
+        MESSAGE("Qulbutoké flotte grâce à son Ballon!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
-        MESSAGE("Wobbuffet's Air Balloon popped!");
-        MESSAGE("Wobbuffet used Recycle!");
-        MESSAGE("But it failed!");
+        MESSAGE("Le Ballon de Qulbutoké a éclaté!");
+        MESSAGE("Qulbutoké utilise\nRecyclage!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -97,9 +97,9 @@ SINGLE_BATTLE_TEST("Air Balloon prevents the user from being healed by Grassy Te
     } WHEN {
         TURN { MOVE(player, MOVE_GRASSY_TERRAIN); }
     } SCENE {
-        MESSAGE("Wobbuffet floats in the air with its Air Balloon!");
+        MESSAGE("Qulbutoké flotte grâce à son Ballon!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GRASSY_TERRAIN, player);
-        NOT MESSAGE("Wobbuffet is healed by the Grassy Terrain!");
+        NOT MESSAGE("Qulbutoké is healed by the Champ Herbu!");
     }
 }
 
@@ -111,9 +111,9 @@ SINGLE_BATTLE_TEST("Air Balloon pops before it can be stolen with Magician")
     } WHEN {
         TURN { MOVE(opponent, MOVE_SCRATCH); }
     } SCENE {
-        MESSAGE("Wobbuffet floats in the air with its Air Balloon!");
+        MESSAGE("Qulbutoké flotte grâce à son Ballon!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
-        MESSAGE("Wobbuffet's Air Balloon popped!");
+        MESSAGE("Le Ballon de Qulbutoké a éclaté!");
         NOT ABILITY_POPUP(opponent, ABILITY_MAGICIAN);
     }
 }
@@ -127,10 +127,10 @@ SINGLE_BATTLE_TEST("Air Balloon pops before it can be stolen by Thief")
     } WHEN {
         TURN { MOVE(opponent, MOVE_THIEF); }
     } SCENE {
-        MESSAGE("Wobbuffet floats in the air with its Air Balloon!");
+        MESSAGE("Qulbutoké flotte grâce à son Ballon!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_THIEF, opponent);
-        MESSAGE("Wobbuffet's Air Balloon popped!");
-        NOT MESSAGE("The opposing Wobbuffet stole Wobbuffet's Air Balloon!");
+        MESSAGE("Le Ballon de Qulbutoké a éclaté!");
+        NOT MESSAGE("Qulbutoké ennemi vole Ballon de Qulbutoké!");
     }
 }
 
@@ -143,10 +143,10 @@ SINGLE_BATTLE_TEST("Air Balloon pops if a damaging move hits the holder's Substi
     } WHEN {
         TURN {MOVE(player, MOVE_SUBSTITUTE); MOVE(opponent, MOVE_EMBER);}
     } SCENE {
-        MESSAGE("Wobbuffet floats in the air with its Air Balloon!");
+        MESSAGE("Qulbutoké flotte grâce à son Ballon!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUBSTITUTE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EMBER, opponent);
-        MESSAGE("Wobbuffet's Air Balloon popped!");
+        MESSAGE("Le Ballon de Qulbutoké a éclaté!");
     } THEN {
         EXPECT_EQ(player->item, ITEM_NONE);
     }
@@ -164,11 +164,11 @@ SINGLE_BATTLE_TEST("Air Balloon pops when Disguise is broken")
     } WHEN {
         TURN { MOVE(opponent, MOVE_AERIAL_ACE); }
     } SCENE {
-        MESSAGE("Mimikyu floats in the air with its Air Balloon!");
+        MESSAGE("Mimiqui flotte grâce à son Ballon!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_AERIAL_ACE, opponent);
         ABILITY_POPUP(player, ABILITY_DISGUISE);
         HP_BAR(player);
-        MESSAGE("Mimikyu's Air Balloon popped!");
+        MESSAGE("Le Ballon de Mimiqui a éclaté!");
     } THEN {
         EXPECT_EQ(player->species, newSpecies);
     }
@@ -182,10 +182,10 @@ SINGLE_BATTLE_TEST("Air Balloon pops when the holder faints from a damaging move
     } WHEN {
         TURN { MOVE(opponent, MOVE_SCRATCH); }
     } SCENE {
-        MESSAGE("Wobbuffet floats in the air with its Air Balloon!");
+        MESSAGE("Qulbutoké flotte grâce à son Ballon!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
-        MESSAGE("Wobbuffet's Air Balloon popped!");
-        MESSAGE("Wobbuffet fainted!");
+        MESSAGE("Le Ballon de Qulbutoké a éclaté!");
+        MESSAGE("Qulbutoké est K.O.!\p");
     } THEN {
         EXPECT_EQ(player->item, ITEM_NONE);
     }

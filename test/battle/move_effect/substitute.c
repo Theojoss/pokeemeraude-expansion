@@ -21,7 +21,7 @@ SINGLE_BATTLE_TEST("Substitute creates a Substitute at the cost of 1/4 users max
         maxHP = GetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_HP);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUBSTITUTE, player);
         HP_BAR(player, captureDamage: &costHP);
-        MESSAGE("Wobbuffet put in a substitute!");
+        MESSAGE("Qulbutoké crée un clone!");
     }THEN {
         EXPECT_EQ(maxHP / 4, costHP);
     }
@@ -36,7 +36,7 @@ SINGLE_BATTLE_TEST("Substitute fails if the user doesn't have enough HP")
     } WHEN {
         TURN { MOVE(player, MOVE_SUBSTITUTE); }
     } SCENE {
-        MESSAGE("But it does not have enough HP left to make a substitute!");
+        MESSAGE("Mais il est trop faible pour créer un clone!");
     }
 }
 
@@ -51,7 +51,7 @@ SINGLE_BATTLE_TEST("Substitute's HP cost can trigger a berry")
         TURN { MOVE(player, MOVE_SUBSTITUTE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUBSTITUTE, player);
-        MESSAGE("Wobbuffet restored its health using its Sitrus Berry!");
+        MESSAGE("Qulbutoké récupère des PV grâce à Baie Sitrus!");
     }
 }
 
@@ -64,8 +64,8 @@ SINGLE_BATTLE_TEST("Substitute's HP cost doesn't trigger effects that trigger on
         TURN { MOVE(player, MOVE_SUBSTITUTE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUBSTITUTE, player);
-        MESSAGE("Wobbuffet put in a substitute!");
-        NOT MESSAGE("Wobbuffet's Air Balloon popped!");
+        MESSAGE("Qulbutoké crée un clone!");
+        NOT MESSAGE("Le Ballon de Qulbutoké a éclaté!");
     }
 }
 

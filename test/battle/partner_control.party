@@ -45,7 +45,7 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 - Dragon Claw
 
 === PARTNER_STEVEN_TEST ===
-Name: Test2
+Name: STEVEN
 Class: Rival
 Pic: Steven
 Gender: Male
@@ -57,7 +57,7 @@ Metapod
 Level: 1
 
 === PARTNER_STEVEN_TEST ===
-Name: Test2
+Name: STEVEN
 Class: Rival
 Pic: Steven
 Gender: Male

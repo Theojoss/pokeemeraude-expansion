@@ -21,14 +21,14 @@ SINGLE_BATTLE_TEST("Focus Punch activates only if not damaged")
         TURN { MOVE(player, MOVE_FOCUS_PUNCH); MOVE(opponent, move); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, player);
-        MESSAGE("Wobbuffet is tightening its focus!");
+        MESSAGE("Qulbutoké se concentre au maximum!");
         ANIMATION(ANIM_TYPE_MOVE, move, opponent);
 
         if (activate) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FOCUS_PUNCH, player);
             HP_BAR(opponent);
         } else {
-            MESSAGE("Wobbuffet lost its focus and couldn't move!");
+            MESSAGE("Qulbutoké n'est plus concentré. Il ne peut plus attaquer!");
             NONE_OF {
                 ANIMATION(ANIM_TYPE_MOVE, MOVE_FOCUS_PUNCH, player);
                 HP_BAR(opponent);
@@ -49,16 +49,16 @@ DOUBLE_BATTLE_TEST("Focus Punch activation is based on Speed")
     }
     SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, opponentRight);
-        MESSAGE("The opposing Wynaut is tightening its focus!");
+        MESSAGE("Okéoké ennemi se concentre au maximum!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, playerRight);
-        MESSAGE("Wynaut is tightening its focus!");
+        MESSAGE("Okéoké se concentre au maximum!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, playerLeft);
-        MESSAGE("Wobbuffet is tightening its focus!");
+        MESSAGE("Qulbutoké se concentre au maximum!");
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, opponentLeft);
-        MESSAGE("The opposing Wobbuffet is tightening its focus!");
+        MESSAGE("Qulbutoké ennemi se concentre au maximum!");
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FOCUS_PUNCH, opponentRight);
         HP_BAR(playerLeft);
@@ -66,8 +66,8 @@ DOUBLE_BATTLE_TEST("Focus Punch activation is based on Speed")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FOCUS_PUNCH, playerRight);
         HP_BAR(opponentLeft);
 
-        MESSAGE("Wobbuffet lost its focus and couldn't move!");
-        MESSAGE("The opposing Wobbuffet lost its focus and couldn't move!");
+        MESSAGE("Qulbutoké n'est plus concentré. Il ne peut plus attaquer!");
+        MESSAGE("Qulbutoké ennemi n'est plus concentré. Il ne peut plus attaquer!");
     }
 }
 
@@ -86,17 +86,17 @@ SINGLE_BATTLE_TEST("Focus Punch activates when Focus Band/Focus Sash blocks OHKO
         TURN { MOVE(player, MOVE_FOCUS_PUNCH); MOVE(opponent, MOVE_FISSURE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, player);
-        MESSAGE("Wobbuffet is tightening its focus!");
+        MESSAGE("Qulbutoké se concentre au maximum!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FISSURE, opponent);
 
         if (item) {
-            MESSAGE("Wobbuffet used Focus Punch!");
+            MESSAGE("Qulbutoké utilise\nMitra-Poing!");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FOCUS_PUNCH, player);
             HP_BAR(opponent);
         } else {
-            MESSAGE("Wobbuffet fainted!");
+            MESSAGE("Qulbutoké est K.O.!\p");
             NONE_OF {
-                MESSAGE("Wobbuffet used Focus Punch!");
+                MESSAGE("Qulbutoké utilise\nMitra-Poing!");
                 ANIMATION(ANIM_TYPE_MOVE, MOVE_FOCUS_PUNCH, player);
                 HP_BAR(opponent);
             }
@@ -119,17 +119,17 @@ SINGLE_BATTLE_TEST("Focus Punch activates when Disguise block a OHKO move (Gen8+
         TURN { MOVE(player, MOVE_FOCUS_PUNCH); MOVE(opponent, move); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, player);
-        MESSAGE("Mimikyu is tightening its focus!");
+        MESSAGE("Mimiqui se concentre au maximum!");
         ANIMATION(ANIM_TYPE_MOVE, move, opponent);
 
         if (activate) {
-            MESSAGE("Mimikyu used Focus Punch!");
+            MESSAGE("Mimiqui utilise\nMitra-Poing!");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FOCUS_PUNCH, player);
             HP_BAR(opponent);
         } else {
-            MESSAGE("Mimikyu lost its focus and couldn't move!");
+            MESSAGE("Mimiqui n'est plus concentré. Il ne peut plus attaquer!");
             NONE_OF {
-                MESSAGE("Mimikyu used Focus Punch!");
+                MESSAGE("Mimiqui utilise\nMitra-Poing!");
                 ANIMATION(ANIM_TYPE_MOVE, MOVE_FOCUS_PUNCH, player);
                 HP_BAR(opponent);
             }
@@ -153,11 +153,11 @@ SINGLE_BATTLE_TEST("Focus Punch does not activate when Focus Band/Focus Sash/Stu
         TURN { MOVE(player, MOVE_FOCUS_PUNCH); MOVE(opponent, MOVE_SEISMIC_TOSS); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, player);
-        MESSAGE("Wobbuffet is tightening its focus!");
+        MESSAGE("Qulbutoké se concentre au maximum!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SEISMIC_TOSS, opponent);
-        MESSAGE("Wobbuffet lost its focus and couldn't move!");
+        MESSAGE("Qulbutoké n'est plus concentré. Il ne peut plus attaquer!");
         NONE_OF {
-            MESSAGE("Wobbuffet used Focus Punch!");
+            MESSAGE("Qulbutoké utilise\nMitra-Poing!");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FOCUS_PUNCH, player);
             HP_BAR(opponent);
         }
@@ -176,9 +176,9 @@ SINGLE_BATTLE_TEST("Focus Punch activates when the user's Substitute is hit")
         TURN { MOVE(player, MOVE_FOCUS_PUNCH); MOVE(opponent, MOVE_SCRATCH); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, player);
-        MESSAGE("Wobbuffet is tightening its focus!");
+        MESSAGE("Qulbutoké se concentre au maximum!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
-        MESSAGE("Wobbuffet used Focus Punch!");
+        MESSAGE("Qulbutoké utilise\nMitra-Poing!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FOCUS_PUNCH, player);
         HP_BAR(opponent);
     }
@@ -198,7 +198,7 @@ SINGLE_BATTLE_TEST("Focus Punch uses PP when losing focus (Gen 3-4)")
         TURN { MOVE(player, MOVE_FOCUS_PUNCH); MOVE(opponent, move); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, player);
-        MESSAGE("Wobbuffet is tightening its focus!");
+        MESSAGE("Qulbutoké se concentre au maximum!");
         ANIMATION(ANIM_TYPE_MOVE, move, opponent);
         if (activate)
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FOCUS_PUNCH, player);
@@ -223,7 +223,7 @@ SINGLE_BATTLE_TEST("Focus Punch doesn't use PP when losing focus (Gen 5+)")
         TURN { MOVE(player, MOVE_FOCUS_PUNCH); MOVE(opponent, move); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, player);
-        MESSAGE("Wobbuffet is tightening its focus!");
+        MESSAGE("Qulbutoké se concentre au maximum!");
         ANIMATION(ANIM_TYPE_MOVE, move, opponent);
         if (activate)
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FOCUS_PUNCH, player);
@@ -248,9 +248,9 @@ SINGLE_BATTLE_TEST("Focus Punch failing occurs after flinching (Gen 3-4)")
         TURN { MOVE(player, MOVE_FOCUS_PUNCH); MOVE(opponent, MOVE_FAKE_OUT); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, player);
-        MESSAGE("Wobbuffet is tightening its focus!");
+        MESSAGE("Qulbutoké se concentre au maximum!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponent);
-        MESSAGE("Wobbuffet flinched and couldn't move!");
+        MESSAGE("Qulbutoké a la trouille! Il ne peut plus attaquer!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_FOCUS_PUNCH, player);
     }
 }
@@ -266,9 +266,9 @@ SINGLE_BATTLE_TEST("Focus Punch failing occurs before flinching (Gen 5+)")
         TURN { MOVE(player, MOVE_FOCUS_PUNCH); MOVE(opponent, MOVE_FAKE_OUT); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, player);
-        MESSAGE("Wobbuffet is tightening its focus!");
+        MESSAGE("Qulbutoké se concentre au maximum!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponent);
-        MESSAGE("Wobbuffet lost its focus and couldn't move!");
+        MESSAGE("Qulbutoké n'est plus concentré. Il ne peut plus attaquer!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_FOCUS_PUNCH, player);
     }
 }
@@ -290,17 +290,17 @@ SINGLE_BATTLE_TEST("Focus Punch's initial message is not shown if the user selec
         TURN { MOVE(opponent, MOVE_ENCORE); MOVE(player, MOVE_CELEBRATE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, player);
-        MESSAGE("Wobbuffet is tightening its focus!");
+        MESSAGE("Qulbutoké se concentre au maximum!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FOCUS_PUNCH, player);
         HP_BAR(opponent);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, player);
-            MESSAGE("Wobbuffet is tightening its focus!");
+            MESSAGE("Qulbutoké se concentre au maximum!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ENCORE, opponent);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, player);
-            MESSAGE("Wobbuffet is tightening its focus!");
+            MESSAGE("Qulbutoké se concentre au maximum!");
         }
     }
 }
@@ -330,7 +330,7 @@ DOUBLE_BATTLE_TEST("Focus Punch will lose focus if damaged when used by selectin
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FOCUS_PUNCH, playerLeft);
             ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, playerLeft);
         }
-        MESSAGE("Wobbuffet lost its focus and couldn't move!");
+        MESSAGE("Qulbutoké n'est plus concentré. Il ne peut plus attaquer!");
     }
 }
 
@@ -358,7 +358,7 @@ DOUBLE_BATTLE_TEST("Focus Punch will NOT lose focus if damaged when used by sele
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FOCUS_PUNCH, playerLeft);
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, playerLeft);
-            MESSAGE("Wobbuffet lost its focus and couldn't move!");
+            MESSAGE("Qulbutoké n'est plus concentré. Il ne peut plus attaquer!");
         }
     }
 }
@@ -387,7 +387,7 @@ DOUBLE_BATTLE_TEST("Focus Punch will lose focus if damaged when encored into a d
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerLeft);
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FOCUS_PUNCH, playerLeft);
         }
-        MESSAGE("Wobbuffet lost its focus and couldn't move!");
+        MESSAGE("Qulbutoké n'est plus concentré. Il ne peut plus attaquer!");
     }
 }
 

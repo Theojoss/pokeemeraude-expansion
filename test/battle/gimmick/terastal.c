@@ -15,10 +15,10 @@ SINGLE_BATTLE_TEST("(TERA) Terastallizing into a different type preserves other 
         TURN { MOVE(player, MOVE_VINE_WHIP, gimmick: tera); }
         TURN { MOVE(player, MOVE_SLUDGE_BOMB); }
     } SCENE {
-        MESSAGE("Bulbasaur used Vine Whip!");
+        MESSAGE("Bulbizarre utilise\nFouet Lianes!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_VINE_WHIP, player);
         HP_BAR(opponent, captureDamage: &results[i].damage1);
-        MESSAGE("Bulbasaur used Sludge Bomb!");
+        MESSAGE("Bulbizarre utilise\nBombe Beurk!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SLUDGE_BOMB, player);
         HP_BAR(opponent, captureDamage: &results[i].damage2);
     } FINALLY {
@@ -38,7 +38,7 @@ SINGLE_BATTLE_TEST("(TERA) Terastallizing does not affect the power of non-STAB 
     } WHEN {
         TURN { MOVE(player, MOVE_HEADBUTT, gimmick: tera); }
     } SCENE {
-        MESSAGE("Wobbuffet used Headbutt!");
+        MESSAGE("Qulbutoké utilise\nCoup d'Boule!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HEADBUTT, player);
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
@@ -57,7 +57,7 @@ SINGLE_BATTLE_TEST("(TERA) Terastallizing into a different type gives that type 
     } WHEN {
         TURN { MOVE(player, MOVE_HEADBUTT, gimmick: tera); }
     } SCENE {
-        MESSAGE("Wobbuffet used Headbutt!");
+        MESSAGE("Qulbutoké utilise\nCoup d'Boule!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HEADBUTT, player);
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
@@ -77,7 +77,7 @@ SINGLE_BATTLE_TEST("(TERA) Terastallizing into the same type gives that type 2x 
     } WHEN {
         TURN { MOVE(player, MOVE_PSYCHIC, gimmick: tera); }
     } SCENE {
-        MESSAGE("Wobbuffet used Psychic!");
+        MESSAGE("Qulbutoké utilise\nPsyko!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PSYCHIC, player);
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
@@ -98,7 +98,7 @@ SINGLE_BATTLE_TEST("(TERA) Terastallizing boosts moves of the same type to 60 BP
     } WHEN {
         TURN { MOVE(player, MOVE_ABSORB, gimmick: tera); }
     } SCENE {
-        MESSAGE("Wobbuffet used Absorb!");
+        MESSAGE("Qulbutoké utilise\nVole-Vie!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ABSORB, player);
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
@@ -119,7 +119,7 @@ SINGLE_BATTLE_TEST("(TERA) Terastallization's 60 BP floor occurs after Technicia
     } WHEN {
         TURN { MOVE(player, MOVE_MEGA_DRAIN, gimmick: tera); }
     } SCENE {
-        MESSAGE("Mr. Mime used Mega Drain!");
+        MESSAGE("M. Mime utilise\nMéga-Sangsue!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MEGA_DRAIN, player);
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
@@ -139,7 +139,7 @@ SINGLE_BATTLE_TEST("(TERA) Terastallization's 60 BP floor occurs after Technicia
     } WHEN {
         TURN { MOVE(player, MOVE_STORED_POWER, gimmick: tera); }
     } SCENE {
-        MESSAGE("Mr. Mime used Stored Power!");
+        MESSAGE("M. Mime utilise\nForce Ajoutée!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STORED_POWER, player);
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
@@ -159,7 +159,7 @@ SINGLE_BATTLE_TEST("(TERA) Terastallization's 60 BP floor does not apply to mult
     } WHEN {
         TURN { MOVE(player, MOVE_FURY_SWIPES, gimmick: tera); }
     } SCENE {
-        MESSAGE("Wobbuffet used Fury Swipes!");
+        MESSAGE("Qulbutoké utilise\nCombo-Griffe!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FURY_SWIPES, player);
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
@@ -178,7 +178,7 @@ SINGLE_BATTLE_TEST("(TERA) Terastallization's 60 BP floor does not apply to prio
     } WHEN {
         TURN { MOVE(player, MOVE_QUICK_ATTACK, gimmick: tera); }
     } SCENE {
-        MESSAGE("Wobbuffet used Quick Attack!");
+        MESSAGE("Qulbutoké utilise\nVive-Attaque!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_QUICK_ATTACK, player);
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
@@ -218,7 +218,7 @@ SINGLE_BATTLE_TEST("(TERA) Terastallization changes type effectiveness", s16 dam
     } WHEN {
         TURN { MOVE(player, MOVE_CELEBRATE, gimmick: tera); MOVE(opponent, MOVE_WATER_GUN); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Water Gun!");
+        MESSAGE("Qulbutoké ennemi utilise\nPistolet à O!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WATER_GUN, opponent);
         HP_BAR(player, captureDamage: &results[i].damage);
     } FINALLY {
@@ -234,8 +234,8 @@ SINGLE_BATTLE_TEST("(TERA) Terastallization changes type effectiveness")
     } WHEN {
         TURN { MOVE(player, MOVE_CELEBRATE, gimmick: GIMMICK_TERA); MOVE(opponent, MOVE_EARTHQUAKE); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Earthquake!");
-        MESSAGE("It doesn't affect Wobbuffet…");
+        MESSAGE("Qulbutoké ennemi utilise\nSéisme!");
+        MESSAGE("Ça n'affecte pas Qulbutoké…");
         NOT { HP_BAR(player); }
     }
 }
@@ -253,12 +253,12 @@ SINGLE_BATTLE_TEST("(TERA) Terastallization persists across switches")
         TURN { MOVE(opponent, MOVE_EARTHQUAKE); }
     } SCENE {
         // turn 1
-        MESSAGE("The opposing Wobbuffet used Earthquake!");
-        MESSAGE("It doesn't affect Wobbuffet…");
+        MESSAGE("Qulbutoké ennemi utilise\nSéisme!");
+        MESSAGE("Ça n'affecte pas Qulbutoké…");
         NOT { HP_BAR(player); }
         // turn 4
-        MESSAGE("The opposing Wobbuffet used Earthquake!");
-        MESSAGE("It doesn't affect Wobbuffet…");
+        MESSAGE("Qulbutoké ennemi utilise\nSéisme!");
+        MESSAGE("Ça n'affecte pas Qulbutoké…");
         NOT { HP_BAR(player); }
     }
 }
@@ -273,9 +273,9 @@ SINGLE_BATTLE_TEST("(TERA) Terastallization changes the effect of Curse")
     } WHEN {
         TURN { MOVE(player, MOVE_CURSE, gimmick: GIMMICK_TERA); }
     } SCENE {
-        MESSAGE("Wobbuffet used Curse!");
+        MESSAGE("Qulbutoké utilise\nMalédiction!");
         HP_BAR(player);
-        MESSAGE("Wobbuffet cut its own HP and put a curse on the opposing Wobbuffet!");
+        MESSAGE("Qulbutoké sacrifie des PV et lance une malédiction sur Qulbutoké ennemi!");
         NOT { ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player); }
     }
 }
@@ -288,11 +288,11 @@ SINGLE_BATTLE_TEST("(TERA) Roost does not remove the user's Flying type while Te
     } WHEN {
         TURN { MOVE(player, MOVE_ROOST, gimmick: GIMMICK_TERA); MOVE(opponent, MOVE_ICE_BEAM); }
     } SCENE {
-        MESSAGE("Zapdos used Roost!");
+        MESSAGE("Électhor utilise\nAtterrissage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROOST, player);
-        MESSAGE("The opposing Wobbuffet used Ice Beam!");
+        MESSAGE("Qulbutoké ennemi utilise\nLaser Glace!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ICE_BEAM, opponent);
-        MESSAGE("It's super effective!");
+        MESSAGE("C'est super efficace!");
     }
 }
 
@@ -310,7 +310,7 @@ SINGLE_BATTLE_TEST("(TERA) Type-changing moves fail against a Terastallized Poke
     } SCENE {
         if (move != MOVE_SOAK)
             NOT { ANIMATION(ANIM_TYPE_MOVE, move, opponent); }
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -322,8 +322,8 @@ SINGLE_BATTLE_TEST("(TERA) Reflect Type fails if used by a Terastallized Pokemon
     } WHEN {
         TURN { MOVE(player, MOVE_REFLECT_TYPE, gimmick: GIMMICK_TERA); }
     } SCENE {
-        MESSAGE("Wobbuffet used Reflect Type!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké utilise\nCopie-Type!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -338,11 +338,11 @@ SINGLE_BATTLE_TEST("(TERA) Reflect Type copies a Terastallized Pokemon's Tera Ty
         TURN { MOVE(player, MOVE_SCRATCH); }
     } SCENE {
         // turn 2
-        MESSAGE("The opposing Wobbuffet used Reflect Type!");
+        MESSAGE("Qulbutoké ennemi utilise\nCopie-Type!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_REFLECT_TYPE, opponent);
         // turn 3
-        MESSAGE("Wobbuffet used Scratch!");
-        MESSAGE("It doesn't affect the opposing Wobbuffet…");
+        MESSAGE("Qulbutoké utilise\nGriffe!");
+        MESSAGE("Ça n'affecte pas Qulbutoké ennemi…");
         NOT { HP_BAR(opponent); }
     }
 }
@@ -357,10 +357,10 @@ SINGLE_BATTLE_TEST("(TERA) Synchronoise uses a Terastallized Pokemon's Tera Type
         TURN { MOVE(opponent, MOVE_SYNCHRONOISE, gimmick: GIMMICK_TERA); }
     } SCENE {
         // turn 1
-        MESSAGE("The opposing Wobbuffet used Synchronoise!");
-        MESSAGE("It doesn't affect Wobbuffet…");
+        MESSAGE("Qulbutoké ennemi utilise\nSynchropeine!");
+        MESSAGE("Ça n'affecte pas Qulbutoké…");
         // turn 2
-        MESSAGE("The opposing Wobbuffet used Synchronoise!");
+        MESSAGE("Qulbutoké ennemi utilise\nSynchropeine!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SYNCHRONOISE, opponent);
     }
 }
@@ -374,8 +374,8 @@ SINGLE_BATTLE_TEST("(TERA) Revelation Dance uses a Terastallized Pokemon's Tera 
     } WHEN {
         TURN { MOVE(player, MOVE_REVELATION_DANCE, gimmick: GIMMICK_TERA); }
     } SCENE {
-        MESSAGE("Oricorio used Revelation Dance!");
-        MESSAGE("It doesn't affect the opposing Gengar…");
+        MESSAGE("Plumeline utilise\nDanse Éveil!");
+        MESSAGE("Ça n'affecte pas Ectoplasma ennemi…");
         NOT { HP_BAR(opponent); }
     }
 }
@@ -399,22 +399,22 @@ SINGLE_BATTLE_TEST("(TERA) Double Shock does not remove the user's Electric type
         TURN { MOVE(player, MOVE_DOUBLE_SHOCK); }
     } SCENE {
         // turn 1 - regular STAB
-        MESSAGE("Pichu used Double Shock!");
+        MESSAGE("Pichu utilise\nDouble Décharge!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DOUBLE_SHOCK, player);
         HP_BAR(opponent, captureDamage: &damage[0]);
         // turn 2 - lost Electric type, gained back from Tera
-        MESSAGE("Pichu used Double Shock!");
+        MESSAGE("Pichu utilise\nDouble Décharge!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DOUBLE_SHOCK, player);
         HP_BAR(opponent, captureDamage: &damage[1]);
         // turn 3 - retained Electric type
-        MESSAGE("Pichu used Double Shock!");
+        MESSAGE("Pichu utilise\nDouble Décharge!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DOUBLE_SHOCK, player);
         // turn 6 - original type reset, regular STAB + Tera boost
-        MESSAGE("Pichu used Double Shock!");
+        MESSAGE("Pichu utilise\nDouble Décharge!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DOUBLE_SHOCK, player);
         HP_BAR(opponent, captureDamage: &damage[2]);
         // turn 7 - regular STAB + Tera boost stays
-        MESSAGE("Pichu used Double Shock!");
+        MESSAGE("Pichu utilise\nDouble Décharge!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DOUBLE_SHOCK, player);
         HP_BAR(opponent, captureDamage: &damage[3]);
     } THEN {
@@ -436,7 +436,7 @@ SINGLE_BATTLE_TEST("(TERA) Stellar type does not change the user's defensive pro
     } WHEN {
         TURN { MOVE(player, MOVE_CELEBRATE, gimmick: tera); MOVE(opponent, MOVE_PSYCHIC); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Psychic!");
+        MESSAGE("Qulbutoké ennemi utilise\nPsyko!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PSYCHIC, opponent);
         HP_BAR(player, captureDamage: &results[i].damage);
     } FINALLY {
@@ -455,11 +455,11 @@ SINGLE_BATTLE_TEST("(TERA) Reflect Type copies a Stellar-type Pokemon's base typ
         TURN { MOVE(player, MOVE_SCRATCH); }
     } SCENE {
         // turn 2
-        MESSAGE("The opposing Wobbuffet used Reflect Type!");
+        MESSAGE("Qulbutoké ennemi utilise\nCopie-Type!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_REFLECT_TYPE, opponent);
         // turn 3
-        MESSAGE("Banette used Scratch!");
-        MESSAGE("It doesn't affect the opposing Wobbuffet…");
+        MESSAGE("Branette utilise\nGriffe!");
+        MESSAGE("Ça n'affecte pas Qulbutoké ennemi…");
         NOT { HP_BAR(opponent); }
     }
 }
@@ -473,8 +473,8 @@ SINGLE_BATTLE_TEST("(TERA) Revelation Dance uses a Stellar-type Pokemon's base t
     } WHEN {
         TURN { MOVE(player, MOVE_REVELATION_DANCE, gimmick: GIMMICK_TERA); }
     } SCENE {
-        MESSAGE("Oricorio used Revelation Dance!");
-        MESSAGE("It doesn't affect the opposing Gumshoos…");
+        MESSAGE("Plumeline utilise\nDanse Éveil!");
+        MESSAGE("Ça n'affecte pas Argouste ennemi…");
         NOT { HP_BAR(opponent); }
     }
 }
@@ -487,11 +487,11 @@ SINGLE_BATTLE_TEST("(TERA) Roost does not remove Flying-type ground immunity whe
     } WHEN {
         TURN { MOVE(player, MOVE_ROOST, gimmick: GIMMICK_TERA); MOVE(opponent, MOVE_ICE_BEAM); }
     } SCENE {
-        MESSAGE("Zapdos used Roost!");
+        MESSAGE("Électhor utilise\nAtterrissage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROOST, player);
-        MESSAGE("The opposing Wobbuffet used Ice Beam!");
+        MESSAGE("Qulbutoké ennemi utilise\nLaser Glace!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ICE_BEAM, opponent);
-        MESSAGE("It's super effective!");
+        MESSAGE("C'est super efficace!");
     }
 }
 
@@ -507,15 +507,15 @@ SINGLE_BATTLE_TEST("(TERA) Terastallizing into the Stellar-type provides a one-t
         TURN { MOVE(player, MOVE_EXTRASENSORY); }
     } SCENE {
         // turn 1
-        MESSAGE("Wobbuffet used Extrasensory!");
+        MESSAGE("Qulbutoké utilise\nExtrasenseur!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EXTRASENSORY, player);
         HP_BAR(opponent, captureDamage: &damage[0]);
         // turn 2
-        MESSAGE("Wobbuffet used Extrasensory!");
+        MESSAGE("Qulbutoké utilise\nExtrasenseur!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EXTRASENSORY, player);
         HP_BAR(opponent, captureDamage: &damage[1]);
         // turn 3
-        MESSAGE("Wobbuffet used Extrasensory!");
+        MESSAGE("Qulbutoké utilise\nExtrasenseur!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EXTRASENSORY, player);
         HP_BAR(opponent, captureDamage: &damage[2]);
     } THEN {
@@ -537,15 +537,15 @@ SINGLE_BATTLE_TEST("(TERA) Terastallizing into the Stellar-type provides a one-t
         TURN { MOVE(player, MOVE_TAKE_DOWN); }
     } SCENE {
         // turn 1
-        MESSAGE("Wobbuffet used Take Down!");
+        MESSAGE("Qulbutoké utilise\nBélier!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TAKE_DOWN, player);
         HP_BAR(opponent, captureDamage: &damage[0]);
         // turn 2
-        MESSAGE("Wobbuffet used Take Down!");
+        MESSAGE("Qulbutoké utilise\nBélier!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TAKE_DOWN, player);
         HP_BAR(opponent, captureDamage: &damage[1]);
         // turn 3
-        MESSAGE("Wobbuffet used Take Down!");
+        MESSAGE("Qulbutoké utilise\nBélier!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TAKE_DOWN, player);
         HP_BAR(opponent, captureDamage: &damage[2]);
     } THEN {
@@ -569,19 +569,19 @@ SINGLE_BATTLE_TEST("(TERA) Terastallizing into the Stellar type boosts all moves
         TURN { MOVE(player, MOVE_WATER_GUN); }
     } SCENE {
         // turn 1
-        MESSAGE("Wobbuffet used Mega Drain!");
+        MESSAGE("Qulbutoké utilise\nMéga-Sangsue!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MEGA_DRAIN, player);
         HP_BAR(opponent, captureDamage: &damage[0]);
         // turn 2
-        MESSAGE("Wobbuffet used Mega Drain!");
+        MESSAGE("Qulbutoké utilise\nMéga-Sangsue!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MEGA_DRAIN, player);
         HP_BAR(opponent, captureDamage: &damage[1]);
         // turn 3
-        MESSAGE("Wobbuffet used Mega Drain!");
+        MESSAGE("Qulbutoké utilise\nMéga-Sangsue!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MEGA_DRAIN, player);
         HP_BAR(opponent, captureDamage: &damage[2]);
         // turn 4
-        MESSAGE("Wobbuffet used Water Gun!");
+        MESSAGE("Qulbutoké utilise\nPistolet à O!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WATER_GUN, player);
         HP_BAR(opponent, captureDamage: &damage[3]);
     } THEN {
@@ -607,7 +607,7 @@ SINGLE_BATTLE_TEST("(TERA) Protean/Libero cannot change the type of a Terastalli
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_TERA_ACTIVATE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BUBBLE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EMBER, opponent);
-        MESSAGE("It's super effective!");
+        MESSAGE("C'est super efficace!");
     }
 }
 
@@ -623,14 +623,14 @@ SINGLE_BATTLE_TEST("(TERA) Status moves don't expend Stellar's one-time type boo
         TURN { MOVE(player, MOVE_TAKE_DOWN); }
     } SCENE {
         // turn 1
-        MESSAGE("Wobbuffet used Growl!");
+        MESSAGE("Qulbutoké utilise\nRugissement!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GROWL, player);
         // turn 2
-        MESSAGE("Wobbuffet used Take Down!");
+        MESSAGE("Qulbutoké utilise\nBélier!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TAKE_DOWN, player);
         HP_BAR(opponent, captureDamage: &damage[0]);
         // turn 3
-        MESSAGE("Wobbuffet used Take Down!");
+        MESSAGE("Qulbutoké utilise\nBélier!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TAKE_DOWN, player);
         HP_BAR(opponent, captureDamage: &damage[1]);
     } THEN {
@@ -652,22 +652,22 @@ SINGLE_BATTLE_TEST("(TERA) Stellar type's one-time boost factors in dynamically-
         TURN { MOVE(player, MOVE_WATER_PULSE); MOVE(opponent, MOVE_RECOVER); }
         TURN { MOVE(player, MOVE_WATER_PULSE); MOVE(opponent, MOVE_RECOVER); }
     } SCENE {
-        MESSAGE("Pelipper used Weather Ball!");
+        MESSAGE("Bekipan utilise\nBall'Météo!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WEATHER_BALL, player);
         // turn 2
-        MESSAGE("Pelipper used Take Down!");
+        MESSAGE("Bekipan utilise\nBélier!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TAKE_DOWN, player);
         HP_BAR(opponent, captureDamage: &damage[0]);
         // turn 3
-        MESSAGE("Pelipper used Take Down!");
+        MESSAGE("Bekipan utilise\nBélier!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TAKE_DOWN, player);
         HP_BAR(opponent, captureDamage: &damage[1]);
         // turn 4
-        MESSAGE("Pelipper used Water Pulse!");
+        MESSAGE("Bekipan utilise\nVibraqua!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WATER_PULSE, player);
         HP_BAR(opponent, captureDamage: &damage[2]);
         // turn 5
-        MESSAGE("Pelipper used Water Pulse!");
+        MESSAGE("Bekipan utilise\nVibraqua!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WATER_PULSE, player);
         HP_BAR(opponent, captureDamage: &damage[3]);
     } THEN {
@@ -708,7 +708,7 @@ SINGLE_BATTLE_TEST("(TERA) Terapagos retains its base defensive profile when Ter
     } WHEN {
         TURN { MOVE(player, MOVE_CELEBRATE, gimmick: GIMMICK_TERA); MOVE(opponent, MOVE_BRICK_BREAK); }
     } SCENE {
-        MESSAGE("It's super effective!");
+        MESSAGE("C'est super efficace!");
     }
 }
 

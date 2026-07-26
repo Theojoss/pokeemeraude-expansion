@@ -84,10 +84,10 @@ SINGLE_BATTLE_TEST("Core Enforcer immediately ends Neutralizing Gas and reactiva
         TURN { MOVE(player, MOVE_CORE_ENFORCER); }
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_NEUTRALIZING_GAS);
-        MESSAGE("Neutralizing gas filled the area!");
+        MESSAGE("Un gaz inhibiteur envahit les lieux!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CORE_ENFORCER, player);
-        MESSAGE("The effects of the neutralizing gas wore off!");
+        MESSAGE("Les effets du gaz inhibiteur se sont dissipés.");
         ABILITY_POPUP(player, ABILITY_DROUGHT);
     }
 }

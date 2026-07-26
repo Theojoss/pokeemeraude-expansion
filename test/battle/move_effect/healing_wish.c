@@ -23,11 +23,11 @@ SINGLE_BATTLE_TEST("Healing Wish causes the user to faint and heals the replacem
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HEALING_WISH, player);
         HP_BAR(player, hp: 0);
-        MESSAGE("Gardevoir fainted!");
-        MESSAGE("The healing wish came true for Wynaut!");
+        MESSAGE("Gardevoir est K.O.!\p");
+        MESSAGE("Le Vœu Soin est exaucé et profite à Okéoké!");
         HP_BAR(player, hp: 100);
         STATUS_ICON(player, none: TRUE);
-        MESSAGE("Wynaut regained health!");
+        MESSAGE("Okéoké récupère des PV!");
     } THEN {
         EXPECT_EQ(player->hp, 100);
         EXPECT_EQ(player->status1, 0);
@@ -58,11 +58,11 @@ DOUBLE_BATTLE_TEST("Healing Wish causes the user to faint and heals the replacem
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HEALING_WISH, playerLeft);
         HP_BAR(playerLeft, hp: 0);
-        MESSAGE("Gardevoir fainted!");
-        MESSAGE("The healing wish came true for Wynaut!");
+        MESSAGE("Gardevoir est K.O.!\p");
+        MESSAGE("Le Vœu Soin est exaucé et profite à Okéoké!");
         HP_BAR(playerLeft, hp: 100);
         STATUS_ICON(playerLeft, none: TRUE);
-        MESSAGE("Wynaut regained health!");
+        MESSAGE("Okéoké récupère des PV!");
     } THEN {
         EXPECT_EQ(playerLeft->hp, 100);
         EXPECT_EQ(playerLeft->status1, 0);
@@ -86,9 +86,9 @@ SINGLE_BATTLE_TEST("Healing Wish effect activates even if the the switched Poké
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HEALING_WISH, player);
         HP_BAR(player, hp: 0);
-        MESSAGE("Gardevoir fainted!");
-        MESSAGE("The healing wish came true for Ninjask!");
-        MESSAGE("Ninjask regained health!");
+        MESSAGE("Gardevoir est K.O.!\p");
+        MESSAGE("Le Vœu Soin est exaucé et profite à Ninjask!");
+        MESSAGE("Ninjask récupère des PV!");
     }
 }
 
@@ -112,24 +112,24 @@ SINGLE_BATTLE_TEST("Healing Wish effect activates only if the switched Pokémon 
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HEALING_WISH, player);
         HP_BAR(player, hp: 0);
-        MESSAGE("Gardevoir fainted!");
+        MESSAGE("Gardevoir est K.O.!\p");
         NONE_OF {
-            MESSAGE("The healing wish came true for Ninjask!");
-            MESSAGE("Ninjask regained health!");
+            MESSAGE("Le Vœu Soin est exaucé et profite à Ninjask!");
+            MESSAGE("Ninjask récupère des PV!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_U_TURN, player);
         if (switchTo == 2) {
-            MESSAGE("The healing wish came true for Wynaut!");
+            MESSAGE("Le Vœu Soin est exaucé et profite à Okéoké!");
             HP_BAR(player, hp: 100);
-            MESSAGE("Wynaut regained health!");
+            MESSAGE("Okéoké récupère des PV!");
         } else if (switchTo == 3) {
-            MESSAGE("The healing wish came true for Wynaut!");
+            MESSAGE("Le Vœu Soin est exaucé et profite à Okéoké!");
             STATUS_ICON(player, none: TRUE);
-            MESSAGE("Wynaut regained health!");
+            MESSAGE("Okéoké récupère des PV!");
         } else {
             NONE_OF {
-                MESSAGE("The healing wish came true for Wynaut!");
-                MESSAGE("Wynaut regained health!");
+                MESSAGE("Le Vœu Soin est exaucé et profite à Okéoké!");
+                MESSAGE("Okéoké récupère des PV!");
             }
         }
     } THEN {

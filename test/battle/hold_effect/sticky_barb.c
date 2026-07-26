@@ -39,13 +39,13 @@ SINGLE_BATTLE_TEST("Sticky Barb gets transferred if its holder is hit by a conta
         ANIMATION(ANIM_TYPE_MOVE, move, opponent);
         if (MoveMakesContact(move))
         {
-            MESSAGE("The Sticky Barb attached itself to the opposing Wobbuffet!");
-            MESSAGE("The opposing Wobbuffet was hurt by the Sticky Barb!");
+            MESSAGE("Piquants s'attache à Qulbutoké ennemi!");
+            MESSAGE("Qulbutoké ennemi est blessé par Piquants!");
         }
         else
         {
-            NOT MESSAGE("The Sticky Barb attached itself to the opposing Wobbuffet!");
-            MESSAGE("Wobbuffet was hurt by the Sticky Barb!");
+            NOT MESSAGE("Piquants s'attache à Qulbutoké ennemi!");
+            MESSAGE("Qulbutoké est blessé par Piquants!");
         }
     }
 }

@@ -19,13 +19,13 @@ SINGLE_BATTLE_TEST("Corrosive Gas destroys the target's item or fails if the tar
     } WHEN {
         TURN { MOVE(player, MOVE_CORROSIVE_GAS); }
     } SCENE {
-        MESSAGE("Wobbuffet used Corrosive Gas!");
+        MESSAGE("Qulbutoké utilise\nGaz Corrosif!");
         if (item == ITEM_POTION) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_CORROSIVE_GAS, player);
-            MESSAGE("Wobbuffet corroded the opposing Wobbuffet's Potion!");
+            MESSAGE("Qulbutoké fait fondre Potion de Qulbutoké ennemi!");
         }
         else {
-            MESSAGE("It won't have any effect on the opposing Wobbuffet!");
+            MESSAGE("Ça n'aura aucun effet sur Qulbutoké ennemi!");
         }
     } THEN {
         EXPECT_EQ(opponent->item, ITEM_NONE);
@@ -40,11 +40,11 @@ SINGLE_BATTLE_TEST("Corrosive Gas doesn't destroy the item of a Pokemon with the
     } WHEN {
         TURN { MOVE(player, MOVE_CORROSIVE_GAS); }
     } SCENE {
-        MESSAGE("Wobbuffet used Corrosive Gas!");
+        MESSAGE("Qulbutoké utilise\nGaz Corrosif!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CORROSIVE_GAS, player);
-        NOT MESSAGE("Wobbuffet corroded the opposing Wobbuffet's Potion!");
+        NOT MESSAGE("Qulbutoké fait fondre Potion de Qulbutoké ennemi!");
         ABILITY_POPUP(opponent, ABILITY_STICKY_HOLD);
-        MESSAGE("The opposing Muk's item cannot be removed!");
+        MESSAGE("L'objet de Grotadmorv ennemi ne peut pas être volé!");
     } THEN {
         EXPECT_EQ(opponent->item, ITEM_POISON_BARB);
     }
@@ -59,11 +59,11 @@ SINGLE_BATTLE_TEST("Items lost to Corrosive Gas cannot be restored by Recycle")
     } WHEN {
         TURN { MOVE(player, MOVE_CORROSIVE_GAS); MOVE(opponent, MOVE_RECYCLE); }
     } SCENE {
-        MESSAGE("Wobbuffet used Corrosive Gas!");
+        MESSAGE("Qulbutoké utilise\nGaz Corrosif!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CORROSIVE_GAS, player);
-        MESSAGE("Wobbuffet corroded the opposing Wobbuffet's Oran Berry!");
-        MESSAGE("The opposing Wobbuffet used Recycle!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké fait fondre Baie Oran de Qulbutoké ennemi!");
+        MESSAGE("Qulbutoké ennemi utilise\nRecyclage!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT_EQ(opponent->item, ITEM_NONE);
     }
@@ -93,21 +93,21 @@ DOUBLE_BATTLE_TEST("Corrosive Gas destroys foes and ally's items if they have on
     } WHEN {
         TURN { MOVE(playerRight, MOVE_CORROSIVE_GAS); }
     } SCENE {
-        MESSAGE("Wynaut used Corrosive Gas!");
+        MESSAGE("Okéoké utilise\nGaz Corrosif!");
         if (itemPlayerLeft == ITEM_CHERI_BERRY) {
-            MESSAGE("Wynaut corroded Wobbuffet's Cheri Berry!");
+            MESSAGE("Okéoké fait fondre Baie Ceriz de Qulbutoké!");
         } else {
-            MESSAGE("It won't have any effect on Wobbuffet!");
+            MESSAGE("Ça n'aura aucun effet sur Qulbutoké!");
         }
         if (itemOpponentLeft == ITEM_ORAN_BERRY) {
-            MESSAGE("Wynaut corroded the opposing Abra's Oran Berry!");
+            MESSAGE("Okéoké fait fondre Baie Oran de Abra ennemi!");
         } else {
-            MESSAGE("It won't have any effect on the opposing Abra!");
+            MESSAGE("Ça n'aura aucun effet sur Abra ennemi!");
         }
         if (itemOpponentRight == ITEM_CHESTO_BERRY) {
-            MESSAGE("Wynaut corroded the opposing Kadabra's Chesto Berry!");
+            MESSAGE("Okéoké fait fondre Baie Maron de Kadabra ennemi!");
         } else {
-            MESSAGE("It won't have any effect on the opposing Kadabra!");
+            MESSAGE("Ça n'aura aucun effet sur Kadabra ennemi!");
         }
 
     } THEN {

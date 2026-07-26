@@ -66,7 +66,7 @@ SINGLE_BATTLE_TEST("Weather Ball stays Fire-type under real weather if user has 
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, weatherMove, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WEATHER_BALL, player);
-        MESSAGE("It's super effective!");
+        MESSAGE("C'est super efficace!");
     }
 }
 
@@ -192,7 +192,7 @@ SINGLE_BATTLE_TEST("Mega Sol doesn't trigger the foe's Leaf Guard", s16 damage)
         {
             NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_WILL_O_WISP, player);
             ABILITY_POPUP(opponent, ABILITY_LEAF_GUARD);
-            MESSAGE("It doesn't affect the opposing Leafeon…");
+            MESSAGE("Ça n'affecte pas Phyllali ennemi…");
             NOT STATUS_ICON(opponent, STATUS1_BURN);
         }
     }

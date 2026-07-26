@@ -24,16 +24,16 @@ SINGLE_BATTLE_TEST("Refresh cures the user of burn, frostbite, poison, and paral
         {
             case STATUS1_POISON:
             case STATUS1_TOXIC_POISON:
-                MESSAGE("Wobbuffet was cured of its poisoning!");
+                MESSAGE("Qulbutoké n'est plus empoisonné!");
                 break;
             case STATUS1_BURN:
-                MESSAGE("Wobbuffet's burn was cured!");
+                MESSAGE("Qulbutoké n'est plus brûlé!");
                 break;
             case STATUS1_PARALYSIS:
-                MESSAGE("Wobbuffet was cured of paralysis!");
+                MESSAGE("Qulbutoké n'est plus paralysé!");
                 break;
             case STATUS1_FROSTBITE:
-                MESSAGE("Wobbuffet's frostbite was cured!");
+                MESSAGE("Qulbutoké s'est remis de sa gelure!");
                 break;
         }
         STATUS_ICON(player, none: TRUE);
@@ -49,12 +49,12 @@ SINGLE_BATTLE_TEST("Refresh does not cure the user of Freeze")
     } WHEN {
         TURN { MOVE(player, MOVE_REFRESH); }
     } SCENE {
-        MESSAGE("Wobbuffet used Refresh!");
+        MESSAGE("Qulbutoké utilise\nRégénération!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_REFRESH, player);
             STATUS_ICON(player, none: TRUE);
         }
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -70,17 +70,17 @@ SINGLE_BATTLE_TEST("Refresh does not cure sleep when used by Sleep Talk")
         TURN { MOVE(player, MOVE_SPORE); MOVE(opponent, MOVE_SLEEP_TALK); }
         TURN { MOVE(player, MOVE_SPORE); MOVE(opponent, MOVE_REFRESH); }
     } SCENE {
-        MESSAGE("Wobbuffet used Spore!");
+        MESSAGE("Qulbutoké utilise\nSpore!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPORE, player);
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_SLP, opponent);
-        MESSAGE("The opposing Wobbuffet fell asleep!");
-        MESSAGE("The opposing Wobbuffet used Sleep Talk!");
+        MESSAGE("Qulbutoké ennemi s'est endormi!");
+        MESSAGE("Qulbutoké ennemi utilise\nBlabla Dodo!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SLEEP_TALK, opponent);
-        MESSAGE("The opposing Wobbuffet used Refresh!");
+        MESSAGE("Qulbutoké ennemi utilise\nRégénération!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_REFRESH, player);
             STATUS_ICON(player, none: TRUE);
         }
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }

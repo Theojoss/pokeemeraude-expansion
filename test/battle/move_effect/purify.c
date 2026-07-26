@@ -90,7 +90,7 @@ SINGLE_BATTLE_TEST("Purify doesn't heal HP if the target has Comatose")
         TURN { MOVE(player, MOVE_PURIFY); }
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_PURIFY, player);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
         NOT HP_BAR(player);
     } THEN {
         EXPECT_EQ(player->hp, 50);

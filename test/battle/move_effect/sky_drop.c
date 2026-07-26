@@ -17,7 +17,7 @@ SINGLE_BATTLE_TEST("Sky Drop does no damage to Flying type Pokémon")
         TURN { MOVE(player, MOVE_SKY_DROP); }
         TURN { SKIP_TURN(player); }
     } SCENE {
-        MESSAGE("Wobbuffet took the opposing Pidgey into the sky!");
+        MESSAGE("Qulbutoké emporte Roucool ennemi haut dans le ciel!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SKY_DROP, player);
         NOT HP_BAR(opponent);
     }
@@ -64,7 +64,7 @@ DOUBLE_BATTLE_TEST("Sky Drop is cancelled if Gravity activated")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SKY_DROP, playerLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GRAVITY, playerRight);
-        MESSAGE("Wobbuffet fell from the sky due to the gravity!");
+        MESSAGE("Qulbutoké ne peut pas rester en l'air à cause du changement de gravité!");
     }
 }
 
@@ -78,7 +78,7 @@ SINGLE_BATTLE_TEST("Sky Drop fails on targets heavier or equal than 200kg")
         TURN { MOVE(player, MOVE_SKY_DROP); }
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SKY_DROP, player);
-        MESSAGE("The opposing Metagross is too heavy to be lifted!");
+        MESSAGE("Métalosse ennemi est trop lourd pour être emporté!");
     }
 }
 
@@ -183,7 +183,7 @@ DOUBLE_BATTLE_TEST("Sky Drop will be canceled if it is electrified and holding a
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SKY_DROP, playerLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRIFY, opponentRight);
-        NOT MESSAGE("It doesn't affect the opposing Wattrel…");
+        NOT MESSAGE("Ça n'affecte pas Zapétrel ennemi…");
         ABILITY_POPUP(opponentLeft, ABILITY_VOLT_ABSORB);
         NOT HP_BAR(opponentLeft);
     }
@@ -223,7 +223,7 @@ SINGLE_BATTLE_TEST("Sky Drop: If target was locked into a move that would confus
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SKY_DROP, opponent);
         HP_BAR(player);
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_CONFUSION, player);
-        MESSAGE("The sunlight is strong.");
+        MESSAGE("Les rayons du soleil brillent.");
     }
 }
 

@@ -18,15 +18,15 @@ DOUBLE_BATTLE_TEST("Grim Neigh raises Sp. Attack by one stage after directly cau
         TURN { MOVE(playerLeft, MOVE_DISCHARGE); SEND_OUT(opponentLeft, 2); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DISCHARGE, playerLeft);
-        MESSAGE("The opposing Glalie fainted!");
-        MESSAGE("Snorunt fainted!");
-        MESSAGE("The opposing Abra fainted!");
+        MESSAGE("Oniglali ennemi est K.O.!\p");
+        MESSAGE("Stalgamin est K.O.!\p");
+        MESSAGE("Abra ennemi est K.O.!\p");
         ABILITY_POPUP(playerLeft, abilityPopUp);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
         if (species == SPECIES_SPECTRIER)
-            MESSAGE("Spectrier's Sp. Atk rose drastically!");
+            MESSAGE("Ah, Attaque Spéciale du Spectreval\naugmente énormément!");
         else
-            MESSAGE("Calyrex's Sp. Atk rose drastically!");
+            MESSAGE("Ah, Attaque Spéciale du Sylveroy\naugmente énormément!");
     } THEN {
         EXPECT_EQ(playerLeft->statStages[STAT_SPATK], DEFAULT_STAT_STAGE + 3);
     }
@@ -52,16 +52,16 @@ DOUBLE_BATTLE_TEST("Grim Neigh does not trigger if Pokemon faint to indirect dam
         ANIMATION(ANIM_TYPE_MOVE, MOVE_QUICK_ATTACK, playerRight);
         for (i = 0; i < 3; i++) {
             ONE_OF {
-                MESSAGE("Snorunt fainted!");
-                MESSAGE("The opposing Glalie fainted!");
-                MESSAGE("The opposing Abra fainted!");
+                MESSAGE("Stalgamin est K.O.!\p");
+                MESSAGE("Oniglali ennemi est K.O.!\p");
+                MESSAGE("Abra ennemi est K.O.!\p");
             }
             NONE_OF {
                 ABILITY_POPUP(playerLeft, abilityPopUp);
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-                MESSAGE("Salamence's Sp. Atk rose!");
-                MESSAGE("Spectrier's Sp. Atk rose!");
-                MESSAGE("Calyrex's Sp. Atk rose!");
+                MESSAGE("Ah, Attaque Spéciale du Drattak augmente!");
+                MESSAGE("Ah, Attaque Spéciale du Spectreval augmente!");
+                MESSAGE("Ah, Attaque Spéciale du Sylveroy augmente!");
             }
         }
     } THEN {
@@ -91,13 +91,13 @@ DOUBLE_BATTLE_TEST("Grim Neigh does not increase damage done by the same move th
         HP_BAR(opponentLeft, captureDamage: &damage[0]);
         HP_BAR(playerRight);
         HP_BAR(opponentRight, captureDamage: &damage[1]);
-        MESSAGE("Abra fainted!");
+        MESSAGE("Abra est K.O.!\p");
         ABILITY_POPUP(playerLeft, abilityPopUp);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
         if (species == SPECIES_SPECTRIER)
-            MESSAGE("Spectrier's Sp. Atk rose!");
+            MESSAGE("Ah, Attaque Spéciale du Spectreval augmente!");
         else
-            MESSAGE("Calyrex's Sp. Atk rose!");
+            MESSAGE("Ah, Attaque Spéciale du Sylveroy augmente!");
     } THEN {
         EXPECT_EQ(playerLeft->statStages[STAT_SPATK], DEFAULT_STAT_STAGE + 1);
         EXPECT_EQ(damage[0], damage[1]);

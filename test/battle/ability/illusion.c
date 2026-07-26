@@ -35,7 +35,7 @@ SINGLE_BATTLE_TEST("Illusion breaks if the target faints")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         HP_BAR(player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ILLUSION_OFF, player);
-        MESSAGE("Zoroark's illusion wore off!");
+        MESSAGE("L'illusion de Zoroark se brise!");
     }
 }
 
@@ -53,7 +53,7 @@ SINGLE_BATTLE_TEST("Illusion does not break if the attacker faints without takin
         HP_BAR(player);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ILLUSION_OFF, player);
-            MESSAGE("Zoroark's illusion wore off!");
+            MESSAGE("L'illusion de Zoroark se brise!");
         }
     }
 }
@@ -69,6 +69,22 @@ SINGLE_BATTLE_TEST("Illusion cannot imitate if the user is on the last slot")
     } THEN {
         EXPECT_EQ(player->species, SPECIES_ZOROARK);
         EXPECT_EQ(gBattleStruct->illusion[0].state, ILLUSION_OFF); // Battler is Zoroark and not Illusioned
+    }
+}
+
+ONE_VS_TWO_BATTLE_TEST("Illusion works for the second opponent trainer in a battle with two opponent trainers")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT_A(SPECIES_WYNAUT);
+        OPPONENT_B(SPECIES_ZOROARK) { Ability(ABILITY_ILLUSION); }
+        OPPONENT_B(SPECIES_WYNAUT);
+    } WHEN {
+        TURN {}
+    } THEN {
+        EXPECT_EQ(gBattleStruct->illusion[B_POSITION_OPPONENT_RIGHT].state, ILLUSION_ON);
+        EXPECT(&gParties[B_TRAINER_OPPONENT_B][1] == gBattleStruct->illusion[B_POSITION_OPPONENT_RIGHT].mon);
     }
 }
 
@@ -130,7 +146,7 @@ SINGLE_BATTLE_TEST("Illusion breaks when hit through a substitute")
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SWAP_FROM_SUBSTITUTE, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ILLUSION_OFF, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SWAP_TO_SUBSTITUTE, opponent);
-        MESSAGE("The opposing Zoroark's illusion wore off!");
+        MESSAGE("L'illusion de Zoroark ennemi se brise!");
     }
 }
 
@@ -146,7 +162,7 @@ SINGLE_BATTLE_TEST("Illusion does not break if indirect damage causes the user t
         HP_BAR(player);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ILLUSION_OFF, player);
-            MESSAGE("Zoroark's illusion wore off!");
+            MESSAGE("L'illusion de Zoroark se brise!");
         }
     }
 }

@@ -21,8 +21,8 @@ SINGLE_BATTLE_TEST("Shed Tail creates a Substitute at the cost of 1/2 users maxi
         maxHP = GetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_HP);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SHED_TAIL, player);
         HP_BAR(player, captureDamage: &costHP);
-        MESSAGE("Wobbuffet shed its tail to create a decoy!");
-        SEND_IN_MESSAGE("Wynaut");
+        MESSAGE("Qulbutoké détache sa queue pour créer un leurre!");
+        SEND_IN_MESSAGE("Okéoké");
     }THEN {
         EXPECT_EQ(maxHP / 2, costHP);
     }
@@ -37,7 +37,7 @@ SINGLE_BATTLE_TEST("Shed Tail fails if the user doesn't have enough HP")
     } WHEN {
         TURN { MOVE(player, MOVE_SHED_TAIL); }
     } SCENE {
-        MESSAGE("But it does not have enough HP left to make a substitute!");
+        MESSAGE("Mais il est trop faible pour créer un clone!");
     }
 }
 
@@ -52,8 +52,8 @@ SINGLE_BATTLE_TEST("Shed Tail's HP cost can trigger a berry before the user swit
         TURN { MOVE(player, MOVE_SHED_TAIL); SEND_OUT(player, 1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SHED_TAIL, player);
-        MESSAGE("Wobbuffet restored its health using its Sitrus Berry!");
-        SEND_IN_MESSAGE("Wynaut");
+        MESSAGE("Qulbutoké récupère des PV grâce à Baie Sitrus!");
+        SEND_IN_MESSAGE("Okéoké");
     }
 }
 
@@ -66,8 +66,8 @@ SINGLE_BATTLE_TEST("Shed Tail fails if there are no usable Pokémon left")
     } WHEN {
         TURN { MOVE(player, MOVE_SHED_TAIL); }
     } SCENE {
-        MESSAGE("Wobbuffet used Shed Tail!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké utilise\nQueulonage!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -81,8 +81,8 @@ SINGLE_BATTLE_TEST("Shed Tail's HP cost doesn't trigger effects that trigger on 
         TURN { MOVE(player, MOVE_SHED_TAIL); SEND_OUT(player, 1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SHED_TAIL, player);
-        MESSAGE("Wobbuffet shed its tail to create a decoy!");
-        NOT MESSAGE("Wobbuffet's Air Balloon popped!");
+        MESSAGE("Qulbutoké détache sa queue pour créer un leurre!");
+        NOT MESSAGE("Le Ballon de Qulbutoké a éclaté!");
     }
 }
 
@@ -120,8 +120,8 @@ SINGLE_BATTLE_TEST("Shed Tail creates a Substitute with 1/4 of user maximum heal
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SHED_TAIL, player);
         if (hp == 160)
-            MESSAGE("Bulbasaur's substitute faded!");
+            MESSAGE("Le clone de Bulbizarre disparaît…\p");
         else
-            NOT MESSAGE("Bulbasaur's substitute faded!");
+            NOT MESSAGE("Le clone de Bulbizarre disparaît…\p");
     }
 }

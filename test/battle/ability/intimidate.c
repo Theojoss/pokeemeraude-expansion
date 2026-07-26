@@ -23,7 +23,7 @@ SINGLE_BATTLE_TEST("Intimidate (opponent) lowers player's attack after switch ou
         {
             ABILITY_POPUP(opponent, ABILITY_INTIMIDATE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Wobbuffet's Attack fell!");
+            MESSAGE("Ah, Attaque du Qulbutoké baisse!");
         }
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
@@ -49,7 +49,7 @@ SINGLE_BATTLE_TEST("Intimidate (opponent) lowers player's attack after KO", s16 
         {
             ABILITY_POPUP(opponent, ABILITY_INTIMIDATE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Wobbuffet's Attack fell!");
+            MESSAGE("Ah, Attaque du Qulbutoké baisse!");
         }
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
@@ -77,30 +77,30 @@ DOUBLE_BATTLE_TEST("Intimidate doesn't activate on an empty field in a double ba
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EXPLOSION, playerLeft);
         // Everyone faints.
 
-        SEND_IN_MESSAGE("Ekans");
+        SEND_IN_MESSAGE("Abo");
         NONE_OF {
             ABILITY_POPUP(playerLeft, ABILITY_INTIMIDATE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
         }
-        MESSAGE("2 sent out Arbok!");
+        MESSAGE("2 envoie\nun Arbok!");
         NONE_OF {
             ABILITY_POPUP(opponentLeft, ABILITY_INTIMIDATE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
         }
         SEND_IN_MESSAGE("Abra");
-        MESSAGE("2 sent out Wynaut!");
+        MESSAGE("2 envoie\nun Okéoké!");
         // Intimidate activates after all battlers have been brought out
         ABILITY_POPUP(playerLeft, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("The opposing Arbok's Attack fell!");
+        MESSAGE("Ah, Attaque du Arbok ennemi baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("The opposing Wynaut's Attack fell!");
+        MESSAGE("Ah, Attaque du Okéoké ennemi baisse!");
 
         ABILITY_POPUP(opponentLeft, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Ekans's Attack fell!");
+        MESSAGE("Ah, Attaque du Abo baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Abra's Attack fell!");
+        MESSAGE("Ah, Attaque du Abra baisse!");
     }
 }
 
@@ -120,13 +120,13 @@ SINGLE_BATTLE_TEST("Intimidate and Eject Button don't force the opponent to Atta
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_QUICK_ATTACK, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
-        MESSAGE("The opposing Wobbuffet is switched out with the Eject Button!");
-        MESSAGE("2 sent out Hitmontop!");
+        MESSAGE("Qulbutoké ennemi se retire grâce au Bouton Fuite!");
+        MESSAGE("2 envoie\nun Kapoera!");
         ABILITY_POPUP(opponent, ABILITY_INTIMIDATE);
-        MESSAGE("Wobbuffet's Attack fell!");
+        MESSAGE("Ah, Attaque du Qulbutoké baisse!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
-            MESSAGE("The opposing Hitmontop used Scratch!");
+            MESSAGE("Kapoera ennemi utilise\nGriffe!");
         }
     }
 }
@@ -153,18 +153,18 @@ DOUBLE_BATTLE_TEST("Intimidate activates on an empty slot")
 
 
     } SCENE {
-        SWITCH_OUT_MESSAGE("Wobbuffet");
-        SEND_IN_MESSAGE("Wynaut");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
+        SEND_IN_MESSAGE("Okéoké");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GUNK_SHOT, playerRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPLASH, opponentRight);
-        SWITCH_OUT_MESSAGE("Wynaut");
-        SEND_IN_MESSAGE("Hitmontop");
+        SWITCH_OUT_MESSAGE("Okéoké");
+        SEND_IN_MESSAGE("Kapoera");
         ABILITY_POPUP(playerLeft, ABILITY_INTIMIDATE);
         NONE_OF {
-            MESSAGE("The opposing Ralts's Attack fell!");
+            MESSAGE("Ah, Attaque du Tarsal ennemi baisse!");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("The opposing Azurill's Attack fell!");
+        MESSAGE("Ah, Attaque du Azurill ennemi baisse!");
     }
 }
 
@@ -209,9 +209,9 @@ SINGLE_BATTLE_TEST("Intimidate can not further lower opponents Atk stat if it is
         ABILITY_POPUP(opponent, ABILITY_INTIMIDATE);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Wobbuffet's Attack fell!");
+            MESSAGE("Ah, Attaque du Qulbutoké baisse!");
         }
-        MESSAGE("Wobbuffet's Attack won't go any lower!");
+        MESSAGE("Attaque de Qulbutoké ne peut plus baisser!");
     } THEN {
         EXPECT_EQ(player->statStages[STAT_ATK], MIN_STAT_STAGE);
     }
@@ -241,8 +241,8 @@ DOUBLE_BATTLE_TEST("Intimidate is not going to trigger if a mon switches out thr
         ANIMATION(ANIM_TYPE_MOVE, MOVE_U_TURN, playerLeft);
         HP_BAR(opponentLeft);
         NOT ABILITY_POPUP(playerLeft, ABILITY_INTIMIDATE);
-        MESSAGE("2 sent out Treecko!");
-        MESSAGE("2 sent out Torchic!");
+        MESSAGE("2 envoie\nun Arcko!");
+        MESSAGE("2 envoie\nun Poussifeu!");
         NOT ABILITY_POPUP(playerLeft, ABILITY_INTIMIDATE);
     }
 }
@@ -257,11 +257,11 @@ SINGLE_BATTLE_TEST("Intimidate activates when it's no longer effected by Neutral
         TURN { SWITCH(player, 1); }
     } SCENE {
         ABILITY_POPUP(player, ABILITY_NEUTRALIZING_GAS);
-        MESSAGE("Neutralizing gas filled the area!");
-        SWITCH_OUT_MESSAGE("Weezing");
-        MESSAGE("The effects of the neutralizing gas wore off!");
+        MESSAGE("Un gaz inhibiteur envahit les lieux!");
+        SWITCH_OUT_MESSAGE("Smogogo");
+        MESSAGE("Les effets du gaz inhibiteur se sont dissipés.");
         ABILITY_POPUP(opponent, ABILITY_INTIMIDATE);
-        SEND_IN_MESSAGE("Wobbuffet");
+        SEND_IN_MESSAGE("Qulbutoké");
     }
 }
 
@@ -290,11 +290,11 @@ DOUBLE_BATTLE_TEST("Intimidate activates when it's no longer affected by Neutral
         }
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_NEUTRALIZING_GAS);
-        MESSAGE("Neutralizing gas filled the area!");
+        MESSAGE("Un gaz inhibiteur envahit les lieux!");
         ANIMATION(ANIM_TYPE_MOVE, move, playerLeft);
-        MESSAGE("The effects of the neutralizing gas wore off!");
+        MESSAGE("Les effets du gaz inhibiteur se sont dissipés.");
         ABILITY_POPUP(opponentLeft, ABILITY_INTIMIDATE);
-        SEND_IN_MESSAGE("Wobbuffet");
+        SEND_IN_MESSAGE("Qulbutoké");
     }
 }
 
@@ -323,16 +323,16 @@ SINGLE_BATTLE_TEST("Intimidate activates when it's no longer affected by Neutral
         }
     } SCENE {
         ABILITY_POPUP(player, ABILITY_NEUTRALIZING_GAS);
-        MESSAGE("Neutralizing gas filled the area!");
+        MESSAGE("Un gaz inhibiteur envahit les lieux!");
         ANIMATION(ANIM_TYPE_MOVE, move, opponent);
         if (item != ITEM_NONE)
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("The effects of the neutralizing gas wore off!");
+        MESSAGE("Les effets du gaz inhibiteur se sont dissipés.");
         ABILITY_POPUP(opponent, ABILITY_INTIMIDATE);
         if (item != ITEM_NONE) {
-            SEND_IN_MESSAGE("Wobbuffet");
+            SEND_IN_MESSAGE("Qulbutoké");
         } else {
-            MESSAGE("Wobbuffet was dragged out!");
+            MESSAGE("Qulbutoké est traîné de force au combat!\p");
         }
     }
 }
@@ -350,13 +350,13 @@ DOUBLE_BATTLE_TEST("Intimidate activates when it's no longer affected by Neutral
         TURN { MOVE(opponentLeft, MOVE_FELL_STINGER, target: playerLeft); SEND_OUT(playerLeft, 2); }
     } SCENE {
         ABILITY_POPUP(playerLeft, ABILITY_NEUTRALIZING_GAS);
-        MESSAGE("Neutralizing gas filled the area!");
+        MESSAGE("Un gaz inhibiteur envahit les lieux!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FELL_STINGER, opponentLeft);
-        MESSAGE("The effects of the neutralizing gas wore off!");
+        MESSAGE("Les effets du gaz inhibiteur se sont dissipés.");
         ABILITY_POPUP(opponentLeft, ABILITY_INTIMIDATE);
-        MESSAGE("Weezing fainted!");
+        MESSAGE("Smogogo est K.O.!\p");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        SEND_IN_MESSAGE("Wobbuffet");
+        SEND_IN_MESSAGE("Qulbutoké");
     }
 }
 

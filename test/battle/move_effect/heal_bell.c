@@ -28,7 +28,7 @@ DOUBLE_BATTLE_TEST("Sparkly Swirl cures the entire party")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPARKLY_SWIRL, playerLeft);
         STATUS_ICON(playerLeft, none: TRUE);
         STATUS_ICON(playerRight, none: TRUE);
-        NOT MESSAGE("Wobbuffet was hurt by its poisoning!");
+        NOT MESSAGE("Qulbutoké souffre du poison!");
         for (i = 0; i < PARTY_SIZE; i++)
             EXPECT_EQ(GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_STATUS), STATUS1_NONE);
     }
@@ -106,9 +106,9 @@ DOUBLE_BATTLE_TEST("Heal Bell does not cure Soundproof partners (Gen 4, Gen 6+)"
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HEAL_BELL, playerLeft);
         if (ability == ABILITY_SOUNDPROOF && config != GEN_5) {
-            MESSAGE("Exploud was hurt by its poisoning!");
+            MESSAGE("Brouhabam souffre du poison!");
         } else {
-            NOT MESSAGE("Exploud was hurt by its poisoning!");
+            NOT MESSAGE("Brouhabam souffre du poison!");
         }
     }
 }
@@ -133,11 +133,11 @@ SINGLE_BATTLE_TEST("Heal Bell cures inactive Soundproof Pokemon (Gen5+)")
         TURN { SWITCH(player, 1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HEAL_BELL, player);
-        SEND_IN_MESSAGE("Exploud");
+        SEND_IN_MESSAGE("Brouhabam");
         if (ability == ABILITY_SCRAPPY || config >= GEN_5) {
-            NOT MESSAGE("Exploud was hurt by its poisoning!");
+            NOT MESSAGE("Brouhabam souffre du poison!");
         } else {
-            MESSAGE("Exploud was hurt by its poisoning!");
+            MESSAGE("Brouhabam souffre du poison!");
         }
     }
 }
@@ -160,9 +160,9 @@ SINGLE_BATTLE_TEST("Heal Bell cures a Soundproof user (Gen5, Gen8+)")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HEAL_BELL, player);
         if (config == GEN_5 || config >= GEN_8) {
-            NOT MESSAGE("Exploud was hurt by its poisoning!");
+            NOT MESSAGE("Brouhabam souffre du poison!");
         } else {
-            MESSAGE("Exploud was hurt by its poisoning!");
+            MESSAGE("Brouhabam souffre du poison!");
         }
     }
 }
@@ -189,8 +189,8 @@ DOUBLE_BATTLE_TEST("Aromatherapy cure Soundproof battlers regardless of config")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_AROMATHERAPY, playerLeft);
         NONE_OF {
-            MESSAGE("Exploud was hurt by its poisoning!");
-            MESSAGE("Wobbuffet was hurt by its poisoning!");
+            MESSAGE("Brouhabam souffre du poison!");
+            MESSAGE("Qulbutoké souffre du poison!");
         }
     }
 }
@@ -213,7 +213,26 @@ SINGLE_BATTLE_TEST("Aromatherapy cures inactive Soundproof Pokemon regardless of
         TURN { SWITCH(player, 1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_AROMATHERAPY, player);
-        SEND_IN_MESSAGE("Exploud");
-        NOT MESSAGE("Exploud was hurt by its poisoning!");
+        SEND_IN_MESSAGE("Brouhabam");
+        NOT MESSAGE("Brouhabam souffre du poison!");
+    }
+}
+
+DOUBLE_BATTLE_TEST("Aromatherapy will be blocked on ally by Sap Sipper but not user")
+{
+    GIVEN {
+        ASSUME(GetMoveType(MOVE_AROMATHERAPY) == TYPE_GRASS);
+        PLAYER(SPECIES_MARILL) { Ability(ABILITY_SAP_SIPPER); }
+        PLAYER(SPECIES_MARILL) { Ability(ABILITY_SAP_SIPPER); }
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(playerLeft, MOVE_AROMATHERAPY); }
+    } SCENE {
+        ABILITY_POPUP(playerRight, ABILITY_SAP_SIPPER);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
+        MESSAGE("Ah, Attaque du Marill augmente!");
+    } THEN {
+        EXPECT_EQ(playerRight->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 1);
     }
 }

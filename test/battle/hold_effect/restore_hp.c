@@ -18,10 +18,10 @@ DOUBLE_BATTLE_TEST("Restore HP Item effects do not miss timing (Berries)")
         TURN { MOVE(playerLeft, MOVE_FIRE_PLEDGE, target: opponentRight); MOVE(playerRight, MOVE_GRASS_PLEDGE, target: opponentRight); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
-        MESSAGE("A sea of fire enveloped the opposing team!");
-        MESSAGE("The opposing Wynaut was hurt by the sea of fire!");
+        MESSAGE("L'équipe ennemie est cernée par une mer de feu!");
+        MESSAGE("Okéoké ennemi est blessé par la mer de feu!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, opponentLeft);
-        MESSAGE("The opposing Wobbuffet was hurt by the sea of fire!");
+        MESSAGE("Qulbutoké ennemi est blessé par la mer de feu!");
     }
 }
 
@@ -41,10 +41,10 @@ DOUBLE_BATTLE_TEST("Restore HP Item effects do not miss timing (Held Items)")
         TURN { MOVE(playerLeft, MOVE_FIRE_PLEDGE, target: opponentRight); MOVE(playerRight, MOVE_GRASS_PLEDGE, target: opponentRight); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
-        MESSAGE("A sea of fire enveloped the opposing team!");
-        MESSAGE("The opposing Wynaut was hurt by the sea of fire!");
+        MESSAGE("L'équipe ennemie est cernée par une mer de feu!");
+        MESSAGE("Okéoké ennemi est blessé par la mer de feu!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponentLeft);
-        MESSAGE("The opposing Wobbuffet was hurt by the sea of fire!");
+        MESSAGE("Qulbutoké ennemi est blessé par la mer de feu!");
     }
 }
 

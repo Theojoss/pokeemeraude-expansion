@@ -25,17 +25,17 @@ SINGLE_BATTLE_TEST("Razor Wind needs a charging turn")
     } SCENE {
         // Charging turn
         if (B_UPDATED_MOVE_DATA >= GEN_5) {
-            NOT MESSAGE("Wobbuffet whipped up a whirlwind!");
-            MESSAGE("Wobbuffet used Razor Wind!");
+            NOT MESSAGE("Qulbutoké se prépare à lancer une bourrasque!");
+            MESSAGE("Qulbutoké utilise\nCoupe-Vent!");
         } else {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_RAZOR_WIND, player);
         }
         if (B_UPDATED_MOVE_DATA < GEN_5)
-            MESSAGE("Wobbuffet whipped up a whirlwind!");
+            MESSAGE("Qulbutoké se prépare à lancer une bourrasque!");
         else
             ANIMATION(ANIM_TYPE_MOVE, MOVE_RAZOR_WIND, player);
         // Attack turn
-        MESSAGE("Wobbuffet used Razor Wind!");
+        MESSAGE("Qulbutoké utilise\nCoupe-Vent!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAZOR_WIND, player);
         HP_BAR(opponent);
     }
@@ -50,18 +50,18 @@ SINGLE_BATTLE_TEST("Razor Wind doesn't need to charge with Power Herb")
         TURN { MOVE(player, MOVE_RAZOR_WIND); }
     } SCENE {
         if (B_UPDATED_MOVE_DATA >= GEN_5) {
-            NOT MESSAGE("Wobbuffet whipped up a whirlwind!");
-            MESSAGE("Wobbuffet used Razor Wind!");
+            NOT MESSAGE("Qulbutoké se prépare à lancer une bourrasque!");
+            MESSAGE("Qulbutoké utilise\nCoupe-Vent!");
         } else
             ANIMATION(ANIM_TYPE_MOVE, MOVE_RAZOR_WIND, player);
         if (B_UPDATED_MOVE_DATA < GEN_5)
-            MESSAGE("Wobbuffet whipped up a whirlwind!");
+            MESSAGE("Qulbutoké se prépare à lancer une bourrasque!");
         else
             ANIMATION(ANIM_TYPE_MOVE, MOVE_RAZOR_WIND, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Wobbuffet became fully charged due to its Power Herb!");
+        MESSAGE("Qulbutoké est complètement chargé grâce à Herbe Pouvoir!");
         if (B_UPDATED_MOVE_DATA < GEN_5)
-            MESSAGE("Wobbuffet used Razor Wind!");
+            MESSAGE("Qulbutoké utilise\nCoupe-Vent!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAZOR_WIND, player);
         HP_BAR(opponent);
     }
@@ -78,22 +78,22 @@ DOUBLE_BATTLE_TEST("Razor Wind successfully KOs both opponents")
         TURN { MOVE(playerLeft, MOVE_RAZOR_WIND); }
     } SCENE {
         if (B_UPDATED_MOVE_DATA >= GEN_5) {
-            NOT MESSAGE("Wobbuffet whipped up a whirlwind!");
-            MESSAGE("Wobbuffet used Razor Wind!");
+            NOT MESSAGE("Qulbutoké se prépare à lancer une bourrasque!");
+            MESSAGE("Qulbutoké utilise\nCoupe-Vent!");
         } else
             ANIMATION(ANIM_TYPE_MOVE, MOVE_RAZOR_WIND, playerLeft);
         if (B_UPDATED_MOVE_DATA < GEN_5)
-            MESSAGE("Wobbuffet whipped up a whirlwind!");
+            MESSAGE("Qulbutoké se prépare à lancer une bourrasque!");
         else
             ANIMATION(ANIM_TYPE_MOVE, MOVE_RAZOR_WIND, playerLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
-        MESSAGE("Wobbuffet became fully charged due to its Power Herb!");
+        MESSAGE("Qulbutoké est complètement chargé grâce à Herbe Pouvoir!");
         if (B_UPDATED_MOVE_DATA < GEN_5)
-            MESSAGE("Wobbuffet used Razor Wind!");
+            MESSAGE("Qulbutoké utilise\nCoupe-Vent!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAZOR_WIND, playerLeft);
         HP_BAR(opponentLeft);
-        MESSAGE("The opposing Wobbuffet fainted!");
-        MESSAGE("The opposing Wynaut fainted!");
+        MESSAGE("Qulbutoké ennemi est K.O.!\p");
+        MESSAGE("Okéoké ennemi est K.O.!\p");
     }
 }
 
@@ -108,18 +108,18 @@ SINGLE_BATTLE_TEST("Skull Bash needs a charging turn")
     } SCENE {
         // Charging turn
         if (B_UPDATED_MOVE_DATA >= GEN_5) {
-            NOT MESSAGE("Wobbuffet lowered its head!");
-            MESSAGE("Wobbuffet used Skull Bash!");
+            NOT MESSAGE("Qulbutoké lowered its head!");
+            MESSAGE("Qulbutoké utilise\nCoud'Krâne!");
         } else
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SKULL_BASH, player);
         if (B_UPDATED_MOVE_DATA < GEN_5)
-            MESSAGE("Wobbuffet lowered its head!");
+            MESSAGE("Qulbutoké lowered its head!");
         else
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SKULL_BASH, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Wobbuffet's Defense rose!");
+        MESSAGE("Ah, Défense du Qulbutoké augmente!");
         // Attack turn
-        MESSAGE("Wobbuffet used Skull Bash!");
+        MESSAGE("Qulbutoké utilise\nCoud'Krâne!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SKULL_BASH, player);
         HP_BAR(opponent);
     }
@@ -134,20 +134,20 @@ SINGLE_BATTLE_TEST("Skull Bash doesn't need to charge with Power Herb")
         TURN { MOVE(player, MOVE_SKULL_BASH); }
     } SCENE {
         if (B_UPDATED_MOVE_DATA >= GEN_5) {
-            NOT MESSAGE("Wobbuffet lowered its head!");
-            MESSAGE("Wobbuffet used Skull Bash!");
+            NOT MESSAGE("Qulbutoké lowered its head!");
+            MESSAGE("Qulbutoké utilise\nCoud'Krâne!");
         } else
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SKULL_BASH, player);
         if (B_UPDATED_MOVE_DATA < GEN_5)
-            MESSAGE("Wobbuffet lowered its head!");
+            MESSAGE("Qulbutoké lowered its head!");
         else
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SKULL_BASH, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Wobbuffet's Defense rose!");
+        MESSAGE("Ah, Défense du Qulbutoké augmente!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Wobbuffet became fully charged due to its Power Herb!");
+        MESSAGE("Qulbutoké est complètement chargé grâce à Herbe Pouvoir!");
         if (B_UPDATED_MOVE_DATA < GEN_5)
-            MESSAGE("Wobbuffet used Skull Bash!");
+            MESSAGE("Qulbutoké utilise\nCoud'Krâne!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SKULL_BASH, player);
         HP_BAR(opponent);
     }
@@ -165,20 +165,20 @@ SINGLE_BATTLE_TEST("Sky Attack needs a charging turn")
         // Charging turn
         if (B_UPDATED_MOVE_DATA >= GEN_5) {
             NONE_OF {
-                MESSAGE("Wobbuffet became cloaked in a harsh light!");
-                MESSAGE("Wobbuffet is glowing!");
+                MESSAGE("Qulbutoké est entouré d'une lumière intense!");
+                MESSAGE("Qulbutoké is glowing!");
             }
-            MESSAGE("Wobbuffet used Sky Attack!");
+            MESSAGE("Qulbutoké utilise\nPiqué!");
         } else
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SKY_ATTACK, player);
         if (B_UPDATED_MOVE_DATA < GEN_4)
-            MESSAGE("Wobbuffet is glowing!");
+            MESSAGE("Qulbutoké is glowing!");
         else if (B_UPDATED_MOVE_DATA < GEN_5)
-            MESSAGE("Wobbuffet became cloaked in a harsh light!");
+            MESSAGE("Qulbutoké est entouré d'une lumière intense!");
         else
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SKY_ATTACK, player);
         // Attack turn
-        MESSAGE("Wobbuffet used Sky Attack!");
+        MESSAGE("Qulbutoké utilise\nPiqué!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SKY_ATTACK, player);
         HP_BAR(opponent);
     }
@@ -194,22 +194,22 @@ SINGLE_BATTLE_TEST("Sky Attack doesn't need to charge with Power Herb")
     } SCENE {
         if (B_UPDATED_MOVE_DATA >= GEN_5) {
             NONE_OF {
-                MESSAGE("Wobbuffet became cloaked in a harsh light!");
-                MESSAGE("Wobbuffet is glowing!");
+                MESSAGE("Qulbutoké est entouré d'une lumière intense!");
+                MESSAGE("Qulbutoké is glowing!");
             }
-            MESSAGE("Wobbuffet used Sky Attack!");
+            MESSAGE("Qulbutoké utilise\nPiqué!");
         } else
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SKY_ATTACK, player);
         if (B_UPDATED_MOVE_DATA < GEN_4)
-            MESSAGE("Wobbuffet is glowing!");
+            MESSAGE("Qulbutoké is glowing!");
         else if (B_UPDATED_MOVE_DATA < GEN_5)
-            MESSAGE("Wobbuffet became cloaked in a harsh light!");
+            MESSAGE("Qulbutoké est entouré d'une lumière intense!");
         else
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SKY_ATTACK, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Wobbuffet became fully charged due to its Power Herb!");
+        MESSAGE("Qulbutoké est complètement chargé grâce à Herbe Pouvoir!");
         if (B_UPDATED_MOVE_DATA < GEN_5)
-            MESSAGE("Wobbuffet used Sky Attack!");
+            MESSAGE("Qulbutoké utilise\nPiqué!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SKY_ATTACK, player);
         HP_BAR(opponent);
     }
@@ -232,20 +232,20 @@ SINGLE_BATTLE_TEST("Solar Beam and Solar Blade can be used instantly in Sunlight
         // Potential visual bug.
         // The script has the B_WAIT_TIME_LONG waitmessage but it does not wait
         if (move2 == MOVE_SOLAR_BEAM) {
-            MESSAGE("Wobbuffet used Solar Beam!");
+            MESSAGE("Qulbutoké utilise\nLance-Soleil!");
         } else {
-            MESSAGE("Wobbuffet used Solar Blade!");
+            MESSAGE("Qulbutoké utilise\nLame Solaire!");
         }
-        MESSAGE("Wobbuffet absorbed light!");
+        MESSAGE("Qulbutoké absorbe la lumière!");
 
         if (move2 == MOVE_SOLAR_BEAM) {
             if (move1 == MOVE_SPLASH) {
-                MESSAGE("Wobbuffet used Solar Beam!");
+                MESSAGE("Qulbutoké utilise\nLance-Soleil!");
             }
             ANIMATION(ANIM_TYPE_MOVE, move2, player);
         } else {
             if (move1 == MOVE_SPLASH) {
-                MESSAGE("Wobbuffet used Solar Blade!");
+                MESSAGE("Qulbutoké utilise\nLame Solaire!");
             }
             ANIMATION(ANIM_TYPE_MOVE, move2, player);
         }
@@ -407,13 +407,13 @@ SINGLE_BATTLE_TEST("Electro Shot needs a charging Turn")
         TURN { SKIP_TURN(player); }
     } SCENE {
         // Charging turn
-        MESSAGE("Wobbuffet used Electro Shot!");
+        MESSAGE("Qulbutoké utilise\nFulgurayon!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRO_SHOT, player);
-        MESSAGE("Wobbuffet absorbed electricity!");
+        MESSAGE("Qulbutoké absorbe de l'électricité!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Wobbuffet's Sp. Atk rose!");
+        MESSAGE("Ah, Attaque Spéciale du Qulbutoké augmente!");
         // Attack turn
-        MESSAGE("Wobbuffet used Electro Shot!");
+        MESSAGE("Qulbutoké utilise\nFulgurayon!");
         HP_BAR(opponent);
     } THEN {
         EXPECT_EQ(player->statStages[STAT_SPATK], DEFAULT_STAT_STAGE + 1);
@@ -429,13 +429,13 @@ SINGLE_BATTLE_TEST("Electro Shot doesn't need to charge when it's raining")
         TURN { MOVE(opponent, MOVE_RAIN_DANCE); MOVE(player, MOVE_ELECTRO_SHOT); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAIN_DANCE, opponent);
-        MESSAGE("Wobbuffet used Electro Shot!");
+        MESSAGE("Qulbutoké utilise\nFulgurayon!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRO_SHOT, player);
-        MESSAGE("Wobbuffet absorbed electricity!");
+        MESSAGE("Qulbutoké absorbe de l'électricité!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Wobbuffet's Sp. Atk rose!");
+        MESSAGE("Ah, Attaque Spéciale du Qulbutoké augmente!");
         NONE_OF {
-            MESSAGE("Wobbuffet used Electro Shot!");
+            MESSAGE("Qulbutoké utilise\nFulgurayon!");
         }
         HP_BAR(opponent);
     }
@@ -449,15 +449,15 @@ SINGLE_BATTLE_TEST("Electro Shot doesn't need to charge with Power Herb")
     } WHEN {
         TURN { MOVE(player, MOVE_ELECTRO_SHOT); }
     } SCENE {
-        MESSAGE("Wobbuffet used Electro Shot!");
+        MESSAGE("Qulbutoké utilise\nFulgurayon!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRO_SHOT, player);
-        MESSAGE("Wobbuffet absorbed electricity!");
+        MESSAGE("Qulbutoké absorbe de l'électricité!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Wobbuffet's Sp. Atk rose!");
+        MESSAGE("Ah, Attaque Spéciale du Qulbutoké augmente!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Wobbuffet became fully charged due to its Power Herb!");
+        MESSAGE("Qulbutoké est complètement chargé grâce à Herbe Pouvoir!");
         NONE_OF {
-            MESSAGE("Wobbuffet used Electro Shot!");
+            MESSAGE("Qulbutoké utilise\nFulgurayon!");
         }
         HP_BAR(opponent);
     }

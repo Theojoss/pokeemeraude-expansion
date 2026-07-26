@@ -32,22 +32,22 @@ SINGLE_BATTLE_TEST("Rattled boosts speed by 1 when hit by Bug, Dark or Ghost typ
         if (move != MOVE_SCRATCH) {
             ABILITY_POPUP(opponent, ABILITY_RATTLED);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("The opposing Sudowoodo's Speed rose!");
+            MESSAGE("Ah, Vitesse du Simularbre ennemi augmente!");
         }
-        MESSAGE("The opposing Sudowoodo used Celebrate!");
+        MESSAGE("Simularbre ennemi utilise\nCélébration!");
         // Sudowoodo is now faster
         if (move != MOVE_SCRATCH){
-            MESSAGE("The opposing Sudowoodo used Celebrate!");
+            MESSAGE("Simularbre ennemi utilise\nCélébration!");
             ANIMATION(ANIM_TYPE_MOVE, move, player);
             HP_BAR(opponent);
             ABILITY_POPUP(opponent, ABILITY_RATTLED);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("The opposing Sudowoodo's Speed rose!");
+            MESSAGE("Ah, Vitesse du Simularbre ennemi augmente!");
         }
         else {
             ANIMATION(ANIM_TYPE_MOVE, move, player);
             HP_BAR(opponent);
-            MESSAGE("The opposing Sudowoodo used Celebrate!");
+            MESSAGE("Simularbre ennemi utilise\nCélébration!");
         }
     }
 }
@@ -63,11 +63,11 @@ SINGLE_BATTLE_TEST("Rattled does not boost speed by 1 when affected by Intimidat
     } SCENE {
         ABILITY_POPUP(player, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Sudowoodo's Attack fell!");
+        MESSAGE("Ah, Attaque du Simularbre ennemi baisse!");
         NONE_OF {
             ABILITY_POPUP(opponent, ABILITY_RATTLED);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("The opposing Sudowoodo's Speed rose!");
+            MESSAGE("Ah, Vitesse du Simularbre ennemi augmente!");
         }
     }
 }
@@ -83,10 +83,10 @@ SINGLE_BATTLE_TEST("Rattled boosts speed by 1 when affected by Intimidate (Gen8+
     } SCENE {
         ABILITY_POPUP(player, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Sudowoodo's Attack fell!");
+        MESSAGE("Ah, Attaque du Simularbre ennemi baisse!");
         ABILITY_POPUP(opponent, ABILITY_RATTLED);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Sudowoodo's Speed rose!");
+        MESSAGE("Ah, Vitesse du Simularbre ennemi augmente!");
     }
 }
 
@@ -102,12 +102,12 @@ SINGLE_BATTLE_TEST("Rattled triggers correctly when hit by U-Turn") // Specific 
     } WHEN {
         TURN { MOVE(player, MOVE_U_TURN); SEND_OUT(player, 1); }
     } SCENE {
-        MESSAGE("Wobbuffet used U-turn!");
+        MESSAGE("Qulbutoké utilise\nDemi-Tour!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_U_TURN, player);
         HP_BAR(opponent);
         ABILITY_POPUP(opponent, ABILITY_RATTLED);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Sudowoodo's Speed rose!");
-        SEND_IN_MESSAGE("Wynaut");
+        MESSAGE("Ah, Vitesse du Simularbre ennemi augmente!");
+        SEND_IN_MESSAGE("Okéoké");
     }
 }

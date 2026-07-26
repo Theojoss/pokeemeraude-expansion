@@ -21,7 +21,7 @@ SINGLE_BATTLE_TEST("Eject Button is not triggered when there is nothing to switc
         ANIMATION(ANIM_TYPE_MOVE, MOVE_QUICK_ATTACK, player);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
-            MESSAGE("The opposing Wobbuffet is switched out with the Eject Button!");
+            MESSAGE("Qulbutoké ennemi se retire grâce au Bouton Fuite!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
     }
@@ -42,7 +42,7 @@ SINGLE_BATTLE_TEST("Eject Button is not activated by a Sheer Force boosted move"
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FLAMETHROWER, player);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
-            MESSAGE("The opposing Wobbuffet is switched out with the Eject Button!");
+            MESSAGE("Qulbutoké ennemi se retire grâce au Bouton Fuite!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
     }
@@ -61,12 +61,12 @@ SINGLE_BATTLE_TEST("Eject Button will not activate under Substitute")
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUBSTITUTE, opponent);
-        MESSAGE("The opposing Raichu put in a substitute!");
+        MESSAGE("Raichu ennemi crée un clone!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
-        MESSAGE("The substitute took damage for the opposing Raichu!");
+        MESSAGE("Le clone subit les dégâts à la place de Raichu ennemi!\p");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
-            MESSAGE("The opposing Raichu is switched out with the Eject Button!");
+            MESSAGE("Raichu ennemi se retire grâce au Bouton Fuite!");
         }
     }
 }
@@ -85,8 +85,8 @@ SINGLE_BATTLE_TEST("Eject Button is not blocked by trapping abilities or moves")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
-        MESSAGE("The opposing Wobbuffet is switched out with the Eject Button!");
-        MESSAGE("2 sent out Wobbuffet!");
+        MESSAGE("Qulbutoké ennemi se retire grâce au Bouton Fuite!");
+        MESSAGE("2 envoie\nun Qulbutoké!");
     }
 }
 
@@ -105,7 +105,7 @@ SINGLE_BATTLE_TEST("Eject Button is not triggered after the mon loses Eject Butt
         ANIMATION(ANIM_TYPE_MOVE, MOVE_KNOCK_OFF, player);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
-            MESSAGE("The opposing Wobbuffet is switched out with the Eject Button!");
+            MESSAGE("Qulbutoké ennemi se retire grâce au Bouton Fuite!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
     }
@@ -126,7 +126,7 @@ SINGLE_BATTLE_TEST("Eject Button is not triggered after given to player by Picke
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
         ABILITY_POPUP(opponent, ABILITY_PICKPOCKET);
-        MESSAGE("The opposing Sneasel stole Regieleki's Eject Button!");
+        MESSAGE("Farfuret ennemi vole Bouton Fuite de Regieleki!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
     }
 }
@@ -144,10 +144,10 @@ SINGLE_BATTLE_TEST("Eject Button has no chance to activate after Dragon Tail")
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_TAIL, player);
-        MESSAGE("The opposing Chansey was dragged out!");
+        MESSAGE("Leveinard ennemi est traîné de force au combat!\p");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
-            MESSAGE("The opposing Chansey is switched out with the Eject Button!");
+            MESSAGE("Leveinard ennemi se retire grâce au Bouton Fuite!");
         }
     }
 }
@@ -166,7 +166,7 @@ SINGLE_BATTLE_TEST("Eject Button prevents Volt Switch / U-Turn from activating")
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_VOLT_SWITCH, player);
-        MESSAGE("The opposing Wobbuffet is switched out with the Eject Button!");
+        MESSAGE("Qulbutoké ennemi se retire grâce au Bouton Fuite!");
     }
 }
 
@@ -184,7 +184,7 @@ SINGLE_BATTLE_TEST("Eject Button is activated before Emergency Exit")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_THUNDERBOLT, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
-        MESSAGE("The opposing Golisopod is switched out with the Eject Button!");
+        MESSAGE("Sarmuraï ennemi se retire grâce au Bouton Fuite!");
     }
 }
 
@@ -201,10 +201,10 @@ SINGLE_BATTLE_TEST("Eject Button is not triggered after High Jump Kick crash dam
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PROTECT, player);
-        MESSAGE("The opposing Wobbuffet kept going and crashed!");
+        MESSAGE("Qulbutoké ennemi s'est blessé en attaquant!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
-            MESSAGE("The opposing Wobbuffet is switched out with the Eject Button!");
+            MESSAGE("Qulbutoké ennemi se retire grâce au Bouton Fuite!");
         }
     }
 }

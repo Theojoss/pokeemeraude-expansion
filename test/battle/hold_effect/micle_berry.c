@@ -25,11 +25,11 @@ SINGLE_BATTLE_TEST("Micle Berry raises the holder's accuracy by 1.2 when HP drop
         if (move == MOVE_SCRATCH) {
             NONE_OF {
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, player);
-                MESSAGE("Wobbuffet boosted the accuracy of its next move using Micle Berry!");
+                MESSAGE("Qulbutoké augmente la Précision de sa prochaine capacité grâce à Baie Micle!");
             }
         } else {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, player);
-            MESSAGE("Wobbuffet boosted the accuracy of its next move using Micle Berry!");
+            MESSAGE("Qulbutoké augmente la Précision de sa prochaine capacité grâce à Baie Micle!");
         }
     }
 }
@@ -44,7 +44,7 @@ SINGLE_BATTLE_TEST("Micle Berry raises the holder's accuracy by 1.2 when HP drop
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_RAGE, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, player);
-        MESSAGE("Bellsprout boosted the accuracy of its next move using Micle Berry!");
+        MESSAGE("Chétiflor augmente la Précision de sa prochaine capacité grâce à Baie Micle!");
     }
 }
 
@@ -60,7 +60,7 @@ SINGLE_BATTLE_TEST("Micle Berry raises the holder's accuracy by 1.2")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_RAGE, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, player);
-        MESSAGE("Wobbuffet boosted the accuracy of its next move using Micle Berry!");
+        MESSAGE("Qulbutoké augmente la Précision de sa prochaine capacité grâce à Baie Micle!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUBMISSION, player);
     }
 }

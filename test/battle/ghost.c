@@ -15,27 +15,27 @@ GHOST_BATTLE_TEST("Ghost battle: Player cannot use select moves")
         TURN { MOVE(player, MOVE_EMBER); }
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_CONFUSION, player);
-        MESSAGE("Wobbuffet is too scared to move!");
+        MESSAGE("Qulbutoké a trop peur pour bouger!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MON_SCARED, player);
-        MESSAGE("GHOST: Get out…… Get out……");
+        MESSAGE("SPECTRE: Va t'en…\nDehors…");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_GHOST_GET_OUT, opponent);
 
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_WATER_GUN, player);
-        MESSAGE("Wobbuffet is too scared to move!");
+        MESSAGE("Qulbutoké a trop peur pour bouger!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MON_SCARED, player);
-        MESSAGE("GHOST: Get out…… Get out……");
+        MESSAGE("SPECTRE: Va t'en…\nDehors…");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_GHOST_GET_OUT, opponent);
 
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_THUNDERSHOCK, player);
-        MESSAGE("Wobbuffet is too scared to move!");
+        MESSAGE("Qulbutoké a trop peur pour bouger!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MON_SCARED, player);
-        MESSAGE("GHOST: Get out…… Get out……");
+        MESSAGE("SPECTRE: Va t'en…\nDehors…");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_GHOST_GET_OUT, opponent);
 
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_EMBER, player);
-        MESSAGE("Wobbuffet is too scared to move!");
+        MESSAGE("Qulbutoké a trop peur pour bouger!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MON_SCARED, player);
-        MESSAGE("GHOST: Get out…… Get out……");
+        MESSAGE("SPECTRE: Va t'en…\nDehors…");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_GHOST_GET_OUT, opponent);
     }
 }
@@ -48,8 +48,8 @@ GHOST_BATTLE_TEST("Ghost battle: Intro plays correctly (no Silph Scope)")
     } WHEN {
         TURN {}
     } SCENE {
-        MESSAGE("The GHOST appeared! Darn! The GHOST can't be ID'd!");
-        MESSAGE("Go! Wobbuffet!");
+        MESSAGE("Le SPECTRE apparaît!\pMince!\nLe SPECTRE ne peut être identifié!\p");
+        MESSAGE("Qulbutoké! Go!");
     }
 }
 
@@ -65,11 +65,11 @@ GHOST_BATTLE_TEST("Ghost battle: Intro plays correctly (with Silph Scope)")
     } WHEN {
         TURN {}
     } SCENE {
-        MESSAGE("The GHOST appeared!");
-        MESSAGE("SILPH SCOPE unveiled the GHOST's identity!");
+        MESSAGE("Le SPECTRE apparaît!\p");
+        MESSAGE("La SCOPE SYLPHE révèle\nl'identité du SPECTRE!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SILPH_SCOPED, opponent);
-        MESSAGE("The GHOST was MAROWAK!");
-        MESSAGE("Go! Wobbuffet!");
+        MESSAGE("Le SPECTRE était OSSATUEUR!\p\n");
+        MESSAGE("Qulbutoké! Go!");
     }
 }
 
@@ -82,10 +82,10 @@ GHOST_BATTLE_TEST("Ghost battle: player cannot capture ghost (no Silph Scope)")
         TURN { USE_ITEM(player, ITEM_POKE_BALL, WITH_RNG(RNG_BALLTHROW_SHAKE, MAX_u16)); }
         TURN { USE_ITEM(player, ITEM_MASTER_BALL); }
     } SCENE {
-        MESSAGE("You used Poké Ball!");
-        MESSAGE("It dodged your thrown Poké Ball! This Pokémon can't be caught!");
-        MESSAGE("You used Master Ball!");
-        MESSAGE("It dodged your thrown Poké Ball! This Pokémon can't be caught!");
+        MESSAGE("Vous utilisez Poké Ball!");
+        MESSAGE("Impossible de viser quand il y a plus d'un Pokémon!");
+        MESSAGE("Vous utilisez Master Ball!");
+        MESSAGE("Impossible de viser quand il y a plus d'un Pokémon!");
     }
 }
 
@@ -102,9 +102,9 @@ GHOST_BATTLE_TEST("Ghost battle: player cannot capture ghost (Marowak)")
         TURN { USE_ITEM(player, ITEM_POKE_BALL, WITH_RNG(RNG_BALLTHROW_SHAKE, MAX_u16)); }
         TURN { USE_ITEM(player, ITEM_MASTER_BALL); }
     } SCENE {
-        MESSAGE("You used Poké Ball!");
-        MESSAGE("It dodged your thrown Poké Ball! This Pokémon can't be caught!");
-        MESSAGE("You used Master Ball!");
-        MESSAGE("It dodged your thrown Poké Ball! This Pokémon can't be caught!");
+        MESSAGE("Vous utilisez Poké Ball!");
+        MESSAGE("Impossible de viser quand il y a plus d'un Pokémon!");
+        MESSAGE("Vous utilisez Master Ball!");
+        MESSAGE("Impossible de viser quand il y a plus d'un Pokémon!");
     }
 }

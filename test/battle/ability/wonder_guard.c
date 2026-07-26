@@ -24,7 +24,7 @@ SINGLE_BATTLE_TEST("Wonder Guard activates when targeted by moves not super effe
         TURN { MOVE(opponent, move); }
     } SCENE {
         ABILITY_POPUP(player, ABILITY_WONDER_GUARD);
-        MESSAGE("It doesn't affect Shedinja…");
+        MESSAGE("Ça n'affecte pas Munja…");
     }
 }
 
@@ -42,7 +42,7 @@ SINGLE_BATTLE_TEST("Wonder Guard does not activate when targeted by moves super 
     } WHEN {
         TURN { MOVE(opponent, move); }
     } SCENE {
-        MESSAGE("It's super effective!");
-        MESSAGE("Shedinja fainted!");
+        MESSAGE("C'est super efficace!");
+        MESSAGE("Munja est K.O.!\p");
     }
 }

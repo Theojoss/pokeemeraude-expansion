@@ -6,6 +6,22 @@ ASSUMPTIONS
     ASSUME(GetMoveEffect(MOVE_COURT_CHANGE) == EFFECT_COURT_CHANGE);
 }
 
+SINGLE_BATTLE_TEST("Court Change swaps entry hazard counts together with the hazard queues")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_TOXIC_SPIKES); }
+        TURN { MOVE(opponent, MOVE_COURT_CHANGE); }
+    } THEN {
+        EXPECT_EQ(gBattleStruct->hazardsQueue[B_SIDE_PLAYER][0], HAZARDS_TOXIC_SPIKES);
+        EXPECT_EQ(gBattleStruct->hazardsQueue[B_SIDE_OPPONENT][0], HAZARDS_NONE);
+        EXPECT_EQ(gBattleStruct->numHazards[B_SIDE_PLAYER], 1);
+        EXPECT_EQ(gBattleStruct->numHazards[B_SIDE_OPPONENT], 0);
+    }
+}
+
 DOUBLE_BATTLE_TEST("Court Change swaps entry hazards used by the opponent")
 {
     GIVEN {
@@ -21,24 +37,24 @@ DOUBLE_BATTLE_TEST("Court Change swaps entry hazards used by the opponent")
         TURN { MOVE(playerLeft, MOVE_COURT_CHANGE); }
         TURN { SWITCH(playerLeft, 2); SWITCH(opponentLeft, 2); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Sticky Web!");
-        MESSAGE("The opposing Wobbuffet used Stealth Rock!");
-        MESSAGE("The opposing Wobbuffet used Spikes!");
-        MESSAGE("The opposing Wobbuffet used Toxic Spikes!");
-        MESSAGE("Wynaut used Court Change!");
-        MESSAGE("Wynaut swapped the battle effects affecting each side of the field!");
-        SEND_IN_MESSAGE("Wynaut");
+        MESSAGE("Qulbutoké ennemi utilise\nToile Gluante!");
+        MESSAGE("Qulbutoké ennemi utilise\nPiège de Roc!");
+        MESSAGE("Qulbutoké ennemi utilise\nPicots!");
+        MESSAGE("Qulbutoké ennemi utilise\nPics Toxik!");
+        MESSAGE("Okéoké utilise\nChange-Côté!");
+        MESSAGE("Les effets affectant chaque côté du terrain ont été échangés par Okéoké!");
+        SEND_IN_MESSAGE("Okéoké");
         NONE_OF {
-            MESSAGE("Wynaut was caught in a sticky web!");
-            MESSAGE("Pointed stones dug into Wynaut!");
-            MESSAGE("Wynaut was hurt by the spikes!");
-            MESSAGE("Wynaut was poisoned!");
+            MESSAGE("Okéoké est pris dans une toile gluante!");
+            MESSAGE("Des pierres pointues transpercent Okéoké!");
+            MESSAGE("Okéoké est blessé par les picots!");
+            MESSAGE("Okéoké est empoisonné!");
         }
-        MESSAGE("2 sent out Wobbuffet!");
-        MESSAGE("The opposing Wobbuffet was caught in a sticky web!");
-        MESSAGE("Pointed stones dug into the opposing Wobbuffet!");
-        MESSAGE("The opposing Wobbuffet was hurt by the spikes!");
-        MESSAGE("The opposing Wobbuffet was poisoned!");
+        MESSAGE("2 envoie\nun Qulbutoké!");
+        MESSAGE("Qulbutoké ennemi est pris dans une toile gluante!");
+        MESSAGE("Des pierres pointues transpercent Qulbutoké ennemi!");
+        MESSAGE("Qulbutoké ennemi est blessé par les picots!");
+        MESSAGE("Qulbutoké ennemi est empoisonné!");
     }
 }
 
@@ -57,23 +73,23 @@ DOUBLE_BATTLE_TEST("Court Change swaps entry hazards used by the player")
         TURN { MOVE(opponentLeft, MOVE_COURT_CHANGE); }
         TURN { SWITCH(opponentLeft, 2); SWITCH(playerLeft, 2); }
     } SCENE {
-        MESSAGE("Wobbuffet used Sticky Web!");
-        MESSAGE("Wobbuffet used Stealth Rock!");
-        MESSAGE("Wobbuffet used Spikes!");
-        MESSAGE("Wobbuffet used Toxic Spikes!");
-        MESSAGE("The opposing Wynaut used Court Change!");
-        MESSAGE("The opposing Wynaut swapped the battle effects affecting each side of the field!");
-        SEND_IN_MESSAGE("Wobbuffet");
-        MESSAGE("Wobbuffet was caught in a sticky web!");
-        MESSAGE("Pointed stones dug into Wobbuffet!");
-        MESSAGE("Wobbuffet was hurt by the spikes!");
-        MESSAGE("Wobbuffet was poisoned!");
-        MESSAGE("2 sent out Wynaut!");
+        MESSAGE("Qulbutoké utilise\nToile Gluante!");
+        MESSAGE("Qulbutoké utilise\nPiège de Roc!");
+        MESSAGE("Qulbutoké utilise\nPicots!");
+        MESSAGE("Qulbutoké utilise\nPics Toxik!");
+        MESSAGE("Okéoké ennemi utilise\nChange-Côté!");
+        MESSAGE("Les effets affectant chaque côté du terrain ont été échangés par Okéoké ennemi!");
+        SEND_IN_MESSAGE("Qulbutoké");
+        MESSAGE("Qulbutoké est pris dans une toile gluante!");
+        MESSAGE("Des pierres pointues transpercent Qulbutoké!");
+        MESSAGE("Qulbutoké est blessé par les picots!");
+        MESSAGE("Qulbutoké est empoisonné!");
+        MESSAGE("2 envoie\nun Okéoké!");
         NONE_OF {
-            MESSAGE("The opposing Wynaut was caught in a sticky web!");
-            MESSAGE("Pointed stones dug into the opposing Wynaut!");
-            MESSAGE("The opposing Wynaut was hurt by the spikes!");
-            MESSAGE("The opposing Wynaut was poisoned!");
+            MESSAGE("Okéoké ennemi est pris dans une toile gluante!");
+            MESSAGE("Des pierres pointues transpercent Okéoké ennemi!");
+            MESSAGE("Okéoké ennemi est blessé par les picots!");
+            MESSAGE("Okéoké ennemi est empoisonné!");
         }
     }
 }
@@ -98,22 +114,22 @@ DOUBLE_BATTLE_TEST("Court Change used by the player swaps Mist, Safeguard, Auror
         TURN {}
         TURN {}
     } SCENE {
-        MESSAGE("Wynaut used Snowscape!");
-        MESSAGE("The opposing Wobbuffet used Mist!");
-        MESSAGE("The opposing Wobbuffet used Safeguard!");
-        MESSAGE("The opposing Wobbuffet used Aurora Veil!");
-        MESSAGE("The opposing Wobbuffet used Reflect!");
-        MESSAGE("The opposing Wobbuffet used Light Screen!");
-        MESSAGE("The opposing Wobbuffet used Tailwind!");
-        MESSAGE("Wynaut used Court Change!");
-        MESSAGE("Wynaut swapped the battle effects affecting each side of the field!");
+        MESSAGE("Okéoké utilise\nChute de Neige!");
+        MESSAGE("Qulbutoké ennemi utilise\nBrume!");
+        MESSAGE("Qulbutoké ennemi utilise\nRune Protect!");
+        MESSAGE("Qulbutoké ennemi utilise\nVoile Aurore!");
+        MESSAGE("Qulbutoké ennemi utilise\nProtection!");
+        MESSAGE("Qulbutoké ennemi utilise\nMur Lumière!");
+        MESSAGE("Qulbutoké ennemi utilise\nVent Arrière!");
+        MESSAGE("Okéoké utilise\nChange-Côté!");
+        MESSAGE("Les effets affectant chaque côté du terrain ont été échangés par Okéoké!");
         // The effects now end for the player side.
-        MESSAGE("Your team is no longer protected by Safeguard!");
-        MESSAGE("Your team's Mist wore off!");
-        MESSAGE("Your team's Reflect wore off!");
-        MESSAGE("Your team's Tailwind petered out!");
-        MESSAGE("Your team's Aurora Veil wore off!");
-        MESSAGE("Your team's Light Screen wore off!");
+        MESSAGE("La brume autour de votre équipe s'est dissipée!");
+        MESSAGE("Brume de votre équipe s'est dissipé!");
+        MESSAGE("Protection de votre équipe s'est dissipé!");
+        MESSAGE("Le vent arrière soufflant sur votre équipe s'arrête!");
+        MESSAGE("Voile Aurore de votre équipe s'est dissipé!");
+        MESSAGE("Mur Lumière de votre équipe s'est dissipé!");
     }
 }
 
@@ -137,22 +153,22 @@ DOUBLE_BATTLE_TEST("Court Change used by the opponent swaps Mist, Safeguard, Aur
         TURN {}
         TURN {}
     } SCENE {
-        MESSAGE("Wobbuffet used Mist!");
-        MESSAGE("Wobbuffet used Safeguard!");
-        MESSAGE("Wobbuffet used Aurora Veil!");
-        MESSAGE("Wobbuffet used Reflect!");
-        MESSAGE("Wobbuffet used Light Screen!");
-        MESSAGE("Wobbuffet used Tailwind!");
-        MESSAGE("The opposing Wynaut used Court Change!");
-        MESSAGE("The opposing Wynaut swapped the battle effects affecting each side of the field!");
+        MESSAGE("Qulbutoké utilise\nBrume!");
+        MESSAGE("Qulbutoké utilise\nRune Protect!");
+        MESSAGE("Qulbutoké utilise\nVoile Aurore!");
+        MESSAGE("Qulbutoké utilise\nProtection!");
+        MESSAGE("Qulbutoké utilise\nMur Lumière!");
+        MESSAGE("Qulbutoké utilise\nVent Arrière!");
+        MESSAGE("Okéoké ennemi utilise\nChange-Côté!");
+        MESSAGE("Les effets affectant chaque côté du terrain ont été échangés par Okéoké ennemi!");
         // The effects now end for the player side.
-        MESSAGE("The snow stopped.");
-        MESSAGE("The opposing team is no longer protected by Safeguard!");
-        MESSAGE("The opposing team's Mist wore off!");
-        MESSAGE("The opposing team's Reflect wore off!");
-        MESSAGE("The opposing team's Tailwind petered out!");
-        MESSAGE("The opposing team's Aurora Veil wore off!");
-        MESSAGE("The opposing team's Light Screen wore off!");
+        MESSAGE("La neige s'est arrêtée.");
+        MESSAGE("La brume autour de l'équipe ennemie s'est dissipée!");
+        MESSAGE("Brume de l'équipe ennemie s'est dissipé!");
+        MESSAGE("Protection de l'équipe ennemie s'est dissipé!");
+        MESSAGE("Le vent arrière soufflant sur l'équipe ennemie s'arrête!");
+        MESSAGE("Voile Aurore de l'équipe ennemie s'est dissipé!");
+        MESSAGE("Mur Lumière de l'équipe ennemie s'est dissipé!");
     }
 }
 
@@ -170,10 +186,10 @@ DOUBLE_BATTLE_TEST("Court Change used by the player swaps G-Max Steelsurge")
         TURN { MOVE(opponentLeft, MOVE_COURT_CHANGE); }
         TURN { SWITCH(opponentLeft, 2); SWITCH(playerLeft, 2); }
     } SCENE {
-        MESSAGE("Copperajah used G-Max Steelsurge!");
-        SEND_IN_MESSAGE("Wobbuffet");
-        MESSAGE("The sharp steel bit into Wobbuffet!");
-        NOT MESSAGE("The sharp steel bit into the opposing Wynaut!");
+        MESSAGE("Pachyradjah utilise\nPercée G-Max!");
+        SEND_IN_MESSAGE("Qulbutoké");
+        MESSAGE("L'acier pointu transperce Qulbutoké!");
+        NOT MESSAGE("L'acier pointu transperce Okéoké ennemi!");
     }
 }
 
@@ -198,22 +214,22 @@ DOUBLE_BATTLE_TEST("Court Change used by the player swaps G-Max Vine Lash, G-Max
     } SCENE {
         switch (species) {
             case SPECIES_VENUSAUR:
-                MESSAGE("Venusaur used G-Max Vine Lash!");
-                MESSAGE("Wobbuffet is hurt by G-Max Vine Lash's ferocious beating!");
+                MESSAGE("Florizarre utilise\nFouet G-Max!");
+                MESSAGE("Qulbutoké subit des coups de Fouet G-Max!");
                 break;
             case SPECIES_CHARIZARD:
-                MESSAGE("Charizard used G-Max Wildfire!");
-                MESSAGE("Wobbuffet is burning up within G-Max Wildfire's flames!");
+                MESSAGE("Dracaufeu utilise\nFournaise G-Max!");
+                MESSAGE("Qulbutoké est brûlé par les flammes de Fournaise G-Max!");
                 break;
             case SPECIES_BLASTOISE:
-                MESSAGE("Blastoise used G-Max Cannonade!");
-                MESSAGE("Wobbuffet is hurt by G-Max Cannonade's vortex!");
+                MESSAGE("Tortank utilise\nCanonnade G-Max!");
+                MESSAGE("Qulbutoké subit la violence du tourbillon provoqué par Canonnade G-Max!");
                 break;
         }
         NONE_OF {
-            MESSAGE("The opposing Wynaut is hurt by G-Max Vine Lash's ferocious beating!");
-            MESSAGE("The opposing Wynaut is burning up within G-Max Wildfire's flames!");
-            MESSAGE("The opposing Wynaut is hurt by G-Max Cannonade's vortex!");
+            MESSAGE("Okéoké ennemi subit des coups de Fouet G-Max!");
+            MESSAGE("Okéoké ennemi est brûlé par les flammes de Fournaise G-Max!");
+            MESSAGE("Okéoké ennemi subit la violence du tourbillon provoqué par Canonnade G-Max!");
         }
     }
 }

@@ -1,5 +1,7 @@
 #include "global.h"
 #include "test/battle.h"
+#include "battle_ai_main.h"
+#include "battle_ai_util.h"
 
 AI_SINGLE_BATTLE_TEST("AI gets baited by Protect Switch tactics") // This behavior is to be fixed.
 {
@@ -72,7 +74,7 @@ AI_SINGLE_BATTLE_TEST("AI revives the best fainted ally with Revival Blessing") 
         TURN { EXPECT_MOVE(opponent, MOVE_REVIVAL_BLESSING); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_REVIVAL_BLESSING, opponent);
-        MESSAGE("Pidgey was revived and is ready to fight again!");
+        MESSAGE("Roucool a repris connaissance et est prêt à se battre de nouveau!");
     }
 }
 
@@ -101,14 +103,14 @@ AI_MULTI_BATTLE_TEST("AI will not revive a partner's party member with Revival B
         TURN { EXPECT_MOVE(playerRight, move2); } // EXPECT_MOVE makes battler2 AI-controlled
     } SCENE {
         if (user == opponentLeft) {
-            MESSAGE("The opposing Wobbuffet used Revival Blessing!");
-            MESSAGE("But it failed!");
+            MESSAGE("Qulbutoké ennemi utilise\nSecond Souffle!");
+            MESSAGE("Mais cela échoue!");
         } else if (user == playerRight) {
-            MESSAGE("Clefairy used Revival Blessing!");
-            MESSAGE("But it failed!");
+            MESSAGE("Mélofée utilise\nSecond Souffle!");
+            MESSAGE("Mais cela échoue!");
         } else {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_REVIVAL_BLESSING, opponentRight);
-            MESSAGE("Wynaut was revived and is ready to fight again!");
+            MESSAGE("Okéoké a repris connaissance et est prêt à se battre de nouveau!");
         }
     }
 }
@@ -182,7 +184,7 @@ AI_SINGLE_BATTLE_TEST("AI switches if Perish Song is about to kill")
             TURN {}
             TURN { EXPECT_SWITCH(opponent, 1); }
     } SCENE {
-        MESSAGE(AI_TRAINER_NAME " sent out Crobat!");
+        MESSAGE("Un Nostenfer est envoyé\npar " AI_TRAINER_NAME "!");
     }
 }
 
@@ -228,11 +230,11 @@ AI_DOUBLE_BATTLE_TEST("AI will not try to switch for the same Pokémon for 2 spo
     } WHEN {
         TURN { EXPECT_SWITCH(opponentLeft, 2); }
     } SCENE {
-        MESSAGE(AI_TRAINER_NAME " withdrew Gengar!");
-        MESSAGE(AI_TRAINER_NAME " sent out Raticate!");
+        MESSAGE("Ectoplasma est retiré par " AI_TRAINER_NAME "!");
+        MESSAGE("Un Rattatac est envoyé\npar " AI_TRAINER_NAME "!");
         NONE_OF {
-            MESSAGE(AI_TRAINER_NAME " withdrew Haunter!");
-            MESSAGE(AI_TRAINER_NAME " sent out Raticate!");
+            MESSAGE("Spectrum est retiré par " AI_TRAINER_NAME "!");
+            MESSAGE("Un Rattatac est envoyé\npar " AI_TRAINER_NAME "!");
         }
     }
 }
@@ -257,11 +259,11 @@ AI_DOUBLE_BATTLE_TEST("AI will not try to switch for the same Pokémon for 2 spo
     } WHEN {
         TURN { EXPECT_SWITCH(opponentRight, 2); }
     } SCENE {
-        MESSAGE(AI_TRAINER_NAME " withdrew Haunter!");
-        MESSAGE(AI_TRAINER_NAME " sent out Raticate!");
+        MESSAGE("Spectrum est retiré par " AI_TRAINER_NAME "!");
+        MESSAGE("Un Rattatac est envoyé\npar " AI_TRAINER_NAME "!");
         NONE_OF {
-            MESSAGE(AI_TRAINER_NAME " withdrew Gengar!");
-            MESSAGE(AI_TRAINER_NAME " sent out Raticate!");
+            MESSAGE("Ectoplasma est retiré par" AI_TRAINER_NAME "!");
+            MESSAGE("Un Rattatac est envoyé\npar " AI_TRAINER_NAME "!");
         }
     }
 }
@@ -289,11 +291,11 @@ AI_MULTI_BATTLE_TEST("AI partner will not switch mid-turn into a player Pokémon
     } WHEN {
         TURN { EXPECT_SWITCH(playerRight, 2); }
     } SCENE {
-        MESSAGE(AI_PARTNER_NAME " withdrew Gengar!");
-        MESSAGE(AI_PARTNER_NAME " sent out Raticate!");
+        MESSAGE(AI_PARTNER_NAME " retire Ectoplasma!");
+        MESSAGE("Rattatac est envoyé par\n" AI_PARTNER_NAME "!");
         NONE_OF {
-            MESSAGE(AI_PARTNER_NAME " withdrew Gengar!");
-            MESSAGE(AI_PARTNER_NAME " sent out Rattata!");
+            MESSAGE(AI_PARTNER_NAME " retire Ectoplasma!");
+            MESSAGE("Rattata est envoyé par\n" AI_PARTNER_NAME "!");
         }
     }
 }
@@ -321,11 +323,11 @@ AI_TWO_VS_ONE_BATTLE_TEST("AI partner will not switch mid-turn into a player Pok
     } WHEN {
         TURN { EXPECT_SWITCH(playerRight, 2); }
     } SCENE {
-        MESSAGE(AI_PARTNER_NAME " withdrew Gengar!");
-        MESSAGE(AI_PARTNER_NAME " sent out Raticate!");
+        MESSAGE(AI_PARTNER_NAME " retire Ectoplasma!");
+        MESSAGE("Rattatac est envoyé par\n" AI_PARTNER_NAME "!");
         NONE_OF {
-            MESSAGE(AI_PARTNER_NAME " withdrew Gengar!");
-            MESSAGE(AI_PARTNER_NAME " sent out Rattata!");
+            MESSAGE(AI_PARTNER_NAME " retire Ectoplasma!");
+            MESSAGE("Rattata est envoyé par\n" AI_PARTNER_NAME "!");
         }
     }
 }
@@ -353,9 +355,9 @@ AI_MULTI_BATTLE_TEST("AI partner will not switch into a player Pokémon after fa
     } WHEN {
         TURN { EXPECT_MOVE(playerRight, MOVE_CELEBRATE); EXPECT_SEND_OUT(playerRight, 2); }
     } SCENE {
-        MESSAGE(AI_PARTNER_NAME " sent out Haunter!");
+        MESSAGE("Spectrum est envoyé par\n" AI_PARTNER_NAME "!");
         NONE_OF {
-            MESSAGE(AI_PARTNER_NAME " sent out Rattata!");
+            MESSAGE("Rattata est envoyé par\n" AI_PARTNER_NAME "!");
         }
     }
 }
@@ -383,9 +385,9 @@ AI_TWO_VS_ONE_BATTLE_TEST("AI partner will not switch into a player Pokémon aft
     } WHEN {
         TURN { EXPECT_MOVE(playerRight, MOVE_CELEBRATE); EXPECT_SEND_OUT(playerRight, 2); }
     } SCENE {
-        MESSAGE(AI_PARTNER_NAME " sent out Haunter!");
+        MESSAGE("Spectrum est envoyé par\n" AI_PARTNER_NAME "!");
         NONE_OF {
-            MESSAGE(AI_PARTNER_NAME " sent out Rattata!");
+            MESSAGE("Rattata est envoyé par\n" AI_PARTNER_NAME "!");
         }
     }
 }
@@ -413,9 +415,9 @@ AI_MULTI_BATTLE_TEST("AI partner will not switch into a player Pokémon (multi)"
         TURN { MOVE(playerLeft, MOVE_AURA_SPHERE, target:playerRight); EXPECT_SWITCH(playerRight, 1); EXPECT_SEND_OUT(playerRight, 0); }
         TURN { EXPECT_MOVE(playerRight, MOVE_SHADOW_BALL, target:opponentLeft); }
     } SCENE {
-        MESSAGE(AI_PARTNER_NAME " sent out Raticate!");
+        MESSAGE("Rattatac est envoyé par\n" AI_PARTNER_NAME "!");
         NONE_OF {
-            MESSAGE(AI_PARTNER_NAME " sent out Rattata!");
+            MESSAGE("Rattata est envoyé par\n" AI_PARTNER_NAME "!");
         }
     }
 }
@@ -443,9 +445,9 @@ AI_TWO_VS_ONE_BATTLE_TEST("AI partner will not switch into a player Pokémon (2v
         TURN { MOVE(playerLeft, MOVE_AURA_SPHERE, target:playerRight); EXPECT_SWITCH(playerRight, 1); EXPECT_SEND_OUT(playerRight, 0); }
         TURN { EXPECT_MOVE(playerRight, MOVE_SHADOW_BALL, target:opponentLeft); }
     } SCENE {
-        MESSAGE(AI_PARTNER_NAME " sent out Raticate!");
+        MESSAGE("Rattatac est envoyé par\n" AI_PARTNER_NAME "!");
         NONE_OF {
-            MESSAGE(AI_PARTNER_NAME " sent out Rattata!");
+            MESSAGE("Un Rattata est envoyé par\n" AI_PARTNER_NAME  "!");
         }
     }
 }
@@ -472,15 +474,15 @@ AI_TWO_VS_ONE_BATTLE_TEST("AI will not try to switch for the same pokemon for 2 
     } WHEN {
         TURN { EXPECT_SWITCH(opponentLeft, 3); }
     } SCENE {
-        MESSAGE(AI_TRAINER_NAME " withdrew Gengar!");
-        MESSAGE(AI_TRAINER_NAME " sent out Raticate!");
+        MESSAGE("Ectoplasma est retiré par " AI_TRAINER_NAME "!");
+        MESSAGE( "Un Rattatac est envoyé\npar " AI_TRAINER_NAME "!");
         if (flags & AI_FLAG_SMART_SWITCHING)
         {
-            MESSAGE(AI_TRAINER_NAME " withdrew Haunter!");
-            MESSAGE(AI_TRAINER_NAME " sent out Gastly!");
+            MESSAGE("Spectrum est retiré par " AI_TRAINER_NAME "!");
+            MESSAGE("Un Fantominus est envoyé\npar " AI_TRAINER_NAME "!");
         }
         NONE_OF {
-            MESSAGE(AI_TRAINER_NAME " sent out Raticate!");
+            MESSAGE("Un Rattatac est envoyé\npar " AI_TRAINER_NAME "!");
         }
     }
 }
@@ -509,13 +511,13 @@ AI_TWO_VS_ONE_BATTLE_TEST("AI will not try to switch for the same pokemon for 2 
     } SCENE {
         if (flags & AI_FLAG_SMART_SWITCHING)
         {
-            MESSAGE(AI_TRAINER_NAME " withdrew Gengar!");
-            MESSAGE(AI_TRAINER_NAME " sent out Gastly!");
+            MESSAGE("Ectoplasma est retiré par " AI_TRAINER_NAME "!");
+            MESSAGE("Un Fantominus est envoyé\npar " AI_TRAINER_NAME "!");
         }
-        MESSAGE(AI_TRAINER_NAME " withdrew Haunter!");
-        MESSAGE(AI_TRAINER_NAME " sent out Raticate!");
+        MESSAGE("Spectrum est retiré par " AI_TRAINER_NAME "!");
+        MESSAGE("Un Rattatac est envoyé\npar " AI_TRAINER_NAME "!");
         NONE_OF {
-            MESSAGE(AI_TRAINER_NAME " sent out Raticate!");
+            MESSAGE("Un Rattatac est envoyé\npar " AI_TRAINER_NAME  "!");
         }
     }
 }
@@ -541,11 +543,11 @@ AI_ONE_VS_TWO_BATTLE_TEST("AI will not switch into a partner Pokémon in a 1v2 b
     } WHEN {
         TURN { EXPECT_SWITCH(opponentRight, 2); }
     } SCENE {
-        MESSAGE(AI_TRAINER_2_NAME " withdrew Gengar!");
-        MESSAGE(AI_TRAINER_2_NAME " sent out Raticate!");
+        MESSAGE("Ectoplasma est retiré par " AI_TRAINER_2_NAME "!");
+        MESSAGE("Un Rattatac est envoyé\npar " AI_TRAINER_2_NAME "!");
         NONE_OF {
-            MESSAGE(AI_TRAINER_NAME " withdrew Haunter!");
-            MESSAGE(AI_TRAINER_NAME " sent out Raticate!");
+            MESSAGE("Spectrum est retiré par " AI_TRAINER_NAME "!");
+            MESSAGE("Un Rattatac est envoyé\npar " AI_TRAINER_NAME "!");
         }
     }
 }
@@ -625,11 +627,11 @@ AI_DOUBLE_BATTLE_TEST("AI will not try to switch for the same Pokémon for 2 spo
     } WHEN {
         TURN { EXPECT_SWITCH(opponentLeft, 3); }
     } SCENE {
-        MESSAGE(AI_TRAINER_NAME " withdrew Linoone!");
-        MESSAGE(AI_TRAINER_NAME " sent out Gengar!");
+        MESSAGE("Linéon est retiré par " AI_TRAINER_NAME "!");
+        MESSAGE("Un Ectoplasma est envoyé\npar " AI_TRAINER_NAME "!");
         NONE_OF {
-            MESSAGE(AI_TRAINER_NAME "sent out Linoone!");
-            MESSAGE(AI_TRAINER_NAME " sent out Gengar!");
+            MESSAGE("Un Linéon est envoyé\npar " AI_TRAINER_NAME "!");
+            MESSAGE("Un Ectoplasma est envoyé\npar " AI_TRAINER_NAME "!");
         }
     }
 }
@@ -650,11 +652,11 @@ AI_DOUBLE_BATTLE_TEST("AI will not try to switch for the same Pokémon for 2 spo
     } WHEN {
         TURN { EXPECT_SWITCH(opponentRight, 3); }
     } SCENE {
-        MESSAGE(AI_TRAINER_NAME " withdrew Zigzagoon!");
-        MESSAGE(AI_TRAINER_NAME " sent out Gengar!");
+        MESSAGE("Zigzaton est retiré par " AI_TRAINER_NAME "!");
+        MESSAGE("Un Ectoplasma est envoyé\npar " AI_TRAINER_NAME "!");
         NONE_OF {
-            MESSAGE(AI_TRAINER_NAME "sent out Zigzagoon!");
-            MESSAGE(AI_TRAINER_NAME " sent out Gengar!");
+            MESSAGE("Un Zigzaton est envoyé\npar " AI_TRAINER_NAME "!");
+            MESSAGE("Un Ectoplasma est envoyé\npar " AI_TRAINER_NAME "!");
         }
     }
 }
@@ -718,6 +720,51 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: Eject Pack will send out Ace M
 }
 
 // General AI_FLAG_SMART_MON_CHOICES behaviour
+AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: Move data does not spill over between switch-in candidates")
+{
+    GIVEN {
+        ASSUME(GetMoveEffect(MOVE_DRAGON_RAGE) == EFFECT_FIXED_HP_DAMAGE);
+        ASSUME(IsBattleMoveStatus(MOVE_CELEBRATE));
+        ASSUME(gItemsInfo[ITEM_ASSAULT_VEST].holdEffect == HOLD_EFFECT_ASSAULT_VEST);
+        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_MON_CHOICES);
+        PLAYER(SPECIES_WOBBUFFET) { HP(80); MaxHP(80); Speed(50); Moves(MOVE_DRAGON_RAGE); }
+        OPPONENT(SPECIES_MAGIKARP) { HP(1); Speed(10); Moves(MOVE_SPLASH); }
+        OPPONENT(SPECIES_ABRA) { HP(30); MaxHP(30); Speed(40); Moves(MOVE_DRAGON_RAGE); }
+        OPPONENT(SPECIES_WOBBUFFET) { HP(200); MaxHP(200); Speed(60); Moves(MOVE_CELEBRATE); Item(ITEM_ASSAULT_VEST); }
+        OPPONENT(SPECIES_MAGIKARP) { Speed(30); Moves(MOVE_SPLASH); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_DRAGON_RAGE); EXPECT_SEND_OUT(opponent, 3); }
+    }
+}
+
+AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: Switchin move data is reset before recalculation")
+{
+    GIVEN {
+        ASSUME(GetMoveEffect(MOVE_DRAGON_RAGE) == EFFECT_FIXED_HP_DAMAGE);
+        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SMART_MON_CHOICES);
+        PLAYER(SPECIES_WOBBUFFET) { Moves(MOVE_CELEBRATE); }
+        OPPONENT(SPECIES_WOBBUFFET) { Moves(MOVE_DRAGON_RAGE); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_CELEBRATE); EXPECT_MOVE(opponent, MOVE_DRAGON_RAGE); }
+    } THEN {
+        enum BattlerId battlerAtk = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
+        enum BattlerId battlerDef = GetBattlerAtPosition(B_POSITION_PLAYER_LEFT);
+        u32 moveIndex = 0;
+        EXPECT_GT(gAiLogicData->simulatedDmg[battlerAtk][battlerDef][moveIndex].median, 0);
+        EXPECT_GT(gAiLogicData->effectiveness[battlerAtk][battlerDef][moveIndex], 0);
+        EXPECT_GT(gAiLogicData->moveAccuracy[battlerAtk][battlerDef][moveIndex], 0);
+
+        gAiLogicData->resistBerryAffected[battlerAtk][battlerDef][moveIndex] = TRUE;
+        gAiLogicData->moveLimitations[battlerAtk] |= 1u << moveIndex;
+        CalcBattlerAiMovesData(gAiLogicData, battlerAtk, battlerDef, AI_GetWeather(), gFieldStatuses);
+
+        EXPECT_EQ(gAiLogicData->simulatedDmg[battlerAtk][battlerDef][moveIndex].median, 0);
+        EXPECT_EQ(gAiLogicData->effectiveness[battlerAtk][battlerDef][moveIndex], 0);
+        EXPECT_EQ(gAiLogicData->moveAccuracy[battlerAtk][battlerDef][moveIndex], 0);
+        EXPECT(!gAiLogicData->resistBerryAffected[battlerAtk][battlerDef][moveIndex]);
+    }
+}
+
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: Number of hits to KO calculation checks whether incoming damage is less than recurring healing to avoid an infinite loop")
 {
     GIVEN {
@@ -733,7 +780,7 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: Number of hits to KO calculati
     } WHEN {
             TURN { MOVE(player, MOVE_SCRATCH); EXPECT_MOVES(opponent, MOVE_ZIPPY_ZAP, MOVE_EXTREME_SPEED, MOVE_IRON_TAIL, MOVE_KNOCK_OFF); }
     } SCENE {
-        MESSAGE("Venusaur fainted!");
+        MESSAGE("Florizarre est K.O.!\p");
     }
 }
 
@@ -750,7 +797,7 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: Number of hits to KO calculati
     } WHEN {
             TURN { MOVE(player, MOVE_SWORDS_DANCE); EXPECT_MOVES(opponent, MOVE_SCRATCH); }
     } SCENE {
-        MESSAGE("Bulbasaur fainted!");
+        MESSAGE("Bulbizarre est K.O.!\p");
     }
 }
 
@@ -795,11 +842,11 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_MON_CHOICES: AI will not switch in a Pokemo
     } WHEN {
             TURN { MOVE(player, MOVE_NIGHT_SLASH) ; EXPECT_SEND_OUT(opponent, alakazamFirst ? 1 : 2); } // AI doesn't send out Alakazam if it gets outsped
     } SCENE {
-        MESSAGE("The opposing Kadabra fainted!");
+        MESSAGE("Kadabra ennemi est K.O.!\p");
         if (alakazamFirst) {
-            MESSAGE(AI_TRAINER_NAME " sent out Alakazam!");
+            MESSAGE("Un Alakazam est envoyé\npar " AI_TRAINER_NAME "!");
         } else {
-            MESSAGE(AI_TRAINER_NAME " sent out Blastoise!");
+            MESSAGE("Un Tortank est envoyé\npar " AI_TRAINER_NAME "!");
         }
     }
 }

@@ -15,10 +15,10 @@ SINGLE_BATTLE_TEST("Regenerator heals 1/3 of max HP upon switching out")
         TURN { SWITCH(player, 1); }
         TURN { SWITCH(player, 0); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Slowbro");
-        SEND_IN_MESSAGE("Wobbuffet");
-        SWITCH_OUT_MESSAGE("Wobbuffet");
-        SEND_IN_MESSAGE("Slowbro");
+        SWITCH_OUT_MESSAGE("Flagadoss");
+        SEND_IN_MESSAGE("Qulbutoké");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
+        SEND_IN_MESSAGE("Flagadoss");
     } THEN {
         EXPECT_EQ(player->hp, player->maxHP / 3 + currHP);
     }
@@ -40,10 +40,10 @@ SINGLE_BATTLE_TEST("Regenerator heals 1/3 of max HP upon switching out but doesn
         TURN { SWITCH(player, 1); }
         TURN { SWITCH(player, 0); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Slowbro");
-        SEND_IN_MESSAGE("Wobbuffet");
-        SWITCH_OUT_MESSAGE("Wobbuffet");
-        SEND_IN_MESSAGE("Slowbro");
+        SWITCH_OUT_MESSAGE("Flagadoss");
+        SEND_IN_MESSAGE("Qulbutoké");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
+        SEND_IN_MESSAGE("Flagadoss");
     } THEN {
         EXPECT_LE(player->hp, player->maxHP);
     }

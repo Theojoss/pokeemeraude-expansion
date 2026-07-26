@@ -19,9 +19,9 @@ SINGLE_BATTLE_TEST("Aurora Veil can only be used in Hail and Snow")
         TURN { MOVE(opponent, move); MOVE(player, MOVE_AURORA_VEIL); }
     } SCENE {
         if (move == MOVE_CELEBRATE)
-            MESSAGE("But it failed!");
+            MESSAGE("Mais cela échoue!");
         else
-            NOT MESSAGE("But it failed!");
+            NOT MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -33,7 +33,7 @@ SINGLE_BATTLE_TEST("Aurora Veil will prevent Protean activation if it fails due 
     } WHEN {
         TURN { MOVE(player, MOVE_AURORA_VEIL); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
         NOT ABILITY_POPUP(player, ABILITY_PROTEAN);
     }
 }
@@ -50,7 +50,7 @@ SINGLE_BATTLE_TEST("Aurora Veil wont prevent Protean activation when it fails du
         TURN { MOVE(player, MOVE_AURORA_VEIL); }
     } SCENE {
         ABILITY_POPUP(player, ABILITY_PROTEAN);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 

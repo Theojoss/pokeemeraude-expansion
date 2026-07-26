@@ -73,7 +73,7 @@ SINGLE_BATTLE_TEST("Light Screen fails if already active")
         TURN { MOVE(player, MOVE_LIGHT_SCREEN); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LIGHT_SCREEN, player);
-        MESSAGE("Wobbuffet used Light Screen!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké utilise\nMur Lumière!");
+        MESSAGE("Mais cela échoue!");
     }
 }

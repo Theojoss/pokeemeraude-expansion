@@ -19,12 +19,12 @@ SINGLE_BATTLE_TEST("Fling fails if Pokémon holds no item")
     } WHEN {
         TURN { MOVE(player, MOVE_FLING); }
     } SCENE {
-        MESSAGE("Wobbuffet used Fling!");
+        MESSAGE("Qulbutoké utilise\nDégommage!");
         if (item != ITEM_NONE) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FLING, player);
             HP_BAR(opponent);
         } else {
-            MESSAGE("But it failed!");
+            MESSAGE("Mais cela échoue!");
         }
     }
 }
@@ -46,12 +46,12 @@ SINGLE_BATTLE_TEST("Fling fails if Pokémon is under the effects of Embargo or M
         TURN { MOVE(opponent, move); }
         TURN { MOVE(player, MOVE_FLING); }
     } SCENE {
-        MESSAGE("Wobbuffet used Fling!");
+        MESSAGE("Qulbutoké utilise\nDégommage!");
         if (move == MOVE_CELEBRATE) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FLING, player);
             HP_BAR(opponent);
         } else {
-            MESSAGE("But it failed!");
+            MESSAGE("Mais cela échoue!");
         }
     }
 }
@@ -72,12 +72,12 @@ SINGLE_BATTLE_TEST("Fling fails for Pokémon with Klutz ability (Gen5+)")
     } WHEN {
         TURN { MOVE(player, MOVE_FLING); }
     } SCENE {
-        MESSAGE("Buneary used Fling!");
+        MESSAGE("Laporeille utilise\nDégommage!");
         if (ability != ABILITY_KLUTZ || config == GEN_4) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FLING, player);
             HP_BAR(opponent);
         } else {
-            MESSAGE("But it failed!");
+            MESSAGE("Mais cela échoue!");
         }
     }
 }
@@ -90,7 +90,7 @@ SINGLE_BATTLE_TEST("Fling fails if the item changes the Pokémon's form")
     } WHEN {
         TURN { MOVE(player, MOVE_FLING); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(player->item == ITEM_GRISEOUS_CORE);
     }
@@ -104,7 +104,7 @@ SINGLE_BATTLE_TEST("Fling works if the item changes a Pokémon's form but not th
     } WHEN {
         TURN { MOVE(player, MOVE_FLING); }
     } SCENE {
-        NOT MESSAGE("But it failed!");
+        NOT MESSAGE("Mais cela échoue!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FLING, player);
         HP_BAR(opponent);
     } THEN {
@@ -123,13 +123,13 @@ SINGLE_BATTLE_TEST("Fling's thrown item can be regained with Recycle")
         TURN { MOVE(player, MOVE_RECYCLE); }
         TURN { MOVE(player, MOVE_FLING); }
     } SCENE {
-        MESSAGE("Wobbuffet used Fling!");
+        MESSAGE("Qulbutoké utilise\nDégommage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FLING, player);
         HP_BAR(opponent);
-        MESSAGE("Wobbuffet used Recycle!");
+        MESSAGE("Qulbutoké utilise\nRecyclage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RECYCLE, player);
-        MESSAGE("Wobbuffet found one Razor Claw!");
-        MESSAGE("Wobbuffet used Fling!");
+        MESSAGE("Qulbutoké trouve Griffe Rasoir!");
+        MESSAGE("Qulbutoké utilise\nDégommage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FLING, player);
         HP_BAR(opponent);
     }
@@ -146,15 +146,15 @@ SINGLE_BATTLE_TEST("Fling - Item is lost even when there is no target")
         TURN { MOVE(opponent, MOVE_SELF_DESTRUCT); MOVE(player, MOVE_FLING); SEND_OUT(opponent, 1); }
         TURN { MOVE(player, MOVE_FLING); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Self-Destruct!");
+        MESSAGE("Qulbutoké ennemi utilise\nDestruction!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SELF_DESTRUCT, opponent);
         HP_BAR(player);
-        MESSAGE("The opposing Wobbuffet fainted!");
-        MESSAGE("Wobbuffet used Fling!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké ennemi est K.O.!\p");
+        MESSAGE("Qulbutoké utilise\nDégommage!");
+        MESSAGE("Mais cela échoue!");
 
-        MESSAGE("Wobbuffet used Fling!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké utilise\nDégommage!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT_EQ(player->item, ITEM_NONE);
     }
@@ -170,13 +170,13 @@ SINGLE_BATTLE_TEST("Fling - Item is lost when target protects itself")
         TURN { MOVE(opponent, MOVE_PROTECT); MOVE(player, MOVE_FLING); }
         TURN { MOVE(player, MOVE_FLING); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Protect!");
+        MESSAGE("Qulbutoké ennemi utilise\nAbri!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PROTECT, opponent);
-        MESSAGE("Wobbuffet used Fling!");
-        MESSAGE("The opposing Wobbuffet protected itself!");
+        MESSAGE("Qulbutoké utilise\nDégommage!");
+        MESSAGE("Qulbutoké ennemi se protège!");
 
-        MESSAGE("Wobbuffet used Fling!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké utilise\nDégommage!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT_EQ(player->item, ITEM_NONE);
     }
@@ -195,7 +195,7 @@ SINGLE_BATTLE_TEST("Fling - Item does not get blocked by Unnerve if it isn't a b
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TAUNT, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FLING, player);
         HP_BAR(opponent);
-        MESSAGE("The opposing Wobbuffet shook off the taunt!");
+        MESSAGE("Qulbutoké ennemi s'est remis de la Provoc!");
     }
 }
 
@@ -227,22 +227,22 @@ SINGLE_BATTLE_TEST("Fling doesn't consume the item if the user is asleep/frozen/
         }
     } SCENE {
         if (status == STATUS1_FREEZE) {
-            MESSAGE("Wobbuffet is frozen solid!");
-            MESSAGE("Wobbuffet thawed out!");
+            MESSAGE("Qulbutoké est gelé! Il ne peut plus attaquer!");
+            MESSAGE("Qulbutoké n'est plus gelé!");
         }
         else if (status == STATUS1_PARALYSIS) {
-            MESSAGE("Wobbuffet couldn't move because it's paralyzed!");
+            MESSAGE("Qulbutoké est paralysé! Il n'a pas pu attaquer!");
         }
         else {
-            MESSAGE("Wobbuffet is fast asleep.");
-            MESSAGE("Wobbuffet woke up!");
+            MESSAGE("Qulbutoké dort profondément.");
+            MESSAGE("Qulbutoké se réveille!");
         }
-        MESSAGE("Wobbuffet used Fling!");
+        MESSAGE("Qulbutoké utilise\nDégommage!");
         if (item != ITEM_NONE) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FLING, player);
             HP_BAR(opponent);
         } else {
-            MESSAGE("But it failed!");
+            MESSAGE("Mais cela échoue!");
         }
 
     } THEN {
@@ -267,39 +267,39 @@ SINGLE_BATTLE_TEST("Fling applies special effects when throwing specific Items")
     } WHEN {
         TURN { MOVE(player, MOVE_FLING); }
     } SCENE {
-        MESSAGE("Wobbuffet used Fling!");
+        MESSAGE("Qulbutoké utilise\nDégommage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FLING, player);
         HP_BAR(opponent);
         switch (item)
         {
         case ITEM_FLAME_ORB:
             {
-                MESSAGE("The opposing Wobbuffet was burned!");
+                MESSAGE("Qulbutoké ennemi est brûlé!");
                 STATUS_ICON(opponent, STATUS1_BURN);
             }
             break;
         case ITEM_LIGHT_BALL:
             {
-                MESSAGE("The opposing Wobbuffet is paralyzed, so it may be unable to move!");
+                MESSAGE("Qulbutoké ennemi est paralysé! Il aura du mal à attaquer!");
                 STATUS_ICON(opponent, STATUS1_PARALYSIS);
             }
             break;
         case ITEM_POISON_BARB:
             {
-                MESSAGE("The opposing Wobbuffet was poisoned!");
+                MESSAGE("Qulbutoké ennemi est empoisonné!");
                 STATUS_ICON(opponent, STATUS1_POISON);
             }
             break;
         case ITEM_TOXIC_ORB:
             {
-                MESSAGE("The opposing Wobbuffet was badly poisoned!");
+                MESSAGE("Qulbutoké ennemi est gravement empoisonné!");
                 STATUS_ICON(opponent, STATUS1_TOXIC_POISON);
             }
             break;
         case ITEM_RAZOR_FANG:
         case ITEM_KINGS_ROCK:
             {
-                MESSAGE("The opposing Wobbuffet flinched and couldn't move!");
+                MESSAGE("Qulbutoké ennemi a la trouille! Il ne peut plus attaquer!");
             }
             break;
         default:
@@ -325,7 +325,7 @@ SINGLE_BATTLE_TEST("Fling's secondary effects are blocked by Shield Dust")
     } WHEN {
         TURN { MOVE(player, MOVE_FLING); }
     } SCENE {
-        MESSAGE("Wobbuffet used Fling!");
+        MESSAGE("Qulbutoké utilise\nDégommage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FLING, player);
         HP_BAR(opponent);
         switch (item)
@@ -333,52 +333,52 @@ SINGLE_BATTLE_TEST("Fling's secondary effects are blocked by Shield Dust")
         case ITEM_FLAME_ORB:
             {
                 NONE_OF {
-                    MESSAGE("The opposing Wobbuffet was burned!");
+                    MESSAGE("Qulbutoké ennemi est brûlé!");
                     STATUS_ICON(opponent, STATUS1_BURN);
                 }
-                MESSAGE("The Flame Orb was used up…");
+                MESSAGE("Orbe Flamme a été utilisé…");
             }
             break;
         case ITEM_LIGHT_BALL:
             {
                 NONE_OF {
-                    MESSAGE("The opposing Wobbuffet is paralyzed, so it may be unable to move!");
+                    MESSAGE("Qulbutoké ennemi est paralysé! Il aura du mal à attaquer!");
                     STATUS_ICON(opponent, STATUS1_PARALYSIS);
                 }
-                MESSAGE("The Light Ball was used up…");
+                MESSAGE("Balle Lumière a été utilisé…");
             }
             break;
         case ITEM_POISON_BARB:
             {
                 NONE_OF {
-                    MESSAGE("The opposing Wobbuffet was poisoned!");
+                    MESSAGE("Qulbutoké ennemi est empoisonné!");
                     STATUS_ICON(opponent, STATUS1_POISON);
                 }
-                MESSAGE("The Poison Barb was used up…");
+                MESSAGE("Pic Venin a été utilisé…");
             }
             break;
         case ITEM_TOXIC_ORB:
             {
                 NONE_OF {
-                    MESSAGE("The opposing Wobbuffet was badly poisoned!");
+                    MESSAGE("Qulbutoké ennemi est gravement empoisonné!");
                     STATUS_ICON(opponent, STATUS1_TOXIC_POISON);
                 }
-                MESSAGE("The Toxic Orb was used up…");
+                MESSAGE("Orbe Toxique a été utilisé…");
             }
             break;
         case ITEM_RAZOR_FANG:
         case ITEM_KINGS_ROCK:
             {
                 NONE_OF {
-                    MESSAGE("The opposing Wobbuffet flinched and couldn't move!");
+                    MESSAGE("Qulbutoké ennemi a la trouille! Il ne peut plus attaquer!");
                 }
                 switch (item)
                 {
                     case ITEM_RAZOR_FANG:
-                        MESSAGE("The Razor Fang was used up…");
+                        MESSAGE("Croc Rasoir a été utilisé…");
                         break;
                     case ITEM_KINGS_ROCK:
-                        MESSAGE("The King's Rock was used up…");
+                        MESSAGE("Roche Royale a été utilisé…");
                         break;
                     default:
                         break;
@@ -478,58 +478,58 @@ SINGLE_BATTLE_TEST("Fling - thrown berry's effect activates for the target even 
     } WHEN {
         TURN { MOVE(player, MOVE_FLING); }
     } SCENE {
-        MESSAGE("Wobbuffet used Fling!");
+        MESSAGE("Qulbutoké utilise\nDégommage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FLING, player);
         HP_BAR(opponent);
         if (effect == HOLD_EFFECT_RESTORE_HP) {
             if (item == ITEM_ORAN_BERRY) {
-                MESSAGE("The opposing Wobbuffet restored its health using its Oran Berry!");
+                MESSAGE("Qulbutoké ennemi récupère des PV grâce à Baie Oran!");
             } else if (item == ITEM_SITRUS_BERRY) {
-                MESSAGE("The opposing Wobbuffet restored its health using its Sitrus Berry!");
+                MESSAGE("Qulbutoké ennemi récupère des PV grâce à Baie Sitrus!");
             } else {
-                MESSAGE("Wobbuffet restored its health using its Enigma Berry!");
+                MESSAGE("Qulbutoké récupère des PV grâce à Baie Enigma!");
             }
             HP_BAR(opponent);
         }
         else if (effect == HOLD_EFFECT_RESTORE_PP) {
-            MESSAGE("The opposing Wobbuffet restored PP to its move Celebrate using its Leppa Berry!");
+            MESSAGE("Qulbutoké ennemi récupère des PP pour sa capacité Célébration grâce à Baie Mepo!");
         }
         else if (status1 != STATUS1_NONE) {
             if (status1 == STATUS1_BURN) {
-                MESSAGE("The opposing Wobbuffet's Rawst Berry cured its burn!");
+                MESSAGE("Qulbutoké ennemi n'est plus brûlé grâce à Baie Fraive!");
             } else if (status1 == STATUS1_SLEEP) {
-                MESSAGE("The opposing Wobbuffet's Chesto Berry woke it up!");
+                MESSAGE("Qulbutoké ennemi se réveille grâce à Baie Maron!");
             } else if (status1 == STATUS1_FREEZE) {
-                MESSAGE("The opposing Wobbuffet's Aspear Berry defrosted it!");
+                MESSAGE("Qulbutoké ennemi n'est plus gelé grâce à Baie Willia!");
             } else if (status1 == STATUS1_FROSTBITE) {
-                MESSAGE("The opposing Wobbuffet's Aspear Berry cured its frostbite!");
+                MESSAGE("Qulbutoké ennemi s'est remis de sa gelure grâce à Baie Willia!");
             } else if (status1 == STATUS1_PARALYSIS) {
-                MESSAGE("The opposing Wobbuffet's Cheri Berry cured its paralysis!");
+                MESSAGE("Qulbutoké ennemi n'est plus paralysé grâce à Baie Ceriz!");
             } else if (status1 == STATUS1_TOXIC_POISON || status1 == STATUS1_POISON) {
-                MESSAGE("The opposing Wobbuffet's Pecha Berry cured its poison!");
+                MESSAGE("Qulbutoké ennemi n'est plus empoisonné grâce à Baie Pêcha!");
             }
             NOT STATUS_ICON(opponent, status1);
         }
         else if (statId != 0) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
             if (statId == STAT_ATK) {
-                MESSAGE("The Liechi Berry boosted the opposing Wobbuffet's Attack!");
+                MESSAGE("Grâce à Baie Lichii, Attaque de Qulbutoké ennemi augmente!");
             } else if (statId == STAT_DEF) {
                 if (item == ITEM_GANLON_BERRY) {
-                    MESSAGE("The Ganlon Berry boosted the opposing Wobbuffet's Defense!");
+                    MESSAGE("Grâce à Baie Lingan, Défense de Qulbutoké ennemi augmente!");
                 } else {
-                    MESSAGE("The Kee Berry boosted the opposing Wobbuffet's Defense!");
+                    MESSAGE("Grâce à Baie Éka, Défense de Qulbutoké ennemi augmente!");
                 }
             } else if (statId == STAT_SPDEF) {
                 if (item == ITEM_APICOT_BERRY) {
-                    MESSAGE("The Apicot Berry boosted the opposing Wobbuffet's Sp. Def!");
+                    MESSAGE("Grâce à Baie Abriko, Défense Spéciale de Qulbutoké ennemi augmente!");
                 } else {
-                    MESSAGE("The Maranga Berry boosted the opposing Wobbuffet's Sp. Def!");
+                    MESSAGE("Grâce à Baie Rangma, Défense Spéciale de Qulbutoké ennemi augmente!");
                 }
             } else if (statId == STAT_SPEED) {
-                MESSAGE("The Salac Berry boosted the opposing Wobbuffet's Speed!");
+                MESSAGE("Grâce à Baie Sailak, Vitesse de Qulbutoké ennemi augmente!");
             } else if (statId == STAT_SPATK) {
-                MESSAGE("The Petaya Berry boosted the opposing Wobbuffet's Sp. Atk!");
+                MESSAGE("Grâce à Baie Pitaye, Attaque Spéciale de Qulbutoké ennemi augmente!");
             }
         }
     } THEN {
@@ -587,7 +587,7 @@ SINGLE_BATTLE_TEST("Fling deals damage based on a TM's move power if reusable or
             HP_BAR(opponent, captureDamage: &damage[0]);
         } else {
             NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_FLING, player);
-            MESSAGE("But it failed!");
+            MESSAGE("Mais cela échoue!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EGG_BOMB, player);
         HP_BAR(opponent, captureDamage: &damage[1]);
@@ -607,7 +607,7 @@ SINGLE_BATTLE_TEST("Fling fails when a Paradox mon holds a Booster Energy")
     } WHEN {
         TURN { MOVE(player, MOVE_FLING); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(player->item == ITEM_BOOSTER_ENERGY);
     }
@@ -638,7 +638,7 @@ SINGLE_BATTLE_TEST("Fling reveals the user's item before dealing damage")
     } WHEN {
         TURN { MOVE(opponent, MOVE_FLING); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet flung its Potion!");
+        MESSAGE("Qulbutoké ennemi lance Potion!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FLING, opponent);
         HP_BAR(player);
     }
@@ -654,7 +654,7 @@ SINGLE_BATTLE_TEST("Fling doesn't reveal the user's item if it failed to use the
         TURN { MOVE(opponent, MOVE_FLING); }
     } SCENE {
         NONE_OF {
-            MESSAGE("The opposing Wobbuffet flung its Potion!");
+            MESSAGE("Qulbutoké ennemi lance Potion!");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FLING, opponent);
             HP_BAR(player);
         };
@@ -672,7 +672,7 @@ SINGLE_BATTLE_TEST("Fling doesn't reveal the user's item if it missed")
         TURN { MOVE(opponent, MOVE_FLING, hit: FALSE); }
     } SCENE {
         NONE_OF {
-            MESSAGE("The opposing Wobbuffet flung its Potion!");
+            MESSAGE("Qulbutoké ennemi lance Potion!");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FLING, opponent);
             HP_BAR(player);
         };

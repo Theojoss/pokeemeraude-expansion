@@ -27,11 +27,11 @@ SINGLE_BATTLE_TEST("Clear Body, Full Metal Body, and White Smoke prevent intimid
         }
         ABILITY_POPUP(opponent, ability);
         if (ability == ABILITY_FULL_METAL_BODY)
-            MESSAGE("The opposing Solgaleo's stats were not lowered!");
+            MESSAGE("Les stats de Solgaleo ennemi ne baissent pas!");
         else if (ability == ABILITY_WHITE_SMOKE)
-            MESSAGE("The opposing Torkoal's stats were not lowered!");
+            MESSAGE("Les stats de Chartor ennemi ne baissent pas!");
         else
-            MESSAGE("The opposing Metang's stats were not lowered!");
+            MESSAGE("Les stats de Métang ennemi ne baissent pas!");
         HP_BAR(player, captureDamage: &turnTwoHit);
     } THEN {
         EXPECT_EQ(turnOneHit, turnTwoHit);
@@ -78,11 +78,11 @@ SINGLE_BATTLE_TEST("Clear Body, Full Metal Body, and White Smoke prevent stat st
         }
         ABILITY_POPUP(opponent, ability);
         if (ability == ABILITY_FULL_METAL_BODY)
-            MESSAGE("The opposing Solgaleo's stats were not lowered!");
+            MESSAGE("Les stats de Solgaleo ennemi ne baissent pas!");
         else if (ability == ABILITY_WHITE_SMOKE)
-            MESSAGE("The opposing Torkoal's stats were not lowered!");
+            MESSAGE("Les stats de Chartor ennemi ne baissent pas!");
         else
-            MESSAGE("The opposing Metang's stats were not lowered!");
+            MESSAGE("Les stats de Métang ennemi ne baissent pas!");
     }
 }
 
@@ -107,11 +107,11 @@ SINGLE_BATTLE_TEST("Clear Body, Full Metal Body, and White Smoke prevent Sticky 
         }
         ABILITY_POPUP(opponent, ability);
         if (ability == ABILITY_FULL_METAL_BODY)
-            MESSAGE("The opposing Solgaleo's stats were not lowered!");
+            MESSAGE("Les stats de Solgaleo ennemi ne baissent pas!");
         else if (ability == ABILITY_WHITE_SMOKE)
-            MESSAGE("The opposing Torkoal's stats were not lowered!");
+            MESSAGE("Les stats de Chartor ennemi ne baissent pas!");
         else
-            MESSAGE("The opposing Metang's stats were not lowered!");
+            MESSAGE("Les stats de Métang ennemi ne baissent pas!");
     }
 }
 
@@ -132,9 +132,9 @@ SINGLE_BATTLE_TEST("Clear Body, Full Metal Body, and White Smoke don't prevent s
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUPERPOWER, opponent);
         NONE_OF {
             ABILITY_POPUP(opponent, ability);
-            MESSAGE("The opposing Solgaleo's stats were not lowered!");
-            MESSAGE("The opposing Torkoal's stats were not lowered!");
-            MESSAGE("The opposing Metang's stats were not lowered!");
+            MESSAGE("Les stats de Solgaleo ennemi ne baissent pas!");
+            MESSAGE("Les stats de Chartor ennemi ne baissent pas!");
+            MESSAGE("Les stats de Métang ennemi ne baissent pas!");
         }
     }
 }
@@ -186,14 +186,14 @@ SINGLE_BATTLE_TEST("Mold Breaker, Teravolt, and Turboblaze ignore Clear Body and
         if (ability == ABILITY_FULL_METAL_BODY){ // Full Metal Body can't be ignored by breaker abilities
             NOT ANIMATION(ANIM_TYPE_MOVE, move, player);
             ABILITY_POPUP(opponent, ability);
-            MESSAGE("The opposing Solgaleo's stats were not lowered!");
+            MESSAGE("Les stats de Solgaleo ennemi ne baissent pas!");
         } else {
             ANIMATION(ANIM_TYPE_MOVE, move, player);
             NONE_OF {
                 ABILITY_POPUP(opponent, ability);
-                MESSAGE("The opposing Solgaleo's stats were not lowered!");
-                MESSAGE("The opposing Torkoal's stats were not lowered!");
-                MESSAGE("The opposing Metang's stats were not lowered!");
+                MESSAGE("Les stats de Solgaleo ennemi ne baissent pas!");
+                MESSAGE("Les stats de Chartor ennemi ne baissent pas!");
+                MESSAGE("Les stats de Métang ennemi ne baissent pas!");
             }
         }
     }
@@ -223,21 +223,21 @@ SINGLE_BATTLE_TEST("Clear Body, Full Metal Body, and White Smoke don't prevent S
     } SCENE {
         NOT ABILITY_POPUP(opponent, ability);
         if (heldItem == ITEM_IRON_BALL) {
-            MESSAGE("Wobbuffet used Celebrate!");
+            MESSAGE("Qulbutoké utilise\nCélébration!");
             if (ability == ABILITY_FULL_METAL_BODY)
-                MESSAGE("The opposing Solgaleo used Celebrate!");
+                MESSAGE("Solgaleo ennemi utilise\nCélébration!");
             else if (ability == ABILITY_WHITE_SMOKE)
-                MESSAGE("The opposing Torkoal used Celebrate!");
+                MESSAGE("Chartor ennemi utilise\nCélébration!");
             else
-                MESSAGE("The opposing Metang used Celebrate!");
+                MESSAGE("Métang ennemi utilise\nCélébration!");
         } else {
             if (ability == ABILITY_FULL_METAL_BODY)
-                MESSAGE("The opposing Solgaleo used Celebrate!");
+                MESSAGE("Solgaleo ennemi utilise\nCélébration!");
             else if (ability == ABILITY_WHITE_SMOKE)
-                MESSAGE("The opposing Torkoal used Celebrate!");
+                MESSAGE("Chartor ennemi utilise\nCélébration!");
             else
-                MESSAGE("The opposing Metang used Celebrate!");
-            MESSAGE("Wobbuffet used Celebrate!");
+                MESSAGE("Métang ennemi utilise\nCélébration!");
+            MESSAGE("Qulbutoké utilise\nCélébration!");
         }
     }
 }
@@ -259,22 +259,22 @@ SINGLE_BATTLE_TEST("Clear Body, Full Metal Body, and White Smoke don't prevent S
         TURN { MOVE(player, MOVE_THUNDER_WAVE); }
     } SCENE {
         if (ability == ABILITY_FULL_METAL_BODY)
-            MESSAGE("The opposing Solgaleo used Celebrate!");
+            MESSAGE("Solgaleo ennemi utilise\nCélébration!");
         else if (ability == ABILITY_WHITE_SMOKE)
-            MESSAGE("The opposing Torkoal used Celebrate!");
+            MESSAGE("Chartor ennemi utilise\nCélébration!");
         else
-            MESSAGE("The opposing Metang used Celebrate!");
-        MESSAGE("Wobbuffet used Thunder Wave!");
+            MESSAGE("Métang ennemi utilise\nCélébration!");
+        MESSAGE("Qulbutoké utilise\nCage Éclair!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_THUNDER_WAVE, player);
         NOT ABILITY_POPUP(opponent, ability);
-        MESSAGE("Wobbuffet used Thunder Wave!");
+        MESSAGE("Qulbutoké utilise\nCage Éclair!");
         ONE_OF {
-            MESSAGE("The opposing Metang used Celebrate!");
-            MESSAGE("The opposing Metang couldn't move because it's paralyzed!");
-            MESSAGE("The opposing Solgaleo used Celebrate!");
-            MESSAGE("The opposing Solgaleo couldn't move because it's paralyzed!");
-            MESSAGE("The opposing Torkoal used Celebrate!");
-            MESSAGE("The opposing Torkoal couldn't move because it's paralyzed!");
+            MESSAGE("Métang ennemi utilise\nCélébration!");
+            MESSAGE("Métang ennemi est paralysé! Il n'a pas pu attaquer!");
+            MESSAGE("Solgaleo ennemi utilise\nCélébration!");
+            MESSAGE("Solgaleo ennemi est paralysé! Il n'a pas pu attaquer!");
+            MESSAGE("Chartor ennemi utilise\nCélébration!");
+            MESSAGE("Chartor ennemi est paralysé! Il n'a pas pu attaquer!");
         }
     }
 }
@@ -323,15 +323,15 @@ SINGLE_BATTLE_TEST("Clear Body, Full Metal Body, and White Smoke don't prevent r
         TURN { MOVE(player, MOVE_SCARY_FACE); MOVE(opponent, MOVE_BATON_PASS); SEND_OUT(opponent, 1); }
         TURN { MOVE(player, MOVE_SCARY_FACE); }
     } SCENE {
-        MESSAGE("Wobbuffet used Scary Face!");
+        MESSAGE("Qulbutoké utilise\nGrimace!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCARY_FACE, player);
         ABILITY_POPUP(opponent, ability);
         if (ability == ABILITY_FULL_METAL_BODY)
-            MESSAGE("The opposing Solgaleo used Celebrate!");
+            MESSAGE("Solgaleo ennemi utilise\nCélébration!");
         else if (ability == ABILITY_WHITE_SMOKE)
-            MESSAGE("The opposing Torkoal used Celebrate!");
+            MESSAGE("Chartor ennemi utilise\nCélébration!");
         else
-            MESSAGE("The opposing Metang used Celebrate!");
+            MESSAGE("Métang ennemi utilise\nCélébration!");
     }
 }
 
@@ -356,22 +356,22 @@ SINGLE_BATTLE_TEST("Clear Body, Full Metal Body, and White Smoke don't prevent T
         TURN { MOVE(player, MOVE_TOPSY_TURVY); }
         TURN { MOVE(player, MOVE_SCARY_FACE); }
     } SCENE {
-        MESSAGE("Wobbuffet used Topsy-Turvy!");
+        MESSAGE("Qulbutoké utilise\nRenversement!");
         NOT ABILITY_POPUP(opponent, ability);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TOPSY_TURVY, player);
         if (ability == ABILITY_FULL_METAL_BODY) {
-            MESSAGE("The opposing Solgaleo used Celebrate!");
-            MESSAGE("The opposing Solgaleo used Celebrate!");
+            MESSAGE("Solgaleo ennemi utilise\nCélébration!");
+            MESSAGE("Solgaleo ennemi utilise\nCélébration!");
         }
         else if (ability == ABILITY_WHITE_SMOKE) {
-            MESSAGE("The opposing Torkoal used Celebrate!");
-            MESSAGE("The opposing Torkoal used Celebrate!");
+            MESSAGE("Chartor ennemi utilise\nCélébration!");
+            MESSAGE("Chartor ennemi utilise\nCélébration!");
         }
         else {
-            MESSAGE("The opposing Metang used Celebrate!");
-            MESSAGE("The opposing Metang used Celebrate!");
+            MESSAGE("Métang ennemi utilise\nCélébration!");
+            MESSAGE("Métang ennemi utilise\nCélébration!");
         }
-        MESSAGE("Wobbuffet used Scary Face!");
+        MESSAGE("Qulbutoké utilise\nGrimace!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SCARY_FACE, player);
         ABILITY_POPUP(opponent, ability);
     }
@@ -397,29 +397,29 @@ SINGLE_BATTLE_TEST("Clear Body, Full Metal Body, and White Smoke don't prevent S
         TURN {}
     } SCENE {
         if (ability == ABILITY_FULL_METAL_BODY)
-            MESSAGE("The opposing Solgaleo used Agility!");
+            MESSAGE("Solgaleo ennemi utilise\nHâte!");
         else if (ability == ABILITY_WHITE_SMOKE)
-            MESSAGE("The opposing Torkoal used Agility!");
+            MESSAGE("Chartor ennemi utilise\nHâte!");
         else
-            MESSAGE("The opposing Metang used Agility!");
+            MESSAGE("Métang ennemi utilise\nHâte!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_AGILITY, opponent);
-        MESSAGE("Wobbuffet used Celebrate!");
+        MESSAGE("Qulbutoké utilise\nCélébration!");
         if (ability == ABILITY_FULL_METAL_BODY)
-            MESSAGE("The opposing Solgaleo used Celebrate!");
+            MESSAGE("Solgaleo ennemi utilise\nCélébration!");
         else if (ability == ABILITY_WHITE_SMOKE)
-            MESSAGE("The opposing Torkoal used Celebrate!");
+            MESSAGE("Chartor ennemi utilise\nCélébration!");
         else
-            MESSAGE("The opposing Metang used Celebrate!");
-        MESSAGE("Wobbuffet used Spectral Thief!");
+            MESSAGE("Métang ennemi utilise\nCélébration!");
+        MESSAGE("Qulbutoké utilise\nClepto-Mânes!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPECTRAL_THIEF, player);
         NOT ABILITY_POPUP(opponent, ability);
-        MESSAGE("Wobbuffet used Celebrate!");
+        MESSAGE("Qulbutoké utilise\nCélébration!");
         if (ability == ABILITY_FULL_METAL_BODY)
-            MESSAGE("The opposing Solgaleo used Celebrate!");
+            MESSAGE("Solgaleo ennemi utilise\nCélébration!");
         else if (ability == ABILITY_WHITE_SMOKE)
-            MESSAGE("The opposing Torkoal used Celebrate!");
+            MESSAGE("Chartor ennemi utilise\nCélébration!");
         else
-            MESSAGE("The opposing Metang used Celebrate!");
+            MESSAGE("Métang ennemi utilise\nCélébration!");
     }
 }
 
@@ -453,11 +453,11 @@ SINGLE_BATTLE_TEST("Clear Body, Full Metal Body, and White Smoke protect from Pr
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
             if (move == MOVE_KINGS_SHIELD) {
-                MESSAGE("Wobbuffet's Attack fell!");
+                MESSAGE("Ah, Attaque du Qulbutoké baisse!");
             } else if (move == MOVE_SILK_TRAP) {
-                MESSAGE("Wobbuffet's Speed fell!");
+                MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
             } else if (move == MOVE_OBSTRUCT) {
-                MESSAGE("Wobbuffet's Defense harshly fell!");
+                MESSAGE("Ah, Défense du Qulbutoké baisse beaucoup!");
             }
         }
     }

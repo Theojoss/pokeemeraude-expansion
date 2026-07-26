@@ -17,13 +17,13 @@ SINGLE_BATTLE_TEST("Battle Message: Send-in message depends on foe HP")
         TURN { SWITCH(player, 1); }
     } SCENE {
         if (hp > 69)
-            MESSAGE("Go! Wynaut!");
+            MESSAGE("Okéoké! Go!");
         else if (hp > 39)
-            MESSAGE("You're in charge, Wynaut!");
+            MESSAGE("Okéoké! Fonce!");
         else if (hp > 9)
-            MESSAGE("Go for it, Wynaut!");
+            MESSAGE("En avant, Okéoké!");
         else
-            MESSAGE("Your opponent's weak! Get 'em, Wynaut!");
+            MESSAGE("L'ennemi est faible!\nAttaque, Okéoké!");
     }
 }
 
@@ -36,11 +36,11 @@ SINGLE_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSENDOUT, ST
     } WHEN {
         TURN { SWITCH(opponent, 1); }
     } SCENE {
-        MESSAGE("You are challenged by 2!");
-        MESSAGE("2 sent out Wobbuffet!");
-        MESSAGE("Go! Gastly!");
-        MESSAGE("2 withdrew Wobbuffet!");
-        MESSAGE("2 sent out Girafarig!");
+        MESSAGE("2\nveut se battre!{PAUSE 49}");
+        MESSAGE("2 envoie\nun Qulbutoké!");
+        MESSAGE("Fantominus! Go!");
+        MESSAGE("2 retire Qulbutoké!");
+        MESSAGE("2 envoie\nun Girafarig!");
     }
 }
 
@@ -54,11 +54,11 @@ AI_SINGLE_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSENDOUT,
     } WHEN {
         TURN { EXPECT_SWITCH(opponent, 1); }
     } SCENE {
-        MESSAGE("You are challenged by " AI_TRAINER_NAME "!");
-        MESSAGE(AI_TRAINER_NAME " sent out Wobbuffet!");
-        MESSAGE("Go! Gastly!");
-        MESSAGE(AI_TRAINER_NAME " withdrew Wobbuffet!");
-        MESSAGE(AI_TRAINER_NAME " sent out Girafarig!");
+        MESSAGE("Un combat est lancé\npar " AI_TRAINER_NAME "!\p");
+        MESSAGE("Un Qulbutoké est envoyé\npar " AI_TRAINER_NAME "!");
+        MESSAGE("Fantominus! Go!");
+        MESSAGE("Qulbutoké est retiré par\n" AI_TRAINER_NAME "!");
+        MESSAGE("Un Girafarig est envoyé\npar " AI_TRAINER_NAME "!");
     }
 }
 
@@ -77,13 +77,13 @@ DOUBLE_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSENDOUT, ST
             SWITCH(opponentRight, 2);
         }
     } SCENE {
-        MESSAGE("You are challenged by 2!");
-        MESSAGE("2 sent out Wobbuffet and Wynaut!");
-        MESSAGE("Go! Gastly and Haunter!");
-        MESSAGE("2 withdrew Wobbuffet!");
-        MESSAGE("2 sent out Farigiraf!");
-        MESSAGE("2 withdrew Wynaut!");
-        MESSAGE("2 sent out Girafarig!");
+        MESSAGE("2\nveut se battre!{PAUSE 49}");
+        MESSAGE("2 envoie\nun Qulbutoké et un Okéoké!");
+        MESSAGE("Fantominus et\nSpectrum! Go!");
+        MESSAGE("2 retire Qulbutoké!");
+        MESSAGE("2 envoie\nun Farigiraf!");
+        MESSAGE("2 retire Okéoké!");
+        MESSAGE("2 envoie\nun Girafarig!");
     }
 }
 
@@ -103,13 +103,13 @@ AI_DOUBLE_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSENDOUT,
             EXPECT_SWITCH(opponentRight, 2);
         }
     } SCENE {
-        MESSAGE("You are challenged by " AI_TRAINER_NAME "!");
-        MESSAGE(AI_TRAINER_NAME " sent out Wobbuffet and Wynaut!");
-        MESSAGE("Go! Gastly and Haunter!");
-        MESSAGE(AI_TRAINER_NAME " withdrew Wobbuffet!");
-        MESSAGE(AI_TRAINER_NAME " sent out Farigiraf!");
-        MESSAGE(AI_TRAINER_NAME " withdrew Wynaut!");
-        MESSAGE(AI_TRAINER_NAME " sent out Girafarig!");
+        MESSAGE("Un combat est lancé\npar " AI_TRAINER_NAME "!\p");
+        MESSAGE("Un Qulbutoké et un Okéoké\nsont envoyés par\l" AI_TRAINER_NAME "!");
+        MESSAGE("Fantominus et\nSpectrum! Go!");
+        MESSAGE("Qulbutoké est retiré par " AI_TRAINER_NAME "!");
+        MESSAGE("Un Farigiraf est envoyé\npar " AI_TRAINER_NAME "!");
+        MESSAGE("Okéoké est retiré par " AI_TRAINER_NAME "!");
+        MESSAGE("Un Girafarig est envoyé\npar " AI_TRAINER_NAME "!");
     }
 }
 
@@ -130,15 +130,15 @@ MULTI_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSENDOUT, STR
             SWITCH(opponentRight, 1);
         }
     } SCENE {
-        MESSAGE("You are challenged by 2 and 4!");
-        MESSAGE("2 sent out Wobbuffet! 4 sent out Wynaut!");
-        MESSAGE("3 sent out Haunter! Go, Gastly!");
-        MESSAGE("2 withdrew Wobbuffet!");
-        MESSAGE("2 sent out Farigiraf!");
-        MESSAGE("3 withdrew Haunter!");
-        MESSAGE("3 sent out Gengar!");
-        MESSAGE("4 withdrew Wynaut!");
-        MESSAGE("4 sent out Girafarig!");
+        MESSAGE("2 et 4\nveulent se battre!");
+        MESSAGE("2 envoie\nun Qulbutoké!\p4 envoie\nun Okéoké!");
+        MESSAGE("3 envoie\nSpectrum!\pFantominus! Go!");
+        MESSAGE("2 retire Qulbutoké!");
+        MESSAGE("2 envoie\nun Farigiraf!");
+        MESSAGE("3 retire Spectrum!");
+        MESSAGE("3 envoie\nEctoplasma!");
+        MESSAGE("4 retire Okéoké!");
+        MESSAGE("4 envoie\nun Girafarig!");
     }
 }
 
@@ -160,15 +160,15 @@ AI_MULTI_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSENDOUT, 
             EXPECT_SWITCH(opponentRight, 1);
         }
     } SCENE {
-        MESSAGE("You are challenged by " AI_TRAINER_NAME " and " AI_TRAINER_2_NAME "!");
-        MESSAGE(AI_TRAINER_NAME " sent out Wobbuffet! " AI_TRAINER_2_NAME " sent out Wynaut!");
-        MESSAGE(AI_PARTNER_NAME " sent out Haunter! Go, Gastly!");
-        MESSAGE(AI_TRAINER_NAME " withdrew Wobbuffet!");
-        MESSAGE(AI_TRAINER_NAME " sent out Farigiraf!");
-        MESSAGE(AI_PARTNER_NAME " withdrew Haunter!");
-        MESSAGE(AI_PARTNER_NAME " sent out Gengar!");
-        MESSAGE(AI_TRAINER_2_NAME " withdrew Wynaut!");
-        MESSAGE(AI_TRAINER_2_NAME " sent out Girafarig!");
+        MESSAGE("Un combat est lancé\npar " AI_TRAINER_NAME " et\l" AI_TRAINER_2_NAME "!\p");
+        MESSAGE("Un Qulbutoké est envoyé\npar " AI_TRAINER_NAME "!\pUn Okéoké est envoyé\npar " AI_TRAINER_2_NAME "!");
+        MESSAGE("Spectrum est envoyé par\n" AI_PARTNER_NAME "!\pFantominus! Go!");
+        MESSAGE("Qulbutoké est retiré par " AI_TRAINER_NAME "!");
+        MESSAGE("Un Farigiraf est envoyé\npar " AI_TRAINER_NAME "!");
+        MESSAGE(AI_PARTNER_NAME " retire Spectrum!");
+        MESSAGE("Ectoplasma est envoyé par " AI_PARTNER_NAME "!");
+        MESSAGE("Okéoké est retiré par " AI_TRAINER_2_NAME "!");
+        MESSAGE("Un Girafarig est envoyé\npar " AI_TRAINER_2_NAME "!");
     }
 }
 
@@ -189,15 +189,15 @@ TWO_VS_ONE_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSENDOUT
             SWITCH(opponentRight, 2);
         }
     } SCENE {
-        MESSAGE("You are challenged by 2!");
-        MESSAGE("2 sent out Wobbuffet and Wynaut!");
-        MESSAGE("3 sent out Haunter! Go, Gastly!");
-        MESSAGE("2 withdrew Wobbuffet!");
-        MESSAGE("2 sent out Farigiraf!");
-        MESSAGE("2 withdrew Wynaut!");
-        MESSAGE("2 sent out Girafarig!");
-        MESSAGE("3 withdrew Haunter!");
-        MESSAGE("3 sent out Gengar!");
+        MESSAGE("2\nveut se battre!");
+        MESSAGE("2 envoie\nun Qulbutoké et un Okéoké!");
+        MESSAGE("3 envoie\nSpectrum!\pFantominus! Go!");
+        MESSAGE("2 retire Qulbutoké!");
+        MESSAGE("2 envoie\nun Farigiraf!");
+        MESSAGE("2 retire Okéoké!");
+        MESSAGE("2 envoie\nun Girafarig!");
+        MESSAGE("3 retire Spectrum!");
+        MESSAGE("3 envoie\nEctoplasma!");
     }
 }
 
@@ -219,15 +219,15 @@ AI_TWO_VS_ONE_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSEND
             EXPECT_SWITCH(opponentRight, 2);
         }
     } SCENE {
-        MESSAGE("You are challenged by " AI_TRAINER_NAME "!");
-        MESSAGE(AI_TRAINER_NAME " sent out Wobbuffet and Wynaut!");
-        MESSAGE(AI_PARTNER_NAME " sent out Haunter! Go, Gastly!");
-        MESSAGE(AI_TRAINER_NAME " withdrew Wobbuffet!");
-        MESSAGE(AI_TRAINER_NAME " sent out Farigiraf!");
-        MESSAGE(AI_TRAINER_NAME " withdrew Wynaut!");
-        MESSAGE(AI_TRAINER_NAME " sent out Girafarig!");
-        MESSAGE(AI_PARTNER_NAME " withdrew Haunter!");
-        MESSAGE(AI_PARTNER_NAME " sent out Gengar!");
+        MESSAGE("Un combat est lancé\npar " AI_TRAINER_NAME "!\p");
+        MESSAGE("Un Qulbutoké et un Okéoké\nsont envoyés par\l" AI_TRAINER_NAME "!");
+        MESSAGE("Spectrum est envoyé par\n" AI_PARTNER_NAME "!\pFantominus! Go!");
+        MESSAGE("Qulbutoké est retiré par " AI_TRAINER_NAME "!");
+        MESSAGE("Un Farigiraf est envoyé\npar " AI_TRAINER_NAME "!");
+        MESSAGE("Okéoké est retiré par " AI_TRAINER_NAME "!");
+        MESSAGE("Un Girafarig est envoyé\npar " AI_TRAINER_NAME "!");
+        MESSAGE(AI_PARTNER_NAME " retire Spectrum!");
+        MESSAGE("Ectoplasma est envoyé par " AI_PARTNER_NAME "!");
     }
 }
 
@@ -246,13 +246,13 @@ ONE_VS_TWO_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSENDOUT
             SWITCH(opponentRight, 1);
         }
     } SCENE {
-        MESSAGE("You are challenged by 2 and 4!");
-        MESSAGE("2 sent out Wobbuffet! 4 sent out Wynaut!");
-        MESSAGE("Go! Gastly and Haunter!");
-        MESSAGE("2 withdrew Wobbuffet!");
-        MESSAGE("2 sent out Farigiraf!");
-        MESSAGE("4 withdrew Wynaut!");
-        MESSAGE("4 sent out Girafarig!");
+        MESSAGE("2 et 4\nveulent se battre!");
+        MESSAGE("2 envoie\nun Qulbutoké!\p4 envoie\nun Okéoké!");
+        MESSAGE("Fantominus et\nSpectrum! Go!");
+        MESSAGE("2 retire Qulbutoké!");
+        MESSAGE("2 envoie\nun Farigiraf!");
+        MESSAGE("4 retire Okéoké!");
+        MESSAGE("4 envoie\nun Girafarig!");
     }
 }
 
@@ -272,13 +272,13 @@ AI_ONE_VS_TWO_BATTLE_TEST("Battle Message: STRINGID_INTROMSG, STRINGID_INTROSEND
             EXPECT_SWITCH(opponentRight, 1);
         }
     } SCENE {
-        MESSAGE("You are challenged by " AI_TRAINER_NAME " and " AI_TRAINER_2_NAME "!");
-        MESSAGE(AI_TRAINER_NAME " sent out Wobbuffet! " AI_TRAINER_2_NAME " sent out Wynaut!");
-        MESSAGE("Go! Gastly and Haunter!");
-        MESSAGE(AI_TRAINER_NAME " withdrew Wobbuffet!");
-        MESSAGE(AI_TRAINER_NAME " sent out Farigiraf!");
-        MESSAGE(AI_TRAINER_2_NAME " withdrew Wynaut!");
-        MESSAGE(AI_TRAINER_2_NAME " sent out Girafarig!");
+        MESSAGE("Un combat est lancé\npar " AI_TRAINER_NAME " et\l" AI_TRAINER_2_NAME "!\p");
+        MESSAGE("Un Qulbutoké est envoyé\npar " AI_TRAINER_NAME "!\pUn Okéoké est envoyé\npar " AI_TRAINER_2_NAME "!");
+        MESSAGE("Fantominus et\nSpectrum! Go!");
+        MESSAGE("Qulbutoké est retiré par " AI_TRAINER_NAME "!");
+        MESSAGE("Un Farigiraf est envoyé\npar " AI_TRAINER_NAME "!");
+        MESSAGE("Okéoké est retiré par " AI_TRAINER_2_NAME "!");
+        MESSAGE("Un Girafarig est envoyé\npar " AI_TRAINER_2_NAME "!");
     }
 }
 

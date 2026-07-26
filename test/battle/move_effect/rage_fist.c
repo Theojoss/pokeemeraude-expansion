@@ -72,9 +72,9 @@ SINGLE_BATTLE_TEST("Rage Fist base power is not increased by a confusion hit")
         HP_BAR(opponent, captureDamage: &timesGotHit[0]);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CONFUSE_RAY, opponent);
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_CONFUSION, player);
-        MESSAGE("Wobbuffet became confused!");
+        MESSAGE("Ça rend Qulbutoké confus!");
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_CONFUSION, player);
-        MESSAGE("It hurt itself in its confusion!");
+        MESSAGE("Il se blesse dans sa confusion.");
         HP_BAR(player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAGE_FIST, player);
         HP_BAR(opponent, captureDamage: &timesGotHit[1]);
@@ -142,8 +142,8 @@ SINGLE_BATTLE_TEST("Rage Fist base power is not increased if a substitute was hi
         HP_BAR(opponent, captureDamage: &timesGotHit[0]);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUBSTITUTE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CRUNCH, opponent);
-        MESSAGE("The substitute took damage for Wobbuffet!");
-        MESSAGE("Wobbuffet's substitute faded!");
+        MESSAGE("Le clone subit les dégâts à la place de Qulbutoké!\p");
+        MESSAGE("Le clone de Qulbutoké disparaît…\p");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAGE_FIST, player);
         HP_BAR(opponent, captureDamage: &timesGotHit[1]);
     } THEN {
@@ -167,9 +167,9 @@ SINGLE_BATTLE_TEST("Rage Fist base power is not lost if user switches out")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAGE_FIST, player);
         HP_BAR(opponent, captureDamage: &timesGotHit[0]);
-        SWITCH_OUT_MESSAGE("Wobbuffet");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
-        SWITCH_OUT_MESSAGE("Wynaut");
+        SWITCH_OUT_MESSAGE("Okéoké");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAGE_FIST, player);
         HP_BAR(opponent, captureDamage: &timesGotHit[1]);
     } THEN {
@@ -241,8 +241,8 @@ SINGLE_BATTLE_TEST("Rage Fist base power is not increased if move had no affect"
         for (turns = 0; turns < 2; turns++) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_RAGE_FIST, player);
             HP_BAR(opponent, captureDamage: &timesGotHit[turns]);
-            MESSAGE("The opposing Regirock used Scratch!");
-            MESSAGE("It doesn't affect Gastly…");
+            MESSAGE("Regirock ennemi utilise\nGriffe!");
+            MESSAGE("Ça n'affecte pas Fantominus…");
         }
     } THEN {
         EXPECT_EQ(timesGotHit[0], timesGotHit[1]);

@@ -61,14 +61,14 @@ SINGLE_BATTLE_TEST("Weak Armor does not trigger when brought in by Dragon Tail a
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STEALTH_ROCK, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_TAIL, opponent);
         HP_BAR(player);
-        MESSAGE("Slugma was dragged out!");
+        MESSAGE("Limagma est traîné de force au combat!\p");
         HP_BAR(player);
-        MESSAGE("Pointed stones dug into Slugma!");
+        MESSAGE("Des pierres pointues transpercent Limagma!");
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Slugma's Defense fell!");
-            MESSAGE("Slugma's Speed rose sharply!");
+            MESSAGE("Ah, Défense du Limagma baisse!");
+            MESSAGE("Ah, Vitesse du Limagma augmente beaucoup!");
         }
     } THEN {
         EXPECT_EQ(player->statStages[STAT_DEF], DEFAULT_STAT_STAGE);
@@ -97,14 +97,14 @@ SINGLE_BATTLE_TEST("Weak Armor still boosts Speed if Defense can't go any lower"
         ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Slugma's Defense fell!");
+            MESSAGE("Ah, Défense du Limagma baisse!");
         }
-        MESSAGE("Slugma's Defense won't go any lower!");
+        MESSAGE("Défense de Limagma ne peut plus baisser!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         if (gen == GEN_6)
-            MESSAGE("Slugma's Speed rose!");
+            MESSAGE("Ah, Vitesse du Limagma augmente!");
         else
-            MESSAGE("Slugma's Speed rose sharply!");
+            MESSAGE("Ah, Vitesse du Limagma augmente beaucoup!");
 
     } THEN {
         EXPECT_EQ(player->statStages[STAT_DEF], MIN_STAT_STAGE);
@@ -127,12 +127,12 @@ SINGLE_BATTLE_TEST("Weak Armor still lowers Defense if Speed can't go any higher
         HP_BAR(player);
         ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Slugma's Defense fell!");
+        MESSAGE("Ah, Défense du Limagma baisse!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Slugma's Speed rose sharply!");
+            MESSAGE("Ah, Vitesse du Limagma augmente beaucoup!");
         }
-        MESSAGE("Slugma's Speed won't go any higher!");
+        MESSAGE("Vitesse de Limagma ne peut plus augmenter!");
     } THEN {
         EXPECT_EQ(player->statStages[STAT_DEF], DEFAULT_STAT_STAGE - 1);
         EXPECT_EQ(player->statStages[STAT_SPEED], MAX_STAT_STAGE);
@@ -155,21 +155,21 @@ SINGLE_BATTLE_TEST("Weak Armor doesn't interrupt multi hit moves if Defense can'
         {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FURY_SWIPES, opponent);
             ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
-            MESSAGE("Magcargo's Defense fell!");
-            MESSAGE("Magcargo's Speed rose sharply!");
+            MESSAGE("Ah, Défense du Volcaropod baisse!");
+            MESSAGE("Ah, Vitesse du Volcaropod augmente beaucoup!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FURY_SWIPES, opponent);
         ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
-        MESSAGE("Magcargo's Defense won't go any lower!");
-        MESSAGE("Magcargo's Speed rose sharply!");
+        MESSAGE("Défense de Volcaropod ne peut plus baisser!");
+        MESSAGE("Ah, Vitesse du Volcaropod augmente beaucoup!");
         for (j = 0; j < 2; j++)
         {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FURY_SWIPES, opponent);
             // Ability doesn't activate if neither stat can be changed.
             NONE_OF {
                 ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
-                MESSAGE("Magcargo's Defense won't go any lower!");
-                MESSAGE("Magcargo's Speed won't go any higher!");
+                MESSAGE("Défense de Volcaropod ne peut plus baisser!");
+                MESSAGE("Vitesse de Volcaropod ne peut plus augmenter!");
             }
         }
     } THEN {
@@ -192,14 +192,14 @@ SINGLE_BATTLE_TEST("Weak Armor doesn't interrupt multi hit moves if Speed can't 
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FURY_SWIPES, opponent);
         ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
-        MESSAGE("Magcargo's Defense fell!");
-        MESSAGE("Magcargo's Speed rose sharply!");
+        MESSAGE("Ah, Défense du Volcaropod baisse!");
+        MESSAGE("Ah, Vitesse du Volcaropod augmente beaucoup!");
         for (j = 0; j < 4; j++)
         {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FURY_SWIPES, opponent);
             ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
-            MESSAGE("Magcargo's Defense fell!");
-            MESSAGE("Magcargo's Speed won't go any higher!");
+            MESSAGE("Ah, Défense du Volcaropod baisse!");
+            MESSAGE("Vitesse de Volcaropod ne peut plus augmenter!");
         }
     } THEN {
         EXPECT_EQ(player->statStages[STAT_DEF], DEFAULT_STAT_STAGE - 5);

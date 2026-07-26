@@ -32,7 +32,7 @@ SINGLE_BATTLE_TEST("Tickle is blocked by Substitute (Gen4+)")
         TURN { MOVE(player, MOVE_TICKLE); MOVE(opponent, MOVE_CELEBRATE); }
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_TICKLE, player);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
         EXPECT_EQ(opponent->statStages[STAT_DEF], DEFAULT_STAT_STAGE);

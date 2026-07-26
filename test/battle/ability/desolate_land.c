@@ -16,13 +16,13 @@ SINGLE_BATTLE_TEST("Desolate Land blocks damaging Water-type moves")
         TURN { MOVE(opponent, MOVE_WATER_GUN); }
         TURN { MOVE(opponent, MOVE_WATER_GUN); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Water Gun!");
+        MESSAGE("Qulbutoké ennemi utilise\nPistolet à O!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_WATER_GUN, opponent);
-        MESSAGE("The Water-type attack evaporated in the extremely harsh sunlight!");
+        MESSAGE("Le soleil brille si intensément que toute attaque de type Eau s'évapore!");
         NOT HP_BAR(player);
-        MESSAGE("The opposing Wobbuffet used Water Gun!");
+        MESSAGE("Qulbutoké ennemi utilise\nPistolet à O!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_WATER_GUN, opponent);
-        MESSAGE("The Water-type attack evaporated in the extremely harsh sunlight!");
+        MESSAGE("Le soleil brille si intensément que toute attaque de type Eau s'évapore!");
         NOT HP_BAR(player);
     } THEN {
         EXPECT_EQ(player->hp, player->maxHP);
@@ -35,17 +35,17 @@ DOUBLE_BATTLE_TEST("Desolate Land blocks damaging Water-type moves and prints th
         ASSUME(GetMoveCategory(MOVE_SURF) != DAMAGE_CATEGORY_STATUS);
         ASSUME(GetMoveType(MOVE_SURF) == TYPE_WATER);
         ASSUME(GetMoveTarget(MOVE_SURF) == TARGET_FOES_AND_ALLY);
-        PLAYER(SPECIES_GROUDON) { Item(ITEM_RED_ORB); Speed(5); }
-        PLAYER(SPECIES_WOBBUFFET) { Speed(5); }
-        OPPONENT(SPECIES_WOBBUFFET) { Speed(10); }
-        OPPONENT(SPECIES_WOBBUFFET) { Speed(8); }
+        PLAYER(SPECIES_GROUDON) { Item(ITEM_RED_ORB); }
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
         TURN { MOVE(opponentLeft, MOVE_SURF); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Surf!");
+        MESSAGE("Qulbutoké ennemi utilise\nSurf!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SURF, opponentLeft);
-        MESSAGE("The Water-type attack evaporated in the extremely harsh sunlight!");
-        NOT MESSAGE("The Water-type attack evaporated in the extremely harsh sunlight!");
+        MESSAGE("Le soleil brille si intensément que toute attaque de type Eau s'évapore!");
+        NOT MESSAGE("Le soleil brille si intensément que toute attaque de type Eau s'évapore!");
     } THEN {
         EXPECT_EQ(playerLeft->hp, playerLeft->maxHP);
         EXPECT_EQ(playerRight->hp, playerRight->maxHP);
@@ -61,8 +61,8 @@ SINGLE_BATTLE_TEST("Desolate Land does not block a move if Pokémon is asleep an
     } WHEN {
         TURN { MOVE(opponent, MOVE_WATER_GUN); }
     } SCENE {
-        NOT MESSAGE("The Water-type attack evaporated in the extremely harsh sunlight!");
-        MESSAGE("The opposing Wobbuffet is fast asleep.");
+        NOT MESSAGE("Le soleil brille si intensément que toute attaque de type Eau s'évapore!");
+        MESSAGE("Qulbutoké ennemi dort profondément.");
     }
 }
 
@@ -94,8 +94,8 @@ SINGLE_BATTLE_TEST("Desolate Land is removed immediately if user faints")
         TURN { MOVE(opponent, MOVE_POUND); SEND_OUT(player, 1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_POUND, opponent);
-        NOT MESSAGE("The sunlight is strong.");
-        MESSAGE("The extremely harsh sunlight faded!");
+        NOT MESSAGE("Les rayons du soleil brillent.");
+        MESSAGE("Les rayons du soleil s'affaiblissent.");
     }
 }
 
@@ -157,7 +157,7 @@ SINGLE_BATTLE_TEST("Desolate Land can be replaced by Delta Stream")
         TURN { MOVE(opponent, MOVE_CELEBRATE, gimmick: GIMMICK_MEGA); }
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_DELTA_STREAM);
-        MESSAGE("Mysterious strong winds are protecting Flying-type Pokémon!");
+        MESSAGE("Un vent mystérieux enveloppe les Pokémon de type Vol!");
     } THEN {
         EXPECT(gBattleWeather & B_WEATHER_STRONG_WINDS);
     }
@@ -173,7 +173,7 @@ SINGLE_BATTLE_TEST("Desolate Land can be replaced by Primordial Sea")
         TURN { SWITCH(opponent, 1); }
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_PRIMORDIAL_SEA);
-        MESSAGE("A heavy rain began to fall!");
+        MESSAGE("Une pluie battante s'abat soudainement!");
     } THEN {
         EXPECT(gBattleWeather & B_WEATHER_RAIN_PRIMAL);
     }

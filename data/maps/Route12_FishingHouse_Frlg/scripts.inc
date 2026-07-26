@@ -60,19 +60,19 @@ Route12_FishingHouse_EventScript_NotMagikarp::
 
 Route12_FishingHouse_EventScript_NotRecordMagikarp::
 	goto_if_unset FLAG_GOT_RECORD_SETTING_MAGIKARP, Route12_FishingHouse_EventScript_NewRecordMagikarp
-	msgbox Route12_FishingHouse_Text_HmmXInchesDoesntMeasureUp
+	msgbox Route12_FishingHouse_Text_HmmXSizeDoesntMeasureUp
 	release
 	end
 
 Route12_FishingHouse_EventScript_TieRecordMagikarp::
 	goto_if_unset FLAG_GOT_RECORD_SETTING_MAGIKARP, Route12_FishingHouse_EventScript_NewRecordMagikarp
-	msgbox Route12_FishingHouse_Text_HuhXInchesSameSizeAsLast
+	msgbox Route12_FishingHouse_Text_HuhXSizeSameSizeAsLast
 	release
 	end
 
 Route12_FishingHouse_EventScript_NewRecordMagikarp::
 	setflag FLAG_GOT_RECORD_SETTING_MAGIKARP
-	msgbox Route12_FishingHouse_Text_WhoaXInchesTakeThis
+	msgbox Route12_FishingHouse_Text_WhoaXSizeTakeThis
 	giveitem ITEM_NET_BALL
 	goto_if_eq VAR_RESULT, FALSE, Route12_FishingHouse_EventScript_NoRoomForNetBall
 	msgbox Route12_FishingHouse_Text_LookForwardToGreaterRecords
@@ -93,7 +93,7 @@ Route12_FishingHouse_EventScript_MagikarpRecordSign::
 
 Route12_FishingHouse_EventScript_MagikarpRecordSignRecordSet::
 	special GetMagikarpSizeRecordInfo
-	msgbox Route12_FishingHouse_Text_MostGiganticMagikarpXInches
+	msgbox Route12_FishingHouse_Text_MostGiganticMagikarpXSize
 	releaseall
 	end
 
@@ -142,8 +142,8 @@ Route12_FishingHouse_Text_OhMagikarpAllowMeToSee::
 	.string "Tu m'as ramené un MAGICARPE?\n"
 	.string "Vite vite, je veux le voir!$"
 
-Route12_FishingHouse_Text_WhoaXInchesTakeThis::
-	.string "… Waouh! {STR_VAR_2}cm!\n"
+Route12_FishingHouse_Text_WhoaXSizeTakeThis::
+	.string "… Waouh! {STR_VAR_2}!\n"
 	.string "Il est gigantesque!\p"
 	.string "La pêche n'a plus de secret\n"
 	.string "pour toi.\p"
@@ -153,16 +153,16 @@ Route12_FishingHouse_Text_LookForwardToGreaterRecords::
 	.string "J'ai hâte de voir tes prochaines\n"
 	.string "prises!$"
 
-Route12_FishingHouse_Text_HuhXInchesSameSizeAsLast::
+Route12_FishingHouse_Text_HuhXSizeSameSizeAsLast::
 	.string "Hein?\n"
-	.string "{STR_VAR_2} cm?\p"
+	.string "{STR_VAR_2}?\p"
 	.string "C'est la même taille que la\n"
 	.string "dernière fois.$"
 
-Route12_FishingHouse_Text_HmmXInchesDoesntMeasureUp::
+Route12_FishingHouse_Text_HmmXSizeDoesntMeasureUp::
 	.string "Hmmm…\n"
-	.string "Celui-là fait {STR_VAR_2} cm de long.\p"
-	.string "Rien à voir avec celui de {STR_VAR_3} cm\n"
+	.string "Celui-là fait {STR_VAR_2} de long.\p"
+	.string "Rien à voir avec celui de {STR_VAR_3}\n"
 	.string "que tu avais ramené.$"
 
 Route12_FishingHouse_Text_DoesntLookLikeMagikarp::
@@ -175,10 +175,10 @@ Route12_FishingHouse_Text_NoRoomForGift::
 	.string "J'avais un cadeau pour toi, mais\n"
 	.string "t'as plus de place!$"
 
-Route12_FishingHouse_Text_MostGiganticMagikarpXInches::
+Route12_FishingHouse_Text_MostGiganticMagikarpXSize::
 	.string "Le plus gros MAGICARPE que\n"
 	.string "j'ai vu!\p"
-	.string "{STR_VAR_3} cm!$"
+	.string "{STR_VAR_3}!$"
 
 Route12_FishingHouse_Text_BlankChartOfSomeSort::
 	.string "C'est un classement vierge.\p"

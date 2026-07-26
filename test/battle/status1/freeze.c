@@ -25,7 +25,7 @@ SINGLE_BATTLE_TEST("Freeze is thawed by opponent's Fire-type attacks (Gen 3+)")
         TURN { MOVE(opponent, MOVE_FIRE_SPIN); MOVE(player, MOVE_CELEBRATE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_SPIN, opponent);
-        MESSAGE("Wobbuffet thawed out!");
+        MESSAGE("Qulbutoké n'est plus gelé!");
         STATUS_ICON(player, none: TRUE);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
     }
@@ -42,7 +42,7 @@ SINGLE_BATTLE_TEST("Freeze is thawed by opponent's Fire-type attacks even if She
         TURN { MOVE(opponent, MOVE_EMBER); MOVE(player, MOVE_CELEBRATE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EMBER, opponent);
-        MESSAGE("Wobbuffet thawed out!");
+        MESSAGE("Qulbutoké n'est plus gelé!");
         STATUS_ICON(player, none: TRUE);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
     }
@@ -64,7 +64,7 @@ SINGLE_BATTLE_TEST("Freeze is thawed by opponent's Weather Ball when it becomes 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUNNY_DAY, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WEATHER_BALL, opponent);
         HP_BAR(player);
-        MESSAGE("Wobbuffet thawed out!");
+        MESSAGE("Qulbutoké n'est plus gelé!");
         STATUS_ICON(player, none: TRUE);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
     }
@@ -81,7 +81,7 @@ SINGLE_BATTLE_TEST("Freeze is thawed by opponent's attack that can burn (Gen 1-2
         TURN { MOVE(opponent, MOVE_EMBER); MOVE(player, MOVE_CELEBRATE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EMBER, opponent);
-        MESSAGE("Wobbuffet thawed out!");
+        MESSAGE("Qulbutoké n'est plus gelé!");
         STATUS_ICON(player, none: TRUE);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
     }
@@ -99,7 +99,7 @@ SINGLE_BATTLE_TEST("Freeze is thawed by opponent's Tri Attack 1/3 of the time (G
         TURN { MOVE(opponent, MOVE_TRI_ATTACK); MOVE(player, MOVE_CELEBRATE, WITH_RNG(RNG_FROZEN, FALSE)); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TRI_ATTACK, opponent);
-        MESSAGE("Wobbuffet thawed out!");
+        MESSAGE("Qulbutoké n'est plus gelé!");
         STATUS_ICON(player, none: TRUE);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
     }
@@ -116,7 +116,7 @@ SINGLE_BATTLE_TEST("Freeze is thawed by opponent's attack that can thaw the user
         TURN { MOVE(opponent, MOVE_SCALD); MOVE(player, MOVE_CELEBRATE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCALD, opponent);
-        MESSAGE("Wobbuffet thawed out!");
+        MESSAGE("Qulbutoké n'est plus gelé!");
         STATUS_ICON(player, none: TRUE);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
     }
@@ -136,7 +136,7 @@ SINGLE_BATTLE_TEST("Freeze isn't thawed by opponent's attack that can thaw the u
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCALD, opponent);
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
-            MESSAGE("Wobbuffet thawed out!");
+            MESSAGE("Qulbutoké n'est plus gelé!");
             STATUS_ICON(player, none: TRUE);
         }
     }
@@ -154,7 +154,7 @@ SINGLE_BATTLE_TEST("Freeze is thawed by opponent's attack that can thaw the user
         TURN { MOVE(opponent, MOVE_HYDRO_STEAM); MOVE(player, MOVE_CELEBRATE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HYDRO_STEAM, opponent);
-        MESSAGE("Wobbuffet thawed out!");
+        MESSAGE("Qulbutoké n'est plus gelé!");
         STATUS_ICON(player, none: TRUE);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
     }
@@ -169,9 +169,9 @@ SINGLE_BATTLE_TEST("Freeze is thawed by user's Flame Wheel")
     } WHEN {
         TURN { MOVE(player, MOVE_FLAME_WHEEL); }
     } SCENE {
-        MESSAGE("Wobbuffet's Flame Wheel melted the ice!");
+        MESSAGE("La glace a fondu grâce à la capacité Roue de Feu de Qulbutoké!");
         STATUS_ICON(player, none: TRUE);
-        MESSAGE("Wobbuffet used Flame Wheel!");
+        MESSAGE("Qulbutoké utilise\nRoue de Feu!");
     }
 }
 
@@ -186,8 +186,8 @@ SINGLE_BATTLE_TEST("Freeze isn't thawed if opponent is asleep during thawing att
         TURN { MOVE(opponent, MOVE_EMBER); MOVE(player, MOVE_CELEBRATE); }
     } SCENE {
         NONE_OF {
-            MESSAGE("The opposing Wobbuffet used Ember!");
-            MESSAGE("Wobbuffet thawed out!");
+            MESSAGE("Qulbutoké ennemi utilise\nFlammèche!");
+            MESSAGE("Qulbutoké n'est plus gelé!");
             STATUS_ICON(player, none: TRUE);
         }
     }
@@ -204,7 +204,7 @@ SINGLE_BATTLE_TEST("Freeze isn't thawed if opponent is asleep during thawing att
     } SCENE {
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SCALD, opponent);
-            MESSAGE("Wobbuffet thawed out!");
+            MESSAGE("Qulbutoké n'est plus gelé!");
             STATUS_ICON(player, none: TRUE);
         }
     }

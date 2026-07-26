@@ -105,8 +105,8 @@ SINGLE_BATTLE_TEST("Skill Swap fails if user or target has an ability that can't
         TURN { MOVE(player, MOVE_SKILL_SWAP); MOVE(opponent, MOVE_SKILL_SWAP); }
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SKILL_SWAP, player);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SKILL_SWAP, opponent);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }

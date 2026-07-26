@@ -17,7 +17,7 @@ SINGLE_BATTLE_TEST("Galvanize turns a normal type move into Electric")
         TURN { MOVE(opponent, MOVE_SCRATCH); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
-        MESSAGE("It's super effective!");
+        MESSAGE("C'est super efficace!");
     }
 }
 
@@ -39,7 +39,7 @@ SINGLE_BATTLE_TEST("Galvanize can not turn certain moves into Electric type move
         TURN { MOVE(opponent, move); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, move, opponent);
-        NOT MESSAGE("It's super effective!");
+        NOT MESSAGE("C'est super efficace!");
     }
 }
 
@@ -88,7 +88,7 @@ SINGLE_BATTLE_TEST("Galvanize doesn't affect Weather Ball's type", s16 damage)
     } SCENE {
         HP_BAR(opponent, captureDamage: &results[i].damage);
         if (move == MOVE_SUNNY_DAY)
-            MESSAGE("It's super effective!");
+            MESSAGE("C'est super efficace!");
     } FINALLY {
         EXPECT_MUL_EQ(results[0].damage, Q_4_12(6.0), results[1].damage); // double base power + type effectiveness + sun 50% boost
         EXPECT_MUL_EQ(results[2].damage, Q_4_12(6.0), results[3].damage);
@@ -112,7 +112,7 @@ SINGLE_BATTLE_TEST("Galvanize doesn't affect Natural Gift's type")
         TURN { MOVE(player, MOVE_NATURAL_GIFT); }
     } SCENE {
         NOT { ANIMATION(ANIM_TYPE_MOVE, MOVE_NATURAL_GIFT, player); }
-        MESSAGE("It doesn't affect the opposing Beldum…");
+        MESSAGE("Ça n'affecte pas Terhal ennemi…");
     }
 }
 
@@ -141,11 +141,11 @@ SINGLE_BATTLE_TEST("Galvanize doesn't affect Judgment / Techno Blast / Multi-Att
     } SCENE {
         NOT { ANIMATION(ANIM_TYPE_MOVE, move, player); }
         if (move == MOVE_JUDGMENT)
-            MESSAGE("It doesn't affect the opposing Vaporeon…");
+            MESSAGE("Ça n'affecte pas Aquali ennemi…");
         else if (move == MOVE_TECHNO_BLAST)
-            MESSAGE("It doesn't affect the opposing Vaporeon…");
+            MESSAGE("Ça n'affecte pas Aquali ennemi…");
         else if (move == MOVE_MULTI_ATTACK)
-            MESSAGE("It doesn't affect the opposing Vaporeon…");
+            MESSAGE("Ça n'affecte pas Aquali ennemi…");
     }
 }
 
@@ -161,7 +161,7 @@ SINGLE_BATTLE_TEST("Galvanize doesn't affect Hidden Power's type")
         TURN { MOVE(player, MOVE_HIDDEN_POWER); }
     } SCENE {
         NOT { ANIMATION(ANIM_TYPE_MOVE, MOVE_HIDDEN_POWER, player); }
-        MESSAGE("It doesn't affect the opposing Vaporeon…");
+        MESSAGE("Ça n'affecte pas Aquali ennemi…");
     }
 }
 
@@ -177,7 +177,7 @@ SINGLE_BATTLE_TEST("Galvanize changes Tera Blast's type when not Terastallized")
         TURN { MOVE(player, MOVE_TERA_BLAST); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TERA_BLAST, player);
-        MESSAGE("It's super effective!");
+        MESSAGE("C'est super efficace!");
     }
 }
 
@@ -193,7 +193,7 @@ SINGLE_BATTLE_TEST("Galvanize doesn't change Tera Blast's type when Terastallize
         TURN { MOVE(player, MOVE_TERA_BLAST, gimmick: GIMMICK_TERA); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TERA_BLAST, player);
-        NOT { MESSAGE("It doesn't affect the opposing Sandshrew…"); }
+        NOT { MESSAGE("Ça n'affecte pas Sabelette ennemi…"); }
     }
 }
 
@@ -211,7 +211,7 @@ SINGLE_BATTLE_TEST("Galvanize doesn't affect Terrain Pulse's type")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GRASSY_TERRAIN, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TERRAIN_PULSE, player);
-        MESSAGE("It's super effective!");
+        MESSAGE("C'est super efficace!");
     }
 }
 
@@ -227,7 +227,7 @@ SINGLE_BATTLE_TEST("Galvanize doesn't affect damaging Z-Move types")
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ZMOVE_ACTIVATE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BREAKNECK_BLITZ, player);
-        NOT { MESSAGE("It's super effective!"); }
+        NOT { MESSAGE("C'est super efficace!"); }
     }
 }
 

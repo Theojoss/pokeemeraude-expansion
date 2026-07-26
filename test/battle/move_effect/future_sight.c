@@ -40,7 +40,7 @@ SINGLE_BATTLE_TEST("Future Sight uses Sp. Atk stat of the original user without 
         ANIMATION(ANIM_TYPE_MOVE, FUTURE_SIGHT_EQUIVALENT, player);
         HP_BAR(opponent, captureDamage: &seedFlareDmg);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FUTURE_SIGHT, player);
-        MESSAGE("The opposing Regice took the Future Sight attack!");
+        MESSAGE("Regice ennemi subit l'attaque Prescience!");
         HP_BAR(opponent, captureDamage: &futureSightDmg);
     } THEN {
         EXPECT_EQ(seedFlareDmg, futureSightDmg);
@@ -67,7 +67,7 @@ SINGLE_BATTLE_TEST("Future Sight is not boosted by Life Orb is original user if 
         ANIMATION(ANIM_TYPE_MOVE, FUTURE_SIGHT_EQUIVALENT, player);
         HP_BAR(opponent, captureDamage: &seedFlareDmg);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FUTURE_SIGHT, player);
-        MESSAGE("The opposing Regice took the Future Sight attack!");
+        MESSAGE("Regice ennemi subit l'attaque Prescience!");
         HP_BAR(opponent, captureDamage: &futureSightDmg);
         NOT HP_BAR(player);
     } THEN {
@@ -117,8 +117,8 @@ SINGLE_BATTLE_TEST("Future Sight is affected by type effectiveness (Gen 5+)")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, FUTURE_SIGHT_EQUIVALENT, player);
         HP_BAR(opponent);
-        MESSAGE("The opposing Houndoom took the Future Sight attack!");
-        MESSAGE("It doesn't affect the opposing Houndoom…");
+        MESSAGE("Démolosse ennemi subit l'attaque Prescience!");
+        MESSAGE("Ça n'affecte pas Démolosse ennemi…");
         NOT HP_BAR(opponent);
     }
 }
@@ -157,9 +157,9 @@ SINGLE_BATTLE_TEST("Future Sight will miss timing if target faints before it is 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MEMENTO, opponent);
-        MESSAGE("The opposing Wobbuffet fainted!");
-        MESSAGE("2 sent out Wynaut!");
-        NOT MESSAGE("The opposing Wynaut took the Future Sight attack!");
+        MESSAGE("Qulbutoké ennemi est K.O.!\p");
+        MESSAGE("2 envoie\nun Okéoké!");
+        NOT MESSAGE("Okéoké ennemi subit l'attaque Prescience!");
     }
 }
 
@@ -179,9 +179,9 @@ SINGLE_BATTLE_TEST("Future Sight will miss timing if target faints by residual d
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FUTURE_SIGHT, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WRAP, player);
-        MESSAGE("The opposing Wobbuffet fainted!");
-        MESSAGE("2 sent out Wynaut!");
-        NOT MESSAGE("The opposing Wynaut took the Future Sight attack!");
+        MESSAGE("Qulbutoké ennemi est K.O.!\p");
+        MESSAGE("2 envoie\nun Okéoké!");
+        NOT MESSAGE("Okéoké ennemi subit l'attaque Prescience!");
     }
 }
 
@@ -198,9 +198,9 @@ SINGLE_BATTLE_TEST("Future Sight breaks Focus Sash and doesn't make the holder e
         TURN {}
         TURN { MOVE(player, MOVE_PSYCHIC); }
     } SCENE {
-        MESSAGE("The opposing Pidgey hung on using its Focus Sash!");
+        MESSAGE("Roucool ennemi tient bon grâce à Ceinture Force!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PSYCHIC, player);
-        MESSAGE("The opposing Pidgey fainted!");
+        MESSAGE("Roucool ennemi est K.O.!\p");
     }
 }
 
@@ -378,7 +378,7 @@ SINGLE_BATTLE_TEST("Toxic Chain can inflict bad poison from Future Sight if the 
         TURN {}
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FUTURE_SIGHT, player);
-        MESSAGE("The opposing Wobbuffet took the Future Sight attack!");
+        MESSAGE("Qulbutoké ennemi subit l'attaque Prescience!");
         HP_BAR(opponent);
         ABILITY_POPUP(player, ABILITY_TOXIC_CHAIN);
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PSN, opponent);
@@ -401,7 +401,7 @@ SINGLE_BATTLE_TEST("Toxic Chain does not trigger from Future Sight if the user i
         TURN {}
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FUTURE_SIGHT, player);
-        MESSAGE("The opposing Wobbuffet took the Future Sight attack!");
+        MESSAGE("Qulbutoké ennemi subit l'attaque Prescience!");
         HP_BAR(opponent);
         NONE_OF {
             ABILITY_POPUP(player, ABILITY_TOXIC_CHAIN);

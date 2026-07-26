@@ -15,9 +15,9 @@ SINGLE_BATTLE_TEST("Teatime causes the user to consume its Berry, ignoring HP re
     } WHEN {
         TURN { MOVE(player, MOVE_TEATIME); }
     } SCENE {
-        MESSAGE("Wobbuffet used Teatime!");
+        MESSAGE("Qulbutoké utilise\nThérémonie!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TEATIME, player);
-        MESSAGE("The Liechi Berry boosted Wobbuffet's Attack!");
+        MESSAGE("Grâce à Baie Lichii, Attaque de Qulbutoké augmente!");
     }
 }
 
@@ -29,9 +29,9 @@ SINGLE_BATTLE_TEST("Teatime causes the user to consume its Berry, even in the pr
     } WHEN {
         TURN { MOVE(player, MOVE_TEATIME); }
     } SCENE {
-        MESSAGE("Wobbuffet used Teatime!");
+        MESSAGE("Qulbutoké utilise\nThérémonie!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TEATIME, player);
-        MESSAGE("The Liechi Berry boosted Wobbuffet's Attack!");
+        MESSAGE("Grâce à Baie Lichii, Attaque de Qulbutoké augmente!");
     }
 }
 
@@ -46,9 +46,9 @@ SINGLE_BATTLE_TEST("Teatime causes the user to consume its Berry, even under the
             MOVE(player, MOVE_TEATIME);
         }
     } SCENE {
-        MESSAGE("Wobbuffet used Teatime!");
+        MESSAGE("Qulbutoké utilise\nThérémonie!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TEATIME, player);
-        MESSAGE("The Liechi Berry boosted Wobbuffet's Attack!");
+        MESSAGE("Grâce à Baie Lichii, Attaque de Qulbutoké augmente!");
     }
 }
 
@@ -60,9 +60,9 @@ SINGLE_BATTLE_TEST("Teatime causes the user to consume its Berry, ignoring HP re
     } WHEN {
         TURN { MOVE(opponent, MOVE_TEATIME); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Teatime!");
+        MESSAGE("Qulbutoké ennemi utilise\nThérémonie!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TEATIME, opponent);
-        MESSAGE("The Liechi Berry boosted the opposing Wobbuffet's Attack!");
+        MESSAGE("Grâce à Baie Lichii, Attaque de Qulbutoké ennemi augmente!");
     }
 }
 
@@ -74,9 +74,9 @@ SINGLE_BATTLE_TEST("Teatime causes other Pokemon to consume their Berry even if 
     } WHEN {
         TURN { MOVE(player, MOVE_TEATIME); }
     } SCENE {
-        MESSAGE("Wobbuffet used Teatime!");
+        MESSAGE("Qulbutoké utilise\nThérémonie!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TEATIME, player);
-        MESSAGE("The Liechi Berry boosted the opposing Wobbuffet's Attack!");
+        MESSAGE("Grâce à Baie Lichii, Attaque de Qulbutoké ennemi augmente!");
     }
 }
 
@@ -88,9 +88,9 @@ SINGLE_BATTLE_TEST("Teatime causes other Pokemon to consume their Berry even if 
     } WHEN {
         TURN { MOVE(opponent, MOVE_TEATIME); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Teatime!");
+        MESSAGE("Qulbutoké ennemi utilise\nThérémonie!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TEATIME, opponent);
-        MESSAGE("The Liechi Berry boosted Wobbuffet's Attack!");
+        MESSAGE("Grâce à Baie Lichii, Attaque de Qulbutoké augmente!");
     }
 }
 
@@ -110,35 +110,35 @@ DOUBLE_BATTLE_TEST("Teatime causes all Pokémon to consume their berry")
         TURN { MOVE(user, MOVE_TEATIME); }
     } SCENE {
         if (user == playerLeft) {
-            MESSAGE("Wobbuffet used Teatime!");
+            MESSAGE("Qulbutoké utilise\nThérémonie!");
         } else if (user == playerRight) {
-            MESSAGE("Wynaut used Teatime!");
+            MESSAGE("Okéoké utilise\nThérémonie!");
         } else if (user == opponentLeft) {
-            MESSAGE("The opposing Wobbuffet used Teatime!");
+            MESSAGE("Qulbutoké ennemi utilise\nThérémonie!");
         } else {
-            MESSAGE("The opposing Wynaut used Teatime!");
+            MESSAGE("Okéoké ennemi utilise\nThérémonie!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TEATIME, user);
         if (user == playerLeft) {
-            MESSAGE("The Liechi Berry boosted Wobbuffet's Attack!");
-            MESSAGE("The Liechi Berry boosted Wynaut's Attack!");
-            MESSAGE("The Liechi Berry boosted the opposing Wobbuffet's Attack!");
-            MESSAGE("The Liechi Berry boosted the opposing Wynaut's Attack!");
+            MESSAGE("Grâce à Baie Lichii, Attaque de Qulbutoké augmente!");
+            MESSAGE("Grâce à Baie Lichii, Attaque de Okéoké augmente!");
+            MESSAGE("Grâce à Baie Lichii, Attaque de Qulbutoké ennemi augmente!");
+            MESSAGE("Grâce à Baie Lichii, Attaque de Okéoké ennemi augmente!");
         } else if (user == playerRight) {
-            MESSAGE("The Liechi Berry boosted Wynaut's Attack!");
-            MESSAGE("The Liechi Berry boosted Wobbuffet's Attack!");
-            MESSAGE("The Liechi Berry boosted the opposing Wobbuffet's Attack!");
-            MESSAGE("The Liechi Berry boosted the opposing Wynaut's Attack!");
+            MESSAGE("Grâce à Baie Lichii, Attaque de Okéoké augmente!");
+            MESSAGE("Grâce à Baie Lichii, Attaque de Qulbutoké augmente!");
+            MESSAGE("Grâce à Baie Lichii, Attaque de Qulbutoké ennemi augmente!");
+            MESSAGE("Grâce à Baie Lichii, Attaque de Okéoké ennemi augmente!");
         } else if (user == opponentLeft) {
-            MESSAGE("The Liechi Berry boosted the opposing Wobbuffet's Attack!");
-            MESSAGE("The Liechi Berry boosted the opposing Wynaut's Attack!");
-            MESSAGE("The Liechi Berry boosted Wobbuffet's Attack!");
-            MESSAGE("The Liechi Berry boosted Wynaut's Attack!");
+            MESSAGE("Grâce à Baie Lichii, Attaque de Qulbutoké ennemi augmente!");
+            MESSAGE("Grâce à Baie Lichii, Attaque de Okéoké ennemi augmente!");
+            MESSAGE("Grâce à Baie Lichii, Attaque de Qulbutoké augmente!");
+            MESSAGE("Grâce à Baie Lichii, Attaque de Okéoké augmente!");
         } else if (user == opponentRight) {
-            MESSAGE("The Liechi Berry boosted the opposing Wynaut's Attack!");
-            MESSAGE("The Liechi Berry boosted the opposing Wobbuffet's Attack!");
-            MESSAGE("The Liechi Berry boosted Wobbuffet's Attack!");
-            MESSAGE("The Liechi Berry boosted Wynaut's Attack!");
+            MESSAGE("Grâce à Baie Lichii, Attaque de Okéoké ennemi augmente!");
+            MESSAGE("Grâce à Baie Lichii, Attaque de Qulbutoké ennemi augmente!");
+            MESSAGE("Grâce à Baie Lichii, Attaque de Qulbutoké augmente!");
+            MESSAGE("Grâce à Baie Lichii, Attaque de Okéoké augmente!");
         }
     }
 }
@@ -151,9 +151,9 @@ SINGLE_BATTLE_TEST("Teatime fails if no Pokémon is holding a Berry")
     } WHEN {
         TURN { MOVE(player, MOVE_TEATIME); }
     } SCENE {
-        MESSAGE("Wobbuffet used Teatime!");
+        MESSAGE("Qulbutoké utilise\nThérémonie!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_TEATIME, player);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -168,10 +168,10 @@ SINGLE_BATTLE_TEST("Teatime does not affect Pokémon in the semi-invulnerable tu
             MOVE(player, MOVE_TEATIME);
         }
     } SCENE {
-        MESSAGE("Wobbuffet used Teatime!");
+        MESSAGE("Qulbutoké utilise\nThérémonie!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_TEATIME, player);
-            MESSAGE("The Liechi Berry boosted the opposing Wobbuffet's Attack!");
+            MESSAGE("Grâce à Baie Lichii, Attaque de Qulbutoké ennemi augmente!");
         }
     }
 }
@@ -197,7 +197,7 @@ SINGLE_BATTLE_TEST("Teatime triggers Volt Absorb if it has been affected by Elec
             MOVE(opponent, MOVE_TEATIME);
         }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Teatime!");
+        MESSAGE("Qulbutoké ennemi utilise\nThérémonie!");
         if (shouldTriggerAbility) {
             ABILITY_POPUP(player, ABILITY_VOLT_ABSORB);
             HP_BAR(player, damage: -25);
@@ -205,11 +205,11 @@ SINGLE_BATTLE_TEST("Teatime triggers Volt Absorb if it has been affected by Elec
             NOT ABILITY_POPUP(player, ABILITY_VOLT_ABSORB);
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TEATIME, opponent);
-        MESSAGE("The Liechi Berry boosted the opposing Wobbuffet's Attack!");
+        MESSAGE("Grâce à Baie Lichii, Attaque de Qulbutoké ennemi augmente!");
         if (shouldTriggerAbility) {
-            NOT MESSAGE("The Liechi Berry boosted Jolteon's Attack!");
+            NOT MESSAGE("Grâce à Baie Lichii, Attaque de Voltali augmente!");
         } else {
-            MESSAGE("The Liechi Berry boosted Jolteon's Attack!");
+            MESSAGE("Grâce à Baie Lichii, Attaque de Voltali augmente!");
         }
     }
 }
@@ -236,22 +236,22 @@ SINGLE_BATTLE_TEST("Teatime triggers Lightning Rod if it has been affected by El
             MOVE(opponent, MOVE_TEATIME);
         }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Teatime!");
+        MESSAGE("Qulbutoké ennemi utilise\nThérémonie!");
         if (shouldTriggerAbility) {
             ABILITY_POPUP(player, ABILITY_LIGHTNING_ROD);
-            MESSAGE("Pikachu's Sp. Atk rose!");
+            MESSAGE("Ah, Attaque Spéciale du Pikachu augmente!");
         } else {
             NONE_OF {
                 ABILITY_POPUP(player, ABILITY_LIGHTNING_ROD);
-                MESSAGE("Pikachu's Sp. Atk rose!");
+                MESSAGE("Ah, Attaque Spéciale du Pikachu augmente!");
             }
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TEATIME, opponent);
-        MESSAGE("The Liechi Berry boosted the opposing Wobbuffet's Attack!");
+        MESSAGE("Grâce à Baie Lichii, Attaque de Qulbutoké ennemi augmente!");
         if (shouldTriggerAbility) {
-            NOT MESSAGE("The Liechi Berry boosted Pikachu's Attack!");
+            NOT MESSAGE("Grâce à Baie Lichii, Attaque de Pikachu augmente!");
         } else {
-            MESSAGE("The Liechi Berry boosted Pikachu's Attack!");
+            MESSAGE("Grâce à Baie Lichii, Attaque de Pikachu augmente!");
         }
     }
 }
@@ -277,22 +277,22 @@ SINGLE_BATTLE_TEST("Teatime triggers Motor Drive if it has been affected by Elec
             MOVE(opponent, MOVE_TEATIME);
         }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Teatime!");
+        MESSAGE("Qulbutoké ennemi utilise\nThérémonie!");
         if (shouldTriggerAbility) {
             ABILITY_POPUP(player, ABILITY_MOTOR_DRIVE);
-            MESSAGE("Electivire's Speed rose!");
+            MESSAGE("Ah, Vitesse du Élekable augmente!");
         } else {
             NONE_OF {
                 ABILITY_POPUP(player, ABILITY_MOTOR_DRIVE);
-                MESSAGE("Electivire's Speed rose!");
+                MESSAGE("Ah, Vitesse du Élekable augmente!");
             }
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TEATIME, opponent);
-        MESSAGE("The Liechi Berry boosted the opposing Wobbuffet's Attack!");
+        MESSAGE("Grâce à Baie Lichii, Attaque de Qulbutoké ennemi augmente!");
         if (shouldTriggerAbility) {
-            NOT MESSAGE("The Liechi Berry boosted Electivire's Attack!");
+            NOT MESSAGE("Grâce à Baie Lichii, Attaque de Élekable augmente!");
         } else {
-            MESSAGE("The Liechi Berry boosted Electivire's Attack!");
+            MESSAGE("Grâce à Baie Lichii, Attaque de Élekable augmente!");
         }
     }
 }

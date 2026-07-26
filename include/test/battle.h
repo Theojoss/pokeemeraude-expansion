@@ -862,9 +862,9 @@ bool32 IsAITest(void);
 #define APPEND_COMMA_TRUE(a) , a, TRUE
 #define R_APPEND_TRUE(...) __VA_OPT__(FIRST(__VA_ARGS__), TRUE RECURSIVELY(R_FOR_EACH(APPEND_COMMA_TRUE, EXCEPT_1(__VA_ARGS__))))
 
-#define AI_TRAINER_NAME "{PKMN} TRAINER LEAF"
-#define AI_TRAINER_2_NAME "{PKMN} TRAINER RED"
-#define AI_PARTNER_NAME "{PKMN} TRAINER 1"
+#define AI_TRAINER_NAME "DRESSEUR LEAF"
+#define AI_TRAINER_2_NAME "DRESSEUR RED"
+#define AI_PARTNER_NAME "DRESSEUR STEVEN"
 
 /* Test */
 
@@ -1229,18 +1229,18 @@ void GivePlayerItem(u32 sourceLine, enum Item, u32 quantity);
 #define FREEZE_OR_FROSTBURN_STATUS(battler, isFrostbite) \
     (B_USE_FROSTBITE ? STATUS_ICON(battler, frostbite: isFrostbite) : STATUS_ICON(battler, freeze: isFrostbite))
 
-#define SWITCH_OUT_MESSAGE(name) ONE_OF {                                         \
-                                     MESSAGE(name ", that's enough! Come back!"); \
-                                     MESSAGE(name ", come back!");                \
-                                     MESSAGE(name ", OK! Come back!");            \
-                                     MESSAGE(name ", good! Come back!");          \
+#define SWITCH_OUT_MESSAGE(name) ONE_OF {                                       \
+                                     MESSAGE("Ça suffit, " name "!\nReviens!"); \
+                                     MESSAGE("Reviens, " name "!");             \
+                                     MESSAGE("OK, " name "!\nReviens!");        \
+                                     MESSAGE("Bien, " name "!\nReviens!");      \
                                  }
 
 #define SEND_IN_MESSAGE(name)    ONE_OF {                                                   \
-                                     MESSAGE("Go! " name "!");                              \
-                                     MESSAGE("You're in charge, " name "!");                \
-                                     MESSAGE("Go for it, " name "!");                       \
-                                     MESSAGE("Your opponent's weak! Get 'em, " name "!");   \
+                                     MESSAGE(name "! Go!");                                 \
+                                     MESSAGE(name "! Fonce!");                              \
+                                     MESSAGE("En avant, " name "!");                        \
+                                     MESSAGE("L'ennemi est faible!\nAttaque, " name "!");   \
                                  }
 #define EFFECTIVENESS_SE(battler, ...) QueueEffectivenessSound(__LINE__, battler, (struct EffectivenessEventContext) { __VA_ARGS__ })
 

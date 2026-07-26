@@ -15,9 +15,9 @@ SINGLE_BATTLE_TEST("Recoil if miss: Jump Kick has 50% recoil on miss")
         TURN { MOVE(player, MOVE_JUMP_KICK, hit: FALSE); }
     } SCENE {
         s32 maxHP = GetMonData(&PLAYER_PARTY[0], MON_DATA_MAX_HP);
-        MESSAGE("Wobbuffet used Jump Kick!");
-        MESSAGE("The opposing Wobbuffet avoided the attack!");
-        MESSAGE("Wobbuffet kept going and crashed!");
+        MESSAGE("Qulbutoké utilise\nPied Sauté!");
+        MESSAGE("Qulbutoké ennemi évite l'attaque!");
+        MESSAGE("Qulbutoké s'est blessé en attaquant!");
         HP_BAR(player, damage: maxHP / 2);
     }
 }
@@ -77,23 +77,23 @@ SINGLE_BATTLE_TEST("Recoil if miss: Jump Kick's recoil happens after Spiky Shiel
         TURN {}
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPIKY_SHIELD, opponent);
-        MESSAGE("Wobbuffet used Jump Kick!");
-        MESSAGE("The opposing Wobbuffet protected itself!");
+        MESSAGE("Qulbutoké utilise\nPied Sauté!");
+        MESSAGE("Qulbutoké ennemi se protège!");
         HP_BAR(player, damage: maxHp / 8);
-        MESSAGE("Wobbuffet was hurt!");
+        MESSAGE("Qulbutoké est blessé!");
         if (faintOnSpiky){
-            MESSAGE("Wobbuffet fainted!");
-            SEND_IN_MESSAGE("Wynaut");
+            MESSAGE("Qulbutoké est K.O.!\p");
+            SEND_IN_MESSAGE("Okéoké");
             NONE_OF {
-                MESSAGE("Wobbuffet kept going and crashed!");
+                MESSAGE("Qulbutoké s'est blessé en attaquant!");
                 HP_BAR(player);
             }
         } else {
-            MESSAGE("Wobbuffet kept going and crashed!");
+            MESSAGE("Qulbutoké s'est blessé en attaquant!");
             HP_BAR(player);
             if (faintOnJumpKick) {
-                MESSAGE("Wobbuffet fainted!");
-                SEND_IN_MESSAGE("Wynaut");
+                MESSAGE("Qulbutoké est K.O.!\p");
+                SEND_IN_MESSAGE("Okéoké");
             }
         }
     }
@@ -111,8 +111,8 @@ SINGLE_BATTLE_TEST("Recoil if miss: Jump Kick recoil happens after Spiky Shield 
         s32 maxHP = GetMonData(&PLAYER_PARTY[0], MON_DATA_MAX_HP);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPIKY_SHIELD, opponent);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_JUMP_KICK, player);
-        MESSAGE("Wobbuffet was hurt!");
-        MESSAGE("Wobbuffet kept going and crashed!");
+        MESSAGE("Qulbutoké est blessé!");
+        MESSAGE("Qulbutoké s'est blessé en attaquant!");
         HP_BAR(player, damage: maxHP / 2);
     }
 }
@@ -127,7 +127,7 @@ SINGLE_BATTLE_TEST("Recoil if miss: Supercell Slam causes recoil if it is absorb
     } SCENE {
         s32 maxHP = GetMonData(&PLAYER_PARTY[0], MON_DATA_MAX_HP);
         ABILITY_POPUP(opponent, ABILITY_LIGHTNING_ROD);
-        MESSAGE("Wobbuffet kept going and crashed!");
+        MESSAGE("Qulbutoké s'est blessé en attaquant!");
         HP_BAR(player, damage: maxHP / 2);
     }
 }
@@ -145,10 +145,10 @@ SINGLE_BATTLE_TEST("Recoil if miss: Disguise doesn't prevent crash damage from J
         TURN { MOVE(player, MOVE_JUMP_KICK); }
     } SCENE {
         s32 maxHP = GetMonData(&PLAYER_PARTY[0], MON_DATA_MAX_HP);
-        MESSAGE("Kangaskhan used Jump Kick!");
+        MESSAGE("Kangourex utilise\nPied Sauté!");
         if (ability == ABILITY_SCRAPPY) {
             NONE_OF {
-                MESSAGE("Kangaskhan  kept going and crashed!");
+                MESSAGE("Kangourex  s'est blessé en attaquant!");
                 HP_BAR(player, damage: maxHP / 2);
             }
         }
