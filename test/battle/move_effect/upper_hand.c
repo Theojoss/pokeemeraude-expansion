@@ -20,7 +20,7 @@ SINGLE_BATTLE_TEST("Upper Hand succeeds if the target is using a priority attack
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_UPPER_HAND, player);
         HP_BAR(opponent);
-        MESSAGE("The opposing Wobbuffet flinched and couldn't move!");
+        MESSAGE("Qulbutoké ennemi a la trouille! Il ne peut plus attaquer!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_EXTREME_SPEED, opponent);
     }
 }
@@ -137,7 +137,7 @@ DOUBLE_BATTLE_TEST("Upper Hand fails if the target has attempted to act even if 
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_UPPER_HAND, playerLeft);
         HP_BAR(opponentLeft);
-        MESSAGE("The opposing Wobbuffet flinched and couldn't move!");
+        MESSAGE("Qulbutoké ennemi a la trouille! Il ne peut plus attaquer!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_EXTREME_SPEED, opponentLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_INSTRUCT, playerRight);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_UPPER_HAND, playerLeft);

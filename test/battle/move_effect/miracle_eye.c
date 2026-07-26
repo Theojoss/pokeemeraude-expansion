@@ -85,7 +85,7 @@ SINGLE_BATTLE_TEST("Miracle Eye fails if the target is already affected by Mirac
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MIRACLE_EYE, player);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_MIRACLE_EYE, player);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -101,6 +101,6 @@ SINGLE_BATTLE_TEST("Miracle Eye does not fail if the target is already affected 
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MIRACLE_EYE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MIRACLE_EYE, player);
-        NOT MESSAGE("But it failed!");
+        NOT MESSAGE("Mais cela échoue!");
     }
 }

@@ -25,20 +25,20 @@ SINGLE_BATTLE_TEST("Headbutt flinches the target if attacker is faster")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HEADBUTT, player);
         HP_BAR(opponent);
         if (isFaster) {
-            MESSAGE("The opposing Wobbuffet flinched and couldn't move!");
+            MESSAGE("Qulbutoké ennemi a la trouille! Il ne peut plus attaquer!");
             NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
         } else {
-            NOT MESSAGE("The opposing Wobbuffet flinched and couldn't move!");
+            NOT MESSAGE("Qulbutoké ennemi a la trouille! Il ne peut plus attaquer!");
         }
 
         // 2nd turn
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HEADBUTT, player);
         HP_BAR(opponent);
         if (isFaster) {
-            MESSAGE("The opposing Wobbuffet flinched and couldn't move!");
+            MESSAGE("Qulbutoké ennemi a la trouille! Il ne peut plus attaquer!");
             NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
         } else {
-            NOT MESSAGE("The opposing Wobbuffet flinched and couldn't move!");
+            NOT MESSAGE("Qulbutoké ennemi a la trouille! Il ne peut plus attaquer!");
         }
     }
 }
@@ -55,17 +55,17 @@ SINGLE_BATTLE_TEST("Protect always works when used after flinching")
     } SCENE {
         // 1st turn
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PROTECT, player);
-        MESSAGE("Wobbuffet protected itself!");
+        MESSAGE("Qulbutoké se protège!");
 
         // 2nd turn
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HEADBUTT, opponent);
         HP_BAR(player);
-        MESSAGE("Wobbuffet flinched and couldn't move!");
+        MESSAGE("Qulbutoké a la trouille! Il ne peut plus attaquer!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
 
         // 3rd turn
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PROTECT, player);
-        MESSAGE("Wobbuffet protected itself!");
+        MESSAGE("Qulbutoké se protège!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_HEADBUTT, opponent);
     }
 }
@@ -80,6 +80,6 @@ SINGLE_BATTLE_TEST("Headbutt flinches 30% of the time")
         TURN { MOVE(player, MOVE_HEADBUTT); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HEADBUTT, player);
-        MESSAGE("The opposing Wobbuffet flinched and couldn't move!");
+        MESSAGE("Qulbutoké ennemi a la trouille! Il ne peut plus attaquer!");
     }
 }

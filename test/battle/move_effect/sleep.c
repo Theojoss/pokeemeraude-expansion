@@ -25,15 +25,15 @@ SINGLE_BATTLE_TEST("Hypnosis inflicts 1-3 turns of sleep")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HYPNOSIS, player);
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_SLP, opponent);
-        MESSAGE("The opposing Wobbuffet fell asleep!");
+        MESSAGE("Qulbutoké ennemi s'est endormi!");
         STATUS_ICON(opponent, sleep: TRUE);
         for (count = 0; count < turns; ++count)
         {
             if (count < turns - 1)
-                MESSAGE("The opposing Wobbuffet is fast asleep.");
+                MESSAGE("Qulbutoké ennemi dort profondément.");
             ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_SLP, opponent);
         }
-        MESSAGE("The opposing Wobbuffet woke up!");
+        MESSAGE("Qulbutoké ennemi se réveille!");
         STATUS_ICON(opponent, none: TRUE);
     }
 }

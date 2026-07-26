@@ -34,7 +34,7 @@ SINGLE_BATTLE_TEST("Absorb fails if Heal Block applies")
     } WHEN {
         TURN { MOVE(opponent, MOVE_HEAL_BLOCK); MOVE(player, MOVE_ABSORB); }
     } SCENE {
-        MESSAGE("Wobbuffet was prevented from healing!");
+        MESSAGE("Qulbutoké ne peut pas guérir!\p");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_ABSORB, player);
             HP_BAR(opponent);
@@ -99,7 +99,7 @@ SINGLE_BATTLE_TEST("Absorb does not drain any HP if user flinched")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponent);
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_ABSORB, player);
-            MESSAGE("The opposing Wobbuffet had its energy drained!");
+            MESSAGE("L'énergie de Qulbutoké ennemi est drainée!");
         }
     }
 }
@@ -133,7 +133,7 @@ SINGLE_BATTLE_TEST("Absorb does not drain any HP if user does 0 damage")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ENDURE, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ABSORB, player);
-        NOT MESSAGE("The opposing Wobbuffet had its energy drained!");
+        NOT MESSAGE("L'énergie de Qulbutoké ennemi est drainée!");
     }
 }
 
@@ -198,8 +198,8 @@ SINGLE_BATTLE_TEST("Absorb does not play the draining message at full HP in Gen5
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ABSORB, player);
         if (genConfig < GEN_5)
-            MESSAGE("The opposing Wobbuffet had its energy drained!");
+            MESSAGE("L'énergie de Qulbutoké ennemi est drainée!");
         else
-            NOT MESSAGE("The opposing Wobbuffet had its energy drained!");
+            NOT MESSAGE("L'énergie de Qulbutoké ennemi est drainée!");
     }
 }

@@ -70,7 +70,7 @@ SINGLE_BATTLE_TEST("Simple Beam fails if target has an ability that can't be ove
         TURN { MOVE(player, MOVE_SIMPLE_BEAM); }
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SIMPLE_BEAM, player);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -143,6 +143,6 @@ SINGLE_BATTLE_TEST("Worry Seed fails if target has an ability that can't be over
         TURN { MOVE(player, MOVE_WORRY_SEED); }
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_WORRY_SEED, player);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }

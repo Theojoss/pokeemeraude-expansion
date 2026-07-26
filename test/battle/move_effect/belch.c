@@ -67,8 +67,8 @@ SINGLE_BATTLE_TEST("Belch can still be used after switching out")
         TURN { MOVE(player, MOVE_BELCH); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STUFF_CHEEKS, player);
-        SWITCH_OUT_MESSAGE("Greedent");
-        SWITCH_OUT_MESSAGE("Skwovet");
+        SWITCH_OUT_MESSAGE("Rongrigou");
+        SWITCH_OUT_MESSAGE("Rongourmand");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BELCH, player);
     }
 }
@@ -91,7 +91,7 @@ SINGLE_BATTLE_TEST("Belch can still be used after fainting")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STUFF_CHEEKS, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FISSURE, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_REVIVAL_BLESSING, player);
-        SWITCH_OUT_MESSAGE("Skwovet");
+        SWITCH_OUT_MESSAGE("Rongourmand");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BELCH, player);
     }
 }

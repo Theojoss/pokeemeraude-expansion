@@ -105,7 +105,7 @@ SINGLE_BATTLE_TEST("Echoed Voice's power increase is reset when no battler uses 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ECHOED_VOICE, player);
         HP_BAR(opponent, captureDamage: &damage[1]);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BITE, opponent);
-        MESSAGE("Wobbuffet flinched and couldn't move!");
+        MESSAGE("Qulbutoké a la trouille! Il ne peut plus attaquer!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ECHOED_VOICE, player);
         HP_BAR(opponent, captureDamage: &damage[2]);
     } THEN {
@@ -132,7 +132,7 @@ SINGLE_BATTLE_TEST("Echoed Voice's power is increased even if it misses")
         HP_BAR(opponent, captureDamage: &damage[0]);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ECHOED_VOICE, player);
         HP_BAR(opponent, captureDamage: &damage[1]);
-        MESSAGE("The opposing Wobbuffet avoided the attack!");
+        MESSAGE("Qulbutoké ennemi évite l'attaque!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ECHOED_VOICE, player);
         HP_BAR(opponent, captureDamage: &damage[2]);
     } THEN {

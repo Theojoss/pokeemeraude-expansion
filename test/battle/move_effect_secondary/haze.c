@@ -24,11 +24,11 @@ SINGLE_BATTLE_TEST("Freeze Frost restores stat changes when it was succesful")
         if (moveSuccess == TRUE)
         {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FREEZY_FROST, player);
-            MESSAGE("All stat changes were eliminated!");
+            MESSAGE("Les changements de stats ont tous été annulés!");
         } else {
             NONE_OF {
                 ANIMATION(ANIM_TYPE_MOVE, MOVE_FREEZY_FROST, player);
-                MESSAGE("All stat changes were eliminated!");
+                MESSAGE("Les changements de stats ont tous été annulés!");
             }
         }
     }

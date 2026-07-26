@@ -44,10 +44,10 @@ SINGLE_BATTLE_TEST("Knock Off knocks a healing berry before it has the chance to
         ANIMATION(ANIM_TYPE_MOVE, MOVE_KNOCK_OFF, player);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, opponent);
-            MESSAGE("The opposing Wobbuffet restored its health using its Sitrus Berry!");
+            MESSAGE("Qulbutoké ennemi récupère des PV grâce à Baie Sitrus!");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ITEM_KNOCKOFF);
-        MESSAGE("Wobbuffet knocked off the opposing Wobbuffet's Sitrus Berry!");
+        MESSAGE("Qulbutoké fait tomber Baie Sitrus de Qulbutoké ennemi!");
     } THEN {
         EXPECT(opponent->item == ITEM_NONE);
     }
@@ -70,13 +70,13 @@ SINGLE_BATTLE_TEST("Knock Off activates after Rocky Helmet and Weakness Policy")
         if (item == ITEM_WEAKNESS_POLICY) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE);
-            MESSAGE("The Weakness Policy sharply boosted the opposing Wobbuffet's Attack!");
-            MESSAGE("The Weakness Policy sharply boosted the opposing Wobbuffet's Sp. Atk!");
+            MESSAGE("Grâce à Vulné-Assurance, Attaque de Qulbutoké ennemi augmente beaucoup!");
+            MESSAGE("Grâce à Vulné-Assurance, Attaque Spéciale de Qulbutoké ennemi augmente beaucoup!");
         } else if (item == ITEM_ROCKY_HELMET) {
             HP_BAR(player);
-            MESSAGE("Wobbuffet was hurt by the opposing Wobbuffet's Rocky Helmet!");
+            MESSAGE("Qulbutoké est blessé par Casque Brut de Qulbutoké ennemi!");
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ITEM_KNOCKOFF);
-            MESSAGE("Wobbuffet knocked off the opposing Wobbuffet's Rocky Helmet!");
+            MESSAGE("Qulbutoké fait tomber Casque Brut de Qulbutoké ennemi!");
         }
     } THEN {
         EXPECT(opponent->item == ITEM_NONE);
@@ -135,7 +135,7 @@ SINGLE_BATTLE_TEST("Knock Off does not remove items through Substitute even if i
         TURN { MOVE(opponent, MOVE_SUBSTITUTE); MOVE(player, MOVE_KNOCK_OFF); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_KNOCK_OFF, player);
-        MESSAGE("The opposing Wobbuffet's substitute faded!");
+        MESSAGE("Le clone de Qulbutoké ennemi disparaît…\p");
         NOT { ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ITEM_KNOCKOFF); }
     } THEN {
         EXPECT(opponent->item == ITEM_LEFTOVERS);
@@ -189,10 +189,10 @@ SINGLE_BATTLE_TEST("Recycle cannot recover an item removed by Knock Off")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_KNOCK_OFF, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ITEM_KNOCKOFF);
-        MESSAGE("Wobbuffet knocked off the opposing Wobbuffet's Leftovers!");
+        MESSAGE("Qulbutoké fait tomber Restes de Qulbutoké ennemi!");
 
-        MESSAGE("The opposing Wobbuffet used Recycle!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké ennemi utilise\nRecyclage!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(opponent->item == ITEM_NONE);
     }
@@ -210,15 +210,15 @@ SINGLE_BATTLE_TEST("Knock Off does not prevent targets from receiving another it
         // turn 1
         ANIMATION(ANIM_TYPE_MOVE, MOVE_KNOCK_OFF, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ITEM_KNOCKOFF);
-        MESSAGE("Wobbuffet knocked off the opposing Wobbuffet's Leftovers!");
+        MESSAGE("Qulbutoké fait tomber Restes de Qulbutoké ennemi!");
         // turn 2
         if (B_KNOCK_OFF_REMOVAL >= GEN_5) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_BESTOW, player);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT);
-            MESSAGE("The opposing Wobbuffet restored a little HP using its Leftovers!");
+            MESSAGE("Qulbutoké ennemi récupère un peu de PV grâce à Restes!");
         } else {
             NOT { ANIMATION(ANIM_TYPE_MOVE, MOVE_BESTOW, player); }
-            MESSAGE("But it failed!");
+            MESSAGE("Mais cela échoue!");
         }
     } THEN {
         if (B_KNOCK_OFF_REMOVAL >= GEN_5)
@@ -241,10 +241,10 @@ SINGLE_BATTLE_TEST("Knock Off triggers Unburden")
         // turn 1
         ANIMATION(ANIM_TYPE_MOVE, MOVE_KNOCK_OFF, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ITEM_KNOCKOFF);
-        MESSAGE("Wobbuffet knocked off the opposing Wobbuffet's Leftovers!");
+        MESSAGE("Qulbutoké fait tomber Restes de Qulbutoké ennemi!");
         // turn 2
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
-        MESSAGE("Wobbuffet used Celebrate!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
+        MESSAGE("Qulbutoké utilise\nCélébration!");
     } THEN {
         EXPECT(opponent->item == ITEM_NONE);
     }
@@ -262,10 +262,10 @@ DOUBLE_BATTLE_TEST("Knock Off does not trigger the opposing ally's Symbiosis")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_KNOCK_OFF, opponentLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ITEM_KNOCKOFF);
-        MESSAGE("The opposing Wobbuffet knocked off Wobbuffet's Leftovers!");
+        MESSAGE("Qulbutoké ennemi fait tomber Restes de Qulbutoké!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT);
-            MESSAGE("Wobbuffet restored its health using its Leftovers!");
+            MESSAGE("Qulbutoké récupère des PV grâce à Restes!");
         }
     } THEN {
         EXPECT(playerLeft->item == ITEM_NONE);
@@ -280,7 +280,7 @@ SINGLE_BATTLE_TEST("Knock Off does knock off Mega Stones from Pokemon that don't
     } WHEN {
         TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_KNOCK_OFF); }
     } SCENE {
-        MESSAGE("Wobbuffet knocked off the opposing Wobbuffet's Absolite!");
+        MESSAGE("Qulbutoké fait tomber Absolite de Qulbutoké ennemi!");
     }
 }
 
@@ -292,7 +292,7 @@ SINGLE_BATTLE_TEST("Knock Off doesn't knock off Mega Stones from Pokemon that ac
     } WHEN {
         TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_KNOCK_OFF); }
     } SCENE {
-        NOT MESSAGE("Wobbuffet knocked off the opposing Absol's Absolite!");
+        NOT MESSAGE("Qulbutoké fait tomber Absolite de Absol ennemi!");
     }
 }
 
@@ -304,7 +304,7 @@ SINGLE_BATTLE_TEST("Knock Off does knock off Orbs for Primal Reversion from Poke
     } WHEN {
         TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_KNOCK_OFF); }
     } SCENE {
-        MESSAGE("Wobbuffet knocked off the opposing Wobbuffet's Red Orb!");
+        MESSAGE("Qulbutoké fait tomber Gemme Rouge de Qulbutoké ennemi!");
     }
 }
 
@@ -316,7 +316,7 @@ SINGLE_BATTLE_TEST("Knock Off doesn't knock off Orbs for Primal Reversion from P
     } WHEN {
         TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_KNOCK_OFF); }
     } SCENE {
-        NOT MESSAGE("Wobbuffet knocked off the opposing Groudon's Red Orb!");
+        NOT MESSAGE("Qulbutoké fait tomber Gemme Rouge de Groudon ennemi!");
     }
 }
 
@@ -328,7 +328,7 @@ SINGLE_BATTLE_TEST("Knock Off doesn't knock off Z-Crystals")
     } WHEN {
         TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_KNOCK_OFF); }
     } SCENE {
-        NOT MESSAGE("Wobbuffet knocked off the opposing Wobbuffet's Electrium Z!");
+        NOT MESSAGE("Qulbutoké fait tomber Voltazélite de Qulbutoké ennemi!");
     }
 }
 
@@ -340,7 +340,7 @@ SINGLE_BATTLE_TEST("Knock Off doesn't knock off Ultranecrozium Z from Pokemon th
     } WHEN {
         TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_KNOCK_OFF); }
     } SCENE {
-        NOT MESSAGE("Wobbuffet knocked off the opposing Necrozma's Ultranecrozium Z!");
+        NOT MESSAGE("Qulbutoké fait tomber Ultranécrozélite de Necrozma ennemi!");
     }
 }
 
@@ -352,7 +352,7 @@ SINGLE_BATTLE_TEST("Knock Off does knock off other form-change hold items from P
     } WHEN {
         TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_KNOCK_OFF); }
     } SCENE {
-        MESSAGE("Wobbuffet knocked off the opposing Wobbuffet's Sky Plate!");
+        MESSAGE("Qulbutoké fait tomber Plaque Ciel de Qulbutoké ennemi!");
     }
 }
 
@@ -364,7 +364,7 @@ SINGLE_BATTLE_TEST("Knock Off doesn't knock off other form-change hold items fro
     } WHEN {
         TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_KNOCK_OFF); }
     } SCENE {
-        NOT MESSAGE("Wobbuffet knocked off the opposing Arceus's Sky Plate!");
+        NOT MESSAGE("Qulbutoké fait tomber Plaque Ciel de Arceus ennemi!");
     }
 }
 
@@ -376,7 +376,7 @@ SINGLE_BATTLE_TEST("Knock Off does knock off begin-battle form-change hold items
     } WHEN {
         TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_KNOCK_OFF); }
     } SCENE {
-        MESSAGE("Wobbuffet knocked off the opposing Wobbuffet's Rusted Shield!");
+        MESSAGE("Qulbutoké fait tomber Bouclier Rouillé de Qulbutoké ennemi!");
     }
 }
 
@@ -388,7 +388,7 @@ SINGLE_BATTLE_TEST("Knock Off doesn't knock off begin-battle form-change hold it
     } WHEN {
         TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_KNOCK_OFF); }
     } SCENE {
-        NOT MESSAGE("Wobbuffet knocked off the opposing Zamazenta's Rusted Shield!");
+        NOT MESSAGE("Qulbutoké fait tomber Bouclier Rouillé de Zamazenta ennemi!");
     }
 }
 
@@ -401,8 +401,8 @@ SINGLE_BATTLE_TEST("Knock Off does not activate if user faints")
         TURN { MOVE(player, MOVE_KNOCK_OFF); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_KNOCK_OFF, player);
-        MESSAGE("Wobbuffet was hurt by the opposing Wobbuffet's Rocky Helmet!");
-        MESSAGE("Wobbuffet fainted!");
+        MESSAGE("Qulbutoké est blessé par Casque Brut de Qulbutoké ennemi!");
+        MESSAGE("Qulbutoké est K.O.!\p");
     } THEN {
         EXPECT(opponent->item == ITEM_ROCKY_HELMET);
     }
@@ -430,8 +430,8 @@ SINGLE_BATTLE_TEST("Knock Off does not activate if the item was previously consu
         TURN { MOVE(player, MOVE_KNOCK_OFF); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_KNOCK_OFF, player);
-        MESSAGE("The opposing Wobbuffet's Air Balloon popped!");
-        NOT MESSAGE("Wobbuffet knocked off the opposing Wobbuffet's Air Balloon!");
+        MESSAGE("Le Ballon de Qulbutoké ennemi a éclaté!");
+        NOT MESSAGE("Qulbutoké fait tomber Ballon de Qulbutoké ennemi!");
     } THEN {
         EXPECT(opponent->item == ITEM_NONE);
     }
@@ -445,7 +445,7 @@ SINGLE_BATTLE_TEST("Knock Off does knock off Ogerpon masks from Pokemon that are
     } WHEN {
         TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_KNOCK_OFF); }
     } SCENE {
-        MESSAGE("Wobbuffet knocked off the opposing Wobbuffet's Hearthflame Mask!");
+        MESSAGE("Qulbutoké fait tomber Masque Fourneau de Qulbutoké ennemi!");
     } THEN {
         EXPECT(opponent->item == ITEM_NONE);
     }
@@ -459,7 +459,7 @@ SINGLE_BATTLE_TEST("Knock Off doesn't knock off Ogerpon masks from Ogerpon")
     } WHEN {
         TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_KNOCK_OFF); }
     } SCENE {
-        NOT MESSAGE("Wobbuffet knocked off the opposing Ogerpon's Hearthflame Mask!");
+        NOT MESSAGE("Qulbutoké fait tomber Masque du Fourneau de Ogerpon ennemi!");
     } THEN {
         EXPECT(opponent->item == ITEM_HEARTHFLAME_MASK);
     }
@@ -473,7 +473,7 @@ SINGLE_BATTLE_TEST("Knock Off does knock off a Booster Energy from a non Paradox
     } WHEN {
         TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_KNOCK_OFF); }
     } SCENE {
-        MESSAGE("Wobbuffet knocked off the opposing Wobbuffet's Booster Energy!");
+        MESSAGE("Qulbutoké fait tomber Énergie Booster de Qulbutoké ennemi!");
     } THEN {
         EXPECT(opponent->item == ITEM_NONE);
     }
@@ -487,7 +487,7 @@ SINGLE_BATTLE_TEST("Knock Off doesn't knock off a Paradox mon's Booster Energy")
     } WHEN {
         TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_KNOCK_OFF); }
     } SCENE {
-        NOT MESSAGE("Wobbuffet knocked off the opposing Great Tusk's Booster Energy!");
+        NOT MESSAGE("Qulbutoké fait tomber Énergie Booster de Fort-Ivoire ennemi!");
     } THEN {
         EXPECT(opponent->item == ITEM_BOOSTER_ENERGY);
     }
@@ -501,7 +501,7 @@ SINGLE_BATTLE_TEST("Knock Off used by a Paradox mon doesn't knock off a non-Para
     } WHEN {
         TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_KNOCK_OFF); }
     } SCENE {
-        NOT MESSAGE("Great Tust knocked off the opposing Wobbuffet's Booster Energy!");
+        NOT MESSAGE("Great Tust fait tomber Énergie Booster de Qulbutoké ennemi!");
     } THEN {
         EXPECT(opponent->item == ITEM_BOOSTER_ENERGY);
     }

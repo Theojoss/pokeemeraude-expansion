@@ -23,11 +23,11 @@ SINGLE_BATTLE_TEST("Sleep Talk fails if not asleep")
     } SCENE {
         if (status == STATUS1_SLEEP) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SLEEP_TALK, player);
-            NOT MESSAGE("But it failed!");
+            NOT MESSAGE("Mais cela échoue!");
         }
         else {
             NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SLEEP_TALK, player);
-            MESSAGE("But it failed!");
+            MESSAGE("Mais cela échoue!");
         }
     }
 }
@@ -42,7 +42,7 @@ SINGLE_BATTLE_TEST("Sleep Talk works if user has Comatose")
         TURN { MOVE(player, MOVE_SLEEP_TALK); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SLEEP_TALK, player);
-        NOT MESSAGE("But it failed!");
+        NOT MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -55,7 +55,7 @@ SINGLE_BATTLE_TEST("Sleep Talk fails if no moves work")
         TURN { MOVE(player, MOVE_SLEEP_TALK); }
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SLEEP_TALK, player);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -68,7 +68,7 @@ SINGLE_BATTLE_TEST("Sleep Talk can still use moves with no PP")
         TURN { MOVE(player, MOVE_SLEEP_TALK); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SLEEP_TALK, player);
-        NOT MESSAGE("But it failed!");
+        NOT MESSAGE("Mais cela échoue!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH);
     }
 }
@@ -83,10 +83,10 @@ SINGLE_BATTLE_TEST("Sleep Talk can use moves while choiced into Sleep Talk")
         TURN { MOVE(player, MOVE_SLEEP_TALK); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SLEEP_TALK, player);
-        NOT MESSAGE("But it failed!");
+        NOT MESSAGE("Mais cela échoue!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SLEEP_TALK, player);
-        NOT MESSAGE("But it failed!");
+        NOT MESSAGE("Mais cela échoue!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH);
     }
 }
@@ -125,7 +125,7 @@ DOUBLE_BATTLE_TEST("Sleep Talk calls move and that move may be redirected by Lig
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SLEEP_TALK, playerLeft);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SPARK, playerLeft);
         ABILITY_POPUP(opponentRight, ABILITY_LIGHTNING_ROD);
-        MESSAGE("The opposing Raichu took the attack!");
+        MESSAGE("Raichu ennemi attire les coups sur lui!");
         ABILITY_POPUP(opponentRight, ABILITY_LIGHTNING_ROD);
     }
 }
@@ -145,7 +145,7 @@ DOUBLE_BATTLE_TEST("Sleep Talk calls move and that move may be redirected by Sto
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SLEEP_TALK, playerLeft);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_WATER_GUN, playerLeft);
-        MESSAGE("The opposing Gastrodon took the attack!");
+        MESSAGE("Tritosor ennemi attire les coups sur lui!");
         ABILITY_POPUP(opponentRight, ABILITY_STORM_DRAIN);
     }
 }
@@ -167,7 +167,7 @@ SINGLE_BATTLE_TEST("Sleep Talk calls move and that move correctly ignores abilit
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SLEEP_TALK, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUNSTEEL_STRIKE, player);
-        MESSAGE("A critical hit!");
+        MESSAGE("Coup critique!");
     }
 }
 

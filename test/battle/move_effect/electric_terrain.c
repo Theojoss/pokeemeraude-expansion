@@ -10,11 +10,11 @@ SINGLE_BATTLE_TEST("Electric Terrain protects grounded battlers from falling asl
         TURN { MOVE(player, MOVE_ELECTRIC_TERRAIN); MOVE(opponent, MOVE_SPORE); }
         TURN { MOVE(player, MOVE_SPORE); }
     } SCENE {
-        MESSAGE("Wobbuffet used Electric Terrain!");
-        MESSAGE("The opposing Claydol used Spore!");
-        MESSAGE("Wobbuffet surrounds itself with electrified terrain!");
-        MESSAGE("Wobbuffet used Spore!");
-        MESSAGE("The opposing Claydol fell asleep!");
+        MESSAGE("Qulbutoké utilise\nChamp Électrifié!");
+        MESSAGE("Kaorine ennemi utilise\nSpore!");
+        MESSAGE("Qulbutoké est protégé par un champ électrifié!");
+        MESSAGE("Qulbutoké utilise\nSpore!");
+        MESSAGE("Kaorine ennemi s'est endormi!");
         STATUS_ICON(opponent, sleep: TRUE);
     }
 }
@@ -32,7 +32,7 @@ SINGLE_BATTLE_TEST("Electric Terrain increases power of Electric-type moves by 3
             TURN { MOVE(player, MOVE_ELECTRIC_TERRAIN); }
         TURN { MOVE(player, MOVE_THUNDER_SHOCK); }
     } SCENE {
-        MESSAGE("Wobbuffet used Thunder Shock!");
+        MESSAGE("Qulbutoké utilise\nÉclair!");
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
         if (B_TERRAIN_TYPE_BOOST >= GEN_8)
@@ -54,19 +54,19 @@ SINGLE_BATTLE_TEST("Electric Terrain lasts for 5 turns")
         TURN {}
         TURN {}
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRIC_TERRAIN, player);
-        MESSAGE("An electric current ran across the battlefield!");
+        MESSAGE("De l'électricité parcourt le terrain!");
 
-        MESSAGE("Wobbuffet used Celebrate!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Qulbutoké utilise\nCélébration!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
 
-        MESSAGE("Wobbuffet used Celebrate!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Qulbutoké utilise\nCélébration!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
 
-        MESSAGE("Wobbuffet used Celebrate!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Qulbutoké utilise\nCélébration!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
 
-        MESSAGE("The electricity disappeared from the battlefield.");
+        MESSAGE("L'électricité parcourant le terrain s'est dissipée.");
     }
 }

@@ -16,7 +16,7 @@ SINGLE_BATTLE_TEST("Grudge depletes all PP of the move that fainted the target")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GRUDGE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
-        MESSAGE("Wobbuffet fainted!");
+        MESSAGE("Qulbutoké est K.O.!\p");
     } THEN {
         EXPECT_GT(opponent->pp[0], 0);
         EXPECT_EQ(opponent->pp[1], 0);
@@ -41,7 +41,7 @@ SINGLE_BATTLE_TEST("Grudge does not deplete PP of a Z-Move")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GRUDGE, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_ZMOVE_ACTIVATE, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BREAKNECK_BLITZ, opponent);
-        MESSAGE("Wobbuffet fainted!");
+        MESSAGE("Qulbutoké est K.O.!\p");
     } THEN {
         EXPECT_GT(opponent->pp[0], 0);
         EXPECT_GT(opponent->pp[1], 0);
@@ -59,11 +59,11 @@ SINGLE_BATTLE_TEST("Grudge depletes all PP from a Max Move's base move")
     } WHEN {
         TURN { MOVE(player, MOVE_GRUDGE); MOVE(opponent, MOVE_SCRATCH, gimmick: GIMMICK_DYNAMAX); SEND_OUT(player, 1); }
     } SCENE {
-        MESSAGE("Wobbuffet used Grudge!");
+        MESSAGE("Qulbutoké utilise\nRancune!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GRUDGE, player);
-        MESSAGE("The opposing Wobbuffet used Max Strike!");
-        MESSAGE("The opposing Wobbuffet lost all of Scratch's PP due to the grudge!");
-        MESSAGE("Wobbuffet fainted!");
+        MESSAGE("Qulbutoké ennemi utilise\nNormalomax!");
+        MESSAGE("La capacité Griffe de Qulbutoké ennemi perd ses PP à cause de Rancune!");
+        MESSAGE("Qulbutoké est K.O.!\p");
     } THEN {
         EXPECT_GT(opponent->pp[0], 0);
         EXPECT_EQ(opponent->pp[1], 0);
@@ -85,8 +85,8 @@ SINGLE_BATTLE_TEST("Grudge does not activate for Struggle")
     SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GRUDGE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STRUGGLE, opponent);
-        NOT MESSAGE("The opposing Wobbuffet lost all of Struggle's PP due to the grudge!");
-        MESSAGE("Wobbuffet fainted!");
+        NOT MESSAGE("La capacité Lutte de Qulbutoké ennemi perd ses PP à cause de Rancune!");
+        MESSAGE("Qulbutoké est K.O.!\p");
     }
     THEN {
         EXPECT_GT(opponent->pp[0], 0);
@@ -112,8 +112,8 @@ SINGLE_BATTLE_TEST("Grudge's effect disappears if the user takes a new turn - Mo
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
-        NOT MESSAGE("The opposing Wobbuffet lost all of Scratch's PP due to the grudge!");
-        MESSAGE("Wobbuffet fainted!");
+        NOT MESSAGE("La capacité Griffe de Qulbutoké ennemi perd ses PP à cause de Rancune!");
+        MESSAGE("Qulbutoké est K.O.!\p");
     }
     THEN {
         EXPECT_GT(opponent->pp[0], 0);
@@ -140,12 +140,12 @@ SINGLE_BATTLE_TEST("Grudge's effect disappears if the user takes a new turn - Sl
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GRUDGE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPORE, opponent);
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_SLP, player);
-        MESSAGE("Wobbuffet fell asleep!");
+        MESSAGE("Qulbutoké s'est endormi!");
         STATUS_ICON(player, sleep: TRUE);
-        MESSAGE("Wobbuffet is fast asleep.");
+        MESSAGE("Qulbutoké dort profondément.");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_VITAL_THROW, opponent);
-        NOT MESSAGE("The opposing Wobbuffet lost all of Scratch's PP due to the grudge!");
-        MESSAGE("Wobbuffet fainted!");
+        NOT MESSAGE("La capacité Griffe de Qulbutoké ennemi perd ses PP à cause de Rancune!");
+        MESSAGE("Qulbutoké est K.O.!\p");
     }
     THEN {
         EXPECT_GT(opponent->pp[0], 0);
@@ -173,12 +173,12 @@ SINGLE_BATTLE_TEST("Grudge's effect disappears if the user takes a new turn - Pa
     SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GRUDGE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STUN_SPORE, opponent);
-        MESSAGE("Wobbuffet is paralyzed, so it may be unable to move!");
+        MESSAGE("Qulbutoké est paralysé! Il aura du mal à attaquer!");
         STATUS_ICON(player, paralysis: TRUE);
-        MESSAGE("Wobbuffet couldn't move because it's paralyzed!");
+        MESSAGE("Qulbutoké est paralysé! Il n'a pas pu attaquer!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_VITAL_THROW, opponent);
-        NOT MESSAGE("The opposing Wobbuffet lost all of Scratch's PP due to the grudge!");
-        MESSAGE("Wobbuffet fainted!");
+        NOT MESSAGE("La capacité Griffe de Qulbutoké ennemi perd ses PP à cause de Rancune!");
+        MESSAGE("Qulbutoké est K.O.!\p");
     }
     THEN {
         EXPECT_GT(opponent->pp[0], 0);
@@ -204,13 +204,13 @@ SINGLE_BATTLE_TEST("Grudge's effect disappears if the user takes a new turn - Fl
         TURN { MOVE(opponent, MOVE_SCRATCH); MOVE(player, MOVE_CELEBRATE); SEND_OUT(player, 1); }
     }
     SCENE {
-        SEND_IN_MESSAGE("Wobbuffet");
+        SEND_IN_MESSAGE("Qulbutoké");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GRUDGE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FALSE_SWIPE, opponent);
-        MESSAGE("Wobbuffet flinched and couldn't move!");
+        MESSAGE("Qulbutoké a la trouille! Il ne peut plus attaquer!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
-        NOT MESSAGE("The opposing Wobbuffet lost all of Scratch's PP due to the grudge!");
-        MESSAGE("Wobbuffet fainted!");
+        NOT MESSAGE("La capacité Griffe de Qulbutoké ennemi perd ses PP à cause de Rancune!");
+        MESSAGE("Qulbutoké est K.O.!\p");
     }
     THEN {
         EXPECT_GT(opponent->pp[0], 0);
@@ -235,11 +235,11 @@ SINGLE_BATTLE_TEST("Grudge's effect doesn't trigger on indirect damage - Sandsto
     SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GRUDGE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SANDSTORM, opponent);
-        MESSAGE("The sandstorm is raging.");
+        MESSAGE("La tempête de sable fait rage.");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SANDSTORM_CONTINUES);
-        MESSAGE("Wobbuffet is buffeted by the sandstorm!");
-        NOT MESSAGE("The opposing Wobbuffet lost all of Sandstorm's PP due to the grudge!");
-        MESSAGE("Wobbuffet fainted!");
+        MESSAGE("La tempête de sable inflige des dégâts à Qulbutoké!");
+        NOT MESSAGE("La capacité Tempête de Sable de Qulbutoké ennemi perd ses PP à cause de Rancune!");
+        MESSAGE("Qulbutoké est K.O.!\p");
     }
     THEN {
         EXPECT_GT(opponent->pp[0], 0);
@@ -263,10 +263,10 @@ SINGLE_BATTLE_TEST("Grudge's effect doesn't trigger on indirect damage - Leech S
     SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GRUDGE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LEECH_SEED, opponent);
-        MESSAGE("Wobbuffet was seeded!");
+        MESSAGE("Qulbutoké est infecté!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_LEECH_SEED_DRAIN, player);
-        NOT MESSAGE("The opposing Wobbuffet lost all of Leech Seed's PP due to the grudge!");
-        MESSAGE("Wobbuffet fainted!");
+        NOT MESSAGE("La capacité Vampigraine de Qulbutoké ennemi perd ses PP à cause de Rancune!");
+        MESSAGE("Qulbutoké est K.O.!\p");
     }
     THEN {
         EXPECT_GT(opponent->pp[0], 0);
@@ -291,12 +291,12 @@ SINGLE_BATTLE_TEST("Grudge's effect doesn't trigger on indirect damage - Future 
     }
     SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FUTURE_SIGHT, opponent);
-        MESSAGE("The opposing Wobbuffet foresaw an attack!");
+        MESSAGE("Qulbutoké ennemi prévoit une attaque!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GRUDGE, player);
-        MESSAGE("Wobbuffet took the Future Sight attack!");
+        MESSAGE("Qulbutoké subit l'attaque Prescience!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FUTURE_SIGHT_HIT);
-        NOT MESSAGE("The opposing Wobbuffet lost all of Future Sight's PP due to the grudge!");
-        MESSAGE("Wobbuffet fainted!");
+        NOT MESSAGE("La capacité Prescience de Qulbutoké ennemi perd ses PP à cause de Rancune!");
+        MESSAGE("Qulbutoké est K.O.!\p");
     }
     THEN {
         EXPECT_GT(opponent->pp[0], 0);

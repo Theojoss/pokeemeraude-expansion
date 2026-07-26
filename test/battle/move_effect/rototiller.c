@@ -48,9 +48,9 @@ SINGLE_BATTLE_TEST("Rototiller fails if there are no valid targets")
         TURN { MOVE(player, MOVE_ROTOTILLER); }
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_ROTOTILLER, player);
-        MESSAGE("Wynaut used Rototiller!");
-        MESSAGE("It doesn't affect Wynaut…");
-        MESSAGE("It doesn't affect the opposing Wobbuffet…");
+        MESSAGE("Okéoké utilise\nFertilisation!");
+        MESSAGE("Ça n'affecte pas Okéoké…");
+        MESSAGE("Ça n'affecte pas Qulbutoké ennemi…");
     }
 }
 
@@ -67,11 +67,11 @@ DOUBLE_BATTLE_TEST("Rototiller fails if there are no valid targets (Double Battl
         TURN { MOVE(playerLeft, MOVE_ROTOTILLER); }
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_ROTOTILLER, playerLeft);
-        MESSAGE("Wobbuffet used Rototiller!");
-        MESSAGE("It doesn't affect Wobbuffet…");
-        MESSAGE("It doesn't affect Flygon…");
-        MESSAGE("It doesn't affect the opposing Wobbuffet…");
-        MESSAGE("It doesn't affect the opposing Flygon…");
+        MESSAGE("Qulbutoké utilise\nFertilisation!");
+        MESSAGE("Ça n'affecte pas Qulbutoké…");
+        MESSAGE("Ça n'affecte pas Libégon…");
+        MESSAGE("Ça n'affecte pas Qulbutoké ennemi…");
+        MESSAGE("Ça n'affecte pas Libégon ennemi…");
     }
 }
 
@@ -86,7 +86,7 @@ SINGLE_BATTLE_TEST("Rototiller doesn't affect Pokémon that are semi-invulnerabl
         TURN { MOVE(opponent, MOVE_DIG); MOVE(player, MOVE_ROTOTILLER); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DIG, opponent);
-        MESSAGE("The opposing Tangela avoided the attack!");
+        MESSAGE("Saquedeneu ennemi évite l'attaque!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROTOTILLER, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
     } THEN {
@@ -110,9 +110,9 @@ SINGLE_BATTLE_TEST("Rototiller fails if the only valid target is semi-invulnerab
         TURN { MOVE(opponent, MOVE_DIG); MOVE(player, MOVE_ROTOTILLER); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DIG, opponent);
-        MESSAGE("Wobbuffet used Rototiller!");
+        MESSAGE("Qulbutoké utilise\nFertilisation!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_ROTOTILLER, player);
-        MESSAGE("The opposing Tangela avoided the attack!");
+        MESSAGE("Saquedeneu ennemi évite l'attaque!");
     } THEN {
         EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
         EXPECT_EQ(player->statStages[STAT_SPATK], DEFAULT_STAT_STAGE);

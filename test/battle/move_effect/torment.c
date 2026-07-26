@@ -16,7 +16,7 @@ SINGLE_BATTLE_TEST("Torment prevents consecutive move uses")
         TURN { MOVE(opponent, MOVE_SPLASH, allowed: FALSE); MOVE(opponent, MOVE_CELEBRATE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TORMENT, player);
-        MESSAGE("The opposing Wobbuffet was subjected to torment!");
+        MESSAGE("Qulbutoké ennemi est tourmenté!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPLASH, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
     }
@@ -72,10 +72,10 @@ DOUBLE_BATTLE_TEST("Torment works even if the target's last move failed")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FOLLOW_ME, playerRight);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SUCKER_PUNCH, opponentLeft);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SUCKER_PUNCH, opponentRight);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TORMENT, playerLeft);
-        MESSAGE("The opposing Wobbuffet was subjected to torment!");
+        MESSAGE("Qulbutoké ennemi est tourmenté!");
     }
 }

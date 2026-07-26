@@ -15,7 +15,7 @@ SINGLE_BATTLE_TEST("Helping Hand fails in a Single Battle")
         TURN { MOVE(player, MOVE_HELPING_HAND); }
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_HELPING_HAND, player);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 

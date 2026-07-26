@@ -16,7 +16,7 @@ SINGLE_BATTLE_TEST("Dragon Darts strikes twice")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_DARTS, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_DARTS, player);
-        NOT MESSAGE("The Pokémon was hit 2 time(s)!");
+        NOT MESSAGE("Touché 2 fois!");
     }
 }
 
@@ -327,9 +327,9 @@ DOUBLE_BATTLE_TEST("Dragon Darts always prints effectiveness message after every
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_DARTS, playerLeft);
         HP_BAR(opponentLeft);
-        MESSAGE("It's not very effective…");
+        MESSAGE("Ce n'est pas très efficace…");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_DARTS, playerLeft);
         HP_BAR(opponentRight);
-        MESSAGE("It's super effective!");
+        MESSAGE("C'est super efficace!");
     }
 }

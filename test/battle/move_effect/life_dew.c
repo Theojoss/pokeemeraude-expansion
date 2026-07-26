@@ -12,7 +12,7 @@ DOUBLE_BATTLE_TEST("Life Dew fails if user and partner are both at full hp")
         TURN { MOVE(playerLeft, MOVE_LIFE_DEW); }
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_LIFE_DEW, playerLeft);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -30,9 +30,9 @@ DOUBLE_BATTLE_TEST("Life Dew recovers 25% of hp for both user and partner")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LIFE_DEW, playerLeft);
         HP_BAR(playerLeft, captureDamage: &healing[0]);
-        MESSAGE("Wobbuffet's HP was restored.");
+        MESSAGE("Qulbutoké récupère des PV!");
         HP_BAR(playerRight, captureDamage: &healing[1]);
-        MESSAGE("Wynaut's HP was restored.");
+        MESSAGE("Okéoké récupère des PV!");
     } THEN {
         EXPECT_EQ(playerLeft->maxHP / 4, -healing[0]);
         EXPECT_EQ(playerRight->maxHP / 4, -healing[1]);

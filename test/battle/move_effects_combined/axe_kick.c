@@ -17,7 +17,7 @@ SINGLE_BATTLE_TEST("Axe Kick confuses the target")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_AXE_KICK, player);
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_CONFUSION, opponent);
-        MESSAGE("The opposing Wobbuffet became confused!");
+        MESSAGE("Ça rend Qulbutoké ennemi confus!");
     }
 }
 
@@ -31,9 +31,9 @@ SINGLE_BATTLE_TEST("Axe Kick deals damage half the hp to user if def battler pro
     } SCENE {
         s32 maxHP = GetMonData(&PLAYER_PARTY[0], MON_DATA_MAX_HP);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PROTECT, opponent);
-        MESSAGE("The opposing Wobbuffet protected itself!");
-        MESSAGE("The opposing Wobbuffet protected itself!");
-        MESSAGE("Wobbuffet kept going and crashed!");
+        MESSAGE("Qulbutoké ennemi se protège!");
+        MESSAGE("Qulbutoké ennemi se protège!");
+        MESSAGE("Qulbutoké s'est blessé en attaquant!");
         HP_BAR(player, hp: maxHP / 2);
     }
 }
@@ -47,9 +47,9 @@ SINGLE_BATTLE_TEST("Axe Kick deals damage half the hp to user if it fails")
         TURN { MOVE(player, MOVE_AXE_KICK, hit: FALSE); }
     } SCENE {
         s32 maxHP = GetMonData(&PLAYER_PARTY[0], MON_DATA_MAX_HP);
-        MESSAGE("Wobbuffet used Axe Kick!");
-        MESSAGE("The opposing Wobbuffet avoided the attack!");
-        MESSAGE("Wobbuffet kept going and crashed!");
+        MESSAGE("Qulbutoké utilise\nTalon-Marteau!");
+        MESSAGE("Qulbutoké ennemi évite l'attaque!");
+        MESSAGE("Qulbutoké s'est blessé en attaquant!");
         HP_BAR(player, hp: maxHP / 2);
     }
 }
@@ -69,9 +69,9 @@ SINGLE_BATTLE_TEST("Axe Kick still deals crash damage when boosted by Sheer Forc
         TURN { MOVE(player, MOVE_AXE_KICK, hit: FALSE); }
     } SCENE {
         s32 maxHP = GetMonData(&PLAYER_PARTY[0], MON_DATA_MAX_HP);
-        MESSAGE("Tauros used Axe Kick!");
-        MESSAGE("The opposing Wobbuffet avoided the attack!");
-        MESSAGE("Tauros kept going and crashed!");
+        MESSAGE("Tauros utilise\nTalon-Marteau!");
+        MESSAGE("Qulbutoké ennemi évite l'attaque!");
+        MESSAGE("Tauros s'est blessé en attaquant!");
         HP_BAR(player, hp: maxHP / 2);
     }
 }

@@ -27,7 +27,7 @@ SINGLE_BATTLE_TEST("Beat Up hits the target for each non-fainted, non-statused m
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BEAT_UP, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BEAT_UP, player);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_BEAT_UP, player);
-        MESSAGE("The Pokémon was hit 4 time(s)!");
+        MESSAGE("Touché 4 fois!");
     } THEN {
         if (gen == GEN_5) {
             EXPECT_EQ(gBattleStruct->beatUpSpecies[0], SPECIES_WOBBUFFET);
@@ -59,7 +59,7 @@ SINGLE_BATTLE_TEST("Beat Up doesn't consider Comatose as a status")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BEAT_UP, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BEAT_UP, player);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_BEAT_UP, player);
-        MESSAGE("The Pokémon was hit 2 time(s)!");
+        MESSAGE("Touché 2 fois!");
     }
 }
 
@@ -74,10 +74,10 @@ SINGLE_BATTLE_TEST("Beat Up doesn't list party member's name (Gen5+)")
         TURN { MOVE(player, MOVE_BEAT_UP); }
     } SCENE {
         NONE_OF {
-            MESSAGE("Wobbuffet's attack!");
-            MESSAGE("Wynaut's attack!");
+            MESSAGE("L'attaque de Qulbutoké!");
+            MESSAGE("L'attaque de Okéoké!");
         }
-        MESSAGE("The Pokémon was hit 2 time(s)!");
+        MESSAGE("Touché 2 fois!");
     }
 }
 
@@ -193,10 +193,10 @@ SINGLE_BATTLE_TEST("Beat Up lists each party member's name")
     } WHEN {
         TURN { MOVE(player, MOVE_BEAT_UP); }
     } SCENE {
-        MESSAGE("Wobbuffet's attack!");
-        MESSAGE("Wynaut's attack!");
-        NOT MESSAGE("Wynaut's attack!");
-        MESSAGE("Pikachu's attack!");
+        MESSAGE("L'attaque de Qulbutoké!");
+        MESSAGE("L'attaque de Okéoké!");
+        NOT MESSAGE("L'attaque de Okéoké!");
+        MESSAGE("L'attaque de Pikachu!");
     }
 }
 

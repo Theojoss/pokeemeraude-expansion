@@ -21,12 +21,12 @@ SINGLE_BATTLE_TEST("Telekinesis makes the target unable to avoid any attacks mad
         TURN { MOVE(player, MOVE_TELEKINESIS); MOVE(opponent, MOVE_MINIMIZE); }
         TURN { MOVE(player, MOVE_SCREECH, hit:FALSE); }
     } SCENE {
-        MESSAGE("Wobbuffet used Telekinesis!");
-        MESSAGE("The opposing Wynaut was hurled into the air!");
-        MESSAGE("The opposing Wynaut used Minimize!");
-        MESSAGE("Wobbuffet used Screech!");
+        MESSAGE("Qulbutoké utilise\nLévikinésie!");
+        MESSAGE("Okéoké ennemi est emporté haut dans le ciel!");
+        MESSAGE("Okéoké ennemi utilise\nLilliput!");
+        MESSAGE("Qulbutoké utilise\nGrincement!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCREECH, player);
-        NOT MESSAGE("The opposing Wynaut avoided the attack!");
+        NOT MESSAGE("Okéoké ennemi évite l'attaque!");
     }
 }
 
@@ -40,11 +40,11 @@ SINGLE_BATTLE_TEST("Telekinesis ends after 3 turns")
         TURN {}
         TURN {}
     } SCENE {
-        MESSAGE("Wobbuffet used Telekinesis!");
-        MESSAGE("The opposing Wynaut was hurled into the air!");
-        MESSAGE("Wobbuffet used Celebrate!");
-        MESSAGE("Wobbuffet used Celebrate!");
-        MESSAGE("The opposing Wynaut was freed from the telekinesis!");
+        MESSAGE("Qulbutoké utilise\nLévikinésie!");
+        MESSAGE("Okéoké ennemi est emporté haut dans le ciel!");
+        MESSAGE("Qulbutoké utilise\nCélébration!");
+        MESSAGE("Qulbutoké utilise\nCélébration!");
+        MESSAGE("Okéoké ennemi est libéré de la capacité Lévikinésie!");
     }
 }
 
@@ -59,17 +59,17 @@ SINGLE_BATTLE_TEST("Telekinesis makes the target immune to Ground-type attacks")
         TURN { MOVE(player, MOVE_TELEKINESIS); }
         TURN { MOVE(player, MOVE_BULLDOZE); }
     } SCENE {
-        MESSAGE("Wobbuffet used Bulldoze!");
+        MESSAGE("Qulbutoké utilise\nPiétisol!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLDOZE, player);
         HP_BAR(opponent);
-        MESSAGE("Wobbuffet used Telekinesis!");
-        MESSAGE("The opposing Wynaut was hurled into the air!");
-        MESSAGE("Wobbuffet used Bulldoze!");
+        MESSAGE("Qulbutoké utilise\nLévikinésie!");
+        MESSAGE("Okéoké ennemi est emporté haut dans le ciel!");
+        MESSAGE("Qulbutoké utilise\nPiétisol!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLDOZE, player);
             HP_BAR(opponent);
         }
-        MESSAGE("It doesn't affect the opposing Wynaut…");
+        MESSAGE("Ça n'affecte pas Okéoké ennemi…");
     }
 }
 

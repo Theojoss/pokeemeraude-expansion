@@ -35,7 +35,7 @@ SINGLE_BATTLE_TEST("Take Heart cures the user of all status conditions")
         TURN { MOVE(player, MOVE_TAKE_HEART); }
     } SCENE {
         if (status1 == STATUS1_SLEEP) {
-            MESSAGE("Wobbuffet is fast asleep.");
+            MESSAGE("Qulbutoké dort profondément.");
         } else if (status1 == STATUS1_FREEZE) {
             PASSES_RANDOMLY(20, 100, RNG_FROZEN);
             STATUS_ICON(player, none: TRUE);
@@ -45,19 +45,19 @@ SINGLE_BATTLE_TEST("Take Heart cures the user of all status conditions")
             switch (status1)
             {
                 case STATUS1_POISON:
-                    MESSAGE("Wobbuffet was cured of its poisoning!");
+                    MESSAGE("Qulbutoké n'est plus empoisonné!");
                     break;
                 case STATUS1_BURN:
-                    MESSAGE("Wobbuffet's burn was cured!");
+                    MESSAGE("Qulbutoké n'est plus brûlé!");
                     break;
                 case STATUS1_PARALYSIS:
-                    MESSAGE("Wobbuffet was cured of paralysis!");
+                    MESSAGE("Qulbutoké n'est plus paralysé!");
                     break;
                 case STATUS1_TOXIC_POISON:
-                    MESSAGE("Wobbuffet was cured of its poisoning!");
+                    MESSAGE("Qulbutoké n'est plus empoisonné!");
                     break;
                 case STATUS1_FROSTBITE:
-                    MESSAGE("Wobbuffet's frostbite was cured!");
+                    MESSAGE("Qulbutoké s'est remis de sa gelure!");
                     break;
             }
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
@@ -76,15 +76,15 @@ SINGLE_BATTLE_TEST("Take Heart cures sleep when used by Sleep Talk")
     } WHEN {
         TURN { MOVE(player, MOVE_SPORE); MOVE(opponent, MOVE_SLEEP_TALK); }
     } SCENE {
-        MESSAGE("Wobbuffet used Spore!");
+        MESSAGE("Qulbutoké utilise\nSpore!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPORE, player);
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_SLP, opponent);
-        MESSAGE("The opposing Wobbuffet fell asleep!");
-        MESSAGE("The opposing Wobbuffet used Sleep Talk!");
+        MESSAGE("Qulbutoké ennemi s'est endormi!");
+        MESSAGE("Qulbutoké ennemi utilise\nBlabla Dodo!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SLEEP_TALK, opponent);
-        MESSAGE("The opposing Wobbuffet used Take Heart!");
+        MESSAGE("Qulbutoké ennemi utilise\nExtravaillance!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TAKE_HEART, opponent);
         STATUS_ICON(opponent, none: TRUE);
-        MESSAGE("The opposing Wobbuffet woke up!");
+        MESSAGE("Qulbutoké ennemi se réveille!");
     }
 }

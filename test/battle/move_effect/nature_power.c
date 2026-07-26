@@ -22,7 +22,7 @@ SINGLE_BATTLE_TEST("Nature power plays a move correctly in any background")
     } WHEN {
         TURN { MOVE(player, MOVE_NATURE_POWER); }
     } SCENE {
-        NOT MESSAGE("Nature Power turned into Nature Power!");
+        NOT MESSAGE("Force Nature turned into Force Nature!");
         ANIMATION(ANIM_TYPE_MOVE, move, player);
     }
 }

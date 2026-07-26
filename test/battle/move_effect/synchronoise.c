@@ -40,11 +40,11 @@ DOUBLE_BATTLE_TEST("Synchronoise will fail if there is no corresponding typing o
         TURN { MOVE(playerLeft, MOVE_SYNCHRONOISE); }
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SYNCHRONOISE, playerLeft);
-        MESSAGE("Wobbuffet used Synchronoise!");
-        MESSAGE("It doesn't affect Bulbasaur…");
-        MESSAGE("It doesn't affect the opposing Bulbasaur…");
-        MESSAGE("It doesn't affect the opposing Bulbasaur…");
-        NOT MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké utilise\nSynchropeine!");
+        MESSAGE("Ça n'affecte pas Bulbizarre…");
+        MESSAGE("Ça n'affecte pas Bulbizarre ennemi…");
+        MESSAGE("Ça n'affecte pas Bulbizarre ennemi…");
+        NOT MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -63,7 +63,7 @@ DOUBLE_BATTLE_TEST("Synchronoise will hit if there is at least one target")
         NONE_OF {
             HP_BAR(playerRight);
             HP_BAR(opponentRight);
-            MESSAGE("But it failed!");
+            MESSAGE("Mais cela échoue!");
         }
     }
 }
@@ -79,7 +79,7 @@ DOUBLE_BATTLE_TEST("Synchronoise will fail if the corresponding typing mon prote
         TURN { MOVE(opponentLeft, MOVE_PROTECT); MOVE(playerLeft, MOVE_SYNCHRONOISE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PROTECT, opponentLeft);
-        MESSAGE("The opposing Wobbuffet protected itself!");
+        MESSAGE("Qulbutoké ennemi se protège!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SYNCHRONOISE, playerLeft);
     }
 }
@@ -107,11 +107,11 @@ DOUBLE_BATTLE_TEST("Synchronoise will fail for a typeless user even if a target 
         }
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SYNCHRONOISE, playerLeft);
-        MESSAGE("Arcanine used Synchronoise!");
-        MESSAGE("It doesn't affect Wobbuffet…");
-        MESSAGE("It doesn't affect the opposing Arcanine…");
-        MESSAGE("It doesn't affect the opposing Wobbuffet…");
-        NOT MESSAGE("But it failed!");
+        MESSAGE("Arcanin utilise\nSynchropeine!");
+        MESSAGE("Ça n'affecte pas Qulbutoké…");
+        MESSAGE("Ça n'affecte pas Arcanin ennemi…");
+        MESSAGE("Ça n'affecte pas Qulbutoké ennemi…");
+        NOT MESSAGE("Mais cela échoue!");
     }
 }
 

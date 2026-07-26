@@ -23,11 +23,11 @@ SINGLE_BATTLE_TEST("Lunar Dance causes the user to faint and heals the replaceme
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LUNAR_DANCE, player);
         HP_BAR(player, hp: 0);
-        MESSAGE("Gardevoir fainted!");
-        MESSAGE("Wynaut became cloaked in mystical moonlight!");
+        MESSAGE("Gardevoir est K.O.!\p");
+        MESSAGE("Okéoké baigne dans la lumière des rayons de lune!");
         HP_BAR(player, hp: 100);
         STATUS_ICON(player, none: TRUE);
-        MESSAGE("Wynaut regained health!");
+        MESSAGE("Okéoké récupère des PV!");
     } THEN {
         EXPECT_EQ(player->hp, 100);
         EXPECT_EQ(player->status1, 0);
@@ -58,11 +58,11 @@ DOUBLE_BATTLE_TEST("Lunar Dance causes the user to faint and heals the replaceme
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LUNAR_DANCE, playerLeft);
         HP_BAR(playerLeft, hp: 0);
-        MESSAGE("Gardevoir fainted!");
-        MESSAGE("Wynaut became cloaked in mystical moonlight!");
+        MESSAGE("Gardevoir est K.O.!\p");
+        MESSAGE("Okéoké baigne dans la lumière des rayons de lune!");
         HP_BAR(playerLeft, hp: 100);
         STATUS_ICON(playerLeft, none: TRUE);
-        MESSAGE("Wynaut regained health!");
+        MESSAGE("Okéoké récupère des PV!");
     } THEN {
         EXPECT_EQ(playerLeft->hp, 100);
         EXPECT_EQ(playerLeft->status1, 0);
@@ -85,9 +85,9 @@ SINGLE_BATTLE_TEST("Lunar Dance effect activates even if the the switched Pokém
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LUNAR_DANCE, player);
         HP_BAR(player, hp: 0);
-        MESSAGE("Gardevoir fainted!");
-        MESSAGE("Ninjask became cloaked in mystical moonlight!");
-        MESSAGE("Ninjask regained health!");
+        MESSAGE("Gardevoir est K.O.!\p");
+        MESSAGE("Ninjask baigne dans la lumière des rayons de lune!");
+        MESSAGE("Ninjask récupère des PV!");
     }
 }
 
@@ -112,19 +112,19 @@ SINGLE_BATTLE_TEST("Lunar Dance effect activates only if the switched Pokémon c
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LUNAR_DANCE, player);
         HP_BAR(player, hp: 0);
-        MESSAGE("Gardevoir fainted!");
+        MESSAGE("Gardevoir est K.O.!\p");
         NONE_OF {
-            MESSAGE("Ninjask became cloaked in mystical moonlight!");
-            MESSAGE("Ninjask regained health!");
+            MESSAGE("Ninjask baigne dans la lumière des rayons de lune!");
+            MESSAGE("Ninjask récupère des PV!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_U_TURN, player);
-        MESSAGE("Wynaut became cloaked in mystical moonlight!");
+        MESSAGE("Okéoké baigne dans la lumière des rayons de lune!");
         if (switchTo == 2) {
             HP_BAR(player, hp: 100);
         } else if (switchTo == 3) {
             STATUS_ICON(player, none: TRUE);
         }
-        MESSAGE("Wynaut regained health!");
+        MESSAGE("Okéoké récupère des PV!");
     } THEN {
         if (switchTo == 2) {
             EXPECT_EQ(player->hp, 100);

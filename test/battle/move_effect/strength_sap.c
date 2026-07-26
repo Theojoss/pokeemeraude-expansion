@@ -19,12 +19,12 @@ SINGLE_BATTLE_TEST("Strength Sap lowers Attack by 1 and restores HP based on tar
     } WHEN {
         TURN { MOVE(player, MOVE_STRENGTH_SAP); }
     } SCENE {
-        MESSAGE("Wobbuffet used Strength Sap!");
+        MESSAGE("Qulbutoké utilise\nVole-Force!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STRENGTH_SAP, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Wobbuffet's Attack fell!");
+        MESSAGE("Ah, Attaque du Qulbutoké ennemi baisse!");
         HP_BAR(player, captureDamage: &results[i].hp);
-        MESSAGE("The opposing Wobbuffet had its energy drained!");
+        MESSAGE("L'énergie de Qulbutoké ennemi est drainée!");
     } THEN {
         EXPECT_EQ(results[i].hp * -1, atkStat);
     }
@@ -46,13 +46,13 @@ SINGLE_BATTLE_TEST("Strength Sap works exactly the same when attacker is behind 
         TURN { MOVE(player, MOVE_STRENGTH_SAP); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUBSTITUTE, player);
-        MESSAGE("Wobbuffet used Strength Sap!");
+        MESSAGE("Qulbutoké utilise\nVole-Force!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STRENGTH_SAP, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Wobbuffet's Attack fell!");
+        MESSAGE("Ah, Attaque du Qulbutoké ennemi baisse!");
         HP_BAR(player, captureDamage: &results[i].hp);
-        NOT MESSAGE("The substitute took damage for the opposing Wobbuffet!");
-        MESSAGE("The opposing Wobbuffet had its energy drained!");
+        NOT MESSAGE("Le clone subit les dégâts à la place de Qulbutoké ennemi!\p");
+        MESSAGE("L'énergie de Qulbutoké ennemi est drainée!");
     } THEN {
         EXPECT_EQ(results[i].hp * -1, atkStat);
     }
@@ -94,12 +94,12 @@ SINGLE_BATTLE_TEST("Strength Sap lowers Attack by 1 and restores HP based on tar
                 ANIMATION(ANIM_TYPE_MOVE, MOVE_GROWL, player);
             }
         }
-        MESSAGE("Wobbuffet used Strength Sap!");
+        MESSAGE("Qulbutoké utilise\nVole-Force!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STRENGTH_SAP, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Wobbuffet's Attack fell!");
+        MESSAGE("Ah, Attaque du Qulbutoké ennemi baisse!");
         HP_BAR(player, captureDamage: &results[i].hp);
-        MESSAGE("The opposing Wobbuffet had its energy drained!");
+        MESSAGE("L'énergie de Qulbutoké ennemi est drainée!");
     } THEN {
         if (statStage < DEFAULT_STAT_STAGE) {
             EXPECT_EQ(results[i].hp * -1, (60 * gStatStageRatios[statStage + 1][0] / gStatStageRatios[statStage + 1][1]));
@@ -129,15 +129,15 @@ SINGLE_BATTLE_TEST("Strength Sap fails if target is at -6 Atk")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CHARM, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CHARM, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CHARM, player);
-        MESSAGE("Wobbuffet used Strength Sap!");
+        MESSAGE("Qulbutoké utilise\nVole-Force!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_STRENGTH_SAP, player);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("The opposing Wobbuffet's Attack fell!");
+            MESSAGE("Ah, Attaque du Qulbutoké ennemi baisse!");
             HP_BAR(player);
-            MESSAGE("The opposing Wobbuffet had its energy drained!");
+            MESSAGE("L'énergie de Qulbutoké ennemi est drainée!");
         }
-        MESSAGE("The opposing Wobbuffet's Attack won't go any lower!");
+        MESSAGE("Attaque de Qulbutoké ennemi ne peut plus baisser!");
     }
 }
 
@@ -157,12 +157,12 @@ SINGLE_BATTLE_TEST("Strength Sap restores more HP if Big Root is held", s16 hp)
     } WHEN {
         TURN { MOVE(player, MOVE_STRENGTH_SAP); }
     } SCENE {
-        MESSAGE("Wobbuffet used Strength Sap!");
+        MESSAGE("Qulbutoké utilise\nVole-Force!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STRENGTH_SAP, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Wobbuffet's Attack fell!");
+        MESSAGE("Ah, Attaque du Qulbutoké ennemi baisse!");
         HP_BAR(player, captureDamage: &results[i].hp);
-        MESSAGE("The opposing Wobbuffet had its energy drained!");
+        MESSAGE("L'énergie de Qulbutoké ennemi est drainée!");
     } FINALLY {
         EXPECT_GT(abs(results[1].hp), abs(results[0].hp));
     }
@@ -241,16 +241,16 @@ SINGLE_BATTLE_TEST("Strength Sap will drain users HP if target has Liquid Ooze")
     } WHEN {
         TURN { MOVE(player, MOVE_STRENGTH_SAP); if (atkStat == 490) { SEND_OUT(player, 1); } }
     } SCENE {
-        MESSAGE("Wobbuffet used Strength Sap!");
+        MESSAGE("Qulbutoké utilise\nVole-Force!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STRENGTH_SAP, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Tentacool's Attack fell!");
+        MESSAGE("Ah, Attaque du Tentacool ennemi baisse!");
         ABILITY_POPUP(opponent, ABILITY_LIQUID_OOZE);
         HP_BAR(player, captureDamage: &lostHp);
-        MESSAGE("Wobbuffet sucked up the liquid ooze!");
+        MESSAGE("Qulbutoké aspire le suintement!");
         if (atkStat >= 490) {
-            MESSAGE("Wobbuffet fainted!");
-            SEND_IN_MESSAGE("Wobbuffet");
+            MESSAGE("Qulbutoké est K.O.!\p");
+            SEND_IN_MESSAGE("Qulbutoké");
         }
     } THEN {
         EXPECT_EQ(lostHp, atkStat);

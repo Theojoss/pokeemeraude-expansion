@@ -12,9 +12,9 @@ SINGLE_BATTLE_TEST("Mist prevents stat reductions from opposing moves")
         TURN { MOVE(player, MOVE_MIST); MOVE(opponent, MOVE_GROWL); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MIST, player);
-        MESSAGE("Your team became shrouded in mist!");
-        MESSAGE("The opposing Wobbuffet used Growl!");
-        MESSAGE("Wobbuffet is protected by the mist!");
+        MESSAGE("Votre équipe s'entoure de\nbrume!");
+        MESSAGE("Qulbutoké ennemi utilise\nRugissement!");
+        MESSAGE("Qulbutoké est protégé par la brume!");
     } THEN {
         EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
     }
@@ -31,11 +31,11 @@ SINGLE_BATTLE_TEST("Mist's protection considers Contrary") // Eg. If a move woul
         TURN { MOVE(player, MOVE_MIST); MOVE(opponent, MOVE_SWAGGER); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MIST, player);
-        MESSAGE("Your team became shrouded in mist!");
-        MESSAGE("The opposing Wobbuffet used Swagger!");
-        MESSAGE("Snivy is protected by the mist!");
+        MESSAGE("Votre équipe s'entoure de\nbrume!");
+        MESSAGE("Qulbutoké ennemi utilise\nVantardise!");
+        MESSAGE("Vipélierre est protégé par la brume!");
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_CONFUSION, player);
-        MESSAGE("Snivy became confused!");
+        MESSAGE("Ça rend Vipélierre confus!");
     } THEN {
         EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
     }

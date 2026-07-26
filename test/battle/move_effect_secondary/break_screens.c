@@ -40,13 +40,13 @@ SINGLE_BATTLE_TEST("Brick Break, Psychic Fangs, and Raging Bull remove Light Scr
         switch (move)
         {
             case MOVE_REFLECT:
-                MESSAGE("The opposing team's Reflect wore off!");
+                MESSAGE("Protection n'a plus d'effet sur l'équipe ennemie!");
                 break;
             case MOVE_LIGHT_SCREEN:
-                MESSAGE("The opposing team's Light Screen wore off!");
+                MESSAGE("Mur Lumière n'a plus d'effet sur l'équipe ennemie!");
                 break;
             default:
-                MESSAGE("The opposing team's Aurora Veil wore off!");
+                MESSAGE("Voile Aurore n'a plus d'effet sur l'équipe ennemie!");
                 break;
         }
         HP_BAR(opponent);
@@ -82,13 +82,13 @@ SINGLE_BATTLE_TEST("Brick Break, Psychic Fangs, and Raging Bull don't remove Lig
             switch (move)
             {
                 case MOVE_REFLECT:
-                    MESSAGE("The opposing team's Reflect wore off!");
+                    MESSAGE("Protection de l'équipe ennemie s'est dissipé!");
                     break;
                 case MOVE_LIGHT_SCREEN:
-                    MESSAGE("The opposing team's Light Screen wore off!");
+                    MESSAGE("Mur Lumière de l'équipe ennemie s'est dissipé!");
                     break;
                 default:
-                    MESSAGE("The opposing team's Aurora Veil wore off!");
+                    MESSAGE("Voile Aurore de l'équipe ennemie s'est dissipé!");
                     break;
             }
             HP_BAR(opponent);
@@ -126,13 +126,13 @@ SINGLE_BATTLE_TEST("Brick Break, Psychic Fangs, and Raging Bull don't remove Lig
             switch (move)
             {
                 case MOVE_REFLECT:
-                    MESSAGE("The opposing team's Reflect wore off!");
+                    MESSAGE("Protection de l'équipe ennemie s'est dissipé!");
                     break;
                 case MOVE_LIGHT_SCREEN:
-                    MESSAGE("The opposing team's Light Screen wore off!");
+                    MESSAGE("Mur Lumière de l'équipe ennemie s'est dissipé!");
                     break;
                 default:
-                    MESSAGE("The opposing team's Aurora Veil wore off!");
+                    MESSAGE("Voile Aurore de l'équipe ennemie s'est dissipé!");
                     break;
             }
             HP_BAR(opponent);
@@ -169,13 +169,13 @@ SINGLE_BATTLE_TEST("Brick Break, Psychic Fangs, and Raging Bull don't remove Lig
             switch (move)
             {
                 case MOVE_REFLECT:
-                    MESSAGE("The opposing team's Reflect wore off!");
+                    MESSAGE("Protection de l'équipe ennemie s'est dissipé!");
                     break;
                 case MOVE_LIGHT_SCREEN:
-                    MESSAGE("The opposing team's Light Screen wore off!");
+                    MESSAGE("Mur Lumière de l'équipe ennemie s'est dissipé!");
                     break;
                 default:
-                    MESSAGE("The opposing team's Aurora Veil wore off!");
+                    MESSAGE("Voile Aurore de l'équipe ennemie s'est dissipé!");
                     break;
             }
             HP_BAR(opponent);
@@ -216,13 +216,13 @@ DOUBLE_BATTLE_TEST("Brick Break, Psychic Fangs, and Raging Bull can remove Light
         switch (move)
         {
             case MOVE_REFLECT:
-                MESSAGE("Your team's Reflect wore off!");
+                MESSAGE("Protection n'a plus d'effet sur votre équipe!");
                 break;
             case MOVE_LIGHT_SCREEN:
-                MESSAGE("Your team's Light Screen wore off!");
+                MESSAGE("Mur Lumière n'a plus d'effet sur votre équipe!");
                 break;
             default:
-                MESSAGE("Your team's Aurora Veil wore off!");
+                MESSAGE("Voile Aurore n'a plus d'effet sur votre équipe!");
                 break;
         }
         HP_BAR(playerLeft);
@@ -247,7 +247,7 @@ SINGLE_BATTLE_TEST("Brick Break, Psychic Fangs, and Raging Bull can remove scree
         ANIMATION(ANIM_TYPE_MOVE, MOVE_REFLECT, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUBSTITUTE, player);
         ANIMATION(ANIM_TYPE_MOVE, move, opponent);
-        MESSAGE("Your team's Reflect wore off!");
+        MESSAGE("Protection n'a plus d'effet sur votre équipe!");
         SUB_HIT(player);
     }
 }
@@ -272,8 +272,8 @@ SINGLE_BATTLE_TEST("Brick Break, Psychic Fangs, and Raging Bull remove screens i
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LIGHT_SCREEN, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_AURORA_VEIL, opponent);
         ANIMATION(ANIM_TYPE_MOVE, move, player);
-        MESSAGE("The opposing team's Reflect wore off!");
-        MESSAGE("The opposing team's Light Screen wore off!");
-        MESSAGE("The opposing team's Aurora Veil wore off!");
+        MESSAGE("Protection n'a plus d'effet sur l'équipe ennemie!");
+        MESSAGE("Mur Lumière n'a plus d'effet sur l'équipe ennemie!");
+        MESSAGE("Voile Aurore n'a plus d'effet sur l'équipe ennemie!");
     }
 }

@@ -49,7 +49,7 @@ SINGLE_BATTLE_TEST("Trick fails if both battlers have no held item")
     } WHEN {
         TURN { MOVE(player, MOVE_TRICK); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(player->item == ITEM_NONE);
         EXPECT(opponent->item == ITEM_NONE);
@@ -70,7 +70,7 @@ SINGLE_BATTLE_TEST("Trick fails if either item is Mail")
     } WHEN {
         TURN { MOVE(player, MOVE_TRICK); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(player->item == atkItem);
         EXPECT(opponent->item == defItem);
@@ -91,7 +91,7 @@ SINGLE_BATTLE_TEST("Trick fails if either item is a Z-Crystal")
     } WHEN {
         TURN { MOVE(player, MOVE_TRICK); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(player->item == atkItem);
         EXPECT(opponent->item == defItem);
@@ -112,7 +112,7 @@ SINGLE_BATTLE_TEST("Trick fails if either battler holds a Mega Stone")
     } WHEN {
         TURN { MOVE(player, MOVE_TRICK); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(player->item == atkItem);
         EXPECT(opponent->item == defItem);
@@ -132,7 +132,7 @@ SINGLE_BATTLE_TEST("Trick fails if an item changes the holder's form")
     } WHEN {
         TURN { MOVE(player, MOVE_TRICK); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(player->item == atkItem);
         EXPECT(opponent->item == defItem);
@@ -162,7 +162,7 @@ SINGLE_BATTLE_TEST("Trick fails against Sticky Hold")
     } WHEN {
         TURN { MOVE(player, MOVE_TRICK); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet's item cannot be removed!");
+        MESSAGE("L'objet de Qulbutoké ennemi ne peut pas être volé!");
     } THEN {
         EXPECT(player->item == ITEM_SITRUS_BERRY);
         EXPECT(opponent->item == ITEM_LUM_BERRY);
@@ -177,7 +177,7 @@ SINGLE_BATTLE_TEST("Trick fails if the target is behind a Substitute")
     } WHEN {
         TURN { MOVE(opponent, MOVE_SUBSTITUTE); MOVE(player, MOVE_TRICK); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(player->item == ITEM_SITRUS_BERRY);
         EXPECT(opponent->item == ITEM_LUM_BERRY);

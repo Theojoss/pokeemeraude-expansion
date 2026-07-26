@@ -11,8 +11,8 @@ SINGLE_BATTLE_TEST("Misty Terrain protects grounded battlers from non-volatile s
         TURN { MOVE(player, MOVE_TOXIC); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MISTY_TERRAIN, player);
-        MESSAGE("The opposing Claydol used Toxic!");
-        MESSAGE("Wobbuffet surrounds itself with a protective mist!");
+        MESSAGE("Kaorine ennemi utilise\nToxik!");
+        MESSAGE("Qulbutoké est protégé par un champ brumeux!");
         NOT { STATUS_ICON(opponent, badPoison: TRUE); }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TOXIC, player);
         STATUS_ICON(opponent, badPoison: TRUE);
@@ -103,20 +103,20 @@ SINGLE_BATTLE_TEST("Misty Terrain lasts for 5 turns")
         TURN {}
         TURN {}
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MISTY_TERRAIN, player);
-        MESSAGE("Mist swirled around the battlefield!");
+        MESSAGE("La brume recouvre le terrain!");
 
-        MESSAGE("Wobbuffet used Celebrate!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Qulbutoké utilise\nCélébration!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
 
-        MESSAGE("Wobbuffet used Celebrate!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Qulbutoké utilise\nCélébration!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
 
-        MESSAGE("Wobbuffet used Celebrate!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Qulbutoké utilise\nCélébration!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
 
-        MESSAGE("The mist disappeared from the battlefield.");
+        MESSAGE("La brume qui recouvrait le terrain se dissipe.");
     }
 }
 

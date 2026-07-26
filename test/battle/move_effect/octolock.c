@@ -10,11 +10,11 @@ SINGLE_BATTLE_TEST("Octolock decreases Defense and Sp. Def by at the end of the 
         TURN { MOVE(player, MOVE_OCTOLOCK); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_OCTOLOCK, player);
-        MESSAGE("The opposing Wobbuffet can no longer escape because of Octolock!");
+        MESSAGE("Qulbutoké ennemi ne peut plus fuir à cause d'Octoprise!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Wobbuffet's Defense fell!");
+        MESSAGE("Ah, Défense du Qulbutoké ennemi baisse!");
         NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Wobbuffet's Sp. Def fell!");
+        MESSAGE("Ah, Défense Spéciale du Qulbutoké ennemi baisse!");
     }
 }
 
@@ -37,32 +37,32 @@ SINGLE_BATTLE_TEST("Octolock reduction is prevented by Clear Body, White Smoke a
         NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
         if (species == SPECIES_BELDUM)
         {
-            MESSAGE("The opposing Beldum can no longer escape because of Octolock!");
+            MESSAGE("Terhal ennemi ne peut plus fuir à cause d'Octoprise!");
             ABILITY_POPUP(opponent, ABILITY_CLEAR_BODY);
-            MESSAGE("The opposing Beldum's stats were not lowered!");
+            MESSAGE("Les stats de Terhal ennemi ne baissent pas!");
             NONE_OF {
-                MESSAGE("The opposing Beldum's Defense fell!");
-                MESSAGE("The opposing Beldum's Sp. Def fell!");
+                MESSAGE("Ah, Défense du Terhal ennemi baisse!");
+                MESSAGE("Ah, Défense Spéciale du Terhal ennemi baisse!");
             }
         }
         else if (species == SPECIES_TORKOAL)
         {
-            MESSAGE("The opposing Torkoal can no longer escape because of Octolock!");
+            MESSAGE("Chartor ennemi ne peut plus fuir à cause d'Octoprise!");
             ABILITY_POPUP(opponent, ABILITY_WHITE_SMOKE);
-            MESSAGE("The opposing Torkoal's stats were not lowered!");
+            MESSAGE("Les stats de Chartor ennemi ne baissent pas!");
             NONE_OF {
-                MESSAGE("The opposing Torkoal's Defense fell!");
-                MESSAGE("The opposing Torkoal's Sp. Def fell!");
+                MESSAGE("Ah, Défense du Chartor ennemi baisse!");
+                MESSAGE("Ah, Défense Spéciale du Chartor ennemi baisse!");
             }
         }
         else if (species == SPECIES_SOLGALEO)
         {
-            MESSAGE("The opposing Solgaleo can no longer escape because of Octolock!");
+            MESSAGE("Solgaleo ennemi ne peut plus fuir à cause d'Octoprise!");
             ABILITY_POPUP(opponent, ABILITY_FULL_METAL_BODY);
-            MESSAGE("The opposing Solgaleo's stats were not lowered!");
+            MESSAGE("Les stats de Solgaleo ennemi ne baissent pas!");
             NONE_OF {
-                MESSAGE("The opposing Solgaleo's Defense fell!");
-                MESSAGE("The opposing Solgaleo's Sp. Def fell!");
+                MESSAGE("Ah, Défense du Solgaleo ennemi baisse!");
+                MESSAGE("Ah, Défense Spéciale du Solgaleo ennemi baisse!");
             }
         }
     }
@@ -77,12 +77,12 @@ SINGLE_BATTLE_TEST("Octolock Defense reduction is prevented by Big Pecks")
         TURN { MOVE(player, MOVE_OCTOLOCK); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_OCTOLOCK, player);
-        MESSAGE("The opposing Pidgey can no longer escape because of Octolock!");
-        NOT MESSAGE("The opposing Pidgey's Defense fell!");
+        MESSAGE("Roucool ennemi ne peut plus fuir à cause d'Octoprise!");
+        NOT MESSAGE("Ah, Défense du Roucool ennemi baisse!");
         ABILITY_POPUP(opponent, ABILITY_BIG_PECKS);
-        MESSAGE("The opposing Pidgey's Defense was not lowered!");
+        MESSAGE("Défense de Roucool ennemi ne baisse pas!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Pidgey's Sp. Def fell!");
+        MESSAGE("Ah, Défense Spéciale du Roucool ennemi baisse!");
     }
 }
 
@@ -96,12 +96,12 @@ SINGLE_BATTLE_TEST("Octolock reduction is prevented by Clear Amulet")
         TURN {}
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_OCTOLOCK, player);
-        MESSAGE("The opposing Wobbuffet can no longer escape because of Octolock!");
-        MESSAGE("The effects of the Clear Amulet held by the opposing Wobbuffet prevents its stats from being lowered!");
+        MESSAGE("Qulbutoké ennemi ne peut plus fuir à cause d'Octoprise!");
+        MESSAGE("L'effet de Talisman Sain tenu par Qulbutoké ennemi empêche ses stats de baisser!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("The opposing Wobbuffet's Defense fell!");
-            MESSAGE("The opposing Wobbuffet's Sp. Def fell!");
+            MESSAGE("Ah, Défense du Qulbutoké ennemi baisse!");
+            MESSAGE("Ah, Défense Spéciale du Qulbutoké ennemi baisse!");
         }
     }
 }
@@ -120,14 +120,14 @@ SINGLE_BATTLE_TEST("Octolock will not decrease Defense and Sp. Def further then 
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_OCTOLOCK, player);
         for (j = 0; j < 5; j++) {
-            MESSAGE("The opposing Wobbuffet's Defense fell!");
-            MESSAGE("The opposing Wobbuffet's Sp. Def fell!");
+            MESSAGE("Ah, Défense du Qulbutoké ennemi baisse!");
+            MESSAGE("Ah, Défense Spéciale du Qulbutoké ennemi baisse!");
         }
-        MESSAGE("The opposing Wobbuffet's Defense won't go any lower!");
-        MESSAGE("The opposing Wobbuffet's Sp. Def won't go any lower!");
+        MESSAGE("Défense de Qulbutoké ennemi ne peut plus baisser!");
+        MESSAGE("Défense Spéciale de Qulbutoké ennemi ne peut plus baisser!");
         NONE_OF {
-            MESSAGE("The opposing Wobbuffet's Defense fell!");
-            MESSAGE("The opposing Wobbuffet's Sp. Def fell!");
+            MESSAGE("Ah, Défense du Qulbutoké ennemi baisse!");
+            MESSAGE("Ah, Défense Spéciale du Qulbutoké ennemi baisse!");
         }
     }
 }
@@ -143,15 +143,15 @@ SINGLE_BATTLE_TEST("Octolock ends after user that set the lock switches out")
         TURN { SWITCH(player, 1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_OCTOLOCK, player);
-        MESSAGE("The opposing Wobbuffet can no longer escape because of Octolock!");
+        MESSAGE("Qulbutoké ennemi ne peut plus fuir à cause d'Octoprise!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Wobbuffet's Defense fell!");
+        MESSAGE("Ah, Défense du Qulbutoké ennemi baisse!");
         NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Wobbuffet's Sp. Def fell!");
+        MESSAGE("Ah, Défense Spéciale du Qulbutoké ennemi baisse!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("The opposing Wobbuffet's Defense fell!");
-            MESSAGE("The opposing Wobbuffet's Sp. Def fell!");
+            MESSAGE("Ah, Défense du Qulbutoké ennemi baisse!");
+            MESSAGE("Ah, Défense Spéciale du Qulbutoké ennemi baisse!");
         }
 
     }
@@ -166,10 +166,10 @@ SINGLE_BATTLE_TEST("Octolock stat drops are not reflected by Mirror Armor")
         TURN { MOVE(player, MOVE_OCTOLOCK); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_OCTOLOCK, player);
-        MESSAGE("The opposing Corviknight can no longer escape because of Octolock!");
+        MESSAGE("Corvaillus ennemi ne peut plus fuir à cause d'Octoprise!");
         NOT ABILITY_POPUP(opponent, ABILITY_MIRROR_ARMOR);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Corviknight's Defense fell!");
+        MESSAGE("Ah, Défense du Corvaillus ennemi baisse!");
     } THEN {
         EXPECT_EQ(player->statStages[STAT_DEF], DEFAULT_STAT_STAGE);
         EXPECT_EQ(player->statStages[STAT_SPDEF], DEFAULT_STAT_STAGE);

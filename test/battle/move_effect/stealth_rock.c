@@ -26,7 +26,7 @@ SINGLE_BATTLE_TEST("Stealth Rock damage on switch in based on typing")
     } SCENE {
         s32 maxHP = GetMonData(&OPPONENT_PARTY[1], MON_DATA_MAX_HP);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STEALTH_ROCK, player);
-        // MESSAGE("2 sent out species!");
+        // MESSAGE("2 envoie\nun species!");
         HP_BAR(opponent, damage: maxHP / divisor);
     }
 }
@@ -46,7 +46,7 @@ SINGLE_BATTLE_TEST("Stealth Rock damages the correct Pokémon when Eject Button 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_QUICK_ATTACK, opponent);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_HARDEN, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        SEND_IN_MESSAGE("Metapod");
+        SEND_IN_MESSAGE("Chrysacier");
         HP_BAR(player);
     } THEN {
         EXPECT_EQ(opponent->hp, opponent->maxHP);
@@ -67,7 +67,7 @@ DOUBLE_BATTLE_TEST("Stealth Rock damages the correct Pokémon when Eject Button 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STEALTH_ROCK, opponentLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentRight);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
-        SEND_IN_MESSAGE("Metapod");
+        SEND_IN_MESSAGE("Chrysacier");
         HP_BAR(playerLeft);
     } THEN {
         EXPECT_EQ(opponentLeft->hp, opponentLeft->maxHP);

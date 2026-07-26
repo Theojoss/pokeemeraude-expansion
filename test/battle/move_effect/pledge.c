@@ -23,14 +23,14 @@ DOUBLE_BATTLE_TEST("Water and Fire Pledge create a rainbow on the user's side of
         TURN {}
         TURN {}
     } SCENE {
-        MESSAGE("Wobbuffet used Water Pledge!");
-        MESSAGE("Wobbuffet is waiting for Wynaut's move…{PAUSE 16}");
-        MESSAGE("Wynaut used Fire Pledge!");
-        MESSAGE("The two moves have become one! It's a combined move!{PAUSE 16}");
+        MESSAGE("Qulbutoké utilise\nAire d'Eau!");
+        MESSAGE("Qulbutoké attend la capacité de Okéoké…{PAUSE 16}");
+        MESSAGE("Okéoké utilise\nAire de Feu!");
+        MESSAGE("Les deux capacités se sont combinées! C'est une attaque combinée!{PAUSE 16}");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WATER_PLEDGE, playerRight);
         HP_BAR(opponentRight);
-        MESSAGE("A rainbow appeared in the sky on your team's side!");
-        MESSAGE("The rainbow on your team's side disappeared!");
+        MESSAGE("Un arc-en-ciel apparaît au-dessus de votre équipe!");
+        MESSAGE("L'arc-en-ciel au-dessus de votre équipe a disparu!");
     }
 }
 
@@ -51,7 +51,7 @@ DOUBLE_BATTLE_TEST("Rainbow doubles the chance of secondary move effects")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WATER_PLEDGE, playerRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EMBER, playerLeft);
-        MESSAGE("The opposing Wynaut was burned!");
+        MESSAGE("Okéoké ennemi est brûlé!");
     }
 }
 
@@ -72,7 +72,7 @@ DOUBLE_BATTLE_TEST("Rainbow flinch chance does not stack with Serene Grace")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WATER_PLEDGE, playerRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BITE, playerLeft);
-        MESSAGE("The opposing Wynaut flinched and couldn't move!");
+        MESSAGE("Okéoké ennemi a la trouille! Il ne peut plus attaquer!");
     }
 }
 
@@ -91,27 +91,27 @@ DOUBLE_BATTLE_TEST("Fire and Grass Pledge summons Sea Of Fire for four turns tha
         TURN {}
         TURN {}
     } SCENE {
-        MESSAGE("Wobbuffet used Fire Pledge!");
-        MESSAGE("Wobbuffet is waiting for Wynaut's move…{PAUSE 16}");
-        MESSAGE("Wynaut used Grass Pledge!");
-        MESSAGE("The two moves have become one! It's a combined move!{PAUSE 16}");
+        MESSAGE("Qulbutoké utilise\nAire de Feu!");
+        MESSAGE("Qulbutoké attend la capacité de Okéoké…{PAUSE 16}");
+        MESSAGE("Okéoké utilise\nAire d'Herbe!");
+        MESSAGE("Les deux capacités se sont combinées! C'est une attaque combinée!{PAUSE 16}");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
         HP_BAR(opponentRight);
-        MESSAGE("A sea of fire enveloped the opposing team!");
+        MESSAGE("L'équipe ennemie est cernée par une mer de feu!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SEA_OF_FIRE, opponentRight);
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_BRN, opponentLeft);
-        MESSAGE("The opposing Wobbuffet was hurt by the sea of fire!");
+        MESSAGE("Qulbutoké ennemi est blessé par la mer de feu!");
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_BRN, opponentRight);
-        MESSAGE("The opposing Wynaut was hurt by the sea of fire!");
+        MESSAGE("Okéoké ennemi est blessé par la mer de feu!");
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_BRN, opponentLeft);
-        MESSAGE("The opposing Wobbuffet was hurt by the sea of fire!");
+        MESSAGE("Qulbutoké ennemi est blessé par la mer de feu!");
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_BRN, opponentRight);
-        MESSAGE("The opposing Wynaut was hurt by the sea of fire!");
+        MESSAGE("Okéoké ennemi est blessé par la mer de feu!");
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_BRN, opponentLeft);
-        MESSAGE("The opposing Wobbuffet was hurt by the sea of fire!");
+        MESSAGE("Qulbutoké ennemi est blessé par la mer de feu!");
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_BRN, opponentRight);
-        MESSAGE("The opposing Wynaut was hurt by the sea of fire!");
-        MESSAGE("The sea of fire around the opposing team disappeared!");
+        MESSAGE("Okéoké ennemi est blessé par la mer de feu!");
+        MESSAGE("La mer de feu autour de l'équipe ennemie a disparu!");
     }
 }
 
@@ -155,7 +155,7 @@ DOUBLE_BATTLE_TEST("Sea Of Fire does not damage Fire-types or Magic Guard Pokemo
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
         HP_BAR(opponentRight);
-        MESSAGE("A sea of fire enveloped the opposing team!");
+        MESSAGE("L'équipe ennemie est cernée par une mer de feu!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_BRN, opponentLeft);
             HP_BAR(opponentLeft);
@@ -180,14 +180,14 @@ DOUBLE_BATTLE_TEST("Grass and Water Pledge create a swamp on the user's side of 
         TURN {}
         TURN {}
     } SCENE {
-        MESSAGE("Wobbuffet used Grass Pledge!");
-        MESSAGE("Wobbuffet is waiting for Wynaut's move…{PAUSE 16}");
-        MESSAGE("Wynaut used Water Pledge!");
-        MESSAGE("The two moves have become one! It's a combined move!{PAUSE 16}");
+        MESSAGE("Qulbutoké utilise\nAire d'Herbe!");
+        MESSAGE("Qulbutoké attend la capacité de Okéoké…{PAUSE 16}");
+        MESSAGE("Okéoké utilise\nAire d'Eau!");
+        MESSAGE("Les deux capacités se sont combinées! C'est une attaque combinée!{PAUSE 16}");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GRASS_PLEDGE, playerRight);
         HP_BAR(opponentRight);
-        MESSAGE("A swamp enveloped the opposing team!");
-        MESSAGE("The swamp around the opposing team disappeared!");
+        MESSAGE("L'équipe ennemie est cernée par un marécage!");
+        MESSAGE("Le marécage autour de l'équipe ennemie a disparu!");
     }
 }
 
@@ -283,18 +283,18 @@ DOUBLE_BATTLE_TEST("Pledge status timer does not reset if combined move is used 
         ANIMATION(ANIM_TYPE_MOVE, pledgeMove1, playerRight);
         if (pledgeMove1 == MOVE_WATER_PLEDGE && pledgeMove2 == MOVE_FIRE_PLEDGE)
         {
-            NOT MESSAGE("A rainbow appeared in the sky on your team's side!");
-            MESSAGE("The rainbow on your team's side disappeared!");
+            NOT MESSAGE("Un arc-en-ciel apparaît au-dessus de votre équipe!");
+            MESSAGE("L'arc-en-ciel au-dessus de votre équipe a disparu!");
         }
         if (pledgeMove1 == MOVE_FIRE_PLEDGE && pledgeMove2 == MOVE_GRASS_PLEDGE)
         {
-            NOT MESSAGE("A sea of fire enveloped the opposing team!");
-            MESSAGE("The sea of fire around the opposing team disappeared!");
+            NOT MESSAGE("L'équipe ennemie est cernée par une mer de feu!");
+            MESSAGE("La mer de feu autour de l'équipe ennemie a disparu!");
         }
         if (pledgeMove1 == MOVE_GRASS_PLEDGE && pledgeMove2 == MOVE_WATER_PLEDGE)
         {
-            NOT MESSAGE("A swamp enveloped the opposing team!");
-            MESSAGE("The swamp around the opposing team disappeared!");
+            NOT MESSAGE("L'équipe ennemie est cernée par un marécage!");
+            MESSAGE("Le marécage autour de l'équipe ennemie a disparu!");
         }
     }
 }
@@ -432,11 +432,11 @@ DOUBLE_BATTLE_TEST("Pledge move combo fails if ally fails to act - Sleep Right")
         TURN { MOVE(playerLeft, MOVE_FIRE_PLEDGE, target: opponentRight); MOVE(playerRight, MOVE_GRASS_PLEDGE, target: opponentRight); }
     } SCENE {
         if (speedPLeft < speedPRight) {
-            MESSAGE("Wynaut is fast asleep.");
+            MESSAGE("Okéoké dort profondément.");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
         } else {
             NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
-            MESSAGE("Wynaut is fast asleep.");
+            MESSAGE("Okéoké dort profondément.");
         }
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
@@ -470,11 +470,11 @@ DOUBLE_BATTLE_TEST("Pledge move combo fails if ally fails to act - Sleep Left")
         TURN { MOVE(playerRight, MOVE_FIRE_PLEDGE, target: opponentRight); MOVE(playerLeft, MOVE_GRASS_PLEDGE, target: opponentRight); }
     } SCENE {
         if (speedPRight < speedPLeft) {
-            MESSAGE("Wobbuffet is fast asleep.");
+            MESSAGE("Qulbutoké dort profondément.");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
         } else {
             NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
-            MESSAGE("Wobbuffet is fast asleep.");
+            MESSAGE("Qulbutoké dort profondément.");
         }
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
@@ -503,11 +503,11 @@ DOUBLE_BATTLE_TEST("Pledge move combo fails if ally fails to act - Flinch Right"
         TURN { MOVE(opponentLeft, MOVE_FAKE_OUT, target: playerRight); MOVE(playerLeft, MOVE_FIRE_PLEDGE, target: opponentRight); MOVE(playerRight, MOVE_GRASS_PLEDGE, target: opponentRight); }
     } SCENE {
         if (speedPLeft < speedPRight) {
-            MESSAGE("Wynaut flinched and couldn't move!");
+            MESSAGE("Okéoké a la trouille! Il ne peut plus attaquer!");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
         } else {
             NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
-            MESSAGE("Wynaut flinched and couldn't move!");
+            MESSAGE("Okéoké a la trouille! Il ne peut plus attaquer!");
         }
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
@@ -536,11 +536,11 @@ DOUBLE_BATTLE_TEST("Pledge move combo fails if ally fails to act - Flinch Left")
         TURN { MOVE(opponentLeft, MOVE_FAKE_OUT, target: playerLeft); MOVE(playerRight, MOVE_FIRE_PLEDGE, target: opponentRight); MOVE(playerLeft, MOVE_GRASS_PLEDGE, target: opponentRight); }
     } SCENE {
         if (speedPRight < speedPLeft) {
-            MESSAGE("Wobbuffet flinched and couldn't move!");
+            MESSAGE("Qulbutoké a la trouille! Il ne peut plus attaquer!");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
         } else {
             NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
-            MESSAGE("Wobbuffet flinched and couldn't move!");
+            MESSAGE("Qulbutoké a la trouille! Il ne peut plus attaquer!");
         }
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
@@ -565,8 +565,8 @@ DOUBLE_BATTLE_TEST("Pledge move combo doesn't fail if any mon wakes up")
         TURN { MOVE(playerLeft, MOVE_FIRE_PLEDGE, target: opponentRight); MOVE(playerRight, MOVE_GRASS_PLEDGE, target: opponentRight); }
     } SCENE {
         NONE_OF {
-            MESSAGE("Wobbuffet is fast asleep.");
-            MESSAGE("Wynaut is fast asleep.");
+            MESSAGE("Qulbutoké dort profondément.");
+            MESSAGE("Okéoké dort profondément.");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
             ANIMATION(ANIM_TYPE_MOVE, MOVE_GRASS_PLEDGE, playerRight);
         }
@@ -590,8 +590,8 @@ DOUBLE_BATTLE_TEST("Pledge move combo doesn't fail if any mon thaws out")
         TURN { MOVE(playerLeft, MOVE_FIRE_PLEDGE, target: opponentRight, WITH_RNG(RNG_FROZEN, 1)); MOVE(playerRight, MOVE_GRASS_PLEDGE, target: opponentRight, WITH_RNG(RNG_FROZEN, 1)); }
     } SCENE {
         NONE_OF {
-            MESSAGE("Wobbuffet is frozen solid!");
-            MESSAGE("Wynaut is frozen solid!");
+            MESSAGE("Qulbutoké est gelé! Il ne peut plus attaquer!");
+            MESSAGE("Okéoké est gelé! Il ne peut plus attaquer!");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
             ANIMATION(ANIM_TYPE_MOVE, MOVE_GRASS_PLEDGE, playerRight);
         }
@@ -614,11 +614,11 @@ DOUBLE_BATTLE_TEST("Pledge move combo fails if ally fails to act - Sleep Both Le
         TURN { MOVE(playerLeft, MOVE_FIRE_PLEDGE, target: opponentRight); MOVE(playerRight, MOVE_GRASS_PLEDGE, target: opponentRight); }
     } SCENE {
         if (speedLeft < speedRight) {
-            MESSAGE("Wynaut is fast asleep.");
+            MESSAGE("Okéoké dort profondément.");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
         } else {
             NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
-            MESSAGE("Wynaut is fast asleep.");
+            MESSAGE("Okéoké dort profondément.");
         }
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
@@ -642,11 +642,11 @@ DOUBLE_BATTLE_TEST("Pledge move combo fails if ally fails to act - Sleep Both Ri
         TURN { MOVE(playerLeft, MOVE_FIRE_PLEDGE, target: opponentRight); MOVE(playerRight, MOVE_GRASS_PLEDGE, target: opponentRight); }
     } SCENE {
         if (speedRight < speedLeft) {
-            MESSAGE("Wobbuffet is fast asleep.");
+            MESSAGE("Qulbutoké dort profondément.");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_GRASS_PLEDGE, playerRight);
         } else {
             NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_GRASS_PLEDGE, playerRight);
-            MESSAGE("Wobbuffet is fast asleep.");
+            MESSAGE("Qulbutoké dort profondément.");
         }
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
@@ -670,8 +670,8 @@ DOUBLE_BATTLE_TEST("Pledge move combo fails if ally fails to act - Sleep Both Le
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_FIRE_PLEDGE, target: opponentRight); MOVE(playerRight, MOVE_GRASS_PLEDGE, target: opponentRight); }
     } SCENE {
-        MESSAGE("Wobbuffet is fast asleep.");
-        MESSAGE("Wynaut is fast asleep.");
+        MESSAGE("Qulbutoké dort profondément.");
+        MESSAGE("Okéoké dort profondément.");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
@@ -696,8 +696,8 @@ DOUBLE_BATTLE_TEST("Pledge move combo fails if ally fails to act - Sleep Both Ri
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_FIRE_PLEDGE, target: opponentRight); MOVE(playerRight, MOVE_GRASS_PLEDGE, target: opponentRight); }
     } SCENE {
-        MESSAGE("Wynaut is fast asleep.");
-        MESSAGE("Wobbuffet is fast asleep.");
+        MESSAGE("Okéoké dort profondément.");
+        MESSAGE("Qulbutoké dort profondément.");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
@@ -718,8 +718,8 @@ DOUBLE_BATTLE_TEST("Pledge move combo fails if ally fails to act - Frozen Both L
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_FIRE_PLEDGE, target: opponentRight, WITH_RNG(RNG_FROZEN, 0)); MOVE(playerRight, MOVE_GRASS_PLEDGE, target: opponentRight, WITH_RNG(RNG_FROZEN, 0)); }
     } SCENE {
-        MESSAGE("Wobbuffet is frozen solid!");
-        MESSAGE("Wynaut is frozen solid!");
+        MESSAGE("Qulbutoké est gelé! Il ne peut plus attaquer!");
+        MESSAGE("Okéoké est gelé! Il ne peut plus attaquer!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
@@ -740,8 +740,8 @@ DOUBLE_BATTLE_TEST("Pledge move combo fails if ally fails to act - Frozen Both R
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_FIRE_PLEDGE, target: opponentRight, WITH_RNG(RNG_FROZEN, 0)); MOVE(playerRight, MOVE_GRASS_PLEDGE, target: opponentRight, WITH_RNG(RNG_FROZEN, 0)); }
     } SCENE {
-        MESSAGE("Wynaut is frozen solid!");
-        MESSAGE("Wobbuffet is frozen solid!");
+        MESSAGE("Okéoké est gelé! Il ne peut plus attaquer!");
+        MESSAGE("Qulbutoké est gelé! Il ne peut plus attaquer!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
@@ -762,8 +762,8 @@ DOUBLE_BATTLE_TEST("Pledge move combo fails if ally fails to act - Paralyzed Bot
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_FIRE_PLEDGE, target: opponentRight, WITH_RNG(RNG_PARALYSIS, 0)); MOVE(playerRight, MOVE_GRASS_PLEDGE, target: opponentRight, WITH_RNG(RNG_PARALYSIS, 0)); }
     } SCENE {
-        MESSAGE("Wobbuffet couldn't move because it's paralyzed!");
-        MESSAGE("Wynaut couldn't move because it's paralyzed!");
+        MESSAGE("Qulbutoké est paralysé! Il n'a pas pu attaquer!");
+        MESSAGE("Okéoké est paralysé! Il n'a pas pu attaquer!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
@@ -784,8 +784,8 @@ DOUBLE_BATTLE_TEST("Pledge move combo fails if ally fails to act - Paralyzed Bot
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_FIRE_PLEDGE, target: opponentRight, WITH_RNG(RNG_PARALYSIS, 0)); MOVE(playerRight, MOVE_GRASS_PLEDGE, target: opponentRight, WITH_RNG(RNG_PARALYSIS, 0)); }
     } SCENE {
-        MESSAGE("Wynaut couldn't move because it's paralyzed!");
-        MESSAGE("Wobbuffet couldn't move because it's paralyzed!");
+        MESSAGE("Okéoké est paralysé! Il n'a pas pu attaquer!");
+        MESSAGE("Qulbutoké est paralysé! Il n'a pas pu attaquer!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
@@ -809,8 +809,8 @@ DOUBLE_BATTLE_TEST("Pledge move combo fails if ally fails to act - Flinch Both L
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponentLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponentRight);
-        MESSAGE("Wobbuffet flinched and couldn't move!");
-        MESSAGE("Wynaut flinched and couldn't move!");
+        MESSAGE("Qulbutoké a la trouille! Il ne peut plus attaquer!");
+        MESSAGE("Okéoké a la trouille! Il ne peut plus attaquer!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
@@ -834,8 +834,8 @@ DOUBLE_BATTLE_TEST("Pledge move combo fails if ally fails to act - Flinch Both R
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponentLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponentRight);
-        MESSAGE("Wynaut flinched and couldn't move!");
-        MESSAGE("Wobbuffet flinched and couldn't move!");
+        MESSAGE("Okéoké a la trouille! Il ne peut plus attaquer!");
+        MESSAGE("Qulbutoké a la trouille! Il ne peut plus attaquer!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);

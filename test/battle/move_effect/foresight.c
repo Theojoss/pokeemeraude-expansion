@@ -48,7 +48,7 @@ SINGLE_BATTLE_TEST("Foresight always hits unless the target is semi-invulnerable
             TURN { MOVE(player, MOVE_SPLASH); SKIP_TURN(opponent); }
     } SCENE {
         if (semiInvulnerable) {
-            MESSAGE("The opposing Squawkabilly avoided the attack!");
+            MESSAGE("Tapatoès ennemi évite l'attaque!");
         } else {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_DOUBLE_TEAM, opponent);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
@@ -91,7 +91,7 @@ SINGLE_BATTLE_TEST("Foresight fails if the target is already under its effect (G
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FORESIGHT, player);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_FORESIGHT, player);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -110,7 +110,7 @@ SINGLE_BATTLE_TEST("Foresight doesn't fail if the target is already under its ef
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FORESIGHT, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FORESIGHT, player);
-        NOT MESSAGE("But it failed!");
+        NOT MESSAGE("Mais cela échoue!");
     }
 }
 

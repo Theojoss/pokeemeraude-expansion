@@ -21,9 +21,9 @@ SINGLE_BATTLE_TEST("Destiny Bond faints the opposing mon if it fainted from the 
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DESTINY_BOND, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
-        MESSAGE("Wobbuffet fainted!");
-        MESSAGE("Wobbuffet took its attacker down with it!");
-        MESSAGE("The opposing Wobbuffet fainted!");
+        MESSAGE("Qulbutoké est K.O.!\p");
+        MESSAGE("Qulbutoké entraîne son assaillant dans sa chute!");
+        MESSAGE("Qulbutoké ennemi est K.O.!\p");
     }
 }
 
@@ -39,8 +39,8 @@ SINGLE_BATTLE_TEST("Destiny Bond doesn't fail if used sequentially (Gen2-6)")
         TURN { MOVE(player, MOVE_DESTINY_BOND); SWITCH(opponent, 1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DESTINY_BOND, player);
-        MESSAGE("2 sent out Zigzagoon!");
-        NOT { MESSAGE("But it failed!"); }
+        MESSAGE("2 envoie\nun Zigzaton!");
+        NOT { MESSAGE("Mais cela échoue!"); }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DESTINY_BOND, player);
     }
 }
@@ -57,9 +57,9 @@ SINGLE_BATTLE_TEST("Destiny Bond fails if used sequentially (Gen7+)")
         TURN { MOVE(player, MOVE_DESTINY_BOND); SWITCH(opponent, 1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DESTINY_BOND, player);
-        MESSAGE("2 sent out Zigzagoon!");
+        MESSAGE("2 envoie\nun Zigzaton!");
         NOT { ANIMATION(ANIM_TYPE_MOVE, MOVE_DESTINY_BOND, player); }
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -76,9 +76,9 @@ SINGLE_BATTLE_TEST("Destiny Bond does not fail if used repeatedly separated by o
         TURN { MOVE(player, MOVE_DESTINY_BOND); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DESTINY_BOND, player);
-        MESSAGE("2 sent out Zigzagoon!");
+        MESSAGE("2 envoie\nun Zigzaton!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DESTINY_BOND, player);
-        NOT { MESSAGE("But it failed!"); }
+        NOT { MESSAGE("Mais cela échoue!"); }
     }
 }
 
@@ -95,9 +95,9 @@ SINGLE_BATTLE_TEST("Destiny Bond does not fail if used after failing (Gen7+)")
         TURN { MOVE(player, MOVE_DESTINY_BOND); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DESTINY_BOND, player);
-        MESSAGE("2 sent out Zigzagoon!");
+        MESSAGE("2 envoie\nun Zigzaton!");
         NOT { ANIMATION(ANIM_TYPE_MOVE, MOVE_DESTINY_BOND, player); }
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DESTINY_BOND, player);
     }
 }
@@ -111,9 +111,9 @@ SINGLE_BATTLE_TEST("(DYNAMAX) Dynamaxed Pokemon are not affected by Destiny Bond
     } WHEN {
         TURN { MOVE(opponent, MOVE_DESTINY_BOND); MOVE(player, MOVE_SCRATCH, gimmick: GIMMICK_DYNAMAX); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Destiny Bond!");
-        MESSAGE("Wobbuffet used Max Strike!");
-        MESSAGE("The opposing Wobbuffet fainted!");
+        MESSAGE("Qulbutoké ennemi utilise\nLien du Destin!");
+        MESSAGE("Qulbutoké utilise\nNormalomax!");
+        MESSAGE("Qulbutoké ennemi est K.O.!\p");
         NONE_OF { HP_BAR(player); }
     }
 }

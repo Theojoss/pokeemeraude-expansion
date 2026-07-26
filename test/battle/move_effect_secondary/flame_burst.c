@@ -18,8 +18,8 @@ DOUBLE_BATTLE_TEST("Flame Burst Substitute")
     } WHEN {
         TURN { MOVE(opponentLeft, MOVE_SUBSTITUTE); MOVE(playerRight, MOVE_FLAME_BURST, target: opponentRight); }
     } SCENE {
-        MESSAGE("The bursting flames hit the opposing Wynaut!");
-        NOT MESSAGE("The substitute took damage for the opposing Wynaut!");
+        MESSAGE("Okéoké ennemi est arrosé d'une gerbe de flammes!");
+        NOT MESSAGE("Le clone subit les dégâts à la place de Okéoké ennemi!\p");
     }
 }
 
@@ -35,7 +35,7 @@ DOUBLE_BATTLE_TEST("Flame Burst doesn't crash, opponent to player")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FLAME_BURST, opponentRight);
         HP_BAR(playerRight);
-        MESSAGE("Wobbuffet fainted!");
+        MESSAGE("Qulbutoké est K.O.!\p");
     }
 }
 
@@ -51,6 +51,6 @@ DOUBLE_BATTLE_TEST("Flame Burst doesn't crash, player to opponent")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FLAME_BURST, playerLeft);
         HP_BAR(opponentRight);
-        MESSAGE("The opposing Wynaut fainted!");
+        MESSAGE("Okéoké ennemi est K.O.!\p");
     }
 }

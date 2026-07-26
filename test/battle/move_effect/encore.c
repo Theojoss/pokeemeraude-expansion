@@ -69,8 +69,8 @@ SINGLE_BATTLE_TEST("Encore has no effect if no previous move")
     } WHEN {
         TURN { MOVE(opponent, MOVE_ENCORE); MOVE(player, MOVE_CELEBRATE); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Encore!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké ennemi utilise\nEncore!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -106,7 +106,7 @@ SINGLE_BATTLE_TEST("Encore forces the last move used before the target flinched"
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GRASS_KNOT, opponent);
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HEADBUTT, player);
-        MESSAGE("The opposing Wobbuffet flinched and couldn't move!");
+        MESSAGE("Qulbutoké ennemi a la trouille! Il ne peut plus attaquer!");
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ENCORE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GRASS_KNOT, opponent);
@@ -144,10 +144,10 @@ SINGLE_BATTLE_TEST("(DYNAMAX) Dynamaxed Pokemon are immune to Encore")
         TURN { MOVE(player, MOVE_SCRATCH, gimmick: GIMMICK_DYNAMAX); MOVE(opponent, MOVE_ENCORE); }
         TURN { MOVE(player, MOVE_EMBER); }
     } SCENE {
-        MESSAGE("Wobbuffet used Max Strike!");
-        MESSAGE("The opposing Wobbuffet used Encore!");
-        MESSAGE("But it failed!");
-        MESSAGE("Wobbuffet used Max Flare!");
+        MESSAGE("Qulbutoké utilise\nNormalomax!");
+        MESSAGE("Qulbutoké ennemi utilise\nEncore!");
+        MESSAGE("Mais cela échoue!");
+        MESSAGE("Qulbutoké utilise\nPyromax!");
     }
 }
 
@@ -162,11 +162,11 @@ SINGLE_BATTLE_TEST("(DYNAMAX) Dynamaxed Pokemon can be encored immediately after
         TURN { MOVE(player, MOVE_ARM_THRUST); }
         TURN { MOVE(opponent, MOVE_ENCORE); MOVE(player, MOVE_SCRATCH); }
     } SCENE {
-        MESSAGE("Wobbuffet used Max Knuckle!");
-        MESSAGE("Wobbuffet used Max Knuckle!");
-        MESSAGE("Wobbuffet used Max Knuckle!");
-        MESSAGE("The opposing Wobbuffet used Encore!");
-        MESSAGE("Wobbuffet used Arm Thrust!");
+        MESSAGE("Qulbutoké utilise\nPugilomax!");
+        MESSAGE("Qulbutoké utilise\nPugilomax!");
+        MESSAGE("Qulbutoké utilise\nPugilomax!");
+        MESSAGE("Qulbutoké ennemi utilise\nEncore!");
+        MESSAGE("Qulbutoké utilise\nCogne!");
     }
 }
 
@@ -187,11 +187,11 @@ DOUBLE_BATTLE_TEST("Encore works even if the target's last move failed")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FOLLOW_ME, playerRight);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SUCKER_PUNCH, opponentLeft);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SUCKER_PUNCH, opponentRight);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ENCORE, playerLeft);
-        MESSAGE("The opposing Wobbuffet must do an encore!");
+        MESSAGE("Qulbutoké ennemi! Encore une fois!");
     }
 }
 
@@ -223,7 +223,7 @@ SINGLE_BATTLE_TEST("Encore's effect ends if the encored move runs out of PP")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ENCORE, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
-        MESSAGE("Wobbuffet ended its encore!");
+        MESSAGE("Qulbutoké n'est plus obligé d'utiliser la même capacité!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
     }
 }
@@ -254,7 +254,7 @@ AI_SINGLE_BATTLE_TEST("Encore lasts for 2-6 turns (Gen 2-3)")
         for (count = 0; count < turns - 1; ++count)
             ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
-        MESSAGE("The opposing Wobbuffet ended its encore!");
+        MESSAGE("Qulbutoké ennemi n'est plus obligé d'utiliser la même capacité!");
     }
 }
 
@@ -283,7 +283,7 @@ AI_SINGLE_BATTLE_TEST("Encore lasts for 3-7 turns (Gen 4)")
         for (count = 0; count < turns - 1; ++count)
             ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
-        MESSAGE("The opposing Wobbuffet ended its encore!");
+        MESSAGE("Qulbutoké ennemi n'est plus obligé d'utiliser la même capacité!");
     }
 }
 

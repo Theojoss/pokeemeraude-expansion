@@ -35,7 +35,7 @@ SINGLE_BATTLE_TEST("Roost fails when user is at full HP")
     } WHEN {
         TURN { MOVE(player, MOVE_ROOST); }
     } SCENE {
-        MESSAGE("Wobbuffet's HP is full!");
+        MESSAGE("Les PV de Qulbutoké sont au maximum!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_ROOST, player);
             HP_BAR(player);
@@ -52,8 +52,8 @@ SINGLE_BATTLE_TEST("Roost fails if the user is under the effects of Heal Block")
         TURN { MOVE(opponent, MOVE_HEAL_BLOCK); MOVE(player, MOVE_ROOST); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HEAL_BLOCK, opponent);
-        MESSAGE("Wobbuffet was prevented from healing!"); // Message when Heal Block is applied
-        MESSAGE("Wobbuffet was prevented from healing!"); // Message when trying to heal under Heal Block
+        MESSAGE("Qulbutoké ne peut pas guérir!"); // Message when Heal Block is applied
+        MESSAGE("Qulbutoké ne peut pas guérir!"); // Message when trying to heal under Heal Block
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_ROOST, player);
             HP_BAR(player);
@@ -94,16 +94,16 @@ SINGLE_BATTLE_TEST("Roost suppresses the user's Flying-typing this turn, then re
         TURN { MOVE(opponent, MOVE_EARTHQUAKE); }
     } SCENE {
         // Turn 1: EQ hits when Roosted
-        MESSAGE("Skarmory used Roost!");
+        MESSAGE("Airmure utilise\nAtterrissage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROOST, player);
-        MESSAGE("Skarmory's HP was restored.");
-        MESSAGE("The opposing Wobbuffet used Earthquake!");
+        MESSAGE("Airmure récupère des PV!");
+        MESSAGE("Qulbutoké ennemi utilise\nSéisme!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, opponent);
-        MESSAGE("It's super effective!");
+        MESSAGE("C'est super efficace!");
         // Turn 2: EQ has no effect because Roost expired
-        MESSAGE("The opposing Wobbuffet used Earthquake!");
+        MESSAGE("Qulbutoké ennemi utilise\nSéisme!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, opponent);
-        MESSAGE("It doesn't affect Skarmory…");
+        MESSAGE("Ça n'affecte pas Airmure…");
         NOT HP_BAR(player);
     }
 }
@@ -138,29 +138,29 @@ SINGLE_BATTLE_TEST("Roost, if used by a Flying/Flying type, treats the user as a
     } WHEN {
         TURN { MOVE(player, MOVE_ROOST); MOVE(opponent, damagingMove); }
     } SCENE {
-        MESSAGE("Tornadus used Roost!");
+        MESSAGE("Boréas utilise\nAtterrissage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROOST, player);
-        MESSAGE("Tornadus's HP was restored.");
+        MESSAGE("Boréas récupère des PV!");
 
         if (B_ROOST_PURE_FLYING >= GEN_5) // >= Gen. 5, Pokemon becomes pure Normal-type
         {
             if (damagingMove == MOVE_KARATE_CHOP)
             {
                 ANIMATION(ANIM_TYPE_MOVE, damagingMove, opponent);
-                MESSAGE("It's super effective!");
+                MESSAGE("C'est super efficace!");
             }
             else if (damagingMove == MOVE_LICK)
             {
                 NOT ANIMATION(ANIM_TYPE_MOVE, damagingMove, opponent);
-                MESSAGE("It doesn't affect Tornadus…");
+                MESSAGE("Ça n'affecte pas Boréas…");
             }
             else
             {
                 ANIMATION(ANIM_TYPE_MOVE, damagingMove, opponent);
                 NONE_OF {
-                    MESSAGE("It's super effective!");
-                    MESSAGE("It's not very effective…");
-                    MESSAGE("It doesn't affect Tornadus…");
+                    MESSAGE("C'est super efficace!");
+                    MESSAGE("Ce n'est pas très efficace…");
+                    MESSAGE("Ça n'affecte pas Boréas…");
                 }
             }
         }
@@ -168,9 +168,9 @@ SINGLE_BATTLE_TEST("Roost, if used by a Flying/Flying type, treats the user as a
         {
             // Should not see any effectiveness messages
             NONE_OF {
-                MESSAGE("It's super effective!");
-                MESSAGE("It's not very effective…");
-                MESSAGE("It doesn't affect Tornadus…");
+                MESSAGE("C'est super efficace!");
+                MESSAGE("Ce n'est pas très efficace…");
+                MESSAGE("Ça n'affecte pas Boréas…");
             }
         }
     }
@@ -208,18 +208,18 @@ SINGLE_BATTLE_TEST("Roost, if used by a Mystery/Flying type, treats the user as 
         TURN { MOVE(player, MOVE_ROOST); MOVE(opponent, damagingMove); }
     } SCENE {
         // Turn 1: Use Burn Up to change from Fire/Flying to Mystery/Flying
-        MESSAGE("Moltres used Burn Up!");
+        MESSAGE("Sulfura utilise\nFlamme Ultime!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BURN_UP, player);
-        MESSAGE("Moltres burned itself out!");
+        MESSAGE("Sulfura a utilisé tout son feu intérieur!");
         // Turn 2: Use Roost to now be treated as a Mystery/Mystery type
-        MESSAGE("Moltres used Roost!");
+        MESSAGE("Sulfura utilise\nAtterrissage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROOST, player);
-        MESSAGE("Moltres's HP was restored.");
+        MESSAGE("Sulfura récupère des PV!");
         ANIMATION(ANIM_TYPE_MOVE, damagingMove, opponent);
         NONE_OF {
-            MESSAGE("It's super effective!");
-            MESSAGE("It's not very effective…");
-            MESSAGE("It doesn't affect Moltres…");
+            MESSAGE("C'est super efficace!");
+            MESSAGE("Ce n'est pas très efficace…");
+            MESSAGE("Ça n'affecte pas Sulfura…");
         }
     }
 }
@@ -239,15 +239,15 @@ DOUBLE_BATTLE_TEST("Roost suppresses the user's not-yet-aquired Flying-type this
                MOVE(opponentLeft, MOVE_GUST, target: playerLeft);
                MOVE(opponentRight, MOVE_EARTHQUAKE, target: playerLeft); }
     } SCENE {
-        MESSAGE("Kecleon used Roost!");
+        MESSAGE("Kecleon utilise\nAtterrissage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROOST, playerLeft);
-        MESSAGE("Kecleon's HP was restored.");
-        MESSAGE("The opposing Pidgey used Gust!");
+        MESSAGE("Kecleon récupère des PV!");
+        MESSAGE("Roucool ennemi utilise\nTornade!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GUST, opponentLeft);
-        MESSAGE("Kecleon's type changed to Flying!");
-        MESSAGE("The opposing Sandshrew used Earthquake!");
+        MESSAGE("Kecleon prend le type Vol!");
+        MESSAGE("Sabelette ennemi utilise\nSéisme!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, opponentRight);
-        MESSAGE("Kecleon's type changed to Ground!");
+        MESSAGE("Kecleon prend le type Sol!");
     }
 }
 
@@ -263,11 +263,11 @@ SINGLE_BATTLE_TEST("Roost prevents a Flying-type user from being protected by De
         TURN { MOVE(player, MOVE_ROOST); MOVE(opponent, MOVE_ICE_BEAM); }
     } SCENE {
         ABILITY_POPUP(player, ABILITY_DELTA_STREAM);
-        MESSAGE("Rayquaza used Roost!");
+        MESSAGE("Rayquaza utilise\nAtterrissage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROOST, player);
-        MESSAGE("Rayquaza's HP was restored.");
-        MESSAGE("The opposing Wobbuffet used Ice Beam!");
-        NOT MESSAGE("The mysterious strong winds weakened the attack!");
+        MESSAGE("Rayquaza récupère des PV!");
+        MESSAGE("Qulbutoké ennemi utilise\nLaser Glace!");
+        NOT MESSAGE("Le vent mystérieux affaiblit l'attaque!");
     }
 }
 
@@ -282,15 +282,15 @@ SINGLE_BATTLE_TEST("Roost does not undo other type-changing effects at the end o
         TURN { MOVE(player, MOVE_ROOST); MOVE(opponent, MOVE_SOAK); }
         TURN { MOVE(opponent, MOVE_VINE_WHIP); }
     } SCENE {
-        MESSAGE("Swellow used Roost!");
+        MESSAGE("Hélédelle utilise\nAtterrissage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROOST, player);
-        MESSAGE("Swellow's HP was restored.");
-        MESSAGE("The opposing Wobbuffet used Soak!");
+        MESSAGE("Hélédelle récupère des PV!");
+        MESSAGE("Qulbutoké ennemi utilise\nDétrempage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SOAK, opponent);
-        MESSAGE("Swellow transformed into the Water type!");
-        MESSAGE("The opposing Wobbuffet used Vine Whip!");
+        MESSAGE("Hélédelle prend le type Eau!");
+        MESSAGE("Qulbutoké ennemi utilise\nFouet Lianes!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_VINE_WHIP, opponent);
-        MESSAGE("It's super effective!");
+        MESSAGE("C'est super efficace!");
     }
 }
 
@@ -305,10 +305,10 @@ SINGLE_BATTLE_TEST("Roost's effect is lifted after Grassy Terrain's healing")
     } WHEN {
         TURN { MOVE(player, MOVE_ROOST); }
     } SCENE {
-        MESSAGE("Swellow used Roost!");
+        MESSAGE("Hélédelle utilise\nAtterrissage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROOST, player);
-        MESSAGE("Swellow's HP was restored.");
-        MESSAGE("Swellow is healed by the grassy terrain!");
+        MESSAGE("Hélédelle récupère des PV!");
+        MESSAGE("Hélédelle récupère des PV grâce au gazon!");
         HP_BAR(player);
     }
 }
@@ -329,22 +329,22 @@ SINGLE_BATTLE_TEST("Roost's suppression prevents Reflect Type from copying any F
         TURN { MOVE(player, MOVE_EARTHQUAKE); }
     } SCENE {
         // Turn 1: Reflect Type on Roosted Normal/Flying
-        MESSAGE("Swellow used Roost!");
+        MESSAGE("Hélédelle utilise\nAtterrissage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROOST, player);
-        MESSAGE("Swellow's HP was restored.");
-        MESSAGE("The opposing Wobbuffet used Reflect Type!");
+        MESSAGE("Hélédelle récupère des PV!");
+        MESSAGE("Qulbutoké ennemi utilise\nCopie-Type!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_REFLECT_TYPE, opponent);
-        MESSAGE("The opposing Wobbuffet became the same type as Swellow!");
+        MESSAGE("Qulbutoké ennemi prend le type de Hélédelle!");
         // Turn 2: EQ hits, Reflect Type on non-Roosted Normal/Flying
-        MESSAGE("Swellow used Earthquake!");
+        MESSAGE("Hélédelle utilise\nSéisme!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, player);
         HP_BAR(opponent);
-        MESSAGE("The opposing Wobbuffet used Reflect Type!");
+        MESSAGE("Qulbutoké ennemi utilise\nCopie-Type!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_REFLECT_TYPE, opponent);
-        MESSAGE("The opposing Wobbuffet became the same type as Swellow!");
+        MESSAGE("Qulbutoké ennemi prend le type de Hélédelle!");
         // Turn 3: EQ has no effect
-        MESSAGE("Swellow used Earthquake!");
-        MESSAGE("It doesn't affect the opposing Wobbuffet…");
+        MESSAGE("Hélédelle utilise\nSéisme!");
+        MESSAGE("Ça n'affecte pas Qulbutoké ennemi…");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, player);
             HP_BAR(opponent);
@@ -360,10 +360,10 @@ SINGLE_BATTLE_TEST("Roost does not suppress the ungrounded effect of Levitate")
     } WHEN {
         TURN { MOVE(player, MOVE_ROOST); MOVE(opponent, MOVE_EARTHQUAKE); }
     } SCENE {
-        MESSAGE("Flygon used Roost!");
+        MESSAGE("Libégon utilise\nAtterrissage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROOST, player);
-        MESSAGE("Flygon's HP was restored.");
-        MESSAGE("The opposing Wobbuffet used Earthquake!");
+        MESSAGE("Libégon récupère des PV!");
+        MESSAGE("Qulbutoké ennemi utilise\nSéisme!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, opponent);
             HP_BAR(player);
@@ -379,10 +379,10 @@ SINGLE_BATTLE_TEST("Roost does not suppress the ungrounded effect of Air Balloon
     } WHEN {
         TURN { MOVE(player, MOVE_ROOST); MOVE(opponent, MOVE_EARTHQUAKE); }
     } SCENE {
-        MESSAGE("Wobbuffet used Roost!");
+        MESSAGE("Qulbutoké utilise\nAtterrissage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROOST, player);
-        MESSAGE("Wobbuffet's HP was restored.");
-        MESSAGE("The opposing Wobbuffet used Earthquake!");
+        MESSAGE("Qulbutoké récupère des PV!");
+        MESSAGE("Qulbutoké ennemi utilise\nSéisme!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, opponent);
             HP_BAR(player);
@@ -400,14 +400,14 @@ SINGLE_BATTLE_TEST("Roost does not suppress the ungrounded effect of Magnet Rise
         TURN { MOVE(player, MOVE_ROOST); MOVE(opponent, MOVE_EARTHQUAKE); }
     } SCENE {
         // Turn 1: Magnet Rise
-        MESSAGE("Wobbuffet used Magnet Rise!");
+        MESSAGE("Qulbutoké utilise\nVol Magnétik!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MAGNET_RISE, player);
-        MESSAGE("Wobbuffet levitated with electromagnetism!");
+        MESSAGE("Qulbutoké lévite sur un champ magnétique!");
         // Turn 2
-        MESSAGE("Wobbuffet used Roost!");
+        MESSAGE("Qulbutoké utilise\nAtterrissage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROOST, player);
-        MESSAGE("Wobbuffet's HP was restored.");
-        MESSAGE("The opposing Wobbuffet used Earthquake!");
+        MESSAGE("Qulbutoké récupère des PV!");
+        MESSAGE("Qulbutoké ennemi utilise\nSéisme!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, opponent);
             HP_BAR(player);
@@ -425,14 +425,14 @@ SINGLE_BATTLE_TEST("Roost does not suppress the ungrounded effect of Telekinesis
         TURN { MOVE(player, MOVE_ROOST); MOVE(opponent, MOVE_EARTHQUAKE); }
     } SCENE {
         // Turn 1: Telekinesis
-        MESSAGE("The opposing Wobbuffet used Telekinesis!");
+        MESSAGE("Qulbutoké ennemi utilise\nLévikinésie!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TELEKINESIS, opponent);
-        MESSAGE("Wobbuffet was hurled into the air!");
+        MESSAGE("Qulbutoké est emporté haut dans le ciel!");
         // Turn 2
-        MESSAGE("Wobbuffet used Roost!");
+        MESSAGE("Qulbutoké utilise\nAtterrissage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROOST, player);
-        MESSAGE("Wobbuffet's HP was restored.");
-        MESSAGE("The opposing Wobbuffet used Earthquake!");
+        MESSAGE("Qulbutoké récupère des PV!");
+        MESSAGE("Qulbutoké ennemi utilise\nSéisme!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, opponent);
             HP_BAR(player);

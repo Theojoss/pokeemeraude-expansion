@@ -30,7 +30,7 @@ SINGLE_BATTLE_TEST("Defog lowers evasiveness by 1 stage")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DEFOG, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Wobbuffet's evasiveness fell!");
+        MESSAGE("Ah, esquive du Qulbutoké ennemi baisse!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_EVASION], DEFAULT_STAT_STAGE - 1);
     }
@@ -51,10 +51,10 @@ SINGLE_BATTLE_TEST("Defog fails if target has minimum evasion stat change")
         {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_DEFOG, player);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("The opposing Numel's evasiveness harshly fell!");
+            MESSAGE("Ah, esquive du Chamallot ennemi baisse beaucoup!");
         }
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_DEFOG, player);
-        MESSAGE("The opposing Numel's evasiveness won't go any lower!");
+        MESSAGE("esquive de Chamallot ennemi ne peut plus baisser!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_EVASION], DEFAULT_STAT_STAGE - 6);
     }
@@ -70,11 +70,11 @@ SINGLE_BATTLE_TEST("Defog lowers evasiveness of target behind Substitute (Gen4)"
     } WHEN {
         TURN { MOVE(opponent, MOVE_SUBSTITUTE); MOVE(player, MOVE_DEFOG); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Substitute!");
-        NOT MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké ennemi utilise\nClonage!");
+        NOT MESSAGE("Mais cela échoue!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DEFOG, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Wobbuffet's evasiveness fell!");
+        MESSAGE("Ah, esquive du Qulbutoké ennemi baisse!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_EVASION], DEFAULT_STAT_STAGE - 1);
     }
@@ -93,11 +93,11 @@ SINGLE_BATTLE_TEST("Defog fails if target has minimum evasion stat change behind
         TURN { MOVE(player, MOVE_DEFOG); }
         TURN { MOVE(player, MOVE_DEFOG); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Substitute!");
+        MESSAGE("Qulbutoké ennemi utilise\nClonage!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DEFOG, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Wobbuffet's evasiveness harshly fell!");
-        MESSAGE("But it failed!");
+        MESSAGE("Ah, esquive du Qulbutoké ennemi baisse beaucoup!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT_EQ(opponent->statStages[STAT_EVASION], DEFAULT_STAT_STAGE - 6);
     }
@@ -118,21 +118,21 @@ SINGLE_BATTLE_TEST("Defog does not lower evasiveness if target behind Substitute
         TURN { MOVE(opponent, move); }
         TURN { MOVE(opponent, MOVE_SUBSTITUTE); MOVE(player, MOVE_DEFOG); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Substitute!");
+        MESSAGE("Qulbutoké ennemi utilise\nClonage!");
         if (move == MOVE_CELEBRATE)
         {
-            MESSAGE("But it failed!");
+            MESSAGE("Mais cela échoue!");
             NONE_OF {
                 ANIMATION(ANIM_TYPE_MOVE, MOVE_DEFOG, player);
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-                MESSAGE("The opposing Wobbuffet's evasiveness fell!");
+                MESSAGE("Ah, esquive du Qulbutoké ennemi baisse!");
             }
         }
         else
         {
             NONE_OF {
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-                MESSAGE("The opposing Wobbuffet's evasiveness fell!");
+                MESSAGE("Ah, esquive du Qulbutoké ennemi baisse!");
             }
         }
     } THEN {
@@ -160,8 +160,8 @@ DOUBLE_BATTLE_TEST("Defog doesn't remove Reflect or Light Screen from the user's
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LIGHT_SCREEN, playerRight);
         ANIMATION(ANIM_TYPE_MOVE, move, playerLeft);
         NONE_OF {
-            MESSAGE("Your team's Reflect wore off!");
-            MESSAGE("Your team's Light Screen wore off!");
+            MESSAGE("Protection de votre équipe s'est dissipé!");
+            MESSAGE("Mur Lumière de votre équipe s'est dissipé!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
         HP_BAR(playerLeft, captureDamage: &results[i].damagePhysical);
@@ -193,8 +193,8 @@ DOUBLE_BATTLE_TEST("Defog removes Reflect and Light Screen from target's side", 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LIGHT_SCREEN, opponentRight);
         ANIMATION(ANIM_TYPE_MOVE, move, playerLeft);
         if (move == MOVE_DEFOG) {
-            MESSAGE("The opposing team's Reflect wore off!");
-            MESSAGE("The opposing team's Light Screen wore off!");
+            MESSAGE("Protection de l'équipe ennemie s'est dissipé!");
+            MESSAGE("Mur Lumière de l'équipe ennemie s'est dissipé!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerLeft);
         HP_BAR(opponentLeft, captureDamage: &results[i].damagePhysical);
@@ -226,14 +226,14 @@ DOUBLE_BATTLE_TEST("Defog doesn't remove Mist or Safeguard from the user's side"
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SAFEGUARD, playerRight);
         ANIMATION(ANIM_TYPE_MOVE, move, playerLeft);
         NONE_OF {
-            MESSAGE("Your team's Mist wore off!");
-            MESSAGE("Your team's Safeguard wore off!");
+            MESSAGE("Brume de votre équipe s'est dissipé!");
+            MESSAGE("Rune Protect de votre équipe s'est dissipé!");
         }
-        MESSAGE("The opposing Wobbuffet used Screech!");
-        MESSAGE("Wobbuffet is protected by the mist!");
+        MESSAGE("Qulbutoké ennemi utilise\nGrincement!");
+        MESSAGE("Qulbutoké est protégé par la brume!");
         NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("The opposing Wobbuffet used Toxic!");
-        MESSAGE("Wobbuffet is protected by Safeguard!");
+        MESSAGE("Qulbutoké ennemi utilise\nToxik!");
+        MESSAGE("Qulbutoké est protégé par la brume!");
         NOT STATUS_ICON(playerRight, badPoison: TRUE);
     }
 }
@@ -258,23 +258,23 @@ DOUBLE_BATTLE_TEST("Defog removes Mist and Safeguard from target's side")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SAFEGUARD, opponentRight);
         if (move == MOVE_DEFOG) {
             ANIMATION(ANIM_TYPE_MOVE, move, playerLeft);
-            MESSAGE("The opposing team's Mist wore off!");
-            MESSAGE("The opposing team's Safeguard wore off!");
+            MESSAGE("Brume de l'équipe ennemie s'est dissipé!");
+            MESSAGE("Rune Protect de l'équipe ennemie s'est dissipé!");
         }
-        MESSAGE("Wobbuffet used Screech!");
+        MESSAGE("Qulbutoké utilise\nGrincement!");
         if (move == MOVE_DEFOG) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SCREECH, playerLeft);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
         } else {
-            MESSAGE("The opposing Wobbuffet is protected by the mist!");
+            MESSAGE("Qulbutoké ennemi est protégé par la brume!");
             NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
         }
-        MESSAGE("Wobbuffet used Toxic!");
+        MESSAGE("Qulbutoké utilise\nToxik!");
         if (move == MOVE_DEFOG) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_TOXIC, playerRight);
             STATUS_ICON(opponentRight, badPoison: TRUE);
         } else {
-            MESSAGE("The opposing Wobbuffet is protected by Safeguard!");
+            MESSAGE("Qulbutoké ennemi est protégé par la brume!");
             NOT STATUS_ICON(opponentRight, badPoison: TRUE);
         }
     }
@@ -301,25 +301,25 @@ DOUBLE_BATTLE_TEST("Defog removes Stealth Rock and Sticky Web from target's side
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, opponentRight);
         ANIMATION(ANIM_TYPE_MOVE, move, opponentLeft);
         if (move == MOVE_DEFOG) {
-            MESSAGE("The sticky web has disappeared from the ground around you!");
-            MESSAGE("The pointed stones disappeared from around your team!");
+            MESSAGE("La toile gluante du côté de votre équipe a disparu!");
+            MESSAGE("Les pierres pointues autour de votre équipe ont disparu!");
         }
         // Switch happens
-        SWITCH_OUT_MESSAGE("Wobbuffet");
-        SEND_IN_MESSAGE("Wobbuffet");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
+        SEND_IN_MESSAGE("Qulbutoké");
         if (move != MOVE_DEFOG) {
             HP_BAR(playerLeft);
-            MESSAGE("Pointed stones dug into Wobbuffet!");
-            MESSAGE("Wobbuffet was caught in a sticky web!");
+            MESSAGE("Des pierres pointues transpercent Qulbutoké!");
+            MESSAGE("Qulbutoké est pris dans une toile gluante!");
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-            MESSAGE("Wobbuffet's Speed fell!");
+            MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
         } else {
             NONE_OF {
                 HP_BAR(playerLeft);
-                MESSAGE("Pointed stones dug into Wobbuffet!");
-                MESSAGE("Wobbuffet was caught in a sticky web!");
+                MESSAGE("Des pierres pointues transpercent Qulbutoké!");
+                MESSAGE("Qulbutoké est pris dans une toile gluante!");
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-                MESSAGE("Wobbuffet's Speed fell!");
+                MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
             }
         }
     } THEN {
@@ -355,25 +355,25 @@ DOUBLE_BATTLE_TEST("Defog removes Stealth Rock and Sticky Web from user's side (
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, opponentRight);
         ANIMATION(ANIM_TYPE_MOVE, move, playerLeft);
         if (move == MOVE_DEFOG && config >= GEN_6) {
-            MESSAGE("The sticky web has disappeared from the ground around you!");
-            MESSAGE("The pointed stones disappeared from around your team!");
+            MESSAGE("La toile gluante du côté de votre équipe a disparu!");
+            MESSAGE("Les pierres pointues autour de votre équipe ont disparu!");
         }
         // Switch happens
-        SWITCH_OUT_MESSAGE("Wobbuffet");
-        SEND_IN_MESSAGE("Wobbuffet");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
+        SEND_IN_MESSAGE("Qulbutoké");
         if (move != MOVE_DEFOG || config <= GEN_5) {
             HP_BAR(playerLeft);
-            MESSAGE("Pointed stones dug into Wobbuffet!");
-            MESSAGE("Wobbuffet was caught in a sticky web!");
+            MESSAGE("Des pierres pointues transpercent Qulbutoké!");
+            MESSAGE("Qulbutoké est pris dans une toile gluante!");
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-            MESSAGE("Wobbuffet's Speed fell!");
+            MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
         } else {
             NONE_OF {
                 HP_BAR(playerLeft);
-                MESSAGE("Pointed stones dug into Wobbuffet!");
-                MESSAGE("Wobbuffet was caught in a sticky web!");
+                MESSAGE("Des pierres pointues transpercent Qulbutoké!");
+                MESSAGE("Qulbutoké est pris dans une toile gluante!");
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-                MESSAGE("Wobbuffet's Speed fell!");
+                MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
             }
         }
     } THEN {
@@ -403,15 +403,15 @@ SINGLE_BATTLE_TEST("Defog removes Spikes from target's side")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPIKES, player);
         ANIMATION(ANIM_TYPE_MOVE, move, player);
         if (move == MOVE_DEFOG) {
-            MESSAGE("The spikes disappeared from the ground around the opposing team!");
+            MESSAGE("Il n'y a plus de picots autour de l'équipe ennemie!");
             NONE_OF {
                 HP_BAR(opponent);
-                MESSAGE("The opposing Wobbuffet was hurt by the spikes!");
+                MESSAGE("Qulbutoké ennemi est blessé par les picots!");
             }
         } else {
-            NOT MESSAGE("The spikes disappeared from the ground around the opposing team!");
+            NOT MESSAGE("Il n'y a plus de picots autour de l'équipe ennemie!");
             HP_BAR(opponent);
-            MESSAGE("The opposing Wobbuffet was hurt by the spikes!");
+            MESSAGE("Qulbutoké ennemi est blessé par les picots!");
         }
     }
 }
@@ -436,17 +436,17 @@ SINGLE_BATTLE_TEST("Defog removes Spikes from user's side (Gen 6+)")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPIKES, opponent);
         ANIMATION(ANIM_TYPE_MOVE, move, player);
         if (move == MOVE_DEFOG && config >= GEN_6)
-            MESSAGE("The spikes disappeared from the ground around your team!");
+            MESSAGE("Il n'y a plus de picots autour de votre équipe!");
         // Switch happens
-        SWITCH_OUT_MESSAGE("Wobbuffet");
-        SEND_IN_MESSAGE("Wobbuffet");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
+        SEND_IN_MESSAGE("Qulbutoké");
         if (move != MOVE_DEFOG || config <= GEN_5) {
             HP_BAR(player);
-            MESSAGE("Wobbuffet was hurt by the spikes!");
+            MESSAGE("Qulbutoké est blessé par les picots!");
         } else {
             NONE_OF {
                 HP_BAR(player);
-                MESSAGE("Wobbuffet was hurt by the spikes!");
+                MESSAGE("Qulbutoké est blessé par les picots!");
             }
         }
     }
@@ -476,24 +476,24 @@ SINGLE_BATTLE_TEST("Defog removes terrain (Gen 8+)")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DEFOG, opponent);
         if (config >= GEN_8) {
             if (move == MOVE_PSYCHIC_TERRAIN) {
-                MESSAGE("The weirdness disappeared from the battlefield!");
+                MESSAGE("Le sol redevient normal.");
             }
             else if (move == MOVE_ELECTRIC_TERRAIN) {
-                MESSAGE("The electricity disappeared from the battlefield.");
+                MESSAGE("L'électricité parcourant le terrain s'est dissipée.");
             }
             else if (move == MOVE_MISTY_TERRAIN) {
-                MESSAGE("The mist disappeared from the battlefield.");
+                MESSAGE("La brume qui recouvrait le terrain se dissipe.");
             }
             else if (move == MOVE_GRASSY_TERRAIN) {
-                MESSAGE("The grass disappeared from the battlefield.");
+                MESSAGE("Le gazon disparaît.");
             }
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_RESTORE_BG, player);
         } else {
             NONE_OF {
-                MESSAGE("The weirdness disappeared from the battlefield!");
-                MESSAGE("The electricity disappeared from the battlefield.");
-                MESSAGE("The mist disappeared from the battlefield.");
-                MESSAGE("The grass disappeared from the battlefield.");
+                MESSAGE("Le sol redevient normal.");
+                MESSAGE("L'électricité parcourant le terrain s'est dissipée.");
+                MESSAGE("La brume qui recouvrait le terrain se dissipe.");
+                MESSAGE("Le gazon disparaît.");
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_RESTORE_BG, player);
             }
         }
@@ -518,16 +518,16 @@ SINGLE_BATTLE_TEST("Defog removes Toxic Spikes from target's side")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TOXIC_SPIKES, player);
         ANIMATION(ANIM_TYPE_MOVE, move, player);
         if (move == MOVE_DEFOG)
-            MESSAGE("The poison spikes disappeared from the ground around the opposing team!");
+            MESSAGE("Il n'y a plus de pics toxiques autour de l'équipe ennemie!");
         // Switch happens
-        MESSAGE("2 sent out Wobbuffet!");
+        MESSAGE("2 envoie\nun Qulbutoké!");
         if (move != MOVE_DEFOG) {
-            MESSAGE("The opposing Wobbuffet was poisoned!");
+            MESSAGE("Qulbutoké ennemi est empoisonné!");
             ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PSN, opponent);
             STATUS_ICON(opponent, poison: TRUE);
         } else {
             NONE_OF {
-                MESSAGE("The opposing Wobbuffet was poisoned!");
+                MESSAGE("Qulbutoké ennemi est empoisonné!");
                 ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PSN, opponent);
                 STATUS_ICON(opponent, poison: TRUE);
             }
@@ -555,16 +555,16 @@ SINGLE_BATTLE_TEST("Defog removes Toxic Spikes from user's side (Gen 6+)")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TOXIC_SPIKES, player);
         ANIMATION(ANIM_TYPE_MOVE, move, opponent);
         if (move == MOVE_DEFOG && config >= GEN_6)
-            MESSAGE("The poison spikes disappeared from the ground around the opposing team!");
+            MESSAGE("Il n'y a plus de pics toxiques autour de l'équipe ennemie!");
         // Switch happens
-        MESSAGE("2 sent out Wobbuffet!");
+        MESSAGE("2 envoie\nun Qulbutoké!");
         if (move != MOVE_DEFOG || config <= GEN_5) {
-            MESSAGE("The opposing Wobbuffet was poisoned!");
+            MESSAGE("Qulbutoké ennemi est empoisonné!");
             ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PSN, opponent);
             STATUS_ICON(opponent, poison: TRUE);
         } else {
             NONE_OF {
-                MESSAGE("The opposing Wobbuffet was poisoned!");
+                MESSAGE("Qulbutoké ennemi est empoisonné!");
                 ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PSN, opponent);
                 STATUS_ICON(opponent, poison: TRUE);
             }
@@ -596,9 +596,9 @@ DOUBLE_BATTLE_TEST("Defog doesn't remove Aurora Veil from the user's side", s16 
         ANIMATION(ANIM_TYPE_MOVE, move, playerLeft);
         if (move == MOVE_DEFOG) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("The opposing Glalie's evasiveness fell!");
+            MESSAGE("Ah, esquive du Oniglali ennemi baisse!");
         }
-        NOT MESSAGE("Your team's Aurora Veil wore off!");
+        NOT MESSAGE("Voile Aurore de votre équipe s'est dissipé!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
         HP_BAR(playerLeft, captureDamage: &results[i].damagePhysical);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_GUST, opponentRight);
@@ -638,8 +638,8 @@ DOUBLE_BATTLE_TEST("Defog removes Aurora Veil from target's side", s16 damagePhy
         ANIMATION(ANIM_TYPE_MOVE, move, opponentLeft);
         if (move == MOVE_DEFOG) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-            MESSAGE("Glalie's evasiveness fell!");
-            MESSAGE("Your team's Aurora Veil wore off!");
+            MESSAGE("Ah, esquive du Oniglali baisse!");
+            MESSAGE("Voile Aurore de votre équipe s'est dissipé!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
         HP_BAR(playerLeft, captureDamage: &results[i].damagePhysical);
@@ -682,30 +682,30 @@ DOUBLE_BATTLE_TEST("Defog removes everything it can")
         TURN { MOVE(playerLeft, MOVE_REFLECT); MOVE(playerRight, MOVE_LIGHT_SCREEN); MOVE(opponentLeft, MOVE_REFLECT); MOVE(opponentRight, MOVE_SAFEGUARD); }
         TURN { MOVE(playerLeft, MOVE_MIST); MOVE(playerRight, MOVE_SAFEGUARD); MOVE(opponentLeft, MOVE_MIST); MOVE(opponentRight, MOVE_DEFOG, target: playerLeft); }
     } SCENE {
-        MESSAGE("The opposing Glalie used Defog!");
-        MESSAGE("Glalie is protected by the mist!");
+        MESSAGE("Oniglali ennemi utilise\nAnti-Brume!");
+        MESSAGE("Oniglali est protégé par la brume!");
 
         // No, idea. Either I'm blind or the anim is played on the correct mon
         // ANIMATION(ANIM_TYPE_MOVE, MOVE_DEFOG, opponentRight);
 
         // Player side
-        MESSAGE("Your team's Reflect wore off!");
-        MESSAGE("Your team's Light Screen wore off!");
-        MESSAGE("Your team's Mist wore off!");
-        MESSAGE("Your team's Aurora Veil wore off!");
-        MESSAGE("Your team's Safeguard wore off!");
+        MESSAGE("Protection de votre équipe s'est dissipé!");
+        MESSAGE("Mur Lumière de votre équipe s'est dissipé!");
+        MESSAGE("Brume de votre équipe s'est dissipé!");
+        MESSAGE("Voile Aurore de votre équipe s'est dissipé!");
+        MESSAGE("Rune Protect de votre équipe s'est dissipé!");
 
         if (config == GEN_6) {
-            MESSAGE("The spikes disappeared from the ground around your team!");
-            MESSAGE("The sticky web has disappeared from the ground around you!");
-            MESSAGE("The poison spikes disappeared from the ground around your team!");
-            MESSAGE("The pointed stones disappeared from around your team!");
+            MESSAGE("Il n'y a plus de picots autour de votre équipe!");
+            MESSAGE("La toile gluante du côté de votre équipe a disparu!");
+            MESSAGE("Il n'y a plus de pics toxiques autour de votre équipe!");
+            MESSAGE("Les pierres pointues autour de votre équipe ont disparu!");
 
             // Opponent side
-            MESSAGE("The spikes disappeared from the ground around the opposing team!");
-            MESSAGE("The sticky web has disappeared from the ground around the opposing team!");
-            MESSAGE("The poison spikes disappeared from the ground around the opposing team!");
-            MESSAGE("The pointed stones disappeared from around the opposing team!");
+            MESSAGE("Il n'y a plus de picots autour de l'équipe ennemie!");
+            MESSAGE("La toile gluante du côté de l'équipe ennemie a disparu!");
+            MESSAGE("Il n'y a plus de pics toxiques autour de l'équipe ennemie!");
+            MESSAGE("Les pierres pointues autour de l'équipe ennemie ont disparu!");
         }
     } THEN {
         if (config == GEN_6) {
@@ -753,9 +753,9 @@ SINGLE_BATTLE_TEST("Defog is used on the correct side if opposing mon is behind 
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LIGHT_SCREEN, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUBSTITUTE, opponent);
-        MESSAGE("Wobbuffet used Defog!");
+        MESSAGE("Qulbutoké utilise\nAnti-Brume!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DEFOG, player);
-        MESSAGE("The opposing team's Light Screen wore off!");
+        MESSAGE("Mur Lumière de l'équipe ennemie s'est dissipé!");
     } THEN {
         if (config >= GEN_5)
             EXPECT_EQ(opponent->statStages[STAT_EVASION], DEFAULT_STAT_STAGE);

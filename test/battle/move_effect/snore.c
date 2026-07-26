@@ -19,13 +19,13 @@ SINGLE_BATTLE_TEST("Snore fails if not asleep")
         TURN { MOVE(player, MOVE_SNORE); }
     } SCENE {
         if (status == STATUS1_SLEEP) {
-            MESSAGE("Wobbuffet is fast asleep.");
+            MESSAGE("Qulbutoké dort profondément.");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_SNORE, player);
-            NOT MESSAGE("But it failed!");
+            NOT MESSAGE("Mais cela échoue!");
         }
         else {
             NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SNORE, player);
-            MESSAGE("But it failed!");
+            MESSAGE("Mais cela échoue!");
         }
     }
 }
@@ -40,7 +40,7 @@ SINGLE_BATTLE_TEST("Snore works if user has Comatose")
         TURN { MOVE(player, MOVE_SNORE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SNORE, player);
-        NOT MESSAGE("But it failed!");
+        NOT MESSAGE("Mais cela échoue!");
     }
 }
 

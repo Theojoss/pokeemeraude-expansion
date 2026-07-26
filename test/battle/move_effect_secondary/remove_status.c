@@ -18,16 +18,16 @@ SINGLE_BATTLE_TEST("Smelling Salts does not cure paralyzed pokemons behind subst
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SMELLING_SALTS, player);
         if (ability == ABILITY_INNER_FOCUS)
         {
-            MESSAGE("The substitute took damage for the opposing Seismitoad!");
+            MESSAGE("Le clone subit les dégâts à la place de Crapustule ennemi!\p");
             NONE_OF {
-                MESSAGE("The opposing Seismitoad's substitute faded!"); // Smelling Salts does 86 damage, the sub has 122 HP, if hitting a sub it shouldn't get boosted damage.
-                MESSAGE("The opposing Seismitoad was cured of paralysis!");
+                MESSAGE("Le clone de Crapustule ennemi disparaît…\p"); // Smelling Salts does 86 damage, the sub has 122 HP, if hitting a sub it shouldn't get boosted damage.
+                MESSAGE("Crapustule ennemi n'est plus paralysé!");
                 STATUS_ICON(opponent, none: TRUE);
             }
         }
         else
         {
-            MESSAGE("The opposing Seismitoad was cured of paralysis!");
+            MESSAGE("Crapustule ennemi n'est plus paralysé!");
             STATUS_ICON(opponent, none: TRUE);
         }
     }
@@ -49,12 +49,12 @@ SINGLE_BATTLE_TEST("Smelling Salts get incread power vs. paralyzed targets")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SMELLING_SALTS, player);
         if (status1 == STATUS1_PARALYSIS)
         {
-            MESSAGE("The opposing Lotad fainted!");
+            MESSAGE("Nénupiot ennemi est K.O.!\p");
         }
         else
         {
-            NOT MESSAGE("The opposing Lotad fainted!");
-            MESSAGE("The opposing Lotad used Celebrate!");
+            NOT MESSAGE("Nénupiot ennemi est K.O.!\p");
+            MESSAGE("Nénupiot ennemi utilise\nCélébration!");
         }
     }
 }
@@ -76,16 +76,16 @@ SINGLE_BATTLE_TEST("Wake-Up Slap does not cure paralyzed pokemons behind substit
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WAKE_UP_SLAP, player);
         if (ability == ABILITY_INNER_FOCUS)
         {
-            MESSAGE("The substitute took damage for the opposing Seismitoad!");
+            MESSAGE("Le clone subit les dégâts à la place de Crapustule ennemi!\p");
             NONE_OF {
-                MESSAGE("The opposing Seismitoad's substitute faded!"); // Smelling Salts does 86 damage, the sub has 122 HP, if hitting a sub it shouldn't get boosted damage.
-                MESSAGE("The opposing Seismitoad woke up!");
+                MESSAGE("Le clone de Crapustule ennemi disparaît…\p"); // Smelling Salts does 86 damage, the sub has 122 HP, if hitting a sub it shouldn't get boosted damage.
+                MESSAGE("Crapustule ennemi se réveille!");
                 STATUS_ICON(opponent, none: TRUE);
             }
         }
         else
         {
-            MESSAGE("The opposing Seismitoad woke up!");
+            MESSAGE("Crapustule ennemi se réveille!");
             STATUS_ICON(opponent, none: TRUE);
         }
     }
@@ -107,12 +107,12 @@ SINGLE_BATTLE_TEST("Wake-Up Slap gets increased power against sleeping targets")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WAKE_UP_SLAP, player);
         if (status1 == STATUS1_SLEEP)
         {
-            MESSAGE("The opposing Lotad fainted!");
+            MESSAGE("Nénupiot ennemi est K.O.!\p");
         }
         else
         {
-            NOT MESSAGE("The opposing Lotad fainted!");
-            MESSAGE("The opposing Lotad used Celebrate!");
+            NOT MESSAGE("Nénupiot ennemi est K.O.!\p");
+            MESSAGE("Nénupiot ennemi utilise\nCélébration!");
         }
     }
 }
@@ -132,8 +132,8 @@ DOUBLE_BATTLE_TEST("Sparkling Aria cures burns from all Pokemon on the field and
     } WHEN {
         TURN { MOVE(opponentLeft, MOVE_SUBSTITUTE); MOVE(opponentRight, MOVE_CELEBRATE); MOVE(playerRight, MOVE_CELEBRATE); MOVE(playerLeft, MOVE_SPARKLING_ARIA); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet's burn was cured!");
-        MESSAGE("Wobbuffet's burn was cured!");
-        MESSAGE("The opposing Wynaut's burn was cured!");
+        MESSAGE("Qulbutoké ennemi n'est plus brûlé!");
+        MESSAGE("Qulbutoké n'est plus brûlé!");
+        MESSAGE("Okéoké ennemi n'est plus brûlé!");
     }
 }

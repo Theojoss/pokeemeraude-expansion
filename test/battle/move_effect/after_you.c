@@ -22,7 +22,7 @@ DOUBLE_BATTLE_TEST("After You makes the target move after user")
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_AFTER_YOU, playerLeft);
-        MESSAGE("Wynaut took the kind offer!");
+        MESSAGE("Okéoké accepte avec joie!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, playerRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponentLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponentRight);
@@ -46,8 +46,8 @@ DOUBLE_BATTLE_TEST("After You does nothing if the target has already moved")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, playerLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponentLeft);
-        MESSAGE("The opposing Wynaut used After You!");
-        MESSAGE("But it failed!");
+        MESSAGE("Okéoké ennemi utilise\nAprès Vous!");
+        MESSAGE("Mais cela échoue!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, playerRight);
     }
 }
@@ -72,14 +72,14 @@ DOUBLE_BATTLE_TEST("After You calculates correct turn order if only one Pokémon
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_AFTER_YOU, playerLeft);
-        MESSAGE("Regirock took the kind offer!");
+        MESSAGE("Regirock accepte avec joie!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STONE_EDGE, playerRight);
         HP_BAR(opponentLeft);
-        MESSAGE("The opposing Pidgeot fainted!");
+        MESSAGE("Roucarnage ennemi est K.O.!\p");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponentRight);
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_AFTER_YOU, playerLeft);
-        MESSAGE("Regirock took the kind offer!");
+        MESSAGE("Regirock accepte avec joie!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STONE_EDGE, playerRight);
         HP_BAR(opponentRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponentRight);
@@ -103,9 +103,9 @@ DOUBLE_BATTLE_TEST("After You fails if the turn order remains the same after Aft
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, playerLeft);
-        MESSAGE("The opposing Wynaut used After You!");
+        MESSAGE("Okéoké ennemi utilise\nAprès Vous!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_AFTER_YOU, opponentRight);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponentLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, playerRight);
     }

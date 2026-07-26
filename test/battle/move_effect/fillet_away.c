@@ -29,9 +29,9 @@ SINGLE_BATTLE_TEST("Fillet Away sharply raises Attack, Sp. Atk, and Speed")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FILLET_AWAY, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Wobbuffet's Attack rose sharply!");
-        MESSAGE("Wobbuffet's Sp. Atk rose sharply!");
-        MESSAGE("Wobbuffet's Speed rose sharply!");
+        MESSAGE("Ah, Attaque du Qulbutoké augmente beaucoup!");
+        MESSAGE("Ah, Attaque Spéciale du Qulbutoké augmente beaucoup!");
+        MESSAGE("Ah, Vitesse du Qulbutoké augmente beaucoup!");
         HP_BAR(player);
     } THEN {
         EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 2);
@@ -48,7 +48,7 @@ SINGLE_BATTLE_TEST("Fillet Away fails if user's current HP is half or less than 
     } WHEN {
         TURN { MOVE(player, MOVE_FILLET_AWAY); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FILLET_AWAY, player);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
@@ -66,10 +66,10 @@ SINGLE_BATTLE_TEST("Fillet Away's HP cost doesn't trigger effects that trigger o
         TURN { MOVE(player, MOVE_FILLET_AWAY); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FILLET_AWAY, player);
-        MESSAGE("Wobbuffet's Attack rose sharply!");
-        MESSAGE("Wobbuffet's Sp. Atk rose sharply!");
-        MESSAGE("Wobbuffet's Speed rose sharply!");
-        NOT MESSAGE("Wobbuffet's Air Balloon popped!");
+        MESSAGE("Ah, Attaque du Qulbutoké augmente beaucoup!");
+        MESSAGE("Ah, Attaque Spéciale du Qulbutoké augmente beaucoup!");
+        MESSAGE("Ah, Vitesse du Qulbutoké augmente beaucoup!");
+        NOT MESSAGE("Le Ballon de Qulbutoké a éclaté!");
     }
 }
 

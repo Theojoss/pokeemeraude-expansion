@@ -21,9 +21,9 @@ SINGLE_BATTLE_TEST("Wish restores 50% of the user's HP when not switching")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WISH, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
-        MESSAGE("Wynaut's wish came true!");
+        MESSAGE("Le vœu de Okéoké se réalise!");
         HP_BAR(player, damage: -50);
-        MESSAGE("Wynaut's HP was restored.");
+        MESSAGE("Okéoké récupère des PV!");
     }
 }
 
@@ -39,11 +39,11 @@ SINGLE_BATTLE_TEST("Wish restores 50% of the user's HP when switching (Gen5+)")
         TURN { SWITCH(player, 1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WISH, player);
-        SWITCH_OUT_MESSAGE("Wynaut");
-        SEND_IN_MESSAGE("Wobbuffet");
-        MESSAGE("Wynaut's wish came true!");
+        SWITCH_OUT_MESSAGE("Okéoké");
+        SEND_IN_MESSAGE("Qulbutoké");
+        MESSAGE("Le vœu de Okéoké se réalise!");
         HP_BAR(player, damage: -50);
-        MESSAGE("Wobbuffet's HP was restored.");
+        MESSAGE("Qulbutoké récupère des PV!");
     }
 }
 
@@ -59,11 +59,11 @@ SINGLE_BATTLE_TEST("Wish restores 50% of the recipient's HP when switching (Gen3
         TURN { SWITCH(player, 1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WISH, player);
-        SWITCH_OUT_MESSAGE("Wynaut");
-        SEND_IN_MESSAGE("Wobbuffet");
-        MESSAGE("Wynaut's wish came true!");
+        SWITCH_OUT_MESSAGE("Okéoké");
+        SEND_IN_MESSAGE("Qulbutoké");
+        MESSAGE("Le vœu de Okéoké se réalise!");
         HP_BAR(player, damage: -100);
-        MESSAGE("Wobbuffet's HP was restored.");
+        MESSAGE("Qulbutoké récupère des PV!");
     }
 }
 
@@ -81,7 +81,7 @@ SINGLE_BATTLE_TEST("Wish heals the user at the end of the next turn")
         HP_BAR(player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
-        MESSAGE("Wobbuffet's wish came true!");
+        MESSAGE("Le vœu de Qulbutoké se réalise!");
         HP_BAR(player);
     }
 }
@@ -100,7 +100,7 @@ SINGLE_BATTLE_TEST("Wish is blocked by Heal Block")
         HP_BAR(player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HEAL_BLOCK, opponent);
-        MESSAGE("Wobbuffet was prevented from healing!");
+        MESSAGE("Qulbutoké ne peut pas guérir!\p");
         NOT HP_BAR(player);
     }
 }

@@ -35,7 +35,7 @@ SINGLE_BATTLE_TEST("Entrainment fails if the user's ability has cantBeCopied fla
     } WHEN {
         TURN { MOVE(player, MOVE_ENTRAINMENT); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(player->ability == ABILITY_MULTITYPE);
         EXPECT(opponent->ability == ABILITY_SHADOW_TAG);
@@ -51,7 +51,7 @@ SINGLE_BATTLE_TEST("Entrainment fails if the target's ability has cantBeOverwrit
     } WHEN {
         TURN { MOVE(player, MOVE_ENTRAINMENT); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     } THEN {
         EXPECT(player->ability   == ABILITY_TELEPATHY);
         EXPECT(opponent->ability == ABILITY_MULTITYPE);
@@ -67,7 +67,7 @@ SINGLE_BATTLE_TEST("Entrainment causes primal weather to revert")
         TURN { MOVE(player, MOVE_ENTRAINMENT); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ENTRAINMENT, player);
-        MESSAGE("The extremely harsh sunlight faded!");
+        MESSAGE("Les rayons du soleil s'affaiblissent.");
     } THEN {
         EXPECT(opponent->ability == ABILITY_TELEPATHY);
     }

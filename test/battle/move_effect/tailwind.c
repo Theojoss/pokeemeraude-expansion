@@ -22,22 +22,22 @@ SINGLE_BATTLE_TEST("Tailwind applies for 3 turns (Gen4) or 4 turns (Gen5+)")
         TURN {}
         TURN {}
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
-        MESSAGE("Wobbuffet used Tailwind!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
+        MESSAGE("Qulbutoké utilise\nVent Arrière!");
 
-        MESSAGE("Wobbuffet used Celebrate!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Qulbutoké utilise\nCélébration!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
 
-        MESSAGE("Wobbuffet used Celebrate!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
+        MESSAGE("Qulbutoké utilise\nCélébration!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
 
         if (config >= GEN_5) {
-            MESSAGE("Wobbuffet used Celebrate!");
-            MESSAGE("The opposing Wobbuffet used Celebrate!");
+            MESSAGE("Qulbutoké utilise\nCélébration!");
+            MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
         }
 
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
-        MESSAGE("Wobbuffet used Celebrate!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
+        MESSAGE("Qulbutoké utilise\nCélébration!");
     }
 }
 
@@ -52,10 +52,10 @@ DOUBLE_BATTLE_TEST("Tailwind doesn't affect the partner on the same turn it's us
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_TAILWIND); }
     } SCENE {
-        MESSAGE("Wobbuffet used Tailwind!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
-        MESSAGE("The opposing Wynaut used Celebrate!");
-        MESSAGE("Wynaut used Celebrate!");
+        MESSAGE("Qulbutoké utilise\nVent Arrière!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
+        MESSAGE("Okéoké ennemi utilise\nCélébration!");
+        MESSAGE("Okéoké utilise\nCélébration!");
     }
 }
 
@@ -70,9 +70,9 @@ DOUBLE_BATTLE_TEST("Tailwind affects the partner on the same turn it's used (Gen
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_TAILWIND); }
     } SCENE {
-        MESSAGE("Wobbuffet used Tailwind!");
-        MESSAGE("Wynaut used Celebrate!");
-        MESSAGE("The opposing Wobbuffet used Celebrate!");
-        MESSAGE("The opposing Wynaut used Celebrate!");
+        MESSAGE("Qulbutoké utilise\nVent Arrière!");
+        MESSAGE("Okéoké utilise\nCélébration!");
+        MESSAGE("Qulbutoké ennemi utilise\nCélébration!");
+        MESSAGE("Okéoké ennemi utilise\nCélébration!");
     }
 }

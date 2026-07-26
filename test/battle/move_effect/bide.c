@@ -22,12 +22,12 @@ SINGLE_BATTLE_TEST("Bide deals twice the taken damage over two turns")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BIDE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         HP_BAR(player, captureDamage: &damage1);
-        NOT MESSAGE("Wobbuffet used Bide!");
-        MESSAGE("Wobbuffet is storing energy!");
+        NOT MESSAGE("Qulbutoké utilise\nPatience!");
+        MESSAGE("Qulbutoké prend son mal en patience!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         HP_BAR(player, captureDamage: &damage2);
-        NOT MESSAGE("Wobbuffet used Bide!");
-        MESSAGE("Wobbuffet unleashed its energy!");
+        NOT MESSAGE("Qulbutoké utilise\nPatience!");
+        MESSAGE("Qulbutoké perd patience et se déchaîne!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BIDE, player);
         HP_BAR(opponent, captureDamage: &bideDamage);
     } THEN {
@@ -47,9 +47,9 @@ SINGLE_BATTLE_TEST("Bide fails if no damage has been dealt to the user")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BIDE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
-        MESSAGE("Wobbuffet is storing energy!");
+        MESSAGE("Qulbutoké prend son mal en patience!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
-        MESSAGE("Wobbuffet unleashed its energy!");
+        MESSAGE("Qulbutoké perd patience et se déchaîne!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_BIDE, player);
             HP_BAR(opponent);
@@ -91,10 +91,10 @@ SINGLE_BATTLE_TEST("Bide is blocked by Dazzling when it unleashes the attack")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BIDE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_POUND, opponent);
         HP_BAR(player);
-        MESSAGE("Wobbuffet is storing energy!");
+        MESSAGE("Qulbutoké prend son mal en patience!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_POUND, opponent);
         HP_BAR(player);
-        MESSAGE("Wobbuffet unleashed its energy!");
+        MESSAGE("Qulbutoké perd patience et se déchaîne!");
         ABILITY_POPUP(opponent, ABILITY_DAZZLING);
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_BIDE, player);
@@ -118,7 +118,7 @@ DOUBLE_BATTLE_TEST("Bide is blocked by partner Dazzling")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BIDE, playerLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_POUND, opponentLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_POUND, opponentLeft);
-        MESSAGE("Wobbuffet unleashed its energy!");
+        MESSAGE("Qulbutoké perd patience et se déchaîne!");
         ABILITY_POPUP(opponentRight, ABILITY_DAZZLING);
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_BIDE, playerLeft);
@@ -142,7 +142,7 @@ SINGLE_BATTLE_TEST("Bide fails if 0 total damage was dealt to the user by a move
         HP_BAR(player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FALSE_SWIPE, opponent);
         HP_BAR(player);
-        MESSAGE("Wobbuffet unleashed its energy!");
+        MESSAGE("Qulbutoké perd patience et se déchaîne!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_BIDE, player);
             HP_BAR(opponent);
@@ -165,7 +165,7 @@ SINGLE_BATTLE_TEST("Bide doesn't deal back damage taken by user's Substitute")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BIDE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_POUND, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_POUND, opponent);
-        MESSAGE("Wobbuffet unleashed its energy!");
+        MESSAGE("Qulbutoké perd patience et se déchaîne!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_BIDE, player);
             HP_BAR(opponent);
@@ -189,7 +189,7 @@ SINGLE_BATTLE_TEST("Bide doesn't deal damage through protect")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_POUND, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_POUND, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PROTECT, opponent);
-        MESSAGE("Wobbuffet unleashed its energy!");
+        MESSAGE("Qulbutoké perd patience et se déchaîne!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_BIDE, player);
             HP_BAR(opponent);

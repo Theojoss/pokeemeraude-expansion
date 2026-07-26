@@ -21,15 +21,15 @@ SINGLE_BATTLE_TEST("Make It Rain lowers special attack by one stage")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MAKE_IT_RAIN, player);
         HP_BAR(opponent, captureDamage: &damage[0]);
-        MESSAGE("Coins were scattered everywhere!");
+        MESSAGE("Il pleut des pièces!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Wobbuffet's Sp. Atk fell!");
+        MESSAGE("Ah, Attaque Spéciale du Qulbutoké baisse!");
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MAKE_IT_RAIN, player);
         HP_BAR(opponent, captureDamage: &damage[1]);
-        MESSAGE("Coins were scattered everywhere!");
+        MESSAGE("Il pleut des pièces!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Wobbuffet's Sp. Atk fell!");
+        MESSAGE("Ah, Attaque Spéciale du Qulbutoké baisse!");
     } THEN {
         EXPECT_MUL_EQ(damage[0], Q_4_12(0.66), damage[1]);
     }
@@ -48,14 +48,14 @@ DOUBLE_BATTLE_TEST("Make It Rain lowers special attack by one stage if it hits b
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MAKE_IT_RAIN, playerLeft);
         HP_BAR(opponentLeft);
         NONE_OF {
-            MESSAGE("Coins were scattered everywhere!");
+            MESSAGE("Il pleut des pièces!");
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-            MESSAGE("Wobbuffet's Sp. Atk fell!");
+            MESSAGE("Ah, Attaque Spéciale du Qulbutoké baisse!");
         }
         HP_BAR(opponentRight);
-        MESSAGE("Coins were scattered everywhere!");
+        MESSAGE("Il pleut des pièces!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Wobbuffet's Sp. Atk fell!");
+        MESSAGE("Ah, Attaque Spéciale du Qulbutoké baisse!");
     }
 }
 
@@ -72,14 +72,14 @@ DOUBLE_BATTLE_TEST("Make It Rain lowers special attack by one stage if it hits b
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MAKE_IT_RAIN, playerLeft);
         HP_BAR(opponentLeft);
         NONE_OF {
-            MESSAGE("Coins were scattered everywhere!");
+            MESSAGE("Il pleut des pièces!");
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-            MESSAGE("Wobbuffet's Sp. Atk fell!");
+            MESSAGE("Ah, Attaque Spéciale du Qulbutoké baisse!");
         }
         HP_BAR(opponentRight);
-        MESSAGE("Coins were scattered everywhere!");
+        MESSAGE("Il pleut des pièces!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Wobbuffet's Sp. Atk fell!");
+        MESSAGE("Ah, Attaque Spéciale du Qulbutoké baisse!");
     }
 }
 
@@ -97,8 +97,8 @@ DOUBLE_BATTLE_TEST("Make It Rain lowers special attack by one stage if second ta
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MAKE_IT_RAIN, playerLeft);
         NOT HP_BAR(opponentRight);
         HP_BAR(opponentLeft);
-        MESSAGE("Coins were scattered everywhere!");
+        MESSAGE("Il pleut des pièces!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Wobbuffet's Sp. Atk fell!");
+        MESSAGE("Ah, Attaque Spéciale du Qulbutoké baisse!");
     }
 }

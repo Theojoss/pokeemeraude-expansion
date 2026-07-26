@@ -16,9 +16,9 @@ SINGLE_BATTLE_TEST("Ingrain fails if already rooted")
         TURN { MOVE(player, MOVE_INGRAIN); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_INGRAIN, player);
-        MESSAGE("Wobbuffet planted its roots!");
+        MESSAGE("Qulbutoké plante ses racines!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_INGRAIN, player);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -101,7 +101,7 @@ SINGLE_BATTLE_TEST("Ingrain does not prevent switching out with Flip Turn")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_INGRAIN, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FLIP_TURN, player);
         HP_BAR(opponent);
-        SEND_IN_MESSAGE("Wynaut");
+        SEND_IN_MESSAGE("Okéoké");
     } THEN {
         EXPECT_EQ(player->species, SPECIES_WYNAUT);
     }
@@ -120,7 +120,7 @@ SINGLE_BATTLE_TEST("Ingrain's effect is passed by Baton Pass")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_INGRAIN, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BATON_PASS, player);
-        SEND_IN_MESSAGE("Wynaut");
+        SEND_IN_MESSAGE("Okéoké");
     } THEN {
         EXPECT_EQ(player->species, SPECIES_WYNAUT);
         EXPECT_EQ(player->hp, 58);

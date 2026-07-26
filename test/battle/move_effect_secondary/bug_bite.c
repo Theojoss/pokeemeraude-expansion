@@ -47,58 +47,58 @@ SINGLE_BATTLE_TEST("Bug Bite eats the target's berry and immediately gains its e
 
     } SCENE {
         if (item == ITEM_CHESTO_BERRY) {
-            MESSAGE("Wobbuffet used Sleep Talk!");
+            MESSAGE("Qulbutoké utilise\nBlabla Dodo!");
         }
-        MESSAGE("Wobbuffet used Bug Bite!");
+        MESSAGE("Qulbutoké utilise\nPiqûre!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BUG_BITE, player);
         HP_BAR(opponent);
         if (effect == HOLD_EFFECT_RESTORE_HP || effect == HOLD_EFFECT_ENIGMA_BERRY) {
             if (item == ITEM_ORAN_BERRY) {
-                MESSAGE("Wobbuffet restored its health using its Oran Berry!");
+                MESSAGE("Qulbutoké récupère des PV grâce à Baie Oran!");
             } else if (item == ITEM_SITRUS_BERRY) {
-                MESSAGE("Wobbuffet restored its health using its Sitrus Berry!");
+                MESSAGE("Qulbutoké récupère des PV grâce à Baie Sitrus!");
             } else {
-                MESSAGE("Wobbuffet restored its health using its Enigma Berry!");
+                MESSAGE("Qulbutoké récupère des PV grâce à Baie Enigma!");
             }
             HP_BAR(player);
         }
         else if (effect == HOLD_EFFECT_RESTORE_PP) {
-            MESSAGE("Wobbuffet restored PP to its move Bug Bite using its Leppa Berry!");
+            MESSAGE("Qulbutoké récupère des PP pour sa capacité Piqûre grâce à Baie Mepo!");
         }
         else if (status1 != STATUS1_NONE) {
             if (status1 == STATUS1_BURN) {
-                MESSAGE("Wobbuffet's Rawst Berry cured its burn!");
+                MESSAGE("Qulbutoké n'est plus brûlé grâce à Baie Fraive!");
             } else if (status1 == STATUS1_SLEEP) {
-                MESSAGE("Wobbuffet's Chesto Berry woke it up!");
+                MESSAGE("Qulbutoké se réveille grâce à Baie Maron!");
             } else if (status1 == STATUS1_PARALYSIS) {
-                MESSAGE("Wobbuffet's Cheri Berry cured its paralysis!");
+                MESSAGE("Qulbutoké n'est plus paralysé grâce à Baie Ceriz!");
             } else if (status1 == STATUS1_TOXIC_POISON || status1 == STATUS1_POISON) {
-                MESSAGE("Wobbuffet's Pecha Berry cured its poison!");
+                MESSAGE("Qulbutoké n'est plus empoisonné grâce à Baie Pêcha!");
             } else if (status1 == STATUS1_FROSTBITE) {
-                MESSAGE("Wobbuffet's Aspear Berry cured its frostbite!");
+                MESSAGE("Qulbutoké s'est remis de sa gelure grâce à Baie Willia!");
             }
             NOT STATUS_ICON(player, status1);
         }
         else if (statId != 0) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
             if (statId == STAT_ATK) {
-                MESSAGE("The Liechi Berry boosted Wobbuffet's Attack!");
+                MESSAGE("Grâce à Baie Lichii, Attaque de Qulbutoké augmente!");
             } else if (statId == STAT_DEF) {
                 if (item == ITEM_GANLON_BERRY) {
-                    MESSAGE("The Ganlon Berry boosted Wobbuffet's Defense!");
+                    MESSAGE("Grâce à Baie Lingan, Défense de Qulbutoké augmente!");
                 } else {
-                    MESSAGE("The Kee Berry boosted Wobbuffet's Defense!");
+                    MESSAGE("Grâce à Baie Éka, Défense de Qulbutoké augmente!");
                 }
             } else if (statId == STAT_SPDEF) {
                 if (item == ITEM_APICOT_BERRY) {
-                    MESSAGE("The Apicot Berry boosted Wobbuffet's Sp. Def!");
+                    MESSAGE("Grâce à Baie Abriko, Défense Spéciale de Qulbutoké augmente!");
                 } else {
-                    MESSAGE("The Maranga Berry boosted Wobbuffet's Sp. Def!");
+                    MESSAGE("Grâce à Baie Rangma, Défense Spéciale de Qulbutoké augmente!");
                 }
             } else if (statId == STAT_SPEED) {
-                MESSAGE("The Salac Berry boosted Wobbuffet's Speed!");
+                MESSAGE("Grâce à Baie Sailak, Vitesse de Qulbutoké augmente!");
             } else if (statId == STAT_SPATK) {
-                MESSAGE("The Petaya Berry boosted Wobbuffet's Sp. Atk!");
+                MESSAGE("Grâce à Baie Pitaye, Attaque Spéciale de Qulbutoké augmente!");
             }
         }
     } THEN {
@@ -126,9 +126,9 @@ SINGLE_BATTLE_TEST("Tanga Berry activates before Bug Bite")
     } WHEN {
         TURN { MOVE(player, MOVE_BUG_BITE); }
     } SCENE {
-        MESSAGE("Wobbuffet used Bug Bite!");
+        MESSAGE("Qulbutoké utilise\nPiqûre!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, opponent);
-        MESSAGE("The Tanga Berry weakened the damage to the opposing Wobbuffet!");
+        MESSAGE("Baie Panga réduit les dégâts infligés à Qulbutoké ennemi!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BUG_BITE, player);
         HP_BAR(opponent);
     } THEN {

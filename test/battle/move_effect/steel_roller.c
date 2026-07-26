@@ -19,7 +19,7 @@ SINGLE_BATTLE_TEST("Steel Roller removes Terrain even if user faints during atta
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRIC_TERRAIN, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STEEL_ROLLER, opponent);
-        MESSAGE("The electricity disappeared from the battlefield.");
+        MESSAGE("L'électricité parcourant le terrain s'est dissipée.");
     }
 }
 
@@ -35,7 +35,7 @@ SINGLE_BATTLE_TEST("Steel Roller removes Terrain if user is switched out due to 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRIC_TERRAIN, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STEEL_ROLLER, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("The electricity disappeared from the battlefield.");
+        MESSAGE("L'électricité parcourant le terrain s'est dissipée.");
     }
 }
 
@@ -48,8 +48,8 @@ SINGLE_BATTLE_TEST("Steel Roller will fail if there is no Terrain")
         TURN { MOVE(opponent, MOVE_STEEL_ROLLER); }
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_STEEL_ROLLER, opponent);
-        MESSAGE("The opposing Wobbuffet used Steel Roller!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké ennemi utilise\nMétalliroue!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 

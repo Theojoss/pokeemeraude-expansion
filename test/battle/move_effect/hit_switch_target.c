@@ -20,7 +20,7 @@ SINGLE_BATTLE_TEST("Dragon Tail switches the target with a random non-fainted re
         TURN { MOVE(player, MOVE_DRAGON_TAIL); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_TAIL, player);
-        MESSAGE("The opposing Bulbasaur was dragged out!");
+        MESSAGE("Bulbizarre ennemi est traîné de force au combat!\p");
     }
 }
 
@@ -39,7 +39,7 @@ DOUBLE_BATTLE_TEST("Dragon Tail switches the target with a random non-battler, n
         TURN { MOVE(playerLeft, MOVE_DRAGON_TAIL, target: opponentRight); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_TAIL, playerLeft);
-        MESSAGE("The opposing Bulbasaur was dragged out!");
+        MESSAGE("Bulbizarre ennemi est traîné de force au combat!\p");
     }
 }
 
@@ -52,7 +52,7 @@ SINGLE_BATTLE_TEST("Dragon Tail fails if no replacements")
         TURN { MOVE(player, MOVE_DRAGON_TAIL); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_TAIL, player);
-        NOT MESSAGE("But it failed!");
+        NOT MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -66,7 +66,7 @@ SINGLE_BATTLE_TEST("Dragon Tail fails if replacements fainted")
         TURN { MOVE(player, MOVE_DRAGON_TAIL); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_TAIL, player);
-        NOT MESSAGE("But it failed!");
+        NOT MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -83,10 +83,10 @@ SINGLE_BATTLE_TEST("Dragon Tail switches the target after Rocky Helmet and Iron 
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_TAIL, player);
         HP_BAR(player);
-        MESSAGE("Wobbuffet was hurt!");
+        MESSAGE("Qulbutoké est blessé!");
         HP_BAR(player);
-        MESSAGE("Wobbuffet was hurt by the opposing Togedemaru's Rocky Helmet!");
-        MESSAGE("The opposing Charmander was dragged out!");
+        MESSAGE("Qulbutoké est blessé par Casque Brut de Togedemaru ennemi!");
+        MESSAGE("Salamèche ennemi est traîné de force au combat!\p");
     }
 }
 
@@ -100,7 +100,7 @@ SINGLE_BATTLE_TEST("Dragon Tail effect fails against target with Guard Dog")
         TURN { MOVE(player, MOVE_DRAGON_TAIL); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_TAIL, player);
-        NOT MESSAGE("The opposing Charmander was dragged out!");
+        NOT MESSAGE("Salamèche ennemi est traîné de force au combat!\p");
     }
 }
 
@@ -115,8 +115,8 @@ SINGLE_BATTLE_TEST("Dragon Tail effect fails against target with Suction Cups")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_TAIL, player);
         ABILITY_POPUP(opponent, ABILITY_SUCTION_CUPS);
-        MESSAGE("The opposing Octillery is anchored in place with its suction cups!");
-        NOT MESSAGE("The opposing Charmander was dragged out!");
+        MESSAGE("Octillery ennemi s'accroche avec ses ventouses!");
+        NOT MESSAGE("Salamèche ennemi est traîné de force au combat!\p");
     }
 }
 
@@ -134,7 +134,7 @@ SINGLE_BATTLE_TEST("Dragon Tail switches target out and incoming mon has Immunit
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TOXIC_SPIKES, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_TAIL, player);
         HP_BAR(opponent);
-        MESSAGE("The opposing Snorlax was dragged out!");
+        MESSAGE("Ronflex ennemi est traîné de force au combat!\p");
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PSN, opponent);
         STATUS_ICON(opponent, poison: TRUE);
     }
@@ -158,8 +158,8 @@ SINGLE_BATTLE_TEST("Dragon Tail switches target out and incoming mon has Levitat
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPIKES, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_TAIL, player);
         HP_BAR(opponent);
-        MESSAGE("The opposing Weezing was dragged out!");
-        MESSAGE("The poison spikes disappeared from the ground around the opposing team!");
+        MESSAGE("Smogogo ennemi est traîné de force au combat!\p");
+        MESSAGE("Il n'y a plus de pics toxiques autour de l'équipe ennemie!");
         NOT STATUS_ICON(opponent, poison: TRUE);
         HP_BAR(opponent);
     }

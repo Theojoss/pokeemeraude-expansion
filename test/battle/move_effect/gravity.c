@@ -23,18 +23,18 @@ DOUBLE_BATTLE_TEST("Gravity cancels Fly and Sky Drop if they are in the air")
         TURN { MOVE(playerLeft, MOVE_GRAVITY); SKIP_TURN(opponentRight); SKIP_TURN(opponentLeft); }
     } SCENE {
         // turn 1
-        MESSAGE("The opposing Pidgey used Sky Drop!");
-        MESSAGE("The opposing Pidgey took Wynaut into the sky!");
+        MESSAGE("Roucool ennemi utilise\nChute Libre!");
+        MESSAGE("Roucool ennemi emporte Okéoké haut dans le ciel!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SKY_DROP, opponentLeft);
-        MESSAGE("The opposing Rookidee used Fly!");
-        MESSAGE("The opposing Rookidee flew up high!");
+        MESSAGE("Minisange ennemi utilise\nVol!");
+        MESSAGE("Minisange ennemi s'envole!");
         // turn 2
-        MESSAGE("Wobbuffet used Gravity!");
-        MESSAGE("Gravity intensified!");
-        MESSAGE("The opposing Pidgey fell from the sky due to the gravity!");
-        MESSAGE("The opposing Rookidee fell from the sky due to the gravity!");
-        MESSAGE("The opposing Pidgey can't use Sky Drop because of gravity!");
-        MESSAGE("The opposing Rookidee can't use Fly because of gravity!");
+        MESSAGE("Qulbutoké utilise\nGravité!");
+        MESSAGE("La gravité s'intensifie!");
+        MESSAGE("Roucool ennemi ne peut pas rester en l'air à cause du changement de gravité!");
+        MESSAGE("Minisange ennemi ne peut pas rester en l'air à cause du changement de gravité!");
+        MESSAGE("Roucool ennemi ne peut pas utiliser Chute Libre à cause du changement de gravité!\p");
+        MESSAGE("Minisange ennemi ne peut pas utiliser Vol à cause du changement de gravité!\p");
     } THEN {
         // all battlers should be visible. assign to var first because expect_eq not working with bitfield address
         visibility = gBattleSpritesDataPtr->battlerData[0].invisible;

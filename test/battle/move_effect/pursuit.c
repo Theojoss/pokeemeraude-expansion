@@ -15,10 +15,10 @@ SINGLE_BATTLE_TEST("Pursuit attacks a switching foe")
     } WHEN {
         TURN { SWITCH(player, 1); MOVE(opponent, MOVE_PURSUIT); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Wobbuffet");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponent);
         HP_BAR(player);
-        SEND_IN_MESSAGE("Zigzagoon");
+        SEND_IN_MESSAGE("Zigzaton");
     }
 }
 
@@ -39,9 +39,9 @@ SINGLE_BATTLE_TEST("Pursuit attacks a foe using Volt Switch / U-Turn / Parting S
         TURN { MOVE(player, move); MOVE(opponent, MOVE_PURSUIT); SEND_OUT(player, 1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, move, player);
-        MESSAGE("Wobbuffet went back to 1!");
+        MESSAGE("Qulbutoké revient vers 1!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponent);
-        SEND_IN_MESSAGE("Zigzagoon");
+        SEND_IN_MESSAGE("Zigzaton");
     }
 }
 
@@ -66,7 +66,7 @@ DOUBLE_BATTLE_TEST("Pursuit doesn't attack a foe using Teleport / Baton Pass to 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_QUASH, playerRight);
         ANIMATION(ANIM_TYPE_MOVE, move, playerLeft);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentLeft);
-        SEND_IN_MESSAGE("Zigzagoon");
+        SEND_IN_MESSAGE("Zigzaton");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentLeft);
     }
 }
@@ -82,9 +82,9 @@ SINGLE_BATTLE_TEST("Pursuit doesn't attack switching foe if user already acted t
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_VOLT_SWITCH, player);
-        MESSAGE("Wobbuffet went back to 1!");
+        MESSAGE("Qulbutoké revient vers 1!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponent);
-        SEND_IN_MESSAGE("Zigzagoon");
+        SEND_IN_MESSAGE("Zigzaton");
     }
 }
 
@@ -106,7 +106,7 @@ SINGLE_BATTLE_TEST("Pursuit doubles in power if attacking while target switches 
         HP_BAR(player, captureDamage: &results[i].damage);
         if (speed == 5)
             ANIMATION(ANIM_TYPE_MOVE, MOVE_VOLT_SWITCH, player);
-        SEND_IN_MESSAGE("Zigzagoon");
+        SEND_IN_MESSAGE("Zigzaton");
     } FINALLY {
         EXPECT_MUL_EQ(results[0].damage, Q_4_12(2.0), results[1].damage);
     }
@@ -128,9 +128,9 @@ SINGLE_BATTLE_TEST("Pursuit ignores accuracy checks when attacking a switching t
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SAND_ATTACK, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HAIL, opponent);
-        SWITCH_OUT_MESSAGE("Glaceon");
+        SWITCH_OUT_MESSAGE("Givrali");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponent);
-        SEND_IN_MESSAGE("Zigzagoon");
+        SEND_IN_MESSAGE("Zigzaton");
     }
 }
 
@@ -146,12 +146,12 @@ DOUBLE_BATTLE_TEST("Pursuit attacks switching foes even if not targetting them (
     } WHEN {
         TURN { SWITCH(playerLeft, 2); MOVE(opponentLeft, MOVE_PURSUIT, target: playerRight); MOVE(opponentRight, MOVE_PURSUIT, target: playerRight); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Wobbuffet");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentLeft);
         HP_BAR(playerLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentRight);
         HP_BAR(playerLeft);
-        SEND_IN_MESSAGE("Grimer");
+        SEND_IN_MESSAGE("Tadmorv");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, playerRight);
     }
 }
@@ -170,7 +170,7 @@ DOUBLE_BATTLE_TEST("Pursuit attacks a switching foe from fastest to slowest")
     } WHEN {
         TURN { SWITCH(playerLeft, 2); MOVE(opponentLeft, MOVE_PURSUIT, target: playerLeft); MOVE(opponentRight, MOVE_PURSUIT, target: playerLeft); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Wobbuffet");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
         if (speedLeft > speedRight) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentLeft);
             HP_BAR(playerLeft);
@@ -182,7 +182,7 @@ DOUBLE_BATTLE_TEST("Pursuit attacks a switching foe from fastest to slowest")
             ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentLeft);
             HP_BAR(playerLeft);
         }
-        SEND_IN_MESSAGE("Grimer");
+        SEND_IN_MESSAGE("Tadmorv");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, playerRight);
     }
 }
@@ -199,13 +199,13 @@ DOUBLE_BATTLE_TEST("Pursuit attacks a switching foe but not switching allies")
     } WHEN {
         TURN { SWITCH(playerLeft, 2); SWITCH(opponentRight, 2); MOVE(playerRight, MOVE_PURSUIT, target: opponentRight); MOVE(opponentLeft, MOVE_PURSUIT, target: playerLeft); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Wobbuffet");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, playerRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentLeft);
-        SEND_IN_MESSAGE("Grimer");
-        MESSAGE("2 withdrew Linoone!");
+        SEND_IN_MESSAGE("Tadmorv");
+        MESSAGE("2 retire Linéon!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, playerRight);
-        MESSAGE("2 sent out Abra!");
+        MESSAGE("2 envoie\nun Abra!");
     }
 }
 
@@ -222,20 +222,20 @@ DOUBLE_BATTLE_TEST("Pursuit only attacks the first switching foe")
     } WHEN {
         TURN { SWITCH(playerLeft, 2); SWITCH(playerRight, 3); MOVE(opponentLeft, MOVE_PURSUIT, target: playerLeft); MOVE(opponentRight, MOVE_PURSUIT, target: playerLeft); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Wobbuffet");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentLeft);
         HP_BAR(playerLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentRight);
         HP_BAR(playerLeft);
-        SEND_IN_MESSAGE("Grimer");
-        SWITCH_OUT_MESSAGE("Zigzagoon");
+        SEND_IN_MESSAGE("Tadmorv");
+        SWITCH_OUT_MESSAGE("Zigzaton");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentLeft);
             HP_BAR(playerRight);
             ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentRight);
             HP_BAR(playerRight);
         }
-        SEND_IN_MESSAGE("Sunkern");
+        SEND_IN_MESSAGE("Tournegrin");
     }
 }
 
@@ -251,13 +251,13 @@ DOUBLE_BATTLE_TEST("Pursuit only attacks a switching foe if foe is alive")
     } WHEN {
         TURN { SWITCH(playerLeft, 2); MOVE(opponentLeft, MOVE_PURSUIT, target: playerLeft); MOVE(opponentRight, MOVE_PURSUIT, target: playerLeft); SEND_OUT(playerLeft, 2); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Wobbuffet");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentLeft);
         HP_BAR(playerLeft);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentRight);
-        MESSAGE("Wobbuffet fainted!");
+        MESSAGE("Qulbutoké est K.O.!\p");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentRight);
-        SEND_IN_MESSAGE("Grimer");
+        SEND_IN_MESSAGE("Tadmorv");
     }
 }
 
@@ -274,16 +274,16 @@ DOUBLE_BATTLE_TEST("Pursuit attacks the second switching foe if the first faints
     } WHEN {
         TURN { SWITCH(playerLeft, 2); SWITCH(playerRight, 3); MOVE(opponentLeft, MOVE_PURSUIT, target: playerLeft); MOVE(opponentRight, MOVE_PURSUIT, target: playerRight); SEND_OUT(playerLeft, 2); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Wobbuffet");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentLeft);
         HP_BAR(playerLeft);
-        MESSAGE("Wobbuffet fainted!");
+        MESSAGE("Qulbutoké est K.O.!\p");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentRight);
-        SWITCH_OUT_MESSAGE("Zigzagoon");
+        SWITCH_OUT_MESSAGE("Zigzaton");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentRight);
         HP_BAR(playerRight);
-        SEND_IN_MESSAGE("Sunkern");
-        SEND_IN_MESSAGE("Grimer");
+        SEND_IN_MESSAGE("Tournegrin");
+        SEND_IN_MESSAGE("Tadmorv");
     }
 }
 
@@ -300,9 +300,9 @@ DOUBLE_BATTLE_TEST("Pursuit only attacks a switching foe if user is alive")
         TURN { MOVE(playerLeft, MOVE_VOLT_SWITCH, target: opponentLeft); MOVE(opponentLeft, MOVE_PURSUIT, target: playerLeft); SEND_OUT(playerLeft, 2); SEND_OUT(opponentLeft, 2); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_VOLT_SWITCH, playerLeft);
-        MESSAGE("The opposing Wynaut fainted!");
+        MESSAGE("Okéoké ennemi est K.O.!\p");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentLeft);
-        SEND_IN_MESSAGE("Grimer");
+        SEND_IN_MESSAGE("Tadmorv");
     }
 }
 
@@ -315,10 +315,10 @@ SINGLE_BATTLE_TEST("Pursuit attacks a switching foe but fails if user is asleep"
     } WHEN {
         TURN { SWITCH(player, 1); MOVE(opponent, MOVE_PURSUIT); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Wobbuffet");
-        MESSAGE("The opposing Wynaut is fast asleep.");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
+        MESSAGE("Okéoké ennemi dort profondément.");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponent);
-        SEND_IN_MESSAGE("Zigzagoon");
+        SEND_IN_MESSAGE("Zigzaton");
     }
 }
 
@@ -332,10 +332,10 @@ SINGLE_BATTLE_TEST("Pursuit attacks a switching foe and takes Life Orb damage")
     } WHEN {
         TURN { SWITCH(player, 1); MOVE(opponent, MOVE_PURSUIT); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Wobbuffet");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponent);
         HP_BAR(opponent);
-        SEND_IN_MESSAGE("Zigzagoon");
+        SEND_IN_MESSAGE("Zigzaton");
     }
 }
 
@@ -354,7 +354,7 @@ DOUBLE_BATTLE_TEST("Pursuit attacks a switching foe but isn't affected by Follow
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FOLLOW_ME, playerRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_VOLT_SWITCH, playerLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentLeft);
-        SEND_IN_MESSAGE("Zigzagoon");
+        SEND_IN_MESSAGE("Zigzaton");
     }
 }
 
@@ -367,12 +367,12 @@ SINGLE_BATTLE_TEST("Pursuit user mega evolves before attacking a switching foe a
     } WHEN {
         TURN { SWITCH(player, 1); MOVE(opponent, MOVE_PURSUIT, gimmick: GIMMICK_MEGA); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Wobbuffet");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponent);
         HP_BAR(player);
         HP_BAR(player);
-        SEND_IN_MESSAGE("Zigzagoon");
+        SEND_IN_MESSAGE("Zigzaton");
     }
 }
 
@@ -387,12 +387,12 @@ DOUBLE_BATTLE_TEST("Pursuit user mega evolves before attacking a switching foe a
     } WHEN {
         TURN { SWITCH(playerRight, 2); MOVE(opponentRight, MOVE_PURSUIT, gimmick: GIMMICK_MEGA, target: playerRight); MOVE(playerLeft, MOVE_CELEBRATE, gimmick: GIMMICK_MEGA); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Wobbuffet");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, opponentRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentRight);
         HP_BAR(playerRight);
         HP_BAR(playerRight);
-        SEND_IN_MESSAGE("Zigzagoon");
+        SEND_IN_MESSAGE("Zigzaton");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, playerLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, playerLeft);
     }
@@ -410,12 +410,12 @@ SINGLE_BATTLE_TEST("Pursuit user terastalizes before attacking a switching foe a
     } WHEN {
         TURN { SWITCH(player, 1); MOVE(opponent, MOVE_PURSUIT, gimmick: tera); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Wobbuffet");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
         if (tera == GIMMICK_TERA)
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_TERA_ACTIVATE, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponent);
         HP_BAR(player, captureDamage: &results[i].damage);
-        SEND_IN_MESSAGE("Zigzagoon");
+        SEND_IN_MESSAGE("Zigzaton");
     } FINALLY {
         EXPECT_MUL_EQ(results[0].damage, Q_4_12(1.5), results[1].damage);
     }
@@ -436,7 +436,7 @@ DOUBLE_BATTLE_TEST("Pursuit affected by Electrify fails against immune target")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRIFY, playerRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_VOLT_SWITCH, playerLeft);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentLeft);
-        SEND_IN_MESSAGE("Zigzagoon");
+        SEND_IN_MESSAGE("Zigzaton");
     }
 }
 
@@ -456,7 +456,7 @@ DOUBLE_BATTLE_TEST("Pursuit affected by Electrify fails against target with Volt
         ANIMATION(ANIM_TYPE_MOVE, MOVE_VOLT_SWITCH, playerLeft);
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentLeft);
         ABILITY_POPUP(playerLeft, ABILITY_VOLT_ABSORB);
-        SEND_IN_MESSAGE("Zigzagoon");
+        SEND_IN_MESSAGE("Zigzaton");
     }
 }
 
@@ -470,12 +470,12 @@ SINGLE_BATTLE_TEST("Pursuited mon correctly switches out after it got hit and ac
     } WHEN {
         TURN { SWITCH(player, 1); MOVE(opponent, MOVE_PURSUIT); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Dugtrio");
+        SWITCH_OUT_MESSAGE("Triopikeur");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponent);
         ABILITY_POPUP(player, ABILITY_TANGLING_HAIR);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-        MESSAGE("The opposing Wynaut's Speed fell!");
-        SEND_IN_MESSAGE("Wobbuffet");
+        MESSAGE("Ah, Vitesse du Okéoké ennemi baisse!");
+        SEND_IN_MESSAGE("Qulbutoké");
     }
 }
 
@@ -490,16 +490,16 @@ DOUBLE_BATTLE_TEST("Pursuited mon correctly switches out after it got hit and ac
     } WHEN {
         TURN { SWITCH(playerLeft, 2); MOVE(opponentLeft, MOVE_PURSUIT, target: playerLeft); MOVE(opponentRight, MOVE_PURSUIT, target: playerLeft); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Dugtrio");
+        SWITCH_OUT_MESSAGE("Triopikeur");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentLeft);
         ABILITY_POPUP(playerLeft, ABILITY_TANGLING_HAIR);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("The opposing Wynaut's Speed fell!");
+        MESSAGE("Ah, Vitesse du Okéoké ennemi baisse!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentRight);
         ABILITY_POPUP(playerLeft, ABILITY_TANGLING_HAIR);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("The opposing Wobbuffet's Speed fell!");
-        SEND_IN_MESSAGE("Wobbuffet");
+        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
+        SEND_IN_MESSAGE("Qulbutoké");
     }
 }
 
@@ -513,11 +513,11 @@ SINGLE_BATTLE_TEST("Pursuited mon correctly switches out after it got hit and ac
     } WHEN {
         TURN { SWITCH(player, 1); MOVE(opponent, MOVE_PURSUIT); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Dugtrio");
+        SWITCH_OUT_MESSAGE("Triopikeur");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponent);
         ABILITY_POPUP(player, ABILITY_TANGLING_HAIR);
         ABILITY_POPUP(opponent, ABILITY_MIRROR_ARMOR);
-        SEND_IN_MESSAGE("Wobbuffet");
+        SEND_IN_MESSAGE("Qulbutoké");
     }
 }
 
@@ -532,24 +532,24 @@ DOUBLE_BATTLE_TEST("Pursuited mon correctly switches out after it got hit and ac
     } WHEN {
         TURN { SWITCH(playerLeft, 2); MOVE(opponentLeft, MOVE_PURSUIT, target: playerLeft); MOVE(opponentRight, MOVE_PURSUIT, target: playerLeft); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Eldegoss");
+        SWITCH_OUT_MESSAGE("Blancoton");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentLeft);
         ABILITY_POPUP(playerLeft, ABILITY_COTTON_DOWN);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Wobbuffet's Speed fell!");
+        MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("The opposing Wynaut's Speed fell!");
+        MESSAGE("Ah, Vitesse du Okéoké ennemi baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("The opposing Wobbuffet's Speed fell!");
+        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponentRight);
         ABILITY_POPUP(playerLeft, ABILITY_COTTON_DOWN);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Wobbuffet's Speed fell!");
+        MESSAGE("Ah, Vitesse du Qulbutoké baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("The opposing Wynaut's Speed fell!");
+        MESSAGE("Ah, Vitesse du Okéoké ennemi baisse!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("The opposing Wobbuffet's Speed fell!");
-        SEND_IN_MESSAGE("Wobbuffet");
+        MESSAGE("Ah, Vitesse du Qulbutoké ennemi baisse!");
+        SEND_IN_MESSAGE("Qulbutoké");
     }
 }
 
@@ -567,9 +567,9 @@ SINGLE_BATTLE_TEST("Pursuit becomes a locked move after being used on switch-out
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, player);
         HP_BAR(opponent);
-        MESSAGE("2 sent out Wobbuffet!");
+        MESSAGE("2 envoie\nun Qulbutoké!");
 
-        MESSAGE("Wobbuffet used Struggle!");
+        MESSAGE("Qulbutoké utilise\nLutte!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STRUGGLE, player);
     }
 }
@@ -592,21 +592,21 @@ SINGLE_BATTLE_TEST("Pursuit attacks a switching foe and switchin is correctly st
     } WHEN {
         TURN { SWITCH(player, switchin); MOVE(opponent, MOVE_PURSUIT); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Wobbuffet");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponent);
         switch (switchin)
         {
             case 1:
-                SEND_IN_MESSAGE("Zigzagoon");
+                SEND_IN_MESSAGE("Zigzaton");
                 break;
             case 2:
-                SEND_IN_MESSAGE("Aipom");
+                SEND_IN_MESSAGE("Capumain");
                 break;
             case 3:
                 SEND_IN_MESSAGE("Abra");
                 break;
             case 4:
-                SEND_IN_MESSAGE("Venipede");
+                SEND_IN_MESSAGE("Venipatte");
                 break;
         }
     }
@@ -623,11 +623,11 @@ SINGLE_BATTLE_TEST("Pursuit user gets forced out by Red Card and target still sw
     } WHEN {
         TURN { SWITCH(player, 1); MOVE(opponent, MOVE_PURSUIT); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Wobbuffet");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("The opposing Voltorb was dragged out!");
-        SEND_IN_MESSAGE("Voltorb");
+        MESSAGE("Voltorbe ennemi est traîné de force au combat!\p");
+        SEND_IN_MESSAGE("Voltorbe");
     } THEN {
         EXPECT_EQ(player->species, SPECIES_VOLTORB);
         EXPECT_EQ(opponent->species, SPECIES_VOLTORB);
@@ -645,11 +645,11 @@ SINGLE_BATTLE_TEST("Pursuit user faints to Life Orb and target still switches ou
     } WHEN {
         TURN { SWITCH(player, 1); MOVE(opponent, MOVE_PURSUIT); SEND_OUT(opponent, 1); }
     } SCENE {
-        SWITCH_OUT_MESSAGE("Wobbuffet");
+        SWITCH_OUT_MESSAGE("Qulbutoké");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponent);
         HP_BAR(opponent);
-        MESSAGE("The opposing Wobbuffet fainted!");
-        SEND_IN_MESSAGE("Voltorb");
+        MESSAGE("Qulbutoké ennemi est K.O.!\p");
+        SEND_IN_MESSAGE("Voltorbe");
     } THEN {
         EXPECT_EQ(player->species, SPECIES_VOLTORB);
         EXPECT_EQ(opponent->species, SPECIES_VOLTORB);

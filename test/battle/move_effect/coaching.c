@@ -17,8 +17,8 @@ DOUBLE_BATTLE_TEST("Coaching raises Attack and Defense of ally by 1 stage each")
         TURN { MOVE(playerLeft, MOVE_COACHING, target: playerRight); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COACHING, playerLeft);
-        MESSAGE("Wynaut's Attack rose!");
-        MESSAGE("Wynaut's Defense rose!");
+        MESSAGE("Ah, Attaque du Okéoké augmente!");
+        MESSAGE("Ah, Défense du Okéoké augmente!");
     }
 }
 
@@ -34,8 +34,8 @@ DOUBLE_BATTLE_TEST("Coaching bypasses Protect")
         TURN { MOVE(playerRight, MOVE_PROTECT); MOVE(playerLeft, MOVE_COACHING, target: playerRight); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COACHING, playerLeft);
-        MESSAGE("Wynaut's Attack rose!");
-        MESSAGE("Wynaut's Defense rose!");
+        MESSAGE("Ah, Attaque du Okéoké augmente!");
+        MESSAGE("Ah, Défense du Okéoké augmente!");
     }
 }
 
@@ -51,8 +51,8 @@ DOUBLE_BATTLE_TEST("Coaching bypasses Crafty Shield")
         TURN { MOVE(playerRight, MOVE_CRAFTY_SHIELD); MOVE(playerLeft, MOVE_COACHING, target: playerRight); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COACHING, playerLeft);
-        MESSAGE("Wynaut's Attack rose!");
-        MESSAGE("Wynaut's Defense rose!");
+        MESSAGE("Ah, Attaque du Okéoké augmente!");
+        MESSAGE("Ah, Défense du Okéoké augmente!");
     }
 }
 
@@ -67,14 +67,14 @@ DOUBLE_BATTLE_TEST("Coaching fails if all allies are is semi-invulnerable")
     } WHEN {
         TURN { MOVE(playerRight, MOVE_FLY, target: opponentLeft); MOVE(playerLeft, MOVE_COACHING, target: playerRight); }
     } SCENE {
-        MESSAGE("Hawlucha used Fly!");
-        MESSAGE("Wobbuffet used Coaching!");
+        MESSAGE("Brutalibré utilise\nVol!");
+        MESSAGE("Qulbutoké utilise\nCoaching!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_COACHING, playerLeft);
-            MESSAGE("Hawlucha's Attack rose!");
-            MESSAGE("Hawlucha's Defense rose!");
+            MESSAGE("Ah, Attaque du Brutalibré augmente!");
+            MESSAGE("Ah, Défense du Brutalibré augmente!");
         }
-        MESSAGE("Hawlucha avoided the attack!");
+        MESSAGE("Brutalibré évite l'attaque!");
     }
 }
 
@@ -86,11 +86,11 @@ SINGLE_BATTLE_TEST("Coaching fails in single battles")
     } WHEN {
         TURN { MOVE(player, MOVE_COACHING); }
     } SCENE {
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_COACHING, player);
-            MESSAGE("Wynaut's Attack rose!");
-            MESSAGE("Wynaut's Defense rose!");
+            MESSAGE("Ah, Attaque du Okéoké augmente!");
+            MESSAGE("Ah, Défense du Okéoké augmente!");
         }
     }
 }
@@ -107,14 +107,14 @@ DOUBLE_BATTLE_TEST("Coaching fails if there's no ally")
         TURN { MOVE(playerLeft, MOVE_COACHING, target: playerRight); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerLeft);
-        MESSAGE("Wynaut fainted!");
-        MESSAGE("Wobbuffet used Coaching!");
+        MESSAGE("Okéoké est K.O.!\p");
+        MESSAGE("Qulbutoké utilise\nCoaching!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_COACHING, playerLeft);
-            MESSAGE("Wynaut's Attack rose!");
-            MESSAGE("Wynaut's Defense rose!");
+            MESSAGE("Ah, Attaque du Okéoké augmente!");
+            MESSAGE("Ah, Défense du Okéoké augmente!");
         }
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -151,7 +151,7 @@ DOUBLE_BATTLE_TEST("Coaching ignores Substitute")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SUBSTITUTE, playerRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_COACHING, playerLeft);
-        MESSAGE("Wynaut's Attack rose!");
-        MESSAGE("Wynaut's Defense rose!");
+        MESSAGE("Ah, Attaque du Okéoké augmente!");
+        MESSAGE("Ah, Défense du Okéoké augmente!");
     }
 }

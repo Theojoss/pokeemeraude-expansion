@@ -23,11 +23,11 @@ SINGLE_BATTLE_TEST("Baddy Bad sets up Reflect when it was succesful")
     } SCENE {
         if (moveSuccess == TRUE) {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_BADDY_BAD, player);
-            MESSAGE("Reflect made your team stronger against physical moves!");
+            MESSAGE("Protection augmente la résistance de votre équipe aux capacités physiques!");
         } else {
             NONE_OF {
                 ANIMATION(ANIM_TYPE_MOVE, MOVE_BADDY_BAD, player);
-                MESSAGE("Reflect made your team stronger against physical moves!");
+                MESSAGE("Protection augmente la résistance de votre équipe aux capacités physiques!");
             }
         }
     }

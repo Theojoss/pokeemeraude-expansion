@@ -19,7 +19,7 @@ SINGLE_BATTLE_TEST("Roar switches the target with a random non-fainted replaceme
         TURN { MOVE(player, MOVE_ROAR); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROAR, player);
-        MESSAGE("The opposing Bulbasaur was dragged out!");
+        MESSAGE("Bulbizarre ennemi est traîné de force au combat!\p");
     } THEN {
         EXPECT_EQ(gLastUsedMove, MOVE_ROAR);
     }
@@ -40,7 +40,7 @@ DOUBLE_BATTLE_TEST("Roar switches the target with a random non-battler, non-fain
         TURN { MOVE(playerLeft, MOVE_ROAR, target: opponentRight); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ROAR, playerLeft);
-        MESSAGE("The opposing Bulbasaur was dragged out!");
+        MESSAGE("Bulbizarre ennemi est traîné de force au combat!\p");
     }
 }
 
@@ -52,8 +52,8 @@ SINGLE_BATTLE_TEST("Roar fails if no replacements")
     } WHEN {
         TURN { MOVE(player, MOVE_ROAR); }
     } SCENE {
-        MESSAGE("Wobbuffet used Roar!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké utilise\nHurlement!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -66,8 +66,8 @@ SINGLE_BATTLE_TEST("Roar fails if replacements fainted")
     } WHEN {
         TURN { MOVE(player, MOVE_ROAR); }
     } SCENE {
-        MESSAGE("Wobbuffet used Roar!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké utilise\nHurlement!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -82,10 +82,10 @@ SINGLE_BATTLE_TEST("Roar fails against target with Guard Dog")
     } SCENE {
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_ROAR, player);
-            MESSAGE("The opposing Charmander was dragged out!");
+            MESSAGE("Salamèche ennemi est traîné de force au combat!\p");
         }
-        MESSAGE("Wobbuffet used Roar!");
-        MESSAGE("But it failed!");
+        MESSAGE("Qulbutoké utilise\nHurlement!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -98,10 +98,10 @@ SINGLE_BATTLE_TEST("Roar fails to switch out target with Suction Cups")
     } WHEN {
         TURN { MOVE(player, MOVE_ROAR); }
     } SCENE {
-        MESSAGE("Wobbuffet used Roar!");
+        MESSAGE("Qulbutoké utilise\nHurlement!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_ROAR, player);
         ABILITY_POPUP(opponent, ABILITY_SUCTION_CUPS);
-        MESSAGE("The opposing Octillery is anchored in place with its suction cups!");
-        NOT MESSAGE("The opposing Charmander was dragged out!");
+        MESSAGE("Octillery ennemi s'accroche avec ses ventouses!");
+        NOT MESSAGE("Salamèche ennemi est traîné de force au combat!\p");
     }
 }

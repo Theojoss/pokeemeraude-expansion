@@ -41,28 +41,28 @@ SINGLE_BATTLE_TEST("Semi-invulnerable moves make the user semi-invulnerable turn
             switch (move)
             {
                 case MOVE_FLY:
-                    NOT MESSAGE("Wobbuffet flew up high!");
-                    MESSAGE("Wobbuffet used Fly!");
+                    NOT MESSAGE("Qulbutoké s'envole!");
+                    MESSAGE("Qulbutoké utilise\nVol!");
                     break;
                 case MOVE_DIG:
-                    NOT MESSAGE("Wobbuffet dug a hole!");
-                    MESSAGE("Wobbuffet used Dig!");
+                    NOT MESSAGE("Qulbutoké dug a hole!");
+                    MESSAGE("Qulbutoké utilise\nTunnel!");
                     break;
                 case MOVE_BOUNCE:
-                    NOT MESSAGE("Wobbuffet sprang up!");
-                    MESSAGE("Wobbuffet used Bounce!");
+                    NOT MESSAGE("Qulbutoké se propulse dans les airs!");
+                    MESSAGE("Qulbutoké utilise\nRebond!");
                     break;
                 case MOVE_DIVE:
-                    NOT MESSAGE("Wobbuffet hid underwater!");
-                    MESSAGE("Wobbuffet used Dive!");
+                    NOT MESSAGE("Qulbutoké se cache sous l'eau!");
+                    MESSAGE("Qulbutoké utilise\nPlongée!");
                     break;
                 case MOVE_PHANTOM_FORCE:
-                    NOT MESSAGE("Wobbuffet vanished instantly!");
-                    MESSAGE("Wobbuffet used Phantom Force!");
+                    NOT MESSAGE("Qulbutoké disparaît instantanément!");
+                    MESSAGE("Qulbutoké utilise\nHantise!");
                     break;
                 case MOVE_SHADOW_FORCE:
-                    NOT MESSAGE("Wobbuffet vanished instantly!");
-                    MESSAGE("Wobbuffet used Shadow Force!");
+                    NOT MESSAGE("Qulbutoké disparaît instantanément!");
+                    MESSAGE("Qulbutoké utilise\nRevenant!");
                     break;
                 default:
                     break;
@@ -75,20 +75,20 @@ SINGLE_BATTLE_TEST("Semi-invulnerable moves make the user semi-invulnerable turn
             switch (move)
             {
                 case MOVE_FLY:
-                    MESSAGE("Wobbuffet flew up high!");
+                    MESSAGE("Qulbutoké s'envole!");
                     break;
                 case MOVE_DIG:
-                    MESSAGE("Wobbuffet dug a hole!");
+                    MESSAGE("Qulbutoké dug a hole!");
                     break;
                 case MOVE_BOUNCE:
-                    MESSAGE("Wobbuffet sprang up!");
+                    MESSAGE("Qulbutoké se propulse dans les airs!");
                     break;
                 case MOVE_DIVE:
-                    MESSAGE("Wobbuffet hid underwater!");
+                    MESSAGE("Qulbutoké se cache sous l'eau!");
                     break;
                 case MOVE_PHANTOM_FORCE:
                 case MOVE_SHADOW_FORCE:
-                    MESSAGE("Wobbuffet vanished instantly!");
+                    MESSAGE("Qulbutoké disparaît instantanément!");
                     break;
                 default:
                     break;
@@ -98,28 +98,28 @@ SINGLE_BATTLE_TEST("Semi-invulnerable moves make the user semi-invulnerable turn
             ANIMATION(ANIM_TYPE_MOVE, move, player);
 
         // Aerial Ace cannot miss unless the target is semi-invulnerable
-        MESSAGE("The opposing Wobbuffet used Aerial Ace!");
-        MESSAGE("Wobbuffet avoided the attack!");
+        MESSAGE("Qulbutoké ennemi utilise\nAéropique!");
+        MESSAGE("Qulbutoké évite l'attaque!");
         // Attack turn
         switch (move)
         {
             case MOVE_FLY:
-                MESSAGE("Wobbuffet used Fly!");
+                MESSAGE("Qulbutoké utilise\nVol!");
                 break;
             case MOVE_DIG:
-                MESSAGE("Wobbuffet used Dig!");
+                MESSAGE("Qulbutoké utilise\nTunnel!");
                 break;
             case MOVE_BOUNCE:
-                MESSAGE("Wobbuffet used Bounce!");
+                MESSAGE("Qulbutoké utilise\nRebond!");
                 break;
             case MOVE_DIVE:
-                MESSAGE("Wobbuffet used Dive!");
+                MESSAGE("Qulbutoké utilise\nPlongée!");
                 break;
             case MOVE_PHANTOM_FORCE:
-                MESSAGE("Wobbuffet used Phantom Force!");
+                MESSAGE("Qulbutoké utilise\nHantise!");
                 break;
             case MOVE_SHADOW_FORCE:
-                MESSAGE("Wobbuffet used Shadow Force!");
+                MESSAGE("Qulbutoké utilise\nRevenant!");
                 break;
             default:
                 break;
@@ -153,28 +153,28 @@ SINGLE_BATTLE_TEST("Semi-invulnerable moves don't need to charge with Power Herb
             switch (move)
             {
                 case MOVE_FLY:
-                    NOT MESSAGE("Wobbuffet flew up high!");
-                    MESSAGE("Wobbuffet used Fly!");
+                    NOT MESSAGE("Qulbutoké s'envole!");
+                    MESSAGE("Qulbutoké utilise\nVol!");
                     break;
                 case MOVE_DIG:
-                    NOT MESSAGE("Wobbuffet dug a hole!");
-                    MESSAGE("Wobbuffet used Dig!");
+                    NOT MESSAGE("Qulbutoké dug a hole!");
+                    MESSAGE("Qulbutoké utilise\nTunnel!");
                     break;
                 case MOVE_BOUNCE:
-                    NOT MESSAGE("Wobbuffet sprang up!");
-                    MESSAGE("Wobbuffet used Bounce!");
+                    NOT MESSAGE("Qulbutoké se propulse dans les airs!");
+                    MESSAGE("Qulbutoké utilise\nRebond!");
                     break;
                 case MOVE_DIVE:
-                    NOT MESSAGE("Wobbuffet hid underwater!");
-                    MESSAGE("Wobbuffet used Dive!");
+                    NOT MESSAGE("Qulbutoké se cache sous l'eau!");
+                    MESSAGE("Qulbutoké utilise\nPlongée!");
                     break;
                 case MOVE_PHANTOM_FORCE:
-                    NOT MESSAGE("Wobbuffet vanished instantly!");
-                    MESSAGE("Wobbuffet used Phantom Force!");
+                    NOT MESSAGE("Qulbutoké disparaît instantanément!");
+                    MESSAGE("Qulbutoké utilise\nHantise!");
                     break;
                 case MOVE_SHADOW_FORCE:
-                    NOT MESSAGE("Wobbuffet vanished instantly!");
-                    MESSAGE("Wobbuffet used Shadow Force!");
+                    NOT MESSAGE("Qulbutoké disparaît instantanément!");
+                    MESSAGE("Qulbutoké utilise\nRevenant!");
                     break;
                 default:
                     break;
@@ -187,20 +187,20 @@ SINGLE_BATTLE_TEST("Semi-invulnerable moves don't need to charge with Power Herb
             switch (move)
             {
                 case MOVE_FLY:
-                    MESSAGE("Wobbuffet flew up high!");
+                    MESSAGE("Qulbutoké s'envole!");
                     break;
                 case MOVE_DIG:
-                    MESSAGE("Wobbuffet dug a hole!");
+                    MESSAGE("Qulbutoké dug a hole!");
                     break;
                 case MOVE_BOUNCE:
-                    MESSAGE("Wobbuffet sprang up!");
+                    MESSAGE("Qulbutoké se propulse dans les airs!");
                     break;
                 case MOVE_DIVE:
-                    MESSAGE("Wobbuffet hid underwater!");
+                    MESSAGE("Qulbutoké se cache sous l'eau!");
                     break;
                 case MOVE_PHANTOM_FORCE:
                 case MOVE_SHADOW_FORCE:
-                    MESSAGE("Wobbuffet vanished instantly!");
+                    MESSAGE("Qulbutoké disparaît instantanément!");
                     break;
                 default:
                     break;
@@ -208,28 +208,28 @@ SINGLE_BATTLE_TEST("Semi-invulnerable moves don't need to charge with Power Herb
         }
         else
             ANIMATION(ANIM_TYPE_MOVE, move, player);
-        MESSAGE("Wobbuffet became fully charged due to its Power Herb!");
+        MESSAGE("Qulbutoké est complètement chargé grâce à Herbe Pouvoir!");
         if (B_UPDATED_MOVE_DATA < GEN_5)
         {
             switch (move)
             {
                 case MOVE_FLY:
-                    MESSAGE("Wobbuffet used Fly!");
+                    MESSAGE("Qulbutoké utilise\nVol!");
                     break;
                 case MOVE_DIG:
-                    MESSAGE("Wobbuffet used Dig!");
+                    MESSAGE("Qulbutoké utilise\nTunnel!");
                     break;
                 case MOVE_BOUNCE:
-                    MESSAGE("Wobbuffet used Bounce!");
+                    MESSAGE("Qulbutoké utilise\nRebond!");
                     break;
                 case MOVE_DIVE:
-                    MESSAGE("Wobbuffet used Dive!");
+                    MESSAGE("Qulbutoké utilise\nPlongée!");
                     break;
                 case MOVE_PHANTOM_FORCE:
-                    MESSAGE("Wobbuffet used Phantom Force!");
+                    MESSAGE("Qulbutoké utilise\nHantise!");
                     break;
                 case MOVE_SHADOW_FORCE:
-                    MESSAGE("Wobbuffet used Shadow Force!");
+                    MESSAGE("Qulbutoké utilise\nRevenant!");
                     break;
                 default:
                     break;
@@ -249,10 +249,10 @@ SINGLE_BATTLE_TEST("Power Herb semi-invulnerable moves do not keep the user unta
     } WHEN {
         TURN { MOVE(player, MOVE_PHANTOM_FORCE); MOVE(opponent, MOVE_WATER_GUN); }
     } SCENE {
-        NOT MESSAGE("Basculegion vanished instantly!");
-        MESSAGE("Basculegion used Phantom Force!");
+        NOT MESSAGE("Paragruel disparaît instantanément!");
+        MESSAGE("Paragruel utilise\nHantise!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PHANTOM_FORCE, player);
-        MESSAGE("Basculegion became fully charged due to its Power Herb!");
+        MESSAGE("Paragruel est complètement chargé grâce à Herbe Pouvoir!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PHANTOM_FORCE, player);
         HP_BAR(opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WATER_GUN, opponent);

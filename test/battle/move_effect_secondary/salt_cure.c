@@ -19,11 +19,11 @@ SINGLE_BATTLE_TEST("Salt Cure inflicts 1/8 of the target's maximum HP as damage 
     } SCENE {
         s32 maxHP = GetMonData(&OPPONENT_PARTY[0], MON_DATA_MAX_HP);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SALT_CURE, player);
-        MESSAGE("The opposing Wobbuffet is being salt cured!");
+        MESSAGE("Qulbutoké ennemi est couvert de sel!");
         for (j = 0; j < 4; j++) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SALT_CURE_DAMAGE, opponent);
             HP_BAR(opponent, damage: maxHP / 8);
-            MESSAGE("The opposing Wobbuffet is hurt by Salt Cure!");
+            MESSAGE("Qulbutoké ennemi est blessé par Salaison!");
         }
     }
 }
@@ -62,12 +62,12 @@ SINGLE_BATTLE_TEST("Salt Cure is removed when the afflicted Pokémon is switched
         TURN { SWITCH(opponent, 1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SALT_CURE, player);
-        MESSAGE("The opposing Wobbuffet is being salt cured!");
+        MESSAGE("Qulbutoké ennemi est couvert de sel!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SALT_CURE_DAMAGE, opponent);
-        MESSAGE("The opposing Wobbuffet is hurt by Salt Cure!");
+        MESSAGE("Qulbutoké ennemi est blessé par Salaison!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SALT_CURE_DAMAGE, opponent);
-            MESSAGE("The opposing Wobbuffet is hurt by Salt Cure!");
+            MESSAGE("Qulbutoké ennemi est blessé par Salaison!");
         }
     }
 }
@@ -81,8 +81,8 @@ SINGLE_BATTLE_TEST("If Salt Cure faints the target no status will be applied")
         TURN { MOVE(player, MOVE_SALT_CURE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SALT_CURE, player);
-        NOT MESSAGE("The opposing Wobbuffet is being salt cured!");
-        MESSAGE("The opposing Wobbuffet fainted!");
+        NOT MESSAGE("Qulbutoké ennemi est couvert de sel!");
+        MESSAGE("Qulbutoké ennemi est K.O.!\p");
     }
 }
 
@@ -95,8 +95,8 @@ SINGLE_BATTLE_TEST("Salt Cure does not get applied if hitting a Substitute")
         TURN { MOVE(opponent, MOVE_SUBSTITUTE); MOVE(player, MOVE_SALT_CURE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SALT_CURE, player);
-        MESSAGE("The substitute took damage for the opposing Wobbuffet!");
-        NOT MESSAGE("The opposing Wobbuffet is being salt cured!");
+        MESSAGE("Le clone subit les dégâts à la place de Qulbutoké ennemi!\p");
+        NOT MESSAGE("Qulbutoké ennemi est couvert de sel!");
     }
 }
 
@@ -113,7 +113,7 @@ SINGLE_BATTLE_TEST("Salt Cure residual damage does not inflict any damage agains
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SALT_CURE_DAMAGE, opponent);
             HP_BAR(opponent);
-            MESSAGE("The opposing Clefable is hurt by Salt Cure!");
+            MESSAGE("Mélodelfe ennemi est blessé par Salaison!");
         }
     }
 }
@@ -127,9 +127,9 @@ SINGLE_BATTLE_TEST("If Salt Cure faints the target, messages will be applied in 
         TURN { MOVE(player, MOVE_SALT_CURE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SALT_CURE, player);
-        MESSAGE("The opposing Wobbuffet is being salt cured!");
-        MESSAGE("The opposing Wobbuffet is hurt by Salt Cure!");
-        MESSAGE("The opposing Wobbuffet fainted!");
+        MESSAGE("Qulbutoké ennemi est couvert de sel!");
+        MESSAGE("Qulbutoké ennemi est blessé par Salaison!");
+        MESSAGE("Qulbutoké ennemi est K.O.!\p");
     }
 }
 

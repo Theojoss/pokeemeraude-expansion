@@ -21,16 +21,16 @@ DOUBLE_BATTLE_TEST("Flower Shield raises the defense of all Grass-type Pokémon"
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_FLOWER_SHIELD); MOVE(playerRight, MOVE_CELEBRATE); }
     } SCENE {
-        MESSAGE("Tangela used Flower Shield!");
+        MESSAGE("Saquedeneu utilise\nGarde Florale!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FLOWER_SHIELD, playerLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Tangela's Defense rose!");
+        MESSAGE("Ah, Défense du Saquedeneu augmente!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Tangrowth's Defense rose!");
+        MESSAGE("Ah, Défense du Bouldeneu augmente!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("The opposing Sunkern's Defense rose!");
+        MESSAGE("Ah, Défense du Tournegrin ennemi augmente!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("The opposing Sunflora's Defense rose!");
+        MESSAGE("Ah, Défense du Héliatronc ennemi augmente!");
     }
 }
 

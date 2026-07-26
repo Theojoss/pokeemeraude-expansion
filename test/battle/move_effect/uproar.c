@@ -20,13 +20,13 @@ DOUBLE_BATTLE_TEST("Uproar status causes sleeping Pokémon to wake up before the
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_UPROAR, playerLeft);
         HP_BAR(opponentRight);
-        MESSAGE("The uproar woke Wobbuffet!");
+        MESSAGE("Le brouhaha réveille Qulbutoké!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, playerRight);
         NONE_OF {
-            MESSAGE("The uproar woke the opposing Voltorb!");
+            MESSAGE("Le brouhaha réveille Voltorbe ennemi!");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponentLeft);
         }
-        MESSAGE("The uproar woke the opposing Wobbuffet!");
+        MESSAGE("Le brouhaha réveille Qulbutoké ennemi!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponentRight);
     }
 }
@@ -45,11 +45,11 @@ DOUBLE_BATTLE_TEST("Uproar status causes sleeping Pokémon to wake up immediatel
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_UPROAR, playerLeft);
         HP_BAR(opponentRight);
-        MESSAGE("The opposing Voltorb woke up!");
+        MESSAGE("Voltorbe ennemi se réveille!");
         STATUS_ICON(opponentLeft, sleep: FALSE);
-        MESSAGE("Wobbuffet woke up!");
+        MESSAGE("Qulbutoké se réveille!");
         STATUS_ICON(playerRight, sleep: FALSE);
-        MESSAGE("The opposing Wobbuffet woke up!");
+        MESSAGE("Qulbutoké ennemi se réveille!");
         STATUS_ICON(opponentRight, sleep: FALSE);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, playerRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponentLeft);
@@ -104,7 +104,7 @@ SINGLE_BATTLE_TEST("Uproar doesn't wake up other pokemon on field after first tu
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_UPROAR, opponent);
         NONE_OF {
-            MESSAGE("Wobbuffet woke up!");
+            MESSAGE("Qulbutoké se réveille!");
             STATUS_ICON(opponent, sleep: FALSE);
         }
     } THEN {

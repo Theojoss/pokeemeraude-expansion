@@ -17,7 +17,7 @@ SINGLE_BATTLE_TEST("Throat Chop prevents the usage of sound moves")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_THROAT_CHOP, player);
         HP_BAR(opponent);
-        MESSAGE("The effects of Throat Chop prevent the opposing Wobbuffet from using certain moves!");
+        MESSAGE("Exécu-Son empêche Qulbutoké ennemi d'utiliser cette capacité!\p");
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_HYPER_VOICE, opponent);
         }
@@ -78,6 +78,6 @@ SINGLE_BATTLE_TEST("Throat Chop usage causes Uproar to end at the end of the tur
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_UPROAR, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_THROAT_CHOP, opponent);
-        MESSAGE("Wobbuffet calmed down.");
+        MESSAGE("Qulbutoké se calme.");
     }
 }

@@ -18,15 +18,15 @@ SINGLE_BATTLE_TEST("Chilly Reception sets up snow and switches the user out")
     } WHEN {
         TURN { MOVE(player, MOVE_CHILLY_RECEPTION); SEND_OUT(player, 1); }
     } SCENE {
-        MESSAGE("Slowking is preparing to tell a chillingly bad joke!");
+        MESSAGE("Roigada s'apprête à faire un mauvais jeu de mots…");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CHILLY_RECEPTION, player);
 #if B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL
-        MESSAGE("It started to hail!");
+        MESSAGE("Il commence à grêler!");
 #else
-        MESSAGE("It started to snow!");
+        MESSAGE("Il commence à neiger!");
 #endif
-        MESSAGE("Slowking went back to 1!");
-        SEND_IN_MESSAGE("Slowpoke");
+        MESSAGE("Roigada revient vers 1!");
+        SEND_IN_MESSAGE("Ramoloss");
 #if B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HAIL_CONTINUES);
 #else
@@ -46,12 +46,12 @@ SINGLE_BATTLE_TEST("Chilly Reception switches the user out, even if the weather 
     } WHEN {
         TURN { MOVE(player, MOVE_CHILLY_RECEPTION); SEND_OUT(player, 1); }
     } SCENE {
-        MESSAGE("Slowking is preparing to tell a chillingly bad joke!");
-        MESSAGE("There is no relief from this heavy rain!");
+        MESSAGE("Roigada s'apprête à faire un mauvais jeu de mots…");
+        MESSAGE("Impossible de dissiper une telle pluie!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CHILLY_RECEPTION, player);
-        MESSAGE("Slowking went back to 1!");
-        SEND_IN_MESSAGE("Slowpoke");
-        MESSAGE("Rain continues to fall.");
+        MESSAGE("Roigada revient vers 1!");
+        SEND_IN_MESSAGE("Ramoloss");
+        MESSAGE("La pluie continue de tomber.");
     }
 }
 
@@ -63,10 +63,10 @@ SINGLE_BATTLE_TEST("Chilly Reception does not switch the user out if no replacem
     } WHEN {
         TURN { MOVE(player, MOVE_CHILLY_RECEPTION); }
     } SCENE {
-        MESSAGE("Slowking is preparing to tell a chillingly bad joke!");
+        MESSAGE("Roigada s'apprête à faire un mauvais jeu de mots…");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CHILLY_RECEPTION, player);
-        MESSAGE("It started to snow!");
-        NOT MESSAGE("Slowking went back to 1!");
+        MESSAGE("Il commence à neiger!");
+        NOT MESSAGE("Roigada revient vers 1!");
     }
 }
 
@@ -79,10 +79,10 @@ SINGLE_BATTLE_TEST("Chilly Reception does not switch the user out if replacement
     } WHEN {
         TURN { MOVE(player, MOVE_CHILLY_RECEPTION); }
     } SCENE {
-        MESSAGE("Slowking is preparing to tell a chillingly bad joke!");
+        MESSAGE("Roigada s'apprête à faire un mauvais jeu de mots…");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CHILLY_RECEPTION, player);
-        MESSAGE("It started to snow!");
-        NOT MESSAGE("Slowking went back to 1!");
+        MESSAGE("Il commence à neiger!");
+        NOT MESSAGE("Roigada revient vers 1!");
     }
 }
 
@@ -94,14 +94,14 @@ SINGLE_BATTLE_TEST("Chilly Reception changes the weather, even if the user canno
     } WHEN {
         TURN { MOVE(player, MOVE_CHILLY_RECEPTION); }
     } SCENE {
-        MESSAGE("Slowking is preparing to tell a chillingly bad joke!");
+        MESSAGE("Roigada s'apprête à faire un mauvais jeu de mots…");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CHILLY_RECEPTION, player);
 #if B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL
-        MESSAGE("It started to hail!");
+        MESSAGE("Il commence à grêler!");
 #else
-        MESSAGE("It started to snow!");
+        MESSAGE("Il commence à neiger!");
 #endif
-        NOT MESSAGE("Slowking went back to 1!");
+        NOT MESSAGE("Roigada revient vers 1!");
     }
 }
 
@@ -114,11 +114,11 @@ SINGLE_BATTLE_TEST("Chilly Reception switches the user out even if it can't chan
     } WHEN {
         TURN { MOVE(player, MOVE_CHILLY_RECEPTION); SEND_OUT(player, 1); }
     } SCENE {
-        MESSAGE("Slowking is preparing to tell a chillingly bad joke!");
+        MESSAGE("Roigada s'apprête à faire un mauvais jeu de mots…");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CHILLY_RECEPTION, player);
-        MESSAGE("But it failed!"); // According to jpwiki, this is the correct message
-        MESSAGE("Slowking went back to 1!");
-        SEND_IN_MESSAGE("Wobbuffet");
+        MESSAGE("Mais cela échoue!"); // According to jpwiki, this is the correct message
+        MESSAGE("Roigada revient vers 1!");
+        SEND_IN_MESSAGE("Qulbutoké");
     }
 }
 
@@ -130,9 +130,9 @@ SINGLE_BATTLE_TEST("Chilly Reception fails if it can't switch the user out or ch
     } WHEN {
         TURN { MOVE(player, MOVE_CHILLY_RECEPTION); }
     } SCENE {
-        MESSAGE("Slowking is preparing to tell a chillingly bad joke!");
+        MESSAGE("Roigada s'apprête à faire un mauvais jeu de mots…");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_CHILLY_RECEPTION, player);
-        MESSAGE("But it failed!");
+        MESSAGE("Mais cela échoue!");
     }
 }
 
@@ -146,14 +146,14 @@ SINGLE_BATTLE_TEST("Chilly Reception doesn't announce its move if it's called by
     } WHEN {
         TURN { MOVE(player, MOVE_SLEEP_TALK); SEND_OUT(player, 1); }
     } SCENE {
-        NOT MESSAGE("Slowking is preparing to tell a chillingly bad joke!");
+        NOT MESSAGE("Roigada s'apprête à faire un mauvais jeu de mots…");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CHILLY_RECEPTION, player);
 #if B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL
-        MESSAGE("It started to hail!");
+        MESSAGE("Il commence à grêler!");
 #else
-        MESSAGE("It started to snow!");
+        MESSAGE("Il commence à neiger!");
 #endif
-        MESSAGE("Slowking went back to 1!");
-        SEND_IN_MESSAGE("Wobbuffet");
+        MESSAGE("Roigada revient vers 1!");
+        SEND_IN_MESSAGE("Qulbutoké");
     }
 }

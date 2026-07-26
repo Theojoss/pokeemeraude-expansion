@@ -16,7 +16,7 @@ SINGLE_BATTLE_TEST("Instruct causes the target to use its last used move again")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_INSTRUCT, opponent);
-        MESSAGE("Wobbuffet followed the opposing Wynaut's instructions!");
+        MESSAGE("Qulbutoké obéit à la sommation de Okéoké ennemi!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
     }
 }
@@ -138,7 +138,7 @@ DOUBLE_BATTLE_TEST("Instruct doesn't bypass sleep")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPORE, opponentLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_INSTRUCT, playerLeft);
-        MESSAGE("Wobbuffet is fast asleep.");
+        MESSAGE("Qulbutoké dort profondément.");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerRight);
     }
 }
@@ -388,7 +388,7 @@ DOUBLE_BATTLE_TEST("Instructed move will be redirected by Rage Powder after inst
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerLeft);
         HP_BAR(moveTarget);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SOAK, opponentRight);
-        MESSAGE("Treecko transformed into the Water type!");
+        MESSAGE("Arcko prend le type Eau!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_INSTRUCT, playerRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerLeft);
         HP_BAR(opponentLeft);
@@ -411,11 +411,11 @@ DOUBLE_BATTLE_TEST("Instruct message references the correct battlers")
         }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerRight);
-        MESSAGE("The opposing Wynaut used Instruct!");
+        MESSAGE("Okéoké ennemi utilise\nSommation!");
         NONE_OF {
-            MESSAGE("Sceptile followed the opposing Wobbuffet's instructions!");
+            MESSAGE("Jungko obéit à la sommation de Qulbutoké ennemi!");
         }
-        MESSAGE("Sceptile followed the opposing Wynaut's instructions!");
+        MESSAGE("Jungko obéit à la sommation de Okéoké ennemi!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerRight);
     }
 }
