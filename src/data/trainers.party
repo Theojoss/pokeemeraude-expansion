@@ -16878,26 +16878,6 @@ Kyogre
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_ZIGGY ===
-Name: ZIGGY
-Class: Leader
-Pic: Pyramid King Brandon
-Gender: Male
-Music: Elite Four
-Double Battle: No
-AI: Smart Trainer
-
-Kommo-o @ Life Orb
-Ability: Soundproof
-Level: 60
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 4 HP / 252 Atk / 252 Spe
-Adamant Nature
-- Clangorous Soul
-- Close Combat
-- Poison Jab
-- Iron Head
-
 === TRAINER_THEOJOSS ===
 Name: THEOJOSS
 Class: Leader

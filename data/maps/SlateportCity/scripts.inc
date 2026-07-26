@@ -608,7 +608,6 @@ SlateportCity_Pokemart_MegaStones:
 	.2byte ITEM_FERALIGITE
 	.2byte ITEM_SKARMORITE
 	.2byte ITEM_FROSLASSITE
-	.2byte ITEM_FALINKSITE
 	.2byte ITEM_CHIMECHITE
 	pokemartlistend
 
