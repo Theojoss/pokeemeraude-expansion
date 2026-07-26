@@ -22,11 +22,11 @@ DOUBLE_BATTLE_TEST("Spread Moves: Ability and Item effects activate correctly af
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HYPER_VOICE, playerLeft);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponentRight);
-        MESSAGE("The opposing Wobbuffet is switched out with the Eject Button!");
-        MESSAGE("2 sent out Pikachu!");
+        MESSAGE("Qulbutoké ennemi se retire grâce au Bouton Fuite!");
+        MESSAGE("2 envoie\nun Pikachu!");
         NONE_OF {
             ABILITY_POPUP(opponentLeft, ABILITY_EMERGENCY_EXIT);
-            MESSAGE("2 sent out Wynaut!");
+            MESSAGE("2 envoie\nun Okéoké!");
         }
     }
 }
@@ -71,9 +71,9 @@ DOUBLE_BATTLE_TEST("Spread Moves: A spread move attack will activate both resist
         TURN { MOVE(playerLeft, MOVE_HYPER_VOICE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, opponentLeft);
-        MESSAGE("The Chilan Berry weakened the damage to the opposing Raichu!");
+        MESSAGE("Baie Zalis réduit les dégâts infligés à Raichu ennemi!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, opponentRight);
-        MESSAGE("The Chilan Berry weakened the damage to the opposing Sandslash!");
+        MESSAGE("Baie Zalis réduit les dégâts infligés à Sablaireau ennemi!");
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HYPER_VOICE, playerLeft);
         EFFECTIVENESS_SE(opponentLeft, SE_EFFECTIVE); // effective against both
@@ -107,7 +107,7 @@ DOUBLE_BATTLE_TEST("Spread Moves: If a spread move attack will activate a resist
         TURN { MOVE(playerLeft, MOVE_HYPER_VOICE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, opponentRight);
-        MESSAGE("The Chilan Berry weakened the damage to the opposing Sandslash!");
+        MESSAGE("Baie Zalis réduit les dégâts infligés à Sablaireau ennemi!");
 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HYPER_VOICE, playerLeft);
         HP_BAR(opponentLeft, captureDamage: &opponentLeftDmg[0]);
@@ -265,9 +265,9 @@ DOUBLE_BATTLE_TEST("Spread Moves: Spread move, Gem Boosted, vs Resist Berries")
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_HYPER_VOICE); }
     } SCENE {
-        MESSAGE("The Normal Gem strengthened Wobbuffet's power!");
-        MESSAGE("The Chilan Berry weakened the damage to the opposing Wobbuffet!");
-        MESSAGE("The Chilan Berry weakened the damage to the opposing Wynaut!");
+        MESSAGE("Joyau Normal renforce la capacité de Qulbutoké!");
+        MESSAGE("Baie Zalis réduit les dégâts infligés à Qulbutoké ennemi!");
+        MESSAGE("Baie Zalis réduit les dégâts infligés à Okéoké ennemi!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HYPER_VOICE, playerLeft);
         HP_BAR(opponentLeft);
         HP_BAR(opponentRight);
@@ -288,10 +288,10 @@ DOUBLE_BATTLE_TEST("Spread Moves: Explosion, Gem Boosted, vs Resist Berries")
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_EXPLOSION); }
     } SCENE {
-        MESSAGE("It doesn't affect Misdreavus…");
-        MESSAGE("The Normal Gem strengthened Wobbuffet's power!");
-        MESSAGE("The Chilan Berry weakened the damage to the opposing Wobbuffet!");
-        MESSAGE("The Chilan Berry weakened the damage to the opposing Wynaut!");
+        MESSAGE("Ça n'affecte pas Feuforêve…");
+        MESSAGE("Joyau Normal renforce la capacité de Qulbutoké!");
+        MESSAGE("Baie Zalis réduit les dégâts infligés à Qulbutoké ennemi!");
+        MESSAGE("Baie Zalis réduit les dégâts infligés à Okéoké ennemi!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EXPLOSION, playerLeft);
         HP_BAR(opponentLeft);
         HP_BAR(opponentRight);
@@ -315,7 +315,7 @@ DOUBLE_BATTLE_TEST("Spread Moves: Spread move vs Eiscue and Mimikyu with 1 Eject
         ANIMATION(ANIM_TYPE_MOVE, MOVE_RAZOR_LEAF, playerLeft);
         ABILITY_POPUP(opponentLeft, ABILITY_DISGUISE);
         ABILITY_POPUP(opponentRight, ABILITY_ICE_FACE);
-        MESSAGE("The opposing Mimikyu is switched out with the Eject Button!");
+        MESSAGE("Mimiqui ennemi se retire grâce au Bouton Fuite!");
     }
 }
 
@@ -331,10 +331,10 @@ DOUBLE_BATTLE_TEST("Spread Moves: Spread move vs Wide Guard")
         TURN { MOVE(playerLeft, MOVE_WIDE_GUARD); MOVE(opponentLeft, MOVE_HYPER_VOICE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_WIDE_GUARD, playerLeft);
-        MESSAGE("Wide Guard protected your team!");
-        MESSAGE("The opposing Wobbuffet used Hyper Voice!");
-        MESSAGE("Wobbuffet protected itself!");
-        MESSAGE("Wynaut protected itself!");
+        MESSAGE("Garde Large protège votre équipe!");
+        MESSAGE("Qulbutoké ennemi utilise\nMégaphone!");
+        MESSAGE("Qulbutoké se protège!");
+        MESSAGE("Okéoké se protège!");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_HYPER_VOICE, playerLeft);
     }
 }
@@ -350,9 +350,9 @@ DOUBLE_BATTLE_TEST("Spread Moves: Spread move vs one protecting mon")
     } WHEN {
         TURN { MOVE(opponentLeft, MOVE_PROTECT); MOVE(playerLeft, MOVE_HYPER_VOICE); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet used Protect!");
-        MESSAGE("Wobbuffet used Hyper Voice!");
-        MESSAGE("The opposing Wobbuffet protected itself!");
+        MESSAGE("Qulbutoké ennemi utilise\nAbri!");
+        MESSAGE("Qulbutoké utilise\nMégaphone!");
+        MESSAGE("Qulbutoké ennemi se protège!");
     }
 }
 
@@ -371,7 +371,7 @@ DOUBLE_BATTLE_TEST("Spread Moves: Super Effective Message on both opposing mons"
         EFFECTIVENESS_SE(opponentLeft, SE_SUPER_EFFECTIVE);
         HP_BAR(opponentLeft);
         HP_BAR(opponentRight);
-        MESSAGE("It's super effective on the opposing Golem and Onix!");
+        MESSAGE("C'est super efficace sur Grolem ennemi et Onix!");
     }
 }
 
@@ -389,7 +389,7 @@ DOUBLE_BATTLE_TEST("Spread Moves: Super Effective Message on both player mons")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PRECIPICE_BLADES, opponentLeft);
         HP_BAR(playerLeft);
         HP_BAR(playerRight);
-        MESSAGE("It's super effective on Golem and Onix!");
+        MESSAGE("C'est super efficace sur Grolem et Onix!");
     }
 }
 
@@ -407,7 +407,7 @@ DOUBLE_BATTLE_TEST("Spread Moves: Not very effective Message on both opposing mo
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PRECIPICE_BLADES, playerLeft);
         HP_BAR(opponentLeft);
         HP_BAR(opponentRight);
-        MESSAGE("It's not very effective on the opposing Chikorita and Treecko!");
+        MESSAGE("Ce n'est pas très efficace sur Germignon ennemi et Arcko…");
     }
 }
 
@@ -425,7 +425,7 @@ DOUBLE_BATTLE_TEST("Spread Moves: Not very effective message on both player mons
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PRECIPICE_BLADES, opponentLeft);
         HP_BAR(playerLeft);
         HP_BAR(playerRight);
-        MESSAGE("It's not very effective on Chikorita and Treecko!");
+        MESSAGE("Ce n'est pas très efficace sur Germignon et Arcko…");
     }
 }
 
@@ -440,9 +440,9 @@ DOUBLE_BATTLE_TEST("Spread Moves: Doesn't affect any target")
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_EARTHQUAKE); }
     } SCENE {
-        MESSAGE("It doesn't affect Pidgey…");
-        MESSAGE("It doesn't affect the opposing Pidgey…");
-        MESSAGE("It doesn't affect the opposing Hoothoot…");
+        MESSAGE("Ça n'affecte pas Roucool…");
+        MESSAGE("Ça n'affecte pas Roucool ennemi…");
+        MESSAGE("Ça n'affecte pas Hoothoot ennemi…");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, playerLeft);
     }
 }
@@ -467,7 +467,7 @@ DOUBLE_BATTLE_TEST("Spread Moves: Unless move hits every target user will not in
         EFFECTIVENESS_SE(opponentLeft, SE_SUPER_EFFECTIVE); // se against torkoal
         HP_BAR(opponentLeft);
         HP_BAR(opponentRight);
-        MESSAGE("It's super effective on the opposing Torkoal and Torkoal!");
+        MESSAGE("C'est super efficace sur Chartor ennemi et Chartor!");
     }
 }
 
@@ -483,12 +483,12 @@ DOUBLE_BATTLE_TEST("Spread Moves: Focus Sash activates correctly")
         TURN { MOVE(playerRight, MOVE_HYPER_VOICE); MOVE(playerLeft, MOVE_EXPLOSION); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_HYPER_VOICE, playerRight);
-        MESSAGE("The opposing Wynaut hung on using its Focus Sash!");
-        MESSAGE("The opposing Wobbuffet hung on using its Focus Sash!");
+        MESSAGE("Okéoké ennemi tient bon grâce à Ceinture Force!");
+        MESSAGE("Qulbutoké ennemi tient bon grâce à Ceinture Force!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EXPLOSION, playerLeft);
-        MESSAGE("The opposing Wobbuffet fainted!");
-        MESSAGE("Wynaut hung on using its Focus Sash!");
-        MESSAGE("The opposing Wynaut fainted!");
+        MESSAGE("Qulbutoké ennemi est K.O.!\p");
+        MESSAGE("Okéoké tient bon grâce à Ceinture Force!");
+        MESSAGE("Okéoké ennemi est K.O.!\p");
     }
 }
 
@@ -506,7 +506,7 @@ DOUBLE_BATTLE_TEST("Spread Moves: AOE ground type move vs Levitate and Air Ballo
         TURN { MOVE(playerLeft, MOVE_EARTHQUAKE); }
     } SCENE {
         ABILITY_POPUP(opponentLeft, ABILITY_LEVITATE);
-        MESSAGE("It doesn't affect the opposing Wynaut…");
+        MESSAGE("Ça n'affecte pas Okéoké ennemi…");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, playerLeft);
         HP_BAR(playerRight);
     }
@@ -544,8 +544,8 @@ DOUBLE_BATTLE_TEST("Spread Moves: Earthquake fails due to accuracy in order of a
         TURN { MOVE(playerLeft, MOVE_EARTHQUAKE, hit: FALSE); }
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, playerLeft);
-        MESSAGE("Wynaut avoided the attack!");
-        MESSAGE("The opposing Wobbuffet avoided the attack!");
-        MESSAGE("The opposing Wynaut avoided the attack!");
+        MESSAGE("Okéoké évite l'attaque!");
+        MESSAGE("Qulbutoké ennemi évite l'attaque!");
+        MESSAGE("Okéoké ennemi évite l'attaque!");
     }
 }

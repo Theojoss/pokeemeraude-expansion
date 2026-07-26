@@ -31,7 +31,7 @@ AI_SINGLE_BATTLE_TEST("Trainer Slide: Singles: Player Lands First Critical Hit")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LASER_FOCUS, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
-        MESSAGE("A critical hit!");
+        MESSAGE("Coup critique!");
         MESSAGE("Trainer A: This message plays after the player lands their first critical hit.{PAUSE_UNTIL_PRESS}");
     }
 }
@@ -47,7 +47,7 @@ AI_SINGLE_BATTLE_TEST("Trainer Slide: Singles: Enemy Lands First Critical Hit")
         TURN { EXPECT_MOVE(opponent, MOVE_SURGING_STRIKES); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SURGING_STRIKES, opponent);
-        MESSAGE("A critical hit!");
+        MESSAGE("Coup critique!");
         MESSAGE("Trainer A: This message plays after the enemy lands their first critical hit.{PAUSE_UNTIL_PRESS}");
     }
 }
@@ -63,7 +63,7 @@ AI_SINGLE_BATTLE_TEST("Trainer Slide: Singles: Player Lands First STAB Hit")
     } WHEN {
         TURN { MOVE(player, MOVE_VINE_WHIP); }
     } SCENE {
-        MESSAGE("Bulbasaur used Vine Whip!");
+        MESSAGE("Bulbizarre utilise\nFouet Lianes!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_VINE_WHIP, player);
         MESSAGE("Trainer A: Player lands their first STAB move.{PAUSE_UNTIL_PRESS}");
     }
@@ -82,7 +82,7 @@ AI_SINGLE_BATTLE_TEST("Trainer Slide: Singles: Player Lands First Super Effectiv
     } WHEN {
         TURN { MOVE(player, MOVE_BITE); }
     } SCENE {
-        MESSAGE("It's super effective!");
+        MESSAGE("C'est super efficace!");
         MESSAGE("Trainer A: This message plays after the player lands their first super effective hit.{PAUSE_UNTIL_PRESS}");
     }
 }
@@ -98,7 +98,7 @@ AI_SINGLE_BATTLE_TEST("Trainer Slide: Singles: Player Lands First Down")
     } WHEN {
         TURN { EXPECT_MOVE(opponent, MOVE_HEALING_WISH); EXPECT_SEND_OUT(opponent,1); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet fainted!");
+        MESSAGE("Qulbutoké ennemi est K.O.!\p");
         MESSAGE("Trainer A: This message plays after the player KOs one enemy mon.{PAUSE_UNTIL_PRESS}");
     }
 }
@@ -116,7 +116,7 @@ AI_SINGLE_BATTLE_TEST("Trainer Slide: Singles: Enemy Mon Unaffected")
         TURN { MOVE(player, MOVE_SHEER_COLD); }
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SHEER_COLD, player);
-        MESSAGE("It doesn't affect the opposing Glalie…");
+        MESSAGE("Ça n'affecte pas Oniglali ennemi…");
         MESSAGE("Trainer A: Player attacked enemy with ineffective move.{PAUSE_UNTIL_PRESS}");
     }
 }
@@ -132,7 +132,7 @@ AI_SINGLE_BATTLE_TEST("Trainer Slide: Singles: Last Switchin")
     } WHEN {
         TURN { EXPECT_MOVE(opponent, MOVE_HEALING_WISH); EXPECT_SEND_OUT(opponent,1); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet fainted!");
+        MESSAGE("Qulbutoké ennemi est K.O.!\p");
         MESSAGE("Trainer A: This message plays after the enemy switches in their last Pokemon.{PAUSE_UNTIL_PRESS}");
     }
 }
@@ -180,7 +180,7 @@ AI_SINGLE_BATTLE_TEST("Trainer Slide: Singles: Mega Evolution")
     } SCENE {
         MESSAGE("Trainer A: This message plays before the enemy activates the Mega Evolution gimmick.{PAUSE_UNTIL_PRESS}");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, opponent);
-        MESSAGE("The opposing Lopunny has Mega Evolved into Mega Lopunny!");
+        MESSAGE("Lockpin ennemi méga-évolue en Méga-Lockpin!");
     }
 }
 
@@ -195,8 +195,8 @@ AI_SINGLE_BATTLE_TEST("Trainer Slide: Singles: Z Move")
         TURN { EXPECT_MOVE(opponent, MOVE_QUICK_ATTACK, gimmick: GIMMICK_Z_MOVE); }
     } SCENE {
         MESSAGE("Trainer A: This message plays before the enemy activates the Z-Move gimmick.{PAUSE_UNTIL_PRESS}");
-        MESSAGE("The opposing Wobbuffet surrounded itself with its Z-Power!");
-        MESSAGE("The opposing Wobbuffet unleashes its full-force Z-Move!");
+        MESSAGE("Qulbutoké ennemi déploie sa Force Z comme une aura!");
+        MESSAGE("Qulbutoké ennemi déploie toute la puissance de sa Force Z!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BREAKNECK_BLITZ, opponent);
     }
 }
@@ -254,7 +254,7 @@ AI_DOUBLE_BATTLE_TEST("Trainer Slide: Doubles: Player Lands First Critical Hit")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LASER_FOCUS, playerLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerLeft);
-        MESSAGE("A critical hit!");
+        MESSAGE("Coup critique!");
         MESSAGE("Trainer A: This message plays after the player lands their first critical hit.{PAUSE_UNTIL_PRESS}");
         NONE_OF {
             MESSAGE("Trainer A: This message plays after the player lands their first critical hit.{PAUSE_UNTIL_PRESS}");
@@ -275,7 +275,7 @@ AI_DOUBLE_BATTLE_TEST("Trainer Slide: Doubles: Enemy Lands First Critical Hit")
         TURN { EXPECT_MOVE(opponentLeft, MOVE_SURGING_STRIKES); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SURGING_STRIKES, opponentLeft);
-        MESSAGE("A critical hit!");
+        MESSAGE("Coup critique!");
         MESSAGE("Trainer A: This message plays after the enemy lands their first critical hit.{PAUSE_UNTIL_PRESS}");
         NONE_OF {
             MESSAGE("Trainer A: This message plays after the enemy lands their first critical hit.{PAUSE_UNTIL_PRESS}");
@@ -296,7 +296,7 @@ AI_DOUBLE_BATTLE_TEST("Trainer Slide: Doubles: Player Lands First STAB Hit")
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_VINE_WHIP, target: opponentLeft); }
     } SCENE {
-        MESSAGE("Bulbasaur used Vine Whip!");
+        MESSAGE("Bulbizarre utilise\nFouet Lianes!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_VINE_WHIP, playerLeft);
         MESSAGE("Trainer A: Player lands their first STAB move.{PAUSE_UNTIL_PRESS}");
         NONE_OF {
@@ -320,7 +320,7 @@ AI_DOUBLE_BATTLE_TEST("Trainer Slide: Doubles: Player Lands First Super Effectiv
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_BITE, target: opponentLeft); }
     } SCENE {
-        MESSAGE("It's super effective!");
+        MESSAGE("C'est super efficace!");
         MESSAGE("Trainer A: This message plays after the player lands their first super effective hit.{PAUSE_UNTIL_PRESS}");
         NONE_OF {
             MESSAGE("Trainer A: This message plays after the player lands their first super effective hit.{PAUSE_UNTIL_PRESS}");
@@ -341,7 +341,7 @@ AI_DOUBLE_BATTLE_TEST("Trainer Slide: Doubles: Player Lands First Down")
     } WHEN {
         TURN { EXPECT_MOVE(opponentLeft, MOVE_HEALING_WISH); EXPECT_SEND_OUT(opponentLeft,2); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet fainted!");
+        MESSAGE("Qulbutoké ennemi est K.O.!\p");
         MESSAGE("Trainer A: This message plays after the player KOs one enemy mon.{PAUSE_UNTIL_PRESS}");
         NONE_OF {
             MESSAGE("Trainer A: This message plays after the player KOs one enemy mon.{PAUSE_UNTIL_PRESS}");
@@ -364,7 +364,7 @@ AI_DOUBLE_BATTLE_TEST("Trainer Slide: Doubles: Enemy Mon Unaffected")
         TURN { MOVE(playerLeft, MOVE_SHEER_COLD); }
     } SCENE {
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SHEER_COLD, playerLeft);
-        MESSAGE("It doesn't affect the opposing Glalie…");
+        MESSAGE("Ça n'affecte pas Oniglali ennemi…");
         MESSAGE("Trainer A: Player attacked enemy with ineffective move.{PAUSE_UNTIL_PRESS}");
         NONE_OF {
             MESSAGE("Trainer A: Player attacked enemy with ineffective move.{PAUSE_UNTIL_PRESS}");
@@ -385,7 +385,7 @@ AI_DOUBLE_BATTLE_TEST("Trainer Slide: Doubles: Last Switchin")
     } WHEN {
         TURN { EXPECT_MOVE(opponentLeft, MOVE_HEALING_WISH); EXPECT_SEND_OUT(opponentLeft,2); }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet fainted!");
+        MESSAGE("Qulbutoké ennemi est K.O.!\p");
         MESSAGE("Trainer A: This message plays after the enemy switches in their last Pokemon.{PAUSE_UNTIL_PRESS}");
         NONE_OF {
             MESSAGE("Trainer A: This message plays after the enemy switches in their last Pokemon.{PAUSE_UNTIL_PRESS}");
@@ -451,7 +451,7 @@ AI_DOUBLE_BATTLE_TEST("Trainer Slide: Doubles: Mega Evolution")
             MESSAGE("Trainer A: This message plays before the enemy activates the Mega Evolution gimmick.{PAUSE_UNTIL_PRESS}");
         }
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, opponentLeft);
-        MESSAGE("The opposing Lopunny has Mega Evolved into Mega Lopunny!");
+        MESSAGE("Lockpin ennemi méga-évolue en Méga-Lockpin!");
     }
 }
 
@@ -471,8 +471,8 @@ AI_DOUBLE_BATTLE_TEST("Trainer Slide: Doubles: Z Move")
         NONE_OF {
             MESSAGE("Trainer A: This message plays before the enemy activates the Z-Move gimmick.{PAUSE_UNTIL_PRESS}");
         }
-        MESSAGE("The opposing Wobbuffet surrounded itself with its Z-Power!");
-        MESSAGE("The opposing Wobbuffet unleashes its full-force Z-Move!");
+        MESSAGE("Qulbutoké ennemi déploie sa Force Z comme une aura!");
+        MESSAGE("Qulbutoké ennemi déploie toute la puissance de sa Force Z!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BREAKNECK_BLITZ, opponentLeft);
     }
 }
@@ -534,7 +534,7 @@ AI_MULTI_BATTLE_TEST("Trainer Slide: Multi: Player Lands First Critical Hit")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LASER_FOCUS, playerLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SURF, playerLeft);
-        MESSAGE("A critical hit!");
+        MESSAGE("Coup critique!");
         MESSAGE("Trainer A: This message plays after the player lands their first critical hit.{PAUSE_UNTIL_PRESS}");
         MESSAGE("Trainer B: This message plays after the player lands their first critical hit.{PAUSE_UNTIL_PRESS}");
         // Note: Planned PR for additional slides will change slides from using "Player/Opponent" side to "Attacker/Target" side
@@ -562,17 +562,17 @@ AI_MULTI_BATTLE_TEST("Trainer Slide: Multi: Enemy Lands First Critical Hit")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_ENDURE, playerLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SURGING_STRIKES, opponentLeft);
-        MESSAGE("A critical hit!");
-        MESSAGE("A critical hit!");
-        MESSAGE("A critical hit!");
+        MESSAGE("Coup critique!");
+        MESSAGE("Coup critique!");
+        MESSAGE("Coup critique!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SURGING_STRIKES, opponentRight);
-        MESSAGE("A critical hit!");
-        MESSAGE("A critical hit!");
-        MESSAGE("A critical hit!");
+        MESSAGE("Coup critique!");
+        MESSAGE("Coup critique!");
+        MESSAGE("Coup critique!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SURGING_STRIKES, playerRight);
-        MESSAGE("A critical hit!");
-        MESSAGE("A critical hit!");
-        MESSAGE("A critical hit!");
+        MESSAGE("Coup critique!");
+        MESSAGE("Coup critique!");
+        MESSAGE("Coup critique!");
         MESSAGE("Trainer A: This message plays after the enemy lands their first critical hit.{PAUSE_UNTIL_PRESS}");
         MESSAGE("Trainer B: This message plays after the enemy lands their first critical hit.{PAUSE_UNTIL_PRESS}");
         MESSAGE("Trainer Partner: This message plays after the enemy lands their first critical hit.{PAUSE_UNTIL_PRESS}");
@@ -592,7 +592,7 @@ AI_MULTI_BATTLE_TEST("Trainer Slide: Multi: Player Lands First STAB Hit")
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_EARTHQUAKE); }
     } SCENE {
-        MESSAGE("Sandshrew used Earthquake!");
+        MESSAGE("Sabelette utilise\nSéisme!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, playerLeft);
         MESSAGE("Trainer A: Player lands their first STAB move.{PAUSE_UNTIL_PRESS}");
         MESSAGE("Trainer B: Player lands their first STAB move.{PAUSE_UNTIL_PRESS}");
@@ -616,7 +616,7 @@ AI_MULTI_BATTLE_TEST("Trainer Slide: Multi: Player Lands First Super Effective H
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_EARTHQUAKE); }
     } SCENE {
-        MESSAGE("Sandshrew used Earthquake!");
+        MESSAGE("Sabelette utilise\nSéisme!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, playerLeft);
         MESSAGE("Trainer A: This message plays after the player lands their first super effective hit.{PAUSE_UNTIL_PRESS}");
         MESSAGE("Trainer B: This message plays after the player lands their first super effective hit.{PAUSE_UNTIL_PRESS}");
@@ -644,11 +644,11 @@ AI_MULTI_BATTLE_TEST("Trainer Slide: Multi: Player Lands First Down")
             EXPECT_MOVE(opponentRight, MOVE_HEALING_WISH); EXPECT_SEND_OUT(opponentRight,1);
         }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet fainted!");
+        MESSAGE("Qulbutoké ennemi est K.O.!\p");
         MESSAGE("Trainer A: This message plays after the player KOs one enemy mon.{PAUSE_UNTIL_PRESS}");
-        MESSAGE("The opposing Wynaut fainted!");
+        MESSAGE("Okéoké ennemi est K.O.!\p");
         MESSAGE("Trainer B: This message plays after the player KOs one enemy mon.{PAUSE_UNTIL_PRESS}");
-        MESSAGE("Raticate fainted!");
+        MESSAGE("Rattatac est K.O.!\p");
         // Note: Planned PR for additional slides will change slides from using "Player/Opponent" side to "Attacker/Target" side
         // MESSAGE("Trainer Partner: This message plays after the player KOs one enemy mon.{PAUSE_UNTIL_PRESS}");
     }
@@ -668,9 +668,9 @@ AI_MULTI_BATTLE_TEST("Trainer Slide: Multi: Enemy Mon Unaffected")
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_BOOMBURST); }
     } SCENE {
-        MESSAGE("It doesn't affect Gastly…");
-        MESSAGE("It doesn't affect the opposing Gengar…");
-        MESSAGE("It doesn't affect the opposing Haunter…");
+        MESSAGE("Ça n'affecte pas Fantominus…");
+        MESSAGE("Ça n'affecte pas Ectoplasma ennemi…");
+        MESSAGE("Ça n'affecte pas Spectrum ennemi…");
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_BOOMBURST, playerLeft);
         MESSAGE("Trainer A: Player attacked enemy with ineffective move.{PAUSE_UNTIL_PRESS}");
         MESSAGE("Trainer B: Player attacked enemy with ineffective move.{PAUSE_UNTIL_PRESS}");
@@ -699,9 +699,9 @@ AI_MULTI_BATTLE_TEST("Trainer Slide: Multi: Last Switchin")
             EXPECT_MOVE(opponentRight, MOVE_MEMENTO); EXPECT_SEND_OUT(opponentRight,1); 
         }
     } SCENE {
-        MESSAGE("The opposing Wobbuffet fainted!");
-        MESSAGE("Raticate fainted!");
-        MESSAGE("The opposing Wynaut fainted!");
+        MESSAGE("Qulbutoké ennemi est K.O.!\p");
+        MESSAGE("Rattatac est K.O.!\p");
+        MESSAGE("Okéoké ennemi est K.O.!\p");
         MESSAGE("Trainer A: This message plays after the enemy switches in their last Pokemon.{PAUSE_UNTIL_PRESS}");
         MESSAGE("Trainer Partner: This message plays after the enemy switches in their last Pokemon.{PAUSE_UNTIL_PRESS}");
         MESSAGE("Trainer B: This message plays after the enemy switches in their last Pokemon.{PAUSE_UNTIL_PRESS}");
@@ -767,13 +767,13 @@ AI_MULTI_BATTLE_TEST("Trainer Slide: Multi: Mega Evolution")
     } SCENE {
         MESSAGE("Trainer A: This message plays before the enemy activates the Mega Evolution gimmick.{PAUSE_UNTIL_PRESS}");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, opponentLeft);
-        MESSAGE("The opposing Lopunny has Mega Evolved into Mega Lopunny!");
+        MESSAGE("Lockpin ennemi méga-évolue en Méga-Lockpin!");
         MESSAGE("Trainer Partner: This message plays before the enemy activates the Mega Evolution gimmick.{PAUSE_UNTIL_PRESS}");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, playerRight);
-        MESSAGE("Aerodactyl has Mega Evolved into Mega Aerodactyl!");
+        MESSAGE("Ptéra méga-évolue en Méga-Ptéra!");
         MESSAGE("Trainer B: This message plays before the enemy activates the Mega Evolution gimmick.{PAUSE_UNTIL_PRESS}");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, opponentRight);
-        MESSAGE("The opposing Medicham has Mega Evolved into Mega Medicham!");
+        MESSAGE("Charmina ennemi méga-évolue en Méga-Charmina!");
     }
 }
 
@@ -795,16 +795,16 @@ AI_MULTI_BATTLE_TEST("Trainer Slide: Multi: Z Move")
         }
     } SCENE {
         MESSAGE("Trainer A: This message plays before the enemy activates the Z-Move gimmick.{PAUSE_UNTIL_PRESS}");
-        MESSAGE("The opposing Wobbuffet surrounded itself with its Z-Power!");
-        MESSAGE("The opposing Wobbuffet unleashes its full-force Z-Move!");
+        MESSAGE("Qulbutoké ennemi déploie sa Force Z comme une aura!");
+        MESSAGE("Qulbutoké ennemi déploie toute la puissance de sa Force Z!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BREAKNECK_BLITZ, opponentLeft);
         MESSAGE("Trainer Partner: This message plays before the enemy activates the Z-Move gimmick.{PAUSE_UNTIL_PRESS}");
-        MESSAGE("Wobbuffet surrounded itself with its Z-Power!");
-        MESSAGE("Wobbuffet unleashes its full-force Z-Move!");
+        MESSAGE("Qulbutoké déploie sa Force Z comme une aura!");
+        MESSAGE("Qulbutoké déploie toute la puissance de sa Force Z!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BREAKNECK_BLITZ, playerRight);
         MESSAGE("Trainer B: This message plays before the enemy activates the Z-Move gimmick.{PAUSE_UNTIL_PRESS}");
-        MESSAGE("The opposing Wobbuffet surrounded itself with its Z-Power!");
-        MESSAGE("The opposing Wobbuffet unleashes its full-force Z-Move!");
+        MESSAGE("Qulbutoké ennemi déploie sa Force Z comme une aura!");
+        MESSAGE("Qulbutoké ennemi déploie toute la puissance de sa Force Z!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BREAKNECK_BLITZ, opponentRight);
     }
 }

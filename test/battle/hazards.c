@@ -21,14 +21,14 @@ SINGLE_BATTLE_TEST("Hazards are applied based on order of set up")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STEALTH_ROCK, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPIKES, opponent);
-        MESSAGE("Wobbuffet was poisoned!");
-        MESSAGE("Pointed stones dug into Wobbuffet!");
-        MESSAGE("Wobbuffet was caught in a sticky web!");
-        MESSAGE("Wobbuffet was hurt by the spikes!");
-        MESSAGE("The poison spikes disappeared from the ground around your team!");
-        MESSAGE("Pointed stones dug into Wynaut!");
-        MESSAGE("Wynaut was caught in a sticky web!");
-        MESSAGE("Wynaut was hurt by the spikes!");
+        MESSAGE("Qulbutoké est empoisonné!");
+        MESSAGE("Des pierres pointues transpercent Qulbutoké!");
+        MESSAGE("Qulbutoké est pris dans une toile gluante!");
+        MESSAGE("Qulbutoké est blessé par les picots!");
+        MESSAGE("Il n'y a plus de pics toxiques autour de votre équipe!");
+        MESSAGE("Des pierres pointues transpercent Okéoké!");
+        MESSAGE("Okéoké est pris dans une toile gluante!");
+        MESSAGE("Okéoké est blessé par les picots!");
     } THEN {
         EXPECT_EQ(gBattleStruct->hazardsQueue[0][0], HAZARDS_STEALTH_ROCK);
         EXPECT_EQ(gBattleStruct->hazardsQueue[0][1], HAZARDS_STICKY_WEB);
@@ -55,10 +55,10 @@ SINGLE_BATTLE_TEST("Hazards are applied correctly after a battler faints")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STEALTH_ROCK, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FINAL_GAMBIT, player);
-        MESSAGE("Wynaut fainted!");
-        MESSAGE("Pointed stones dug into Wobbuffet!");
-        MESSAGE("Wobbuffet fainted!");
-        MESSAGE("Pointed stones dug into Wynaut!");
+        MESSAGE("Okéoké est K.O.!\p");
+        MESSAGE("Des pierres pointues transpercent Qulbutoké!");
+        MESSAGE("Qulbutoké est K.O.!\p");
+        MESSAGE("Des pierres pointues transpercent Okéoké!");
     }
 }
 
@@ -79,12 +79,12 @@ SINGLE_BATTLE_TEST("Toxic Spikes can be removed after fainting to other hazards"
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TOXIC_SPIKES, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPIKES, opponent);
-        MESSAGE("Pointed stones dug into Grimer!");
-        MESSAGE("Grimer fainted!");
-        MESSAGE("The poison spikes disappeared from the ground around your team!");
+        MESSAGE("Des pierres pointues transpercent Tadmorv!");
+        MESSAGE("Tadmorv est K.O.!\p");
+        MESSAGE("Il n'y a plus de pics toxiques autour de votre équipe!");
         NONE_OF {
-            MESSAGE("Grimer was caught in a sticky web!");
-            MESSAGE("Grimer was hurt by the spikes!");
+            MESSAGE("Tadmorv est pris dans une toile gluante!");
+            MESSAGE("Tadmorv est blessé par les picots!");
         }
     } THEN {
         EXPECT_EQ(gBattleStruct->hazardsQueue[0][0], HAZARDS_STEALTH_ROCK);
@@ -113,18 +113,18 @@ SINGLE_BATTLE_TEST("Hazards can trigger Emergency Exit and other hazards don't a
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TOXIC_SPIKES, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPIKES, opponent);
-        MESSAGE("Pointed stones dug into Golisopod!");
+        MESSAGE("Des pierres pointues transpercent Sarmuraï!");
         ABILITY_POPUP(player, ABILITY_EMERGENCY_EXIT);
         NONE_OF {
-            MESSAGE("Golisopod was poisoned!");
-            MESSAGE("Golisopod was caught in a sticky web!");
-            MESSAGE("Golisopod was hurt by the spikes!");
+            MESSAGE("Sarmuraï est empoisonné!");
+            MESSAGE("Sarmuraï est pris dans une toile gluante!");
+            MESSAGE("Sarmuraï est blessé par les picots!");
         }
-        MESSAGE("Pointed stones dug into Wobbuffet!");
-        MESSAGE("Wobbuffet was poisoned!");
-        MESSAGE("Wobbuffet was caught in a sticky web!");
-        MESSAGE("Wobbuffet was hurt by the spikes!");
-        NOT MESSAGE("Pointed stones dug into Wobbuffet!"); // Because the previous switch in effects instruction is still kept
+        MESSAGE("Des pierres pointues transpercent Qulbutoké!");
+        MESSAGE("Qulbutoké est empoisonné!");
+        MESSAGE("Qulbutoké est pris dans une toile gluante!");
+        MESSAGE("Qulbutoké est blessé par les picots!");
+        NOT MESSAGE("Des pierres pointues transpercent Qulbutoké!"); // Because the previous switch in effects instruction is still kept
     }
 }
 
@@ -152,20 +152,20 @@ DOUBLE_BATTLE_TEST("Hazards can trigger Emergency Exit and hazards still activat
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TOXIC_SPIKES, opponentRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, opponentLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPIKES, opponentRight);
-        MESSAGE("Pointed stones dug into Golisopod!");
+        MESSAGE("Des pierres pointues transpercent Sarmuraï!");
         ABILITY_POPUP(playerLeft, ABILITY_EMERGENCY_EXIT);
         NONE_OF {
-            MESSAGE("Golisopod was poisoned!");
-            MESSAGE("Golisopod was caught in a sticky web!");
-            MESSAGE("Golisopod was hurt by the spikes!");
+            MESSAGE("Sarmuraï est empoisonné!");
+            MESSAGE("Sarmuraï est pris dans une toile gluante!");
+            MESSAGE("Sarmuraï est blessé par les picots!");
         }
-        MESSAGE("Pointed stones dug into Wobbuffet!");
-        MESSAGE("Wobbuffet was poisoned!");
-        MESSAGE("Wobbuffet was caught in a sticky web!");
-        MESSAGE("Wobbuffet was hurt by the spikes!");
-        MESSAGE("Pointed stones dug into Wynaut!");
-        MESSAGE("Wynaut was poisoned!");
-        MESSAGE("Wynaut was caught in a sticky web!");
-        MESSAGE("Wynaut was hurt by the spikes!");
+        MESSAGE("Des pierres pointues transpercent Qulbutoké!");
+        MESSAGE("Qulbutoké est empoisonné!");
+        MESSAGE("Qulbutoké est pris dans une toile gluante!");
+        MESSAGE("Qulbutoké est blessé par les picots!");
+        MESSAGE("Des pierres pointues transpercent Okéoké!");
+        MESSAGE("Okéoké est empoisonné!");
+        MESSAGE("Okéoké est pris dans une toile gluante!");
+        MESSAGE("Okéoké est blessé par les picots!");
     }
 }
