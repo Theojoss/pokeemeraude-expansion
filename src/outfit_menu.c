@@ -129,26 +129,26 @@ _(
 
 static const u8 sText_OutfitError[] =
 _(
-    "You can't change your outfit {STR_VAR_1}"
+    "Impossible de changer de tenue {STR_VAR_1}"
 );
 
 static const u8 sText_OutfitError_Cycling[] =
 _(
-    "while\ncycling! You might get tripped over!"
+    "à\nvélo ! Tu risques de tomber !"
 );
 
 static const u8 sText_OutfitError_Surfing[] =
 _(
-    "while\nsurfing! You might get wet!"
+    "en\nsurfant ! Tu risques d'être mouillé !"
 );
 
 static const u8 sText_OutfitError_Diving[] =
 _(
-    "while\ndiving! Have common sense!"
+    "en\nplongée ! Un peu de bon sens !"
 );
 
 static const u8 sText_OutfitError_Default[] = _(
-    "now!"
+    "maintenant !"
 );
 
 static const u8 sText_OutfitMenuTitle[] = _("Costumes");
@@ -472,7 +472,7 @@ static bool32 SetupOutfitMenu_Graphics(void)
     case 0:
         ResetTempTileDataBuffers();
         LoadBgTiles(BG_MAIN, &sTiles, 96*72/2, 0x0);
-        LoadMessageBoxGfx(BG_MSGBOX, 0x100, BG_PLTT_ID(13));
+        LoadMessageBoxGfx(BG_MSGBOX, 0x100, BG_PLTT_ID(15));
         LoadUserWindowBorderGfx(BG_MSGBOX, 0x10D, BG_PLTT_ID(14));
         sOutfitMenu->gfxState++;
         break;
@@ -810,7 +810,7 @@ static void Task_WaitMessage(u8 taskId)
 static inline void PrintDialogueBoxWithDescWin(const u8 *str, bool32 expandPlaceholders, u8 taskId)
 {
     const u8 *txt = expandPlaceholders ? gStringVar4 : str;
-    DrawDialogFrameWithCustomTileAndPalette(WIN_MSGBOX, TRUE, 0x100, 13);
+    DrawDialogFrameWithCustomTileAndPalette(WIN_MSGBOX, TRUE, 0x100, 15);
 
     if (expandPlaceholders)
     {

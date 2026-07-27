@@ -283,28 +283,16 @@ static const u8 sRSAvatarGfxIds[GENDER_COUNT] =
     [FEMALE] = OBJ_EVENT_GFX_LINK_RS_MAY
 };
 
-static const struct PACKED
+// Indexed by PLAYER_AVATAR_STATE_NORMAL/MACH_BIKE/ACRO_BIKE/SURFING/UNDERWATER.
+// Same flag regardless of gender or outfit; only the graphics ID differs per outfit/gender,
+// which is looked up separately via GetPlayerAvatarGraphicsIdByOutfitStateIdAndGender.
+static const u8 sPlayerAvatarStateFlags[5] =
 {
-    u16 graphicsId;
-    u8 playerFlag;
-} sPlayerAvatarGfxToStateFlag[GENDER_COUNT][5] =
-{
-    [MALE] =
-    {
-        {PLAYER_AVATAR_GFX_MALE_NORMAL,     PLAYER_AVATAR_FLAG_ON_FOOT},
-        {PLAYER_AVATAR_GFX_MALE_MACH_BIKE,  PLAYER_AVATAR_FLAG_MACH_BIKE},
-        {PLAYER_AVATAR_GFX_MALE_ACRO_BIKE,  PLAYER_AVATAR_FLAG_ACRO_BIKE},
-        {PLAYER_AVATAR_GFX_MALE_SURFING,    PLAYER_AVATAR_FLAG_SURFING},
-        {PLAYER_AVATAR_GFX_MALE_UNDERWATER, PLAYER_AVATAR_FLAG_UNDERWATER},
-    },
-    [FEMALE] =
-    {
-        {PLAYER_AVATAR_GFX_FEMALE_NORMAL,         PLAYER_AVATAR_FLAG_ON_FOOT},
-        {PLAYER_AVATAR_GFX_FEMALE_MACH_BIKE,      PLAYER_AVATAR_FLAG_MACH_BIKE},
-        {PLAYER_AVATAR_GFX_FEMALE_ACRO_BIKE,      PLAYER_AVATAR_FLAG_ACRO_BIKE},
-        {PLAYER_AVATAR_GFX_FEMALE_SURFING,        PLAYER_AVATAR_FLAG_SURFING},
-        {PLAYER_AVATAR_GFX_FEMALE_UNDERWATER,     PLAYER_AVATAR_FLAG_UNDERWATER},
-    }
+    PLAYER_AVATAR_FLAG_ON_FOOT,
+    PLAYER_AVATAR_FLAG_MACH_BIKE,
+    PLAYER_AVATAR_FLAG_ACRO_BIKE,
+    PLAYER_AVATAR_FLAG_SURFING,
+    PLAYER_AVATAR_FLAG_UNDERWATER,
 };
 
 static bool8 (*const sArrowWarpMetatileBehaviorChecks2[])(u8) =  //Duplicate of sArrowWarpMetatileBehaviorChecks
@@ -1644,10 +1632,10 @@ static u8 GetPlayerAvatarStateTransitionByGraphicsId(u16 graphicsId, u8 gender)
 {
     u8 i;
 
-    for (i = 0; i < ARRAY_COUNT(sPlayerAvatarGfxToStateFlag[0]); i++)
+    for (i = 0; i < ARRAY_COUNT(sPlayerAvatarStateFlags); i++)
     {
-        if (sPlayerAvatarGfxToStateFlag[gender][i].graphicsId == graphicsId)
-            return sPlayerAvatarGfxToStateFlag[gender][i].playerFlag;
+        if (GetPlayerAvatarGraphicsIdByOutfitStateIdAndGender(gSaveBlock2Ptr->currOutfitId, i, gender) == graphicsId)
+            return sPlayerAvatarStateFlags[i];
     }
     return PLAYER_AVATAR_FLAG_ON_FOOT;
 }
@@ -1657,9 +1645,9 @@ u16 GetPlayerAvatarGraphicsIdByCurrentState(void)
     u8 i;
     u8 flags = gPlayerAvatar.flags;
 
-    for (i = 0; i < ARRAY_COUNT(sPlayerAvatarGfxToStateFlag[0]); i++)
+    for (i = 0; i < ARRAY_COUNT(sPlayerAvatarStateFlags); i++)
     {
-        if (sPlayerAvatarGfxToStateFlag[gPlayerAvatar.gender][i].playerFlag & flags)
+        if (sPlayerAvatarStateFlags[i] & flags)
             return GetPlayerAvatarGraphicsIdByStateIdAndGender(i, gPlayerAvatar.gender);
     }
     return 0;
