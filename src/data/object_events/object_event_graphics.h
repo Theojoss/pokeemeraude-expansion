@@ -469,16 +469,16 @@ const u32 gObjectEventPic_ApricornTree[] = INCGFX_U32("graphics/object_events/pi
 const u32 gFieldEffectObjectPic_ShinySparkle[] = INCGFX_U32("graphics/field_effects/pics/shiny_sparkle.png", ".4bpp", "-mwidth 2 -mheight 4");
 
 // Gold outfit (costume system)
-const u32 gObjectEventPic_GoldNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/gold/walking.4bpp", "graphics/object_events/pics/people/gold/running.4bpp");
+const u32 gObjectEventPic_GoldNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/johto_m/walking.4bpp", "graphics/object_events/pics/people/johto_m/running.4bpp");
 const u16 gObjectEventPal_Gold[] = INCGFX_U16("graphics/object_events/palettes/gold.pal", ".gbapal");
-const u32 gObjectEventPic_GoldMachBike[] = INCGFX_U32("graphics/object_events/pics/people/gold/mach_bike.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_GoldAcroBike[] = INCGFX_U32("graphics/object_events/pics/people/gold/acro_bike.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_GoldSurfing[] = INCGFX_U32("graphics/object_events/pics/people/gold/surfing.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_GoldUnderwater[] = INCGFX_U32("graphics/object_events/pics/people/gold/underwater.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_GoldFieldMove[] = INCGFX_U32("graphics/object_events/pics/people/gold/field_move.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_GoldFishing[] = INCGFX_U32("graphics/object_events/pics/people/gold/fishing.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_GoldWatering[] = INCGFX_U32("graphics/object_events/pics/people/gold/watering.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_GoldDecorating[] = INCGFX_U32("graphics/object_events/pics/people/gold/decorating.png", ".4bpp");
+const u32 gObjectEventPic_GoldMachBike[] = INCGFX_U32("graphics/object_events/pics/people/johto_m/mach_bike.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_GoldAcroBike[] = INCGFX_U32("graphics/object_events/pics/people/johto_m/acro_bike.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_GoldSurfing[] = INCGFX_U32("graphics/object_events/pics/people/johto_m/surfing.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_GoldUnderwater[] = INCGFX_U32("graphics/object_events/pics/people/johto_m/underwater.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_GoldFieldMove[] = INCGFX_U32("graphics/object_events/pics/people/johto_m/field_move.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_GoldFishing[] = INCGFX_U32("graphics/object_events/pics/people/johto_m/fishing.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_GoldWatering[] = INCGFX_U32("graphics/object_events/pics/people/johto_m/watering.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_GoldDecorating[] = INCGFX_U32("graphics/object_events/pics/people/johto_m/decorating.png", ".4bpp");
 
 // Johto outfit, female (costume system)
 const u32 gObjectEventPic_JohtoFNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/johto_f/walking.4bpp", "graphics/object_events/pics/people/johto_f/running.4bpp");
@@ -505,15 +505,15 @@ const u32 gObjectEventPic_HoennFWatering[] = INCGFX_U32("graphics/object_events/
 const u32 gObjectEventPic_HoennFDecorating[] = INCGFX_U32("graphics/object_events/pics/people/hoenn_f/decorating.png", ".4bpp");
 
 // Hoenn outfit (costume system)
-const u32 gObjectEventPic_HoennNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/hoenn/walking.4bpp", "graphics/object_events/pics/people/hoenn/running.4bpp");
+const u32 gObjectEventPic_HoennNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/hoenn_m/walking.4bpp", "graphics/object_events/pics/people/hoenn_m/running.4bpp");
 const u16 gObjectEventPal_Hoenn[] = INCGFX_U16("graphics/object_events/palettes/hoenn.pal", ".gbapal");
-const u32 gObjectEventPic_HoennMachBike[] = INCGFX_U32("graphics/object_events/pics/people/hoenn/mach_bike.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_HoennAcroBike[] = INCGFX_U32("graphics/object_events/pics/people/hoenn/acro_bike.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_HoennSurfing[] = INCGFX_U32("graphics/object_events/pics/people/hoenn/surfing.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_HoennFieldMove[] = INCGFX_U32("graphics/object_events/pics/people/hoenn/field_move.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_HoennFishing[] = INCGFX_U32("graphics/object_events/pics/people/hoenn/fishing.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_HoennWatering[] = INCGFX_U32("graphics/object_events/pics/people/hoenn/watering.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_HoennDecorating[] = INCGFX_U32("graphics/object_events/pics/people/hoenn/decorating.png", ".4bpp");
+const u32 gObjectEventPic_HoennMachBike[] = INCGFX_U32("graphics/object_events/pics/people/hoenn_m/mach_bike.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_HoennAcroBike[] = INCGFX_U32("graphics/object_events/pics/people/hoenn_m/acro_bike.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_HoennSurfing[] = INCGFX_U32("graphics/object_events/pics/people/hoenn_m/surfing.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_HoennFieldMove[] = INCGFX_U32("graphics/object_events/pics/people/hoenn_m/field_move.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_HoennFishing[] = INCGFX_U32("graphics/object_events/pics/people/hoenn_m/fishing.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_HoennWatering[] = INCGFX_U32("graphics/object_events/pics/people/hoenn_m/watering.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_HoennDecorating[] = INCGFX_U32("graphics/object_events/pics/people/hoenn_m/decorating.png", ".4bpp");
 
 // Kanto outfit, male (costume system)
 const u32 gObjectEventPic_KantoMNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/kanto_m/walking.4bpp", "graphics/object_events/pics/people/kanto_m/running.4bpp");
@@ -540,16 +540,16 @@ const u32 gObjectEventPic_KantoFWatering[] = INCGFX_U32("graphics/object_events/
 const u32 gObjectEventPic_KantoFDecorating[] = INCGFX_U32("graphics/object_events/pics/people/kanto_f/decorating.png", ".4bpp");
 
 // Sinnoh outfit (costume system)
-const u32 gObjectEventPic_SinnohNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/sinnoh/walking.4bpp", "graphics/object_events/pics/people/sinnoh/running.4bpp");
-const u16 gObjectEventPal_Sinnoh[] = INCGFX_U16("graphics/object_events/pics/people/sinnoh/walking.png", ".gbapal");
-const u32 gObjectEventPic_SinnohMachBike[] = INCGFX_U32("graphics/object_events/pics/people/sinnoh/mach_bike.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_SinnohAcroBike[] = INCGFX_U32("graphics/object_events/pics/people/sinnoh/acro_bike.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_SinnohSurfing[] = INCGFX_U32("graphics/object_events/pics/people/sinnoh/surfing.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_SinnohUnderwater[] = INCGFX_U32("graphics/object_events/pics/people/sinnoh/underwater.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_SinnohFieldMove[] = INCGFX_U32("graphics/object_events/pics/people/sinnoh/field_move.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_SinnohFishing[] = INCGFX_U32("graphics/object_events/pics/people/sinnoh/fishing.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_SinnohWatering[] = INCGFX_U32("graphics/object_events/pics/people/sinnoh/watering.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u32 gObjectEventPic_SinnohDecorating[] = INCGFX_U32("graphics/object_events/pics/people/sinnoh/decorating.png", ".4bpp");
+const u32 gObjectEventPic_SinnohNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/sinnoh_m/walking.4bpp", "graphics/object_events/pics/people/sinnoh_m/running.4bpp");
+const u16 gObjectEventPal_Sinnoh[] = INCGFX_U16("graphics/object_events/pics/people/sinnoh_m/walking.png", ".gbapal");
+const u32 gObjectEventPic_SinnohMachBike[] = INCGFX_U32("graphics/object_events/pics/people/sinnoh_m/mach_bike.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_SinnohAcroBike[] = INCGFX_U32("graphics/object_events/pics/people/sinnoh_m/acro_bike.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_SinnohSurfing[] = INCGFX_U32("graphics/object_events/pics/people/sinnoh_m/surfing.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_SinnohUnderwater[] = INCGFX_U32("graphics/object_events/pics/people/sinnoh_m/underwater.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_SinnohFieldMove[] = INCGFX_U32("graphics/object_events/pics/people/sinnoh_m/field_move.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_SinnohFishing[] = INCGFX_U32("graphics/object_events/pics/people/sinnoh_m/fishing.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_SinnohWatering[] = INCGFX_U32("graphics/object_events/pics/people/sinnoh_m/watering.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_SinnohDecorating[] = INCGFX_U32("graphics/object_events/pics/people/sinnoh_m/decorating.png", ".4bpp");
 
 // Sinnoh outfit, female (costume system)
 const u32 gObjectEventPic_SinnohFNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/sinnoh_f/walking.4bpp", "graphics/object_events/pics/people/sinnoh_f/running.4bpp");

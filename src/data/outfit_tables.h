@@ -8,12 +8,16 @@ static const u8 sRegionMapIconGfx_JohtoF[] = INCGFX_U8("graphics/pokenav/region_
 static const u16 sRegionMapIconPal_JohtoF[] = INCGFX_U16("graphics/pokenav/region_map/johto_f_icon.png", ".gbapal");
 static const u8 sRegionMapIconGfx_HoennM[] = INCGFX_U8("graphics/pokenav/region_map/hoenn_m_icon.png", ".4bpp");
 static const u16 sRegionMapIconPal_HoennM[] = INCGFX_U16("graphics/pokenav/region_map/hoenn_m_icon.png", ".gbapal");
+static const u8 sRegionMapIconGfx_HoennF[] = INCGFX_U8("graphics/pokenav/region_map/hoenn_f_icon.png", ".4bpp");
+static const u16 sRegionMapIconPal_HoennF[] = INCGFX_U16("graphics/pokenav/region_map/hoenn_f_icon.png", ".gbapal");
 static const u8 sRegionMapIconGfx_KantoM[] = INCGFX_U8("graphics/pokenav/region_map/kanto_m_icon.png", ".4bpp");
 static const u16 sRegionMapIconPal_KantoM[] = INCGFX_U16("graphics/pokenav/region_map/kanto_m_icon.png", ".gbapal");
 static const u8 sRegionMapIconGfx_KantoF[] = INCGFX_U8("graphics/pokenav/region_map/kanto_f_icon.png", ".4bpp");
 static const u16 sRegionMapIconPal_KantoF[] = INCGFX_U16("graphics/pokenav/region_map/kanto_f_icon.png", ".gbapal");
 static const u8 sRegionMapIconGfx_SinnohM[] = INCGFX_U8("graphics/pokenav/region_map/sinnoh_m_icon.png", ".4bpp");
 static const u16 sRegionMapIconPal_SinnohM[] = INCGFX_U16("graphics/pokenav/region_map/sinnoh_m_icon.png", ".gbapal");
+static const u8 sRegionMapIconGfx_SinnohF[] = INCGFX_U8("graphics/pokenav/region_map/sinnoh_f_icon.png", ".4bpp");
+static const u16 sRegionMapIconPal_SinnohF[] = INCGFX_U16("graphics/pokenav/region_map/sinnoh_f_icon.png", ".gbapal");
 
 const struct Outfit gOutfits[OUTFIT_COUNT] =
 {
@@ -111,9 +115,11 @@ const struct Outfit gOutfits[OUTFIT_COUNT] =
         },
         .regionMapIconGfx = {
             [MALE]   = sRegionMapIconGfx_HoennM,
+            [FEMALE] = sRegionMapIconGfx_HoennF,
         },
         .regionMapIconPal = {
             [MALE]   = sRegionMapIconPal_HoennM,
+            [FEMALE] = sRegionMapIconPal_HoennF,
         },
         .avatarGfxIds = {
             [MALE] = {
@@ -198,9 +204,11 @@ const struct Outfit gOutfits[OUTFIT_COUNT] =
         },
         .regionMapIconGfx = {
             [MALE]   = sRegionMapIconGfx_SinnohM,
+            [FEMALE] = sRegionMapIconGfx_SinnohF,
         },
         .regionMapIconPal = {
             [MALE]   = sRegionMapIconPal_SinnohM,
+            [FEMALE] = sRegionMapIconPal_SinnohF,
         },
         .avatarGfxIds = {
             [MALE] = {
