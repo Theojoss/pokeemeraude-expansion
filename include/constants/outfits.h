@@ -12,17 +12,18 @@
 #define OUTFIT_BUFFER_DESC 1
 
 // outfits
-#define OUTFIT_NONE    0
-#define OUTFIT_DEFAULT 1
-#define OUTFIT_KANTO   2
-#define OUTFIT_GOLD    3
-#define OUTFIT_HOENN   4
-#define OUTFIT_SINNOH  5
-#define OUTFIT_COUNT   6
+#define OUTFIT_NONE        0
+#define OUTFIT_DEFAULT     1
+#define OUTFIT_KANTO       2
+#define OUTFIT_GOLD        3
+#define OUTFIT_HOENN       4
+#define OUTFIT_SINNOH      5
+#define OUTFIT_TEAM_ROCKET 6
+#define OUTFIT_COUNT       7
 
 // inclusive
 #define OUTFIT_BEGIN OUTFIT_DEFAULT
-#define OUTFIT_END   OUTFIT_SINNOH
+#define OUTFIT_END   OUTFIT_TEAM_ROCKET
 
 #define DEFAULT_OUTFIT OUTFIT_DEFAULT
 

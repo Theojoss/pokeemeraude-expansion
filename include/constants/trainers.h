@@ -186,6 +186,7 @@ enum __attribute__((packed)) TrainerPicID
     TRAINER_PIC_KANTO_F,
     TRAINER_PIC_SINNOH_M,
     TRAINER_PIC_SINNOH_F,
+    TRAINER_PIC_TEAM_ROCKET_M,
     TRAINER_PIC_COUNT,
 };
 

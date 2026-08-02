@@ -500,6 +500,15 @@ enum
     OBJ_EVENT_GFX_HOENN_F_WATERING,
     OBJ_EVENT_GFX_HOENN_F_DECORATING,
 
+    // Team Rocket outfit, male (costume system)
+    OBJ_EVENT_GFX_TEAM_ROCKET_M_NORMAL,
+    OBJ_EVENT_GFX_TEAM_ROCKET_M_MACH_BIKE,
+    OBJ_EVENT_GFX_TEAM_ROCKET_M_ACRO_BIKE,
+    OBJ_EVENT_GFX_TEAM_ROCKET_M_SURFING,
+    OBJ_EVENT_GFX_TEAM_ROCKET_M_FIELD_MOVE,
+    OBJ_EVENT_GFX_TEAM_ROCKET_M_FISHING,
+    OBJ_EVENT_GFX_TEAM_ROCKET_M_DECORATING,
+
     NUM_OBJ_EVENT_GFX,
 };
 
@@ -700,6 +709,7 @@ enum
 #define OBJ_EVENT_PAL_TAG_SINNOH_F                 0x1171
 #define OBJ_EVENT_PAL_TAG_JOHTO_F                  0x1172
 #define OBJ_EVENT_PAL_TAG_HOENN_F                  0x1173
+#define OBJ_EVENT_PAL_TAG_TEAM_ROCKET_M            0x1174
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611
 #define OBJ_EVENT_PAL_TAG_LIGHT                   0x8001

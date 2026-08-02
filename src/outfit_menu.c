@@ -357,7 +357,7 @@ void OpenOutfitMenu(MainCallback retCB)
         return;
     }
     // measures for existing saves
-    if (gSaveBlock2Ptr->currOutfitId == OUTFIT_NONE)
+    if (gSaveBlock2Ptr->currOutfitId == OUTFIT_NONE || gSaveBlock2Ptr->currOutfitId >= OUTFIT_COUNT)
     {
         UnlockOutfit(DEFAULT_OUTFIT);
         gSaveBlock2Ptr->currOutfitId = DEFAULT_OUTFIT;
@@ -487,7 +487,6 @@ static bool32 SetupOutfitMenu_Graphics(void)
     case 2:
         LoadPalette(&sPalette, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
         LoadPalette(&sHeaderPalette, BG_PLTT_ID(1), PLTT_SIZE_4BPP);
-        LoadPalette(GetTextWindowPalette(2), BG_PLTT_ID(15), PLTT_SIZE_4BPP);
         sOutfitMenu->gfxState++;
         break;
     default:

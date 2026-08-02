@@ -250,6 +250,9 @@ const u16 gTrainerPalette_SinnohM[] = INCGFX_U16("graphics/trainers/front_pics/s
 const u32 gTrainerFrontPic_SinnohF[] = INCGFX_U32("graphics/trainers/front_pics/sinnoh_f.png", ".4bpp.smol");
 const u16 gTrainerPalette_SinnohF[] = INCGFX_U16("graphics/trainers/front_pics/sinnoh_f.png", ".gbapal");
 
+const u32 gTrainerFrontPic_TeamRocketM[] = INCGFX_U32("graphics/trainers/front_pics/team_rocket_m.png", ".4bpp.smol");
+const u16 gTrainerPalette_TeamRocketM[] = INCGFX_U16("graphics/trainers/front_pics/team_rocket_m.png", ".gbapal");
+
 const u32 gTrainerFrontPic_BugCatcher[] = INCGFX_U32("graphics/trainers/front_pics/bug_catcher.png", ".4bpp.smol");
 const u16 gTrainerPalette_BugCatcher[] = INCGFX_U16("graphics/trainers/front_pics/bug_catcher.png", ".gbapal");
 
@@ -515,6 +518,7 @@ const u8 gTrainerBackPic_KantoM[] = INCGFX_U8("graphics/trainers/back_pics/kanto
 const u8 gTrainerBackPic_KantoF[] = INCGFX_U8("graphics/trainers/back_pics/kanto_f.png", ".4bpp");
 const u8 gTrainerBackPic_SinnohM[] = INCGFX_U8("graphics/trainers/back_pics/sinnoh_m.png", ".4bpp");
 const u8 gTrainerBackPic_SinnohF[] = INCGFX_U8("graphics/trainers/back_pics/sinnoh_f.png", ".4bpp");
+const u8 gTrainerBackPic_TeamRocketM[] = INCGFX_U8("graphics/trainers/back_pics/team_rocket_m.png", ".4bpp");
 
 const u16 gTrainerBackPicPalette_Red[] = INCGFX_U16("graphics/trainers/back_pics/red.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Leaf[] = INCGFX_U16("graphics/trainers/back_pics/leaf.png", ".gbapal");
@@ -527,6 +531,7 @@ const u16 gTrainerBackPicPalette_KantoM[] = INCGFX_U16("graphics/trainers/back_p
 const u16 gTrainerBackPicPalette_KantoF[] = INCGFX_U16("graphics/trainers/back_pics/kanto_f.png", ".gbapal");
 const u16 gTrainerBackPicPalette_SinnohM[] = INCGFX_U16("graphics/trainers/back_pics/sinnoh_m.png", ".gbapal");
 const u16 gTrainerBackPicPalette_SinnohF[] = INCGFX_U16("graphics/trainers/back_pics/sinnoh_f.png", ".gbapal");
+const u16 gTrainerBackPicPalette_TeamRocketM[] = INCGFX_U16("graphics/trainers/back_pics/team_rocket_m.png", ".gbapal");
 const u16 gTrainerBackPicPalette_OldMan[] = INCGFX_U16("graphics/trainers/back_pics/old_man.png", ".gbapal");
 
 
@@ -682,6 +687,11 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_SinnohF, gTrainerPalette_SinnohF),
         .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_SinnohF, gTrainerBackPicPalette_SinnohF, sBackAnims_Hoenn),
+    },
+    [TRAINER_PIC_TEAM_ROCKET_M] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_TeamRocketM, gTrainerPalette_TeamRocketM),
+        .backPic = TRAINER_BACK_PIC(5, gTrainerBackPic_TeamRocketM, gTrainerBackPicPalette_TeamRocketM, sBackAnims_Kanto),
     },
     [TRAINER_PIC_RED] =
     {

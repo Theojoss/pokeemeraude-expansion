@@ -1735,6 +1735,46 @@ static const struct SpriteFrameImage sPicTable_KantoFDecorating[] = {
     obj_frame_tiles(gObjectEventPic_KantoFDecorating),
 };
 
+// Team Rocket outfit, male (costume system)
+static const struct SpriteFrameImage sPicTable_TeamRocketMNormal[] = {
+    overworld_ascending_frames(gObjectEventPic_TeamRocketMNormalRunning, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_TeamRocketMMachBike[] = {
+    overworld_ascending_frames(gObjectEventPic_TeamRocketMMachBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_TeamRocketMAcroBike[] = {
+    overworld_ascending_frames(gObjectEventPic_TeamRocketMAcroBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_TeamRocketMSurfing[] = {
+    overworld_frame(gObjectEventPic_TeamRocketMSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_TeamRocketMSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_TeamRocketMSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_TeamRocketMSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_TeamRocketMSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_TeamRocketMSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_TeamRocketMSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_TeamRocketMSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_TeamRocketMSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_TeamRocketMSurfing, 4, 4, 1),
+    overworld_frame(gObjectEventPic_TeamRocketMSurfing, 4, 4, 3),
+    overworld_frame(gObjectEventPic_TeamRocketMSurfing, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_TeamRocketMFieldMove[] = {
+    overworld_ascending_frames(gObjectEventPic_TeamRocketMFieldMove, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_TeamRocketMFishing[] = {
+    overworld_ascending_frames(gObjectEventPic_TeamRocketMFishing, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_TeamRocketMDecorating[] = {
+    obj_frame_tiles(gObjectEventPic_TeamRocketMDecorating),
+};
+
 // Sinnoh outfit (costume system)
 static const struct SpriteFrameImage sPicTable_SinnohNormal[] = {
     overworld_ascending_frames(gObjectEventPic_SinnohNormalRunning, 2, 4),

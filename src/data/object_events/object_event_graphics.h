@@ -504,6 +504,16 @@ const u32 gObjectEventPic_HoennFFishing[] = INCGFX_U32("graphics/object_events/p
 const u32 gObjectEventPic_HoennFWatering[] = INCGFX_U32("graphics/object_events/pics/people/hoenn_f/watering.png", ".4bpp", "-mwidth 4 -mheight 4");
 const u32 gObjectEventPic_HoennFDecorating[] = INCGFX_U32("graphics/object_events/pics/people/hoenn_f/decorating.png", ".4bpp");
 
+// Team Rocket outfit, male (costume system)
+const u32 gObjectEventPic_TeamRocketMNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/team_rocket_m/walking.4bpp", "graphics/object_events/pics/people/team_rocket_m/running.4bpp");
+const u16 gObjectEventPal_TeamRocketM[] = INCGFX_U16("graphics/object_events/pics/people/team_rocket_m/walking.png", ".gbapal");
+const u32 gObjectEventPic_TeamRocketMMachBike[] = INCGFX_U32("graphics/object_events/pics/people/team_rocket_m/mach_bike.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_TeamRocketMAcroBike[] = INCGFX_U32("graphics/object_events/pics/people/team_rocket_m/acro_bike.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_TeamRocketMSurfing[] = INCGFX_U32("graphics/object_events/pics/people/team_rocket_m/surfing.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_TeamRocketMFieldMove[] = INCGFX_U32("graphics/object_events/pics/people/team_rocket_m/field_move.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_TeamRocketMFishing[] = INCGFX_U32("graphics/object_events/pics/people/team_rocket_m/fishing.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_TeamRocketMDecorating[] = INCGFX_U32("graphics/object_events/pics/people/team_rocket_m/decorating.png", ".4bpp");
+
 // Hoenn outfit (costume system)
 const u32 gObjectEventPic_HoennNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/hoenn_m/walking.4bpp", "graphics/object_events/pics/people/hoenn_m/running.4bpp");
 const u16 gObjectEventPal_Hoenn[] = INCGFX_U16("graphics/object_events/palettes/hoenn.pal", ".gbapal");

@@ -18,6 +18,8 @@ static const u8 sRegionMapIconGfx_SinnohM[] = INCGFX_U8("graphics/pokenav/region
 static const u16 sRegionMapIconPal_SinnohM[] = INCGFX_U16("graphics/pokenav/region_map/sinnoh_m_icon.png", ".gbapal");
 static const u8 sRegionMapIconGfx_SinnohF[] = INCGFX_U8("graphics/pokenav/region_map/sinnoh_f_icon.png", ".4bpp");
 static const u16 sRegionMapIconPal_SinnohF[] = INCGFX_U16("graphics/pokenav/region_map/sinnoh_f_icon.png", ".gbapal");
+static const u8 sRegionMapIconGfx_TeamRocketM[] = INCGFX_U8("graphics/pokenav/region_map/team_rocket_m_icon.png", ".4bpp");
+static const u16 sRegionMapIconPal_TeamRocketM[] = INCGFX_U16("graphics/pokenav/region_map/team_rocket_m_icon.png", ".gbapal");
 
 const struct Outfit gOutfits[OUTFIT_COUNT] =
 {
@@ -234,6 +236,50 @@ const struct Outfit gOutfits[OUTFIT_COUNT] =
                 [PLAYER_AVATAR_STATE_FISHING]    = OBJ_EVENT_GFX_SINNOH_F_FISHING,
                 [PLAYER_AVATAR_STATE_WATERING]   = OBJ_EVENT_GFX_SINNOH_F_WATERING,
                 [PLAYER_AVATAR_STATE_VSSEEKER]   = OBJ_EVENT_GFX_SINNOH_F_FIELD_MOVE,
+            },
+        },
+    },
+    // WIP: underwater/watering sprites not provided yet for the male outfit, so those
+    // states fall back to the default look. No female sprites exist yet.
+    [OUTFIT_TEAM_ROCKET] = {
+        .isHidden = FALSE,
+        .prices = { 5000, 5000 },
+        .name = COMPOUND_STRING("TEAM ROCKET"),
+        .desc = COMPOUND_STRING(
+            "La tenue d'une organisation à la\n"
+            "fois maléfique et emblématique."),
+        .trainerPics = {
+            [MALE]   = TRAINER_PIC_TEAM_ROCKET_M,
+            [FEMALE] = TRAINER_PIC_MAY,
+        },
+        .regionMapIconGfx = {
+            [MALE] = sRegionMapIconGfx_TeamRocketM,
+        },
+        .regionMapIconPal = {
+            [MALE] = sRegionMapIconPal_TeamRocketM,
+        },
+        .avatarGfxIds = {
+            [MALE] = {
+                [PLAYER_AVATAR_STATE_NORMAL]     = OBJ_EVENT_GFX_TEAM_ROCKET_M_NORMAL,
+                [PLAYER_AVATAR_STATE_MACH_BIKE]  = OBJ_EVENT_GFX_TEAM_ROCKET_M_MACH_BIKE,
+                [PLAYER_AVATAR_STATE_ACRO_BIKE]  = OBJ_EVENT_GFX_TEAM_ROCKET_M_ACRO_BIKE,
+                [PLAYER_AVATAR_STATE_SURFING]    = OBJ_EVENT_GFX_TEAM_ROCKET_M_SURFING,
+                [PLAYER_AVATAR_STATE_UNDERWATER] = PLAYER_AVATAR_GFX_MALE_UNDERWATER,
+                [PLAYER_AVATAR_STATE_FIELD_MOVE] = OBJ_EVENT_GFX_TEAM_ROCKET_M_FIELD_MOVE,
+                [PLAYER_AVATAR_STATE_FISHING]    = OBJ_EVENT_GFX_TEAM_ROCKET_M_FISHING,
+                [PLAYER_AVATAR_STATE_WATERING]   = PLAYER_AVATAR_GFX_MALE_WATERING,
+                [PLAYER_AVATAR_STATE_VSSEEKER]   = OBJ_EVENT_GFX_TEAM_ROCKET_M_FIELD_MOVE,
+            },
+            [FEMALE] = {
+                [PLAYER_AVATAR_STATE_NORMAL]     = PLAYER_AVATAR_GFX_FEMALE_NORMAL,
+                [PLAYER_AVATAR_STATE_MACH_BIKE]  = PLAYER_AVATAR_GFX_FEMALE_MACH_BIKE,
+                [PLAYER_AVATAR_STATE_ACRO_BIKE]  = PLAYER_AVATAR_GFX_FEMALE_ACRO_BIKE,
+                [PLAYER_AVATAR_STATE_SURFING]    = PLAYER_AVATAR_GFX_FEMALE_SURFING,
+                [PLAYER_AVATAR_STATE_UNDERWATER] = PLAYER_AVATAR_GFX_FEMALE_UNDERWATER,
+                [PLAYER_AVATAR_STATE_FIELD_MOVE] = PLAYER_AVATAR_GFX_FEMALE_FIELD_MOVE,
+                [PLAYER_AVATAR_STATE_FISHING]    = PLAYER_AVATAR_GFX_FEMALE_FISHING,
+                [PLAYER_AVATAR_STATE_WATERING]   = PLAYER_AVATAR_GFX_FEMALE_WATERING,
+                [PLAYER_AVATAR_STATE_VSSEEKER]   = PLAYER_AVATAR_GFX_FEMALE_VSSEEKER,
             },
         },
     },
