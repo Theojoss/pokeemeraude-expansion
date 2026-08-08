@@ -8,6 +8,7 @@ SootopolisCity_MapScripts::
 
 SootopolisCity_OnLoad:
 	call_if_unset FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE, SootopolisCity_EventScript_LockGymDoor
+	call_if_unset FLAG_BOUGHT_HOUSE_1, SootopolisCity_EventScript_LockHouse1Door
 	goto_if_unset FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN, SootopolisCity_EventScript_LegendariesNotArrived
 	call_if_unset FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE, SootopolisCity_EventScript_LockHouseDoors
 	end
@@ -29,6 +30,10 @@ SootopolisCity_EventScript_LockHouseDoors::
 
 SootopolisCity_EventScript_LockGymDoor::
 	setmetatile 31, 32, METATILE_Sootopolis_GymDoor_Closed, TRUE
+	return
+
+SootopolisCity_EventScript_LockHouse1Door::
+	setmetatile 23, 5, METATILE_Sootopolis_Door_Closed, TRUE
 	return
 
 SootopolisCity_OnTransition:
@@ -1705,3 +1710,62 @@ SootopolisCity_Text_DazzledByMentor:
 	.string "MARC: Mais je tiens à te prévenir que\n"
 	.string "l'élégant style de combat de mon mentor\l"
 	.string "risque de te laisser le souffle coupé.$"
+
+SootopolisCity_EventScript_House1Door::
+	lockall
+	goto_if_set FLAG_BOUGHT_HOUSE_1, SootopolisCity_EventScript_House1DoorEnd
+	showmoneybox 0, 0
+	msgbox SootopolisCity_Text_House1ForSale, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, SootopolisCity_EventScript_House1DeclinedPurchase
+	checkmoney 50000
+	goto_if_eq VAR_RESULT, FALSE, SootopolisCity_EventScript_House1NotEnoughMoney
+	playse SE_SHOP
+	removemoney 50000
+	updatemoneybox
+	waitse
+	msgbox SootopolisCity_Text_House1PurchaseComplete, MSGBOX_DEFAULT
+	setflag FLAG_BOUGHT_HOUSE_1
+	setmetatile 23, 5, METATILE_Sootopolis_Door_PeakedRoof, 1
+	hidemoneybox
+	goto SootopolisCity_EventScript_House1DoorEnd
+
+SootopolisCity_EventScript_House1DeclinedPurchase::
+	hidemoneybox
+	goto SootopolisCity_EventScript_House1DoorEnd
+
+SootopolisCity_EventScript_House1NotEnoughMoney::
+	msgbox SootopolisCity_Text_House1NotEnoughMoney, MSGBOX_DEFAULT
+	hidemoneybox
+	goto SootopolisCity_EventScript_House1DoorEnd
+
+SootopolisCity_EventScript_House1DoorEnd::
+	releaseall
+	end
+
+SootopolisCity_Text_House1ForSale:
+	.string "Cette maison est à vendre pour 50000¥.\p"
+	.string "Vous pourrez y faire habiter un\n"
+	.string "POKéMON, vous soigner, vous changer,\p"
+	.string "accéder au PC et réapprendre des\n"
+	.string "attaques à vos POKéMONs... entre\p"
+	.string "autres surprises!\p"
+	.string "Voulez-vous l'acheter?$"
+
+SootopolisCity_Text_House1PurchaseComplete:
+	.string "Félicitations! Cette maison est\n"
+	.string "désormais la vôtre!\p"
+	.string "Au rez-de-chaussée, vous trouverez\n"
+	.string "de quoi vous changer et vous divertir.\p"
+	.string "À l'étage, le terminal sur la\n"
+	.string "droite vous permettra d'installer\p"
+	.string "un POKéMON dans la maison.\p"
+	.string "Celui-ci restera tout de même\n"
+	.string "présent dans votre équipe.\p"
+	.string "Vous pouvez également vous soigner\n"
+	.string "grâce au lit, tandis que le livre\p"
+	.string "vous permettra de rappeler des\n"
+	.string "attaques à vos POKéMON.$"
+
+SootopolisCity_Text_House1NotEnoughMoney:
+	.string "Il vous manque de l'argent pour\n"
+	.string "acheter cette maison.$"

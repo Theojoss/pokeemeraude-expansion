@@ -9334,6 +9334,26 @@
       "border_height": 2,
       "border_width": 2,
       "layout_version": "frlg"
+    },
+    {
+      "id": "LAYOUT_SOOTOPOLIS_CITY_PLAYER_HOUSE",
+      "name": "SootopolisCity_PlayerHouse_Layout",
+      "width": 10,
+      "height": 7,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/SootopolisCity_PlayerHouse/border.bin",
+      "blockdata_filepath": "data/layouts/SootopolisCity_PlayerHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_SOOTOPOLIS_CITY_PLAYER_HOUSE_2F",
+      "name": "SootopolisCity_PlayerHouse_2F_Layout",
+      "width": 10,
+      "height": 7,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/SootopolisCity_PlayerHouse_2F/border.bin",
+      "blockdata_filepath": "data/layouts/SootopolisCity_PlayerHouse_2F/map.bin"
     }
   ]
 }

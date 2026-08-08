@@ -32,6 +32,11 @@ gSpecials::
 	def_special GetCurSecretBaseRegistrationValidity
 	def_special ToggleCurSecretBaseRegistry
 	def_special ShowSecretBaseDecorationMenu
+	def_special ChooseMonForHouse1Pet, waitstate=TRUE
+	def_special SetHouse1ResidentMon
+	def_special RemoveHouse1ResidentMon
+	def_special InitHouse1PetSprite
+	def_special OpenHouseOutfitMenu
 	def_special ShowSecretBaseRegistryMenu
 	def_special PrepSecretBaseBattleFlags
 	def_special GetSecretBaseOwnerAndState

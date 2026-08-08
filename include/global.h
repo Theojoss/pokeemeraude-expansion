@@ -1145,6 +1145,7 @@ struct SaveBlock1
     /*0x1A9C*/ struct SecretBase secretBases[SECRET_BASES_COUNT];
     /*0x271C*/ u8 playerRoomDecorations[DECOR_MAX_PLAYERS_HOUSE];
     /*0x2728*/ u8 playerRoomDecorationPositions[DECOR_MAX_PLAYERS_HOUSE];
+    u16 house1PetGraphicsId; // 0 = no resident Pokemon assigned, otherwise a species+shiny+gender encoded graphicsId (see OBJ_EVENT_MON_* in constants/event_objects.h)
     /*0x2734*/ u8 decorationDesks[10];
     /*0x273E*/ u8 decorationChairs[10];
     /*0x2748*/ u8 decorationPlants[10];
