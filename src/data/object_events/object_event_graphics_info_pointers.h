@@ -477,6 +477,13 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TeamRocketM
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TeamRocketMFieldMove;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TeamRocketMFishing;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TeamRocketMDecorating;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TeamRocketFNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TeamRocketFMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TeamRocketFAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TeamRocketFSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TeamRocketFFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TeamRocketFFishing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TeamRocketFDecorating;
 
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
     [OBJ_EVENT_GFX_BRENDAN_NORMAL] =           &gObjectEventGraphicsInfo_BrendanNormal,
@@ -799,6 +806,13 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_TEAM_ROCKET_M_FIELD_MOVE] = &gObjectEventGraphicsInfo_TeamRocketMFieldMove,
     [OBJ_EVENT_GFX_TEAM_ROCKET_M_FISHING] =    &gObjectEventGraphicsInfo_TeamRocketMFishing,
     [OBJ_EVENT_GFX_TEAM_ROCKET_M_DECORATING] = &gObjectEventGraphicsInfo_TeamRocketMDecorating,
+    [OBJ_EVENT_GFX_TEAM_ROCKET_F_NORMAL] =     &gObjectEventGraphicsInfo_TeamRocketFNormal,
+    [OBJ_EVENT_GFX_TEAM_ROCKET_F_MACH_BIKE] =  &gObjectEventGraphicsInfo_TeamRocketFMachBike,
+    [OBJ_EVENT_GFX_TEAM_ROCKET_F_ACRO_BIKE] =  &gObjectEventGraphicsInfo_TeamRocketFAcroBike,
+    [OBJ_EVENT_GFX_TEAM_ROCKET_F_SURFING] =    &gObjectEventGraphicsInfo_TeamRocketFSurfing,
+    [OBJ_EVENT_GFX_TEAM_ROCKET_F_FIELD_MOVE] = &gObjectEventGraphicsInfo_TeamRocketFFieldMove,
+    [OBJ_EVENT_GFX_TEAM_ROCKET_F_FISHING] =    &gObjectEventGraphicsInfo_TeamRocketFFishing,
+    [OBJ_EVENT_GFX_TEAM_ROCKET_F_DECORATING] = &gObjectEventGraphicsInfo_TeamRocketFDecorating,
 #if IS_FRLG
     [OBJ_EVENT_GFX_RED_NORMAL] =               &gObjectEventGraphicsInfo_RedNormal,
     [OBJ_EVENT_GFX_RED_BIKE] =                 &gObjectEventGraphicsInfo_RedBike,
