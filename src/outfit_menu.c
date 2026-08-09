@@ -151,7 +151,7 @@ static const u8 sText_OutfitError_Default[] = _(
     "maintenant !"
 );
 
-static const u8 sText_OutfitMenuTitle[] = _("Costumes");
+static const u8 sText_OutfitMenuTitle[] = _("Tenues");
 static const u8 sText_OutfitMenuControls[] = _("{DPAD_NONE} Choisir {A_BUTTON} Porter {B_BUTTON} Quitter");
 
 static const u16 sTiles[] = INCBIN_U16("graphics/outfit_menu/main.4bpp");

@@ -652,7 +652,7 @@ static const struct DebugMenuOption sDebugMenu_Actions_Give[] =
     { COMPOUND_STRING("Donner Œuf"),         DebugAction_Give_NewEgg },
     { COMPOUND_STRING("Donner Déco…"),       DebugAction_Give_Decoration },
     { COMPOUND_STRING("Argent Max"),         DebugAction_Give_MaxMoney },
-    { COMPOUND_STRING("Déb. tous Costumes"), DebugAction_Give_UnlockGoldOutfit },
+    { COMPOUND_STRING("Déb. toutes Tenues"), DebugAction_Give_UnlockGoldOutfit },
     { COMPOUND_STRING("Jetons Max"),         DebugAction_Give_MaxCoins },
     { COMPOUND_STRING("{Pco} Max"),          DebugAction_Give_MaxBattlePoints },
     { COMPOUND_STRING("Œuf de Pension"),     DebugAction_Give_DayCareEgg },

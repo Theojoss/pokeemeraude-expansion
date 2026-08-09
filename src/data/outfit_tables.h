@@ -67,7 +67,7 @@ const struct Outfit gOutfits[OUTFIT_COUNT] =
         .prices = { 5000, 5000 },
         .name = COMPOUND_STRING("JOHTO"),
         .desc = COMPOUND_STRING(
-            "Un costume inspiré d'une région\n"
+            "Une tenue inspirée d'une région\n"
             "imprégnée par la tradition."),
         .trainerPics = {
             [MALE]   = TRAINER_PIC_JOHTO_M,
@@ -111,7 +111,7 @@ const struct Outfit gOutfits[OUTFIT_COUNT] =
         .prices = { 5000, 5000 },
         .name = COMPOUND_STRING("HOENN"),
         .desc = COMPOUND_STRING(
-            "Un costume inspiré d'une région\n"
+            "Une tenue inspirée d'une région\n"
             "au climat chaud."),
         .trainerPics = {
             [MALE]   = TRAINER_PIC_HOENN_M,
@@ -156,7 +156,7 @@ const struct Outfit gOutfits[OUTFIT_COUNT] =
         .prices = { 5000, 5000 },
         .name = COMPOUND_STRING("KANTO"),
         .desc = COMPOUND_STRING(
-            "Un costume inspiré d'une\n"
+            "Une tenue inspirée d'une\n"
             "région iconique."),
         .trainerPics = {
             [MALE]   = TRAINER_PIC_KANTO_M,
@@ -200,7 +200,7 @@ const struct Outfit gOutfits[OUTFIT_COUNT] =
         .prices = { 5000, 5000 },
         .name = COMPOUND_STRING("SINNOH"),
         .desc = COMPOUND_STRING(
-            "Un costume inspiré d'une région\n"
+            "Une tenue inspirée d'une région\n"
             "au climat froid."),
         .trainerPics = {
             [MALE]   = TRAINER_PIC_SINNOH_M,

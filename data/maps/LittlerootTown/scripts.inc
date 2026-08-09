@@ -968,7 +968,7 @@ LittlerootTown_Text_ComeHomeIfAnythingHappens:
 LittlerootTown_Text_GiveOutfitBox:
 	.string "MAMAN: Oh, j'allais oublier!\p"
 	.string "Tiens, prends aussi cette BOÎTE À\n"
-	.string "COSTUMES.\p"
+	.string "TENUES.\p"
 	.string "Tu pourras changer d'apparence quand\n"
 	.string "tu le souhaites, chouchou!$"
 
