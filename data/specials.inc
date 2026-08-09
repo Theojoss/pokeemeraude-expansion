@@ -36,6 +36,10 @@ gSpecials::
 	def_special SetHouse1ResidentMon
 	def_special RemoveHouse1ResidentMon
 	def_special InitHouse1PetSprite
+	def_special ChooseMonForHouse2Pet, waitstate=TRUE
+	def_special SetHouse2ResidentMon
+	def_special RemoveHouse2ResidentMon
+	def_special InitHouse2PetSprite
 	def_special OpenHouseOutfitMenu
 	def_special ShowSecretBaseRegistryMenu
 	def_special PrepSecretBaseBattleFlags

@@ -1,5 +1,15 @@
 SootopolisCity_PlayerHouse_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, SootopolisCity_PlayerHouse_OnLoad
+	map_script MAP_SCRIPT_ON_TRANSITION, SootopolisCity_PlayerHouse_OnTransition
 	.byte 0
+
+SootopolisCity_PlayerHouse_OnLoad:
+	setflag FLAG_HOUSE_1_ENTERED_ONCE
+	end
+
+SootopolisCity_PlayerHouse_OnTransition:
+	setflag FLAG_HOUSE_1_ENTERED_ONCE
+	end
 
 House1_EventScript_TV::
 	switch VAR_HOUSE_1_TV_INDEX

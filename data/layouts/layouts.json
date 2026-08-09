@@ -137,7 +137,7 @@
       "id": "LAYOUT_LAVARIDGE_TOWN",
       "name": "LavaridgeTown_Layout",
       "width": 20,
-      "height": 20,
+      "height": 25,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Lavaridge",
       "border_filepath": "data/layouts/LavaridgeTown/border.bin",
@@ -9354,6 +9354,28 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/SootopolisCity_PlayerHouse_2F/border.bin",
       "blockdata_filepath": "data/layouts/SootopolisCity_PlayerHouse_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_LAVARIDGE_TOWN_PLAYER_HOUSE_ONSEN",
+      "name": "LavaridgeTown_PlayerHouse_Onsen_Layout",
+      "width": 12,
+      "height": 9,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lavaridge",
+      "border_filepath": "data/layouts/LavaridgeTown_PlayerHouse_Onsen/border.bin",
+      "blockdata_filepath": "data/layouts/LavaridgeTown_PlayerHouse_Onsen/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_LAVARIDGE_TOWN_PLAYER_HOUSE",
+      "name": "LavaridgeTown_PlayerHouse_Layout",
+      "width": 12,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/LavaridgeTown_PlayerHouse/border.bin",
+      "blockdata_filepath": "data/layouts/LavaridgeTown_PlayerHouse/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }

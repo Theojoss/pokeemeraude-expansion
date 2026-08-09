@@ -1223,6 +1223,7 @@ struct SaveBlock1
     u8 rivalName[PLAYER_NAME_LENGTH + 1];
     struct DaycareMon route5DayCareMon;
 #endif
+    u16 house2PetGraphicsId; // Same as house1PetGraphicsId, for House 2 (Lavaridge Town). Appended at the tail so existing saves aren't shifted.
     // sizeof: 0x3???
 };
 

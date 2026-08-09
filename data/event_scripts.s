@@ -1747,3 +1747,7 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/SootopolisCity_PlayerHouse/scripts.inc"
 
 	.include "data/maps/SootopolisCity_PlayerHouse_2F/scripts.inc"
+
+	.include "data/maps/LavaridgeTown_PlayerHouse_Onsen/scripts.inc"
+
+	.include "data/maps/LavaridgeTown_PlayerHouse/scripts.inc"

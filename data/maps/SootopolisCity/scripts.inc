@@ -9,6 +9,8 @@ SootopolisCity_MapScripts::
 SootopolisCity_OnLoad:
 	call_if_unset FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE, SootopolisCity_EventScript_LockGymDoor
 	call_if_unset FLAG_BOUGHT_HOUSE_1, SootopolisCity_EventScript_LockHouse1Door
+	call_if_set FLAG_HOUSE_1_ENTERED_ONCE, SootopolisCity_EventScript_HideHouse1NPCForGood
+	call_if_set FLAG_BOUGHT_HOUSE_1, SootopolisCity_EventScript_SetHouse1NPCAside
 	goto_if_unset FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN, SootopolisCity_EventScript_LegendariesNotArrived
 	call_if_unset FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE, SootopolisCity_EventScript_LockHouseDoors
 	end
@@ -36,8 +38,19 @@ SootopolisCity_EventScript_LockHouse1Door::
 	setmetatile 23, 5, METATILE_Sootopolis_Door_Closed, TRUE
 	return
 
+SootopolisCity_EventScript_HideHouse1NPCForGood::
+	setflag FLAG_HIDE_SOOTOPOLIS_CITY_HOUSE_1_NPC
+	removeobject LOCALID_SOOTOPOLIS_HOUSE_1_NPC
+	return
+
+SootopolisCity_EventScript_SetHouse1NPCAside::
+	setobjectxyperm LOCALID_SOOTOPOLIS_HOUSE_1_NPC, 24, 6
+	return
+
 SootopolisCity_OnTransition:
 	setflag FLAG_VISITED_SOOTOPOLIS_CITY
+	call_if_set FLAG_HOUSE_1_ENTERED_ONCE, SootopolisCity_EventScript_HideHouse1NPCForGood
+	call_if_set FLAG_BOUGHT_HOUSE_1, SootopolisCity_EventScript_SetHouse1NPCAside
 	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 1, SootopolisCity_EventScript_HideMapNamePopup
 	call_if_eq VAR_SKY_PILLAR_STATE, 1, SootopolisCity_EventScript_HideMapNamePopup
 	call SootopolisCity_EventScript_SetWeather
@@ -1713,6 +1726,7 @@ SootopolisCity_Text_DazzledByMentor:
 
 SootopolisCity_EventScript_House1Door::
 	lockall
+	faceplayer
 	goto_if_set FLAG_BOUGHT_HOUSE_1, SootopolisCity_EventScript_House1DoorEnd
 	showmoneybox 0, 0
 	msgbox SootopolisCity_Text_House1ForSale, MSGBOX_YESNO
@@ -1727,6 +1741,11 @@ SootopolisCity_EventScript_House1Door::
 	setflag FLAG_BOUGHT_HOUSE_1
 	setmetatile 23, 5, METATILE_Sootopolis_Door_PeakedRoof, 1
 	hidemoneybox
+	applymovement LOCALID_SOOTOPOLIS_HOUSE_1_NPC, Common_Movement_WalkRight
+	waitmovement 0
+	applymovement LOCALID_SOOTOPOLIS_HOUSE_1_NPC, Common_Movement_FaceDown
+	waitmovement 0
+	setobjectxyperm LOCALID_SOOTOPOLIS_HOUSE_1_NPC, 24, 6
 	goto SootopolisCity_EventScript_House1DoorEnd
 
 SootopolisCity_EventScript_House1DeclinedPurchase::

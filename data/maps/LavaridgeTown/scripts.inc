@@ -1,10 +1,18 @@
 LavaridgeTown_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, LavaridgeTown_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, LavaridgeTown_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, LavaridgeTown_OnFrame
 	.byte 0
 
+LavaridgeTown_OnLoad:
+	call_if_set FLAG_HOUSE_2_ENTERED_ONCE, LavaridgeTown_EventScript_HideHouse2NPCForGood
+	call_if_set FLAG_BOUGHT_HOUSE_2, LavaridgeTown_EventScript_SetHouse2NPCAside
+	end
+
 LavaridgeTown_OnTransition:
 	setflag FLAG_VISITED_LAVARIDGE_TOWN
+	call_if_set FLAG_HOUSE_2_ENTERED_ONCE, LavaridgeTown_EventScript_HideHouse2NPCForGood
+	call_if_set FLAG_BOUGHT_HOUSE_2, LavaridgeTown_EventScript_SetHouse2NPCAside
 	call_if_set FLAG_WHITEOUT_TO_LAVARIDGE, LavaridgeTown_EventScript_ClearLavaridgeWhiteOut
 	call_if_set FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY, LavaridgeTown_EventScript_ShowMtChimneyTrainers
 	call Common_EventScript_SetupRivalGfxId
@@ -12,6 +20,15 @@ LavaridgeTown_OnTransition:
 	call_if_eq VAR_LAVARIDGE_TOWN_STATE, 1, LavaridgeTown_EventScript_CheckSetRivalPos
 	call_if_eq VAR_LAVARIDGE_TOWN_STATE, 1, LavaridgeTown_EventScript_HideMapNamePopup
 	end
+
+LavaridgeTown_EventScript_HideHouse2NPCForGood::
+	setflag FLAG_HIDE_LAVARIDGE_TOWN_HOUSE_2_NPC
+	removeobject LOCALID_LAVARIDGE_HOUSE_2_NPC
+	return
+
+LavaridgeTown_EventScript_SetHouse2NPCAside::
+	setobjectxyperm LOCALID_LAVARIDGE_HOUSE_2_NPC, 15, 22
+	return
 
 LavaridgeTown_EventScript_ClearLavaridgeWhiteOut::
 	clearflag FLAG_WHITEOUT_TO_LAVARIDGE
@@ -406,4 +423,64 @@ LavaridgeTown_Text_GymSign:
 LavaridgeTown_Text_HerbShopSign:
 	.string "HERBORISTERIE POKéMON\n"
 	.string "“Plus c'est amer et plus c'est sain!”$"
+
+LavaridgeTown_EventScript_House2Door::
+	lockall
+	faceplayer
+	goto_if_set FLAG_BOUGHT_HOUSE_2, LavaridgeTown_EventScript_House2DoorEnd
+	showmoneybox 0, 0
+	msgbox LavaridgeTown_Text_House2ForSale, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, LavaridgeTown_EventScript_House2DeclinedPurchase
+	checkmoney 30000
+	goto_if_eq VAR_RESULT, FALSE, LavaridgeTown_EventScript_House2NotEnoughMoney
+	playse SE_SHOP
+	removemoney 30000
+	updatemoneybox
+	waitse
+	msgbox LavaridgeTown_Text_House2PurchaseComplete, MSGBOX_DEFAULT
+	setflag FLAG_BOUGHT_HOUSE_2
+	hidemoneybox
+	applymovement LOCALID_LAVARIDGE_HOUSE_2_NPC, Common_Movement_WalkRight
+	waitmovement 0
+	applymovement LOCALID_LAVARIDGE_HOUSE_2_NPC, Common_Movement_FaceDown
+	waitmovement 0
+	setobjectxyperm LOCALID_LAVARIDGE_HOUSE_2_NPC, 15, 22
+	goto LavaridgeTown_EventScript_House2DoorEnd
+
+LavaridgeTown_EventScript_House2DeclinedPurchase::
+	hidemoneybox
+	goto LavaridgeTown_EventScript_House2DoorEnd
+
+LavaridgeTown_EventScript_House2NotEnoughMoney::
+	msgbox LavaridgeTown_Text_House2NotEnoughMoney, MSGBOX_DEFAULT
+	hidemoneybox
+	goto LavaridgeTown_EventScript_House2DoorEnd
+
+LavaridgeTown_EventScript_House2DoorEnd::
+	releaseall
+	end
+
+LavaridgeTown_Text_House2ForSale:
+	.string "Cette maison est à vendre pour 30000¥.\p"
+	.string "Elle dispose d'une source chaude privée\n"
+	.string "pour se soigner, et vous pourrez y\p"
+	.string "faire habiter un POKéMON, vous changer,\n"
+	.string "et d'autres surprises!\p"
+	.string "Voulez-vous l'acheter?$"
+
+LavaridgeTown_Text_House2PurchaseComplete:
+	.string "Félicitations! Cette maison est\n"
+	.string "désormais la vôtre!\p"
+	.string "L'armoire à côté de la télévision vous\n"
+	.string "permet de vous changer, et en\p"
+	.string "interagissant avec le pot à droite de la\n"
+	.string "pièce, vous pouvez installer un POKéMON\p"
+	.string "dans la maison. Celui-ci restera tout de\n"
+	.string "même présent dans votre équipe.\p"
+	.string "Enfin, appuyez sur A dans la source\n"
+	.string "chaude pour vous soigner.$"
+
+LavaridgeTown_Text_House2NotEnoughMoney:
+	.string "Il vous manque de l'argent pour\n"
+	.string "acheter cette maison.$"
 

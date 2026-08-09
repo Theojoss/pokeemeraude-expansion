@@ -54,6 +54,7 @@ COMMON_DATA u8 gSelectedObjectEvent = 0;
 static void GetInFrontOfPlayerPosition(struct MapPosition *);
 static u16 GetPlayerCurMetatileBehavior(int);
 static bool8 TryStartInteractionScript(struct MapPosition *, u16, enum Direction);
+static bool8 TryStartHotSpringsHealScript(u16);
 static const u8 *GetInteractionScript(struct MapPosition *, u8, enum Direction);
 static const u8 *GetInteractedObjectEventScript(struct MapPosition *, u8, enum Direction);
 static const u8 *GetInteractedBackgroundEventScript(struct MapPosition *, u8, enum Direction);
@@ -172,6 +173,9 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     playerDirection = GetPlayerFacingDirection();
     GetPlayerPosition(&position);
     metatileBehavior = MapGridGetMetatileBehaviorAt(position.x, position.y);
+
+    if (input->pressedAButton && TryStartHotSpringsHealScript(metatileBehavior) == TRUE)
+        return TRUE;
 
     if (CheckForTrainersWantingBattle() == TRUE)
         return TRUE;
@@ -294,6 +298,22 @@ static u16 GetPlayerCurMetatileBehavior(int runningState)
 
     PlayerGetDestCoords(&x, &y);
     return MapGridGetMetatileBehaviorAt(x, y);
+}
+
+static bool8 TryStartHotSpringsHealScript(u16 metatileBehavior)
+{
+    if (MetatileBehavior_IsHotSprings(metatileBehavior) != TRUE)
+        return FALSE;
+
+    // Restrict to the Lavaridge player house's onsen room; MB_HOT_SPRINGS is
+    // also used by the vanilla public hot springs in outdoor Lavaridge Town,
+    // which should not grant free healing on every A press.
+    if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(MAP_LAVARIDGE_TOWN_PLAYER_HOUSE_ONSEN)
+     || gSaveBlock1Ptr->location.mapNum != MAP_NUM(MAP_LAVARIDGE_TOWN_PLAYER_HOUSE_ONSEN))
+        return FALSE;
+
+    ScriptContext_SetupScript(EventScript_HotSpringsHeal);
+    return TRUE;
 }
 
 static bool8 TryStartInteractionScript(struct MapPosition *position, u16 metatileBehavior, enum Direction direction)

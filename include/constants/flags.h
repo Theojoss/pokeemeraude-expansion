@@ -58,13 +58,13 @@
 #define FLAG_BOUGHT_HOUSE_1    0x24 // Set when the player has purchased House 1 in Sootopolis City
 #define FLAG_HOUSE_1_HAS_PET    0x25 // Set when the player has assigned a resident Pokemon to House 1
 #define FLAG_HOUSE_1_PET_HIDDEN    0x26 // Object event visibility flag for House 1's resident Pokemon
-#define FLAG_UNUSED_0x027    0x27 // Unused Flag
-#define FLAG_UNUSED_0x028    0x28 // Unused Flag
-#define FLAG_UNUSED_0x029    0x29 // Unused Flag
-#define FLAG_UNUSED_0x02A    0x2A // Unused Flag
-#define FLAG_UNUSED_0x02B    0x2B // Unused Flag
-#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
-#define FLAG_UNUSED_0x02D    0x2D // Unused Flag
+#define FLAG_BOUGHT_HOUSE_2    0x27 // Set when the player has purchased House 2 in Lavaridge Town
+#define FLAG_HOUSE_2_HAS_PET    0x28 // Set when the player has assigned a resident Pokemon to House 2
+#define FLAG_HOUSE_2_PET_HIDDEN    0x29 // Object event visibility flag for House 2's resident Pokemon
+#define FLAG_HOUSE_1_ENTERED_ONCE    0x2A // Set the first time the player enters House 1 in Sootopolis City after buying it
+#define FLAG_HOUSE_2_ENTERED_ONCE    0x2B // Set the first time the player enters House 2 in Lavaridge Town after buying it
+#define FLAG_HIDE_LAVARIDGE_TOWN_HOUSE_2_NPC    0x2C // Object event visibility flag for House 2's real estate NPC, hidden for good once the player has entered
+#define FLAG_HIDE_SOOTOPOLIS_CITY_HOUSE_1_NPC    0x2D // Object event visibility flag for House 1's real estate NPC, hidden for good once the player has entered
 #define FLAG_UNUSED_0x02E    0x2E // Unused Flag
 #define FLAG_UNUSED_0x02F    0x2F // Unused Flag
 #define FLAG_UNUSED_0x030    0x30 // Unused Flag
@@ -1573,7 +1573,7 @@
 #define FLAG_DAILY_HOUSE_1_RECEIVED_GIFT             (DAILY_FLAGS_START + 0x0)
 #define FLAG_DAILY_CONTEST_LOBBY_RECEIVED_BERRY     (DAILY_FLAGS_START + 0x1)
 #define FLAG_DAILY_SECRET_BASE                      (DAILY_FLAGS_START + 0x2)
-#define FLAG_UNUSED_0x923                           (DAILY_FLAGS_START + 0x3)  // Unused Flag
+#define FLAG_DAILY_HOUSE_2_RECEIVED_GIFT             (DAILY_FLAGS_START + 0x3)
 #define FLAG_UNUSED_0x924                           (DAILY_FLAGS_START + 0x4)  // Unused Flag
 #define FLAG_UNUSED_0x925                           (DAILY_FLAGS_START + 0x5)  // Unused Flag
 #define FLAG_UNUSED_0x926                           (DAILY_FLAGS_START + 0x6)  // Unused Flag
