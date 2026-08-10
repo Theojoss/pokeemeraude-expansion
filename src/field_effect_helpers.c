@@ -38,8 +38,8 @@ static void UpdateFeetInFlowingWaterFieldEffect(struct Sprite *);
 static void UpdateAshFieldEffect_Wait(struct Sprite *);
 static void UpdateAshFieldEffect_Show(struct Sprite *);
 static void UpdateAshFieldEffect_End(struct Sprite *);
-static void SynchronizeSurfAnim(struct ObjectEvent *, struct Sprite *);
-static void SynchronizeSurfPosition(struct ObjectEvent *, struct Sprite *);
+void SynchronizeSurfAnim(struct ObjectEvent *, struct Sprite *);
+void SynchronizeSurfPosition(struct ObjectEvent *, struct Sprite *);
 static void UpdateBobbingEffect(struct ObjectEvent *, struct Sprite *, struct Sprite *);
 static void SpriteCB_UnderwaterSurfBlob(struct Sprite *);
 static u32 ShowDisguiseFieldEffect(u8, u8, u8);
@@ -1196,28 +1196,6 @@ static void UpdateAshFieldEffect_End(struct Sprite *sprite)
 #define sPrevX        data[6]
 #define sPrevY        data[7]
 
-u32 FldEff_SurfBlob(void)
-{
-    u8 spriteId;
-
-    SetSpritePosToOffsetMapCoords((s16 *)&gFieldEffectArguments[0], (s16 *)&gFieldEffectArguments[1], 8, 8);
-    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_SURF_BLOB], gFieldEffectArguments[0], gFieldEffectArguments[1], 150);
-    if (spriteId != MAX_SPRITES)
-    {
-        struct Sprite *sprite = &gSprites[spriteId];
-        sprite->coordOffsetEnabled = TRUE;
-        sprite->sPlayerObjId = gFieldEffectArguments[2];
-        // Can use either gender's palette, so try to use the one that should be loaded
-        sprite->oam.paletteNum = LoadPlayerObjectEventPalette(gSaveBlock2Ptr->playerGender);
-        sprite->sVelocity = -1;
-        sprite->sPrevX = -1;
-        sprite->sPrevY = -1;
-    }
-    FieldEffectActiveListRemove(FLDEFF_SURF_BLOB);
-    return spriteId;
-}
-
-
 void SetSurfBlob_BobState(u8 spriteId, u8 state)
 {
     gSprites[spriteId].sBitfield = (gSprites[spriteId].sBitfield & ~0xF) | (state & 0xF);
@@ -1260,7 +1238,7 @@ void UpdateSurfBlobFieldEffect(struct Sprite *sprite)
     sprite->oam.priority = playerSprite->oam.priority;
 }
 
-static void SynchronizeSurfAnim(struct ObjectEvent *playerObj, struct Sprite *sprite)
+void SynchronizeSurfAnim(struct ObjectEvent *playerObj, struct Sprite *sprite)
 {
     // Indexes into sAnimTable_SurfBlob
     u8 surfBlobDirectionAnims[] = {

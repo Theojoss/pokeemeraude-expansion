@@ -17,6 +17,8 @@ u8 StartUnderwaterSurfBlobBobbing(u8 blobSpriteId);
 void SetSurfBlob_BobState(u8 spriteId, u8 state);
 void SetSurfBlob_DontSyncAnim(u8 spriteId, bool8 dontSync);
 void SetSurfBlob_PlayerOffset(u8 spriteId, bool8 hasOffset, s16 offset);
+void SynchronizeSurfAnim(struct ObjectEvent *playerObj, struct Sprite *sprite);
+void SynchronizeSurfPosition(struct ObjectEvent *playerObj, struct Sprite *sprite);
 bool8 UpdateRevealDisguise(struct ObjectEvent *objectEvent);
 void StartRevealDisguise(struct ObjectEvent *objectEvent);
 void StartAshFieldEffect(s16 x, s16 y, u16 metatileId, s16 delay);
