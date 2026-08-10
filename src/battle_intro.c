@@ -17,9 +17,9 @@
 void BattleIntroSlide1(u8);
 void BattleIntroSlide2(u8);
 void BattleIntroSlide3(u8);
+void BattleIntroNoSlide(u8);
 static void BattleIntroSlideLink(u8);
 static void BattleIntroSlidePartner(u8);
-static void BattleIntroNoSlide(u8);
 
 static const u8 sBattleAnimBgCnts[] = {REG_OFFSET_BG0CNT, REG_OFFSET_BG1CNT, REG_OFFSET_BG2CNT, REG_OFFSET_BG3CNT};
 
@@ -136,7 +136,7 @@ static void BattleIntroSlideEnd(u8 taskId)
     SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_BG_ALL | WINOUT_WIN01_OBJ | WINOUT_WIN01_CLR | WINOUT_WINOBJ_BG_ALL | WINOUT_WINOBJ_OBJ | WINOUT_WINOBJ_CLR);
 }
 
-static void BattleIntroNoSlide(u8 taskId)
+void BattleIntroNoSlide(u8 taskId)
 {
     switch (gTasks[taskId].tState)
     {

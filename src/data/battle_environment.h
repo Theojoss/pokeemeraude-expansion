@@ -132,7 +132,7 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .entry = ENVIRONMENT_ENTRY(Underwater),
         .background = ENVIRONMENT_BACKGROUND(Underwater),
         .palette = gBattleEnvironmentPalette_Underwater,
-        .battleIntroSlide = BattleIntroSlide2,
+        .battleIntroSlide = BattleIntroNoSlide,
     },
 
     [BATTLE_ENVIRONMENT_WATER] =
@@ -228,7 +228,7 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .entry = ENVIRONMENT_ENTRY(Building),
         .background = ENVIRONMENT_BACKGROUND(Plain),
         .palette = gBattleEnvironmentPalette_Plain,
-        .battleIntroSlide = PLAIN_BATTLE_INTRO_SLIDE,
+        .battleIntroSlide = BattleIntroNoSlide,
     },
 
     [BATTLE_ENVIRONMENT_FRONTIER] =
@@ -371,7 +371,7 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .camouflageBlend = CAVE_CAMOUFLAGE_BLEND,
         .entry = ENVIRONMENT_ENTRY(Cave),
         .background = ENVIRONMENT_BACKGROUND(Cave),
-        .palette = gBattleEnvironmentPalette_Groudon,
+        .palette = gBattleEnvironmentPalette_Cave,
         .battleIntroSlide = CAVE_BATTLE_INTRO_SLIDE,
     },
 
@@ -383,10 +383,10 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .secretPowerEffect = CAVE_SECRET_POWER_EFFECT,
         .camouflageType = CAVE_CAMOUFLAGE_TYPE,
         .camouflageBlend = CAVE_CAMOUFLAGE_BLEND,
-        .entry = ENVIRONMENT_ENTRY(Underwater),
-        .background = ENVIRONMENT_BACKGROUND(Water),
-        .palette = gBattleEnvironmentPalette_Kyogre,
-        .battleIntroSlide = BattleIntroSlide2,
+        .entry = ENVIRONMENT_ENTRY(PondWater),
+        .background = ENVIRONMENT_BACKGROUND(PondWater),
+        .palette = gBattleEnvironmentPalette_PondWater,
+        .battleIntroSlide = BattleIntroNoSlide,
     },
 
     [BATTLE_ENVIRONMENT_RAYQUAZA] =

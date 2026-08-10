@@ -879,6 +879,11 @@ static void LoadBattleEnvironmentEntryGfx(u16 environment)
 {
     if (environment >= NELEMS(gBattleEnvironmentInfo))
         environment = BATTLE_ENVIRONMENT_PLAIN;
+    // BattleIntroNoSlide never scrolls BG1, so an entry graphic loaded here
+    // would just sit frozen on screen instead of animating in. Skip it entirely
+    // for environments configured with no slide.
+    if (gBattleEnvironmentInfo[environment].battleIntroSlide == BattleIntroNoSlide)
+        return;
     // Copy to bg1
     DecompressDataWithHeaderVram(gBattleEnvironmentInfo[environment].entry.tileset, (void *)BG_CHAR_ADDR(1));
     DecompressDataWithHeaderVram(gBattleEnvironmentInfo[environment].entry.tilemap, (void *)BG_SCREEN_ADDR(28));

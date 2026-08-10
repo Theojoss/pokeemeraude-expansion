@@ -113,6 +113,7 @@ void HandleIntroSlide(u8 environment);
 void BattleIntroSlide1(u8 taskId);
 void BattleIntroSlide2(u8 taskId);
 void BattleIntroSlide3(u8 taskId);
+void BattleIntroNoSlide(u8 taskId);
 int GetAnimBgAttribute(u8 bgId, u8 attributeId);
 
 // battle_anim_mons.c
