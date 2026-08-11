@@ -241,7 +241,7 @@ static const struct WindowTemplate sWindowTemplates[] =
         .tilemapTop = 15,
         .width = 27,
         .height = 4,
-        .paletteNum = 15,
+        .paletteNum = 13,
         .baseBlock = 1+(23*6),
     },
     [WIN_HEADER] =
@@ -472,8 +472,8 @@ static bool32 SetupOutfitMenu_Graphics(void)
     case 0:
         ResetTempTileDataBuffers();
         LoadBgTiles(BG_MAIN, &sTiles, 96*72/2, 0x0);
-        LoadMessageBoxGfx(BG_MSGBOX, 0x100, BG_PLTT_ID(15));
-        LoadUserWindowBorderGfx(BG_MSGBOX, 0x10D, BG_PLTT_ID(14));
+        Menu_LoadStdPalAt(BG_PLTT_ID(13));
+        LoadUserWindowBorderGfx(BG_MSGBOX, 0x140, BG_PLTT_ID(14));
         sOutfitMenu->gfxState++;
         break;
     case 1:
@@ -800,7 +800,7 @@ static void Task_WaitMessage(u8 taskId)
 {
     if (!IsTextPrinterActiveOnWindow(WIN_MSGBOX) && (JOY_NEW(A_BUTTON | B_BUTTON) || --gTasks[taskId].data[0] == 0))
     {
-        ClearDialogWindowAndFrame(WIN_MSGBOX, TRUE);
+        ClearStdWindowAndFrame(WIN_MSGBOX, TRUE);
         UpdateOutfitInfo();
         gTasks[taskId].func = Task_OutfitMenuHandleInput;
     }
@@ -809,7 +809,7 @@ static void Task_WaitMessage(u8 taskId)
 static inline void PrintDialogueBoxWithDescWin(const u8 *str, bool32 expandPlaceholders, u8 taskId)
 {
     const u8 *txt = expandPlaceholders ? gStringVar4 : str;
-    DrawDialogFrameWithCustomTileAndPalette(WIN_MSGBOX, TRUE, 0x100, 15);
+    DrawStdFrameWithCustomTileAndPalette(WIN_MSGBOX, TRUE, 0x140, 14);
 
     if (expandPlaceholders)
     {
