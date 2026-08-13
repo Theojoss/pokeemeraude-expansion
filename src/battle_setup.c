@@ -721,6 +721,21 @@ enum BattleEnvironments BattleSetup_GetEnvironmentId(void)
 
     tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
 
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_MT_PYRE_1F)
+     && gSaveBlock1Ptr->location.mapNum >= MAP_NUM(MAP_MT_PYRE_1F)
+     && gSaveBlock1Ptr->location.mapNum <= MAP_NUM(MAP_MT_PYRE_SUMMIT))
+        return BATTLE_ENVIRONMENT_BURIAL_GROUND;
+
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_SHOAL_CAVE_LOW_TIDE_ENTRANCE_ROOM)
+     && (gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_SHOAL_CAVE_LOW_TIDE_ENTRANCE_ROOM)
+      || gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_SHOAL_CAVE_LOW_TIDE_INNER_ROOM)
+      || gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_SHOAL_CAVE_LOW_TIDE_STAIRS_ROOM)
+      || gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_SHOAL_CAVE_LOW_TIDE_LOWER_ROOM)
+      || gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_SHOAL_CAVE_HIGH_TIDE_ENTRANCE_ROOM)
+      || gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_SHOAL_CAVE_HIGH_TIDE_INNER_ROOM)
+      || gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_SHOAL_CAVE_LOW_TIDE_ICE_ROOM)))
+        return BATTLE_ENVIRONMENT_ICE;
+
     if (MetatileBehavior_IsTallGrass(tileBehavior))
         return BATTLE_ENVIRONMENT_GRASS;
     if (MetatileBehavior_IsLongGrass(tileBehavior))
@@ -732,6 +747,7 @@ enum BattleEnvironments BattleSetup_GetEnvironmentId(void)
     {
     case MAP_TYPE_TOWN:
     case MAP_TYPE_CITY:
+        return BATTLE_ENVIRONMENT_TOWN;
     case MAP_TYPE_ROUTE:
         break;
     case MAP_TYPE_UNDERGROUND:

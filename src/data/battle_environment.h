@@ -231,6 +231,20 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .battleIntroSlide = BattleIntroNoSlide,
     },
 
+    [BATTLE_ENVIRONMENT_TOWN] =
+    {
+        .name = _("Town"),
+        .naturePower = PLAIN_NATURE_POWER,
+        .secretPowerAnimation = PLAIN_SECRET_POWER_ANIMATION,
+        .secretPowerEffect = PLAIN_SECRET_POWER_EFFECT,
+        .camouflageType = PLAIN_CAMOUFLAGE_TYPE,
+        .camouflageBlend = PLAIN_CAMOUFLAGE_BLEND,
+        .entry = ENVIRONMENT_ENTRY(Building),
+        .background = ENVIRONMENT_BACKGROUND(Town),
+        .palette = gBattleEnvironmentPalette_Town,
+        .battleIntroSlide = BattleIntroNoSlide,
+    },
+
     [BATTLE_ENVIRONMENT_FRONTIER] =
     {
         .name = _("Frontier"),
@@ -240,7 +254,7 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .camouflageBlend = BUILDING_CAMOUFLAGE_BLEND,
         .entry = ENVIRONMENT_ENTRY(Building),
         .background = ENVIRONMENT_BACKGROUND(Building),
-        .palette = gBattleEnvironmentPalette_Frontier,
+        .palette = gBattleEnvironmentPalette_Building,
         .battleIntroSlide = BUILDING_BATTLE_INTRO_SLIDE,
     },
 
@@ -253,7 +267,7 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .camouflageBlend = BUILDING_CAMOUFLAGE_BLEND,
         .entry = ENVIRONMENT_ENTRY(Building),
         .background = ENVIRONMENT_BACKGROUND(Building),
-        .palette = gBattleEnvironmentPalette_BuildingGym,
+        .palette = gBattleEnvironmentPalette_Building,
         .battleIntroSlide = BUILDING_BATTLE_INTRO_SLIDE,
     },
 
@@ -266,7 +280,7 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .camouflageBlend = BUILDING_CAMOUFLAGE_BLEND,
         .entry = ENVIRONMENT_ENTRY(Building),
         .background = ENVIRONMENT_BACKGROUND(Stadium),
-        .palette = gBattleEnvironmentPalette_StadiumLeader,
+        .palette = gBattleEnvironmentPalette_StadiumPhoebe,
         .battleIntroSlide = BUILDING_BATTLE_INTRO_SLIDE,
     },
 
@@ -277,9 +291,9 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .secretPowerEffect = BUILDING_SECRET_POWER_EFFECT,
         .camouflageType = BUILDING_CAMOUFLAGE_TYPE,
         .camouflageBlend = BUILDING_CAMOUFLAGE_BLEND,
-        .entry = ENVIRONMENT_ENTRY(Building),
-        .background = ENVIRONMENT_BACKGROUND(Building),
-        .palette = gBattleEnvironmentPalette_BuildingMagma,
+        .entry = ENVIRONMENT_ENTRY(Cave),
+        .background = ENVIRONMENT_BACKGROUND(Volcano),
+        .palette = gBattleEnvironmentPalette_Volcano,
         .battleIntroSlide = BUILDING_BATTLE_INTRO_SLIDE,
     },
 
@@ -290,9 +304,9 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .secretPowerEffect = BUILDING_SECRET_POWER_EFFECT,
         .camouflageType = BUILDING_CAMOUFLAGE_TYPE,
         .camouflageBlend = BUILDING_CAMOUFLAGE_BLEND,
-        .entry = ENVIRONMENT_ENTRY(Building),
-        .background = ENVIRONMENT_BACKGROUND(Building),
-        .palette = gBattleEnvironmentPalette_BuildingAqua,
+        .entry = ENVIRONMENT_ENTRY(PondWater),
+        .background = ENVIRONMENT_BACKGROUND(PondWater),
+        .palette = gBattleEnvironmentPalette_PondWater,
         .battleIntroSlide = BUILDING_BATTLE_INTRO_SLIDE,
     },
 
@@ -370,8 +384,8 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .camouflageType = CAVE_CAMOUFLAGE_TYPE,
         .camouflageBlend = CAVE_CAMOUFLAGE_BLEND,
         .entry = ENVIRONMENT_ENTRY(Cave),
-        .background = ENVIRONMENT_BACKGROUND(Cave),
-        .palette = gBattleEnvironmentPalette_Cave,
+        .background = ENVIRONMENT_BACKGROUND(Volcano),
+        .palette = gBattleEnvironmentPalette_Volcano,
         .battleIntroSlide = CAVE_BATTLE_INTRO_SLIDE,
     },
 
@@ -431,6 +445,10 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .secretPowerEffect = MOVE_EFFECT_FLINCH,
         .camouflageType = TYPE_GHOST,
         .camouflageBlend = DEFAULT_CAMOUFLAGE_BLEND,
+        .entry = ENVIRONMENT_ENTRY(Building),
+        .background = ENVIRONMENT_BACKGROUND(BurialGround),
+        .palette = gBattleEnvironmentPalette_BurialGround,
+        .battleIntroSlide = BattleIntroNoSlide,
     },
 
     [BATTLE_ENVIRONMENT_PUDDLE] =
@@ -487,6 +505,10 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .secretPowerEffect = MOVE_EFFECT_FREEZE_OR_FROSTBITE,
         .camouflageType = TYPE_ICE,
         .camouflageBlend = DEFAULT_CAMOUFLAGE_BLEND,
+        .entry = ENVIRONMENT_ENTRY(Cave),
+        .background = ENVIRONMENT_BACKGROUND(Ice),
+        .palette = gBattleEnvironmentPalette_Ice,
+        .battleIntroSlide = CAVE_BATTLE_INTRO_SLIDE,
     },
 
     [BATTLE_ENVIRONMENT_VOLCANO] =

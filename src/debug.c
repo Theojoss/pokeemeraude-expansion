@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle.h"
+#include "battle_environment.h"
 #include "battle_setup.h"
 #include "berry.h"
 #include "clock.h"
@@ -277,6 +278,8 @@ static void DebugAction_Util_Warp_SelectMap(u8 taskId);
 static void DebugAction_Util_Warp_SelectWarp(u8 taskId);
 static void DebugAction_Util_Weather(u8 taskId);
 static void DebugAction_Util_Weather_SelectId(u8 taskId);
+static void DebugAction_Util_BattleBackground(u8 taskId);
+static void DebugAction_Util_BattleBackground_SelectId(u8 taskId);
 static void DebugAction_Util_WatchCredits(u8 taskId);
 static void DebugAction_Util_CheatStart(u8 taskId);
 
@@ -584,6 +587,7 @@ static const struct DebugMenuOption sDebugMenu_Actions_Utilities[] =
     { COMPOUND_STRING("Voler vers map…"),   DebugAction_Util_Fly },
     { COMPOUND_STRING("Aller vers warp…"),  DebugAction_Util_Warp_Warp },
     { COMPOUND_STRING("Définir climat…"),   DebugAction_Util_Weather },
+    { COMPOUND_STRING("Décors Combat…"),    DebugAction_Util_BattleBackground },
     { COMPOUND_STRING("Test police…"),      DebugAction_ExecuteScript, Debug_EventScript_FontTest },
     { COMPOUND_STRING("Temps…"),            DebugAction_OpenSubMenu, sDebugMenu_Actions_TimeMenu, },
     { COMPOUND_STRING("Voir crédits…"),     DebugAction_Util_WatchCredits },
@@ -1707,6 +1711,105 @@ static void DebugAction_Util_Weather_SelectId(u8 taskId)
             gTasks[taskId].data[5] = gTasks[taskId].tInput;
             SetWeather(gTasks[taskId].data[5]);
         }
+    }
+    else if (JOY_NEW(B_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        DebugAction_DestroyExtraWindow(taskId);
+    }
+}
+
+// Only battle environments with actual background graphics wired up; several
+// BATTLE_ENVIRONMENT_* entries (Soaring, Sky Pillar, Snow, Volcano, etc.) are
+// mechanic-only stubs with no tileset/tilemap and would corrupt VRAM if loaded.
+static const u8 sDebugBattleBackgroundEnvironments[] =
+{
+    BATTLE_ENVIRONMENT_GRASS,
+    BATTLE_ENVIRONMENT_LONG_GRASS,
+    BATTLE_ENVIRONMENT_SAND,
+    BATTLE_ENVIRONMENT_UNDERWATER,
+    BATTLE_ENVIRONMENT_WATER,
+    BATTLE_ENVIRONMENT_POND,
+    BATTLE_ENVIRONMENT_MOUNTAIN,
+    BATTLE_ENVIRONMENT_CAVE,
+    BATTLE_ENVIRONMENT_BUILDING,
+    BATTLE_ENVIRONMENT_PLAIN,
+    BATTLE_ENVIRONMENT_TOWN,
+    BATTLE_ENVIRONMENT_FRONTIER,
+    BATTLE_ENVIRONMENT_GYM,
+    BATTLE_ENVIRONMENT_LEADER,
+    BATTLE_ENVIRONMENT_MAGMA,
+    BATTLE_ENVIRONMENT_AQUA,
+    BATTLE_ENVIRONMENT_SIDNEY,
+    BATTLE_ENVIRONMENT_PHOEBE,
+    BATTLE_ENVIRONMENT_GLACIA,
+    BATTLE_ENVIRONMENT_DRAKE,
+    BATTLE_ENVIRONMENT_CHAMPION,
+    BATTLE_ENVIRONMENT_GROUDON,
+    BATTLE_ENVIRONMENT_KYOGRE,
+    BATTLE_ENVIRONMENT_RAYQUAZA,
+    BATTLE_ENVIRONMENT_BURIAL_GROUND,
+    BATTLE_ENVIRONMENT_ICE,
+};
+
+static const u8 sDebugText_Util_BattleBackground_ID[] = _("Décor: {STR_VAR_3}\n{STR_VAR_1}\n{STR_VAR_2}");
+
+static void StartDebugBattleWithEnvironment(u8 taskId, u8 environment)
+{
+    CreateWildMon(SPECIES_ZIGZAGOON, 30);
+    gBattleTypeFlags = 0;
+    gIsDebugBattle = TRUE;
+    gBattleEnvironment = environment;
+    BattleSetup_StartTrainerBattle_Debug();
+    Debug_DestroyMenu_Full(taskId);
+}
+
+static void DebugAction_Util_BattleBackground(u8 taskId)
+{
+    u8 windowId;
+
+    ClearStdWindowAndFrame(gTasks[taskId].tWindowId, TRUE);
+    RemoveWindow(gTasks[taskId].tWindowId);
+
+    HideMapNamePopUpWindow();
+    LoadMessageBoxAndBorderGfx();
+    windowId = AddWindow(&sDebugMenuWindowTemplateWeather);
+    DrawStdWindowFrame(windowId, FALSE);
+
+    CopyWindowToVram(windowId, COPYWIN_FULL);
+
+    //Display initial ID
+    StringCopy(gStringVar2, gText_DigitIndicator[0]);
+    ConvertIntToDecimalStringN(gStringVar3, 1, STR_CONV_MODE_LEADING_ZEROS, 2);
+    StringCopyPadded(gStringVar1, gBattleEnvironmentInfo[sDebugBattleBackgroundEnvironments[0]].name, CHAR_SPACE, 30);
+    StringExpandPlaceholders(gStringVar4, sDebugText_Util_BattleBackground_ID);
+    AddTextPrinterParameterized(windowId, DEBUG_MENU_FONT, gStringVar4, 0, 0, 0, NULL);
+
+    gTasks[taskId].func = DebugAction_Util_BattleBackground_SelectId;
+    gTasks[taskId].tSubWindowId = windowId;
+    gTasks[taskId].tInput = 0;
+    gTasks[taskId].tDigit = 0;
+}
+
+static void DebugAction_Util_BattleBackground_SelectId(u8 taskId)
+{
+    if (JOY_NEW(DPAD_ANY))
+    {
+        PlaySE(SE_SELECT);
+        Debug_HandleInput_Numeric(taskId, 0, ARRAY_COUNT(sDebugBattleBackgroundEnvironments) - 1, 2);
+
+        StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].tDigit]);
+        ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].tInput, STR_CONV_MODE_LEADING_ZEROS, 2);
+
+        StringCopyPadded(gStringVar1, gBattleEnvironmentInfo[sDebugBattleBackgroundEnvironments[gTasks[taskId].tInput]].name, CHAR_SPACE, 30);
+
+        StringExpandPlaceholders(gStringVar4, sDebugText_Util_BattleBackground_ID);
+        AddTextPrinterParameterized(gTasks[taskId].tSubWindowId, DEBUG_MENU_FONT, gStringVar4, 0, 0, 0, NULL);
+    }
+
+    if (JOY_NEW(A_BUTTON))
+    {
+        StartDebugBattleWithEnvironment(taskId, sDebugBattleBackgroundEnvironments[gTasks[taskId].tInput]);
     }
     else if (JOY_NEW(B_BUTTON))
     {

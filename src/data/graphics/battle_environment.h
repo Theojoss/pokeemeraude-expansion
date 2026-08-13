@@ -41,6 +41,18 @@ const u16 gBattleEnvironmentPalette_Plain[] = INCGFX_U16("graphics/battle_enviro
 const u32 gBattleEnvironmentTiles_Plain[] = INCGFX_U32("graphics/battle_environment/plain/tiles.png", ".4bpp.smol");
 const u32 gBattleEnvironmentTilemap_Plain[] = INCGFX_U32("graphics/battle_environment/plain/map.bin", ".smolTM");
 
+const u16 gBattleEnvironmentPalette_Town[] = INCGFX_U16("graphics/battle_environment/town/palette.pal", ".gbapal");
+const u32 gBattleEnvironmentTiles_Town[] = INCGFX_U32("graphics/battle_environment/town/tiles.png", ".4bpp.smol");
+const u32 gBattleEnvironmentTilemap_Town[] = INCGFX_U32("graphics/battle_environment/town/map.bin", ".smolTM");
+
+const u16 gBattleEnvironmentPalette_BurialGround[] = INCGFX_U16("graphics/battle_environment/burial_ground/palette.pal", ".gbapal");
+const u32 gBattleEnvironmentTiles_BurialGround[] = INCGFX_U32("graphics/battle_environment/burial_ground/tiles.png", ".4bpp.smol");
+const u32 gBattleEnvironmentTilemap_BurialGround[] = INCGFX_U32("graphics/battle_environment/burial_ground/map.bin", ".smolTM");
+
+const u16 gBattleEnvironmentPalette_Ice[] = INCGFX_U16("graphics/battle_environment/ice/palette.pal", ".gbapal");
+const u32 gBattleEnvironmentTiles_Ice[] = INCGFX_U32("graphics/battle_environment/ice/tiles.png", ".4bpp.smol");
+const u32 gBattleEnvironmentTilemap_Ice[] = INCGFX_U32("graphics/battle_environment/ice/map.bin", ".smolTM");
+
 const u32 gBattleEnvironmentTiles_Stadium[] = INCGFX_U32("graphics/battle_environment/stadium/tiles.png", ".4bpp.smol");
 const u32 gBattleEnvironmentTilemap_Stadium[] = INCGFX_U32("graphics/battle_environment/stadium/map.bin", ".smolTM");
 
@@ -54,6 +66,10 @@ const u16 gBattleEnvironmentPalette_StadiumWallace[] = INCGFX_U16("graphics/batt
 
 const u16 gBattleEnvironmentPalette_Kyogre[] = INCGFX_U16("graphics/battle_environment/water/kyogre.pal", ".gbapal");
 const u16 gBattleEnvironmentPalette_Groudon[] = INCGFX_U16("graphics/battle_environment/cave/groudon.pal", ".gbapal");
+
+const u32 gBattleEnvironmentTiles_Volcano[] = INCGFX_U32("graphics/battle_environment/volcano/tiles.png", ".4bpp.smol");
+const u16 gBattleEnvironmentPalette_Volcano[] = INCGFX_U16("graphics/battle_environment/volcano/palette.pal", ".gbapal");
+const u32 gBattleEnvironmentTilemap_Volcano[] = INCGFX_U32("graphics/battle_environment/volcano/map.bin", ".smolTM");
 
 const u32 gBattleEnvironmentTiles_Rayquaza[] = INCGFX_U32("graphics/battle_environment/sky/tiles.png", ".4bpp.smol");
 const u16 gBattleEnvironmentPalette_Rayquaza[] = INCGFX_U16("graphics/battle_environment/sky/palette.pal", ".gbapal");
