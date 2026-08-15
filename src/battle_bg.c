@@ -917,7 +917,12 @@ static u8 GetBattleEnvironmentOverride(void)
     }
     else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
     {
-        u32 trainerClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
+        u32 trainerClass;
+
+        if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_THEOJOSS)
+            return BATTLE_ENVIRONMENT_MOUNTAIN2;
+
+        trainerClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
         if (trainerClass == TRAINER_CLASS_LEADER)
             return BATTLE_ENVIRONMENT_LEADER;
         else if (trainerClass == TRAINER_CLASS_CHAMPION)

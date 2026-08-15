@@ -869,6 +869,15 @@ static const u16 sMugshotPal_Green[]  = INCGFX_U16("graphics/battle_transitions/
 static const u16 sMugshotPal_Pink[]   = INCGFX_U16("graphics/battle_transitions/pink_bg.pal", ".gbapal");
 static const u16 sMugshotPal_Blue[]   = INCGFX_U16("graphics/battle_transitions/blue_bg.pal", ".gbapal");
 static const u16 sMugshotPal_Yellow[] = INCGFX_U16("graphics/battle_transitions/yellow_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Red[]    = INCGFX_U16("graphics/battle_transitions/red_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Brown[]  = INCGFX_U16("graphics/battle_transitions/brown_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Orange[] = INCGFX_U16("graphics/battle_transitions/orange_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Gray[]   = INCGFX_U16("graphics/battle_transitions/gray_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Cyan[]   = INCGFX_U16("graphics/battle_transitions/cyan_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Violet[] = INCGFX_U16("graphics/battle_transitions/violet_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Ice[]    = INCGFX_U16("graphics/battle_transitions/ice_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Indigo[] = INCGFX_U16("graphics/battle_transitions/indigo_bg.pal", ".gbapal");
+static const u16 sMugshotPal_Black[]  = INCGFX_U16("graphics/battle_transitions/black_bg.pal", ".gbapal");
 static const u16 sMugshotPal_Brendan[] = INCGFX_U16("graphics/battle_transitions/brendan_bg.pal", ".gbapal");
 static const u16 sMugshotPal_May[] = INCGFX_U16("graphics/battle_transitions/may_bg.pal", ".gbapal");
 
@@ -878,7 +887,16 @@ static const u16 *const sOpponentMugshotsPals[MUGSHOT_COLOR_COUNT] =
     [MUGSHOT_COLOR_GREEN]  = sMugshotPal_Green,
     [MUGSHOT_COLOR_PINK]   = sMugshotPal_Pink,
     [MUGSHOT_COLOR_BLUE]   = sMugshotPal_Blue,
-    [MUGSHOT_COLOR_YELLOW] = sMugshotPal_Yellow
+    [MUGSHOT_COLOR_YELLOW] = sMugshotPal_Yellow,
+    [MUGSHOT_COLOR_RED]    = sMugshotPal_Red,
+    [MUGSHOT_COLOR_BROWN]  = sMugshotPal_Brown,
+    [MUGSHOT_COLOR_ORANGE] = sMugshotPal_Orange,
+    [MUGSHOT_COLOR_GRAY]   = sMugshotPal_Gray,
+    [MUGSHOT_COLOR_CYAN]   = sMugshotPal_Cyan,
+    [MUGSHOT_COLOR_VIOLET] = sMugshotPal_Violet,
+    [MUGSHOT_COLOR_ICE]    = sMugshotPal_Ice,
+    [MUGSHOT_COLOR_INDIGO] = sMugshotPal_Indigo,
+    [MUGSHOT_COLOR_BLACK]  = sMugshotPal_Black
 };
 
 static const u16 *const sPlayerMugshotsPals[GENDER_COUNT] =

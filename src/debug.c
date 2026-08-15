@@ -1750,6 +1750,7 @@ static const u8 sDebugBattleBackgroundEnvironments[] =
     BATTLE_ENVIRONMENT_RAYQUAZA,
     BATTLE_ENVIRONMENT_BURIAL_GROUND,
     BATTLE_ENVIRONMENT_ICE,
+    BATTLE_ENVIRONMENT_MOUNTAIN2,
 };
 
 static const u8 sDebugText_Util_BattleBackground_ID[] = _("Décor: {STR_VAR_3}\n{STR_VAR_1}\n{STR_VAR_2}");
